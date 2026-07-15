@@ -1,1 +1,983 @@
-<html><head><title>CSZone - Coming Soon</title><style>body{margin:0;font-family:sans-serif;background:#0d0920;color:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center}.logo{font-size:2.5rem;font-weight:900}.logo b{color:#7c3aed}p{color:#94a3b8;margin-top:1rem}</style></head><body><div><div class="logo">CS<b>Zone</b>.co.uk</div><p>The Computer Science revision platform is coming soon.</p></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSZone.co.uk — Computer Science Revision Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#0f172a;line-height:1.5;overflow-x:hidden;}
+
+/* ═══════════════════════════════════════
+   SINGLE WHITE STICKY NAV — one bar only
+═══════════════════════════════════════ */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid #f0eeff;box-shadow:0 1px 16px rgba(0,0,0,.06);}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;gap:0;}
+
+/* logo */
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;margin-right:20px;}
+.logo-sq{width:34px;height:34px;background:linear-gradient(135deg,#7c3aed,#9f67f5);border-radius:9px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:12px;box-shadow:0 2px 10px rgba(124,58,237,.3);}
+.logo-text{font-size:17px;font-weight:900;letter-spacing:-.7px;color:#0f172a;white-space:nowrap;}
+.logo-text b{color:#7c3aed;}
+.logo-sub{font-size:9.5px;color:#94a3b8;font-weight:500;margin-top:1px;}
+
+/* nav links — all in one row */
+.nav-links{display:flex;align-items:center;flex:1;gap:1px;}
+.nl{padding:6px 10px;border-radius:7px;font-size:12px;font-weight:600;color:#64748b;cursor:pointer;transition:.15s;white-space:nowrap;border-bottom:2px solid transparent;}
+.nl:hover{color:#7c3aed;background:#f5f3ff;}
+.nl.act{color:#7c3aed;border-bottom-color:#7c3aed;background:#f5f3ff;}
+.nl.contact{color:#0f172a;font-weight:700;}
+.nl.contact:hover{color:#7c3aed;background:#f5f3ff;}
+.nav-divider{width:1px;height:20px;background:#e2e8f0;margin:0 8px;flex-shrink:0;}
+
+/* nav buttons */
+.nav-btns{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.nb{padding:7px 13px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;white-space:nowrap;display:flex;align-items:center;gap:5px;}
+.nb-stu{background:#f5f3ff;color:#7c3aed;border:1.5px solid #ddd6fe;}
+.nb-stu:hover{background:#ede9fe;border-color:#a78bfa;}
+.nb-tch{background:#f0fdff;color:#0891b2;border:1.5px solid #bae6fd;}
+.nb-tch:hover{background:#e0f9ff;border-color:#67e8f9;}
+.nb-go{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;padding:8px 18px;border:none;box-shadow:0 2px 10px rgba(124,58,237,.35);}
+.nb-go:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(124,58,237,.5);}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero{background:linear-gradient(150deg,#0d0920 0%,#1a1048 52%,#0b0720 100%);padding:90px 0 80px;position:relative;overflow:hidden;}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(70px);}
+.o1{width:500px;height:500px;background:rgba(124,58,237,.2);top:-140px;right:4%;}
+.o2{width:300px;height:300px;background:rgba(167,139,250,.1);bottom:-80px;left:18%;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center;position:relative;}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.22);color:#c4b5fd;border-radius:100px;padding:5px 14px 5px 8px;font-size:11px;font-weight:600;letter-spacing:.3px;margin-bottom:20px;}
+.badge-pip{width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:grid;place-items:center;font-size:10px;}
+.hero h1{font-size:48px;font-weight:900;color:#fff;letter-spacing:-2.2px;line-height:1.05;margin-bottom:18px;}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,#a78bfa,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-p{font-size:15.5px;color:rgba(255,255,255,.5);line-height:1.72;margin-bottom:28px;max-width:440px;}
+
+/* signup box */
+.hero-signup{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;backdrop-filter:blur(8px);margin-bottom:16px;}
+.hs-label{font-size:12px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.6px;margin-bottom:14px;}
+.hs-row{display:flex;gap:8px;margin-bottom:10px;}
+.hs-input{flex:1;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 15px;font-size:14px;color:#fff;font-family:inherit;outline:none;}
+.hs-input::placeholder{color:rgba(255,255,255,.25);}
+.hs-input:focus{border-color:rgba(167,139,250,.5);background:rgba(255,255,255,.12);}
+.hs-btn{padding:12px 22px;background:linear-gradient(135deg,#7c3aed,#6d28d9);border:none;border-radius:10px;font-size:14px;font-weight:700;color:#fff;cursor:pointer;font-family:inherit;white-space:nowrap;box-shadow:0 3px 14px rgba(124,58,237,.4);}
+.hs-or{text-align:center;font-size:11.5px;color:rgba(255,255,255,.2);margin:8px 0;}
+.hs-google{width:100%;padding:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.7);cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;}
+.hs-google:hover{background:rgba(255,255,255,.12);}
+.hero-note{font-size:11.5px;color:rgba(255,255,255,.22);line-height:1.6;}
+.hero-note b{color:rgba(255,255,255,.4);}
+
+.boards-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:20px;}
+.bl{font-size:11px;color:rgba(255,255,255,.25);font-weight:500;}
+.bc{padding:3px 9px;border-radius:100px;font-size:10px;font-weight:700;}
+.bca{background:rgba(6,182,212,.12);color:#67e8f9;border:1px solid rgba(6,182,212,.2);}
+.bcb{background:rgba(244,63,94,.12);color:#fda4af;border:1px solid rgba(244,63,94,.2);}
+.bcc{background:rgba(59,130,246,.12);color:#93c5fd;border:1px solid rgba(59,130,246,.2);}
+.bcd{background:rgba(245,158,11,.12);color:#fcd34d;border:1px solid rgba(245,158,11,.2);}
+.bce{background:rgba(16,185,129,.12);color:#6ee7b7;border:1px solid rgba(16,185,129,.2);}
+.bcf{background:rgba(167,139,250,.12);color:#c4b5fd;border:1px solid rgba(167,139,250,.2);}
+
+/* platform preview */
+.pp{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:16px;}
+.pp-bar{display:flex;align-items:center;gap:5px;margin-bottom:12px;}
+.pp-dot{width:8px;height:8px;border-radius:50%;}
+.pp-url{flex:1;background:rgba(255,255,255,.05);border-radius:5px;padding:3px 10px;font-size:10px;color:rgba(255,255,255,.2);text-align:center;}
+.tc{background:linear-gradient(135deg,#1a1145,#120e35);border:1px solid rgba(124,58,237,.2);border-radius:14px;overflow:hidden;margin-bottom:10px;}
+.tc-top{background:linear-gradient(135deg,#7c3aed,#5b21b6);padding:12px 14px;display:flex;justify-content:space-between;align-items:flex-start;}
+.tc-bc{font-size:9px;color:rgba(255,255,255,.5);margin-bottom:2px;}
+.tc-t{font-size:12.5px;font-weight:800;color:#fff;}
+.tc-pill{background:rgba(255,255,255,.15);color:#fff;font-size:8.5px;font-weight:700;padding:3px 7px;border-radius:100px;}
+.tc-body{padding:10px 14px;}
+.tc-vid{background:#080615;border-radius:8px;height:56px;display:grid;place-items:center;font-size:18px;margin-bottom:8px;color:rgba(255,255,255,.5);}
+.tc-res{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+.tr{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:6px 3px;text-align:center;}
+.tr-i{font-size:11px;margin-bottom:1px;}
+.tr-l{font-size:8.5px;color:rgba(255,255,255,.35);font-weight:600;}
+.pw{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:10px 12px;}
+.pw-t{font-size:8.5px;color:rgba(255,255,255,.25);font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;}
+.pw-row{display:flex;align-items:center;gap:7px;margin-bottom:5px;}
+.pw-row:last-child{margin-bottom:0;}
+.pw-n{font-size:9.5px;color:rgba(255,255,255,.45);width:100px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.pw-bw{flex:1;height:3px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden;}
+.pw-b{height:100%;border-radius:100px;}
+.pw-p{font-size:9.5px;font-weight:700;width:24px;text-align:right;flex-shrink:0;}
+/* locked overlay */
+.locked-row{opacity:.35;position:relative;}
+.lock-icon{font-size:8px;margin-left:4px;}
+
+/* ═══════════════════════════════════════
+   STATS BAR
+═══════════════════════════════════════ */
+.nums{background:#080515;border-top:1px solid rgba(124,58,237,.12);border-bottom:1px solid rgba(124,58,237,.12);padding:20px 40px;}
+.nums-inner{max-width:1200px;margin:0 auto;display:flex;}
+.ni{flex:1;text-align:center;border-right:1px solid rgba(124,58,237,.12);padding:0 10px;}
+.ni:last-child{border-right:none;}
+.ni-n{font-size:22px;font-weight:900;letter-spacing:-.8px;color:#fff;}
+.ni-n b{color:#a78bfa;}
+.ni-l{font-size:11px;color:#475569;font-weight:500;margin-top:2px;}
+
+/* ═══════════════════════════════════════
+   GENERAL SECTION STYLES
+═══════════════════════════════════════ */
+.sec{padding:76px 40px;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#7c3aed;margin-bottom:10px;}
+.sec-title{font-size:32px;font-weight:900;letter-spacing:-1.2px;color:#0f172a;line-height:1.08;margin-bottom:12px;}
+.sec-title b{color:#7c3aed;}
+.sec-sub{font-size:15px;color:#64748b;line-height:1.7;max-width:560px;}
+.sec-head{margin-bottom:44px;}
+.bg-off{background:#f9f8ff;}
+.bg-w{background:#fff;}
+
+/* ═══════════════════════════════════════
+   LOGIN CARDS
+═══════════════════════════════════════ */
+.login-sec{background:#f0eeff;border-bottom:1px solid #e0d9ff;padding:22px 40px;}
+.login-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.login-label{font-size:13.5px;color:#64748b;font-weight:500;white-space:nowrap;}
+.login-label b{color:#0f172a;}
+.login-cards{display:flex;gap:12px;}
+.lc{display:flex;align-items:center;gap:12px;border-radius:12px;padding:12px 18px;cursor:pointer;transition:.2s;text-decoration:none;}
+.lc:hover{transform:translateY(-2px);}
+.lc-stu{background:#fff;border:2px solid #ddd6fe;box-shadow:0 2px 10px rgba(124,58,237,.08);}
+.lc-stu:hover{box-shadow:0 5px 18px rgba(124,58,237,.14);border-color:#a78bfa;}
+.lc-tch{background:#fff;border:2px solid #bae6fd;box-shadow:0 2px 10px rgba(6,182,212,.08);}
+.lc-tch:hover{box-shadow:0 5px 18px rgba(6,182,212,.14);border-color:#67e8f9;}
+.lc-icon{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:17px;flex-shrink:0;}
+.lci-s{background:#f5f3ff;}
+.lci-t{background:#e0f9ff;}
+.lc-name{font-size:13.5px;font-weight:800;color:#0f172a;margin-bottom:1px;}
+.lc-sub{font-size:11px;color:#94a3b8;}
+.lc-arr{font-size:13px;margin-left:6px;flex-shrink:0;}
+.lc-stu .lc-arr{color:#7c3aed;}
+.lc-tch .lc-arr{color:#0891b2;}
+
+/* ═══════════════════════════════════════
+   BOARD TABS
+═══════════════════════════════════════ */
+.tabs{display:flex;background:#f1f5f9;border-radius:11px;padding:4px;width:fit-content;margin-bottom:28px;gap:2px;}
+.tab{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;color:#64748b;cursor:pointer;transition:.2s;white-space:nowrap;}
+.tab.on{background:#fff;color:#7c3aed;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+.pnl{display:none;}.pnl.on{display:block;}
+.bg5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+.bg4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.bg2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:560px;}
+.bcard{background:#fff;border:1.5px solid #e8e9ff;border-radius:16px;padding:20px 18px 18px;cursor:pointer;transition:.22s;position:relative;overflow:hidden;}
+.bcard:hover{transform:translateY(-4px);}
+.bcard-bar{position:absolute;top:0;left:0;right:0;height:4px;border-radius:16px 16px 0 0;}
+.bi{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:11px;font-weight:900;margin-bottom:12px;}
+.bn{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:2px;}
+.bsp{font-size:11px;color:#94a3b8;margin-bottom:12px;}
+.bm{display:flex;gap:14px;}
+.bms .n{font-size:14px;font-weight:800;color:#0f172a;}
+.bms .l{font-size:10px;color:#94a3b8;}
+.bpill{position:absolute;top:12px;right:12px;font-size:9px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;padding:3px 7px;border-radius:100px;}
+.ocr .bcard-bar{background:linear-gradient(90deg,#0891b2,#22d3ee);}
+.ocr .bi{background:#e0f9ff;color:#0891b2;}
+.ocr:hover{box-shadow:0 10px 28px rgba(6,182,212,.14);border-color:#67e8f9;}
+.ocr .bpill{background:#e0f9ff;color:#0891b2;}
+.aqa .bcard-bar{background:linear-gradient(90deg,#be123c,#f43f5e);}
+.aqa .bi{background:#fff1f3;color:#be123c;}
+.aqa:hover{box-shadow:0 10px 28px rgba(244,63,94,.14);border-color:#fda4af;}
+.aqa .bpill{background:#fff1f3;color:#be123c;}
+.edx .bcard-bar{background:linear-gradient(90deg,#1d4ed8,#60a5fa);}
+.edx .bi{background:#eff6ff;color:#1d4ed8;}
+.edx:hover{box-shadow:0 10px 28px rgba(59,130,246,.14);border-color:#93c5fd;}
+.edx .bpill{background:#eff6ff;color:#1d4ed8;}
+.wjec .bcard-bar{background:linear-gradient(90deg,#b45309,#f59e0b);}
+.wjec .bi{background:#fffbeb;color:#b45309;}
+.wjec:hover{box-shadow:0 10px 28px rgba(245,158,11,.14);border-color:#fcd34d;}
+.wjec .bpill{background:#fffbeb;color:#b45309;}
+.ccea .bcard-bar{background:linear-gradient(90deg,#065f46,#10b981);}
+.ccea .bi{background:#ecfdf5;color:#065f46;}
+.ccea:hover{box-shadow:0 10px 28px rgba(16,185,129,.14);border-color:#6ee7b7;}
+.ccea .bpill{background:#ecfdf5;color:#065f46;}
+.cam .bcard-bar{background:linear-gradient(90deg,#4338ca,#818cf8);}
+.cam .bi{background:#eef2ff;color:#4338ca;}
+.cam:hover{box-shadow:0 10px 28px rgba(99,102,241,.14);border-color:#a5b4fc;}
+.cam .bpill{background:#eef2ff;color:#4338ca;}
+
+/* ═══════════════════════════════════════
+   SUBTOPIC LESSON SECTION
+   "Every subtopic is a complete lesson"
+═══════════════════════════════════════ */
+.lesson-sec{padding:80px 40px;background:#fff;}
+.lesson-inner{max-width:1200px;margin:0 auto;}
+.lesson-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.lesson-steps{display:flex;flex-direction:column;gap:0;}
+.ls{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid #f1f5f9;transition:.2s;cursor:default;}
+.ls:last-child{border-bottom:none;}
+.ls:hover{background:#fafbff;margin:0 -16px;padding:20px 16px;border-radius:12px;border-bottom:1px solid transparent;}
+.ls-num{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:16px;flex-shrink:0;margin-top:1px;}
+.ls-body{}
+.ls-title{font-size:15px;font-weight:800;color:#0f172a;margin-bottom:4px;letter-spacing:-.2px;}
+.ls-desc{font-size:13px;color:#64748b;line-height:1.6;}
+.ls-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-top:7px;}
+
+/* lesson platform preview */
+.lp{background:linear-gradient(135deg,#0f0c24,#1a1145);border:1px solid rgba(124,58,237,.2);border-radius:20px;overflow:hidden;position:sticky;top:80px;}
+.lp-top{background:linear-gradient(135deg,#7c3aed,#5b21b6);padding:16px 20px;}
+.lp-bc{font-size:9.5px;color:rgba(255,255,255,.5);margin-bottom:3px;}
+.lp-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px;}
+.lp-pills{display:flex;gap:6px;flex-wrap:wrap;}
+.lp-pill{font-size:9px;font-weight:700;padding:3px 8px;border-radius:100px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.8);}
+.lp-body{padding:16px;}
+.lp-section{margin-bottom:12px;}
+.lp-section:last-child{margin-bottom:0;}
+.lp-sh{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:rgba(255,255,255,.3);margin-bottom:8px;}
+
+/* key concepts block */
+.kc-box{background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.15);border-radius:10px;padding:12px 14px;}
+.kc-title{font-size:11.5px;font-weight:800;color:#c4b5fd;margin-bottom:8px;}
+.kc-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.kc-item:last-child{margin-bottom:0;}
+.kc-dot{width:5px;height:5px;border-radius:50%;background:#7c3aed;margin-top:5px;flex-shrink:0;}
+.kc-text{font-size:11.5px;color:rgba(255,255,255,.6);line-height:1.5;}
+.kc-text b{color:#c4b5fd;font-weight:700;}
+
+/* video block */
+.vid-block{background:#080615;border-radius:10px;height:80px;display:flex;align-items:center;justify-content:center;gap:12px;position:relative;overflow:hidden;}
+.vid-block::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.12),transparent);}
+.vid-play{width:36px;height:36px;background:rgba(124,58,237,.8);border-radius:50%;display:grid;place-items:center;font-size:12px;color:#fff;position:relative;}
+.vid-info{position:relative;}
+.vid-title{font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;}
+.vid-dur{font-size:10px;color:rgba(255,255,255,.35);}
+
+/* resources grid */
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.rg{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:9px;padding:10px 8px;text-align:center;}
+.rg-i{font-size:16px;margin-bottom:4px;}
+.rg-l{font-size:9.5px;color:rgba(255,255,255,.45);font-weight:600;margin-bottom:2px;}
+.rg-s{font-size:8.5px;color:rgba(255,255,255,.2);}
+/* locked resource */
+.rg.locked{opacity:.38;position:relative;}
+.rg.locked::after{content:'🔒';position:absolute;top:4px;right:4px;font-size:8px;}
+
+/* quiz preview */
+.quiz-q{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:10px 12px;margin-bottom:6px;}
+.quiz-qt{font-size:10.5px;color:rgba(255,255,255,.7);font-weight:600;margin-bottom:7px;line-height:1.4;}
+.quiz-opts{display:flex;flex-direction:column;gap:4px;}
+.quiz-opt{font-size:10px;color:rgba(255,255,255,.4);padding:5px 9px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);cursor:pointer;}
+.quiz-opt.correct{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:#6ee7b7;}
+
+/* key terms */
+.kt-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.kt{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:7px;padding:7px 9px;}
+.kt-term{font-size:10px;font-weight:700;color:#a78bfa;margin-bottom:2px;}
+.kt-def{font-size:9.5px;color:rgba(255,255,255,.4);line-height:1.4;}
+
+/* ═══════════════════════════════════════
+   ACCOUNT TYPES
+═══════════════════════════════════════ */
+.acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.acc{border-radius:20px;border:1.5px solid #e2e8f0;overflow:hidden;}
+.acc-top{padding:26px;}
+.ats{background:linear-gradient(135deg,#7c3aed,#4c1d95);}
+.att{background:linear-gradient(135deg,#0891b2,#164e63);}
+.acc-emoji{font-size:26px;margin-bottom:10px;}
+.acc-name{font-size:19px;font-weight:900;color:#fff;letter-spacing:-.4px;margin-bottom:4px;}
+.acc-tag{font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:16px;}
+.acc-price{font-size:32px;font-weight:900;color:#fff;letter-spacing:-1.8px;}
+.acc-price sub{font-size:13px;font-weight:500;letter-spacing:0;color:rgba(255,255,255,.4);vertical-align:middle;}
+.acc-ps{font-size:11px;color:rgba(255,255,255,.25);margin-top:4px;}
+.acc-body{padding:22px 24px;background:#fff;}
+.acc-list{list-style:none;margin-bottom:18px;display:flex;flex-direction:column;gap:8px;}
+.acc-list li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:#374151;line-height:1.45;}
+.tick{width:17px;height:17px;min-width:17px;border-radius:100px;display:grid;place-items:center;font-size:8px;font-weight:900;margin-top:1px;}
+.ts{background:#f5f3ff;color:#7c3aed;}
+.tt{background:#e0f9ff;color:#0891b2;}
+.acc-btn{width:100%;padding:12px;border-radius:10px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit;border:none;}
+.as{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;box-shadow:0 4px 14px rgba(124,58,237,.25);}
+.at{background:linear-gradient(135deg,#0891b2,#0e7490);color:#fff;box-shadow:0 4px 14px rgba(8,145,178,.25);}
+.contact-box{background:#f0fdff;border:1.5px solid #bae6fd;border-radius:10px;padding:12px 14px;margin-bottom:15px;font-size:12.5px;color:#0e7490;line-height:1.6;}
+.dash{background:#f0fdff;border:1.5px solid #bae6fd;border-radius:10px;padding:12px 14px;margin-bottom:15px;}
+.dash-t{font-size:9.5px;font-weight:700;color:#0891b2;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.dr{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(6,182,212,.1);}
+.dr:last-child{border:none;}
+.dn{font-size:11.5px;font-weight:600;color:#0f172a;}
+.dr-right{display:flex;align-items:center;gap:6px;}
+.dbw{width:60px;height:4px;background:#e2e8f0;border-radius:100px;overflow:hidden;}
+.db{height:100%;border-radius:100px;}
+.dpc{font-size:10.5px;font-weight:700;color:#475569;width:24px;text-align:right;}
+.dflag{font-size:8.5px;background:#fef2f2;color:#ef4444;padding:2px 6px;border-radius:100px;font-weight:700;}
+
+/* ═══════════════════════════════════════
+   EXTRA SERVICES
+═══════════════════════════════════════ */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.svc{background:#fff;border:1.5px solid #e8e9ff;border-radius:16px;padding:26px;position:relative;overflow:hidden;transition:.22s;}
+.svc:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.08);}
+.svc-stripe{position:absolute;top:0;left:0;right:0;height:4px;border-radius:16px 16px 0 0;}
+.svc-icon{font-size:28px;margin-bottom:12px;}
+.svc-title{font-size:16.5px;font-weight:800;color:#0f172a;letter-spacing:-.2px;margin-bottom:8px;}
+.svc-desc{font-size:13px;color:#64748b;line-height:1.65;margin-bottom:18px;}
+.svc-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;cursor:pointer;border:none;background:none;font-family:inherit;padding:0;}
+
+/* ═══════════════════════════════════════
+   PRICING
+═══════════════════════════════════════ */
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.pc{background:#fff;border:1.5px solid #e8e9ff;border-radius:18px;overflow:hidden;transition:.22s;}
+.pc:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.09);}
+.pc-hl{border:2px solid #7c3aed;box-shadow:0 0 0 4px rgba(124,58,237,.07);}
+.pc-head{padding:24px 24px 18px;}
+.pc-hl .pc-head{background:linear-gradient(135deg,#7c3aed,#4c1d95);}
+.pc-chip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-bottom:12px;}
+.pcs{background:#e0f9ff;color:#0891b2;}
+.pcf{background:rgba(255,255,255,.15);color:#e9d5ff;}
+.pcn{background:#f5f3ff;color:#7c3aed;}
+.pc-name{font-size:16px;font-weight:800;color:#0f172a;margin-bottom:3px;}
+.pc-hl .pc-name{color:#fff;}
+.pc-desc{font-size:12px;color:#64748b;margin-bottom:14px;}
+.pc-hl .pc-desc{color:rgba(255,255,255,.5);}
+.pc-price{font-size:38px;font-weight:900;letter-spacing:-2px;color:#0f172a;line-height:1;}
+.pc-hl .pc-price{color:#fff;}
+.pc-price sub{font-size:13px;font-weight:500;letter-spacing:0;color:#94a3b8;vertical-align:middle;}
+.pc-hl .pc-price sub{color:rgba(255,255,255,.4);}
+.pc-price-note{font-size:11.5px;color:#94a3b8;margin-top:5px;}
+.pc-hl .pc-price-note{color:rgba(255,255,255,.3);}
+.pc-body{padding:18px 24px 24px;}
+.pc-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.pc-list li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#374151;}
+.pc-list li::before{content:'✓';width:16px;height:16px;min-width:16px;background:#f5f3ff;color:#7c3aed;border-radius:100px;display:grid;place-items:center;font-size:8px;font-weight:900;margin-top:1px;}
+.pc-btn{width:100%;padding:12px;border-radius:10px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit;border:none;}
+.pb-n{background:#f5f3ff;color:#7c3aed;}
+.pb-h{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;box-shadow:0 4px 14px rgba(124,58,237,.28);}
+.pb-s{background:#0f172a;color:#fff;}
+.pc-note{text-align:center;font-size:11px;color:#94a3b8;margin-top:8px;}
+
+/* ═══════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════ */
+.contact-sec{background:linear-gradient(150deg,#0d0920,#1a1048);padding:80px 40px;}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.contact-l .sec-label{color:#a78bfa;}
+.contact-l .sec-title{color:#fff;}
+.contact-l .sec-title b{color:#a78bfa;}
+.contact-l .sec-sub{color:rgba(255,255,255,.45);max-width:none;margin-bottom:32px;}
+.contact-methods{display:flex;flex-direction:column;gap:12px;}
+.cm{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 16px;transition:.2s;}
+.cm:hover{background:rgba(255,255,255,.08);}
+.cm-icon{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:17px;flex-shrink:0;}
+.cm-title{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:2px;}
+.cm-sub{font-size:11.5px;color:rgba(255,255,255,.35);}
+.contact-r{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:30px;}
+.cf-title{font-size:19px;font-weight:800;color:#fff;margin-bottom:5px;letter-spacing:-.3px;}
+.cf-sub{font-size:12.5px;color:rgba(255,255,255,.3);margin-bottom:22px;}
+.cf-group{margin-bottom:13px;}
+.cf-group label{display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.38);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px;}
+.cf-group input,.cf-group select,.cf-group textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:11px 14px;font-size:13.5px;color:#fff;font-family:inherit;outline:none;transition:.2s;}
+.cf-group input:focus,.cf-group select:focus,.cf-group textarea:focus{border-color:rgba(167,139,250,.5);}
+.cf-group input::placeholder,.cf-group textarea::placeholder{color:rgba(255,255,255,.2);}
+.cf-group select option{background:#1a1145;color:#fff;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.cf-btn{width:100%;padding:13px;background:linear-gradient(135deg,#7c3aed,#6d28d9);border:none;border-radius:10px;font-size:14.5px;font-weight:700;color:#fff;cursor:pointer;font-family:inherit;box-shadow:0 4px 18px rgba(124,58,237,.4);margin-top:2px;}
+.cf-btn:hover{transform:translateY(-1px);}
+.cf-agree{font-size:11px;color:rgba(255,255,255,.2);text-align:center;margin-top:10px;}
+
+/* ═══════════════════════════════════════
+   CTA + FOOTER
+═══════════════════════════════════════ */
+.cta{background:linear-gradient(150deg,#7c3aed,#4c1d95);padding:72px 40px;text-align:center;position:relative;overflow:hidden;}
+.cta::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);}
+.cta-title{font-size:36px;font-weight:900;color:#fff;letter-spacing:-1.5px;margin-bottom:10px;position:relative;}
+.cta-sub{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:28px;position:relative;}
+.cta-signup{max-width:460px;margin:0 auto;position:relative;}
+.cs-row{display:flex;gap:8px;}
+.cs-input{flex:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:11px;padding:14px 18px;font-size:14px;color:#fff;font-family:inherit;outline:none;}
+.cs-input::placeholder{color:rgba(255,255,255,.35);}
+.cs-btn{padding:14px 24px;background:#fff;border:none;border-radius:11px;font-size:14px;font-weight:800;color:#7c3aed;cursor:pointer;font-family:inherit;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.15);}
+.cta-note{font-size:11.5px;color:rgba(255,255,255,.25);margin-top:12px;}
+
+footer{background:#080615;padding:52px 40px 28px;}
+.ft{max-width:1200px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px;}
+.ft-name{font-size:17px;font-weight:900;letter-spacing:-.8px;color:#fff;margin-bottom:10px;}
+.ft-name b{color:#a78bfa;}
+.ft-desc{font-size:13px;color:#334155;line-height:1.7;margin-bottom:16px;max-width:200px;}
+.ft-logins{display:flex;flex-direction:column;gap:7px;}
+.fbl{padding:9px 13px;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;border:none;display:flex;align-items:center;gap:6px;transition:.15s;}
+.fbl-s{background:#1a1245;color:#c4b5fd;border:1px solid #2d1f6e;}
+.fbl-s:hover{background:#22175e;}
+.fbl-t{background:#0a1f2e;color:#67e8f9;border:1px solid #0c3040;}
+.fbl-t:hover{background:#0e2a3d;}
+.ft-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#334155;margin-bottom:12px;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.ft-col a{font-size:13px;color:#334155;cursor:pointer;text-decoration:none;transition:.15s;}
+.ft-col a:hover{color:#a78bfa;}
+.ft-bot{border-top:1px solid #120e2a;padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#1e293b;}
+.ft-legal{display:flex;gap:14px;}
+.ft-legal a{color:#1e293b;cursor:pointer;text-decoration:none;}
+.ft-legal a:hover{color:#a78bfa;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SINGLE NAV — one bar, logo + all links + logins
+════════════════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo">
+      <div class="logo-sq">CS</div>
+      <div>
+        <div class="logo-text">CS<b>Zone</b>.co.uk</div>
+        <div class="logo-sub">Computer Science Revision Platform</div>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <span class="nl act">GCSE</span>
+      <span class="nl">iGCSE</span>
+      <span class="nl">A-Level</span>
+      <span class="nl">Int'l A-Level</span>
+      <div class="nav-divider"></div>
+      <span class="nl">Extra Services</span>
+      <span class="nl">For Schools</span>
+      <span class="nl">Pricing</span>
+      <span class="nl contact">Contact Us</span>
+    </div>
+
+    <div class="nav-btns">
+      <button class="nb nb-stu">🎒 Student login</button>
+      <button class="nb nb-tch">🏫 Teacher login</button>
+      <button class="nb nb-go">Get started →</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO — sign up form, no "preview" language
+════════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <div class="badge-pip">✦</div>
+        Built by a specialist Computer Science teacher · Every spec point covered
+      </div>
+      <h1>The Computer Science<br>revision platform<br>every student <em>needs.</em></h1>
+      <p class="hero-p">GCSE, iGCSE and A-Level — every UK exam board and international qualification — full structured lessons, instant-marked worksheets, interactive tools and complete mock papers.</p>
+
+      <div class="hero-signup">
+        <div class="hs-label">Create your free account</div>
+        <div class="hs-row">
+          <input class="hs-input" type="email" placeholder="Enter your email address">
+          <button class="hs-btn">Get started →</button>
+        </div>
+        <div class="hs-or">— or —</div>
+        <button class="hs-google">
+          <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continue with Google
+        </button>
+      </div>
+      <p class="hero-note"><b>First subtopic of every topic is unlocked when you sign up.</b><br>The rest of the content is locked until you subscribe — no card needed to create an account.</p>
+
+      <div class="boards-row">
+        <span class="bl">Covering:</span>
+        <span class="bc bca">OCR</span>
+        <span class="bc bcb">AQA</span>
+        <span class="bc bcc">Edexcel</span>
+        <span class="bc bcd">WJEC</span>
+        <span class="bc bce">CCEA</span>
+        <span class="bc bcf">Cambridge iGCSE</span>
+        <span style="font-size:10px;color:rgba(255,255,255,.22);">+ more</span>
+      </div>
+    </div>
+
+    <!-- platform preview showing a subtopic with locked topics -->
+    <div class="pp">
+      <div class="pp-bar">
+        <div class="pp-dot" style="background:#ef4444;"></div>
+        <div class="pp-dot" style="background:#f59e0b;"></div>
+        <div class="pp-dot" style="background:#10b981;"></div>
+        <div class="pp-url">cszone.co.uk / ocr-j277 / component-1</div>
+      </div>
+      <div class="tc">
+        <div class="tc-top">
+          <div>
+            <div class="tc-bc">OCR J277 › Component 1 › 1.1 Systems Architecture</div>
+            <div class="tc-t">1.1.1 — Architecture of the CPU</div>
+          </div>
+          <div class="tc-pill">🔓 Unlocked</div>
+        </div>
+        <div class="tc-body">
+          <div class="tc-vid">▶</div>
+          <div class="tc-res">
+            <div class="tr"><div class="tr-i">📖</div><div class="tr-l">Lesson</div></div>
+            <div class="tr"><div class="tr-i">⊞</div><div class="tr-l">Slides</div></div>
+            <div class="tr"><div class="tr-i">📝</div><div class="tr-l">Worksheet</div></div>
+            <div class="tr"><div class="tr-i">✎</div><div class="tr-l">Quiz</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="pw">
+        <div class="pw-t">1.1 Systems Architecture — subtopics</div>
+        <div class="pw-row"><span class="pw-n">1.1.1 CPU Architecture</span><div class="pw-bw"><div class="pw-b" style="width:100%;background:#10b981;"></div></div><span class="pw-p" style="color:#10b981;font-size:8px;">🔓</span></div>
+        <div class="pw-row locked-row"><span class="pw-n">1.1.2 CPU Performance</span><div class="pw-bw"><div class="pw-b" style="width:0%;"></div></div><span class="pw-p" style="color:#475569;font-size:8px;">🔒</span></div>
+        <div class="pw-row locked-row"><span class="pw-n">1.1.3 Embedded Systems</span><div class="pw-bw"><div class="pw-b" style="width:0%;"></div></div><span class="pw-p" style="color:#475569;font-size:8px;">🔒</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="nums">
+  <div class="nums-inner">
+    <div class="ni"><div class="ni-n">600<b>+</b></div><div class="ni-l">Topic videos</div></div>
+    <div class="ni"><div class="ni-n">5</div><div class="ni-l">GCSE boards</div></div>
+    <div class="ni"><div class="ni-n">2</div><div class="ni-l">iGCSE boards</div></div>
+    <div class="ni"><div class="ni-n">4<b>+</b></div><div class="ni-l">A-Level boards</div></div>
+    <div class="ni"><div class="ni-n"><b>⚡</b></div><div class="ni-l">Instant marking</div></div>
+    <div class="ni"><div class="ni-n">100<b>%</b></div><div class="ni-l">Spec coverage</div></div>
+  </div>
+</div>
+
+<!-- LOGIN CARDS -->
+<div class="login-sec">
+  <div class="login-inner">
+    <div class="login-label"><b>Already a CSZone member?</b> Log back in below.</div>
+    <div class="login-cards">
+      <a class="lc lc-stu">
+        <div class="lc-icon lci-s">🎒</div>
+        <div><div class="lc-name">Student login</div><div class="lc-sub">Access your revision dashboard</div></div>
+        <span class="lc-arr">→</span>
+      </a>
+      <a class="lc lc-tch">
+        <div class="lc-icon lci-t">🏫</div>
+        <div><div class="lc-name">Teacher login</div><div class="lc-sub">View your class dashboard</div></div>
+        <span class="lc-arr">→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- BOARDS -->
+<div class="sec bg-w">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-label">Find your specification</div>
+      <div class="sec-title">Choose your <b>exam board</b></div>
+      <p class="sec-sub">Every spec point covered in full — structured lessons, videos, worksheets, quizzes and interactive tools for every topic on your board.</p>
+    </div>
+    <div class="tabs">
+      <div class="tab on" onclick="sw('g',this)">GCSE</div>
+      <div class="tab" onclick="sw('ig',this)">iGCSE</div>
+      <div class="tab" onclick="sw('al',this)">A-Level UK</div>
+      <div class="tab" onclick="sw('ia',this)">International A-Level</div>
+    </div>
+    <div id="p-g" class="pnl on">
+      <div class="bg5">
+        <div class="bcard ocr"><div class="bcard-bar"></div><div class="bpill">Live ✓</div><div class="bi">OCR</div><div class="bn">OCR GCSE</div><div class="bsp">Specification J277</div><div class="bm"><div class="bms"><div class="n">47</div><div class="l">Videos</div></div><div class="bms"><div class="n">2</div><div class="l">Components</div></div></div></div>
+        <div class="bcard aqa"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi">AQA</div><div class="bn">AQA GCSE</div><div class="bsp">Specification 8525</div><div class="bm"><div class="bms"><div class="n">40+</div><div class="l">Videos</div></div><div class="bms"><div class="n">2</div><div class="l">Components</div></div></div></div>
+        <div class="bcard edx"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi">EDX</div><div class="bn">Edexcel GCSE</div><div class="bsp">Specification 1CP1</div><div class="bm"><div class="bms"><div class="n">38+</div><div class="l">Videos</div></div><div class="bms"><div class="n">2</div><div class="l">Components</div></div></div></div>
+        <div class="bcard wjec"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi">WJC</div><div class="bn">WJEC GCSE</div><div class="bsp">WJEC Specification</div><div class="bm"><div class="bms"><div class="n">36+</div><div class="l">Videos</div></div><div class="bms"><div class="n">2</div><div class="l">Components</div></div></div></div>
+        <div class="bcard ccea"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi">CCEA</div><div class="bn">CCEA GCSE</div><div class="bsp">CCEA Specification</div><div class="bm"><div class="bms"><div class="n">34+</div><div class="l">Videos</div></div><div class="bms"><div class="n">2</div><div class="l">Components</div></div></div></div>
+      </div>
+    </div>
+    <div id="p-ig" class="pnl">
+      <div class="bg2">
+        <div class="bcard cam"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi" style="font-size:10px;">CAM</div><div class="bn">Cambridge iGCSE</div><div class="bsp">0984 (9–1) · 0478</div><div class="bm"><div class="bms"><div class="n">46+</div><div class="l">Videos</div></div><div class="bms"><div class="n">2</div><div class="l">Papers</div></div></div></div>
+        <div class="bcard edx"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi">EDX</div><div class="bn">Edexcel iGCSE</div><div class="bsp">Specification 4CP1</div><div class="bm"><div class="bms"><div class="n">38+</div><div class="l">Videos</div></div><div class="bms"><div class="n">2</div><div class="l">Papers</div></div></div></div>
+      </div>
+    </div>
+    <div id="p-al" class="pnl">
+      <div class="bg4">
+        <div class="bcard ocr"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi">OCR</div><div class="bn">OCR A-Level</div><div class="bsp">Specification H446</div><div class="bm"><div class="bms"><div class="n">60+</div><div class="l">Videos</div></div><div class="bms"><div class="n">3</div><div class="l">Components</div></div></div></div>
+        <div class="bcard aqa"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi">AQA</div><div class="bn">AQA A-Level</div><div class="bsp">7516 / 7517</div><div class="bm"><div class="bms"><div class="n">55+</div><div class="l">Videos</div></div><div class="bms"><div class="n">3</div><div class="l">Components</div></div></div></div>
+        <div class="bcard edx"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi">EDX</div><div class="bn">Edexcel A-Level</div><div class="bsp">Specification 9CP0</div><div class="bm"><div class="bms"><div class="n">50+</div><div class="l">Videos</div></div><div class="bms"><div class="n">3</div><div class="l">Components</div></div></div></div>
+        <div class="bcard wjec"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi">WJC</div><div class="bn">WJEC A-Level</div><div class="bsp">WJEC Specification</div><div class="bm"><div class="bms"><div class="n">48+</div><div class="l">Videos</div></div><div class="bms"><div class="n">3</div><div class="l">Components</div></div></div></div>
+      </div>
+    </div>
+    <div id="p-ia" class="pnl">
+      <div class="bg2">
+        <div class="bcard cam"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi" style="font-size:10px;">CAM</div><div class="bn">Cambridge Int'l A-Level</div><div class="bsp">Specification 9618</div><div class="bm"><div class="bms"><div class="n">65+</div><div class="l">Videos</div></div><div class="bms"><div class="n">4</div><div class="l">Papers</div></div></div></div>
+        <div class="bcard edx"><div class="bcard-bar"></div><div class="bpill">Coming soon</div><div class="bi">EDX</div><div class="bn">Edexcel Int'l A-Level</div><div class="bsp">WCP11 / WCP14</div><div class="bm"><div class="bms"><div class="n">55+</div><div class="l">Videos</div></div><div class="bms"><div class="n">3</div><div class="l">Papers</div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SUBTOPIC LESSON SECTION — every subtopic is a full lesson
+════════════════════════════════════════════════════════════ -->
+<div class="lesson-sec bg-off">
+  <div class="lesson-inner">
+    <div class="sec-head">
+      <div class="sec-label">How it works</div>
+      <div class="sec-title">Every subtopic is a <b>complete lesson.</b></div>
+      <p class="sec-sub">We don't just test you — we teach you first. Every subtopic on the platform follows the same structured lesson journey, from reading and watching to practising and mastering.</p>
+    </div>
+    <div class="lesson-grid">
+
+      <!-- Left: 6 steps -->
+      <div class="lesson-steps">
+        <div class="ls">
+          <div class="ls-num" style="background:#f5f3ff;">📖</div>
+          <div class="ls-body">
+            <div class="ls-title">Key concepts &amp; lesson notes</div>
+            <div class="ls-desc">Every subtopic opens with clear, concise lesson notes covering every spec point — written in plain English, structured exactly as it appears in your exam.</div>
+            <span class="ls-tag" style="background:#f5f3ff;color:#7c3aed;">Read first</span>
+          </div>
+        </div>
+        <div class="ls">
+          <div class="ls-num" style="background:#fff1f3;">▶</div>
+          <div class="ls-body">
+            <div class="ls-title">Full lesson video</div>
+            <div class="ls-desc">A 12–15 minute video walks you through everything — theory, diagrams, worked exam questions and the most common mistakes. Pause and rewatch any section.</div>
+            <span class="ls-tag" style="background:#fff1f3;color:#be123c;">Watch &amp; learn</span>
+          </div>
+        </div>
+        <div class="ls">
+          <div class="ls-num" style="background:#eff6ff;">⊞</div>
+          <div class="ls-body">
+            <div class="ls-title">Interactive animated slides</div>
+            <div class="ls-desc">The same slides from the video, live on the platform. Click to reveal each point at your own pace — perfect for reviewing after the video.</div>
+            <span class="ls-tag" style="background:#eff6ff;color:#1d4ed8;">Explore at your pace</span>
+          </div>
+        </div>
+        <div class="ls">
+          <div class="ls-num" style="background:#ecfdf5;">📝</div>
+          <div class="ls-body">
+            <div class="ls-title">Instant-marked worksheet</div>
+            <div class="ls-desc">Complete exam-style questions on screen. Every answer is marked instantly with personalised written feedback — not just a tick or cross, but exactly what the examiner wants to see.</div>
+            <span class="ls-tag" style="background:#ecfdf5;color:#059669;">Instant feedback</span>
+          </div>
+        </div>
+        <div class="ls">
+          <div class="ls-num" style="background:#fffbeb;">✎</div>
+          <div class="ls-body">
+            <div class="ls-title">Topic quiz</div>
+            <div class="ls-desc">10–20 questions testing the full subtopic — multiple choice, short answer and exam-style. Every question explained whether you get it right or wrong.</div>
+            <span class="ls-tag" style="background:#fffbeb;color:#b45309;">Test yourself</span>
+          </div>
+        </div>
+        <div class="ls">
+          <div class="ls-num" style="background:#fdf4ff;">🔑</div>
+          <div class="ls-body">
+            <div class="ls-title">Key terms glossary</div>
+            <div class="ls-desc">Every technical term defined clearly, with flashcard-style revision. Use it before the video to preview, or after to check you've got the vocabulary locked in.</div>
+            <span class="ls-tag" style="background:#fdf4ff;color:#a21caf;">Master the vocabulary</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: platform mockup showing a subtopic lesson -->
+      <div class="lp">
+        <div class="lp-top">
+          <div class="lp-bc">OCR J277 › 1.1 Systems Architecture › 1.1.1</div>
+          <div class="lp-title">Architecture of the CPU</div>
+          <div class="lp-pills">
+            <span class="lp-pill">📖 Lesson notes</span>
+            <span class="lp-pill">▶ Video</span>
+            <span class="lp-pill">⊞ Slides</span>
+            <span class="lp-pill">📝 Worksheet</span>
+            <span class="lp-pill">✎ Quiz</span>
+            <span class="lp-pill">🔑 Key terms</span>
+          </div>
+        </div>
+        <div class="lp-body">
+
+          <!-- Key concepts -->
+          <div class="lp-section">
+            <div class="lp-sh">📖 Key concepts</div>
+            <div class="kc-box">
+              <div class="kc-title">The Fetch-Execute Cycle</div>
+              <div class="kc-item"><div class="kc-dot"></div><div class="kc-text">The <b>CPU</b> continuously repeats the fetch-execute cycle to process instructions</div></div>
+              <div class="kc-item"><div class="kc-dot"></div><div class="kc-text"><b>Fetch</b> → the PC holds the address of the next instruction; it is copied to the MAR</div></div>
+              <div class="kc-item"><div class="kc-dot"></div><div class="kc-text"><b>Decode</b> → the CU interprets the instruction held in the CIR</div></div>
+              <div class="kc-item"><div class="kc-dot"></div><div class="kc-text"><b>Execute</b> → the ALU carries out arithmetic or logical operations</div></div>
+            </div>
+          </div>
+
+          <!-- Video -->
+          <div class="lp-section">
+            <div class="lp-sh">▶ Lesson video</div>
+            <div class="vid-block">
+              <div class="vid-play">▶</div>
+              <div class="vid-info">
+                <div class="vid-title">1.1.1 — Architecture of the CPU</div>
+                <div class="vid-dur">14 mins · OCR J277 · Component 1</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Worksheet + quiz + slides + key terms grid -->
+          <div class="lp-section">
+            <div class="lp-sh">Resources</div>
+            <div class="res-grid">
+              <div class="rg"><div class="rg-i">⊞</div><div class="rg-l">Slides</div><div class="rg-s">24 slides</div></div>
+              <div class="rg"><div class="rg-i">📝</div><div class="rg-l">Worksheet</div><div class="rg-s">8 questions</div></div>
+              <div class="rg"><div class="rg-i">✎</div><div class="rg-l">Quiz</div><div class="rg-s">15 questions</div></div>
+              <div class="rg"><div class="rg-i">🔑</div><div class="rg-l">Key Terms</div><div class="rg-s">12 terms</div></div>
+              <div class="rg"><div class="rg-i">🔧</div><div class="rg-l">CPU Tool</div><div class="rg-s">Interactive</div></div>
+              <div class="rg locked"><div class="rg-i">📄</div><div class="rg-l">Mock Paper</div><div class="rg-s">Subscribe</div></div>
+            </div>
+          </div>
+
+          <!-- Sample quiz question -->
+          <div class="lp-section">
+            <div class="lp-sh">✎ Sample quiz question</div>
+            <div class="quiz-q">
+              <div class="quiz-qt">Which register holds the address of the next instruction to be fetched?</div>
+              <div class="quiz-opts">
+                <div class="quiz-opt">A. Accumulator (ACC)</div>
+                <div class="quiz-opt correct">B. Program Counter (PC) ✓</div>
+                <div class="quiz-opt">C. Memory Data Register (MDR)</div>
+                <div class="quiz-opt">D. Current Instruction Register (CIR)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key terms -->
+          <div class="lp-section">
+            <div class="lp-sh">🔑 Key terms</div>
+            <div class="kt-grid">
+              <div class="kt"><div class="kt-term">ALU</div><div class="kt-def">Arithmetic Logic Unit — performs calculations and logical operations</div></div>
+              <div class="kt"><div class="kt-term">CU</div><div class="kt-def">Control Unit — directs operations of the processor</div></div>
+              <div class="kt"><div class="kt-term">MAR</div><div class="kt-def">Memory Address Register — holds the address to be accessed</div></div>
+              <div class="kt"><div class="kt-term">PC</div><div class="kt-def">Program Counter — holds address of next instruction</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TWO ACCOUNT TYPES -->
+<div class="sec bg-w">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-label">Two account types</div>
+      <div class="sec-title">Built for <b>students and schools</b></div>
+      <p class="sec-sub">Students subscribe at a fixed monthly or annual price. Schools contact us for a tailored licence with a full teacher monitoring dashboard.</p>
+    </div>
+    <div class="acc-grid">
+      <div class="acc">
+        <div class="acc-top ats">
+          <div class="acc-emoji">🎒</div>
+          <div class="acc-name">Student Account</div>
+          <div class="acc-tag">Subscribe and unlock every lesson instantly</div>
+          <div class="acc-price">£7.99 <sub>/ month</sub></div>
+          <div class="acc-ps">or £59 per year · cancel any time</div>
+        </div>
+        <div class="acc-body">
+          <ul class="acc-list">
+            <li><div class="tick ts">✓</div>Every subtopic — full lesson notes, video, slides, worksheet, quiz, key terms</li>
+            <li><div class="tick ts">✓</div>Worksheets with instant personalised feedback</li>
+            <li><div class="tick ts">✓</div>Interactive tools and simulators</li>
+            <li><div class="tick ts">✓</div>Full timed mock papers with grade prediction</li>
+            <li><div class="tick ts">✓</div>Streaks, XP, badges and leaderboard</li>
+            <li><div class="tick ts">✓</div>Personalised revision planner</li>
+          </ul>
+          <button class="acc-btn as">Subscribe now — £7.99 / month →</button>
+        </div>
+      </div>
+      <div class="acc">
+        <div class="acc-top att">
+          <div class="acc-emoji">🏫</div>
+          <div class="acc-name">School Account</div>
+          <div class="acc-tag">Licences for your students · Full teacher dashboard</div>
+          <div class="acc-price" style="font-size:19px;letter-spacing:-.3px;color:rgba(255,255,255,.65);margin-top:14px;">Tailored school pricing</div>
+          <div class="acc-ps">Contact us — we'll build a package that fits your school</div>
+        </div>
+        <div class="acc-body">
+          <div class="contact-box">📞 <strong>No fixed list price for schools.</strong> Tell us your student numbers and budget and we'll tailor a package — whether that's 30 licences for one class or the whole year group.</div>
+          <div class="dash">
+            <div class="dash-t">📊 Teacher dashboard — monitor every student</div>
+            <div class="dr"><span class="dn">Aisha Patel</span><div class="dr-right"><div class="dbw"><div class="db" style="width:84%;background:#10b981;"></div></div><span class="dpc">84%</span></div></div>
+            <div class="dr"><span class="dn">Jake Mitchell</span><div class="dr-right"><div class="dbw"><div class="db" style="width:61%;background:#a78bfa;"></div></div><span class="dpc">61%</span></div></div>
+            <div class="dr"><span class="dn">Tyler Webb <span class="dflag">⚠ Needs help</span></span><div class="dr-right"><div class="dbw"><div class="db" style="width:32%;background:#ef4444;"></div></div><span class="dpc">32%</span></div></div>
+          </div>
+          <ul class="acc-list">
+            <li><div class="tick tt">✓</div>Assign student licences to your class</li>
+            <li><div class="tick tt">✓</div>Per-topic score tracking for every student</li>
+            <li><div class="tick tt">✓</div>Automatic alerts when a student is falling behind</li>
+            <li><div class="tick tt">✓</div>Printable student and parent progress reports</li>
+          </ul>
+          <button class="acc-btn at">Contact us for a school quote →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXTRA SERVICES -->
+<div class="sec bg-off">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-label">Extra services</div>
+      <div class="sec-title">Need more? <b>We can help.</b></div>
+      <p class="sec-sub">Additional support for students who want personalised help, and schools looking to go further. Contact us to find out more about any service.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><div class="svc-stripe" style="background:linear-gradient(90deg,#7c3aed,#a78bfa);"></div><div class="svc-icon">👤</div><div class="svc-title">1-to-1 Tuition</div><div class="svc-desc">Personalised online sessions with a specialist Computer Science tutor — tailored to your exact board and the topics where you need the most support.</div><button class="svc-link" style="color:#7c3aed;">Book a session →</button></div>
+      <div class="svc"><div class="svc-stripe" style="background:linear-gradient(90deg,#0891b2,#22d3ee);"></div><div class="svc-icon">📋</div><div class="svc-title">Mock Exam Marking</div><div class="svc-desc">Submit your completed mock paper and receive detailed professional marking with written examiner-style feedback against the real mark scheme.</div><button class="svc-link" style="color:#0891b2;">Submit a paper →</button></div>
+      <div class="svc"><div class="svc-stripe" style="background:linear-gradient(90deg,#059669,#34d399);"></div><div class="svc-icon">🏫</div><div class="svc-title">School CPD Training</div><div class="svc-desc">CPD sessions for non-specialist Computer Science teachers — spec content, exam technique and classroom confidence for your whole department.</div><button class="svc-link" style="color:#059669;">Enquire now →</button></div>
+      <div class="svc"><div class="svc-stripe" style="background:linear-gradient(90deg,#d97706,#fbbf24);"></div><div class="svc-icon">📅</div><div class="svc-title">School Revision Days</div><div class="svc-desc">Full-day intensive workshops at your school — high-value topics, past paper practice and exam technique coaching for your whole group.</div><button class="svc-link" style="color:#d97706;">Book a day →</button></div>
+      <div class="svc"><div class="svc-stripe" style="background:linear-gradient(90deg,#be123c,#f43f5e);"></div><div class="svc-icon">👨‍👩‍👧</div><div class="svc-title">Parent Webinars</div><div class="svc-desc">Monthly online sessions for parents — what the Computer Science exams involve, how to support revision at home and how to read progress reports.</div><button class="svc-link" style="color:#be123c;">Find out more →</button></div>
+      <div class="svc"><div class="svc-stripe" style="background:linear-gradient(90deg,#4338ca,#818cf8);"></div><div class="svc-icon">🎯</div><div class="svc-title">Exam Technique Crash Courses</div><div class="svc-desc">Intensive pre-exam video courses focused on exam technique — command words, mark allocation, examiner traps and model answer structures.</div><button class="svc-link" style="color:#4338ca;">View courses →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="sec bg-w">
+  <div class="sec-inner">
+    <div class="sec-head" style="text-align:center;">
+      <div class="sec-label" style="text-align:center;">Student pricing</div>
+      <div class="sec-title" style="text-align:center;">One price. <b>Everything included.</b></div>
+      <p class="sec-sub" style="margin:0 auto;text-align:center;">No add-ons, no hidden tiers. Every board, every topic, every lesson — one subscription.</p>
+    </div>
+    <div class="pg">
+      <div class="pc">
+        <div class="pc-head">
+          <div class="pc-chip pcn">Monthly</div>
+          <div class="pc-name">Pay monthly</div>
+          <div class="pc-desc">Flexible — cancel any time</div>
+          <div class="pc-price">£7.99 <sub>/mo</sub></div>
+          <div class="pc-price-note">Billed monthly · no commitment</div>
+        </div>
+        <div class="pc-body">
+          <ul class="pc-list">
+            <li>Full structured lessons for every subtopic</li>
+            <li>Every board and every topic</li>
+            <li>Instant-marked worksheets and quizzes</li>
+            <li>Interactive tools and simulators</li>
+            <li>Full timed mock papers</li>
+          </ul>
+          <button class="pc-btn pb-n">Subscribe monthly</button>
+        </div>
+      </div>
+      <div class="pc pc-hl">
+        <div class="pc-head">
+          <div class="pc-chip pcf">Best value · Save £37</div>
+          <div class="pc-name">Pay annually</div>
+          <div class="pc-desc">Pay once — covered for the whole year</div>
+          <div class="pc-price">£59 <sub>/yr</sub></div>
+          <div class="pc-price-note" style="color:rgba(255,255,255,.3);">That's just £4.92 per month</div>
+        </div>
+        <div class="pc-body">
+          <ul class="pc-list">
+            <li>Everything in Monthly</li>
+            <li>Priority support</li>
+            <li>Early access to new content</li>
+            <li>Personalised revision planner</li>
+            <li>Predicted grade tracker</li>
+          </ul>
+          <button class="pc-btn pb-h">Subscribe annually →</button>
+        </div>
+      </div>
+      <div class="pc">
+        <div class="pc-head">
+          <div class="pc-chip pcs">For schools</div>
+          <div class="pc-name">School licence</div>
+          <div class="pc-desc">Tailored to your school's needs</div>
+          <div class="pc-price" style="font-size:26px;letter-spacing:-.5px;line-height:1.3;">Contact<br>us</div>
+          <div class="pc-price-note">We'll build a package around your budget</div>
+        </div>
+        <div class="pc-body">
+          <ul class="pc-list">
+            <li>Student licences for your class</li>
+            <li>Teacher monitoring dashboard</li>
+            <li>Intervention alerts and reports</li>
+            <li>Homework assignment tools</li>
+          </ul>
+          <button class="pc-btn pb-s">Get a school quote →</button>
+          <div class="pc-note">Prices not listed — contact us to negotiate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-sec" id="contact">
+  <div class="contact-inner">
+    <div class="contact-l">
+      <div class="sec-label">Contact us</div>
+      <div class="sec-title" style="color:#fff;margin-bottom:12px;">Get in <b>touch</b></div>
+      <p class="sec-sub" style="color:rgba(255,255,255,.42);max-width:none;margin-bottom:30px;">Whether you're a student, parent, teacher or school, we'd love to hear from you. We reply to all enquiries within one working day.</p>
+      <div class="contact-methods">
+        <div class="cm"><div class="cm-icon" style="background:rgba(124,58,237,.2);">✉</div><div><div class="cm-title">General enquiries</div><div class="cm-sub">hello@cszone.co.uk</div></div></div>
+        <div class="cm"><div class="cm-icon" style="background:rgba(6,182,212,.2);">🏫</div><div><div class="cm-title">School enquiries</div><div class="cm-sub">schools@cszone.co.uk · We'll arrange a call</div></div></div>
+        <div class="cm"><div class="cm-icon" style="background:rgba(16,185,129,.2);">👤</div><div><div class="cm-title">Book 1-to-1 tuition</div><div class="cm-sub">Book directly via Calendly — link below</div></div></div>
+        <div class="cm"><div class="cm-icon" style="background:rgba(245,158,11,.2);">▶</div><div><div class="cm-title">YouTube — free lesson previews</div><div class="cm-sub">youtube.com/@CSZone</div></div></div>
+      </div>
+    </div>
+    <div class="contact-r">
+      <div class="cf-title">Send us a message</div>
+      <div class="cf-sub">We'll get back to you within one working day.</div>
+      <div class="cf-row">
+        <div class="cf-group"><label>First name</label><input type="text" placeholder="First name"></div>
+        <div class="cf-group"><label>Last name</label><input type="text" placeholder="Last name"></div>
+      </div>
+      <div class="cf-group"><label>Email address</label><input type="email" placeholder="your@email.com"></div>
+      <div class="cf-group"><label>I am a...</label>
+        <select><option value="">Select...</option><option>Student</option><option>Parent</option><option>Teacher</option><option>School / MAT representative</option><option>Other</option></select>
+      </div>
+      <div class="cf-group"><label>Enquiry about</label>
+        <select><option value="">Select...</option><option>Student subscription</option><option>School licensing</option><option>1-to-1 Tuition</option><option>Mock exam marking</option><option>School CPD training</option><option>School revision days</option><option>Parent webinars</option><option>General question</option></select>
+      </div>
+      <div class="cf-group"><label>Message</label><textarea rows="3" placeholder="How can we help?"></textarea></div>
+      <button class="cf-btn">Send message →</button>
+      <div class="cf-agree">By submitting this form you agree to our Privacy Policy.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-title">Ready to start scoring higher?</div>
+  <p class="cta-sub">Every topic. Every board. Every lesson — one Computer Science revision platform.</p>
+  <div class="cta-signup">
+    <div class="cs-row">
+      <input class="cs-input" type="email" placeholder="Enter your email to get started">
+      <button class="cs-btn">Create account →</button>
+    </div>
+    <div class="cta-note">First subtopic of every topic unlocked when you sign up · No card required</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="ft-top">
+      <div>
+        <div class="ft-name">CS<b>Zone</b>.co.uk</div>
+        <div class="ft-desc">The UK's dedicated Computer Science revision platform — GCSE, iGCSE and A-Level, every exam board.</div>
+        <div class="ft-logins">
+          <button class="fbl fbl-s">🎒 Student login</button>
+          <button class="fbl fbl-t">🏫 Teacher login</button>
+        </div>
+      </div>
+      <div class="ft-col"><h4>GCSE</h4><ul><li><a>OCR J277</a></li><li><a>AQA 8525</a></li><li><a>Edexcel 1CP1</a></li><li><a>WJEC GCSE</a></li><li><a>CCEA GCSE</a></li></ul></div>
+      <div class="ft-col"><h4>iGCSE &amp; A-Level</h4><ul><li><a>Cambridge iGCSE</a></li><li><a>Edexcel iGCSE</a></li><li><a>A-Level boards →</a></li><li><a>Cambridge Int'l A-Level</a></li><li><a>Edexcel Int'l A-Level</a></li></ul></div>
+      <div class="ft-col"><h4>Extra Services</h4><ul><li><a>1-to-1 Tuition</a></li><li><a>Mock Marking</a></li><li><a>School CPD</a></li><li><a>Revision Days</a></li><li><a>Parent Webinars</a></li><li><a>Crash Courses</a></li></ul></div>
+      <div class="ft-col"><h4>Platform</h4><ul><li><a>Pricing</a></li><li><a>For Schools</a></li><li><a>Contact Us</a></li><li><a>Blog</a></li><li><a>About</a></li></ul></div>
+    </div>
+    <div class="ft-bot">
+      <div>© 2025 CSZone.co.uk · All rights reserved</div>
+      <div class="ft-legal"><a>Privacy Policy</a><a>Terms &amp; Conditions</a><a>Cookie Policy</a><a>GDPR</a><a>Refund Policy</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function sw(id,el){
+  document.querySelectorAll('.pnl').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('p-'+id).classList.add('on');
+  el.classList.add('on');
+}
+</script>
+</body>
+</html>
