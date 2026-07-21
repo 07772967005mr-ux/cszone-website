@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.1.1 Architecture of the CPU — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+
+    /* ── NAV ── */
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;letter-spacing:-0.5px;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb a:hover{color:#7c3aed;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;}
+    .nav-dash-btn:hover{background:#ede9fe;}
+
+    /* ── LESSON HEADER ── */
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;letter-spacing:-0.5px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .lesson-meta strong{color:#0f172a;}
+
+    /* progress dots */
+    .progress-row{display:flex;align-items:center;gap:6px;margin-bottom:0;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;transition:.2s;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .prog-sep{color:#e2e8f0;font-size:10px;}
+
+    /* ── TABS ── */
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;gap:0;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:7px;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .tab-icon{font-size:16px;}
+
+    /* ── MAIN CONTENT AREA ── */
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+
+    /* ── TAB PANELS ── */
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+
+    /* ── NOTES ── */
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:20px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul,.notes-content ol{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-scroll-marker{height:1px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-read-btn:hover{background:#6d28d9;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+
+    /* ── VIDEO ── */
+    .video-placeholder{background:#0d0920;border-radius:16px;overflow:hidden;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;position:relative;}
+    .video-placeholder-inner{text-align:center;}
+    .video-play-icon{font-size:64px;margin-bottom:16px;opacity:0.3;}
+    .video-soon-text{color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;}
+    .video-soon-sub{color:rgba(255,255,255,0.3);font-size:13px;margin-top:6px;}
+    .video-key-points{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;}
+    .video-key-points h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;}
+    .video-key-points ul{list-style:none;padding:0;}
+    .video-key-points li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;}
+    .video-key-points li:last-child{border-bottom:none;}
+    .video-key-points li::before{content:'✦';color:#7c3aed;font-size:10px;margin-top:5px;flex-shrink:0;}
+
+    /* ── SLIDES ── */
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;}
+    .slides-placeholder{text-align:center;color:rgba(255,255,255,0.4);}
+    .slides-placeholder-icon{font-size:48px;margin-bottom:12px;}
+    .slides-placeholder-text{font-size:15px;font-weight:600;}
+    .slides-placeholder-sub{font-size:13px;margin-top:6px;opacity:0.6;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+
+    /* ── WORKSHEET ── */
+    .ws-intro{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
+    .ws-intro-icon{font-size:32px;}
+    .ws-intro-text h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;}
+    .ws-intro-text p{font-size:13.5px;color:#64748b;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:90px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;transition:.2s;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-submit-row{text-align:center;margin-top:8px;}
+    .ws-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:.15s;}
+    .ws-submit-btn:hover{background:#6d28d9;}
+    .ws-submit-btn:disabled{opacity:.5;cursor:not-allowed;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-feedback-header{padding:10px 16px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;}
+    .ws-feedback-header.good{background:#f0fdf4;color:#166534;}
+    .ws-feedback-header.partial{background:#fffbeb;color:#92400e;}
+    .ws-feedback-body{padding:14px 16px;font-size:13.5px;background:#fafafa;}
+    .ws-ms-label{font-weight:700;color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;}
+    .ws-ms-text{color:#334155;font-size:14px;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .ws-score-big{font-size:52px;font-weight:900;color:#7c3aed;line-height:1;}
+    .ws-score-label{font-size:15px;color:#64748b;margin-top:6px;}
+    .ws-score-msg{font-size:16px;font-weight:700;color:#0f172a;margin-top:12px;}
+    .ws-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;}
+    .ws-retry-btn:hover{background:#ede9fe;}
+
+    /* ── QUIZ ── */
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;transition:.15s;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-opt:disabled{cursor:default;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-next-btn:hover{background:#6d28d9;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-result-total{font-size:18px;color:#64748b;margin-bottom:6px;}
+    .quiz-result-msg{font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;}
+    .quiz-result-sub{font-size:14px;color:#64748b;margin-bottom:24px;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .quiz-restart-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+    .quiz-restart-btn:hover{background:#ede9fe;}
+
+    /* ── MINI TEST ── */
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-intro-card h2{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;}
+    .test-intro-card p{font-size:14.5px;color:#64748b;margin-bottom:18px;}
+    .test-intro-card ul{list-style:none;padding:0;margin-bottom:28px;}
+    .test-intro-card li{font-size:14px;color:#334155;padding:6px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;}
+    .test-intro-card li::before{content:'•';color:#7c3aed;font-weight:900;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-start-btn:hover{background:#6d28d9;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+    .test-timer-inner{display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;font-variant-numeric:tabular-nums;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-timer-label{font-size:12px;color:rgba(255,255,255,0.5);}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-marks{font-size:12px;color:#64748b;font-weight:600;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;transition:.15s;}
+    .test-radio-opt:hover{border-color:#a78bfa;background:#faf9ff;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-radio-opt.show-correct{border-color:#22c55e;background:#f0fdf4;font-weight:600;color:#166634;}
+    .test-radio-opt.show-wrong{border-color:#ef4444;background:#fff1f2;color:#9f1239;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-q .ws-textarea{margin-top:10px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-submit-btn:hover{background:#6d28d9;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .test-result-pct{font-size:18px;color:#64748b;margin-bottom:6px;}
+    .test-result-grade{font-size:22px;font-weight:800;color:#0f172a;margin:10px 0 4px;}
+    .test-result-msg{font-size:14.5px;color:#64748b;margin-bottom:24px;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+    .test-retry-btn:hover{background:#ede9fe;}
+
+    /* ── KEY TERMS ── */
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;font-family:inherit;transition:.15s;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard-area{display:block;}
+    .flashcard-progress{font-size:13px;color:#64748b;text-align:center;margin-bottom:16px;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;transition:.2s;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;box-shadow:0 4px 20px rgba(124,58,237,0.08);}
+    .flashcard-front{font-size:24px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:16px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-know:hover{background:#dcfce7;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn:hover{background:#ffe4e6;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+
+    /* ── BOTTOM NAV ── */
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:.15s;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .bottom-nav-btn.next-btn:hover{background:#6d28d9;border-color:#6d28d9;}
+    .bottom-nav-center{font-size:13px;color:#94a3b8;font-weight:500;}
+
+    /* ── PAYWALL ── */
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-overlay.show{display:flex;}
+    .paywall-card{background:#fff;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;}
+    .paywall-icon{font-size:48px;margin-bottom:16px;}
+    .paywall-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;}
+    .paywall-sub{font-size:14.5px;color:#64748b;line-height:1.6;margin-bottom:24px;}
+    .paywall-price{font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;}
+    .paywall-price-sub{font-size:13px;color:#94a3b8;margin-bottom:24px;}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-bottom:10px;width:100%;}
+    .paywall-btn:hover{background:#6d28d9;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;margin-top:4px;}
+
+    /* ── UTILS ── */
+    .hidden{display:none!important;}
+    @media(max-width:640px){
+      .lesson-header{padding:16px 16px 0;}
+      .lesson-body{padding:16px 12px 60px;}
+      .lesson-title{font-size:20px;}
+      .tabs-bar{padding:0 12px;}
+      .tab-btn{padding:12px 12px;font-size:13px;}
+      .notes-content{padding:20px;}
+      .quiz-body{padding:20px;}
+      .breadcrumb{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">OCR J277</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.1 Systems Architecture</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.1.1 Architecture of the CPU</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
+  </div>
+</nav>
+
+<!-- LESSON HEADER -->
+<div class="lesson-header">
+  <div class="lesson-badge">📁 Component 1 · 1.1 Systems Architecture</div>
+  <div class="lesson-title">1.1.1 Architecture of the CPU</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~14 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
+</div>
+
+<!-- TAB BAR -->
+<div class="tabs-bar" id="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">
+    <span class="tab-icon">📖</span> Notes
+  </button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">
+    <span class="tab-icon">🎥</span> Video
+  </button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">
+    <span class="tab-icon">📊</span> Slides
+  </button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">
+    <span class="tab-icon">✍️</span> Worksheet
+  </button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">
+    <span class="tab-icon">❓</span> Quiz
+  </button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">
+    <span class="tab-icon">🔑</span> Key Terms
+  </button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">
+    <span class="tab-icon">🎯</span> Mini Test
+  </button>
+</div>
+
+<!-- MAIN BODY -->
+<div class="lesson-body">
+
+  <!-- ═══════════════ TAB: NOTES ═══════════════ -->
+  <div class="tab-panel active" id="panel-notes">
+    <div class="notes-content" id="notes-scroll-container">
+
+      <h2>What is the CPU?</h2>
+      <p>The <strong>Central Processing Unit (CPU)</strong> is the main processing component of a computer. It carries out the instructions of a program by performing arithmetic, logical, control and input/output operations specified by those instructions.</p>
+      <p>Modern CPUs are based on the <strong>Von Neumann architecture</strong> — a design where both program instructions and data are stored together in the same memory (RAM), and the CPU fetches, decodes and executes those instructions in sequence.</p>
+
+      <h2>Key Components of the CPU</h2>
+
+      <h3>Control Unit (CU)</h3>
+      <p>The <strong>Control Unit</strong> manages and coordinates all CPU operations. It:</p>
+      <ul>
+        <li>Fetches instructions from memory</li>
+        <li>Decodes (interprets) those instructions</li>
+        <li>Controls the timing and sequence of all operations</li>
+        <li>Sends control signals to other CPU components</li>
+      </ul>
+      <p>The CU does <strong>not</strong> perform calculations itself — that's the ALU's job.</p>
+
+      <h3>Arithmetic Logic Unit (ALU)</h3>
+      <p>The <strong>ALU</strong> performs all arithmetic and logical operations:</p>
+      <ul>
+        <li><strong>Arithmetic:</strong> addition, subtraction, multiplication, division</li>
+        <li><strong>Logical:</strong> AND, OR, NOT comparisons</li>
+        <li><strong>Comparison:</strong> equal to, greater than, less than</li>
+      </ul>
+
+      <h3>Registers</h3>
+      <p>Registers are <strong>small, extremely fast memory locations</strong> located inside the CPU. They temporarily store data, addresses and instructions currently being used by the processor.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Register</th>
+            <th>Full Name</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>PC</strong></td>
+            <td>Program Counter</td>
+            <td>Holds the <strong>memory address</strong> of the <strong>next instruction</strong> to be fetched</td>
+          </tr>
+          <tr>
+            <td><strong>MAR</strong></td>
+            <td>Memory Address Register</td>
+            <td>Holds the <strong>address</strong> in memory that is being read from or written to</td>
+          </tr>
+          <tr>
+            <td><strong>MDR</strong></td>
+            <td>Memory Data Register</td>
+            <td>Holds the <strong>data</strong> being transferred to or from memory</td>
+          </tr>
+          <tr>
+            <td><strong>CIR</strong></td>
+            <td>Current Instruction Register</td>
+            <td>Holds the <strong>instruction</strong> currently being decoded and executed</td>
+          </tr>
+          <tr>
+            <td><strong>ACC</strong></td>
+            <td>Accumulator</td>
+            <td>Holds the <strong>results</strong> of ALU calculations</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Cache</h3>
+      <p><strong>Cache</strong> is a small but extremely fast type of memory located very close to (or inside) the CPU. It stores copies of frequently used instructions and data so the CPU can retrieve them far faster than fetching from RAM.</p>
+
+      <h3>Buses</h3>
+      <p>Buses are electrical pathways that carry data, addresses and control signals between components:</p>
+      <ul>
+        <li><strong>Address bus:</strong> carries memory addresses from CPU to RAM (one-way)</li>
+        <li><strong>Data bus:</strong> carries actual data between CPU and memory (two-way)</li>
+        <li><strong>Control bus:</strong> carries control signals to coordinate components (two-way)</li>
+      </ul>
+
+      <h2>The Fetch-Decode-Execute (FDE) Cycle</h2>
+      <p>The CPU processes instructions in a continuous, repeating three-stage cycle. This is the most commonly examined topic in this subtopic.</p>
+
+      <h3>Stage 1: FETCH</h3>
+      <ol>
+        <li>The address in the <strong>PC</strong> is copied to the <strong>MAR</strong></li>
+        <li>The CPU reads the instruction from <strong>RAM</strong> at the address in the MAR</li>
+        <li>The instruction travels along the data bus into the <strong>MDR</strong></li>
+        <li>The instruction is copied from the MDR into the <strong>CIR</strong></li>
+        <li>The <strong>PC increments by 1</strong> — ready to point to the next instruction</li>
+      </ol>
+
+      <h3>Stage 2: DECODE</h3>
+      <p>The <strong>Control Unit</strong> decodes the instruction sitting in the CIR. It works out what operation needs to be carried out and what data is needed.</p>
+
+      <h3>Stage 3: EXECUTE</h3>
+      <p>The decoded instruction is carried out:</p>
+      <ul>
+        <li>If it involves a <strong>calculation</strong>: the ALU performs it and stores the result in the Accumulator</li>
+        <li>If it involves <strong>data movement</strong>: data is moved between registers and/or memory</li>
+        <li>If it is a <strong>branch/jump</strong>: the PC is updated to point to a different instruction</li>
+      </ul>
+      <p>The cycle then repeats for the next instruction — billions of times per second on a modern CPU.</p>
+
+      <div class="exam-tip">
+        <strong>Exam tip:</strong> The PC increments during the <strong>fetch</strong> stage — not at the end of execute. Many students lose marks by putting this in the wrong stage.
+      </div>
+      <div class="exam-tip">
+        <strong>Exam tip:</strong> MAR holds an <strong>address</strong>. MDR holds <strong>data</strong>. Examiners frequently ask you to distinguish between these two registers — a question on MAR vs MDR is extremely common.
+      </div>
+      <div class="exam-tip">
+        <strong>Exam tip:</strong> Von Neumann architecture is often the context for a 4-mark question. Key point: data and instructions are stored in the <strong>same</strong> memory.
+      </div>
+
+      <div class="mistake-box">
+        <div class="mistake-title">⚠️ Common Mistakes</div>
+        <ul>
+          <li>Saying the PC holds the <em>current</em> instruction — it holds the address of the <em>next</em> instruction</li>
+          <li>Confusing MAR (holds address) and MDR (holds data) — these are regularly swapped</li>
+          <li>Saying the PC increments during the execute stage — it increments during <strong>fetch</strong></li>
+          <li>Saying cache stores everything — it only stores <strong>frequently accessed</strong> data and instructions</li>
+          <li>Confusing the CU (controls operations) with the ALU (performs calculations)</li>
+          <li>Saying the CIR holds the address of the instruction — it holds the <strong>instruction itself</strong></li>
+        </ul>
+      </div>
+
+      <div class="notes-scroll-marker" id="notes-end"></div>
+      <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+      <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed — well done!</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TAB: VIDEO ═══════════════ -->
+  <div class="tab-panel" id="panel-video">
+    <div class="video-placeholder" id="video-embed-area">
+      <div class="video-placeholder-inner">
+        <div class="video-play-icon">▶</div>
+        <div class="video-soon-text">Video uploading to YouTube shortly</div>
+        <div class="video-soon-sub">Check back soon — this lesson video is in production</div>
+      </div>
+    </div>
+    <div class="video-key-points">
+      <h3>Key points covered in this video</h3>
+      <ul>
+        <li>The role of the CPU and Von Neumann architecture</li>
+        <li>Functions of the Control Unit and ALU</li>
+        <li>All five key registers: PC, MAR, MDR, CIR, Accumulator</li>
+        <li>The Fetch-Decode-Execute cycle step by step</li>
+        <li>What cache is and why it improves performance</li>
+        <li>The three buses: address, data and control</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TAB: SLIDES ═══════════════ -->
+  <div class="tab-panel" id="panel-slides">
+    <div style="margin-bottom:14px;font-size:13.5px;color:#64748b;">Click through the slides at your own pace. Reach the final slide to mark this section complete.</div>
+    <div class="slides-wrap" id="slides-container" style="height:520px;">
+      <div class="slides-placeholder">
+        <div class="slides-placeholder-icon">📊</div>
+        <div class="slides-placeholder-text">Interactive slides loading</div>
+        <div class="slides-placeholder-sub">Slides for this topic will appear here once deployed</div>
+      </div>
+      <!-- When deployed, replace above with:
+      <iframe class="slides-iframe" src="/slides/ocr-j277-1-1-1/" id="slides-iframe" onload="onSlidesLoad()"></iframe>
+      -->
+    </div>
+    <div style="margin-top:12px;text-align:right;">
+      <button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TAB: WORKSHEET ═══════════════ -->
+  <div class="tab-panel" id="panel-worksheet">
+    <div class="ws-intro">
+      <div class="ws-intro-icon">✍️</div>
+      <div class="ws-intro-text">
+        <h3>Exam-style Worksheet — 1.1.1 Architecture of the CPU</h3>
+        <p>8 OCR J277-style questions · 20 marks total · Submit to see the full mark scheme</p>
+      </div>
+    </div>
+
+    <div id="ws-questions">
+      <!-- Q1 -->
+      <div class="ws-question" id="wsq-1">
+        <div class="ws-q-header">
+          <span class="ws-q-num">Q1</span>
+          <span class="ws-q-text">What does ALU stand for?</span>
+          <span class="ws-q-marks">[1 mark]</span>
+        </div>
+        <textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea>
+        <div class="ws-feedback" id="ws-fb-1">
+          <div class="ws-feedback-header good">✅ Mark scheme</div>
+          <div class="ws-feedback-body">
+            <div class="ws-ms-label">Mark scheme answer</div>
+            <div class="ws-ms-text">Arithmetic Logic Unit</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="ws-question" id="wsq-2">
+        <div class="ws-q-header">
+          <span class="ws-q-num">Q2</span>
+          <span class="ws-q-text">State the purpose of the Program Counter (PC).</span>
+          <span class="ws-q-marks">[1 mark]</span>
+        </div>
+        <textarea class="ws-textarea" id="ws-ans-2" placeholder="Type your answer here..."></textarea>
+        <div class="ws-feedback" id="ws-fb-2">
+          <div class="ws-feedback-header good">✅ Mark scheme</div>
+          <div class="ws-feedback-body">
+            <div class="ws-ms-label">Mark scheme answer</div>
+            <div class="ws-ms-text">Holds/stores the memory address of the <strong>next instruction</strong> to be fetched (from memory). [1 mark]</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="ws-question" id="wsq-3">
+        <div class="ws-q-header">
+          <span class="ws-q-num">Q3</span>
+          <span class="ws-q-text">Explain the difference between the MAR and the MDR.</span>
+          <span class="ws-q-marks">[2 marks]</span>
+        </div>
+        <textarea class="ws-textarea" id="ws-ans-3" placeholder="Type your answer here..." style="min-height:110px;"></textarea>
+        <div class="ws-feedback" id="ws-fb-3">
+          <div class="ws-feedback-header good">✅ Mark scheme</div>
+          <div class="ws-feedback-body">
+            <div class="ws-ms-label">Mark scheme answer</div>
+            <div class="ws-ms-text">The MAR (Memory Address Register) holds the <strong>address</strong> of the memory location being accessed [1]; the MDR (Memory Data Register) holds the <strong>data</strong> being read from or written to that memory location [1].</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="ws-question" id="wsq-4">
+        <div class="ws-q-header">
+          <span class="ws-q-num">Q4</span>
+          <span class="ws-q-text">Describe what happens during the fetch stage of the fetch-decode-execute cycle.</span>
+          <span class="ws-q-marks">[3 marks]</span>
+        </div>
+        <textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..." style="min-height:130px;"></textarea>
+        <div class="ws-feedback" id="ws-fb-4">
+          <div class="ws-feedback-header good">✅ Mark scheme</div>
+          <div class="ws-feedback-body">
+            <div class="ws-ms-label">Mark scheme answer (any 3)</div>
+            <div class="ws-ms-text">
+              • The address stored in the PC is copied to the MAR [1]<br>
+              • The instruction at that address is fetched from RAM/memory [1]<br>
+              • The instruction is placed into the MDR [1]<br>
+              • The instruction is copied from the MDR to the CIR [1]<br>
+              • The PC is incremented by 1 (to point to the next instruction) [1]
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="ws-question" id="wsq-5">
+        <div class="ws-q-header">
+          <span class="ws-q-num">Q5</span>
+          <span class="ws-q-text">Explain the role of the Control Unit (CU) in the CPU.</span>
+          <span class="ws-q-marks">[2 marks]</span>
+        </div>
+        <textarea class="ws-textarea" id="ws-ans-5" placeholder="Type your answer here..." style="min-height:110px;"></textarea>
+        <div class="ws-feedback" id="ws-fb-5">
+          <div class="ws-feedback-header good">✅ Mark scheme</div>
+          <div class="ws-feedback-body">
+            <div class="ws-ms-label">Mark scheme answer</div>
+            <div class="ws-ms-text">The Control Unit controls and coordinates all the activities of the CPU [1]; it fetches and decodes instructions and manages the timing/sequencing of all operations [1].</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="ws-question" id="wsq-6">
+        <div class="ws-q-header">
+          <span class="ws-q-num">Q6</span>
+          <span class="ws-q-text">A student states: "The CPU only needs the ALU to process a program." Explain why this statement is incorrect.</span>
+          <span class="ws-q-marks">[3 marks]</span>
+        </div>
+        <textarea class="ws-textarea" id="ws-ans-6" placeholder="Type your answer here..." style="min-height:130px;"></textarea>
+        <div class="ws-feedback" id="ws-fb-6">
+          <div class="ws-feedback-header good">✅ Mark scheme</div>
+          <div class="ws-feedback-body">
+            <div class="ws-ms-label">Mark scheme answer (any 3)</div>
+            <div class="ws-ms-text">
+              • The ALU performs calculations but cannot fetch or decode instructions [1]<br>
+              • The Control Unit is also needed to fetch and decode instructions and coordinate operations [1]<br>
+              • Registers (e.g. PC, MAR, MDR) are required to hold addresses, data and instructions during processing [1]<br>
+              • Cache is needed to provide fast access to frequently used data [1]
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="ws-question" id="wsq-7">
+        <div class="ws-q-header">
+          <span class="ws-q-num">Q7</span>
+          <span class="ws-q-text">Describe the complete fetch-decode-execute cycle, naming all registers involved.</span>
+          <span class="ws-q-marks">[4 marks]</span>
+        </div>
+        <textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..." style="min-height:160px;"></textarea>
+        <div class="ws-feedback" id="ws-fb-7">
+          <div class="ws-feedback-header good">✅ Mark scheme</div>
+          <div class="ws-feedback-body">
+            <div class="ws-ms-label">Mark scheme answer (4 marks)</div>
+            <div class="ws-ms-text">
+              <strong>Fetch:</strong> PC contents copied to MAR [1]; instruction fetched from RAM into MDR; copied to CIR; PC incremented [1]<br>
+              <strong>Decode:</strong> CU decodes the instruction in the CIR [1]<br>
+              <strong>Execute:</strong> ALU carries out the operation / data moved as required; result stored in Accumulator if arithmetic [1]
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="ws-question" id="wsq-8">
+        <div class="ws-q-header">
+          <span class="ws-q-num">Q8</span>
+          <span class="ws-q-text">Explain the purpose of cache memory and how it improves CPU performance.</span>
+          <span class="ws-q-marks">[4 marks]</span>
+        </div>
+        <textarea class="ws-textarea" id="ws-ans-8" placeholder="Type your answer here..." style="min-height:160px;"></textarea>
+        <div class="ws-feedback" id="ws-fb-8">
+          <div class="ws-feedback-header good">✅ Mark scheme</div>
+          <div class="ws-feedback-body">
+            <div class="ws-ms-label">Mark scheme answer (4 marks)</div>
+            <div class="ws-ms-text">
+              • Cache is a small, fast type of memory located close to/inside the CPU [1]<br>
+              • It stores frequently used/recently accessed instructions and data [1]<br>
+              • The CPU can access data in cache much faster than from RAM [1]<br>
+              • This reduces the time the CPU spends waiting for data, so it can execute instructions more quickly [1]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ws-submit-row" id="ws-submit-row">
+      <button class="ws-submit-btn" onclick="submitWorksheet()">Submit Worksheet →</button>
+    </div>
+
+    <div class="ws-score-panel" id="ws-score-panel">
+      <div class="ws-score-big" id="ws-score-display">—</div>
+      <div class="ws-score-label" id="ws-score-label">out of 20 marks</div>
+      <div class="ws-score-msg" id="ws-score-msg"></div>
+      <button class="ws-retry-btn" onclick="retryWorksheet()">Try again</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TAB: QUIZ ═══════════════ -->
+  <div class="tab-panel" id="panel-quiz">
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+        <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+      </div>
+
+      <div class="quiz-body" id="quiz-body">
+        <div class="quiz-q-text" id="quiz-q-text"></div>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div class="quiz-explanation" id="quiz-explanation"></div>
+        <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+      </div>
+
+      <div class="quiz-result" id="quiz-result">
+        <div class="quiz-result-total">You scored</div>
+        <div class="quiz-result-score" id="quiz-result-score"></div>
+        <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+        <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+        <div class="quiz-result-msg" id="quiz-result-msg"></div>
+        <div class="quiz-result-sub" id="quiz-result-sub"></div>
+        <div>
+          <button class="quiz-restart-btn" onclick="restartQuiz()">Try again</button>
+          <button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TAB: MINI TEST ═══════════════ -->
+  <div class="tab-panel" id="panel-test">
+
+    <!-- START SCREEN -->
+    <div id="test-start-screen">
+      <div class="test-intro-card">
+        <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+        <h2>Mini Test — 1.1.1 Architecture of the CPU</h2>
+        <p>Put your knowledge to the test under timed, exam conditions. No feedback until you submit.</p>
+        <ul>
+          <li>10 questions · 10 marks · 10 minutes</li>
+          <li>5 multiple choice + 5 short answer questions</li>
+          <li>No hints or immediate feedback</li>
+          <li>Answer all questions, then submit</li>
+          <li>Mark schemes revealed after submission</li>
+        </ul>
+        <button class="test-start-btn" onclick="startTest()">Start test →</button>
+      </div>
+    </div>
+
+    <!-- TIMER + QUESTIONS (shown after start) -->
+    <div id="test-active-area" style="display:none;">
+      <div class="test-timer-bar">
+        <div class="test-timer-inner">
+          <span>⏱ Time remaining:</span>
+          <span class="test-timer-display" id="test-timer-display">10:00</span>
+        </div>
+        <div class="test-timer-label">Mini Test · 10 marks · Submit when done or when time runs out</div>
+      </div>
+
+      <div class="test-section-label">Section A — Multiple Choice &nbsp;[5 marks]</div>
+
+      <!-- MCQ 1 -->
+      <div class="test-mcq-q" id="tmcq-1">
+        <div class="test-mcq-header">
+          <span class="test-q-num">Q1</span>
+          <span class="test-q-text">What does PC stand for in the context of CPU registers?</span>
+          <span class="test-q-marks">[1 mark]</span>
+        </div>
+        <div class="test-radio-opts">
+          <label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Process Controller</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> Program Counter</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> Primary Cache</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> Processor Core</label>
+        </div>
+      </div>
+
+      <!-- MCQ 2 -->
+      <div class="test-mcq-q" id="tmcq-2">
+        <div class="test-mcq-header">
+          <span class="test-q-num">Q2</span>
+          <span class="test-q-text">Which bus carries memory addresses from the CPU to RAM?</span>
+          <span class="test-q-marks">[1 mark]</span>
+        </div>
+        <div class="test-radio-opts">
+          <label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> Data bus</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> Control bus</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> Address bus</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> System bus</label>
+        </div>
+      </div>
+
+      <!-- MCQ 3 -->
+      <div class="test-mcq-q" id="tmcq-3">
+        <div class="test-mcq-header">
+          <span class="test-q-num">Q3</span>
+          <span class="test-q-text">What is stored in the Current Instruction Register (CIR)?</span>
+          <span class="test-q-marks">[1 mark]</span>
+        </div>
+        <div class="test-radio-opts">
+          <label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> The address of the next instruction to be fetched</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> The result of the most recent ALU calculation</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> The instruction currently being decoded</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> The data most recently transferred from memory</label>
+        </div>
+      </div>
+
+      <!-- MCQ 4 -->
+      <div class="test-mcq-q" id="tmcq-4">
+        <div class="test-mcq-header">
+          <span class="test-q-num">Q4</span>
+          <span class="test-q-text">At which stage of the FDE cycle does the Program Counter increment?</span>
+          <span class="test-q-marks">[1 mark]</span>
+        </div>
+        <div class="test-radio-opts">
+          <label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> Decode</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> Execute</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> Fetch</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> Between cycles</label>
+        </div>
+      </div>
+
+      <!-- MCQ 5 -->
+      <div class="test-mcq-q" id="tmcq-5">
+        <div class="test-mcq-header">
+          <span class="test-q-num">Q5</span>
+          <span class="test-q-text">What is the defining feature of the Von Neumann architecture?</span>
+          <span class="test-q-marks">[1 mark]</span>
+        </div>
+        <div class="test-radio-opts">
+          <label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> Data and instructions are stored in separate memories</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> Data and instructions are stored in the same memory</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> Instructions are stored in cache, data in RAM</label>
+          <label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> The CPU can only process one instruction per second</label>
+        </div>
+      </div>
+
+      <div class="test-section-label">Section B — Short Answer &nbsp;[5 marks]</div>
+
+      <!-- SA 1 -->
+      <div class="test-sa-q" id="tsa-1">
+        <div class="test-mcq-header">
+          <span class="test-q-num">Q6</span>
+          <span class="test-q-text">State the purpose of the Memory Address Register (MAR).</span>
+          <span class="test-q-marks">[1 mark]</span>
+        </div>
+        <textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer here..."></textarea>
+        <div class="test-sa-ms" id="tsa-ms-1">
+          <strong>Mark scheme</strong>
+          Holds/stores the address of the memory location currently being accessed (read from or written to). [1 mark]
+        </div>
+      </div>
+
+      <!-- SA 2 -->
+      <div class="test-sa-q" id="tsa-2">
+        <div class="test-mcq-header">
+          <span class="test-q-num">Q7</span>
+          <span class="test-q-text">What does the Accumulator store?</span>
+          <span class="test-q-marks">[1 mark]</span>
+        </div>
+        <textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer here..."></textarea>
+        <div class="test-sa-ms" id="tsa-ms-2">
+          <strong>Mark scheme</strong>
+          The result(s) of calculations performed by the ALU (Arithmetic Logic Unit). [1 mark]
+        </div>
+      </div>
+
+      <!-- SA 3 -->
+      <div class="test-sa-q" id="tsa-3">
+        <div class="test-mcq-header">
+          <span class="test-q-num">Q8</span>
+          <span class="test-q-text">Name the three stages of the Fetch-Decode-Execute cycle in order.</span>
+          <span class="test-q-marks">[1 mark]</span>
+        </div>
+        <textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer here..."></textarea>
+        <div class="test-sa-ms" id="tsa-ms-3">
+          <strong>Mark scheme</strong>
+          Fetch, Decode, Execute — all three named in the correct order. [1 mark]
+        </div>
+      </div>
+
+      <!-- SA 4 -->
+      <div class="test-sa-q" id="tsa-4">
+        <div class="test-mcq-header">
+          <span class="test-q-num">Q9</span>
+          <span class="test-q-text">State two types of operation that the ALU can perform.</span>
+          <span class="test-q-marks">[1 mark]</span>
+        </div>
+        <textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer here..."></textarea>
+        <div class="test-sa-ms" id="tsa-ms-4">
+          <strong>Mark scheme</strong>
+          Any two from: arithmetic operations (e.g. addition, subtraction) / logical operations (e.g. AND, OR, NOT) / comparison operations (e.g. greater than, equal to). [1 mark — both needed]
+        </div>
+      </div>
+
+      <!-- SA 5 -->
+      <div class="test-sa-q" id="tsa-5">
+        <div class="test-mcq-header">
+          <span class="test-q-num">Q10</span>
+          <span class="test-q-text">Explain one reason why cache memory improves CPU performance.</span>
+          <span class="test-q-marks">[1 mark]</span>
+        </div>
+        <textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer here..."></textarea>
+        <div class="test-sa-ms" id="tsa-ms-5">
+          <strong>Mark scheme</strong>
+          Cache stores frequently used data/instructions close to the CPU [½]; so the CPU can access them much faster than fetching from RAM, reducing waiting time [½]. Must make both points for the mark.
+        </div>
+      </div>
+
+      <div class="test-submit-row">
+        <button class="test-submit-btn" id="test-submit-btn" onclick="submitTest()">Submit test →</button>
+      </div>
+    </div>
+
+    <!-- RESULTS (shown after submission) -->
+    <div id="test-results-area" style="display:none;">
+      <div class="test-result-panel">
+        <div class="test-result-pct">You scored</div>
+        <div class="test-result-score" id="test-score-display">—</div>
+        <div style="font-size:18px;color:#64748b;margin-bottom:10px;">out of 10</div>
+        <div class="test-grade-badge" id="test-grade-badge"></div>
+        <div class="test-result-grade" id="test-result-grade"></div>
+        <div class="test-result-msg" id="test-result-msg"></div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <div class="test-section-label">Section A — Multiple Choice · Review your answers</div>
+        <div id="test-mcq-review"></div>
+        <div class="test-section-label">Section B — Short Answer · Compare with mark schemes below</div>
+        <div id="test-sa-review"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:28px;padding-top:20px;border-top:1px solid #f1f5f9;">
+        <button class="test-retry-btn" onclick="retryTest()">Try again</button>
+        <button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TAB: KEY TERMS ═══════════════ -->
+  <div class="tab-panel" id="panel-keyterms">
+    <div class="kt-controls">
+      <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+      <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+    </div>
+
+    <!-- FLASHCARD MODE -->
+    <div class="flashcard-area" id="kt-flash-area">
+      <div class="flashcard-progress" id="fc-progress">Card 1 of 15</div>
+      <div class="flashcard" id="flashcard" onclick="flipCard()">
+        <div class="flashcard-front" id="fc-front"></div>
+        <div class="flashcard-back" id="fc-back"></div>
+        <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+      </div>
+      <div class="flashcard-actions">
+        <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+        <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+        <button class="fc-skip" onclick="skipCard()">Skip →</button>
+      </div>
+      <div class="fc-done" id="fc-done">
+        <div style="font-size:40px;margin-bottom:12px;">🎉</div>
+        <div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Session complete!</div>
+        <div style="font-size:14px;color:#64748b;margin-bottom:20px;" id="fc-done-msg"></div>
+        <button class="nav-dash-btn" onclick="resetFlashcards()" style="display:inline-block;">Start again</button>
+      </div>
+    </div>
+
+    <!-- LIST MODE -->
+    <div class="kt-list-area" id="kt-list-area">
+      <table class="kt-list-table">
+        <thead>
+          <tr><th>Term</th><th>Definition</th></tr>
+        </thead>
+        <tbody id="kt-list-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- end lesson-body -->
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="/dashboard" class="bottom-nav-btn">← Back to Dashboard</a>
+  <span class="bottom-nav-center">1.1 Systems Architecture</span>
+  <a href="/ocr-j277/1-1-2/" class="bottom-nav-btn next-btn">Next: 1.1.2 CPU Performance →</a>
+</div>
+
+<!-- PAYWALL OVERLAY -->
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div class="paywall-icon">🔒</div>
+    <div class="paywall-title">Unlock Everything</div>
+    <div class="paywall-sub">This content is part of the full CSZone subscription. Your first subtopic of every topic is free — subscribe to unlock all 47 OCR J277 lessons, worksheets, quizzes and key terms.</div>
+    <div class="paywall-price">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div class="paywall-price-sub">or £59/year — best value</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').classList.remove('show')">Maybe later</button>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════
+// CONFIGURATION — update per lesson
+// ════════════════════════════════════════════════
+var SUPA_URL = 'https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY = 'sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID = '1-1-1'; // subtopic slug
+var IS_FREE = true; // first subtopic of topic — always free
+var YOUTUBE_ID = ''; // add YouTube video ID when uploaded
+
+// ════════════════════════════════════════════════
+// SUPABASE & AUTH
+// ════════════════════════════════════════════════
+var _sb = null;
+function getSB() {
+  if (!_sb) _sb = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+  return _sb;
+}
+
+var currentUser = null;
+var isSubscribed = false;
+
+window.addEventListener('DOMContentLoaded', function() {
+  getSB().auth.getSession().then(function(r) {
+    var session = r.data.session;
+    if (!session) { window.location.href = '/'; return; }
+    currentUser = session.user;
+    var email = session.user.email;
+    document.getElementById('nav-user-name').textContent = email.split('@')[0];
+    loadProgress();
+    initQuiz();
+    initKeyTerms();
+    initNotesScroll();
+    // If paid lesson, check subscription
+    if (!IS_FREE) checkSubscription();
+  });
+});
+
+function checkSubscription() {
+  // In production: query subscriptions table for active subscription
+  // For now: redirect to paywall if not subscribed
+  // getSB().from('subscriptions').select('status').eq('user_id', currentUser.id).single()
+  //   .then(function(r) { if (!r.data || r.data.status !== 'active') showPaywall(); });
+}
+
+function showPaywall() {
+  document.getElementById('paywall').classList.add('show');
+}
+
+// ════════════════════════════════════════════════
+// PROGRESS TRACKING
+// ════════════════════════════════════════════════
+var prog = {
+  notes: false, video: false, slides: false,
+  worksheet: false, quiz: false
+};
+
+function loadProgress() {
+  // Load from Supabase user_progress table
+  if (!currentUser) return;
+  getSB().from('user_progress').select('*')
+    .eq('user_id', currentUser.id).eq('subtopic_id', LESSON_ID)
+    .single().then(function(r) {
+      if (r.data) {
+        prog.notes    = r.data.lesson_read || false;
+        prog.video    = r.data.video_watched || false;
+        prog.slides   = r.data.slides_completed || false;
+        prog.worksheet = r.data.worksheet_submitted || false;
+        prog.quiz     = r.data.quiz_best_score > 0;
+        updateDots();
+      }
+    });
+}
+
+function saveProgress(key, extra) {
+  prog[key] = true;
+  updateDots();
+  if (!currentUser) return;
+  var update = {};
+  if (key === 'notes')     update = { lesson_read: true };
+  if (key === 'video')     update = { video_watched: true };
+  if (key === 'slides')    update = { slides_completed: true };
+  if (key === 'worksheet') update = { worksheet_submitted: true, worksheet_best_score: (extra || 0) };
+  if (key === 'quiz')      update = { quiz_best_score: (extra || 0) };
+  getSB().from('user_progress').upsert(Object.assign({
+    user_id: currentUser.id,
+    subtopic_id: LESSON_ID
+  }, update)).then(function() {});
+}
+
+function updateDots() {
+  function setDot(id, done, isActive) {
+    var d = document.getElementById(id);
+    if (!d) return;
+    d.className = 'prog-dot' + (done ? ' done' : (isActive ? ' active' : ''));
+  }
+  setDot('dot-notes',     prog.notes,     !prog.notes);
+  setDot('dot-video',     prog.video,     prog.notes && !prog.video);
+  setDot('dot-slides',    prog.slides,    prog.video && !prog.slides);
+  setDot('dot-worksheet', prog.worksheet, prog.slides && !prog.worksheet);
+  setDot('dot-quiz',      prog.quiz,      prog.worksheet && !prog.quiz);
+}
+
+// ════════════════════════════════════════════════
+// TAB SWITCHING
+// ════════════════════════════════════════════════
+function switchTab(name) {
+  var panels = document.querySelectorAll('.tab-panel');
+  for (var i = 0; i < panels.length; i++) panels[i].classList.remove('active');
+  var tabs = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+  document.getElementById('panel-' + name).classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'video') { markVideoDone(); }
+}
+
+// ════════════════════════════════════════════════
+// NOTES — scroll to bottom detection
+// ════════════════════════════════════════════════
+var notesScrolled = false;
+function initNotesScroll() {
+  var container = document.getElementById('notes-scroll-container');
+  if (!container) return;
+  container.addEventListener('scroll', checkNotesScroll);
+  // Show read button after 3 seconds
+  setTimeout(function() {
+    document.getElementById('notes-read-btn').style.display = 'inline-block';
+  }, 3000);
+  if (prog.notes) showNotesDone();
+}
+
+function checkNotesScroll() {
+  if (notesScrolled) return;
+  var el = document.getElementById('notes-scroll-container');
+  if (el.scrollTop + el.clientHeight >= el.scrollHeight - 100) {
+    notesScrolled = true;
+    document.getElementById('notes-read-btn').style.display = 'inline-block';
+  }
+}
+
+function markNotesRead() {
+  saveProgress('notes');
+  showNotesDone();
+}
+
+function showNotesDone() {
+  document.getElementById('notes-read-btn').style.display = 'none';
+  var badge = document.getElementById('notes-done-badge');
+  badge.style.display = 'flex';
+}
+
+// ════════════════════════════════════════════════
+// VIDEO
+// ════════════════════════════════════════════════
+function markVideoDone() {
+  if (!prog.video) saveProgress('video');
+  document.getElementById('dot-video').className = 'prog-dot done';
+}
+
+// ════════════════════════════════════════════════
+// SLIDES
+// ════════════════════════════════════════════════
+function markSlidesDone() {
+  saveProgress('slides');
+  document.getElementById('dot-slides').className = 'prog-dot done';
+  alert('Slides marked as complete! ✓');
+}
+
+function onSlidesLoad() {
+  // Called when iframe loads
+}
+
+// ════════════════════════════════════════════════
+// WORKSHEET
+// ════════════════════════════════════════════════
+var wsSubmitted = false;
+
+function submitWorksheet() {
+  if (wsSubmitted) return;
+  // Check all fields filled
+  var anyEmpty = false;
+  for (var i = 1; i <= 8; i++) {
+    var val = document.getElementById('ws-ans-' + i).value.trim();
+    if (!val) { anyEmpty = true; break; }
+  }
+  if (anyEmpty) {
+    alert('Please answer all questions before submitting.');
+    return;
+  }
+  wsSubmitted = true;
+  // Disable all textareas
+  for (var i = 1; i <= 8; i++) {
+    document.getElementById('ws-ans-' + i).disabled = true;
+    // Show mark scheme
+    document.getElementById('ws-fb-' + i).classList.add('show');
+  }
+  // Hide submit button
+  document.getElementById('ws-submit-row').style.display = 'none';
+  // Show score panel
+  document.getElementById('ws-score-panel').classList.add('show');
+  var marks = 20;
+  document.getElementById('ws-score-display').textContent = '?';
+  document.getElementById('ws-score-label').textContent = 'out of ' + marks + ' marks — self-mark each question above';
+  document.getElementById('ws-score-msg').textContent = 'Compare your answers to the mark schemes above and count your marks.';
+  saveProgress('worksheet', 0);
+  updateDots();
+}
+
+function retryWorksheet() {
+  wsSubmitted = false;
+  for (var i = 1; i <= 8; i++) {
+    document.getElementById('ws-ans-' + i).value = '';
+    document.getElementById('ws-ans-' + i).disabled = false;
+    document.getElementById('ws-fb-' + i).classList.remove('show');
+  }
+  document.getElementById('ws-submit-row').style.display = 'block';
+  document.getElementById('ws-score-panel').classList.remove('show');
+}
+
+// ════════════════════════════════════════════════
+// QUIZ DATA
+// ════════════════════════════════════════════════
+var QUIZ = [
+  {
+    q: "What does CPU stand for?",
+    opts: ["Central Processing Unit","Core Processing Unit","Central Program Utility","Computer Processing Unit"],
+    a: 0,
+    exp: "CPU stands for Central Processing Unit — the main component that processes all instructions in a computer."
+  },
+  {
+    q: "Which component of the CPU performs arithmetic and logical operations?",
+    opts: ["Control Unit","ALU","Program Counter","Cache"],
+    a: 1,
+    exp: "The ALU (Arithmetic Logic Unit) performs all mathematical calculations and logical operations such as AND, OR, NOT comparisons."
+  },
+  {
+    q: "What does the Program Counter (PC) store?",
+    opts: ["The current instruction being executed","The result of the last calculation","The memory address of the next instruction to be fetched","Data being transferred to or from memory"],
+    a: 2,
+    exp: "The PC holds the memory address of the NEXT instruction to be fetched — not the current one. This is a very common exam mistake."
+  },
+  {
+    q: "What is the role of the Memory Address Register (MAR)?",
+    opts: ["Stores data being transferred to or from RAM","Stores the address of the memory location being accessed","Holds the current instruction","Stores the result of the ALU"],
+    a: 1,
+    exp: "The MAR holds the ADDRESS of the memory location being read from or written to. Remember: MAR = Address, MDR = Data."
+  },
+  {
+    q: "What does the MDR store?",
+    opts: ["The memory address to be accessed","Data being read from or written to memory","The next instruction's address","The decoded instruction"],
+    a: 1,
+    exp: "The MDR (Memory Data Register) holds the actual DATA being transferred to or from memory — not an address."
+  },
+  {
+    q: "Which register holds the instruction currently being decoded?",
+    opts: ["Program Counter","MAR","MDR","CIR"],
+    a: 3,
+    exp: "The CIR (Current Instruction Register) holds the instruction that the Control Unit is currently decoding and about to execute."
+  },
+  {
+    q: "What does the Accumulator store?",
+    opts: ["The next instruction address","The results of ALU calculations","The memory address being accessed","The current instruction"],
+    a: 1,
+    exp: "The Accumulator stores the results of calculations performed by the ALU. For example, the result of 5 + 3 would be stored here."
+  },
+  {
+    q: "What are the three stages of the Fetch-Decode-Execute cycle?",
+    opts: ["Read, Process, Write","Input, Processing, Output","Fetch, Decode, Execute","Load, Run, Store"],
+    a: 2,
+    exp: "The three stages are Fetch (get the instruction from RAM), Decode (interpret it) and Execute (carry it out). This cycle repeats billions of times per second."
+  },
+  {
+    q: "During which stage of the FDE cycle does the PC increment?",
+    opts: ["During the execute stage","After the decode stage","During the fetch stage","Before the cycle begins"],
+    a: 2,
+    exp: "The PC increments during the FETCH stage — immediately after the instruction address has been sent to the MAR. This is one of the most commonly tested facts on this topic."
+  },
+  {
+    q: "What is the main role of the Control Unit?",
+    opts: ["Performs arithmetic operations","Stores frequently used data","Controls and coordinates all CPU operations","Stores the current program"],
+    a: 2,
+    exp: "The Control Unit controls and coordinates all operations within the CPU. It fetches and decodes instructions but does not perform calculations itself."
+  },
+  {
+    q: "What is cache memory?",
+    opts: ["Secondary storage like an SSD","Fast, small memory located close to the CPU","Permanent memory that holds the OS","Virtual memory on the hard drive"],
+    a: 1,
+    exp: "Cache is a small, extremely fast type of memory located very close to (or inside) the CPU. It stores frequently used data and instructions for rapid access."
+  },
+  {
+    q: "Which bus carries memory addresses from the CPU to RAM?",
+    opts: ["Data bus","Control bus","Address bus","System bus"],
+    a: 2,
+    exp: "The Address bus carries memory addresses from the CPU to RAM. It is one-way (CPU to memory). The Data bus carries actual data (two-way) and the Control bus carries control signals."
+  },
+  {
+    q: "Which architecture model do modern CPUs use, where data and instructions are stored in the same memory?",
+    opts: ["Harvard architecture","Turing architecture","Von Neumann architecture","RISC architecture"],
+    a: 2,
+    exp: "The Von Neumann architecture is the standard model used in modern CPUs. Its key feature is that both program instructions and data are stored in the same memory (RAM)."
+  },
+  {
+    q: "What happens to the PC after an instruction is fetched?",
+    opts: ["It resets to zero","It stores the instruction that was just fetched","It increments by 1 to point to the next instruction","It stays the same until a branch instruction runs"],
+    a: 2,
+    exp: "After an instruction is fetched, the PC increments by 1 so it points to the next instruction in memory. This prepares the CPU for the next fetch-decode-execute cycle."
+  },
+  {
+    q: "Which of the following is NOT a register inside the CPU?",
+    opts: ["Program Counter","Memory Address Register","Cache","Current Instruction Register"],
+    a: 2,
+    exp: "Cache is NOT a register — it is a type of fast memory. Registers (PC, MAR, MDR, CIR, ACC) are individual storage locations. Cache is a separate memory bank that sits between the CPU and RAM."
+  }
+];
+
+// ════════════════════════════════════════════════
+// QUIZ LOGIC
+// ════════════════════════════════════════════════
+var qIndex = 0;
+var qScore = 0;
+var qAnswered = false;
+
+function initQuiz() {
+  qIndex = 0; qScore = 0; qAnswered = false;
+  renderQuestion();
+}
+
+function renderQuestion() {
+  if (qIndex >= QUIZ.length) { showQuizResult(); return; }
+  var item = QUIZ[qIndex];
+  document.getElementById('quiz-q-text').textContent = item.q;
+  document.getElementById('quiz-counter').textContent = 'Question ' + (qIndex+1) + ' of ' + QUIZ.length;
+  var fill = ((qIndex) / QUIZ.length * 100);
+  document.getElementById('quiz-prog-fill').style.width = fill + '%';
+  var opts = document.getElementById('quiz-options');
+  opts.innerHTML = '';
+  var letters = ['A','B','C','D'];
+  for (var i = 0; i < item.opts.length; i++) {
+    var btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span>' + item.opts[i];
+    btn.setAttribute('data-idx', i);
+    btn.onclick = (function(idx) { return function() { selectAnswer(idx); }; })(i);
+    opts.appendChild(btn);
+  }
+  document.getElementById('quiz-explanation').className = 'quiz-explanation';
+  document.getElementById('quiz-explanation').textContent = '';
+  document.getElementById('quiz-next-btn').className = 'quiz-next-btn';
+  qAnswered = false;
+}
+
+function selectAnswer(idx) {
+  if (qAnswered) return;
+  qAnswered = true;
+  var item = QUIZ[qIndex];
+  var btns = document.querySelectorAll('.quiz-opt');
+  for (var i = 0; i < btns.length; i++) { btns[i].disabled = true; }
+  var correct = (idx === item.a);
+  if (correct) qScore++;
+  btns[idx].classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) btns[item.a].classList.add('correct');
+  var exp = document.getElementById('quiz-explanation');
+  exp.textContent = (correct ? '✅ Correct! ' : '❌ Incorrect. ') + item.exp;
+  exp.className = 'quiz-explanation show' + (!correct ? ' wrong-exp' : '');
+  document.getElementById('quiz-next-btn').className = 'quiz-next-btn show';
+}
+
+function nextQuestion() {
+  qIndex++;
+  renderQuestion();
+}
+
+function showQuizResult() {
+  document.getElementById('quiz-body').style.display = 'none';
+  var result = document.getElementById('quiz-result');
+  result.className = 'quiz-result show';
+  var pct = Math.round(qScore / QUIZ.length * 100);
+  document.getElementById('quiz-result-score').textContent = qScore;
+  var xp = 40;
+  if (pct >= 70) xp += 20;
+  if (pct >= 85) xp += 35;
+  if (pct === 100) xp += 60;
+  document.getElementById('quiz-xp-badge').textContent = '⚡ +' + xp + ' XP earned!';
+  var msg = '', sub = '';
+  if (pct === 100) { msg = 'Perfect score! Outstanding!'; sub = 'You know this topic inside out.'; }
+  else if (pct >= 85) { msg = 'Excellent work!'; sub = 'You have a strong understanding of this topic.'; }
+  else if (pct >= 70) { msg = 'Good result!'; sub = 'Review the questions you missed to solidify your knowledge.'; }
+  else if (pct >= 50) { msg = 'Getting there!'; sub = 'Revisit the lesson notes and try again to improve your score.'; }
+  else { msg = 'Keep revising!'; sub = 'Go back to the notes and slides before retrying this quiz.'; }
+  document.getElementById('quiz-result-msg').textContent = msg;
+  document.getElementById('quiz-result-sub').textContent = sub;
+  var fill = document.getElementById('quiz-prog-fill');
+  if (fill) fill.style.width = '100%';
+  saveProgress('quiz', pct);
+}
+
+function restartQuiz() {
+  document.getElementById('quiz-body').style.display = 'block';
+  document.getElementById('quiz-result').className = 'quiz-result';
+  qIndex = 0; qScore = 0; qAnswered = false;
+  renderQuestion();
+}
+
+// ════════════════════════════════════════════════
+// KEY TERMS DATA
+// ════════════════════════════════════════════════
+var KEY_TERMS = [
+  { term: "CPU", def: "Central Processing Unit — the main component of a computer that processes all instructions by performing arithmetic, logical and control operations." },
+  { term: "ALU", def: "Arithmetic Logic Unit — the part of the CPU that performs all arithmetic calculations (e.g. addition) and logical operations (e.g. AND, OR, NOT comparisons)." },
+  { term: "Control Unit (CU)", def: "The component that fetches and decodes instructions, controls the timing and sequence of all CPU operations, and sends control signals to other components." },
+  { term: "Program Counter (PC)", def: "A register that holds the memory address of the NEXT instruction to be fetched. It increments by 1 during the fetch stage." },
+  { term: "Memory Address Register (MAR)", def: "A register that holds the memory ADDRESS to be accessed (read from or written to). Remember: MAR = Address." },
+  { term: "Memory Data Register (MDR)", def: "A register that holds the DATA being transferred to or from memory. Remember: MDR = Data." },
+  { term: "Current Instruction Register (CIR)", def: "A register that holds the instruction currently being decoded and executed by the Control Unit." },
+  { term: "Accumulator (ACC)", def: "A register that stores the results of calculations performed by the ALU. For example, 5 + 3 = 8 would be stored here." },
+  { term: "Fetch-Decode-Execute Cycle", def: "The continuous three-stage process the CPU uses to process instructions: Fetch (get instruction from RAM), Decode (interpret it), Execute (carry it out)." },
+  { term: "Cache", def: "A small, extremely fast type of memory located close to or inside the CPU. It stores frequently used instructions and data to reduce the time spent accessing slower RAM." },
+  { term: "Von Neumann Architecture", def: "The standard model for modern computers in which both program instructions and data are stored in the same memory (RAM)." },
+  { term: "Address Bus", def: "A bus that carries memory addresses from the CPU to RAM. It is one-directional (CPU to memory only)." },
+  { term: "Data Bus", def: "A bus that carries actual data between the CPU and memory. It is bidirectional (can travel in both directions)." },
+  { term: "Control Bus", def: "A bus that carries control signals between CPU components to coordinate all operations. It is bidirectional." },
+  { term: "Register", def: "An extremely small, fast storage location inside the CPU used to temporarily hold data, addresses or instructions that are currently being processed." }
+];
+
+// ════════════════════════════════════════════════
+// KEY TERMS LOGIC
+// ════════════════════════════════════════════════
+var cardIndex = 0;
+var cardFlipped = false;
+var knownCount = 0;
+var learningCount = 0;
+var seenCards = [];
+
+function initKeyTerms() {
+  // Build list view
+  var tbody = document.getElementById('kt-list-body');
+  tbody.innerHTML = '';
+  for (var i = 0; i < KEY_TERMS.length; i++) {
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + KEY_TERMS[i].term + '</td><td>' + KEY_TERMS[i].def + '</td>';
+    tbody.appendChild(tr);
+  }
+  showCard(0);
+}
+
+function showCard(idx) {
+  cardIndex = idx;
+  cardFlipped = false;
+  document.getElementById('fc-done').classList.remove('show');
+  document.getElementById('fc-progress').textContent = 'Card ' + (idx + 1) + ' of ' + KEY_TERMS.length;
+  var card = document.getElementById('flashcard');
+  card.classList.remove('flipped');
+  document.getElementById('fc-front').textContent = KEY_TERMS[idx].term;
+  document.getElementById('fc-back').textContent = KEY_TERMS[idx].def;
+  document.getElementById('fc-hint').textContent = 'Click to reveal definition';
+  card.style.display = 'flex';
+  document.querySelector('.flashcard-actions').style.display = 'flex';
+}
+
+function flipCard() {
+  cardFlipped = !cardFlipped;
+  document.getElementById('flashcard').classList.toggle('flipped');
+  document.getElementById('fc-hint').textContent = cardFlipped ? 'Click to see term' : 'Click to reveal definition';
+}
+
+function markKnown() {
+  knownCount++;
+  seenCards.push({ term: KEY_TERMS[cardIndex].term, known: true });
+  nextCard();
+}
+
+function markLearning() {
+  learningCount++;
+  seenCards.push({ term: KEY_TERMS[cardIndex].term, known: false });
+  nextCard();
+}
+
+function skipCard() {
+  seenCards.push({ term: KEY_TERMS[cardIndex].term, known: null });
+  nextCard();
+}
+
+function nextCard() {
+  if (cardIndex < KEY_TERMS.length - 1) {
+    showCard(cardIndex + 1);
+  } else {
+    // End of deck
+    document.getElementById('flashcard').style.display = 'none';
+    document.querySelector('.flashcard-actions').style.display = 'none';
+    document.getElementById('fc-progress').textContent = 'Session complete!';
+    var done = document.getElementById('fc-done');
+    done.classList.add('show');
+    document.getElementById('fc-done-msg').textContent =
+      'You knew ' + knownCount + ' out of ' + KEY_TERMS.length + ' terms. ' +
+      (learningCount > 0 ? learningCount + ' still to learn — try again to master them all.' : 'Excellent — you know them all!');
+  }
+}
+
+function resetFlashcards() {
+  knownCount = 0; learningCount = 0; seenCards = [];
+  document.querySelector('.flashcard-actions').style.display = 'flex';
+  showCard(0);
+}
+
+// ════════════════════════════════════════════════
+// MINI TEST LOGIC
+// ════════════════════════════════════════════════
+// MCQ correct answers: index of correct option (0-based)
+var TEST_MCQ_CORRECT = [1, 2, 2, 2, 1]; // Q1=Program Counter, Q2=Address bus, Q3=CIR, Q4=Fetch, Q5=same memory
+var TEST_MCQ_LABELS = [
+  ['Process Controller','Program Counter','Primary Cache','Processor Core'],
+  ['Data bus','Control bus','Address bus','System bus'],
+  ['The address of the next instruction to be fetched','The result of the most recent ALU calculation','The instruction currently being decoded','The data most recently transferred from memory'],
+  ['Decode','Execute','Fetch','Between cycles'],
+  ['Data and instructions are stored in separate memories','Data and instructions are stored in the same memory','Instructions are stored in cache, data in RAM','The CPU can only process one instruction per second']
+];
+var TEST_MCQ_EXPLAIN = [
+  'The PC (Program Counter) holds the memory address of the next instruction to be fetched.',
+  'The Address bus carries memory addresses from the CPU to RAM. It is one-directional.',
+  'The CIR (Current Instruction Register) holds the instruction currently being decoded by the Control Unit.',
+  'The PC increments during the FETCH stage — immediately after the instruction address is sent to the MAR.',
+  'Von Neumann architecture stores both data and instructions in the same memory (RAM).'
+];
+
+var testTimer = null;
+var testSecondsLeft = 600; // 10 minutes
+var testStarted = false;
+var testSubmitted = false;
+
+function startTest() {
+  testStarted = true;
+  testSecondsLeft = 600;
+  document.getElementById('test-start-screen').style.display = 'none';
+  document.getElementById('test-active-area').style.display = 'block';
+  testTimer = setInterval(function() {
+    testSecondsLeft--;
+    var mins = Math.floor(testSecondsLeft / 60);
+    var secs = testSecondsLeft % 60;
+    var display = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+    var el = document.getElementById('test-timer-display');
+    el.textContent = display;
+    if (testSecondsLeft <= 60) el.classList.add('urgent');
+    if (testSecondsLeft <= 0) { clearInterval(testTimer); submitTest(); }
+  }, 1000);
+}
+
+function submitTest() {
+  if (testSubmitted) return;
+  testSubmitted = true;
+  clearInterval(testTimer);
+
+  // Disable all inputs
+  var radios = document.querySelectorAll('#test-active-area input[type=radio]');
+  for (var i = 0; i < radios.length; i++) radios[i].disabled = true;
+  for (var i = 1; i <= 5; i++) {
+    var ta = document.getElementById('tsa-ans-' + i);
+    if (ta) ta.disabled = true;
+  }
+
+  // Score MCQs
+  var mcqScore = 0;
+  var mcqResults = [];
+  for (var q = 1; q <= 5; q++) {
+    var selected = document.querySelector('input[name="tmcq' + q + '"]:checked');
+    var chosen = selected ? parseInt(selected.value) : -1;
+    var correct = TEST_MCQ_CORRECT[q - 1];
+    var isRight = (chosen === correct);
+    if (isRight) mcqScore++;
+    mcqResults.push({ chosen: chosen, correct: correct, right: isRight });
+  }
+
+  // SA — self-mark (show mark schemes)
+  for (var i = 1; i <= 5; i++) {
+    document.getElementById('tsa-ms-' + i).classList.add('show');
+  }
+
+  // Show results
+  document.getElementById('test-active-area').style.display = 'none';
+  document.getElementById('test-results-area').style.display = 'block';
+
+  // MCQ score shown; SA is self-mark (we assume 0 for auto-score display but show "MCQ only auto-marked")
+  var totalAutoScore = mcqScore;
+  document.getElementById('test-score-display').textContent = totalAutoScore + ' (MCQ)';
+  document.getElementById('test-score-display').style.fontSize = '40px';
+
+  // Grade based on MCQ only (5 possible)
+  var pct = Math.round(totalAutoScore / 5 * 100);
+  var grade, gradeClass, gradeMsg;
+  if (pct === 100)       { grade = '5/5 — Perfect!'; gradeClass = 'grade-a'; gradeMsg = 'Flawless on the multiple choice. Check your short answers against the mark schemes above.'; }
+  else if (pct >= 80)    { grade = 'Strong performance'; gradeClass = 'grade-a'; gradeMsg = 'Very good. Review any MCQs you got wrong and compare your short answers carefully.'; }
+  else if (pct >= 60)    { grade = 'Developing'; gradeClass = 'grade-b'; gradeMsg = 'Getting there. Re-read the lesson notes and focus on the areas you missed.'; }
+  else if (pct >= 40)    { grade = 'Needs revision'; gradeClass = 'grade-c'; gradeMsg = 'Go back to the Notes and Slides tabs before retrying this test.'; }
+  else                   { grade = 'Revise and retry'; gradeClass = 'grade-d'; gradeMsg = 'More revision needed. Work through Notes, Slides and Quiz before trying again.'; }
+
+  document.getElementById('test-grade-badge').textContent = grade;
+  document.getElementById('test-grade-badge').className = 'test-grade-badge ' + gradeClass;
+  document.getElementById('test-result-grade').textContent = totalAutoScore + '/5 MCQ auto-marked · Short answers: self-mark against mark schemes below';
+  document.getElementById('test-result-msg').textContent = gradeMsg;
+
+  // Build MCQ review
+  var reviewHtml = '';
+  for (var i = 0; i < mcqResults.length; i++) {
+    var r = mcqResults[i];
+    var icon = r.right ? '✅' : '❌';
+    var chosenText = r.chosen >= 0 ? TEST_MCQ_LABELS[i][r.chosen] : 'No answer given';
+    var correctText = TEST_MCQ_LABELS[i][r.correct];
+    reviewHtml += '<div class="test-mcq-q ' + (r.right ? 'correct' : 'wrong') + '" style="margin-bottom:10px;">';
+    reviewHtml += '<div class="test-mcq-header"><span class="test-q-num">Q' + (i+1) + '</span>';
+    reviewHtml += '<span style="font-size:14px;font-weight:600;color:#0f172a;">' + icon + ' ' + (r.right ? 'Correct' : 'Incorrect') + '</span></div>';
+    if (!r.right) {
+      reviewHtml += '<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your answer: ' + chosenText + '</div>';
+      reviewHtml += '<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct answer: ' + correctText + '</div>';
+    } else {
+      reviewHtml += '<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Your answer: ' + chosenText + '</div>';
+    }
+    reviewHtml += '<div style="font-size:13px;color:#64748b;">' + TEST_MCQ_EXPLAIN[i] + '</div>';
+    reviewHtml += '</div>';
+  }
+  document.getElementById('test-mcq-review').innerHTML = reviewHtml;
+
+  // Build SA review (show their answers alongside mark schemes)
+  var saTitles = [
+    'State the purpose of the MAR.',
+    'What does the Accumulator store?',
+    'Name the three FDE cycle stages.',
+    'State two ALU operations.',
+    'Explain one reason cache improves performance.'
+  ];
+  var saHtml = '';
+  for (var i = 1; i <= 5; i++) {
+    var ans = document.getElementById('tsa-ans-' + i) ? document.getElementById('tsa-ans-' + i).value.trim() : '';
+    var ms = document.getElementById('tsa-ms-' + i) ? document.getElementById('tsa-ms-' + i).innerText : '';
+    saHtml += '<div class="test-sa-q" style="margin-bottom:10px;">';
+    saHtml += '<div class="test-mcq-header"><span class="test-q-num">Q' + (i+5) + '</span>';
+    saHtml += '<span style="font-size:14px;font-weight:600;color:#0f172a;">' + saTitles[i-1] + '</span></div>';
+    saHtml += '<div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong style="color:#0f172a;">Your answer:</strong> ' + (ans || '<em>No answer given</em>') + '</div>';
+    saHtml += '<div class="test-sa-ms show">' + ms + '</div>';
+    saHtml += '</div>';
+  }
+  document.getElementById('test-sa-review').innerHTML = saHtml;
+
+  // Save progress
+  saveProgress('quiz', pct);
+}
+
+function retryTest() {
+  testSubmitted = false;
+  testStarted = false;
+  clearInterval(testTimer);
+  // Reset radios
+  var radios = document.querySelectorAll('#test-active-area input[type=radio]');
+  for (var i = 0; i < radios.length; i++) { radios[i].checked = false; radios[i].disabled = false; }
+  // Reset textareas
+  for (var i = 1; i <= 5; i++) {
+    var ta = document.getElementById('tsa-ans-' + i);
+    if (ta) { ta.value = ''; ta.disabled = false; }
+    var ms = document.getElementById('tsa-ms-' + i);
+    if (ms) ms.classList.remove('show');
+  }
+  // Reset timer display
+  document.getElementById('test-timer-display').textContent = '10:00';
+  document.getElementById('test-timer-display').classList.remove('urgent');
+  // Show start screen
+  document.getElementById('test-results-area').style.display = 'none';
+  document.getElementById('test-active-area').style.display = 'none';
+  document.getElementById('test-start-screen').style.display = 'block';
+}
+
+function setKtMode(mode) {
+  document.getElementById('kt-btn-flash').classList.toggle('active', mode === 'flash');
+  document.getElementById('kt-btn-list').classList.toggle('active', mode === 'list');
+  document.getElementById('kt-flash-area').style.display = mode === 'flash' ? 'block' : 'none';
+  document.getElementById('kt-list-area').className = 'kt-list-area' + (mode === 'list' ? ' active' : '');
+}
+</script>
+</body>
+</html>

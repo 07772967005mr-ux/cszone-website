@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.3.1c Internet & DNS | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.fb2{background:#0f172a;border:1px solid #3730a3;border-radius:8px;padding:16px 20px;margin:12px 0;font-family:monospace;font-size:13px;color:#a5b4fc;line-height:1.8}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 1</div>
+    <div class="sst" style="color:#818cf8">1.3 Networks</div>
+    <a href="/ocr-j277/1-3-1a/" class="sl fb">1.3.1a LAN &amp; WAN</a>
+    <a href="/ocr-j277/1-3-1b/" class="sl">1.3.1b Network Types</a>
+    <a href="/ocr-j277/1-3-1c/" class="sl active">1.3.1c Internet &amp; DNS</a>
+    <a href="/ocr-j277/1-3-1d/" class="sl">1.3.1d Topologies</a>
+    <a href="/ocr-j277/1-3-2a/" class="sl">1.3.2a Wired &amp; Wireless</a>
+    <a href="/ocr-j277/1-3-2b/" class="sl">1.3.2b Protocols</a>
+    <div class="sst" style="color:#818cf8">1.4–1.6</div>
+    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
+    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
+    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+    <div class="sst">Component 2</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.3 Networks</div>
+  <div class="lesson-title">1.3.1c — The Internet &amp; DNS</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>The Internet vs The World Wide Web</h2>
+    <p>These two terms are NOT the same:</p>
+    <div class="ic b">
+      <h4>The Internet</h4>
+      <p>A global network of interconnected networks (a WAN). The physical infrastructure — cables, routers, servers — that connects billions of devices worldwide. The internet existed before the World Wide Web.</p>
+    </div>
+    <div class="ic g">
+      <h4>The World Wide Web (WWW)</h4>
+      <p>A service that runs on top of the internet. It is a collection of web pages and resources accessed via URLs using the HTTP/HTTPS protocol. Invented by Tim Berners-Lee in 1989.</p>
+    </div>
+    <div class="kp"><strong>The internet = the physical network infrastructure. The WWW = a service that runs on it (like email, FTP, and VoIP are also services that run on the internet).</strong></div>
+  </div>
+
+  <div class="ns">
+    <h2>IP Addresses</h2>
+    <p>Every device on the internet has a unique IP (Internet Protocol) address. This is used to identify and locate it for routing data.</p>
+    <div class="ic b">
+      <h4>IPv4 vs IPv6</h4>
+      <ul>
+        <li><strong>IPv4</strong>: 32-bit address written as 4 groups of decimal numbers (e.g. 192.168.1.1). About 4.3 billion possible addresses.</li>
+        <li><strong>IPv6</strong>: 128-bit address written in hexadecimal (e.g. 2001:0db8:85a3:0000:0000:8a2e:0370:7334). Vastly more addresses — needed because IPv4 addresses are running out.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ns">
+    <h2>DNS — Domain Name System</h2>
+    <p>Humans remember domain names (like www.google.com) but computers communicate using IP addresses. DNS is a system that translates domain names into IP addresses.</p>
+    <div class="ic g">
+      <h4>How DNS works (step by step):</h4>
+      <div class="fb2">
+        1. User types www.google.com in browser<br>
+        2. Device checks its local DNS cache first<br>
+        3. If not found, device sends query to a DNS server<br>
+        4. DNS server looks up the domain and returns the IP address<br>
+        5. Browser uses the IP address to connect to Google's server<br>
+        6. Web page loads
+      </div>
+    </div>
+    <div class="kp"><strong>DNS = the internet's "phone book" — it converts human-readable domain names into machine-readable IP addresses.</strong></div>
+  </div>
+
+  <div class="ns">
+    <h2>Cloud Computing</h2>
+    <p>Cloud computing means using remote servers (hosted on the internet) to store, manage, and process data, instead of local hardware.</p>
+    <div class="ic b">
+      <h4>Examples of cloud services:</h4>
+      <ul>
+        <li>Storage: Google Drive, iCloud, OneDrive, Dropbox</li>
+        <li>Software: Google Docs, Microsoft 365 (online)</li>
+        <li>Servers: Amazon Web Services (AWS), Microsoft Azure</li>
+        <li>Streaming: Netflix, Spotify (data processed on remote servers)</li>
+      </ul>
+    </div>
+    <div class="ic g">
+      <h4>Advantages of cloud:</h4>
+      <ul>
+        <li>Access files from any device with internet access</li>
+        <li>No need to buy and maintain physical storage/servers</li>
+        <li>Files automatically backed up by provider</li>
+        <li>Scalable — pay for more storage/computing as needed</li>
+        <li>Always up-to-date software versions</li>
+      </ul>
+    </div>
+    <div class="ic r">
+      <h4>Disadvantages of cloud:</h4>
+      <ul>
+        <li>Requires internet connection — cannot access offline</li>
+        <li>Data stored on third-party servers — privacy and security concerns</li>
+        <li>Recurring subscription costs</li>
+        <li>If provider goes offline, you lose access to your data</li>
+      </ul>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Saying the internet and WWW are the same thing — they are not</li>
+        <li>Saying DNS converts IP addresses to domain names — it does the opposite (domain name → IP address)</li>
+        <li>Forgetting that the cloud still uses physical servers — the term "cloud" is a metaphor</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet — Internet &amp; DNS</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/1-3-1b/" class="nb">← 1.3.1b Network Types</a>
+  <a href="/ocr-j277/1-3-1d/" class="nb n">1.3.1d Topologies →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-3-1c';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+
+var QUIZ=[
+  {q:"What is the difference between the internet and the World Wide Web?",opts:["They are the same thing","The internet is the global network infrastructure; the WWW is a service (web pages) that runs on it","The WWW is the physical infrastructure; the internet is web pages","The internet is faster than the WWW"],ans:1,exp:"The internet is the physical global network. The WWW is a service running on it — a collection of web pages accessed via HTTP/HTTPS. Tim Berners-Lee invented the WWW in 1989."},
+  {q:"What does DNS stand for?",opts:["Domain Name Server","Data Network System","Domain Name System","Dynamic Network Service"],ans:2,exp:"DNS = Domain Name System. It translates domain names (like www.google.com) into IP addresses that computers use."},
+  {q:"What is the main purpose of DNS?",opts:["To compress web pages for faster loading","To convert domain names into IP addresses","To convert IP addresses into domain names","To secure connections with encryption"],ans:1,exp:"DNS translates human-readable domain names into numeric IP addresses, allowing browsers to connect to the correct server."},
+  {q:"What is an IP address?",opts:["A website address like www.google.com","A unique numerical address identifying a device on a network","A type of network protocol","A password for accessing the internet"],ans:1,exp:"An IP address is a unique numerical identifier for a device on a network. Routers use IP addresses to route data to the correct destination."},
+  {q:"What is the format of an IPv4 address?",opts:["128-bit hexadecimal","32-bit written as 4 groups of decimal numbers (e.g. 192.168.1.1)","64-bit binary","4 letters separated by dots"],ans:1,exp:"IPv4 uses 32 bits, written as 4 decimal groups separated by dots, e.g. 192.168.1.1. Each group ranges from 0 to 255."},
+  {q:"Why was IPv6 developed?",opts:["To make addresses easier to type","Because IPv4 addresses were running out — IPv6 provides vastly more addresses","To speed up the internet","To replace DNS"],ans:1,exp:"IPv4 only has about 4.3 billion possible addresses. With billions of devices connected, IPv6 (128-bit addresses) was developed to provide a virtually unlimited supply of addresses."},
+  {q:"Which step happens FIRST when you type a URL in your browser?",opts:["Your device sends a request directly to the web server","Your device checks its DNS cache or sends a DNS query to resolve the domain name to an IP address","The web page is encrypted","Your device connects to a VLAN"],ans:1,exp:"Before connecting to any server, the domain name must be resolved to an IP address. The device checks its DNS cache first, then queries a DNS server if needed."},
+  {q:"Cloud computing means:",opts:["Computing using wireless connections only","Using remote servers on the internet for storage, processing, and software","Computing using low-power devices","Any type of online activity"],ans:1,exp:"Cloud computing uses remote servers (hosted in data centres, accessed over the internet) for storage, processing, and software — rather than local hardware."},
+  {q:"Which of these is an example of a cloud storage service?",opts:["Microsoft Word installed on a laptop","A USB hard drive","Google Drive","A switch"],ans:2,exp:"Google Drive is cloud storage — files are stored on Google's remote servers and accessed over the internet."},
+  {q:"What is a key advantage of cloud computing?",opts:["No internet connection required","Files can only be accessed from one device","Files can be accessed from any device with internet access","Data is always stored locally"],ans:2,exp:"Cloud files are accessible from any device with an internet connection — unlike local storage which can only be accessed on that specific device."},
+  {q:"What is a key disadvantage of cloud computing?",opts:["Files cannot be backed up","Requires internet connection — cannot access files offline","Cloud services are always free","Data is stored on your own device"],ans:1,exp:"Cloud services require internet access. Without a connection, you cannot access your files, software, or data."},
+  {q:"Who invented the World Wide Web?",opts:["Bill Gates","Steve Jobs","Tim Berners-Lee","Vint Cerf"],ans:2,exp:"Tim Berners-Lee invented the World Wide Web in 1989 at CERN. He also created the first web browser and web server."},
+  {q:"What protocol is used to access web pages on the World Wide Web?",opts:["FTP","SMTP","HTTP/HTTPS","POP3"],ans:2,exp:"HTTP (HyperText Transfer Protocol) and HTTPS (secure version) are the protocols used to transfer web pages on the World Wide Web."},
+  {q:"A company stores all its data on cloud servers. What is ONE security risk of this approach?",opts:["The company cannot access its data","The data could be accessed by the cloud provider or intercepted if the connection is not secure","Cloud data is always unencrypted","Cloud servers cannot be backed up"],ans:1,exp:"Storing data with a third-party cloud provider means the provider has physical access to the servers. If the connection is not secure or if the provider is breached, data could be compromised."},
+  {q:"What happens if the DNS servers go offline?",opts:["The internet shuts down completely","Web pages can still be accessed using IP addresses directly, but domain names cannot be resolved","All data on the internet is deleted","Router connections are lost"],ans:1,exp:"DNS failure means domain names can't be resolved, so typing www.google.com won't work. However, if you know the IP address, you could still reach the server. DNS is critical for the usability of the internet."}
+];
+
+var WORKSHEET=[
+  {q:"Explain the difference between the internet and the World Wide Web.",marks:3,ms:"The internet is the global physical network infrastructure — the hardware (cables, routers, servers) that connects billions of devices worldwide (1). The World Wide Web is a service that runs on top of the internet — it is a collection of web pages and resources accessed via URLs using the HTTP/HTTPS protocol (1). Other services also run on the internet, such as email and FTP, which are separate from the WWW (1)."},
+  {q:"Describe how DNS works when a user types 'www.bbc.co.uk' into their browser.",marks:4,ms:"The browser checks the local DNS cache to see if it already knows the IP address for www.bbc.co.uk (1). If not cached, the device sends a DNS query to a DNS server (1). The DNS server looks up the domain name and returns the corresponding IP address (1). The browser then uses this IP address to connect directly to the BBC's web server and request the web page (1)."},
+  {q:"Explain why IPv6 was developed to replace IPv4.",marks:2,ms:"IPv4 uses 32-bit addresses, providing approximately 4.3 billion unique addresses (1). With billions of internet-connected devices (computers, smartphones, IoT devices), IPv4 addresses have been exhausted. IPv6 uses 128-bit addresses, providing vastly more unique addresses for the growing number of devices (1)."},
+  {q:"State TWO advantages and TWO disadvantages of cloud computing.",marks:4,ms:"Advantages (any two): access files from any device with internet connection (1); files backed up automatically by the provider (1); scalable — pay for storage/computing as needed (1); no need to maintain physical servers (1). Disadvantages (any two): requires internet connection (1); data stored on third-party servers — privacy/security concerns (1); recurring subscription costs (1); if provider goes offline, you lose access (1)."},
+  {q:"A hospital is considering moving its patient records to a cloud service. Discuss whether this is a good idea.",marks:4,ms:"Benefits: records accessible from any hospital terminal (1); automatic backups reduce risk of data loss (1). Risks: patient data is highly sensitive — storing it on third-party servers creates privacy concerns (1); if internet or cloud service goes offline, doctors may be unable to access critical patient records (1). Overall: would need strong security, encryption, and reliability guarantees from the provider before it would be appropriate for medical records."},
+  {q:"What is an IP address and why does every device on the internet need a unique one?",marks:2,ms:"An IP address is a unique numerical identifier for a device on a network (1). Every device needs a unique IP so that data packets can be routed to and from the correct device — if two devices had the same IP address, it would be impossible to know which one a data packet is intended for (1)."},
+  {q:"Explain why the World Wide Web is described as 'running on top of' the internet rather than being the same as it.",marks:2,ms:"The internet is the underlying physical infrastructure of cables, routers, and protocols that allows any data to be transmitted globally (1). The WWW is just one of many services that use this infrastructure — it specifically refers to web pages accessed via HTTP/HTTPS. Other services like email (SMTP), file transfer (FTP), and video calls also use the internet but are not part of the WWW (1)."},
+  {q:"Describe ONE advantage and ONE disadvantage of using cloud storage instead of local storage for a student's coursework.",marks:2,ms:"Advantage: the student can access their coursework from any device (school, home, phone) without carrying a USB drive, and it is automatically backed up (1). Disadvantage: if the student has no internet connection (e.g. in an area with no Wi-Fi), they cannot access their work (1)."}
+];
+
+var KEY_TERMS=[
+  {w:"Internet",d:"A global network of interconnected networks (a WAN). The physical infrastructure connecting billions of devices worldwide."},
+  {w:"World Wide Web (WWW)",d:"A service running on the internet — a collection of web pages accessed via URLs using HTTP/HTTPS. Invented by Tim Berners-Lee, 1989."},
+  {w:"IP address",d:"Internet Protocol address — a unique numerical label identifying a device on a network. Used by routers to direct data packets."},
+  {w:"IPv4",d:"32-bit IP addressing (e.g. 192.168.1.1) — approximately 4.3 billion possible addresses. Running out due to device growth."},
+  {w:"IPv6",d:"128-bit IP addressing written in hex (e.g. 2001:0db8::1) — vastly more addresses to accommodate the growth of connected devices."},
+  {w:"DNS",d:"Domain Name System — translates human-readable domain names (e.g. www.google.com) into IP addresses so computers can connect."},
+  {w:"Domain name",d:"A human-readable address for a website (e.g. cszone.co.uk). DNS resolves this to an IP address."},
+  {w:"DNS cache",d:"A local store of recently resolved domain name–IP address pairs. Checked first before a DNS server is queried, speeding up browsing."},
+  {w:"URL",d:"Uniform Resource Locator — the full address of a resource on the WWW, e.g. https://www.cszone.co.uk/lesson."},
+  {w:"HTTP/HTTPS",d:"HyperText Transfer Protocol (Secure) — the protocol for transferring web pages. HTTPS uses encryption (TLS/SSL)."},
+  {w:"Cloud computing",d:"Using remote servers on the internet for storage, processing, and software instead of local hardware."},
+  {w:"Tim Berners-Lee",d:"British computer scientist who invented the World Wide Web in 1989. Also created the first web browser and web server."},
+  {w:"Hosting",d:"Storing a website or service on a server connected to the internet so it can be accessed by users worldwide."},
+  {w:"Data centre",d:"A large facility containing thousands of servers that host cloud services, websites, and other internet services."},
+  {w:"Internet ≠ WWW",d:"Key distinction: the internet is the physical global network; the WWW is just one service that runs on it. Other services (email, FTP, VoIP) also use the internet."}
+];
+
+var TEST_MCQ=[
+  {q:"What is the purpose of DNS?",opts:["To encrypt web traffic","To translate domain names into IP addresses","To connect LANs to WANs","To manage cloud storage"],ans:1,exp:"DNS converts domain names (like www.google.com) to IP addresses so browsers can connect to the right server."},
+  {q:"Which statement correctly distinguishes the internet from the World Wide Web?",opts:["They are exactly the same thing","The internet is the physical network; the WWW is a service of web pages running on it","The WWW is the physical network; the internet is web pages","The internet is only used for email"],ans:1,exp:"The internet is the physical global infrastructure. The WWW is one service that runs on it, consisting of web pages accessed via HTTP/HTTPS."},
+  {q:"Why was IPv6 needed?",opts:["To make IP addresses shorter","Because IPv4 was too slow","Because IPv4's 4.3 billion addresses were running out","To replace DNS"],ans:2,exp:"IPv4 only allows ~4.3 billion unique addresses. With billions of internet-connected devices, these ran out. IPv6 provides 128-bit addresses — enough for virtually unlimited devices."},
+  {q:"Which is a disadvantage of cloud computing?",opts:["Automatic backups","Access from any device","Requires internet connection to access files","Scalable storage"],ans:2,exp:"Cloud files cannot be accessed without an internet connection — this is a key limitation compared to local storage."},
+  {q:"What is a key benefit of cloud storage for a student?",opts:["Files can only be accessed at school","No internet needed","Files can be accessed from any device with internet","Files are automatically deleted after use"],ans:2,exp:"Cloud storage allows access from any internet-connected device — students can work at school, home, or on a mobile."}
+];
+
+var TEST_SA=[
+  {q:"Explain what DNS is and why it is needed.",marks:3,ms:"DNS stands for Domain Name System (1). Computers communicate using IP addresses, but humans find it easier to remember domain names like www.google.com (1). DNS translates these domain names into the corresponding IP addresses so that browsers can connect to the correct server (1)."},
+  {q:"State the difference between the internet and the World Wide Web.",marks:2,ms:"The internet is the global physical network infrastructure (cables, routers) that connects devices worldwide (1). The WWW is a service that runs on the internet — a collection of web pages accessed via HTTP/HTTPS (1)."},
+  {q:"Give ONE advantage and ONE disadvantage of cloud storage.",marks:2,ms:"Advantage: files can be accessed from any device with internet access / automatic backups protect against data loss (1). Disadvantage: requires internet access to use / data stored on third-party servers raises privacy concerns (1)."},
+  {q:"Why do companies use IPv6 rather than IPv4 for new devices?",marks:2,ms:"IPv4 has only about 4.3 billion possible addresses, which have been exhausted due to the large number of internet-connected devices (1). IPv6 uses 128-bit addresses, providing a vastly larger number of unique addresses to accommodate continued growth (1)."},
+  {q:"Describe ONE security concern with cloud computing.",marks:1,ms:"Data is stored on third-party servers, so the cloud provider has physical access to it. If the provider is hacked or has a data breach, user data could be accessed by unauthorised parties."}
+];
+
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:90px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

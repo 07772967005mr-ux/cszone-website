@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.2.3 Units of Storage | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}
+.shell{display:flex;width:100%;min-height:100vh}
+.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}
+.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}
+.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}
+.sidebar-logo span{color:#6366f1}
+.sidebar-section{padding:8px 0}
+.sidebar-section-title{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}
+.sidebar-link{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}
+.sidebar-link:hover{color:#e2e8f0;background:#ffffff08}
+.sidebar-link.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}
+.sidebar-link.free-badge::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}
+.main{margin-left:260px;flex:1;display:flex;flex-direction:column}
+.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}
+.breadcrumb{font-size:12px;color:#64748b;margin-bottom:8px}.breadcrumb a{color:#6366f1;text-decoration:none}
+.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}
+.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}
+.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}
+.tab-btn{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s}
+.tab-btn:hover{color:#e2e8f0}.tab-btn.active{color:#818cf8;border-bottom-color:#6366f1}
+.tab-content{padding:32px 40px;max-width:900px}
+.notes-section{margin-bottom:32px}
+.notes-section h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}
+.notes-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}
+.notes-section p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}
+.notes-section ul{padding-left:20px;margin-bottom:10px}
+.notes-section ul li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}
+.info-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}
+.info-card.blue{border-left:3px solid #3b82f6}.info-card.green{border-left:3px solid #10b981}
+.info-card.amber{border-left:3px solid #f59e0b}.info-card.purple{border-left:3px solid #8b5cf6}
+.info-card h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}
+.info-card p,.info-card li{font-size:13px;color:#94a3b8;line-height:1.6}
+.info-card ul{padding-left:16px}
+.compare-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.compare-table th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}
+.compare-table td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}
+.compare-table tr:nth-child(even) td{background:#1a1d2e}
+.key-point{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}
+.key-point strong{color:#c7d2fe}
+.formula-box{background:#0f172a;border:1px solid #3730a3;border-radius:8px;padding:16px 20px;margin:12px 0;font-family:monospace;font-size:14px;color:#a5b4fc}
+.quiz-container{max-width:700px}
+.quiz-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
+.quiz-q p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}
+.quiz-opt{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;transition:.15s;font-size:13px;color:#94a3b8}
+.quiz-opt:hover{background:#252840;border-color:#4f46e5}
+.quiz-opt.correct{background:#052e16;border-color:#10b981;color:#6ee7b7}
+.quiz-opt.wrong{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}
+.quiz-opt input{display:none}
+.quiz-explain{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}
+.quiz-score{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}
+.btn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}
+.btn-outline{background:transparent;color:#6366f1;border:1px solid #6366f1}
+.ws-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
+.ws-q .q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.ws-q .q-text{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}
+.ws-q .marks{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}
+.ws-q textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}
+.ms-toggle{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}
+.mark-scheme{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.term-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}
+.term-word{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}
+.term-def{font-size:13px;color:#94a3b8;line-height:1.5}
+.test-section{margin-bottom:28px}.test-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}
+.sa-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}
+.sa-q p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}
+.sa-q .marks{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.lesson-nav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}
+.nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500;transition:.15s}
+.nav-btn:hover{color:#e2e8f0;border-color:#4f46e5}.nav-btn.next{background:#6366f108;border-color:#6366f1;color:#818cf8}
+#paywall-overlay{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}
+.paywall-box{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+.paywall-box h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
+.paywall-box p{font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6}
+.paywall-box .price{font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px}
+.paywall-box .price-sub{font-size:12px;color:#64748b;margin-bottom:24px}
+</style>
+</head>
+<body>
+<div id="paywall-overlay" style="display:none">
+  <div class="paywall-box">
+    <div style="font-size:48px;margin-bottom:16px">🔒</div>
+    <h2>Unlock Full Access</h2>
+    <p>Subscribe to access all 47 OCR J277 lessons, quizzes, worksheets and mini tests.</p>
+    <div class="price">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div>
+    <div class="price-sub">or £59/year — save 38%</div>
+    <a href="/pricing" class="btn btn-primary" style="display:inline-block;text-decoration:none;margin-bottom:12px;width:100%;padding:10px 20px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a>
+    <a href="/dashboard" style="font-size:13px;color:#64748b">Back to Dashboard</a>
+  </div>
+</div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Component 1</div>
+    <div class="sidebar-section-title" style="color:#818cf8">1.1 Systems Architecture</div>
+    <a href="/ocr-j277/1-1-1/" class="sidebar-link free-badge">1.1.1 Architecture of the CPU</a>
+    <a href="/ocr-j277/1-1-2/" class="sidebar-link">1.1.2 CPU Performance</a>
+    <a href="/ocr-j277/1-1-3/" class="sidebar-link">1.1.3 Embedded Systems</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.2 Memory &amp; Storage</div>
+    <a href="/ocr-j277/1-2-1/" class="sidebar-link free-badge">1.2.1 Primary Storage</a>
+    <a href="/ocr-j277/1-2-2/" class="sidebar-link">1.2.2 Secondary Storage</a>
+    <a href="/ocr-j277/1-2-3/" class="sidebar-link active">1.2.3 Units of Storage</a>
+    <a href="/ocr-j277/1-2-4a/" class="sidebar-link">1.2.4a Binary &amp; Denary</a>
+    <a href="/ocr-j277/1-2-4b/" class="sidebar-link">1.2.4b Hexadecimal</a>
+    <a href="/ocr-j277/1-2-4c/" class="sidebar-link">1.2.4c Binary Arithmetic</a>
+    <a href="/ocr-j277/1-2-4d/" class="sidebar-link">1.2.4d Binary Shifts</a>
+    <a href="/ocr-j277/1-2-4e/" class="sidebar-link">1.2.4e Character Encoding</a>
+    <a href="/ocr-j277/1-2-4f/" class="sidebar-link">1.2.4f Representing Images</a>
+    <a href="/ocr-j277/1-2-4g/" class="sidebar-link">1.2.4g Representing Sound</a>
+    <a href="/ocr-j277/1-2-5/" class="sidebar-link">1.2.5 Compression</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.3 Networks</div>
+    <a href="/ocr-j277/1-3-1a/" class="sidebar-link free-badge">1.3.1a LAN, WAN &amp; Performance</a>
+    <a href="/ocr-j277/1-3-1b/" class="sidebar-link">1.3.1b Network Types &amp; Hardware</a>
+    <a href="/ocr-j277/1-3-1c/" class="sidebar-link">1.3.1c Internet, DNS &amp; Cloud</a>
+    <a href="/ocr-j277/1-3-1d/" class="sidebar-link">1.3.1d Network Topologies</a>
+    <a href="/ocr-j277/1-3-2a/" class="sidebar-link">1.3.2a Wired &amp; Wireless</a>
+    <a href="/ocr-j277/1-3-2b/" class="sidebar-link">1.3.2b Protocols &amp; Layers</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.4 Network Security</div>
+    <a href="/ocr-j277/1-4-1/" class="sidebar-link free-badge">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sidebar-link">1.4.2 Preventing Vulnerabilities</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.5 Systems Software</div>
+    <a href="/ocr-j277/1-5-1/" class="sidebar-link free-badge">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sidebar-link">1.5.2 Utility Software</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.6 Impacts</div>
+    <a href="/ocr-j277/1-6-1a/" class="sidebar-link free-badge">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sidebar-link">1.6.1b Cultural &amp; Environmental</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Component 2</div>
+    <div class="sidebar-section-title" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sidebar-link free-badge">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sidebar-link">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sidebar-link">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sidebar-link">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sidebar-link">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sidebar-link">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sidebar-link">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sidebar-link">2.1.3e Insertion Sort</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sidebar-link free-badge">2.2.1a Variables &amp; Data Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sidebar-link">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sidebar-link">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sidebar-link">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sidebar-link">2.2.1e String Manipulation</a>
+    <a href="/ocr-j277/2-2-1f/" class="sidebar-link">2.2.1f Subroutines</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.3 Robust Programs</div>
+    <a href="/ocr-j277/2-3-1/" class="sidebar-link free-badge">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-3-2/" class="sidebar-link">2.3.2 Testing</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.4 Boolean Logic</div>
+    <a href="/ocr-j277/2-4-1a/" class="sidebar-link free-badge">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-4-1b/" class="sidebar-link">2.4.1b Truth Tables</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.5 Languages &amp; IDEs</div>
+    <a href="/ocr-j277/2-5-1/" class="sidebar-link free-badge">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sidebar-link">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sidebar-link">2.5.2b IDEs</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="breadcrumb"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.2 Memory &amp; Storage</div>
+  <div class="lesson-title">1.2.3 — Units of Storage</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tab-btn" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tab-btn" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tab-btn" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tab-btn" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tab-btn" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tab-btn" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tab-content" id="tab-notes">
+  <div class="notes-section">
+    <h2>Bits and Bytes</h2>
+    <p>All data in a computer is stored and processed as binary — sequences of 0s and 1s. The smallest unit of data is a <strong>bit</strong>.</p>
+    <table class="compare-table">
+      <tr><th>Unit</th><th>Abbreviation</th><th>Size</th></tr>
+      <tr><td>Bit</td><td>b</td><td>A single binary digit (0 or 1)</td></tr>
+      <tr><td>Nibble</td><td>—</td><td>4 bits</td></tr>
+      <tr><td>Byte</td><td>B</td><td>8 bits</td></tr>
+      <tr><td>Kilobyte</td><td>KB</td><td>1,024 bytes</td></tr>
+      <tr><td>Megabyte</td><td>MB</td><td>1,024 KB = 1,048,576 bytes</td></tr>
+      <tr><td>Gigabyte</td><td>GB</td><td>1,024 MB</td></tr>
+      <tr><td>Terabyte</td><td>TB</td><td>1,024 GB</td></tr>
+      <tr><td>Petabyte</td><td>PB</td><td>1,024 TB</td></tr>
+    </table>
+    <div class="key-point"><strong>Remember:</strong> Each unit is 1,024 times (2¹⁰) the one below it, not 1,000. This is because computers work in binary (base 2).</div>
+  </div>
+
+  <div class="notes-section">
+    <h2>Converting Between Units</h2>
+    <p>To convert between units, multiply or divide by 1,024:</p>
+    <div class="formula-box">
+      To go UP (smaller → larger units): DIVIDE by 1,024<br>
+      To go DOWN (larger → smaller units): MULTIPLY by 1,024<br><br>
+      Example: 5 GB = 5 × 1,024 = 5,120 MB<br>
+      Example: 2,048 KB = 2,048 ÷ 1,024 = 2 MB
+    </div>
+    <div class="info-card blue">
+      <h4>Worked Examples</h4>
+      <ul>
+        <li>How many bytes in 3 KB? → 3 × 1,024 = <strong>3,072 bytes</strong></li>
+        <li>How many KB in 4 MB? → 4 × 1,024 = <strong>4,096 KB</strong></li>
+        <li>Convert 512 MB to GB → 512 ÷ 1,024 = <strong>0.5 GB</strong></li>
+        <li>How many bits in 1 byte? → <strong>8 bits</strong></li>
+        <li>How many bits in 1 KB? → 1,024 × 8 = <strong>8,192 bits</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="notes-section">
+    <h2>Calculating File Sizes</h2>
+    <h3>Image File Size</h3>
+    <p>An image is made of pixels. Each pixel requires a certain number of bits (the colour depth) to store its colour.</p>
+    <div class="formula-box">
+      Image file size (bits) = Width (pixels) × Height (pixels) × Colour depth (bits per pixel)<br>
+      Divide by 8 to get bytes, then 1,024 for KB, etc.
+    </div>
+    <div class="info-card green">
+      <h4>Worked Example — Image</h4>
+      <p>An image is 800 × 600 pixels with a colour depth of 24 bits. Calculate the file size in MB.</p>
+      <p>Size = 800 × 600 × 24 = 11,520,000 bits<br>
+      ÷ 8 = 1,440,000 bytes<br>
+      ÷ 1,024 = 1,406.25 KB<br>
+      ÷ 1,024 = <strong>1.37 MB (uncompressed)</strong></p>
+    </div>
+
+    <h3>Sound File Size</h3>
+    <p>Digital audio is captured by taking regular samples. The file size depends on how many samples per second (sample rate), how many bits each sample uses (bit depth), and the duration.</p>
+    <div class="formula-box">
+      Sound file size (bits) = Sample rate (Hz) × Bit depth (bits) × Duration (seconds) × Channels<br>
+      (Channels: 1 = mono, 2 = stereo)
+    </div>
+    <div class="info-card green">
+      <h4>Worked Example — Sound</h4>
+      <p>A 3-minute stereo sound file, sample rate 44,100 Hz, bit depth 16 bits. Calculate size in MB.</p>
+      <p>Duration = 3 × 60 = 180 seconds<br>
+      Size = 44,100 × 16 × 180 × 2 = 254,016,000 bits<br>
+      ÷ 8 = 31,752,000 bytes<br>
+      ÷ 1,024 = 31,007.8 KB<br>
+      ÷ 1,024 = <strong>30.3 MB (uncompressed)</strong></p>
+    </div>
+
+    <h3>Text File Size</h3>
+    <div class="formula-box">
+      Text file size (bits) = Number of characters × Bits per character<br>
+      ASCII = 7 or 8 bits per character; Unicode = 16 or 32 bits per character
+    </div>
+  </div>
+
+  <div class="notes-section">
+    <h2>Why Units Matter</h2>
+    <p>Storage manufacturers sometimes use SI units (1,000-based) to make their products seem larger: a "500 GB" hard drive may only show as ~465 GB in your OS (which uses 1,024-based units). This is a common source of confusion.</p>
+    <div class="info-card amber">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Using 1,000 instead of 1,024 for conversions in exam answers</li>
+        <li>Forgetting to multiply by the number of channels when calculating sound file size</li>
+        <li>Confusing bits (b) with bytes (B) — 1 byte = 8 bits</li>
+        <li>Forgetting colour depth is in BITS not bytes</li>
+        <li>Not converting duration to seconds before calculating sound file size</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-video" style="display:none"><div class="notes-section"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tab-content" id="tab-slides" style="display:none"><div class="notes-section"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tab-content" id="tab-worksheet" style="display:none">
+  <div class="notes-section"><h2>Worksheet — Units of Storage</h2><p style="font-size:13px;color:#64748b;margin-bottom:20px">Show all working for calculation questions.</p></div>
+  <div id="ws-container"></div>
+</div>
+<div class="tab-content" id="tab-quiz" style="display:none">
+  <div class="notes-section"><h2>15-Question Quiz</h2></div>
+  <div class="quiz-container" id="quiz-container"></div>
+  <div class="quiz-score" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="btn btn-outline" onclick="resetQuiz()">Try Again</button></div>
+</div>
+<div class="tab-content" id="tab-test" style="display:none">
+  <div class="notes-section"><h2>Mini Test</h2></div>
+  <div class="test-section"><h3>Section A — Multiple Choice</h3><div id="test-mcq-container"></div></div>
+  <div class="test-section"><h3>Section B — Short Answer</h3><div id="test-sa-container"></div></div>
+</div>
+<div class="tab-content" id="tab-terms" style="display:none">
+  <div class="notes-section"><h2>Key Terms</h2></div>
+  <div class="terms-grid" id="terms-grid"></div>
+</div>
+<div class="lesson-nav">
+  <a href="/ocr-j277/1-2-2/" class="nav-btn">← 1.2.2 Secondary Storage</a>
+  <a href="/ocr-j277/1-2-4a/" class="nav-btn next">1.2.4a Binary &amp; Denary →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-2-3';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var currentUser=null;
+
+var QUIZ=[
+  {q:"How many bits are in one byte?",opts:["4","8","16","32"],ans:1,exp:"A byte = 8 bits. This is a fundamental fact in computing."},
+  {q:"How many bytes are in 1 kilobyte (KB)?",opts:["100","1,000","1,024","2,048"],ans:2,exp:"1 KB = 1,024 bytes (2¹⁰). Computers use powers of 2."},
+  {q:"Convert 4 GB to MB.",opts:["400 MB","4,000 MB","4,096 MB","40,960 MB"],ans:2,exp:"4 GB × 1,024 = 4,096 MB."},
+  {q:"How many bits in a nibble?",opts:["2","4","8","16"],ans:1,exp:"A nibble = 4 bits (half a byte)."},
+  {q:"Convert 2,048 KB to MB.",opts:["1 MB","2 MB","4 MB","2,000 MB"],ans:1,exp:"2,048 ÷ 1,024 = 2 MB."},
+  {q:"An image is 640 × 480 pixels with a colour depth of 8 bits. What is the uncompressed file size in bytes?",opts:["307,200 bytes","2,457,600 bytes","38,400 bytes","2,764,800 bytes"],ans:0,exp:"640 × 480 × 8 = 2,457,600 bits ÷ 8 = 307,200 bytes."},
+  {q:"Which unit is larger?",opts:["1 MB","1,000 KB","1,024 KB","A and C are equal"],ans:3,exp:"1 MB = 1,024 KB, so 1,024 KB = 1 MB exactly."},
+  {q:"A sound file is recorded at 44,100 Hz, 16-bit depth, mono, for 1 second. What is its size in bytes?",opts:["44,100 bytes","88,200 bytes","705,600 bytes","176,400 bytes"],ans:1,exp:"44,100 × 16 × 1 × 1 = 705,600 bits ÷ 8 = 88,200 bytes."},
+  {q:"How many KB in 1 MB?",opts:["100 KB","1,000 KB","1,024 KB","10,000 KB"],ans:2,exp:"1 MB = 1,024 KB."},
+  {q:"Increasing the colour depth of an image from 8-bit to 24-bit will:",opts:["Reduce file size by 3","Triple the file size","Have no effect","Double the file size"],ans:1,exp:"File size is proportional to colour depth. 24/8 = 3× — the file size triples."},
+  {q:"A text file contains 2,000 characters encoded in ASCII (8 bits each). What is the file size in bytes?",opts:["2,000 bytes","16,000 bytes","250 bytes","4,000 bytes"],ans:0,exp:"2,000 × 8 = 16,000 bits ÷ 8 = 2,000 bytes."},
+  {q:"Which of the following is the largest unit of storage?",opts:["Gigabyte","Terabyte","Megabyte","Petabyte"],ans:3,exp:"PB > TB > GB > MB. Petabyte is the largest unit listed."},
+  {q:"A stereo sound file is recorded at 22,050 Hz with a bit depth of 16 for 10 seconds. What is the file size in bits?",opts:["3,528,000","7,056,000","1,764,000","705,600"],ans:1,exp:"22,050 × 16 × 10 × 2 (stereo) = 7,056,000 bits."},
+  {q:"Why does 1 KB equal 1,024 bytes rather than 1,000 bytes?",opts:["It is a historical convention only","It rounds up for convenience","Computers use binary (base 2), so units are powers of 2","It makes calculations easier"],ans:2,exp:"1,024 = 2¹⁰. Computing units are based on powers of 2 because computers process data in binary."},
+  {q:"An image has 1,920 × 1,080 pixels and a 24-bit colour depth. What is the uncompressed size in MB (to 2 d.p.)?",opts:["5.93 MB","5.49 MB","6.22 MB","47.46 MB"],ans:0,exp:"1920 × 1080 × 24 = 49,766,400 bits ÷ 8 = 6,220,800 bytes ÷ 1,024 = 6,075 KB ÷ 1,024 ≈ 5.93 MB."}
+];
+
+var WORKSHEET=[
+  {q:"State how many bits are in: (a) a nibble (b) a byte (c) 1 KB",marks:3,ms:"(a) 4 bits (1). (b) 8 bits (1). (c) 1 × 1,024 × 8 = 8,192 bits (1)."},
+  {q:"Convert 8,192 bytes to KB. Show your working.",marks:2,ms:"8,192 ÷ 1,024 = 8 KB (1). Award mark for correct method AND correct answer."},
+  {q:"A bitmap image is 1,280 × 720 pixels with a colour depth of 24 bits per pixel. Calculate the uncompressed file size in MB. Show all working.",marks:4,ms:"1,280 × 720 = 921,600 pixels (1). × 24 = 22,118,400 bits (1). ÷ 8 = 2,764,800 bytes (1). ÷ 1,024 = 2,700 KB ÷ 1,024 = 2.64 MB (1)."},
+  {q:"A mono audio recording lasts 2 minutes, has a sample rate of 44,100 Hz and a bit depth of 16. Calculate the file size in MB.",marks:4,ms:"Duration = 2 × 60 = 120 seconds (1). 44,100 × 16 × 120 × 1 = 84,672,000 bits (1). ÷ 8 = 10,584,000 bytes (1). ÷ 1,024 ÷ 1,024 = 10.09 MB (1)."},
+  {q:"A student says: 'My hard drive says it is 500 GB but when I plug it in my computer only shows 465 GB. It must be faulty.' Explain why this is not a fault.",marks:2,ms:"Hard drive manufacturers use SI units where 1 GB = 1,000,000,000 bytes (1). The operating system uses binary units where 1 GB = 1,073,741,824 bytes, so the same physical space appears smaller (1)."},
+  {q:"Explain why increasing the sample rate of an audio recording increases the file size.",marks:2,ms:"A higher sample rate means more samples are taken per second (1). Each sample requires the same number of bits (bit depth), so more samples = more total bits = larger file size (1)."},
+  {q:"How many bytes are needed to store the word 'COMPUTER' in ASCII (8 bits per character)?",marks:2,ms:"'COMPUTER' has 8 characters (1). 8 × 8 = 64 bits ÷ 8 = 8 bytes (1)."},
+  {q:"State one reason why the actual file size of an image may be smaller than the calculated uncompressed size.",marks:1,ms:"The image has been compressed (e.g. using JPEG compression) which reduces the file size from the uncompressed value."}
+];
+
+var KEY_TERMS=[
+  {w:"Bit",d:"The smallest unit of digital data — a single binary digit, either 0 or 1."},
+  {w:"Nibble",d:"4 bits — half a byte."},
+  {w:"Byte",d:"8 bits — the basic unit used to measure file and storage sizes."},
+  {w:"Kilobyte (KB)",d:"1,024 bytes."},
+  {w:"Megabyte (MB)",d:"1,024 kilobytes (KB)."},
+  {w:"Gigabyte (GB)",d:"1,024 megabytes (MB)."},
+  {w:"Terabyte (TB)",d:"1,024 gigabytes (GB)."},
+  {w:"Petabyte (PB)",d:"1,024 terabytes (TB). Used for very large datasets."},
+  {w:"Colour depth",d:"The number of bits used to represent the colour of each pixel in an image. Higher colour depth = more colours = larger file."},
+  {w:"Sample rate",d:"The number of audio samples taken per second, measured in Hz (hertz). Higher rate = better quality = larger file."},
+  {w:"Bit depth",d:"The number of bits used for each audio sample. Higher bit depth = better audio quality = larger file."},
+  {w:"Pixel",d:"A single picture element — the smallest unit of a digital image."},
+  {w:"Uncompressed size",d:"The calculated file size before any compression is applied."},
+  {w:"ASCII",d:"American Standard Code for Information Interchange — encodes each character in 7 or 8 bits."},
+  {w:"Unicode",d:"A character encoding standard that supports over 1 million characters from all world languages, using 16 or 32 bits per character."}
+];
+
+var TEST_MCQ=[
+  {q:"How many bytes are in 2 KB?",opts:["200 bytes","2,000 bytes","2,048 bytes","512 bytes"],ans:2,exp:"2 × 1,024 = 2,048 bytes."},
+  {q:"An image is 100 × 100 pixels with a 4-bit colour depth. What is the file size in bits?",opts:["10,000","40,000","80,000","400"],ans:1,exp:"100 × 100 × 4 = 40,000 bits."},
+  {q:"What is the correct order from smallest to largest?",opts:["KB, MB, GB, TB","MB, KB, GB, TB","KB, GB, MB, TB","TB, GB, MB, KB"],ans:0,exp:"KB < MB < GB < TB — each is 1,024 times the previous."},
+  {q:"Doubling the sample rate of an audio file will:",opts:["Halve the file size","Double the file size","Have no effect","Quarter the file size"],ans:1,exp:"File size is directly proportional to sample rate. Doubling the rate doubles the number of samples, doubling the file size."},
+  {q:"How many bits are needed to store 256 different colours in an image?",opts:["4 bits","6 bits","8 bits","16 bits"],ans:2,exp:"2⁸ = 256, so 8 bits are needed to represent 256 different colours."}
+];
+
+var TEST_SA=[
+  {q:"Convert 3 MB to bytes. Show your working.",marks:2,ms:"3 × 1,024 = 3,072 KB (1). × 1,024 = 3,145,728 bytes (1)."},
+  {q:"State the formula for calculating the uncompressed file size of a bitmap image.",marks:2,ms:"File size (bits) = Width × Height × Colour depth (1). Convert to bytes by dividing by 8 (1)."},
+  {q:"Explain why a stereo audio file is twice the size of an equivalent mono file.",marks:2,ms:"A stereo file contains two audio channels (left and right) (1). Each channel requires the same number of bits, so the total data is doubled compared to a single mono channel (1)."},
+  {q:"A student says that 1 KB = 1,000 bytes. State whether they are correct and explain why.",marks:2,ms:"Incorrect (1). In computing, units are based on powers of 2. 1 KB = 2¹⁰ = 1,024 bytes, not 1,000 (1)."},
+  {q:"An image has a file size of 3 MB uncompressed. After compression the file size is 500 KB. Calculate how many times smaller the compressed file is.",marks:2,ms:"3 MB = 3 × 1,024 = 3,072 KB (1). 3,072 ÷ 500 = 6.144 — approximately 6 times smaller (1)."}
+];
+
+function showTab(id,btn){document.querySelectorAll('.tab-content').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='quiz-q';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="quiz-explain" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.quiz-opt').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'correct':'wrong');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('correct');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.quiz-opt.correct,.quiz-opt.wrong').length>=QUIZ.length){var correct=document.querySelectorAll('.quiz-opt.correct').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='ws-q';d.innerHTML='<div class="q-header"><span class="q-text">'+(i+1)+'. '+q.q+'</span><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span><div class="mark-scheme">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;if(ms.style.display==='block'){ms.style.display='none';el.textContent='Show Mark Scheme';}else{ms.style.display='block';el.textContent='Hide Mark Scheme';}}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='quiz-q';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="quiz-explain" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.quiz-opt').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'correct':'wrong');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('correct');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sa-q';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span><div class="mark-scheme">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='term-card';d.innerHTML='<div class="term-word">'+t.w+'</div><div class="term-def">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id){return{data:{session:{user:u}}};}return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('paywall-overlay').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){window.location.href='/';return;}currentUser=session.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.2.2 Secondary Storage | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}
+.shell{display:flex;width:100%;min-height:100vh}
+.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}
+.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}
+.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}
+.sidebar-logo span{color:#6366f1}
+.sidebar-section{padding:8px 0}
+.sidebar-section-title{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}
+.sidebar-link{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}
+.sidebar-link:hover{color:#e2e8f0;background:#ffffff08}
+.sidebar-link.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}
+.sidebar-link.free-badge::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}
+.main{margin-left:260px;flex:1;display:flex;flex-direction:column;min-height:100vh}
+.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}
+.breadcrumb{font-size:12px;color:#64748b;margin-bottom:8px}
+.breadcrumb a{color:#6366f1;text-decoration:none}
+.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}
+.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}
+.tab-bar{display:flex;gap:0;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}
+.tab-btn{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s}
+.tab-btn:hover{color:#e2e8f0}
+.tab-btn.active{color:#818cf8;border-bottom-color:#6366f1}
+.tab-content{padding:32px 40px;flex:1;max-width:900px}
+.notes-section{margin-bottom:32px}
+.notes-section h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}
+.notes-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}
+.notes-section p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}
+.notes-section ul{padding-left:20px;margin-bottom:10px}
+.notes-section ul li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}
+.info-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}
+.info-card.blue{border-left:3px solid #3b82f6}
+.info-card.green{border-left:3px solid #10b981}
+.info-card.amber{border-left:3px solid #f59e0b}
+.info-card.red{border-left:3px solid #ef4444}
+.info-card.purple{border-left:3px solid #8b5cf6}
+.info-card h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}
+.info-card p,.info-card li{font-size:13px;color:#94a3b8;line-height:1.6}
+.info-card ul{padding-left:16px}
+.compare-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.compare-table th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}
+.compare-table td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}
+.compare-table tr:nth-child(even) td{background:#1a1d2e}
+.key-point{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}
+.key-point strong{color:#c7d2fe}
+.quiz-container{max-width:700px}
+.quiz-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
+.quiz-q p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}
+.quiz-opt{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;transition:.15s;font-size:13px;color:#94a3b8}
+.quiz-opt:hover{background:#252840;border-color:#4f46e5}
+.quiz-opt.correct{background:#052e16;border-color:#10b981;color:#6ee7b7}
+.quiz-opt.wrong{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}
+.quiz-opt input{display:none}
+.quiz-explain{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}
+.quiz-score{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}
+.btn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:.15s}
+.btn-primary{background:#6366f1;color:#fff}.btn-primary:hover{background:#4f46e5}
+.btn-outline{background:transparent;color:#6366f1;border:1px solid #6366f1}.btn-outline:hover{background:#6366f108}
+.ws-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
+.ws-q .q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.ws-q .q-text{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}
+.ws-q .marks{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}
+.ws-q textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}
+.ms-toggle{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}
+.mark-scheme{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.term-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}
+.term-word{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}
+.term-def{font-size:13px;color:#94a3b8;line-height:1.5}
+.test-section{margin-bottom:28px}
+.test-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}
+.sa-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}
+.sa-q p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}
+.sa-q .marks{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.lesson-nav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}
+.nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500;transition:.15s}
+.nav-btn:hover{color:#e2e8f0;border-color:#4f46e5}
+.nav-btn.next{background:#6366f108;border-color:#6366f1;color:#818cf8}
+#paywall-overlay{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}
+.paywall-box{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+.paywall-box h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
+.paywall-box p{font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6}
+.paywall-box .price{font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px}
+.paywall-box .price-sub{font-size:12px;color:#64748b;margin-bottom:24px}
+</style>
+</head>
+<body>
+<div id="paywall-overlay" style="display:none">
+  <div class="paywall-box">
+    <div style="font-size:48px;margin-bottom:16px">🔒</div>
+    <h2>Unlock Full Access</h2>
+    <p>Subscribe to access all 47 OCR J277 lessons, quizzes, worksheets and mini tests.</p>
+    <div class="price">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div>
+    <div class="price-sub">or £59/year — save 38%</div>
+    <a href="/pricing" class="btn btn-primary" style="display:inline-block;text-decoration:none;margin-bottom:12px;width:100%">Subscribe Now</a>
+    <a href="/dashboard" style="font-size:13px;color:#64748b">Back to Dashboard</a>
+  </div>
+</div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Component 1</div>
+    <div class="sidebar-section-title" style="color:#818cf8">1.1 Systems Architecture</div>
+    <a href="/ocr-j277/1-1-1/" class="sidebar-link free-badge">1.1.1 Architecture of the CPU</a>
+    <a href="/ocr-j277/1-1-2/" class="sidebar-link">1.1.2 CPU Performance</a>
+    <a href="/ocr-j277/1-1-3/" class="sidebar-link">1.1.3 Embedded Systems</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.2 Memory &amp; Storage</div>
+    <a href="/ocr-j277/1-2-1/" class="sidebar-link free-badge">1.2.1 Primary Storage</a>
+    <a href="/ocr-j277/1-2-2/" class="sidebar-link active">1.2.2 Secondary Storage</a>
+    <a href="/ocr-j277/1-2-3/" class="sidebar-link">1.2.3 Units of Storage</a>
+    <a href="/ocr-j277/1-2-4a/" class="sidebar-link">1.2.4a Binary &amp; Denary</a>
+    <a href="/ocr-j277/1-2-4b/" class="sidebar-link">1.2.4b Hexadecimal</a>
+    <a href="/ocr-j277/1-2-4c/" class="sidebar-link">1.2.4c Binary Arithmetic</a>
+    <a href="/ocr-j277/1-2-4d/" class="sidebar-link">1.2.4d Binary Shifts</a>
+    <a href="/ocr-j277/1-2-4e/" class="sidebar-link">1.2.4e Character Encoding</a>
+    <a href="/ocr-j277/1-2-4f/" class="sidebar-link">1.2.4f Representing Images</a>
+    <a href="/ocr-j277/1-2-4g/" class="sidebar-link">1.2.4g Representing Sound</a>
+    <a href="/ocr-j277/1-2-5/" class="sidebar-link">1.2.5 Compression</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.3 Networks</div>
+    <a href="/ocr-j277/1-3-1a/" class="sidebar-link free-badge">1.3.1a LAN, WAN &amp; Performance</a>
+    <a href="/ocr-j277/1-3-1b/" class="sidebar-link">1.3.1b Network Types &amp; Hardware</a>
+    <a href="/ocr-j277/1-3-1c/" class="sidebar-link">1.3.1c Internet, DNS &amp; Cloud</a>
+    <a href="/ocr-j277/1-3-1d/" class="sidebar-link">1.3.1d Network Topologies</a>
+    <a href="/ocr-j277/1-3-2a/" class="sidebar-link">1.3.2a Wired &amp; Wireless</a>
+    <a href="/ocr-j277/1-3-2b/" class="sidebar-link">1.3.2b Protocols &amp; Layers</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.4 Network Security</div>
+    <a href="/ocr-j277/1-4-1/" class="sidebar-link free-badge">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sidebar-link">1.4.2 Preventing Vulnerabilities</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.5 Systems Software</div>
+    <a href="/ocr-j277/1-5-1/" class="sidebar-link free-badge">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sidebar-link">1.5.2 Utility Software</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.6 Impacts</div>
+    <a href="/ocr-j277/1-6-1a/" class="sidebar-link free-badge">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sidebar-link">1.6.1b Cultural &amp; Environmental</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Component 2</div>
+    <div class="sidebar-section-title" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sidebar-link free-badge">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sidebar-link">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sidebar-link">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sidebar-link">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sidebar-link">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sidebar-link">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sidebar-link">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sidebar-link">2.1.3e Insertion Sort</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sidebar-link free-badge">2.2.1a Variables &amp; Data Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sidebar-link">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sidebar-link">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sidebar-link">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sidebar-link">2.2.1e String Manipulation</a>
+    <a href="/ocr-j277/2-2-1f/" class="sidebar-link">2.2.1f Subroutines</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.3 Robust Programs</div>
+    <a href="/ocr-j277/2-3-1/" class="sidebar-link free-badge">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-3-2/" class="sidebar-link">2.3.2 Testing</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.4 Boolean Logic</div>
+    <a href="/ocr-j277/2-4-1a/" class="sidebar-link free-badge">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-4-1b/" class="sidebar-link">2.4.1b Truth Tables</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.5 Languages &amp; IDEs</div>
+    <a href="/ocr-j277/2-5-1/" class="sidebar-link free-badge">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sidebar-link">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sidebar-link">2.5.2b IDEs</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="breadcrumb"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.2 Memory &amp; Storage</div>
+  <div class="lesson-title">1.2.2 — Secondary Storage</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tab-btn" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tab-btn" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tab-btn" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tab-btn" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tab-btn" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tab-btn" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tab-content" id="tab-notes">
+  <div class="notes-section">
+    <h2>What is Secondary Storage?</h2>
+    <p>Secondary storage is <strong>non-volatile</strong>, permanent storage used to hold data and programs when they are not being actively used by the CPU. Unlike primary storage (RAM), secondary storage retains data when the power is off.</p>
+    <p>It is needed because RAM is volatile and loses all data when the computer is switched off. Secondary storage is also far cheaper per GB than primary storage.</p>
+    <div class="key-point"><strong>Key distinction:</strong> Primary storage = fast, temporary, directly accessed by CPU. Secondary storage = slower, permanent, must be loaded into RAM before the CPU can use it.</div>
+  </div>
+
+  <div class="notes-section">
+    <h2>Types of Secondary Storage</h2>
+    <h3>1. Magnetic Storage — HDD (Hard Disk Drive)</h3>
+    <div class="info-card blue">
+      <h4>Hard Disk Drive (HDD)</h4>
+      <ul>
+        <li>Uses spinning magnetic platters to store data</li>
+        <li>Read/write head moves across the platter to access data</li>
+        <li>Very large capacity (1TB–20TB+) at a low cost per GB</li>
+        <li>Slower than SSDs due to mechanical moving parts</li>
+        <li>Vulnerable to physical shock/damage (moving parts)</li>
+        <li>Produces some noise and heat</li>
+        <li>Used for: desktop computers, servers, backup storage</li>
+      </ul>
+    </div>
+
+    <h3>2. Solid-State Storage — SSD (Solid State Drive)</h3>
+    <div class="info-card green">
+      <h4>Solid State Drive (SSD)</h4>
+      <ul>
+        <li>Uses flash memory (no moving parts)</li>
+        <li>Much faster than HDDs — shorter boot and load times</li>
+        <li>Silent, lighter, more robust (no moving parts to damage)</li>
+        <li>More expensive per GB than HDDs</li>
+        <li>Limited number of write cycles (but typically lasts many years)</li>
+        <li>Used for: laptops, ultrabooks, smartphones, tablets, cameras</li>
+      </ul>
+    </div>
+
+    <h3>3. Optical Storage</h3>
+    <div class="info-card amber">
+      <h4>Optical Discs (CD, DVD, Blu-ray)</h4>
+      <ul>
+        <li>Data stored as pits and lands on a disc, read by laser</li>
+        <li>CD: ~700MB, DVD: 4.7GB–8.5GB, Blu-ray: 25GB–50GB</li>
+        <li>Portable, cheap to produce in bulk</li>
+        <li>Easily scratched/damaged; can degrade over time</li>
+        <li>Read speeds much slower than HDDs or SSDs</li>
+        <li>Used for: distributing software/films/games, archiving data</li>
+      </ul>
+    </div>
+
+    <h3>4. Magnetic Tape</h3>
+    <div class="info-card purple">
+      <h4>Magnetic Tape</h4>
+      <ul>
+        <li>Data stored magnetically on a long tape ribbon</li>
+        <li><strong>Sequential access only</strong> — must read through tape to reach data</li>
+        <li>Very large capacity at extremely low cost per GB</li>
+        <li>Very slow for random access; fast for sequential backup/restore</li>
+        <li>Used for: large-scale data archiving, disaster recovery backups</li>
+        <li>Still widely used in enterprise/cloud data centres</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="notes-section">
+    <h2>Comparison of Storage Types</h2>
+    <table class="compare-table">
+      <tr><th>Feature</th><th>HDD</th><th>SSD</th><th>Optical</th><th>Magnetic Tape</th></tr>
+      <tr><td>Volatile?</td><td>No</td><td>No</td><td>No</td><td>No</td></tr>
+      <tr><td>Speed</td><td>Medium</td><td>Fast</td><td>Slow</td><td>Very slow (sequential)</td></tr>
+      <tr><td>Capacity</td><td>Very high</td><td>High</td><td>Low–Medium</td><td>Extremely high</td></tr>
+      <tr><td>Cost per GB</td><td>Low</td><td>Medium</td><td>Very low</td><td>Extremely low</td></tr>
+      <tr><td>Moving parts?</td><td>Yes</td><td>No</td><td>Yes (disc spins)</td><td>Yes (tape moves)</td></tr>
+      <tr><td>Portability</td><td>Medium</td><td>High</td><td>High</td><td>Low</td></tr>
+      <tr><td>Typical use</td><td>Desktop PCs, servers</td><td>Laptops, tablets</td><td>Distributing media</td><td>Archiving backups</td></tr>
+    </table>
+  </div>
+
+  <div class="notes-section">
+    <h2>Choosing the Right Storage</h2>
+    <p>Different situations call for different storage types. Consider: capacity needed, speed required, cost, portability, and environment.</p>
+    <ul>
+      <li><strong>Need speed?</strong> → SSD</li>
+      <li><strong>Need large, cheap storage?</strong> → HDD</li>
+      <li><strong>Distributing software/media to many people?</strong> → Optical</li>
+      <li><strong>Long-term archiving of huge datasets?</strong> → Magnetic tape</li>
+    </ul>
+    <div class="info-card amber">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Saying secondary storage is volatile — it is non-volatile</li>
+        <li>Confusing SSD with RAM — both are fast but SSD is non-volatile secondary storage</li>
+        <li>Saying optical discs have moving parts — the disc spins but the data is read by a laser, not a physical head touching the disc</li>
+        <li>Forgetting magnetic tape uses sequential access (not random access like HDD/SSD)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-video" style="display:none">
+  <div class="notes-section"><h2>Video Lesson</h2><p style="color:#64748b">Video coming soon.</p></div>
+</div>
+<div class="tab-content" id="tab-slides" style="display:none">
+  <div class="notes-section"><h2>Lesson Slides</h2><p style="color:#64748b">Slides coming soon.</p></div>
+</div>
+
+<div class="tab-content" id="tab-worksheet" style="display:none">
+  <div class="notes-section"><h2>Worksheet — Secondary Storage</h2><p style="font-size:13px;color:#64748b;margin-bottom:20px">Answer each question then check the mark scheme.</p></div>
+  <div id="ws-container"></div>
+</div>
+<div class="tab-content" id="tab-quiz" style="display:none">
+  <div class="notes-section"><h2>15-Question Quiz</h2><p style="font-size:13px;color:#64748b;margin-bottom:20px">Select the best answer for each question.</p></div>
+  <div class="quiz-container" id="quiz-container"></div>
+  <div class="quiz-score" id="quiz-score">
+    <h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3>
+    <p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p>
+    <button class="btn btn-outline" onclick="resetQuiz()">Try Again</button>
+  </div>
+</div>
+<div class="tab-content" id="tab-test" style="display:none">
+  <div class="notes-section"><h2>Mini Test</h2></div>
+  <div class="test-section"><h3>Section A — Multiple Choice</h3><div id="test-mcq-container"></div></div>
+  <div class="test-section"><h3>Section B — Short Answer</h3><div id="test-sa-container"></div></div>
+</div>
+<div class="tab-content" id="tab-terms" style="display:none">
+  <div class="notes-section"><h2>Key Terms</h2></div>
+  <div class="terms-grid" id="terms-grid"></div>
+</div>
+
+<div class="lesson-nav">
+  <a href="/ocr-j277/1-2-1/" class="nav-btn">← 1.2.1 Primary Storage</a>
+  <a href="/ocr-j277/1-2-3/" class="nav-btn next">1.2.3 Units of Storage →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-2-2';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var currentUser=null;
+
+var QUIZ=[
+  {q:"Which of the following is a characteristic of secondary storage?",opts:["Volatile","Directly accessed by the CPU","Non-volatile","Very fast"],ans:2,exp:"Secondary storage is non-volatile — it retains data when the power is switched off."},
+  {q:"What type of access does magnetic tape use?",opts:["Random access","Direct access","Sequential access","Binary access"],ans:2,exp:"Magnetic tape can only be read sequentially — you must pass through all preceding data to reach what you need."},
+  {q:"Which storage device has NO moving parts?",opts:["HDD","Magnetic tape","Optical disc","SSD"],ans:3,exp:"SSDs use flash memory with no moving parts, making them faster, quieter and more durable."},
+  {q:"Which secondary storage type is most suitable for long-term archiving of very large datasets at low cost?",opts:["SSD","HDD","Optical disc","Magnetic tape"],ans:3,exp:"Magnetic tape offers extremely high capacity at very low cost per GB, making it ideal for bulk archiving."},
+  {q:"A company wants to distribute software to customers cheaply. Which medium is most appropriate?",opts:["Magnetic tape","SSD","Optical disc (DVD)","HDD"],ans:2,exp:"Optical discs are cheap to produce in bulk and portable — ideal for software/media distribution."},
+  {q:"Why is an SSD preferred over an HDD in a laptop?",opts:["SSDs are cheaper","SSDs use less electricity and have no moving parts, making them more robust","HDDs are faster","SSDs have larger capacity"],ans:1,exp:"SSDs are more suitable for laptops because they're lighter, use less power, are faster, and more resistant to physical shock (no moving parts)."},
+  {q:"What is the main disadvantage of optical storage compared to HDD?",opts:["Optical is more expensive","Optical has much lower capacity","Optical is volatile","Optical uses moving parts"],ans:1,exp:"Optical discs have much lower storage capacity (max ~50GB for Blu-ray) compared to HDDs (1TB+)."},
+  {q:"How is data stored on an HDD?",opts:["Using flash memory chips","As pits and lands read by a laser","Magnetically on spinning platters","In sequential tape strips"],ans:2,exp:"HDDs store data magnetically on spinning platters, read/written by a movable head."},
+  {q:"Which storage type would be least suitable for storing data that needs to be accessed quickly and randomly?",opts:["SSD","HDD","Optical disc","Magnetic tape"],ans:3,exp:"Magnetic tape uses sequential access — to reach any specific piece of data, all preceding data must be passed through, making random access very slow."},
+  {q:"Why does secondary storage need to exist if primary storage (RAM) already exists?",opts:["Primary storage is too fast","Primary storage is volatile — data is lost when power is off","Primary storage cannot store programs","Primary storage is write-only"],ans:1,exp:"RAM is volatile and loses all data when power is removed. Secondary storage retains data permanently."},
+  {q:"Which is the most cost-effective storage per GB for a data centre needing to archive petabytes of data?",opts:["SSD","HDD","Optical (Blu-ray)","Magnetic tape"],ans:3,exp:"Magnetic tape has the lowest cost per GB of any storage medium, making it the choice for massive archiving."},
+  {q:"An HDD develops a fault after being dropped. What is the most likely cause?",opts:["Flash memory degraded","The magnetic charge was reversed","Moving parts were damaged by physical shock","The laser was misaligned"],ans:2,exp:"HDDs have moving parts (spinning platters and read/write heads). Physical shock can damage these components."},
+  {q:"How is data read from an optical disc?",opts:["By a magnetic read/write head","By a laser reading pits and lands on the disc surface","By flash memory chips","By sequential tape movement"],ans:1,exp:"Optical discs store data as microscopic pits and lands. A laser beam reads these by detecting reflections."},
+  {q:"Which storage type is typically used in smartphones and tablets?",opts:["HDD","Magnetic tape","Optical disc","SSD/flash memory"],ans:3,exp:"Mobile devices use solid-state flash storage — compact, no moving parts, low power consumption."},
+  {q:"A school wants to back up 500GB of student data nightly and keep it for 5 years. Which is most appropriate?",opts:["Optical discs","SSD","Magnetic tape or large HDD","USB flash drive"],ans:2,exp:"For large-scale, regular backups kept long-term, magnetic tape or a large HDD offers the best capacity-to-cost ratio."}
+];
+
+var WORKSHEET=[
+  {q:"State two differences between primary storage and secondary storage.",marks:2,ms:"Any two of: Primary is volatile / secondary is non-volatile (1); Primary is directly accessed by the CPU / secondary must be loaded into RAM first (1); Primary is faster / secondary is slower (1); Primary is smaller capacity / secondary is larger (1)."},
+  {q:"Describe how data is stored on a hard disk drive (HDD).",marks:2,ms:"Data is stored magnetically on spinning platters/discs (1). A read/write head moves across the surface of the platter to read or write data (1)."},
+  {q:"State two advantages of an SSD over an HDD.",marks:2,ms:"Any two of: Faster read/write speeds (1); No moving parts so more durable/resistant to physical shock (1); Silent operation (1); Lighter/more compact (1); Uses less power (1)."},
+  {q:"Explain why magnetic tape is still used for data archiving despite being very slow.",marks:2,ms:"Magnetic tape has extremely high storage capacity (1) at a very low cost per GB compared to other media (1), making it economical for storing large amounts of data long-term where access speed is not important."},
+  {q:"A film studio needs to distribute its latest movie to millions of customers at low cost. Suggest a suitable secondary storage medium and justify your choice.",marks:3,ms:"Optical disc (DVD/Blu-ray) (1). Optical discs are cheap to produce in bulk (1) and are portable — customers can play them on standard disc players/computers without needing to download anything (1)."},
+  {q:"A student says: 'I upgraded to an SSD and now my computer starts up faster.' Explain why this would be the case.",marks:2,ms:"On startup, the OS must be loaded from secondary storage into RAM (1). An SSD is significantly faster than an HDD at reading data, so the OS loads more quickly (1)."},
+  {q:"Compare optical storage and solid-state storage in terms of capacity, speed and durability.",marks:3,ms:"Capacity: SSDs have much higher capacity (hundreds of GB to several TB) compared to optical discs (max ~50GB for Blu-ray) (1). Speed: SSDs are much faster for both reading and writing (1). Durability: SSDs have no moving parts and are more robust; optical discs can be scratched, cracked or degrade over time (1)."},
+  {q:"Why is secondary storage described as non-volatile? Give an example of a situation where this property is important.",marks:2,ms:"Non-volatile means data is retained even when the power supply is removed (1). For example, when a user saves a document and turns the computer off, the document must still be available when the computer is switched back on — secondary storage ensures this (1)."}
+];
+
+var KEY_TERMS=[
+  {w:"Secondary storage",d:"Non-volatile permanent storage that retains data when power is off. Used to store files and programs not currently in use."},
+  {w:"HDD",d:"Hard Disk Drive — uses spinning magnetic platters and a read/write head to store data. Large capacity, low cost, but has moving parts."},
+  {w:"SSD",d:"Solid State Drive — uses flash memory with no moving parts. Faster and more robust than HDD but more expensive per GB."},
+  {w:"Optical storage",d:"Storage using laser-read discs (CD/DVD/Blu-ray). Data stored as pits and lands. Good for distributing media cheaply."},
+  {w:"Magnetic tape",d:"Storage using a magnetic tape ribbon. Sequential access only. Very cheap per GB; used for large-scale archiving and backup."},
+  {w:"Sequential access",d:"Access method where data must be read in order from the beginning. Magnetic tape uses sequential access."},
+  {w:"Random access",d:"Access method where any piece of data can be retrieved directly without reading preceding data. Used by HDD, SSD."},
+  {w:"Non-volatile",d:"Memory that retains its data when power is switched off. All forms of secondary storage are non-volatile."},
+  {w:"Flash memory",d:"A type of non-volatile storage used in SSDs, USB drives, and smartphones. No moving parts; fast and compact."},
+  {w:"Pits and lands",d:"Microscopic features on an optical disc surface that represent binary data, read by a laser."},
+  {w:"Platter",d:"The spinning magnetic disc inside an HDD on which data is stored."},
+  {w:"Read/write head",d:"The component inside an HDD that reads from and writes to the magnetic platters."},
+  {w:"Capacity",d:"The maximum amount of data a storage device can hold, measured in GB or TB."},
+  {w:"Cost per GB",d:"A measure of storage efficiency — how much it costs to store one gigabyte of data."},
+  {w:"Archiving",d:"Storing data long-term that is no longer in active use but must be kept for future reference or legal requirements."}
+];
+
+var TEST_MCQ=[
+  {q:"Which storage type is fastest?",opts:["HDD","Magnetic tape","Optical disc","SSD"],ans:3,exp:"SSDs use flash memory with no moving parts, giving much faster read/write speeds than HDD, optical, or tape."},
+  {q:"What does 'non-volatile' mean?",opts:["Data is lost when power is removed","Data is retained when power is removed","The storage is very fast","The storage has no moving parts"],ans:1,exp:"Non-volatile storage retains its data even when the power supply is removed."},
+  {q:"Which secondary storage type is most suitable for backing up petabytes of data cheaply?",opts:["SSD","HDD","Optical","Magnetic tape"],ans:3,exp:"Magnetic tape has the lowest cost per GB, making it ideal for bulk long-term archiving."},
+  {q:"How is data stored on an optical disc?",opts:["Magnetically","As pits and lands read by a laser","In flash memory","On spinning magnetic platters"],ans:1,exp:"Optical discs use microscopic pits and lands that a laser reads to decode binary data."},
+  {q:"A user drops their laptop and the HDD stops working. What is the most likely reason?",opts:["The flash memory was corrupted","The laser was damaged","The moving parts (platters/head) were physically damaged","The sequential access was disrupted"],ans:2,exp:"HDDs have delicate moving parts — spinning platters and a read/write head — that can be damaged by physical shock."}
+];
+
+var TEST_SA=[
+  {q:"State two advantages of SSDs over HDDs.",marks:2,ms:"Any two: faster speed (1); no moving parts / more durable (1); silent (1); lighter (1); lower power consumption (1)."},
+  {q:"Explain why magnetic tape is unsuitable for a database that requires fast random access to records.",marks:2,ms:"Magnetic tape uses sequential access (1), meaning to reach a specific record, all preceding data on the tape must be passed through first, making random lookups extremely slow (1)."},
+  {q:"A school stores student coursework on HDDs. State one advantage and one disadvantage of this choice.",marks:2,ms:"Advantage: Large capacity at low cost, suitable for storing many files (1). Disadvantage: Has moving parts so can be damaged by physical shock / slower than SSD (1)."},
+  {q:"Describe one use case where optical storage would be the most appropriate choice. Justify your answer.",marks:2,ms:"Distributing software/films to customers (1). Optical discs are cheap to produce in large quantities and are portable, so they can be sent to many customers at low cost (1)."},
+  {q:"Explain the difference between sequential and random access storage.",marks:2,ms:"Sequential access requires data to be read in order from the beginning — you cannot jump directly to a specific location (1). Random access allows any piece of data to be accessed directly, without reading preceding data (1). HDDs and SSDs use random access; magnetic tape uses sequential access."}
+];
+
+function showTab(id,btn){document.querySelectorAll('.tab-content').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='quiz-q';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="quiz-explain" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.quiz-opt').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'correct':'wrong');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('correct');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});});}
+function checkQuizDone(){var answered=document.querySelectorAll('.quiz-opt.correct,.quiz-opt.wrong').length;if(answered>=QUIZ.length){var correct=document.querySelectorAll('.quiz-opt.correct').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='ws-q';d.innerHTML='<div class="q-header"><span class="q-text">'+(i+1)+'. '+q.q+'</span><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span><div class="mark-scheme">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;if(ms.style.display==='block'){ms.style.display='none';el.textContent='Show Mark Scheme';}else{ms.style.display='block';el.textContent='Hide Mark Scheme';}}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='quiz-q';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="quiz-explain" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.quiz-opt').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'correct':'wrong');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('correct');document.getElementById('tqe'+i).style.display='block';});});})}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sa-q';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span><div class="mark-scheme">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='term-card';d.innerHTML='<div class="term-word">'+t.w+'</div><div class="term-def">'+t.d+'</div>';c.appendChild(d);});}
+function parseJwt(token){try{return JSON.parse(atob(token.split('.')[1]));}catch(e){return null;}}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id){return{data:{session:{user:u}}};}return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('paywall-overlay').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){window.location.href='/';return;}currentUser=session.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

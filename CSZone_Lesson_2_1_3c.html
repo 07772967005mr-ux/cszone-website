@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.1.3c Bubble Sort | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sl active">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.1 Algorithms</div>
+  <div class="lesson-title">2.1.3c — Bubble Sort</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is Bubble Sort?</h2>
+    <p><strong>Bubble sort</strong> repeatedly compares adjacent pairs of elements and swaps them if they are in the wrong order. Larger values gradually "bubble up" to the end of the list with each pass.</p>
+    <div class="kp"><strong>Key fact:</strong> After each pass, the largest unsorted value is in its correct final position. With n items, at most n−1 passes are needed.</div>
+  </div>
+  <div class="ns">
+    <h2>How Bubble Sort Works</h2>
+    <div class="ic b">
+      <h4>Step-by-step:</h4>
+      <ol style="padding-left:20px;color:#94a3b8;font-size:13px">
+        <li>Start at the first pair (index 0 and 1)</li>
+        <li>Compare adjacent elements</li>
+        <li>If left &gt; right → swap them</li>
+        <li>Move to the next adjacent pair</li>
+        <li>Repeat to end of unsorted portion — this completes one pass</li>
+        <li>Repeat passes until no swaps occur in a full pass (sorted)</li>
+      </ol>
+    </div>
+    <div class="ic b">
+      <h4>OCR Pseudocode:</h4>
+      <div class="code">function bubbleSort(list)
+    n = len(list)
+    swapped = true
+    while swapped == true
+        swapped = false
+        for i = 0 to n - 2
+            if list[i] &gt; list[i+1] then
+                temp = list[i]
+                list[i] = list[i+1]
+                list[i+1] = temp
+                swapped = true
+            endif
+        next i
+    endwhile
+    return list
+endfunction</div>
+    </div>
+    <div class="ic b">
+      <h4>Example trace — sorting [5, 3, 1, 4, 2]:</h4>
+      <p style="font-size:13px;color:#94a3b8;line-height:1.9">
+      <strong>Pass 1:</strong> Compare 5&gt;3→swap [3,5,1,4,2]; 5&gt;1→swap [3,1,5,4,2]; 5&gt;4→swap [3,1,4,5,2]; 5&gt;2→swap [3,1,4,2,5]<br>
+      <strong>Pass 2:</strong> 3&gt;1→swap [1,3,4,2,5]; 3&lt;4→no swap; 4&gt;2→swap [1,3,2,4,5]; 4&lt;5→no swap<br>
+      <strong>Pass 3:</strong> 1&lt;3→no swap; 3&gt;2→swap [1,2,3,4,5]; 3&lt;4→no swap<br>
+      <strong>Pass 4:</strong> No swaps → sorted: [1, 2, 3, 4, 5]
+      </p>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Optimisation: Early Termination</h2>
+    <p>The <code style="background:#1e2235;padding:2px 6px;border-radius:3px;font-size:12px">swapped</code> flag is an important optimisation. If an entire pass completes with no swaps, the list is already sorted — there is no need to continue. This allows bubble sort to exit early for nearly-sorted data.</p>
+    <div class="kp"><strong>Without optimisation:</strong> Always does n−1 passes = O(n²) always.<br><strong>With optimisation:</strong> Best case O(n) — one pass on already-sorted list confirms no swaps needed.</div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Forgetting the swapped flag — without it, the algorithm always runs all n−1 passes even when sorted</li>
+        <li>Using 'n-1' instead of 'n-2' in the loop — list[i+1] must not go out of bounds when i is at the last index</li>
+        <li>Forgetting the temp variable for swapping — you MUST use a temp to avoid overwriting a value</li>
+        <li>Saying bubble sort is efficient — it is O(n²) worst case, one of the LEAST efficient sorting algorithms</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Advantages and Disadvantages</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Advantages</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Disadvantages</th></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Simple to understand and implement</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Inefficient — O(n²) worst case</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Can detect if list is already sorted (with swapped flag)</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Not suitable for large datasets</td></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">In-place sorting — no extra memory needed</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Much slower than merge sort for large data</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-1-3b/" class="nb">← 2.1.3b Binary Search</a>
+  <a href="/ocr-j277/2-1-3d/" class="nb n">2.1.3d Merge Sort →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-1-3c';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What does bubble sort compare to decide whether to swap?",opts:["The first and last elements","Non-adjacent elements","Adjacent pairs of elements","The current element with the target"],ans:2,exp:"Bubble sort compares adjacent pairs — list[i] and list[i+1]. If they are in the wrong order (left > right for ascending), they are swapped."},
+  {q:"After one complete pass of bubble sort on [5,3,1,4,2], which value is guaranteed to be in its final position?",opts:["1","3","5","2"],ans:2,exp:"After each pass, the largest unsorted value 'bubbles up' to the end. After pass 1 on [5,3,1,4,2], the value 5 is at the last position — its correct final position."},
+  {q:"What is the purpose of the 'swapped' flag in bubble sort?",opts:["To count the number of swaps","To record what was swapped","To allow early termination if the list is already sorted","To store the last swapped value"],ans:2,exp:"The swapped flag enables early termination. If a complete pass makes no swaps, the list is sorted. Without this optimisation, bubble sort always runs all n-1 passes."},
+  {q:"Why must a temp variable be used when swapping two elements?",opts:["It makes the code faster","Without it, one value would be overwritten and lost before it can be saved","It is required by OCR syntax","It stores the index of the element"],ans:1,exp:"To swap list[i] and list[i+1]: temp=list[i]; list[i]=list[i+1]; list[i+1]=temp. Without temp, setting list[i]=list[i+1] destroys the original list[i] value before it can be moved."},
+  {q:"What is the worst-case time complexity of bubble sort?",opts:["O(1)","O(log n)","O(n)","O(n²)"],ans:3,exp:"Bubble sort is O(n²) in the worst case — a reverse-sorted list requires (n-1) + (n-2) + ... + 1 = n(n-1)/2 comparisons."},
+  {q:"Bubble sort on [4, 2, 7, 1, 5]. After pass 1, what is the list?",opts:["[1,2,4,5,7]","[2,4,1,5,7]","[2,4,7,1,5]","[2,7,4,1,5]"],ans:1,exp:"Pass 1: 4>2→swap [2,4,7,1,5]; 4<7→no swap; 7>1→swap [2,4,1,7,5]; 7>5→swap [2,4,1,5,7]. Result: [2,4,1,5,7]."},
+  {q:"For a list of n items, what is the maximum number of passes bubble sort needs?",opts:["n","n²","n-1","n/2"],ans:2,exp:"Bubble sort needs at most n-1 passes (each pass places at least one more item in its final position). With n items, n-1 passes guarantee sorting."},
+  {q:"Why does the inner loop go from 0 to n-2 (not n-1) in bubble sort?",opts:["To skip the first element","Because we compare list[i] and list[i+1], going to n-1 would access list[n] which is out of bounds","For efficiency","OCR requires n-2"],ans:1,exp:"The inner loop compares list[i] with list[i+1]. If i reaches n-1 (last index), list[i+1] = list[n] doesn't exist — this would be an index out of bounds error."},
+  {q:"What is the best-case time complexity of bubble sort (with the swapped optimisation)?",opts:["O(n²)","O(log n)","O(n)","O(1)"],ans:2,exp:"Best case with the swapped flag: the list is already sorted. One pass confirms no swaps were needed — O(n). Without the optimisation, it would always be O(n²)."},
+  {q:"Bubble sort on [1, 2, 3, 4, 5] with swapped flag. How many passes are made?",opts:["4","5","1","0"],ans:2,exp:"Only 1 pass: the loop goes through all adjacent pairs, finds no swaps needed, swapped remains false, and the while loop exits. 1 pass total."},
+  {q:"After 3 passes of bubble sort on a list of 6 items, how many items are guaranteed to be in their final positions?",opts:["1","2","3","6"],ans:2,exp:"Each pass places one more item in its correct final position (from the end). After 3 passes, the 3 largest items are correctly placed at the end."},
+  {q:"Which statement about bubble sort is correct?",opts:["It is one of the most efficient sorting algorithms","It requires extra memory proportional to list size","It always makes n-1 passes regardless of input","It is simple but inefficient for large datasets"],ans:3,exp:"Bubble sort is simple and easy to understand, but inefficient (O(n²) worst case). It is NOT efficient for large data — merge sort is much better for large datasets."},
+  {q:"To sort [3, 1, 4, 1, 5] in ascending order using bubble sort, what happens in the FIRST comparison?",opts:["3 and 4 are compared","1 and 4 are compared","3 and 1 are compared and swapped","1 and 1 are compared"],ans:2,exp:"Bubble sort starts at index 0. First comparison: list[0]=3 vs list[1]=1. Since 3>1, they are swapped → [1,3,4,1,5]."},
+  {q:"What does 'in-place sorting' mean for bubble sort?",opts:["It sorts the list at its current location in memory without requiring a separate copy","It only sorts numbers","It works faster on computers with limited storage","It cannot be used on large lists"],ans:0,exp:"In-place means bubble sort rearranges elements within the original list/array — it does NOT create a new copy. This is a memory advantage (uses O(1) extra space)."},
+  {q:"A student removes the swapped flag from bubble sort. What is the impact?",opts:["The algorithm will fail to sort the list","The algorithm will sort faster","The algorithm always runs all n-1 passes even if the list becomes sorted early","The algorithm will use more memory"],ans:2,exp:"Without the swapped flag, there is no early termination. Even if the list is sorted after pass 2 out of 99, the algorithm continues for all remaining passes — wasting time."}
+];
+var WORKSHEET=[
+  {q:"Describe how bubble sort works.",marks:3,ms:"Repeatedly compares adjacent pairs of elements (1). Swaps them if they are in the wrong order (1). Repeats passes until no swaps occur — list is sorted (1)."},
+  {q:"Trace bubble sort on [6, 2, 5, 1, 4]. Show the list after each complete pass.",marks:4,ms:"Pass 1: [2,5,1,4,6] (1). Pass 2: [2,1,4,5,6] (1). Pass 3: [1,2,4,5,6] (1). Pass 4: no swaps → sorted [1,2,4,5,6] (1)."},
+  {q:"Write pseudocode for bubble sort including the swapped flag optimisation.",marks:5,ms:"swapped=true; while swapped==true (1); swapped=false (1); for i=0 to n-2 (1); if list[i]>list[i+1] then temp=list[i]; list[i]=list[i+1]; list[i+1]=temp; swapped=true; endif (1); next i; endwhile (1)."},
+  {q:"Explain why a temp variable is needed when swapping two elements.",marks:2,ms:"Setting list[i]=list[i+1] overwrites the original value of list[i] (1). The temp variable stores list[i] first so it can be assigned to list[i+1] after the overwrite (1)."},
+  {q:"What is the worst-case time complexity of bubble sort? Explain why.",marks:2,ms:"O(n²) (1). Because in the worst case (reverse-sorted list), every element must be compared and potentially swapped with every other — approximately n²/2 comparisons (1)."},
+  {q:"Explain the purpose of the swapped flag and how it improves performance.",marks:3,ms:"The swapped flag is set to false at the start of each pass (1). If any swap is made, it is set to true (1). If a pass completes with no swaps, the list is sorted — the while loop exits early rather than running all n-1 passes (1). Best case becomes O(n)."},
+  {q:"State ONE advantage and ONE disadvantage of bubble sort.",marks:2,ms:"Advantage: simple to understand and implement / can detect already-sorted list (1). Disadvantage: inefficient for large lists — O(n²) worst case / much slower than merge sort (1)."},
+  {q:"After 2 complete passes of bubble sort on a list of 7 items, how many items are guaranteed to be in their correct final positions? Explain.",marks:2,ms:"2 items (1). Each pass moves the largest unsorted element to the end of the unsorted portion — after 2 passes, the 2 largest are in their correct positions at the end of the list (1)."}
+];
+var KEY_TERMS=[
+  {w:"Bubble sort",d:"A sorting algorithm that repeatedly compares and swaps adjacent elements until the list is sorted."},
+  {w:"Pass",d:"One full iteration through the unsorted portion of the list. After each pass, at least one more item is in its correct position."},
+  {w:"Swap",d:"Exchanging two adjacent elements — requires a temp variable to avoid losing data."},
+  {w:"Temp variable",d:"A temporary variable used during swapping: temp=list[i]; list[i]=list[i+1]; list[i+1]=temp."},
+  {w:"Swapped flag",d:"A boolean variable that enables early termination — set to false at start of each pass; set to true if any swap occurs. If still false after a pass, list is sorted."},
+  {w:"Early termination",d:"An optimisation where bubble sort stops as soon as a complete pass makes no swaps — the list is confirmed sorted."},
+  {w:"Adjacent",d:"Next to each other — bubble sort only compares and swaps neighbouring elements."},
+  {w:"O(n²)",d:"The worst-case time complexity of bubble sort. Time grows quadratically with list size — very slow for large datasets."},
+  {w:"O(n)",d:"The best-case complexity of optimised bubble sort — when the list is already sorted, only one pass is needed."},
+  {w:"In-place",d:"Bubble sort rearranges items in the original list without needing a separate copy — uses O(1) extra memory."},
+  {w:"Ascending order",d:"Smallest to largest. The default sort order: list[i] > list[i+1] triggers a swap."},
+  {w:"Unsorted portion",d:"The part of the list still being sorted. Shrinks by one element after each pass as the largest item reaches its final position."},
+  {w:"n-1 passes",d:"The maximum number of passes bubble sort needs for a list of n items. Each pass guarantees one item reaches its final position."},
+  {w:"Comparison",d:"Checking whether list[i] > list[i+1]. Bubble sort makes O(n²) comparisons in the worst case."},
+  {w:"Inefficient",d:"Bubble sort is considered inefficient compared to merge sort (O(n log n)) for large datasets."}
+];
+var TEST_MCQ=[
+  {q:"What does bubble sort compare on each step?",opts:["First and last elements","Non-adjacent elements","Every element with the target","Adjacent pairs of elements"],ans:3,exp:"Bubble sort compares adjacent pairs (list[i] and list[i+1]). If they are in the wrong order, they are swapped."},
+  {q:"Bubble sort on [3, 1, 4, 2]. After pass 1, the list is:",opts:["[1,2,3,4]","[1,3,2,4]","[1,3,4,2]","[3,1,2,4]"],ans:1,exp:"Pass 1: 3>1→swap [1,3,4,2]; 3<4→no swap; 4>2→swap [1,3,2,4]. Result: [1,3,2,4]."},
+  {q:"What is the worst-case time complexity of bubble sort?",opts:["O(n)","O(n log n)","O(n²)","O(log n)"],ans:2,exp:"Bubble sort is O(n²) worst case — a reverse-sorted list requires the maximum number of comparisons and swaps."},
+  {q:"What is the purpose of the temp variable in a swap?",opts:["To count swaps","To prevent loss of the first value when it is overwritten","To store the sorted result","To mark elements as visited"],ans:1,exp:"Without temp: if you write list[i]=list[i+1] first, the original value of list[i] is overwritten and lost. Temp stores it so it can be moved."},
+  {q:"The swapped flag allows bubble sort to:",opts:["Sort faster on average","Terminate early if the list is already sorted","Sort in descending order","Use less memory"],ans:1,exp:"The swapped flag enables early termination. If no swaps occur in a pass, the list is sorted — no more passes needed. Best case becomes O(n)."}
+];
+var TEST_SA=[
+  {q:"Describe bubble sort in your own words.",marks:3,ms:"Compare adjacent pairs of elements (1). Swap them if they are in the wrong order (1). Repeat passes until no swaps occur — list is sorted (1)."},
+  {q:"Trace bubble sort on [4, 1, 3, 2]. Show the list after each complete pass.",marks:4,ms:"Pass 1: 4>1→[1,4,3,2]; 4>3→[1,3,4,2]; 4>2→[1,3,2,4] (1). Pass 2: 1<3; 3>2→[1,2,3,4]; 3<4 (1). Pass 3: no swaps (1). Sorted: [1,2,3,4] (1)."},
+  {q:"Explain why a temp variable is needed when swapping elements.",marks:2,ms:"Without temp, setting list[i]=list[i+1] overwrites the original list[i] value (1). Temp stores it so it can be correctly placed at list[i+1] (1)."},
+  {q:"What is the purpose of the swapped flag? How does it improve bubble sort?",marks:3,ms:"Set to false at start of each pass (1). Set to true if any swap occurs (1). If a complete pass ends with swapped=false, list is sorted — algorithm terminates early rather than running all remaining passes (1)."},
+  {q:"Give ONE advantage and ONE disadvantage of bubble sort.",marks:2,ms:"Advantage: simple to code/understand OR can detect pre-sorted data (1). Disadvantage: inefficient O(n²) — slow for large lists compared to merge sort (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

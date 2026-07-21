@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.2.1c Arrays | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sl">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sl active">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sl">2.2.1e Strings</a>
+    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.2 Programming</div>
+  <div class="lesson-title">2.2.1c — Arrays</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is an Array?</h2>
+    <p>An <strong>array</strong> is a data structure that stores multiple values of the SAME data type in a single named variable. Each value is accessed by its <strong>index</strong> (position number).</p>
+    <div class="kp"><strong>Zero-indexed:</strong> In OCR pseudocode, arrays start at index 0. The first element is array[0], the second is array[1], and so on.</div>
+    <div class="ic b">
+      <h4>1D Array — declaring and using:</h4>
+      <div class="code">scores = [85, 72, 91, 68, 79]   // 5 elements, indices 0-4
+
+print(scores[0])    // prints 85 (first element)
+print(scores[4])    // prints 79 (last element)
+
+scores[2] = 95      // update element at index 2 (was 91, now 95)
+
+// Length: len(scores) = 5
+// Last valid index: len(scores) - 1 = 4</div>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Iterating Through Arrays</h2>
+    <div class="ic b">
+      <h4>Using a FOR loop to process all elements:</h4>
+      <div class="code">names = ["Alice", "Bob", "Charlie", "Dave"]
+
+// Print all names
+for i = 0 to len(names) - 1
+    print(names[i])
+next i
+
+// Calculate total of scores
+total = 0
+for i = 0 to len(scores) - 1
+    total = total + scores[i]
+next i
+average = total / len(scores)
+print(average)</div>
+    </div>
+    <div class="ic b">
+      <h4>Finding the maximum value:</h4>
+      <div class="code">nums = [3, 7, 2, 9, 5]
+maxVal = nums[0]            // assume first is largest
+for i = 1 to len(nums) - 1
+    if nums[i] > maxVal then
+        maxVal = nums[i]
+    endif
+next i
+print(maxVal)   // prints 9</div>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>2D Arrays</h2>
+    <p>A <strong>2D array</strong> is a grid (table) of values — like a spreadsheet. Accessed using two indices: [row][column].</p>
+    <div class="ic b">
+      <h4>2D Array example:</h4>
+      <div class="code">grid = [[1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]]
+
+print(grid[0][0])   // 1 (row 0, col 0)
+print(grid[1][2])   // 6 (row 1, col 2)
+print(grid[2][1])   // 8 (row 2, col 1)
+
+// Iterate through all elements
+for row = 0 to 2
+    for col = 0 to 2
+        print(grid[row][col])
+    next col
+next row</div>
+    </div>
+    <div class="ic a"><h4>Common Mistakes</h4><ul><li>Using index 1 for the first element — arrays are ZERO-indexed in OCR: first = array[0]</li><li>Accessing array[len(array)] — the last valid index is len(array)-1; array[len] is out of bounds</li><li>Storing different data types in one array — arrays should store the SAME data type</li><li>For loop from 1 to len — should be 0 to len(array)-1 for all elements</li></ul></div>
+  </div>
+</div>
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-2-1b/" class="nb">← 2.2.1b Selection &amp; Iteration</a>
+  <a href="/ocr-j277/2-2-1d/" class="nb n">2.2.1d File Handling →</a>
+</div>
+</div>
+</div>
+<script>
+var LESSON_ID='2-2-1c';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[{q:"What index does the FIRST element of an array have in OCR pseudocode?",opts:["1","-1","0","Depends on the array"],ans:2,exp:"In OCR pseudocode, arrays are zero-indexed — the first element is at index 0."},{q:"An array has 6 elements. What is the index of the LAST element?",opts:["6","7","5","4"],ans:2,exp:"With 6 elements (indices 0-5), the last element is at index 5 = len(array) - 1."},{q:"scores = [10, 20, 30, 40, 50]. What is scores[3]?",opts:["30","40","50","20"],ans:1,exp:"scores[3] = 40. Zero-indexed: scores[0]=10, scores[1]=20, scores[2]=30, scores[3]=40."},{q:"What does 'array[2] = 99' do?",opts:["Creates a new array with value 99","Updates the element at index 2 to 99","Adds 99 at the end","Inserts 99 before index 2"],ans:1,exp:"array[2] = 99 overwrites the element at index 2 with the value 99."},{q:"Which loop correctly iterates through all elements of array 'items' with 5 elements?",opts:["for i = 1 to 5","for i = 0 to 5","for i = 0 to len(items)-1","for i = 0 to len(items)"],ans:2,exp:"for i = 0 to len(items)-1 gives i = 0,1,2,3,4 — all 5 valid indices."},{q:"What data types can be stored in a single array?",opts:["Any mix of types","Only integers","Only strings","All values must be the same type"],ans:3,exp:"An array stores multiple values of the SAME data type."},{q:"nums = [4, 8, 2, 6]. What is len(nums)?",opts:["3","4","5","2"],ans:1,exp:"len(nums) = 4. There are 4 elements."},{q:"How do you access element at row 1, column 2 in a 2D array called 'grid'?",opts:["grid[2][1]","grid[1,2]","grid[1][2]","grid(1,2)"],ans:2,exp:"2D arrays are accessed with [row][col]. Row 1, column 2 = grid[1][2]."},{q:"What is the purpose of an array?",opts:["To store one value with many names","To store multiple values of the same type in a single named variable","To create a function with multiple returns","To loop through code"],ans:1,exp:"An array stores multiple values of the same data type under a single variable name."},{q:"grid = [[1,2],[3,4],[5,6]]. What is grid[2][0]?",opts:["3","5","6","2"],ans:1,exp:"grid[2] is the third row [5,6]. grid[2][0] = 5."},{q:"To find the sum of all elements in array nums, which approach is correct?",opts:["total = nums","total = 0; for i = 0 to len(nums)-1; total = total + nums[i]; next i","total = sum(nums[0])","Loop from 1 to len(nums)"],ans:1,exp:"Start with total=0, loop from index 0 to len-1, add each element."},{q:"An array stores exam scores for a class of 30 students. What is the last valid index?",opts:["30","31","29","28"],ans:2,exp:"30 elements → indices 0 to 29. Last valid index = 29."},{q:"Which statement correctly declares an array of 3 names?",opts:["names = {\"Alice\", \"Bob\", \"Charlie\"}","names = [\"Alice\", \"Bob\", \"Charlie\"]","names = (\"Alice\", \"Bob\", \"Charlie\")","names = Alice, Bob, Charlie"],ans:1,exp:"In OCR pseudocode, arrays are declared using square brackets."},{q:"What happens if you try to access an index that doesn't exist?",opts:["Returns 0","Returns undefined","Causes an index out of bounds/range error","Wraps around to index 0"],ans:2,exp:"Accessing an invalid index causes an 'index out of bounds' error."},{q:"How many nested FOR loops are typically needed to iterate through a 2D array?",opts:["1","2","3","4"],ans:1,exp:"Two nested FOR loops — one for rows and one for columns."}];
+var WORKSHEET=[{q:"Given array: marks = [75, 88, 62, 95, 70]. State the value of: (a) marks[0]  (b) marks[3]  (c) marks[4]",marks:3,ms:"(a) 75 (1). (b) 95 (1). (c) 70 (1)."},{q:"Write pseudocode to print all elements of array scores = [10, 20, 30, 40, 50].",marks:3,ms:"for i = 0 to len(scores)-1 (1); print(scores[i]) (1); next i (1)."},{q:"Write pseudocode to find and print the sum of all values in an array called 'data' with 6 elements.",marks:4,ms:"total = 0 (1); for i = 0 to len(data)-1 (1); total = total + data[i] (1); next i; print(total) (1)."},{q:"Explain what is wrong with: 'for i = 1 to len(array); print(array[i]); next i'",marks:2,ms:"Starts at index 1 — misses the element at index 0 (1). Ends at len(array) — out of bounds (1)."},{q:"Write pseudocode to find the minimum value in array nums = [7, 3, 9, 1, 5].",marks:4,ms:"minVal = nums[0] (1); for i = 1 to len(nums)-1 (1); if nums[i] < minVal then (1); minVal = nums[i]; endif; next i; print(minVal) (1)."},{q:"What is a 2D array? Give a real-world example.",marks:2,ms:"A 2D array stores data in a grid with rows and columns, accessed by two indices (1). Example: seating plan, student grades (1)."},{q:"grid = [[1,2,3],[4,5,6],[7,8,9]]. What are: (a) grid[0][2]  (b) grid[2][0]  (c) grid[1][1]",marks:3,ms:"(a) 3 (1). (b) 7 (1). (c) 5 (1)."},{q:"Write pseudocode using a 2D array to represent and print a 2x3 multiplication table.",marks:4,ms:"for row = 1 to 2 (1); for col = 1 to 3 (1); print(row * col) (1); next col; next row (1)."}];
+var KEY_TERMS=[{w:"Array",d:"A data structure that stores multiple values of the SAME data type in a single named variable."},{w:"Index",d:"The position number used to access an element in an array. Zero-indexed in OCR pseudocode (first = index 0)."},{w:"Zero-indexed",d:"Array indexing that starts at 0. The first element is always at index 0."},{w:"1D array",d:"A simple list of values stored in a single row. e.g. scores = [85, 72, 91]."},{w:"2D array",d:"An array of arrays — a grid with rows and columns. Accessed with two indices: array[row][col]."},{w:"len(array)",d:"Returns the number of elements in an array. The last valid index is len(array) - 1."},{w:"Out of bounds",d:"Attempting to access an index that doesn't exist — e.g. index 5 on a 5-element array (valid: 0-4)."},{w:"Element",d:"A single value stored in an array."},{w:"Initialise",d:"Setting up an array with its initial values."},{w:"Traverse",d:"Going through each element of an array — typically using a FOR loop from index 0 to len-1."},{w:"Nested loop",d:"A loop inside another loop — used to iterate through 2D arrays."},{w:"Same data type",d:"A constraint on arrays — all elements should be the same type."},{w:"Update",d:"Changing the value at a specific index: array[i] = newValue."},{w:"Max/Min search",d:"Common array algorithm: start with array[0], loop comparing each element."},{w:"Total/Average",d:"Common array algorithm: initialise total=0, loop adding each element, divide by len for average."}];
+var TEST_MCQ=[{q:"An array has 8 elements. What is the index of the last element?",opts:["8","7","6","9"],ans:1,exp:"Last index = 8 - 1 = 7."},{q:"arr = [5, 10, 15, 20]. What is arr[2]?",opts:["10","15","20","5"],ans:1,exp:"arr[2] = 15. Zero-indexed: arr[0]=5, arr[1]=10, arr[2]=15."},{q:"Which loop correctly prints all elements of array 'data' with 4 elements?",opts:["for i=1 to 4","for i=0 to 3","for i=0 to 4","for i=1 to 3"],ans:1,exp:"'for i = 0 to 3' gives i = 0, 1, 2, 3 — the 4 valid indices."},{q:"What does grid[1][2] access?",opts:["Row 2, column 1","Row 1, column 2","The 5th element","Row 1, the entire row"],ans:1,exp:"grid[row][col]: grid[1][2] accesses row 1, column 2."},{q:"What data should be stored in a single array?",opts:["Any mix of types","Only integers","Values of the same data type","Only strings"],ans:2,exp:"Arrays store values of the SAME data type."}];
+var TEST_SA=[{q:"Given arr = [3, 6, 9, 12, 15], state: (a) arr[0]  (b) arr[4]  (c) len(arr)",marks:3,ms:"(a) 3 (1). (b) 15 (1). (c) 5 (1)."},{q:"Write pseudocode to calculate and print the average of array scores.",marks:4,ms:"total = 0 (1); for i = 0 to len(scores)-1 (1); total = total + scores[i] (1); next i; print(total / len(scores)) (1)."},{q:"Explain what 'zero-indexed' means and why it matters.",marks:2,ms:"Indices start at 0 — first element is at index 0 (1). Using index 1 for first element skips it; using len for last is out of bounds (1)."},{q:"Write pseudocode to find the maximum value in array nums.",marks:4,ms:"maxVal = nums[0] (1); for i = 1 to len(nums)-1 (1); if nums[i] > maxVal then maxVal = nums[i]; endif (1); next i; print(maxVal) (1)."},{q:"What is a 2D array? State one real-world use.",marks:2,ms:"A grid of data with rows and columns, accessed by two indices [row][col] (1). Use: seating plan, exam results grid (1)."}];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

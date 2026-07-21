@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.2.5 Compression | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.fb2{background:#0f172a;border:1px solid #3730a3;border-radius:8px;padding:16px 20px;margin:12px 0;font-family:monospace;font-size:13px;color:#a5b4fc;line-height:1.8}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 1</div>
+    <div class="sst" style="color:#818cf8">1.2 Memory &amp; Storage</div>
+    <a href="/ocr-j277/1-2-1/" class="sl fb">1.2.1 Primary Storage</a>
+    <a href="/ocr-j277/1-2-2/" class="sl">1.2.2 Secondary Storage</a>
+    <a href="/ocr-j277/1-2-3/" class="sl">1.2.3 Units of Storage</a>
+    <a href="/ocr-j277/1-2-4a/" class="sl">1.2.4a Binary &amp; Denary</a>
+    <a href="/ocr-j277/1-2-4b/" class="sl">1.2.4b Hexadecimal</a>
+    <a href="/ocr-j277/1-2-4c/" class="sl">1.2.4c Binary Arithmetic</a>
+    <a href="/ocr-j277/1-2-4d/" class="sl">1.2.4d Binary Shifts</a>
+    <a href="/ocr-j277/1-2-4e/" class="sl">1.2.4e Character Encoding</a>
+    <a href="/ocr-j277/1-2-4f/" class="sl">1.2.4f Representing Images</a>
+    <a href="/ocr-j277/1-2-4g/" class="sl">1.2.4g Representing Sound</a>
+    <a href="/ocr-j277/1-2-5/" class="sl active">1.2.5 Compression</a>
+    <div class="sst" style="color:#818cf8">1.3 Networks</div>
+    <a href="/ocr-j277/1-3-1a/" class="sl fb">1.3.1a LAN, WAN</a>
+    <a href="/ocr-j277/1-3-1b/" class="sl">1.3.1b Network Types</a>
+    <a href="/ocr-j277/1-3-1c/" class="sl">1.3.1c Internet &amp; DNS</a>
+    <a href="/ocr-j277/1-3-1d/" class="sl">1.3.1d Topologies</a>
+    <a href="/ocr-j277/1-3-2a/" class="sl">1.3.2a Wired &amp; Wireless</a>
+    <a href="/ocr-j277/1-3-2b/" class="sl">1.3.2b Protocols</a>
+    <div class="sst" style="color:#818cf8">1.4–1.6</div>
+    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
+    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
+    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sl">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sl">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sl">2.2.1e Strings</a>
+    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-3-2/" class="sl">2.3.2 Testing</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-4-1b/" class="sl">2.4.1b Truth Tables</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.2 Memory &amp; Storage</div>
+  <div class="lesson-title">1.2.5 — Compression</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>Why Compress Files?</h2>
+    <p>Files can be very large — images, audio, and video especially. Compression reduces file size, which has several benefits:</p>
+    <ul>
+      <li>Faster to upload/download over the internet</li>
+      <li>Less storage space needed</li>
+      <li>Faster to transmit/stream</li>
+      <li>Cheaper to store (cloud storage costs)</li>
+    </ul>
+    <p>There are two main types of compression: <strong>lossless</strong> and <strong>lossy</strong>.</p>
+  </div>
+
+  <div class="ns">
+    <h2>Lossless Compression</h2>
+    <p>Lossless compression reduces file size without losing any data. The original file can be perfectly reconstructed from the compressed version.</p>
+    <div class="ic g">
+      <h4>How it works — Run-Length Encoding (RLE)</h4>
+      <p>RLE is a simple lossless technique. Instead of storing every pixel/value, it stores a value and the number of times it repeats.</p>
+      <div class="fb2">
+        Original: AAAABBBBBCCDDDDDD<br>
+        RLE:      4A 5B 2C 6D<br><br>
+        18 characters → 8 values (more efficient)
+      </div>
+    </div>
+    <div class="ic b">
+      <h4>Dictionary Encoding</h4>
+      <p>Another lossless technique. Frequently occurring patterns are replaced by short codes stored in a dictionary. The decompressor uses the dictionary to restore the original.</p>
+    </div>
+    <div class="ic g">
+      <h4>Lossless file formats:</h4>
+      <ul>
+        <li>PNG — lossless image format</li>
+        <li>GIF — lossless (limited to 256 colours)</li>
+        <li>ZIP — lossless file archiving</li>
+        <li>FLAC — lossless audio</li>
+      </ul>
+    </div>
+    <div class="kp"><strong>Lossless = No data is lost. File can be perfectly restored to original. Used when accuracy is critical (e.g. text files, medical images, executable programs).</strong></div>
+  </div>
+
+  <div class="ns">
+    <h2>Lossy Compression</h2>
+    <p>Lossy compression achieves smaller file sizes by permanently removing some data. The original cannot be perfectly restored. The removed data is chosen to be the least noticeable to humans.</p>
+    <div class="ic b">
+      <h4>How it works — examples:</h4>
+      <ul>
+        <li>Images: remove fine detail and similar nearby colours that the eye barely notices. Store averaged/approximated colour blocks.</li>
+        <li>Audio: remove frequencies outside human hearing range (&lt;20 Hz, &gt;20,000 Hz) and quiet sounds masked by louder ones (perceptual coding).</li>
+      </ul>
+    </div>
+    <div class="ic r">
+      <h4>Lossy file formats:</h4>
+      <ul>
+        <li>JPEG — lossy image format. Very high compression ratios possible.</li>
+        <li>MP3, AAC — lossy audio. Used for music streaming.</li>
+        <li>MP4 / H.264 — lossy video.</li>
+      </ul>
+    </div>
+    <div class="kp"><strong>Lossy = Data is permanently removed. Cannot restore original. Smaller file size. Used for media where small quality loss is acceptable.</strong></div>
+  </div>
+
+  <div class="ns">
+    <h2>Lossless vs Lossy Comparison</h2>
+    <table class="ct">
+      <tr><th>Feature</th><th>Lossless</th><th>Lossy</th></tr>
+      <tr><td>Data lost?</td><td>No</td><td>Yes (permanently)</td></tr>
+      <tr><td>Can restore original?</td><td>Yes, exactly</td><td>No</td></tr>
+      <tr><td>Compression ratio</td><td>Moderate</td><td>High (much smaller files)</td></tr>
+      <tr><td>Quality after decompression</td><td>Identical to original</td><td>Slightly or noticeably degraded</td></tr>
+      <tr><td>Best used for</td><td>Text, programs, medical images</td><td>Photos, music, video streaming</td></tr>
+      <tr><td>Examples</td><td>PNG, ZIP, FLAC</td><td>JPEG, MP3, MP4</td></tr>
+    </table>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Saying lossless removes some data — it removes <em>none</em></li>
+        <li>Saying you can restore the original from lossy compression — you cannot</li>
+        <li>Confusing JPEG (lossy) with PNG (lossless)</li>
+        <li>Saying compression always reduces quality — lossless does not</li>
+        <li>Forgetting that lossy compression is irreversible</li>
+        <li>Not naming a specific technique (e.g. RLE, dictionary encoding) when asked how lossless works</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet — Compression</h2><p style="font-size:13px;color:#64748b;margin-bottom:20px">Answer in full sentences for explain questions.</p></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/1-2-4g/" class="nb">← 1.2.4g Representing Sound</a>
+  <a href="/ocr-j277/1-3-1a/" class="nb n">1.3.1a LAN, WAN →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-2-5';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+
+var QUIZ=[
+  {q:"What is the main purpose of file compression?",opts:["To improve image quality","To reduce file size for easier storage and transfer","To encrypt files for security","To convert files between formats"],ans:1,exp:"Compression reduces file size, making files faster to upload/download, cheaper to store, and easier to transmit over a network."},
+  {q:"What is lossless compression?",opts:["Compression that removes unnecessary data permanently","Compression that reduces file size without losing any data — the original can be perfectly restored","Compression only used for audio files","Compression that always achieves a 50% size reduction"],ans:1,exp:"Lossless compression reduces file size without removing any data. The original file can be perfectly reconstructed."},
+  {q:"What is lossy compression?",opts:["Compression that permanently removes some data to achieve a smaller file size","Compression that can restore the original file exactly","Compression only used for text files","Compression that adds data to improve quality"],ans:0,exp:"Lossy compression permanently removes some data to achieve smaller file sizes. The original cannot be fully restored."},
+  {q:"Which of the following is an example of lossless compression?",opts:["JPEG","MP3","PNG","MP4"],ans:2,exp:"PNG is a lossless image format. JPEG is lossy, MP3 is lossy, MP4 is lossy."},
+  {q:"Which of the following is an example of lossy compression?",opts:["PNG","ZIP","FLAC","MP3"],ans:3,exp:"MP3 is a lossy audio format. PNG and ZIP are lossless. FLAC is lossless audio."},
+  {q:"What is Run-Length Encoding (RLE)?",opts:["A lossy compression technique for images","A lossless technique that stores a value and the number of times it repeats","A method of encrypting data","A way to increase image resolution"],ans:1,exp:"RLE is a lossless compression technique. Instead of storing every repeated value, it stores the value once plus a count. E.g. AAAA → 4A."},
+  {q:"Apply RLE to: BBBBBAAACCC. What is the compressed form?",opts:["5B3A3C","3B3A3C","5B4A3C","BBBAACCC"],ans:0,exp:"B appears 5 times, A appears 3 times, C appears 3 times. RLE: 5B 3A 3C."},
+  {q:"When would you use lossy compression instead of lossless?",opts:["When storing a text document","When compressing a computer program","When storing music for a streaming service where small quality loss is acceptable","When archiving medical records"],ans:2,exp:"Lossy compression is acceptable for music streaming where a small quality reduction is barely noticeable to listeners. For text, programs, or medical images, lossless is required so no data is lost."},
+  {q:"Which statement about lossy compression is TRUE?",opts:["The original file can always be restored","Some data is permanently lost","File quality is unchanged","Only used for text files"],ans:1,exp:"Lossy compression permanently removes data. Once compressed, the removed data cannot be recovered."},
+  {q:"A medical X-ray image is being stored digitally. Which compression type should be used, and why?",opts:["Lossy — smaller files are always better","Lossless — the image must be exactly reproduced with no data loss","Lossy — X-rays have no important detail","No compression — images cannot be compressed"],ans:1,exp:"Medical images must use lossless compression. Losing even small details in an X-ray could affect diagnosis. Lossless ensures the image is exactly reproduced."},
+  {q:"Which compression formats would be best for archiving important business documents?",opts:["JPEG and MP3","ZIP and PNG","MP4 and AAC","JPEG only"],ans:1,exp:"ZIP (lossless file archiving) and PNG (lossless images) are suitable for important documents where no data can be lost."},
+  {q:"What happens when you repeatedly apply lossy compression to the same file?",opts:["Quality stays the same","The file gets larger each time","Quality degrades further each time — more data is permanently lost","The file becomes lossless"],ans:2,exp:"Each round of lossy compression removes more data. Applying it multiple times causes increasing visible/audible artefacts and degraded quality."},
+  {q:"Dictionary encoding is a lossless technique that:",opts:["Stores audio frequencies in a lookup table","Replaces frequently occurring patterns with short codes, using a dictionary to restore the original","Removes duplicate pixels from images","Converts text to binary using a special code"],ans:1,exp:"Dictionary encoding finds common patterns in data and replaces them with shorter codes. A dictionary stores the mapping so the original can be perfectly restored on decompression."},
+  {q:"Which file format uses lossy compression for images?",opts:["PNG","GIF","BMP","JPEG"],ans:3,exp:"JPEG uses lossy compression. PNG and GIF are lossless. BMP is an uncompressed format."},
+  {q:"A student compresses a WAV audio file to MP3. They later want the original quality back. Can they get it from the MP3?",opts:["Yes, MP3 stores all the original data","Yes, if they increase the bit rate","No — MP3 is lossy, data has been permanently removed","No — only if they re-compress it"],ans:2,exp:"MP3 is a lossy format. Converting WAV to MP3 permanently removes audio data. The original WAV quality cannot be recovered from the MP3."}
+];
+
+var WORKSHEET=[
+  {q:"Explain the difference between lossless and lossy compression. In your answer, state whether the original file can be restored for each type.",marks:4,ms:"Lossless compression reduces file size without removing any data (1). The original file can be perfectly restored from the compressed version (1). Lossy compression permanently removes some data to achieve a smaller file size (1). The original cannot be fully restored — some data is gone forever (1)."},
+  {q:"Explain how Run-Length Encoding (RLE) works. Use the string 'DDDDEEEFFF' as an example.",marks:3,ms:"RLE stores a value and the number of consecutive times it repeats instead of storing each occurrence individually (1). Example: DDDDEEEFFF → 4D 3E 3F (1). This reduces the 10 characters to 6 values, saving storage space (1)."},
+  {q:"A photographer takes a holiday photo. State which compression type they should use and give a reason.",marks:2,ms:"Lossy compression (e.g. JPEG) (1). A small loss of quality in a holiday photo is unlikely to be noticeable, and the smaller file size makes it easier to store and share (1)."},
+  {q:"A hospital stores patient X-ray images digitally. Explain why lossless compression must be used.",marks:2,ms:"Lossless compression must be used because no data can be lost (1). Even small details in an X-ray image could be critical for medical diagnosis — losing data could result in misdiagnosis or missed conditions (1)."},
+  {q:"State TWO benefits of compressing files before sending them over the internet.",marks:2,ms:"Any two from: faster upload/download speed (1); less data transferred, reducing bandwidth usage (1); cheaper data transfer costs (1); files take less time to send (1)."},
+  {q:"Explain what 'dictionary encoding' is and how it achieves lossless compression.",marks:3,ms:"Dictionary encoding identifies frequently occurring patterns or sequences in the data (1). These patterns are replaced by short codes, and the codes and their original patterns are stored in a dictionary (1). When the file is decompressed, the dictionary is used to restore the original patterns — no data is lost (1)."},
+  {q:"A music producer saves a recording in both FLAC (lossless) and MP3 (lossy) formats. List ONE advantage of each format.",marks:2,ms:"FLAC advantage: the original audio quality is perfectly preserved — no data is lost (1). MP3 advantage: much smaller file size, making it easier to store on a device and stream over the internet (1)."},
+  {q:"A student says 'lossy compression always produces terrible quality'. Evaluate this claim.",marks:3,ms:"The claim is largely incorrect (1). Lossy compression is designed to remove data that humans are unlikely to notice — for example, MP3 removes audio frequencies outside human hearing range, and JPEG removes very similar colours that the eye cannot distinguish (1). For most everyday uses (streaming music, sharing photos online) the quality loss is minimal or imperceptible. However, for professional or critical uses (medical imaging, archiving masters) quality loss is unacceptable (1)."}
+];
+
+var KEY_TERMS=[
+  {w:"Compression",d:"The process of reducing the size of a file so it takes less storage space and can be transmitted more quickly."},
+  {w:"Lossless compression",d:"Compression that reduces file size without removing any data. The original file can be perfectly reconstructed."},
+  {w:"Lossy compression",d:"Compression that permanently removes some data to achieve a smaller file size. The original cannot be fully restored."},
+  {w:"Run-Length Encoding (RLE)",d:"A lossless compression technique that replaces sequences of repeated values with a count and the value. E.g. AAAA → 4A."},
+  {w:"Dictionary encoding",d:"A lossless technique where common patterns are replaced by short codes stored in a dictionary, used for decompression."},
+  {w:"PNG",d:"Portable Network Graphics — a lossless image format. Images can be perfectly restored after compression."},
+  {w:"JPEG",d:"Joint Photographic Experts Group — a lossy image format. Achieves high compression ratios with some quality loss."},
+  {w:"MP3",d:"MPEG Audio Layer 3 — a lossy audio format. Removes inaudible frequencies. Widely used for music distribution."},
+  {w:"FLAC",d:"Free Lossless Audio Codec — a lossless audio format. Perfect audio reproduction. Larger than MP3."},
+  {w:"ZIP",d:"A lossless file archive format. Can compress any type of file without data loss."},
+  {w:"Compression ratio",d:"How much smaller the compressed file is compared to the original. Lossy achieves higher ratios than lossless."},
+  {w:"Artefacts",d:"Visible or audible distortions caused by lossy compression — e.g. blocky JPEG images or MP3 audio hiss."},
+  {w:"Irreversible",d:"Lossy compression is irreversible — once data is removed, it cannot be recovered even by decompressing the file."},
+  {w:"Perceptual coding",d:"A lossy audio technique (used in MP3) that removes sounds humans cannot easily perceive, such as very high/low frequencies or quiet sounds masked by louder ones."},
+  {w:"Why compress?",d:"Benefits include: reduced storage space, faster upload/download, lower bandwidth costs, faster streaming."}
+];
+
+var TEST_MCQ=[
+  {q:"Which of these file formats uses LOSSLESS compression?",opts:["JPEG","MP3","PNG","AAC"],ans:2,exp:"PNG is lossless. JPEG and AAC are lossy. MP3 is lossy."},
+  {q:"Which statement about lossless compression is correct?",opts:["Some data is permanently removed","The original file can be perfectly restored","The file size is always 50% smaller","It is only used for audio files"],ans:1,exp:"Lossless compression removes no data — the original can be perfectly reconstructed from the compressed file."},
+  {q:"Apply RLE to 'AAABBBBCC'. What is the result?",opts:["3A4B2C","4A3B2C","3A3B2C","2A4B3C"],ans:0,exp:"A appears 3 times, B appears 4 times, C appears 2 times. RLE: 3A 4B 2C."},
+  {q:"For which of these uses is lossy compression most appropriate?",opts:["Storing a legal contract","Archiving source code","Streaming music on a mobile app","Storing a medical scan"],ans:2,exp:"Streaming music can use lossy compression (MP3) because a small quality reduction is acceptable. The others require perfect data accuracy."},
+  {q:"What is the key disadvantage of lossy compression?",opts:["The files are still too large","The original file cannot be perfectly restored — some data is permanently lost","It takes longer than lossless","It cannot be used on images"],ans:1,exp:"Lossy compression permanently removes data. Decompression produces an approximation of the original, not an exact copy."}
+];
+
+var TEST_SA=[
+  {q:"State TWO differences between lossless and lossy compression.",marks:2,ms:"Any two from: lossless preserves all data; lossy permanently removes some data (1). The original can be perfectly restored from lossless but not from lossy (1). Lossy typically achieves higher compression ratios than lossless (1)."},
+  {q:"Explain how Run-Length Encoding works, using a suitable example.",marks:2,ms:"RLE stores a value and the number of consecutive times it appears, rather than storing each occurrence (1). Example: RRRRGGGG → 4R 4G (reduces 8 values to 4) (1)."},
+  {q:"Give ONE reason why a website developer might use PNG for a logo but JPEG for a background photo.",marks:2,ms:"PNG (lossless) is used for the logo so that fine details, text, and sharp edges are perfectly preserved with no blurring or artefacts (1). JPEG (lossy) is suitable for the photo because a small quality reduction is not noticeable, and the smaller file size means the page loads faster (1)."},
+  {q:"Why cannot you fully restore an MP3 file to the original WAV quality?",marks:2,ms:"MP3 uses lossy compression, which permanently removes audio data that is considered unlikely to be noticed by the listener (1). Once removed, this data is gone — it cannot be recreated from the compressed MP3 file (1)."},
+  {q:"A student wants to send a large photograph over email. Give ONE advantage of compressing it first.",marks:1,ms:"The compressed file is smaller, so it will upload and be received more quickly / use less bandwidth / be more likely to fit within the email attachment size limit."}
+];
+
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:100px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

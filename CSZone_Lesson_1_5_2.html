@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.5.2 Utility Software | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 1</div>
+    <div class="sst" style="color:#818cf8">1.5 Systems Software</div>
+    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sl active">1.5.2 Utility Software</a>
+    <div class="sst" style="color:#818cf8">1.6 Ethical Issues</div>
+    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+    <div class="sst">Component 2</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.5 Systems Software</div>
+  <div class="lesson-title">1.5.2 — Utility Software</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~18 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is Utility Software?</h2>
+    <p><strong>Utility software</strong> is system software designed to help manage, maintain, and optimise a computer system. Unlike application software (which performs user tasks) or the OS (which manages hardware), utilities perform background maintenance tasks.</p>
+  </div>
+  <div class="ns">
+    <h2>Types of Utility Software</h2>
+    <div class="ic b">
+      <h4>Encryption software</h4>
+      <p>Converts data into an unreadable format (ciphertext) using a key. Protects data stored on a device — if the device is stolen, encrypted data cannot be read without the key. Examples: BitLocker, VeraCrypt.</p>
+    </div>
+    <div class="ic b">
+      <h4>Defragmentation software</h4>
+      <p>Over time, files on a hard disk become fragmented — split into pieces stored in different locations. Defragmentation rearranges file fragments so they are stored contiguously, speeding up read times. Note: NOT needed/used for SSDs.</p>
+    </div>
+    <div class="ic b">
+      <h4>Data compression software</h4>
+      <p>Reduces file size by encoding data more efficiently. Two types:</p>
+      <ul>
+        <li><strong>Lossless</strong>: original data perfectly recoverable (ZIP, PNG, FLAC)</li>
+        <li><strong>Lossy</strong>: some data permanently removed (JPEG, MP3, MP4) — smaller files but some quality lost</li>
+      </ul>
+    </div>
+    <div class="ic b">
+      <h4>Backup software</h4>
+      <p>Creates copies of data to protect against loss from hardware failure, ransomware, or accidental deletion. Types:</p>
+      <ul>
+        <li><strong>Full backup</strong>: copies everything — slow but complete</li>
+        <li><strong>Incremental backup</strong>: only backs up files changed since the last backup — fast</li>
+        <li><strong>Differential backup</strong>: backs up files changed since the last full backup</li>
+      </ul>
+    </div>
+    <div class="ic b">
+      <h4>Anti-malware / antivirus</h4>
+      <p>Scans files, processes, and emails for malicious software. Quarantines or deletes threats. Must be kept up to date with latest malware signatures.</p>
+    </div>
+    <div class="ic b">
+      <h4>Firewall software</h4>
+      <p>Monitors and filters network traffic based on rules. Can be software (installed on device) or hardware (dedicated router/appliance). Blocks unauthorised access.</p>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Saying defragmentation helps SSDs — it doesn't; SSDs don't fragment like HDDs and defragging can damage them</li>
+        <li>Confusing compression types — lossy permanently removes data; lossless is fully reversible</li>
+        <li>Saying "backup" without explaining what it is or where data is stored</li>
+        <li>Confusing anti-malware and firewalls — anti-malware scans files; firewalls filter network traffic</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/1-5-1/" class="nb">← 1.5.1 Operating Systems</a>
+  <a href="/ocr-j277/1-6-1a/" class="nb n">1.6.1a Ethical &amp; Legal →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-5-2';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What is utility software?",opts:["Software for creative tasks like photo editing","System software that performs background maintenance and optimisation tasks","Application software for word processing","Software that connects to the internet"],ans:1,exp:"Utility software maintains and optimises a computer system — e.g., defragmenters, backup tools, anti-malware. It sits between the OS and application software."},
+  {q:"What does defragmentation software do?",opts:["Compresses files to save space","Rearranges fragmented file pieces on an HDD so they are stored contiguously, speeding up access","Scans files for malware","Encrypts data on the hard drive"],ans:1,exp:"Files become fragmented over time as they're saved, modified, and deleted. Defragmentation consolidates these fragments so the read head doesn't have to jump around, speeding up access."},
+  {q:"Why should defragmentation NOT be performed on an SSD?",opts:["SSDs don't have enough capacity","SSDs don't fragment like HDDs — defragging provides no benefit and causes unnecessary write cycles that reduce SSD lifespan","SSDs are too fast to need it","SSDs are already encrypted"],ans:1,exp:"SSDs access any location equally fast (no moving read head), so fragmentation doesn't slow them down. Defragging adds pointless write cycles, reducing the SSD's limited write lifespan."},
+  {q:"What is the difference between lossy and lossless compression?",opts:["Lossy is faster; lossless is slower","Lossy permanently removes some data; lossless reduces file size but allows perfect restoration","Lossless is used for images; lossy is used for documents","They produce the same file size"],ans:1,exp:"Lossless (ZIP, PNG) reduces file size without data loss — original perfectly recoverable. Lossy (JPEG, MP3) permanently discards some data for greater reduction — quality may be slightly reduced."},
+  {q:"A user's hard drive fails and they lose their project files. Which utility could have prevented this?",opts:["Defragmentation software","Anti-malware","Backup software","Compression software"],ans:2,exp:"Backup software creates copies of data on separate media. If the hard drive fails, the backup copy can be used to restore the lost files."},
+  {q:"What is an incremental backup?",opts:["A copy of all data every week","A backup of only the files changed since the last backup","A backup to an encrypted drive","A full copy of all data at a fixed point in time"],ans:1,exp:"Incremental backups only copy files that have changed since the last backup (full or incremental). They are faster and use less storage than full backups."},
+  {q:"What does encryption software do?",opts:["Scans files for viruses","Removes unnecessary files","Converts data into an unreadable format — only the correct key can decrypt it","Speeds up internet connections"],ans:2,exp:"Encryption software scrambles data using an algorithm and key. The encrypted data (ciphertext) is unreadable without the correct decryption key — protecting data if a device is stolen."},
+  {q:"Which compression format is lossless?",opts:["MP3","JPEG","ZIP","MP4"],ans:2,exp:"ZIP is lossless — compressed files can be perfectly decompressed to their original state. MP3 and JPEG are lossy — some data is permanently removed."},
+  {q:"What is the main purpose of anti-malware utility software?",opts:["To speed up hard drive access","To compress files","To detect and remove malicious software from a computer","To monitor network traffic"],ans:2,exp:"Anti-malware scans files, processes, and email attachments for malicious code, quarantines or deletes threats, and provides real-time protection."},
+  {q:"Why must anti-malware software be kept up to date?",opts:["To add new compression algorithms","Because new malware is constantly created — updates add new threat signatures to detect them","To improve defragmentation speed","To increase encryption strength"],ans:1,exp:"Malware databases contain signatures (fingerprints) of known malware. Without regular updates, the software cannot detect new malware variants released after the last update."},
+  {q:"Which type of backup takes the longest to restore from?",opts:["Full backup","Incremental backup","Differential backup","Cloud backup"],ans:1,exp:"Incremental backups require restoring the last full backup PLUS every incremental backup since — many files to process. A full backup restores everything in one step."},
+  {q:"A company wants to protect customer data on laptops in case they are stolen. Which utility is most appropriate?",opts:["Defragmentation software","Backup software","Encryption software","Compression software"],ans:2,exp:"Encryption software (e.g., full-disk encryption) makes data on the laptop unreadable without the correct key — even if the laptop is stolen, the data cannot be accessed."},
+  {q:"What is a firewall utility?",opts:["Software that scans for malware","Software that monitors and filters network traffic to block unauthorised access","Software that optimises hard drive performance","Software that backs up files"],ans:1,exp:"A firewall (software or hardware) examines incoming and outgoing network traffic and blocks connections that don't meet defined security rules — preventing unauthorised access."},
+  {q:"What is a full backup?",opts:["A backup of only recently changed files","A backup of files changed since the last full backup","A complete copy of all selected data at a specific point in time","A backup stored on the same drive"],ans:2,exp:"A full backup copies everything selected — all files and folders — regardless of when they last changed. It takes the longest but is the simplest to restore from."},
+  {q:"Which file format uses LOSSY compression?",opts:["PNG","FLAC","ZIP","JPEG"],ans:3,exp:"JPEG uses lossy compression — image data is permanently reduced for smaller file size. PNG and FLAC are lossless; ZIP is lossless compression for general files."}
+];
+var WORKSHEET=[
+  {q:"Explain the purpose of defragmentation software and explain why it is not needed for SSDs.",marks:3,ms:"Defragmentation rearranges file fragments on a HDD so they are stored contiguously (1), reducing the distance the read head must travel and speeding up file access (1). SSDs don't have a moving read head and access all locations at equal speed, so fragmentation doesn't affect performance — defragging is unnecessary and harmful as it reduces the SSD's write lifespan (1)."},
+  {q:"Explain the difference between lossy and lossless compression. Give one example of each.",marks:4,ms:"Lossless compression reduces file size without permanently removing any data — the original can be perfectly recovered upon decompression (1). Example: ZIP, PNG, FLAC (1). Lossy compression permanently removes some data to achieve greater size reduction (1). Example: JPEG, MP3, MP4 (1)."},
+  {q:"A business stores sensitive customer financial data on employee laptops. Recommend ONE utility software and explain how it protects the data.",marks:3,ms:"Encryption software (1). It converts the data into ciphertext using an encryption key (1). If the laptop is stolen, the data cannot be read without the correct decryption key, keeping customer data secure (1)."},
+  {q:"Describe the difference between a full backup and an incremental backup.",marks:3,ms:"A full backup copies all selected data completely at a specific point in time (1). An incremental backup only copies files that have changed since the last backup (1). Incremental backups are faster and use less storage, but restoring requires the last full backup plus all incrementals (1)."},
+  {q:"Explain why anti-malware software must be kept updated.",marks:2,ms:"New malware is constantly created and released (1). Anti-malware works by matching files against a database of known malware signatures — without updates the database doesn't include new threats, so recent malware goes undetected (1)."},
+  {q:"A school's computers have become slow over time. Suggest an appropriate utility software and explain how it might help.",marks:2,ms:"Defragmentation software (1). Over time, files become fragmented — split across different areas of the hard disk. Defragmenting rearranges these fragments contiguously so file access is faster, improving overall performance (1)."},
+  {q:"What is the difference between anti-malware software and a firewall?",marks:2,ms:"Anti-malware scans files and processes already on the computer for malicious code (1). A firewall monitors and filters incoming/outgoing network traffic, blocking suspicious connections before they reach the computer (1)."},
+  {q:"State THREE examples of utility software.",marks:3,ms:"Any three: encryption software (1); defragmentation software (1); data compression software (1); backup software (1); anti-malware/antivirus (1); firewall software (1)."}
+];
+var KEY_TERMS=[
+  {w:"Utility software",d:"System software that performs maintenance and optimisation tasks — e.g., defrag, backup, anti-malware."},
+  {w:"Defragmentation",d:"Rearranging fragmented file pieces on an HDD so they are stored contiguously, improving read speed. Not for SSDs."},
+  {w:"Fragmentation",d:"When files are split into pieces stored in different disk locations, slowing read access on HDDs."},
+  {w:"Encryption software",d:"Utility that converts data to ciphertext using a key — unreadable without the correct decryption key."},
+  {w:"Compression",d:"Reducing file size by encoding data more efficiently. Lossless = reversible; Lossy = permanent data loss."},
+  {w:"Lossless compression",d:"Compression where original data is perfectly recoverable. Examples: ZIP, PNG, FLAC."},
+  {w:"Lossy compression",d:"Compression that permanently removes some data for greater size reduction. Examples: JPEG, MP3, MP4."},
+  {w:"Backup",d:"A copy of data stored separately to restore from in case of data loss."},
+  {w:"Full backup",d:"Complete copy of all data at a point in time. Slowest to create but simplest to restore."},
+  {w:"Incremental backup",d:"Copies only files changed since the last backup. Fast and small but complex to restore."},
+  {w:"Differential backup",d:"Copies files changed since the last full backup. Balance between full and incremental."},
+  {w:"Anti-malware",d:"Utility that scans for, detects, and removes malicious software. Must be kept updated."},
+  {w:"Firewall",d:"Software or hardware that monitors and filters network traffic to block unauthorised access."},
+  {w:"Malware signature",d:"A unique code pattern used by anti-malware to identify known malicious programs."},
+  {w:"System software",d:"Software that manages hardware and provides a platform for applications. Includes OS and utilities."}
+];
+var TEST_MCQ=[
+  {q:"Which compression format retains all original data perfectly?",opts:["JPEG","MP3","PNG (lossless)","MP4"],ans:2,exp:"PNG uses lossless compression — the image can be perfectly restored. JPEG, MP3, and MP4 all use lossy compression."},
+  {q:"What is defragmentation?",opts:["Deleting temporary files","Rearranging file fragments on an HDD contiguously to speed up access","Encrypting data for security","Scanning for malware"],ans:1,exp:"Defragmentation consolidates fragmented file pieces on a hard disk so they are stored together, reducing seek time and improving performance."},
+  {q:"Why is incremental backup faster than a full backup?",opts:["It compresses files before backing up","It only copies files that have changed since the last backup","It uses faster storage media","It skips large files"],ans:1,exp:"Incremental backup only processes changed files — far fewer than a full backup which copies everything."},
+  {q:"Which utility would protect data on a stolen laptop?",opts:["Defragmentation","Backup software","Encryption software","Anti-malware"],ans:2,exp:"Encryption software makes data unreadable without the correct key — even if the laptop is stolen, data remains protected."},
+  {q:"What is the primary function of anti-malware software?",opts:["Filter network traffic","Detect and remove malicious software","Compress files","Rearrange hard disk data"],ans:1,exp:"Anti-malware detects malicious programs by comparing files against a signature database, then quarantines or removes threats."}
+];
+var TEST_SA=[
+  {q:"Explain the purpose of backup software and state TWO types of backup.",marks:3,ms:"Backup software creates copies of data to protect against loss from hardware failure, malware, or accidental deletion (1). Types: full backup (copies all data) (1); incremental backup (copies only changed files since last backup) (1)."},
+  {q:"Explain why defragmentation software should NOT be used on an SSD.",marks:2,ms:"SSDs don't have a physical read head — they access all locations at equal speed, so fragmentation doesn't slow them down (1). Defragging causes unnecessary write cycles which reduce the SSD's write lifespan (1)."},
+  {q:"Describe the difference between lossy and lossless compression.",marks:2,ms:"Lossy compression permanently removes some data to reduce file size — the original cannot be perfectly restored (1). Lossless compression reduces file size in a way that allows the original data to be perfectly recovered (1)."},
+  {q:"Why must anti-malware software be regularly updated?",marks:2,ms:"New malware is constantly being created (1). Anti-malware relies on a database of known malware signatures — updates add signatures for new threats, allowing the software to detect and remove them (1)."},
+  {q:"A company laptop is stolen. The hard drive contains unencrypted customer data. What should the company have done?",marks:2,ms:"The company should have used encryption software to encrypt the data on the laptop (1). With encryption, even though the laptop is stolen, the data is unreadable without the decryption key — customer data would remain secure (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

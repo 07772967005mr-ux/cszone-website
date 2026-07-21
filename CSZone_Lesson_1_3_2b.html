@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.3.2b Network Protocols | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 1</div>
+    <div class="sst" style="color:#818cf8">1.3 Networks</div>
+    <a href="/ocr-j277/1-3-1a/" class="sl fb">1.3.1a LAN &amp; WAN</a>
+    <a href="/ocr-j277/1-3-1b/" class="sl">1.3.1b Network Types</a>
+    <a href="/ocr-j277/1-3-1c/" class="sl">1.3.1c Internet &amp; DNS</a>
+    <a href="/ocr-j277/1-3-1d/" class="sl">1.3.1d Topologies</a>
+    <a href="/ocr-j277/1-3-2a/" class="sl">1.3.2a Wired &amp; Wireless</a>
+    <a href="/ocr-j277/1-3-2b/" class="sl active">1.3.2b Protocols</a>
+    <div class="sst" style="color:#818cf8">1.4–1.6</div>
+    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
+    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
+    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+    <div class="sst">Component 2</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.3 Networks</div>
+  <div class="lesson-title">1.3.2b — Network Protocols</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~22 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is a Protocol?</h2>
+    <p>A <strong>protocol</strong> is a set of rules that govern how data is transmitted across a network. Protocols ensure devices from different manufacturers can communicate — this is called <strong>interoperability</strong>.</p>
+  </div>
+  <div class="ns">
+    <h2>The TCP/IP Model</h2>
+    <p>TCP/IP is a layered model that describes how data is sent over the internet. OCR J277 requires understanding of the four key layers:</p>
+    <table class="ct">
+      <tr><th>Layer</th><th>Name</th><th>Purpose</th><th>Protocols</th></tr>
+      <tr><td>4 (top)</td><td>Application</td><td>Provides network services to applications (email, web, file transfer)</td><td>HTTP, HTTPS, FTP, SMTP, IMAP, DNS</td></tr>
+      <tr><td>3</td><td>Transport</td><td>Breaks data into segments (packets), ensures reliable delivery</td><td>TCP, UDP</td></tr>
+      <tr><td>2</td><td>Internet</td><td>Logical addressing (IP addresses), routing between networks</td><td>IP</td></tr>
+      <tr><td>1 (bottom)</td><td>Link</td><td>Physical transmission of data on the local network (MAC addresses)</td><td>Ethernet, Wi-Fi</td></tr>
+    </table>
+    <div class="kp"><strong>Memory trick:</strong> Application → Transport → Internet → Link (All The Important Layers)</div>
+  </div>
+  <div class="ns">
+    <h2>Key Protocols</h2>
+    <div class="ic b"><h4>HTTP / HTTPS</h4><ul><li>HyperText Transfer Protocol — transfers web pages</li><li>HTTPS = HTTP + TLS/SSL encryption (secure)</li><li>Port 80 (HTTP), Port 443 (HTTPS)</li></ul></div>
+    <div class="ic b"><h4>FTP (File Transfer Protocol)</h4><ul><li>Transfers files between computers over a network</li><li>Used by developers to upload files to web servers</li><li>Port 20 (data), Port 21 (control)</li></ul></div>
+    <div class="ic b"><h4>SMTP / IMAP / POP3 (Email)</h4><ul><li>SMTP — Simple Mail Transfer Protocol: SENDS email (port 25/587)</li><li>IMAP — Internet Message Access Protocol: retrieves email from server, emails STAY on server</li><li>POP3 — Post Office Protocol 3: downloads email to device, REMOVES from server</li></ul></div>
+    <div class="ic g"><h4>TCP vs UDP</h4><ul><li><strong>TCP</strong> (Transmission Control Protocol): reliable, ordered delivery. Data split into packets, sent, receiver acknowledges (ACK). Lost packets resent. Used for: web browsing, email, file downloads.</li><li><strong>UDP</strong> (User Datagram Protocol): fast, no guarantee of delivery. No acknowledgement. Used for: video streaming, online gaming, VoIP — speed matters more than perfect accuracy.</li></ul></div>
+    <div class="ic b"><h4>IP (Internet Protocol)</h4><ul><li>Provides logical addressing (IP addresses) for devices</li><li>Routes packets across networks (via routers)</li><li>IPv4 (32-bit, ~4.3 billion addresses) vs IPv6 (128-bit, vastly more)</li></ul></div>
+  </div>
+  <div class="ns">
+    <h2>Packet Switching</h2>
+    <p>Data is broken into small chunks called <strong>packets</strong>. Each packet contains:</p>
+    <div class="ic b"><ul><li><strong>Header</strong>: source IP, destination IP, packet number, total packets</li><li><strong>Payload</strong>: the actual data chunk</li><li><strong>Trailer</strong>: error checking information (checksum)</li></ul></div>
+    <p>Packets travel independently across the network — possibly taking different routes. At the destination, they are <strong>reassembled in order</strong>.</p>
+    <div class="ic g"><h4>Advantages of packet switching:</h4><ul><li>If a router fails, packets take alternative routes</li><li>Network resources are shared efficiently</li><li>Large files are broken into manageable chunks</li></ul></div>
+    <div class="ic a"><h4>Common Mistakes</h4><ul><li>Confusing SMTP (sends) with IMAP/POP3 (retrieves) — SMTP = sending, IMAP/POP3 = receiving</li><li>Saying TCP is always better — UDP is preferred for real-time applications where a tiny bit of lost data is acceptable</li><li>Forgetting packets include headers and trailers — not just raw data</li><li>Mixing up IMAP and POP3 — IMAP keeps emails on server, POP3 removes them</li></ul></div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/1-3-2a/" class="nb">← 1.3.2a Wired &amp; Wireless</a>
+  <a href="/ocr-j277/1-4-1/" class="nb n">1.4.1 Network Threats →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-3-2b';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What is a network protocol?",opts:["A physical cable type","A set of rules governing how data is transmitted across a network","A type of IP address","A piece of network hardware"],ans:1,exp:"A protocol is an agreed set of rules that devices must follow to communicate. Without protocols, devices from different manufacturers couldn't understand each other."},
+  {q:"Which protocol is used to SEND email?",opts:["IMAP","POP3","FTP","SMTP"],ans:3,exp:"SMTP (Simple Mail Transfer Protocol) is used to SEND email from a client to a mail server and between servers."},
+  {q:"Which protocol keeps emails stored on the server after retrieval?",opts:["SMTP","POP3","IMAP","FTP"],ans:2,exp:"IMAP (Internet Message Access Protocol) retrieves emails but leaves them stored on the server — allowing access from multiple devices."},
+  {q:"What does HTTPS add over HTTP?",opts:["Faster loading","Encryption using TLS/SSL — data is secured in transit","Larger file support","Colour display"],ans:1,exp:"HTTPS = HTTP + TLS/SSL. The data transferred between the browser and server is encrypted, protecting it from interception."},
+  {q:"Which transport protocol guarantees ordered, reliable delivery?",opts:["UDP","FTP","TCP","IP"],ans:2,exp:"TCP (Transmission Control Protocol) splits data into packets, requires the receiver to acknowledge (ACK) each packet, and resends any lost packets."},
+  {q:"A live video call would typically use which protocol?",opts:["TCP","SMTP","UDP","HTTPS"],ans:2,exp:"UDP (User Datagram Protocol) is used for real-time applications like video calls. It's fast — packets lost during a live call are simply dropped rather than causing delay by resending them."},
+  {q:"What does an IP address provide in the TCP/IP model?",opts:["Physical MAC address","Logical address for routing packets across networks","Encryption keys","File transfer capability"],ans:1,exp:"IP (Internet Protocol) provides logical addressing. Each device has an IP address, and routers use these addresses to route packets between different networks."},
+  {q:"What is a packet?",opts:["A complete file sent across a network","A small chunk of data with a header, payload and trailer","A type of Wi-Fi signal","The entire contents of an email"],ans:1,exp:"A packet is a small portion of data. It has a header (source/dest IP, packet number), payload (actual data), and trailer (error check). Large files are split into many packets."},
+  {q:"Which layer of the TCP/IP model handles logical addressing and routing?",opts:["Application","Transport","Internet","Link"],ans:2,exp:"The Internet layer handles IP addresses and routing. Routers operate at this layer, directing packets between networks based on destination IP addresses."},
+  {q:"HTTP uses which port number?",opts:["21","443","80","25"],ans:2,exp:"HTTP uses port 80. HTTPS uses port 443. FTP uses ports 20 and 21. SMTP uses port 25 or 587."},
+  {q:"Which of these best describes FTP?",opts:["A protocol for encrypting email","A protocol for transferring files between computers on a network","A wireless security standard","A type of IP address format"],ans:1,exp:"FTP (File Transfer Protocol) is designed specifically for uploading and downloading files between computers over a network — commonly used by developers to upload websites."},
+  {q:"What is an advantage of packet switching?",opts:["Data takes exactly the same route every time","All data travels in one piece","If one router fails, packets can take alternative routes","Packets are always received in order"],ans:2,exp:"Packet switching allows packets to route around failed nodes. Each packet can take a different path — making the network fault-tolerant."},
+  {q:"What does POP3 do differently from IMAP?",opts:["POP3 sends email; IMAP receives it","POP3 encrypts email; IMAP doesn't","POP3 removes email from the server after downloading; IMAP keeps it on the server","POP3 works only on mobile; IMAP works on desktops"],ans:2,exp:"POP3 downloads emails to the device and deletes them from the server. IMAP keeps emails on the server, allowing access from multiple devices. IMAP is more modern and flexible."},
+  {q:"Which TCP/IP layer is responsible for breaking data into packets and ensuring reliable delivery?",opts:["Application","Link","Internet","Transport"],ans:3,exp:"The Transport layer (TCP or UDP) is responsible for segmenting data into packets and, in TCP's case, ensuring reliable ordered delivery."},
+  {q:"A developer needs to upload website files to a web server. Which protocol should they use?",opts:["SMTP","FTP","IMAP","DNS"],ans:1,exp:"FTP (File Transfer Protocol) is specifically designed for transferring files between computers — commonly used by web developers to upload HTML, CSS, and images to servers."}
+];
+var WORKSHEET=[
+  {q:"What is a network protocol and why are protocols necessary?",marks:2,ms:"A protocol is a set of agreed rules for how data is transmitted across a network (1). Protocols are necessary so that devices from different manufacturers can communicate — they ensure interoperability by establishing a common language for data transmission (1)."},
+  {q:"Explain the difference between TCP and UDP, giving an example use case for each.",marks:4,ms:"TCP is a reliable protocol that splits data into packets, sends them, and requires acknowledgement from the receiver — any lost packets are resent (1). This ensures all data arrives correctly and in order (1). UDP sends packets without requiring acknowledgement — faster but no guarantee of delivery (1). TCP is used for web browsing/email (1); UDP is used for live video streaming/online gaming where speed matters more than perfect accuracy (1). [Max 4]"},
+  {q:"State the purpose of each of the following protocols: SMTP, IMAP, POP3.",marks:3,ms:"SMTP: sends email from sender to mail server / between mail servers (1). IMAP: retrieves email from server while keeping it stored on the server (1). POP3: downloads email from server and removes it from the server (1)."},
+  {q:"Describe the structure of a data packet.",marks:3,ms:"A packet consists of a header, payload and trailer (1). The header contains source and destination IP addresses, packet number and total number of packets (1). The payload contains the actual chunk of data being transmitted (1). The trailer contains error-checking information (e.g., checksum) (1). [Max 3]"},
+  {q:"Explain why HTTPS is used instead of HTTP for banking websites.",marks:2,ms:"HTTPS uses TLS/SSL encryption (1) to encrypt data transmitted between the browser and server, so that if the data is intercepted it cannot be read by an attacker (1). This protects sensitive information such as passwords and card numbers."},
+  {q:"What is the purpose of the Internet layer in the TCP/IP model?",marks:2,ms:"The Internet layer provides logical addressing using IP addresses (1). It is responsible for routing packets between different networks — routers at this layer read the destination IP address and forward packets toward the correct destination (1)."},
+  {q:"Explain ONE advantage of packet switching over sending a whole file in one piece.",marks:2,ms:"If a router fails, packets can take alternative routes around the failed node, meaning data can still reach its destination (1). If the whole file were sent in one piece via a single route, a router failure would mean the entire transmission is lost (1)."},
+  {q:"A student uses a laptop at home with IMAP set up for email, and accesses the same email on their school computer. Explain why IMAP is more suitable than POP3 for this scenario.",marks:2,ms:"IMAP stores emails on the server so they are accessible from any device (1). POP3 would download and delete emails from the server, meaning they would only be available on the device that first downloaded them — not the second device (1)."}
+];
+var KEY_TERMS=[
+  {w:"Protocol",d:"A set of rules that governs how data is transmitted across a network. Enables interoperability between different devices."},
+  {w:"TCP/IP",d:"The suite of protocols used on the internet. Four layers: Application, Transport, Internet, Link."},
+  {w:"TCP",d:"Transmission Control Protocol. Reliable, ordered delivery — breaks data into packets, requires ACK, resends lost packets."},
+  {w:"UDP",d:"User Datagram Protocol. Fast, connectionless — no guarantee of delivery. Used in real-time applications (gaming, video calls)."},
+  {w:"HTTP",d:"HyperText Transfer Protocol. Transfers web pages. Port 80. Unencrypted."},
+  {w:"HTTPS",d:"HTTP Secure. HTTP + TLS/SSL encryption. Port 443. Used for secure sites (banking, shopping)."},
+  {w:"FTP",d:"File Transfer Protocol. Transfers files between computers. Ports 20 (data) and 21 (control)."},
+  {w:"SMTP",d:"Simple Mail Transfer Protocol. Used to SEND email. Port 25/587."},
+  {w:"IMAP",d:"Internet Message Access Protocol. Retrieves email while keeping it on the server. Multi-device friendly."},
+  {w:"POP3",d:"Post Office Protocol 3. Downloads email and removes it from the server."},
+  {w:"IP",d:"Internet Protocol. Provides logical addressing (IP addresses) and routing between networks."},
+  {w:"Packet",d:"A small chunk of data transmitted over a network. Contains header (addresses, number), payload (data), and trailer (checksum)."},
+  {w:"Packet switching",d:"A method of sending data by breaking it into packets that travel independently and are reassembled at the destination."},
+  {w:"Port number",d:"A number that identifies a specific service or protocol on a network device. e.g., HTTP=80, HTTPS=443, FTP=21."},
+  {w:"Interoperability",d:"The ability of different systems/devices to communicate. Achieved by following the same protocols."}
+];
+var TEST_MCQ=[
+  {q:"Which protocol is used to RETRIEVE email while keeping it on the mail server?",opts:["SMTP","POP3","IMAP","FTP"],ans:2,exp:"IMAP retrieves emails but keeps them stored on the mail server, allowing access from multiple devices."},
+  {q:"What layer of TCP/IP is responsible for routing?",opts:["Application","Transport","Internet","Link"],ans:2,exp:"The Internet layer handles IP addressing and routing. Routers operate at this layer."},
+  {q:"A gaming company wants minimal delay for its online game. Which protocol should packets be sent with?",opts:["TCP","SMTP","UDP","HTTP"],ans:2,exp:"UDP is connectionless and fast — no handshaking or re-transmission. The minor data loss is acceptable for gaming; delay is not."},
+  {q:"Which protocol uses port 443?",opts:["HTTP","FTP","SMTP","HTTPS"],ans:3,exp:"HTTPS uses port 443. HTTP uses port 80. SMTP uses 25/587. FTP uses 20/21."},
+  {q:"What does the 'header' of a data packet contain?",opts:["Only the raw data","Source and destination IP addresses and packet number","Encryption keys","The file extension"],ans:1,exp:"The packet header contains source IP, destination IP, packet number, and total number of packets — routing and reassembly information."}
+];
+var TEST_SA=[
+  {q:"State the difference between IMAP and POP3.",marks:2,ms:"IMAP keeps emails on the server after retrieval so they can be accessed from multiple devices (1). POP3 downloads emails to the device and removes them from the server (1)."},
+  {q:"Describe what happens when TCP sends data across a network.",marks:3,ms:"Data is broken into packets (1). Each packet is sent separately and may take different routes (1). The receiver sends an acknowledgement (ACK) for each packet received; any lost packets are resent by TCP (1). Packets are reassembled in order at the destination (1). [Max 3]"},
+  {q:"Why does a website that handles bank details use HTTPS rather than HTTP?",marks:2,ms:"HTTPS encrypts data using TLS/SSL (1) so that if data is intercepted during transmission it cannot be read — protecting sensitive information like account numbers and passwords (1)."},
+  {q:"Give ONE reason why packets might take different routes through a network.",marks:1,ms:"If a router along one path fails / is congested, packets can be automatically rerouted via different nodes to still reach their destination."},
+  {q:"What is the purpose of a packet's 'trailer'?",marks:1,ms:"The trailer contains error-checking data (e.g., a checksum) that the receiver uses to verify the packet arrived without corruption."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:90px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

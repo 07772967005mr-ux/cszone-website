@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.3.1b Network Types | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 1</div>
+    <div class="sst" style="color:#818cf8">1.3 Networks</div>
+    <a href="/ocr-j277/1-3-1a/" class="sl fb">1.3.1a LAN &amp; WAN</a>
+    <a href="/ocr-j277/1-3-1b/" class="sl active">1.3.1b Network Types</a>
+    <a href="/ocr-j277/1-3-1c/" class="sl">1.3.1c Internet &amp; DNS</a>
+    <a href="/ocr-j277/1-3-1d/" class="sl">1.3.1d Topologies</a>
+    <a href="/ocr-j277/1-3-2a/" class="sl">1.3.2a Wired &amp; Wireless</a>
+    <a href="/ocr-j277/1-3-2b/" class="sl">1.3.2b Protocols</a>
+    <div class="sst" style="color:#818cf8">1.4–1.6</div>
+    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
+    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
+    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sl">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sl">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sl">2.2.1e Strings</a>
+    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-3-2/" class="sl">2.3.2 Testing</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-4-1b/" class="sl">2.4.1b Truth Tables</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.3 Networks</div>
+  <div class="lesson-title">1.3.1b — Network Types</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>Client-Server Networks</h2>
+    <p>In a client-server network, one or more powerful computers (servers) provide services and resources to other computers (clients) on the network.</p>
+    <div class="ic b">
+      <h4>How it works:</h4>
+      <ul>
+        <li>A <strong>server</strong> stores files, manages access rights, handles printing, hosts websites, etc.</li>
+        <li><strong>Clients</strong> request services from the server (e.g. a student's PC asking the school server for a file)</li>
+        <li>The server responds to requests and controls access (authentication, permissions)</li>
+      </ul>
+    </div>
+    <div class="ic g">
+      <h4>Advantages of client-server:</h4>
+      <ul>
+        <li>Centralised data — easy to back up and manage from one place</li>
+        <li>Centralised security — access control managed on the server</li>
+        <li>Files accessible from any client on the network</li>
+        <li>Easier to update software — update once on the server</li>
+      </ul>
+    </div>
+    <div class="ic r">
+      <h4>Disadvantages of client-server:</h4>
+      <ul>
+        <li>If the server fails, the whole network is affected</li>
+        <li>Expensive to set up and maintain (specialist hardware, IT staff)</li>
+        <li>Can become slow if many clients request services simultaneously</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ns">
+    <h2>Peer-to-Peer (P2P) Networks</h2>
+    <p>In a peer-to-peer network, all computers have equal status. Each device can act as both a client and a server — sharing its own resources and accessing others' resources.</p>
+    <div class="ic g">
+      <h4>Advantages of P2P:</h4>
+      <ul>
+        <li>Easy and cheap to set up — no specialist server required</li>
+        <li>If one computer fails, others are unaffected</li>
+        <li>No dependence on a central server</li>
+        <li>Good for small networks (e.g. home)</li>
+      </ul>
+    </div>
+    <div class="ic r">
+      <h4>Disadvantages of P2P:</h4>
+      <ul>
+        <li>No centralised management — harder to control access and security</li>
+        <li>Each computer manages its own backups</li>
+        <li>Performance degrades as more devices connect</li>
+        <li>Files may be duplicated across devices</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ns">
+    <h2>Client-Server vs Peer-to-Peer</h2>
+    <table class="ct">
+      <tr><th>Feature</th><th>Client-Server</th><th>Peer-to-Peer</th></tr>
+      <tr><td>Central server?</td><td>Yes</td><td>No</td></tr>
+      <tr><td>Centralised security</td><td>Yes — managed by server</td><td>No — each device manages itself</td></tr>
+      <tr><td>Cost</td><td>High (server hardware/software)</td><td>Low</td></tr>
+      <tr><td>Backup</td><td>Centralised — easy to back up</td><td>Each device backs up itself</td></tr>
+      <tr><td>If server fails</td><td>Network disrupted</td><td>Other devices unaffected</td></tr>
+      <tr><td>Scalability</td><td>Better for large networks</td><td>Better for small networks</td></tr>
+      <tr><td>Example</td><td>School network</td><td>Home file sharing</td></tr>
+    </table>
+  </div>
+
+  <div class="ns">
+    <h2>Virtual Networks</h2>
+    <p>A virtual network (or VLAN — Virtual Local Area Network) is a logical grouping of devices within a physical network, creating separate networks without separate hardware.</p>
+    <div class="ic b">
+      <h4>Key points:</h4>
+      <ul>
+        <li>Devices in the same VLAN can communicate as if on the same LAN, even if physically separate</li>
+        <li>Improves security — different departments can be on separate VLANs (e.g. finance and HR)</li>
+        <li>Reduces broadcast traffic (data is only sent to devices in the same VLAN)</li>
+        <li>Flexible — easy to change without recabling</li>
+      </ul>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Saying a P2P network has no files shared — files are shared, just not from a central server</li>
+        <li>Confusing the server in client-server with a physical server machine (servers can run on powerful PCs too)</li>
+        <li>Saying client-server is always better — P2P is often better for small/home networks</li>
+        <li>Confusing VLAN with a separate physical network — a VLAN is a logical separation, not physical</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet — Network Types</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/1-3-1a/" class="nb">← 1.3.1a LAN &amp; WAN</a>
+  <a href="/ocr-j277/1-3-1c/" class="nb n">1.3.1c Internet &amp; DNS →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-3-1b';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+
+var QUIZ=[
+  {q:"In a client-server network, what is the role of the server?",opts:["To browse the internet","To provide services and resources to client devices on the network","To act as an equal peer with other devices","To connect the network to the internet"],ans:1,exp:"A server provides services and resources (files, printers, authentication, etc.) to client devices that request them."},
+  {q:"In a peer-to-peer network, what is the role of each device?",opts:["Each device is a client only","Each device is a server only","Each device can act as both a client and a server","One device is the server, others are clients"],ans:2,exp:"In P2P, all devices have equal status. Each can share its own resources (acting as a server) and access other devices' resources (acting as a client)."},
+  {q:"Which type of network provides centralised data management and backup?",opts:["Peer-to-peer","Client-server","Ring network","VLAN"],ans:1,exp:"Client-server networks store data centrally on the server, making backups easy to manage from one location."},
+  {q:"A school network with a central server managing files and logins is an example of:",opts:["A peer-to-peer network","A client-server network","A VLAN","A ring topology"],ans:1,exp:"School networks are typically client-server: a central server manages user accounts, files, and access rights."},
+  {q:"What is a key disadvantage of a client-server network?",opts:["No central management","Expensive to set up (server hardware/software and IT staff)","Files cannot be shared","Devices cannot connect wirelessly"],ans:1,exp:"Client-server networks are expensive — they require powerful server hardware, server software licences, and often specialist IT staff to maintain."},
+  {q:"What is a key advantage of a peer-to-peer network?",opts:["Centralised security","Expensive to set up","Easy and cheap to set up — no specialist server required","Better suited for large networks"],ans:2,exp:"P2P networks are cheap and easy to set up — they don't require expensive server hardware or specialist software."},
+  {q:"What happens to a client-server network if the server fails?",opts:["Only the server is affected — clients continue normally","The whole network is disrupted — clients cannot access shared resources","Other servers take over automatically","Nothing changes"],ans:1,exp:"In a client-server network, the server is a single point of failure. If it goes down, all clients lose access to shared resources."},
+  {q:"Which network type is most suitable for a home with 3 computers sharing files?",opts:["Client-server","VLAN","Peer-to-peer","A WAN"],ans:2,exp:"A small home network is ideal for P2P — it's cheap, easy to set up, and doesn't need the overhead of a server."},
+  {q:"What is a VLAN?",opts:["A very long area network","A virtual local area network — a logical grouping of devices within a physical network","A wireless LAN","A virus protection system"],ans:1,exp:"A VLAN (Virtual Local Area Network) logically groups devices together within a physical network, creating separate virtual networks without separate hardware."},
+  {q:"Which of the following is an advantage of using a VLAN?",opts:["More physical cables are required","Departments can be isolated for security without separate hardware","All devices must be in the same room","VLANs reduce network speed significantly"],ans:1,exp:"VLANs improve security by isolating groups of devices (e.g. finance staff can't see HR data) without needing physically separate networks."},
+  {q:"In a peer-to-peer network, who manages backups?",opts:["A central server","An IT administrator","Each device manages its own backups","Backups are automatic on all devices"],ans:2,exp:"There's no central server in P2P, so each device is responsible for backing up its own data — which can be problematic if a device fails."},
+  {q:"Which statement about client-server networks is TRUE?",opts:["They are cheaper to set up than P2P","Security is managed by each individual client","Central software updates can be rolled out to all clients from the server","They perform better as more clients are added"],ans:2,exp:"In client-server, software updates can be deployed centrally — the server sends updates to all clients, making administration much easier."},
+  {q:"A company's IT department wants to ensure that the sales team cannot access finance department files. What would be the best network solution?",opts:["Use a peer-to-peer network","Connect both departments to the internet","Use VLANs to separate the departments logically","Remove all network connections"],ans:2,exp:"VLANs can logically separate departments within the same physical network, preventing cross-department data access and improving security."},
+  {q:"Which type of network is used by BitTorrent file-sharing?",opts:["Client-server","Peer-to-peer","VLAN","Ring network"],ans:1,exp:"BitTorrent is a classic P2P application — users download files from multiple peers (other users) who also have parts of the file, rather than from a central server."},
+  {q:"What is one advantage of client-server over peer-to-peer regarding file access?",opts:["Files can only be accessed by administrators","Files are stored on each individual device","Files stored on the server can be accessed from any client on the network","Files can only be accessed wirelessly"],ans:2,exp:"In a client-server network, files stored on the server are accessible from any client on the network — users can log in from different machines."}
+];
+
+var WORKSHEET=[
+  {q:"Explain the difference between a client-server network and a peer-to-peer network.",marks:4,ms:"In a client-server network, one or more dedicated servers provide services to client devices that request them (1). Clients access files, printers, and applications hosted on the server (1). In a peer-to-peer network, all devices have equal status — each can both share resources and access others' resources without a central server (1). P2P has no centralised management, while client-server has central administration (1)."},
+  {q:"State TWO advantages of a client-server network over a peer-to-peer network.",marks:2,ms:"Any two from: centralised data management/backup is easier (1); centralised security — access controlled by server (1); files accessible from any client (1); software updates deployed centrally (1); easier for IT staff to manage large numbers of devices (1)."},
+  {q:"State TWO disadvantages of a client-server network.",marks:2,ms:"Any two from: expensive to set up — requires server hardware and software (1); if server fails, all clients are affected (1); requires specialist IT staff to maintain (1); can be slow if many clients request services simultaneously (1)."},
+  {q:"A school wants to set up a network for 300 students and staff. Explain why a client-server network is more suitable than peer-to-peer.",marks:3,ms:"A client-server network provides centralised management (1), making it much easier to manage 300+ user accounts, access permissions, and software from one place (1). Centralised backups ensure student work is not lost. P2P would be impractical at this scale — managing security and files on each of 300 devices individually would be extremely difficult (1)."},
+  {q:"Explain what a VLAN is and state ONE advantage of using VLANs.",marks:3,ms:"A VLAN (Virtual Local Area Network) is a logical grouping of devices within a physical network (1). It creates separate virtual networks without requiring separate physical hardware (1). Advantage: improved security — departments (e.g. finance and HR) can be isolated so they cannot access each other's data (1)."},
+  {q:"A small business has 4 computers and wants to share files between them cheaply. Which network type would you recommend and why?",marks:3,ms:"Peer-to-peer (1). P2P is cheap and easy to set up — no expensive server hardware or software is needed (1). With only 4 devices, the lack of central management is not a significant issue and the performance impact is minimal (1)."},
+  {q:"Give ONE advantage and ONE disadvantage of a peer-to-peer network for a home user.",marks:2,ms:"Advantage: cheap and easy to set up — no central server required (1). Disadvantage: no centralised security or backup — each device must manage its own security and data backup (1)."},
+  {q:"In a client-server network, explain how software licensing is managed more efficiently than in a peer-to-peer network.",marks:2,ms:"In a client-server network, software is installed and licensed on the server (1). All clients access the server's version, so only one licence (or a small server licence) is needed, and updates are made once on the server and automatically available to all clients (1). In P2P, software must be installed individually on each device, requiring separate licences for each."}
+];
+
+var KEY_TERMS=[
+  {w:"Client-server network",d:"A network where dedicated server computers provide services to client devices. Centralised management and security."},
+  {w:"Server",d:"A powerful computer that provides services and resources (files, printing, authentication, web hosting) to clients on a network."},
+  {w:"Client",d:"A device that requests services from a server. E.g. a student's PC asking the school server for a file."},
+  {w:"Peer-to-peer (P2P)",d:"A network where all devices have equal status — each can act as both client and server. No central server."},
+  {w:"Centralised management",d:"Network administration performed from one central point (the server), rather than managing each device individually."},
+  {w:"Single point of failure",d:"In a client-server network, the server is a single point of failure — if it goes down, all clients lose access to shared resources."},
+  {w:"VLAN",d:"Virtual Local Area Network — a logical grouping of devices within a physical network that acts as a separate network without separate hardware."},
+  {w:"Authentication",d:"The process of verifying identity before granting access. In client-server, managed centrally by the server (username/password login)."},
+  {w:"Access rights",d:"Permissions that determine what each user can do on a network — e.g. read-only, read-write, admin. Managed by the server in client-server networks."},
+  {w:"Bandwidth sharing",d:"In P2P, as more devices connect and share files, available bandwidth per device decreases — reducing performance."},
+  {w:"Scalability",d:"How well a network can grow. Client-server scales better to large organisations; P2P is better suited to small networks."},
+  {w:"BitTorrent",d:"A P2P file-sharing protocol where users download files from multiple peers simultaneously rather than from a central server."},
+  {w:"File server",d:"A server that stores and manages files, allowing clients to access them from anywhere on the network."},
+  {w:"Network administrator",d:"A person responsible for managing, maintaining, and securing a network. Client-server networks typically require a dedicated admin."},
+  {w:"Virtual network",d:"A network created through software rather than physical hardware. VLANs are a type of virtual network within a physical LAN."}
+];
+
+var TEST_MCQ=[
+  {q:"Which type of network uses a dedicated server to manage files and user accounts?",opts:["Peer-to-peer","Client-server","VLAN","Ring network"],ans:1,exp:"Client-server networks use dedicated servers to manage files, authentication, and user accounts centrally."},
+  {q:"In a peer-to-peer network, what happens if one computer fails?",opts:["The whole network stops working","All other computers are unaffected","The server takes over","All files are lost"],ans:1,exp:"In P2P, there's no central server. If one device fails, others continue working normally — there is no single point of failure."},
+  {q:"Which is an advantage of a client-server network over peer-to-peer?",opts:["No specialist IT staff needed","Centralised backup and security management","Cheaper to set up","Better for small home networks"],ans:1,exp:"Client-server provides centralised management — all data backed up in one place, security managed from the server."},
+  {q:"What does VLAN stand for?",opts:["Virtual LAN","Varied Local Area Network","Very Large Area Network","Visual LAN"],ans:0,exp:"VLAN = Virtual Local Area Network — a logical grouping of devices within a physical network."},
+  {q:"A home with 3 computers sharing music files would most likely use:",opts:["A client-server network","A VLAN","A peer-to-peer network","A WAN"],ans:2,exp:"P2P is ideal for a small home network — cheap, easy, no server needed."}
+];
+
+var TEST_SA=[
+  {q:"State TWO differences between a client-server network and a peer-to-peer network.",marks:2,ms:"Any two: client-server has a central server / P2P all devices are equal (1); client-server has centralised security / P2P each device manages its own (1); client-server is more expensive / P2P is cheap (1)."},
+  {q:"Explain what a VLAN is and give ONE reason a business might use one.",marks:2,ms:"A VLAN is a Virtual Local Area Network — a logical grouping of devices within a physical network creating separate virtual networks (1). Businesses use them to separate departments for security, e.g. so finance cannot access HR data (1)."},
+  {q:"Give ONE advantage and ONE disadvantage of a peer-to-peer network.",marks:2,ms:"Advantage: cheap and easy to set up / no single point of failure (1). Disadvantage: no centralised security or backup / poor scalability for large networks (1)."},
+  {q:"Why might a large school choose a client-server network rather than peer-to-peer?",marks:2,ms:"A school with hundreds of students needs centralised management — user accounts, access control, and file storage from one place is much more practical than managing each device individually (1). Centralised security and backups protect student data effectively (1)."},
+  {q:"What is the main risk of a client-server network that does not exist in peer-to-peer?",marks:1,ms:"Single point of failure — if the server fails, all clients lose access to shared resources. In P2P, each device is independent."}
+];
+
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:90px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.1.2b Pseudocode | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sl active">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.1 Algorithms</div>
+  <div class="lesson-title">2.1.2b — Pseudocode</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is Pseudocode?</h2>
+    <p><strong>Pseudocode</strong> is a way of writing an algorithm in structured English that resembles programming but is not tied to any specific programming language. It is used to plan programs and communicate algorithms clearly.</p>
+    <div class="kp">OCR J277 uses its own pseudocode style. You must be able to READ and WRITE OCR pseudocode in the exam.</div>
+  </div>
+  <div class="ns">
+    <h2>OCR Pseudocode Reference</h2>
+    <div class="ic b">
+      <h4>Variables and assignment:</h4>
+      <div class="code">x = 5
+name = "Alice"
+total = price * quantity</div>
+    </div>
+    <div class="ic b">
+      <h4>Input and Output:</h4>
+      <div class="code">name = input("Enter your name: ")
+print("Hello " + name)</div>
+    </div>
+    <div class="ic b">
+      <h4>Selection (IF statements):</h4>
+      <div class="code">if score >= 50 then
+    print("Pass")
+else
+    print("Fail")
+endif</div>
+    </div>
+    <div class="ic b">
+      <h4>Iteration — count-controlled (FOR loop):</h4>
+      <div class="code">for i = 1 to 10
+    print(i)
+next i</div>
+    </div>
+    <div class="ic b">
+      <h4>Iteration — condition-controlled (WHILE loop):</h4>
+      <div class="code">while password != "secret"
+    password = input("Enter password: ")
+endwhile</div>
+    </div>
+    <div class="ic b">
+      <h4>DO UNTIL loop:</h4>
+      <div class="code">do
+    number = input("Enter a positive number: ")
+until number > 0</div>
+    </div>
+    <div class="ic b">
+      <h4>Arrays:</h4>
+      <div class="code">scores = [45, 67, 89, 23, 55]
+print(scores[0])    // First element
+scores[2] = 90      // Update element</div>
+    </div>
+    <div class="ic b">
+      <h4>Subroutines (Procedures and Functions):</h4>
+      <div class="code">procedure greet(name)
+    print("Hello " + name)
+endprocedure
+
+function square(n)
+    return n * n
+endfunction</div>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Forgetting endif, endwhile, next i — OCR requires closing keywords</li>
+        <li>Using = for comparison instead of == — in OCR pseudocode use == for comparison</li>
+        <li>Writing Python/real code in pseudocode questions — pseudocode is language-independent</li>
+        <li>Forgetting that array indexes start at 0</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-1-2a/" class="nb">← 2.1.2a Flowcharts</a>
+  <a href="/ocr-j277/2-1-3a/" class="nb n">2.1.3a Linear Search →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-1-2b';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What is pseudocode?",opts:["Actual code that runs on a computer","A visual diagram of an algorithm","Structured English that describes an algorithm without using a specific language","A type of assembly language"],ans:2,exp:"Pseudocode is informal, structured English that describes an algorithm. It's language-independent — it can be translated into any programming language."},
+  {q:"In OCR pseudocode, which keyword ends an IF statement?",opts:["end","stop","endif","fi"],ans:2,exp:"OCR pseudocode uses 'endif' to close an IF statement. Forgetting this in the exam loses marks."},
+  {q:"What does 'x = input(\"Enter a number: \")' do in pseudocode?",opts:["Prints a number","Assigns 5 to x","Takes user input and stores it in x","Declares x as a variable"],ans:2,exp:"The input() function reads data from the user and returns it. Here it is assigned to x — so x holds whatever the user types."},
+  {q:"Which loop type is used when you know exactly how many times to repeat?",opts:["while loop","do...until loop","for loop","repeat loop"],ans:2,exp:"A for loop (count-controlled) runs a specific number of times: 'for i = 1 to 10'. When you know the number of iterations in advance, use a for loop."},
+  {q:"What is the difference between a WHILE loop and a DO...UNTIL loop?",opts:["They are identical","WHILE checks condition before each iteration; DO UNTIL checks after — so DO UNTIL always runs at least once","WHILE is faster","DO UNTIL is for strings only"],ans:1,exp:"A WHILE loop checks the condition BEFORE executing — if false from the start, the loop body never runs. A DO...UNTIL checks AFTER — guaranteeing at least one execution of the body."},
+  {q:"What does 'return n * n' do in a function?",opts:["Prints n squared","Ends the program","Sends the value of n*n back to wherever the function was called","Stores n*n in a global variable"],ans:2,exp:"'return' sends a value back to the calling code. The function calculates n*n and returns it — the caller receives this value and can use or store it."},
+  {q:"In OCR pseudocode, what does scores[0] refer to?",opts:["The last element","The element at position 1","The first element of the scores array","The length of the array"],ans:2,exp:"Arrays in OCR pseudocode (and most programming languages) are zero-indexed — [0] is the FIRST element, [1] is the second, etc."},
+  {q:"Which keyword ends a WHILE loop in OCR pseudocode?",opts:["end","wend","endwhile","loop"],ans:2,exp:"OCR pseudocode uses 'endwhile' to close a while loop. Equivalent to the closing brace '}' in many languages."},
+  {q:"What is the purpose of pseudocode?",opts:["To run programs without a compiler","To plan algorithms in a language-independent way before coding","To test programs automatically","To encrypt code for security"],ans:1,exp:"Pseudocode is used at the design stage to plan an algorithm without committing to a specific language. It can then be translated into any language."},
+  {q:"Which of the following correctly shows a FOR loop in OCR pseudocode?",opts:["for i in range(10):","for i = 1 to 10 ... next i","FOR I = 1 TO 10 NEXT","loop 10 times"],ans:1,exp:"OCR pseudocode uses: 'for i = 1 to 10 [body] next i'. The 'next i' keyword closes the loop and increments i."},
+  {q:"What does 'procedure' vs 'function' mean in OCR pseudocode?",opts:["They are identical","A procedure does not return a value; a function returns a value using 'return'","A function doesn't need parameters; a procedure does","Functions use for loops; procedures use while loops"],ans:1,exp:"A procedure performs a task but returns no value. A function performs a task AND returns a value using 'return'. Both are called subroutines."},
+  {q:"In OCR pseudocode, how do you check if two values are equal?",opts:["=","equals","==","is"],ans:2,exp:"In OCR pseudocode, == is used for comparison (checking equality), while = is used for assignment. This is a common source of errors."},
+  {q:"A WHILE loop has condition 'while count < 5'. If count starts at 10, how many times does the body run?",opts:["5","10","0 — the condition is immediately false","1"],ans:2,exp:"WHILE checks the condition BEFORE the body. Since count (10) is NOT less than 5, the condition is immediately false — the body never executes. (0 times)"},
+  {q:"Which pseudocode correctly assigns the value 42 to a variable called 'answer'?",opts:["answer == 42","int answer = 42","answer = 42","let answer = 42"],ans:2,exp:"In OCR pseudocode, simple assignment uses =. There are no type declarations or 'let' keywords — just 'variableName = value'."},
+  {q:"What does 'print(scores[3])' output if scores = [10, 20, 30, 40, 50]?",opts:["30","10","40","50"],ans:2,exp:"Arrays are zero-indexed: scores[0]=10, scores[1]=20, scores[2]=30, scores[3]=40, scores[4]=50. So scores[3] = 40."}
+];
+var WORKSHEET=[
+  {q:"Write pseudocode to input two numbers from the user, add them together, and output the result.",marks:3,ms:"a = input('Enter first number: ') (1); b = input('Enter second number: ') (1); print(a + b) — or total = a + b then print(total) (1)."},
+  {q:"Write pseudocode for an IF statement that checks if a temperature is above 30 and prints 'Hot', otherwise prints 'Cool'.",marks:3,ms:"if temperature > 30 then (1); print('Hot') (1); else; print('Cool'); endif (1). Award marks for correct if/else/endif structure."},
+  {q:"Write pseudocode for a FOR loop that prints the numbers 1 to 5.",marks:3,ms:"for i = 1 to 5 (1); print(i) (1); next i (1)."},
+  {q:"Write pseudocode for a WHILE loop that keeps asking for a password until the user enters 'secret'.",marks:3,ms:"password = input('Enter password: ') (1); while password != 'secret' (1); password = input('Enter password: '); endwhile (1)."},
+  {q:"Explain the difference between a WHILE loop and a DO...UNTIL loop.",marks:2,ms:"WHILE checks the condition before the loop body executes — if false initially, the body never runs (1). DO...UNTIL checks the condition after the body — so the body always executes at least once (1)."},
+  {q:"Write pseudocode for a function called 'multiply' that takes two parameters and returns their product.",marks:3,ms:"function multiply(a, b) (1); return a * b (1); endfunction (1)."},
+  {q:"Given scores = [85, 42, 67, 91, 55], write pseudocode to print the third element.",marks:2,ms:"print(scores[2]) (1). Explanation: arrays start at index 0, so the third element is at index 2 (1)."},
+  {q:"Write pseudocode for a procedure called 'greet' that takes a name parameter and prints a greeting.",marks:3,ms:"procedure greet(name) (1); print('Hello ' + name) (1); endprocedure (1)."}
+];
+var KEY_TERMS=[
+  {w:"Pseudocode",d:"Structured English used to describe an algorithm — language-independent, not actual code."},
+  {w:"Assignment",d:"Storing a value in a variable: x = 5. In OCR pseudocode, = is used for assignment."},
+  {w:"Input",d:"Reading data from the user: name = input('Enter name:')"},
+  {w:"Output",d:"Displaying data: print('Hello ' + name)"},
+  {w:"IF statement",d:"Selection construct: if [condition] then ... else ... endif"},
+  {w:"FOR loop",d:"Count-controlled iteration: for i = 1 to n ... next i. Runs a fixed number of times."},
+  {w:"WHILE loop",d:"Condition-controlled loop: while [condition] ... endwhile. Checks before each iteration."},
+  {w:"DO...UNTIL loop",d:"Post-condition loop: do ... until [condition]. Body always executes at least once."},
+  {w:"Procedure",d:"A named subroutine that performs a task but does NOT return a value."},
+  {w:"Function",d:"A named subroutine that performs a task and RETURNS a value using 'return'."},
+  {w:"Parameter",d:"A variable passed into a subroutine when it is called."},
+  {w:"Array",d:"An ordered list of values stored under one name. Indexed from 0 in OCR pseudocode."},
+  {w:"Index",d:"The position of an element in an array. OCR arrays are zero-indexed: first element = [0]."},
+  {w:"Return",d:"Keyword in a function that sends a value back to the calling code."},
+  {w:"Iteration",d:"Repeating a block of code — using FOR, WHILE, or DO...UNTIL loops."}
+];
+var TEST_MCQ=[
+  {q:"Which keyword ends an IF statement in OCR pseudocode?",opts:["end","fi","stop","endif"],ans:3,exp:"OCR pseudocode uses 'endif' to close an IF statement."},
+  {q:"What is the index of the FIRST element of an array in OCR pseudocode?",opts:["1","0","-1","Any number"],ans:1,exp:"Arrays in OCR pseudocode are zero-indexed — the first element is at index [0]."},
+  {q:"What is the difference between a procedure and a function?",opts:["Functions have parameters; procedures don't","A procedure doesn't return a value; a function returns a value","Procedures use for loops; functions use while loops","They are identical"],ans:1,exp:"A procedure performs a task but returns nothing. A function returns a value using 'return'."},
+  {q:"A DO...UNTIL loop runs the body BEFORE checking the condition. What does this guarantee?",opts:["The loop never runs more than once","The loop runs a fixed number of times","The loop body runs at least once","The condition is always true"],ans:2,exp:"Because the condition is checked AFTER the body, the loop body always runs at least once regardless of the condition."},
+  {q:"In OCR pseudocode, what symbol is used for comparison (checking equality)?",opts:["=","equals","==","!="],ans:2,exp:"== is used for comparison in OCR pseudocode. = is used for assignment. Confusing them is a common error."}
+];
+var TEST_SA=[
+  {q:"Write pseudocode to ask the user for their age. If age >= 18, print 'Adult', otherwise print 'Minor'.",marks:3,ms:"age = input('Enter age:') (1); if age >= 18 then (1); print('Adult'); else; print('Minor'); endif (1)."},
+  {q:"Write pseudocode for a FOR loop that calculates the sum of numbers from 1 to 100.",marks:3,ms:"total = 0 (1); for i = 1 to 100 (1); total = total + i; next i; print(total) (1)."},
+  {q:"Explain the difference between a WHILE loop and a DO...UNTIL loop.",marks:2,ms:"WHILE checks the condition before each iteration — if false from the start the body never runs (1). DO...UNTIL checks the condition after — guaranteeing the body runs at least once (1)."},
+  {q:"Write pseudocode for a function that takes a number and returns its square.",marks:3,ms:"function square(n) (1); return n * n (1); endfunction (1)."},
+  {q:"What does scores[0] refer to if scores = [10, 20, 30]?",marks:1,ms:"The first element of the array — value 10. Arrays are zero-indexed so [0] = first element."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.2.1a Variables & Data Types | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl active fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sl">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sl">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sl">2.2.1e Strings</a>
+    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
+    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.2 Programming</div>
+  <div class="lesson-title">2.2.1a — Variables &amp; Data Types</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~20 min &nbsp;·&nbsp; <span style="color:#10b981;font-weight:600">FREE</span></div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>Variables and Constants</h2>
+    <p>A <strong>variable</strong> is a named location in memory used to store data that can change during a program's execution. A <strong>constant</strong> stores a value that does not change during execution.</p>
+    <div class="ic b">
+      <h4>OCR Pseudocode examples:</h4>
+      <div class="code">name = "Alice"         // variable — can change
+age = 16               // variable — integer
+PI = 3.14159           // constant — does not change
+score = score + 10     // updating a variable</div>
+    </div>
+    <div class="kp"><strong>Assignment operator:</strong> In OCR pseudocode, = is used for assignment (storing a value). == is used for comparison (testing equality).</div>
+  </div>
+  <div class="ns">
+    <h2>Data Types</h2>
+    <p>Every variable has a <strong>data type</strong> that determines what kind of data it stores and what operations are valid on it.</p>
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Data Type</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Description</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Example</th></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#818cf8;font-weight:600">Integer</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Whole number (positive or negative)</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">42, -5, 0</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#818cf8;font-weight:600">Real / Float</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Number with decimal point</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">3.14, -0.5, 2.0</td></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#818cf8;font-weight:600">Boolean</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">true or false only</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">true, false</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#818cf8;font-weight:600">String</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Sequence of characters (text)</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">"Hello", "A1"</td></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#818cf8;font-weight:600">Character</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">A single character</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">'A', '5', '!'</td></tr>
+    </table>
+    <div class="kp">Note: OCR refers to decimals as 'real' numbers. Python uses 'float'. Both terms may appear in exam questions.</div>
+  </div>
+  <div class="ns">
+    <h2>Arithmetic Operators</h2>
+    <div class="ic b">
+      <h4>OCR Pseudocode arithmetic operators:</h4>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px">
+        <tr><th style="background:#252840;color:#c7d2fe;padding:8px;text-align:left;border:1px solid #2d3148">Operator</th><th style="background:#252840;color:#c7d2fe;padding:8px;text-align:left;border:1px solid #2d3148">Meaning</th><th style="background:#252840;color:#c7d2fe;padding:8px;text-align:left;border:1px solid #2d3148">Example</th><th style="background:#252840;color:#c7d2fe;padding:8px;text-align:left;border:1px solid #2d3148">Result</th></tr>
+        <tr><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">+</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Addition</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">5 + 3</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">8</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">-</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Subtraction</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">10 - 4</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">6</td></tr>
+        <tr><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">*</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Multiplication</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">3 * 4</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">12</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">/</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Division (real result)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">7 / 2</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">3.5</td></tr>
+        <tr><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">DIV</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Integer division (quotient only)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">7 DIV 2</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">3</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">MOD</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Modulus (remainder)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">7 MOD 2</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">1</td></tr>
+        <tr><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">^</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Exponentiation (power)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">2 ^ 3</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">8</td></tr>
+      </table>
+    </div>
+    <div class="kp"><strong>MOD uses:</strong> Testing if even (n MOD 2 == 0), checking divisibility, wrapping around indices.</div>
+  </div>
+  <div class="ns">
+    <h2>Input and Output</h2>
+    <div class="ic b">
+      <div class="code">name = input("Enter your name: ")   // reads from keyboard
+print("Hello " + name)               // outputs to screen
+
+age = int(input("Age: "))             // convert string input to integer</div>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Confusing = (assignment) with == (comparison): x = 5 stores 5; x == 5 tests if x equals 5</li>
+        <li>Using integer when decimal needed — dividing 7/2 gives 3.5 (real), not 3 (integer DIV)</li>
+        <li>Forgetting to convert input() — it always returns a string; use int() or float() for numbers</li>
+        <li>Confusing character (one symbol, single quotes) with string (any length, double quotes)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-1-3e/" class="nb">← 2.1.3e Insertion Sort</a>
+  <a href="/ocr-j277/2-2-1b/" class="nb n">2.2.1b Selection &amp; Iteration →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-2-1a';var IS_FREE=true;
+var QUIZ=[
+  {q:"What is a variable?",opts:["A value that never changes","A named memory location that stores data that can change","A type of loop","A function that returns a value"],ans:1,exp:"A variable is a named location in memory used to store data. Unlike a constant, the value stored in a variable can change during the program's execution."},
+  {q:"What data type would you use to store a student's age?",opts:["String","Boolean","Integer","Real"],ans:2,exp:"Age is a whole number — use Integer. Real (float) is for decimals; Boolean for true/false; String for text."},
+  {q:"What is the result of 17 MOD 5?",opts:["3","2","1","4"],ans:1,exp:"17 ÷ 5 = 3 remainder 2. MOD gives the remainder, so 17 MOD 5 = 2."},
+  {q:"What is the result of 17 DIV 5?",opts:["3","2","3.4","4"],ans:0,exp:"DIV performs integer division — it gives the quotient without the remainder. 17 ÷ 5 = 3 remainder 2, so 17 DIV 5 = 3."},
+  {q:"Which operator is used for ASSIGNMENT in OCR pseudocode?",opts:["==","=>","=","<-"],ans:2,exp:"= is used for assignment in OCR pseudocode: x = 5 stores the value 5 in x. == is used for comparison: if x == 5."},
+  {q:"What data type is 'Hello World'?",opts:["Character","Integer","Boolean","String"],ans:3,exp:"A sequence of characters enclosed in double quotes is a String. A Character (single quotes) stores just ONE character."},
+  {q:"What data type stores only true or false?",opts:["Integer","Boolean","String","Real"],ans:1,exp:"Boolean data type can only hold the values true or false. Used in conditions, flags, and logic."},
+  {q:"What is 2 ^ 3 in OCR pseudocode?",opts:["6","8","5","9"],ans:1,exp:"^ is the exponentiation operator. 2 ^ 3 = 2³ = 2 × 2 × 2 = 8."},
+  {q:"What is the difference between / and DIV?",opts:["No difference","/gives real result; DIV gives integer quotient only","DIV gives decimal; / gives integer","/ is for strings, DIV for numbers"],ans:1,exp:"/ performs regular division and can return a real (decimal) result. DIV performs integer division — it discards the remainder and returns only the whole number quotient."},
+  {q:"What does input() always return in Python/OCR pseudocode?",opts:["An integer","A boolean","A string","A real number"],ans:2,exp:"input() always returns a string — even if the user types a number. You must convert: int(input()) for integer, float(input()) for real."},
+  {q:"Which is a valid Boolean value?",opts:["1 or 0","Yes or No","true or false","On or Off"],ans:2,exp:"In OCR pseudocode, Boolean values are 'true' and 'false' (lowercase). In Python they are 'True' and 'False' (capital first letter)."},
+  {q:"A program stores a temperature like 36.6. What data type is most appropriate?",opts:["Integer","Boolean","Character","Real"],ans:3,exp:"36.6 has a decimal point — it is a real number (also called float). Integer would only store the whole number part (36)."},
+  {q:"What does 'score = score + 1' do?",opts:["Tests if score equals score+1","Stores 1 in score","Increments score by 1","Sets score to undefined"],ans:2,exp:"This is assignment. The right side (score + 1) is evaluated first, then the result is stored in score. This pattern increments score by 1."},
+  {q:"What is the result of 10 MOD 2?",opts:["5","1","2","0"],ans:3,exp:"10 ÷ 2 = 5 remainder 0. MOD gives the remainder: 10 MOD 2 = 0. This is how you test if a number is even (any even number MOD 2 == 0)."},
+  {q:"What data type would you use for a student's name?",opts:["Integer","Boolean","String","Character"],ans:2,exp:"A name is text — a sequence of characters. String is the correct data type. Character would only hold one letter."}
+];
+var WORKSHEET=[
+  {q:"State the data type for each value: (a) 42  (b) 'X'  (c) true  (d) 3.14  (e) \"hello\"",marks:5,ms:"(a) Integer (1). (b) Character (1). (c) Boolean (1). (d) Real/Float (1). (e) String (1)."},
+  {q:"What is the difference between a variable and a constant?",marks:2,ms:"A variable stores data that can change during program execution (1). A constant stores a fixed value that does not change during execution (1)."},
+  {q:"Evaluate: (a) 15 MOD 4  (b) 15 DIV 4  (c) 15 / 4  (d) 3 ^ 4",marks:4,ms:"(a) 3 — remainder of 15÷4=3r3 (1). (b) 3 — quotient of 15÷4 (1). (c) 3.75 (1). (d) 81 — 3⁴=81 (1)."},
+  {q:"Explain the difference between = and == in OCR pseudocode.",marks:2,ms:"= is the assignment operator — it stores a value in a variable (e.g. x = 5) (1). == is the comparison operator — it tests whether two values are equal (e.g. if x == 5) (1)."},
+  {q:"Write pseudocode to: (a) ask the user for their name, (b) store it in a variable, (c) print a greeting.",marks:3,ms:"name = input(\"Enter your name: \") (1). [variable stored as name] (1). print(\"Hello \" + name) (1)."},
+  {q:"Why must you often convert the result of input() before using it in arithmetic?",marks:2,ms:"input() always returns a string (1). If you try to do arithmetic on a string, it will cause an error or wrong result — you must convert using int() or float() first (1)."},
+  {q:"A programmer writes: if score = 10. Explain the mistake and how to fix it.",marks:2,ms:"= is assignment, not comparison (1). The condition should use == for comparison: if score == 10 (1)."},
+  {q:"Write pseudocode that uses MOD to check if a number is even or odd.",marks:3,ms:"number = int(input(\"Enter a number: \")) (1); if number MOD 2 == 0 then print(\"Even\") else print(\"Odd\") endif (1); correct use of MOD 2 == 0 for even (1)."}
+];
+var KEY_TERMS=[
+  {w:"Variable",d:"A named location in memory that stores data which can change during program execution."},
+  {w:"Constant",d:"A named value that does not change during program execution. Improves readability and makes code easier to maintain."},
+  {w:"Data type",d:"Classifies what kind of data a variable stores: integer, real, boolean, string, or character."},
+  {w:"Integer",d:"A whole number — positive, negative, or zero. e.g. 42, -5, 0. No decimal point."},
+  {w:"Real (float)",d:"A number with a decimal point. e.g. 3.14, -0.5. OCR uses 'real'; Python uses 'float'."},
+  {w:"Boolean",d:"A data type with only two values: true or false. Used in conditions and flags."},
+  {w:"String",d:"A sequence of characters enclosed in double quotes. e.g. \"Hello\". Can contain letters, digits, spaces."},
+  {w:"Character",d:"A single character enclosed in single quotes. e.g. 'A', '5'. Different from a one-character string."},
+  {w:"Assignment (=)",d:"The = operator stores a value in a variable: x = 5 puts 5 into x. Not a comparison."},
+  {w:"Comparison (==)",d:"The == operator tests equality: if x == 5 checks whether x holds the value 5."},
+  {w:"MOD",d:"Modulus operator — returns the remainder after integer division. e.g. 7 MOD 2 = 1."},
+  {w:"DIV",d:"Integer division — returns the quotient discarding the remainder. e.g. 7 DIV 2 = 3."},
+  {w:"Exponentiation (^)",d:"Raises a number to a power. e.g. 2 ^ 3 = 8 (2 cubed)."},
+  {w:"input()",d:"A built-in function that reads text typed by the user. Always returns a string — must convert for arithmetic."},
+  {w:"Type casting",d:"Converting a value from one data type to another. e.g. int(\"42\") converts the string \"42\" to the integer 42."}
+];
+var TEST_MCQ=[
+  {q:"What data type stores true or false?",opts:["Integer","String","Boolean","Real"],ans:2,exp:"Boolean — can only hold true or false. Used for conditions, flags, and logical operations."},
+  {q:"What is 13 MOD 4?",opts:["3","1","4","2"],ans:1,exp:"13 ÷ 4 = 3 remainder 1. MOD returns the remainder: 13 MOD 4 = 1."},
+  {q:"In OCR pseudocode, x = 7 means:",opts:["Test if x equals 7","Store 7 in x","7 is a constant","Compare x with 7"],ans:1,exp:"= is the assignment operator. x = 7 stores the value 7 in variable x. == would be used for comparison."},
+  {q:"What data type is 3.14?",opts:["Integer","String","Boolean","Real"],ans:3,exp:"3.14 has a decimal point — it is a Real number (also called float in Python)."},
+  {q:"What does input() return?",opts:["An integer","A boolean","A string","Depends on what is typed"],ans:2,exp:"input() ALWAYS returns a string, regardless of what the user types. You must convert: int(input()) for integer."}
+];
+var TEST_SA=[
+  {q:"Name FIVE data types and give an example of each.",marks:5,ms:"Integer e.g. 42 (1). Real e.g. 3.14 (1). Boolean e.g. true (1). String e.g. \"hello\" (1). Character e.g. 'A' (1)."},
+  {q:"What is the difference between = and == in pseudocode? Give an example of each.",marks:4,ms:"= is assignment — stores a value: x = 5 (1). == is comparison — tests equality: if x == 5 (1). Using = in a condition is a common mistake (1). Each used in correct context (1)."},
+  {q:"Evaluate: (a) 20 MOD 6  (b) 20 DIV 6",marks:2,ms:"(a) 2 — 20÷6=3r2 (1). (b) 3 — integer quotient (1)."},
+  {q:"Why must you convert the result of input() before using it in arithmetic?",marks:2,ms:"input() always returns a string (1). Arithmetic on a string causes an error — convert with int() or float() first (1)."},
+  {q:"Write pseudocode to ask for two numbers and print their sum.",marks:3,ms:"a = int(input(\"Number 1: \")) (1); b = int(input(\"Number 2: \")) (1); print(a + b) (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();});
+</script>
+</body>
+</html>

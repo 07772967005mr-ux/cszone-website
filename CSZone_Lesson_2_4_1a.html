@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.4.1a Logic Gates | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst" style="color:#818cf8">2.4 Boolean Logic</div>
+    <a href="/ocr-j277/2-4-1a/" class="sl active fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-4-1b/" class="sl">2.4.1b Truth Tables</a>
+    <div class="sst" style="color:#818cf8">2.5 Languages</div>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.4 Boolean Logic</div>
+  <div class="lesson-title">2.4.1a — Logic Gates</div>
+  <div class="lesson-meta">Component 2: Boolean Logic &nbsp;·&nbsp; Free lesson &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is Boolean Logic?</h2>
+    <p><strong>Boolean logic</strong> deals with values that are either TRUE (1) or FALSE (0). Logic gates are electronic components that implement Boolean operations — they take one or more binary inputs and produce a single binary output.</p>
+    <div class="kp"><strong>OCR requires:</strong> AND, OR, NOT gates — symbols, function, and how to combine them. XOR is NOT required at GCSE but may appear.</div>
+  </div>
+  <div class="ns">
+    <h2>The Three Logic Gates</h2>
+    <div class="ic b">
+      <h4>AND Gate</h4>
+      <p>Output is 1 ONLY IF both inputs are 1. Like the AND operator in programming — all conditions must be true.</p>
+      <p style="margin-top:8px"><strong>Symbol:</strong> D-shape with a flat left edge (two inputs on left, one output on right)</p>
+      <div style="display:grid;grid-template-columns:repeat(3,80px);gap:0;margin-top:10px;font-family:'Courier New',monospace;font-size:13px">
+        <div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">A</div><div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">B</div><div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">A AND B</div>
+        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#fca5a5">0</div>
+        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#fca5a5;background:#1a1d2e">0</div>
+        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#fca5a5">0</div>
+        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#6ee7b7;background:#1a1d2e">1</div>
+      </div>
+    </div>
+    <div class="ic b">
+      <h4>OR Gate</h4>
+      <p>Output is 1 IF at least one input is 1. Output is 0 ONLY when BOTH inputs are 0.</p>
+      <p style="margin-top:8px"><strong>Symbol:</strong> Curved D-shape with a curved left edge (pointing arrow shape)</p>
+      <div style="display:grid;grid-template-columns:repeat(3,80px);gap:0;margin-top:10px;font-family:'Courier New',monospace;font-size:13px">
+        <div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">A</div><div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">B</div><div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">A OR B</div>
+        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#fca5a5">0</div>
+        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#6ee7b7;background:#1a1d2e">1</div>
+        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#6ee7b7">1</div>
+        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#6ee7b7;background:#1a1d2e">1</div>
+      </div>
+    </div>
+    <div class="ic b">
+      <h4>NOT Gate (Inverter)</h4>
+      <p>Takes ONE input and inverts (flips) it. 1 becomes 0; 0 becomes 1. Also called a NOT gate or inverter.</p>
+      <p style="margin-top:8px"><strong>Symbol:</strong> Triangle with a small circle (bubble) at the output</p>
+      <div style="display:grid;grid-template-columns:repeat(2,80px);gap:0;margin-top:10px;font-family:'Courier New',monospace;font-size:13px">
+        <div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">A</div><div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">NOT A</div>
+        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#6ee7b7">1</div>
+        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#fca5a5;background:#1a1d2e">0</div>
+      </div>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Boolean Expressions</h2>
+    <p>Logic gate circuits can be written as <strong>Boolean expressions</strong>. OCR uses the following notation:</p>
+    <div class="ic b">
+      <ul>
+        <li><strong>AND</strong>: A · B &nbsp;&nbsp;(dot, or sometimes A AND B)</li>
+        <li><strong>OR</strong>: A + B &nbsp;&nbsp;(plus sign, or A OR B)</li>
+        <li><strong>NOT</strong>: Ā &nbsp;&nbsp;(bar over the variable, or NOT A)</li>
+      </ul>
+    </div>
+    <div class="ic b">
+      <h4>Example circuit expression:</h4>
+      <p>A circuit with: A and B go into an AND gate, whose output goes into a NOT gate:</p>
+      <p style="margin-top:8px;color:#a5b4fc;font-family:'Courier New',monospace">Output = NOT(A AND B) = (A · B) with bar over it</p>
+      <p style="margin-top:8px">This is a NAND gate — output is 0 ONLY when both A=1 and B=1.</p>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Confusing AND with OR — AND requires ALL inputs to be 1; OR only requires ONE</li>
+        <li>Forgetting NOT has only ONE input — it cannot have two inputs</li>
+        <li>Saying AND output is 1 when "at least one" input is 1 — that describes OR</li>
+        <li>Drawing the wrong gate symbol — AND is flat-left D-shape; OR has a curved left edge</li>
+        <li>Confusing 1=TRUE and 0=FALSE with actual numbers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-3-2/" class="nb">← 2.3.2 Testing</a>
+  <a href="/ocr-j277/2-4-1b/" class="nb n">2.4.1b Truth Tables →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-4-1a';var IS_FREE=true;
+var QUIZ=[
+  {q:"What is Boolean logic?",opts:["Logic using decimal numbers","Logic where values are either TRUE (1) or FALSE (0)","A type of programming language","The study of sorting algorithms"],ans:1,exp:"Boolean logic deals with binary values — TRUE (1) or FALSE (0). Logic gates implement Boolean operations in hardware."},
+  {q:"An AND gate has inputs A=1, B=0. What is the output?",opts:["1","0","Depends on A","Depends on B"],ans:1,exp:"AND outputs 1 ONLY if both inputs are 1. Since B=0, the output is 0."},
+  {q:"An OR gate has inputs A=0, B=1. What is the output?",opts:["0","1","Depends on order","Error"],ans:1,exp:"OR outputs 1 if at least ONE input is 1. B=1, so output is 1."},
+  {q:"A NOT gate has input A=1. What is the output?",opts:["1","0","2","NOT defined"],ans:1,exp:"NOT inverts the input. NOT(1) = 0. The output is 0."},
+  {q:"An AND gate has inputs A=1, B=1. What is the output?",opts:["0","1","Depends","Error"],ans:1,exp:"AND outputs 1 ONLY when BOTH inputs are 1. A=1 and B=1, so output is 1."},
+  {q:"An OR gate has inputs A=0, B=0. What is the output?",opts:["1","0","Both","Neither"],ans:1,exp:"OR outputs 0 ONLY when BOTH inputs are 0. A=0 and B=0, so output is 0."},
+  {q:"How many inputs does a NOT gate have?",opts:["2","3","1","4"],ans:2,exp:"A NOT gate has exactly ONE input. It inverts (flips) that single input. It cannot have two inputs."},
+  {q:"What is the Boolean expression for an AND gate with inputs A and B?",opts:["A + B","A · B","NOT A","A XOR B"],ans:1,exp:"AND is written as A · B (dot notation). The + symbol represents OR."},
+  {q:"What is the Boolean expression for an OR gate with inputs A and B?",opts:["A · B","A + B","NOT A","A - B"],ans:1,exp:"OR is written as A + B (plus notation). The · symbol represents AND."},
+  {q:"An AND gate outputs 1 when:",opts:["At least one input is 1","Both inputs are 0","Both inputs are 1","At least one input is 0"],ans:2,exp:"AND outputs 1 ONLY when ALL inputs are 1. This is the key rule for AND."},
+  {q:"An OR gate outputs 0 only when:",opts:["Both inputs are 1","At least one input is 1","Both inputs are 0","One input is 1"],ans:2,exp:"OR outputs 0 ONLY when ALL inputs are 0. As soon as any input is 1, OR outputs 1."},
+  {q:"A circuit: A=0, B=1. They go into an AND gate. The AND gate output then goes into a NOT gate. What is the final output?",opts:["0","1","A","B"],ans:1,exp:"AND(0,1) = 0. Then NOT(0) = 1. Final output = 1."},
+  {q:"A circuit: A=1, B=1. They go into an AND gate, then a NOT gate. What is the final output?",opts:["0","1","2","Error"],ans:0,exp:"AND(1,1) = 1. Then NOT(1) = 0. Final output = 0. This is a NAND gate combination."},
+  {q:"Which gate acts as an inverter?",opts:["AND","OR","NOT","XOR"],ans:2,exp:"The NOT gate inverts its single input: 0 becomes 1, 1 becomes 0. It is also called an inverter."},
+  {q:"In Boolean notation, NOT A is written as:",opts:["A + 1","A · 0","A with a bar over it (Ā)","A XOR 1"],ans:2,exp:"NOT A is written as Ā — a bar (overline) over the variable. In some notations it is written as A' or ~A, but OCR uses the overline."}
+];
+var WORKSHEET=[
+  {q:"Complete the truth table for an AND gate:\nA=0,B=0 → ?\nA=0,B=1 → ?\nA=1,B=0 → ?\nA=1,B=1 → ?",marks:4,ms:"0,0→0 (1). 0,1→0 (1). 1,0→0 (1). 1,1→1 (1). AND only outputs 1 when BOTH inputs are 1."},
+  {q:"Complete the truth table for an OR gate:\nA=0,B=0 → ?\nA=0,B=1 → ?\nA=1,B=0 → ?\nA=1,B=1 → ?",marks:4,ms:"0,0→0 (1). 0,1→1 (1). 1,0→1 (1). 1,1→1 (1). OR outputs 1 when AT LEAST ONE input is 1."},
+  {q:"Complete the truth table for a NOT gate:\nA=0 → ?\nA=1 → ?",marks:2,ms:"0→1 (1). 1→0 (1). NOT inverts the input."},
+  {q:"Describe what each of the three gates (AND, OR, NOT) does.",marks:3,ms:"AND: outputs 1 ONLY if both inputs are 1 (1). OR: outputs 1 if at least one input is 1 (1). NOT: inverts its single input — 0 becomes 1, 1 becomes 0 (1)."},
+  {q:"A circuit has A=1 and B=0 entering an OR gate, then the output enters a NOT gate. What is the final output? Show your working.",marks:3,ms:"OR(1,0) = 1 (1). NOT(1) = 0 (1). Final output = 0 (1)."},
+  {q:"Write the Boolean expression for: inputs A and B into an AND gate, whose output goes into an OR gate with input C.",marks:2,ms:"(A · B) + C (1). The AND result is (A · B), then OR'd with C (1)."},
+  {q:"Explain why logic gates are important in computer hardware.",marks:2,ms:"Logic gates are the basic building blocks of all digital circuits (1). They process binary (0/1) signals, performing all computation in a CPU including arithmetic and decision-making (1)."},
+  {q:"A student says 'AND outputs 1 if at least one input is 1'. Identify and correct their mistake.",marks:2,ms:"The description given is for OR, not AND (1). AND outputs 1 ONLY IF ALL inputs are 1 — both A and B must be 1 for the output to be 1 (1)."}
+];
+var KEY_TERMS=[
+  {w:"Boolean logic",d:"A system of logic where all values are either TRUE (1) or FALSE (0). Forms the basis of all digital circuits."},
+  {w:"Logic gate",d:"An electronic component that takes one or more binary inputs and produces a single binary output based on a Boolean operation."},
+  {w:"AND gate",d:"Outputs 1 ONLY when ALL inputs are 1. If any input is 0, the output is 0. Symbol: flat-left D-shape."},
+  {w:"OR gate",d:"Outputs 1 when at least ONE input is 1. Only outputs 0 when ALL inputs are 0. Symbol: curved D-shape."},
+  {w:"NOT gate",d:"Has ONE input. Inverts (flips) the input: 0 becomes 1, 1 becomes 0. Also called an inverter. Symbol: triangle with output bubble."},
+  {w:"Boolean expression",d:"A mathematical notation representing a logic circuit. AND = · , OR = + , NOT = bar over variable (Ā)."},
+  {w:"TRUE / 1",d:"One of two Boolean values. Represented as 1 in binary. High voltage in digital circuits."},
+  {w:"FALSE / 0",d:"One of two Boolean values. Represented as 0 in binary. Low voltage in digital circuits."},
+  {w:"Inverter",d:"Another name for a NOT gate — it inverts the binary input."},
+  {w:"NAND",d:"NOT AND — an AND gate followed by a NOT gate. Output is 0 ONLY when both inputs are 1."},
+  {w:"NOR",d:"NOT OR — an OR gate followed by a NOT gate. Output is 1 ONLY when both inputs are 0."},
+  {w:"Truth table",d:"A table showing all possible input combinations for a logic gate/circuit and the corresponding output."},
+  {w:"Binary input",d:"A single bit input to a logic gate — either 0 or 1."},
+  {w:"Logic circuit",d:"A combination of multiple logic gates connected together to process binary signals."},
+  {w:"Boolean algebra",d:"The branch of mathematics dealing with Boolean variables and operations. AND, OR, NOT are the fundamental operations."}
+];
+var TEST_MCQ=[
+  {q:"What is the output of an AND gate when A=1 and B=0?",opts:["1","0","Depends on A","Error"],ans:1,exp:"AND: output is 1 ONLY when both inputs are 1. B=0, so output = 0."},
+  {q:"What is the output of an OR gate when A=1 and B=1?",opts:["0","1","2","Error"],ans:1,exp:"OR: output is 1 when at least one input is 1. Both are 1, so output = 1."},
+  {q:"A NOT gate receives input 0. What is the output?",opts:["0","1","NOT defined","2"],ans:1,exp:"NOT inverts. NOT(0) = 1."},
+  {q:"In Boolean notation, AND is written as:",opts:["A + B","A - B","A · B","A XOR B"],ans:2,exp:"AND = A · B (dot notation). OR = A + B."},
+  {q:"Which gate has only ONE input?",opts:["AND","OR","NOT","All of them"],ans:2,exp:"The NOT gate has exactly one input — it inverts that single value. AND and OR gates have two (or more) inputs."}
+];
+var TEST_SA=[
+  {q:"Complete the truth table for an AND gate (all 4 rows: A, B, Output).",marks:4,ms:"0,0,0 (1). 0,1,0 (1). 1,0,0 (1). 1,1,1 (1)."},
+  {q:"Describe the function of an OR gate.",marks:2,ms:"Outputs 1 when at least one input is 1 (1). Only outputs 0 when all inputs are 0 (1)."},
+  {q:"A=1, B=1 enter an AND gate. The output goes into a NOT gate. What is the final output? Show working.",marks:3,ms:"AND(1,1) = 1 (1). NOT(1) = 0 (1). Final output = 0 (1)."},
+  {q:"What does NOT(A) equal when A=0? What does it equal when A=1?",marks:2,ms:"NOT(0) = 1 (1). NOT(1) = 0 (1)."},
+  {q:"Explain how Boolean logic relates to computer hardware.",marks:2,ms:"Computers store and process data as binary (0s and 1s) (1). Logic gates implement Boolean operations in hardware — they form the circuits that make all computation possible (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();});
+</script>
+</body>
+</html>

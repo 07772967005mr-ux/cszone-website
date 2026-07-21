@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.2.1 Primary Storage (RAM &amp; ROM) | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}
+.shell{display:flex;width:100%;min-height:100vh}
+.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}
+.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}
+.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}
+.sidebar-logo span{color:#6366f1}
+.sidebar-section{padding:8px 0}
+.sidebar-section-title{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}
+.sidebar-link{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}
+.sidebar-link:hover{color:#e2e8f0;background:#ffffff08}
+.sidebar-link.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}
+.sidebar-link.free-badge::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}
+.main{margin-left:260px;flex:1;display:flex;flex-direction:column;min-height:100vh}
+.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}
+.breadcrumb{font-size:12px;color:#64748b;margin-bottom:8px}
+.breadcrumb a{color:#6366f1;text-decoration:none}
+.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}
+.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}
+.tab-bar{display:flex;gap:0;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}
+.tab-btn{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s}
+.tab-btn:hover{color:#e2e8f0}
+.tab-btn.active{color:#818cf8;border-bottom-color:#6366f1}
+.tab-content{padding:32px 40px;flex:1;max-width:900px}
+.notes-section{margin-bottom:32px}
+.notes-section h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}
+.notes-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}
+.notes-section p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}
+.notes-section ul{padding-left:20px;margin-bottom:10px}
+.notes-section ul li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}
+.info-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}
+.info-card.blue{border-left:3px solid #3b82f6}
+.info-card.green{border-left:3px solid #10b981}
+.info-card.amber{border-left:3px solid #f59e0b}
+.info-card.red{border-left:3px solid #ef4444}
+.info-card h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}
+.info-card p,.info-card li{font-size:13px;color:#94a3b8;line-height:1.6}
+.info-card ul{padding-left:16px}
+.compare-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.compare-table th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}
+.compare-table td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}
+.compare-table tr:nth-child(even) td{background:#1a1d2e}
+.key-point{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}
+.key-point strong{color:#c7d2fe}
+/* Quiz */
+.quiz-container{max-width:700px}
+.quiz-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
+.quiz-q p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}
+.quiz-opt{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;transition:.15s;font-size:13px;color:#94a3b8}
+.quiz-opt:hover{background:#252840;border-color:#4f46e5}
+.quiz-opt.correct{background:#052e16;border-color:#10b981;color:#6ee7b7}
+.quiz-opt.wrong{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}
+.quiz-opt input{display:none}
+.quiz-explain{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}
+.quiz-score{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}
+.btn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:.15s}
+.btn-primary{background:#6366f1;color:#fff}.btn-primary:hover{background:#4f46e5}
+.btn-outline{background:transparent;color:#6366f1;border:1px solid #6366f1}.btn-outline:hover{background:#6366f108}
+/* Worksheet */
+.ws-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
+.ws-q .q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.ws-q .q-text{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}
+.ws-q .marks{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}
+.ws-q textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}
+.ms-toggle{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}
+.mark-scheme{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}
+/* Key Terms */
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.term-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}
+.term-word{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}
+.term-def{font-size:13px;color:#94a3b8;line-height:1.5}
+/* Mini test */
+.test-section{margin-bottom:28px}
+.test-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}
+.sa-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}
+.sa-q p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}
+.sa-q .marks{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}
+/* Nav footer */
+.lesson-nav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235;margin-left:0}
+.nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500;transition:.15s}
+.nav-btn:hover{color:#e2e8f0;border-color:#4f46e5}
+.nav-btn.next{background:#6366f108;border-color:#6366f1;color:#818cf8}
+/* Paywall */
+#paywall-overlay{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:flex;align-items:center;justify-content:center;display:none}
+.paywall-box{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+.paywall-box h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
+.paywall-box p{font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6}
+.paywall-box .price{font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px}
+.paywall-box .price-sub{font-size:12px;color:#64748b;margin-bottom:24px}
+</style>
+</head>
+<body>
+<div id="paywall-overlay">
+  <div class="paywall-box">
+    <div style="font-size:48px;margin-bottom:16px">🔒</div>
+    <h2>Unlock Full Access</h2>
+    <p>This lesson is part of the full CSZone OCR J277 revision course. Subscribe to access all 47 lessons, quizzes, worksheets and mini tests.</p>
+    <div class="price">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div>
+    <div class="price-sub">or £59/year — save 38%</div>
+    <a href="/pricing" class="btn btn-primary" style="display:inline-block;text-decoration:none;margin-bottom:12px;width:100%">Subscribe Now</a>
+    <a href="/dashboard" style="font-size:13px;color:#64748b">Back to Dashboard</a>
+  </div>
+</div>
+
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Component 1</div>
+    <div class="sidebar-section-title" style="color:#818cf8">1.1 Systems Architecture</div>
+    <a href="/ocr-j277/1-1-1/" class="sidebar-link free-badge">1.1.1 Architecture of the CPU</a>
+    <a href="/ocr-j277/1-1-2/" class="sidebar-link">1.1.2 CPU Performance</a>
+    <a href="/ocr-j277/1-1-3/" class="sidebar-link">1.1.3 Embedded Systems</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.2 Memory &amp; Storage</div>
+    <a href="/ocr-j277/1-2-1/" class="sidebar-link free-badge active">1.2.1 Primary Storage</a>
+    <a href="/ocr-j277/1-2-2/" class="sidebar-link">1.2.2 Secondary Storage</a>
+    <a href="/ocr-j277/1-2-3/" class="sidebar-link">1.2.3 Units of Storage</a>
+    <a href="/ocr-j277/1-2-4a/" class="sidebar-link">1.2.4a Binary &amp; Denary</a>
+    <a href="/ocr-j277/1-2-4b/" class="sidebar-link">1.2.4b Hexadecimal</a>
+    <a href="/ocr-j277/1-2-4c/" class="sidebar-link">1.2.4c Binary Arithmetic</a>
+    <a href="/ocr-j277/1-2-4d/" class="sidebar-link">1.2.4d Binary Shifts</a>
+    <a href="/ocr-j277/1-2-4e/" class="sidebar-link">1.2.4e Character Encoding</a>
+    <a href="/ocr-j277/1-2-4f/" class="sidebar-link">1.2.4f Representing Images</a>
+    <a href="/ocr-j277/1-2-4g/" class="sidebar-link">1.2.4g Representing Sound</a>
+    <a href="/ocr-j277/1-2-5/" class="sidebar-link">1.2.5 Compression</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.3 Networks</div>
+    <a href="/ocr-j277/1-3-1a/" class="sidebar-link free-badge">1.3.1a LAN, WAN &amp; Performance</a>
+    <a href="/ocr-j277/1-3-1b/" class="sidebar-link">1.3.1b Network Types &amp; Hardware</a>
+    <a href="/ocr-j277/1-3-1c/" class="sidebar-link">1.3.1c Internet, DNS &amp; Cloud</a>
+    <a href="/ocr-j277/1-3-1d/" class="sidebar-link">1.3.1d Network Topologies</a>
+    <a href="/ocr-j277/1-3-2a/" class="sidebar-link">1.3.2a Wired &amp; Wireless</a>
+    <a href="/ocr-j277/1-3-2b/" class="sidebar-link">1.3.2b Protocols &amp; Layers</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.4 Network Security</div>
+    <a href="/ocr-j277/1-4-1/" class="sidebar-link free-badge">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sidebar-link">1.4.2 Preventing Vulnerabilities</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.5 Systems Software</div>
+    <a href="/ocr-j277/1-5-1/" class="sidebar-link free-badge">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sidebar-link">1.5.2 Utility Software</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.6 Impacts</div>
+    <a href="/ocr-j277/1-6-1a/" class="sidebar-link free-badge">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sidebar-link">1.6.1b Cultural &amp; Environmental</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Component 2</div>
+    <div class="sidebar-section-title" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sidebar-link free-badge">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sidebar-link">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sidebar-link">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sidebar-link">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sidebar-link">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sidebar-link">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sidebar-link">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sidebar-link">2.1.3e Insertion Sort</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sidebar-link free-badge">2.2.1a Variables &amp; Data Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sidebar-link">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sidebar-link">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sidebar-link">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sidebar-link">2.2.1e String Manipulation</a>
+    <a href="/ocr-j277/2-2-1f/" class="sidebar-link">2.2.1f Subroutines</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.3 Robust Programs</div>
+    <a href="/ocr-j277/2-3-1/" class="sidebar-link free-badge">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-3-2/" class="sidebar-link">2.3.2 Testing</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.4 Boolean Logic</div>
+    <a href="/ocr-j277/2-4-1a/" class="sidebar-link free-badge">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-4-1b/" class="sidebar-link">2.4.1b Truth Tables</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.5 Languages &amp; IDEs</div>
+    <a href="/ocr-j277/2-5-1/" class="sidebar-link free-badge">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sidebar-link">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sidebar-link">2.5.2b IDEs</a>
+  </div>
+</nav>
+
+<div class="main">
+<div class="lesson-header">
+  <div class="breadcrumb"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.2 Memory &amp; Storage</div>
+  <div class="lesson-title">1.2.1 — Primary Storage (RAM &amp; ROM)</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; Free lesson &nbsp;·&nbsp; ~20 min</div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tab-btn" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tab-btn" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tab-btn" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tab-btn" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tab-btn" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tab-btn" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<!-- NOTES -->
+<div class="tab-content" id="tab-notes">
+  <div class="notes-section">
+    <h2>What is Primary Storage?</h2>
+    <p>Primary storage (also called main memory) holds data and instructions that the CPU is <strong>currently using</strong>. It is directly accessible by the processor and much faster than secondary storage.</p>
+    <p>There are three types of primary storage you need to know: <strong>RAM</strong>, <strong>ROM</strong>, and <strong>Cache memory</strong>.</p>
+  </div>
+
+  <div class="notes-section">
+    <h2>RAM — Random Access Memory</h2>
+    <div class="info-card blue">
+      <h4>Key Facts about RAM</h4>
+      <ul>
+        <li><strong>Volatile</strong> — loses all data when the power is switched off</li>
+        <li>Temporarily stores currently running programs, the OS, and active data</li>
+        <li>Can be both <strong>read from and written to</strong></li>
+        <li>Directly accessible by the CPU at high speed</li>
+        <li>Typical sizes: 4GB–64GB in modern computers</li>
+        <li>The more RAM installed, the more programs can run simultaneously without slowing down</li>
+      </ul>
+    </div>
+    <p>Think of RAM like your desk — it holds everything you're currently working on. When you close the computer, everything on the desk is cleared.</p>
+    <h3>Types of RAM</h3>
+    <div class="info-card">
+      <h4>DRAM (Dynamic RAM)</h4>
+      <p>The most common type used as main memory. Must be constantly refreshed to retain data. Slower but cheaper and higher capacity.</p>
+    </div>
+    <div class="info-card">
+      <h4>SRAM (Static RAM)</h4>
+      <p>Faster and more expensive than DRAM. Does not need refreshing. Used for cache memory.</p>
+    </div>
+  </div>
+
+  <div class="notes-section">
+    <h2>ROM — Read-Only Memory</h2>
+    <div class="info-card green">
+      <h4>Key Facts about ROM</h4>
+      <ul>
+        <li><strong>Non-volatile</strong> — retains data when the power is off</li>
+        <li>Stores the computer's <strong>startup/boot instructions</strong> (BIOS or UEFI firmware)</li>
+        <li>Cannot normally be written to or modified</li>
+        <li>Much smaller capacity than RAM (typically just a few MB)</li>
+        <li>Read by the CPU immediately when the computer is switched on</li>
+      </ul>
+    </div>
+    <p>Think of ROM like a printed instruction manual — the content is fixed and doesn't change. When you turn the computer on, the CPU reads ROM first to start up.</p>
+    <div class="key-point"><strong>BIOS (Basic Input/Output System)</strong> — stored in ROM. It initialises hardware components and loads the operating system from secondary storage into RAM at startup.</div>
+  </div>
+
+  <div class="notes-section">
+    <h2>Cache Memory</h2>
+    <div class="info-card amber">
+      <h4>Key Facts about Cache</h4>
+      <ul>
+        <li>Extremely fast, small memory located between the CPU and RAM</li>
+        <li>Stores copies of <strong>frequently used</strong> instructions and data</li>
+        <li>Reduces the number of times the CPU must wait for data from slower RAM</li>
+        <li>Three levels: <strong>L1</strong> (fastest, smallest, inside CPU core), <strong>L2</strong> (medium speed/size), <strong>L3</strong> (largest, shared between cores)</li>
+        <li>Made from faster (and more expensive) SRAM</li>
+      </ul>
+    </div>
+    <h3>Cache Hits and Misses</h3>
+    <div class="info-card blue">
+      <h4>Cache Hit ✓</h4>
+      <p>The CPU looks for data and <strong>finds it in the cache</strong>. Access is very fast. This is the ideal scenario.</p>
+    </div>
+    <div class="info-card red">
+      <h4>Cache Miss ✗</h4>
+      <p>The CPU looks for data but it is <strong>NOT in the cache</strong>. The CPU must fetch it from RAM (slower), causing a delay.</p>
+    </div>
+    <p>A higher cache hit rate means faster overall performance. Increasing cache size can increase hit rate but cache is expensive, so there is a practical limit.</p>
+  </div>
+
+  <div class="notes-section">
+    <h2>Comparison: RAM vs ROM</h2>
+    <table class="compare-table">
+      <tr><th>Feature</th><th>RAM</th><th>ROM</th></tr>
+      <tr><td>Volatile?</td><td>Yes — data lost on power off</td><td>No — data retained permanently</td></tr>
+      <tr><td>Read/Write</td><td>Both read and write</td><td>Read only (normally)</td></tr>
+      <tr><td>Purpose</td><td>Stores current programs &amp; data</td><td>Stores boot/startup instructions</td></tr>
+      <tr><td>Typical size</td><td>4GB–64GB</td><td>A few MB</td></tr>
+      <tr><td>Speed</td><td>Fast</td><td>Slower</td></tr>
+      <tr><td>Modified by user?</td><td>Yes (constantly)</td><td>No</td></tr>
+    </table>
+  </div>
+
+  <div class="notes-section">
+    <h2>Why Does RAM Size Matter?</h2>
+    <p>When RAM is full, the OS may use <strong>virtual memory</strong> — a section of the hard drive used as an overflow. This is much slower than real RAM and can make the computer sluggish.</p>
+    <ul>
+      <li>More RAM → more programs can run at the same time without slowdown</li>
+      <li>More RAM → less use of virtual memory → faster performance</li>
+      <li>RAM speed (measured in MHz) also affects performance</li>
+    </ul>
+    <div class="info-card amber">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Confusing RAM (temporary) with hard drive storage (permanent)</li>
+        <li>Saying ROM stores programs — it stores only boot instructions (firmware)</li>
+        <li>Saying cache is the same as RAM — cache is faster and much smaller</li>
+        <li>Confusing L1/L3 — L1 is fastest and smallest; L3 is slowest and largest</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="tab-content" id="tab-video" style="display:none">
+  <div class="notes-section">
+    <h2>Video Lesson</h2>
+    <p style="color:#64748b">Video coming soon. Check back shortly!</p>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-content" id="tab-slides" style="display:none">
+  <div class="notes-section">
+    <h2>Lesson Slides</h2>
+    <p style="color:#64748b">Slides coming soon.</p>
+  </div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-content" id="tab-worksheet" style="display:none">
+  <div class="notes-section">
+    <h2>Worksheet — Primary Storage</h2>
+    <p style="font-size:13px;color:#64748b;margin-bottom:20px">Answer the questions below. Click "Show Mark Scheme" to check your answers.</p>
+  </div>
+  <div id="ws-container"></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-content" id="tab-quiz" style="display:none">
+  <div class="notes-section">
+    <h2>15-Question Quiz</h2>
+    <p style="font-size:13px;color:#64748b;margin-bottom:20px">Select the best answer for each question.</p>
+  </div>
+  <div class="quiz-container" id="quiz-container"></div>
+  <div class="quiz-score" id="quiz-score">
+    <h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3>
+    <p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p>
+    <button class="btn btn-outline" onclick="resetQuiz()">Try Again</button>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-content" id="tab-test" style="display:none">
+  <div class="notes-section"><h2>Mini Test</h2></div>
+  <div class="test-section">
+    <h3>Section A — Multiple Choice (5 questions)</h3>
+    <div id="test-mcq-container"></div>
+  </div>
+  <div class="test-section">
+    <h3>Section B — Short Answer (5 questions)</h3>
+    <div id="test-sa-container"></div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-content" id="tab-terms" style="display:none">
+  <div class="notes-section"><h2>Key Terms</h2></div>
+  <div class="terms-grid" id="terms-grid"></div>
+</div>
+
+<div class="lesson-nav">
+  <a href="/ocr-j277/1-1-3/" class="nav-btn">← 1.1.3 Embedded Systems</a>
+  <a href="/ocr-j277/1-2-2/" class="nav-btn next">1.2.2 Secondary Storage →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID = '1-2-1';
+var IS_FREE = true;
+var SUPA_URL = 'https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY = 'sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var currentUser = null;
+
+var QUIZ = [
+  {q:"What does RAM stand for?",opts:["Random Access Memory","Read And Modify","Rapid Addressing Module","Random Array Module"],ans:0,exp:"RAM stands for Random Access Memory — it is the main working memory of a computer."},
+  {q:"Which statement about RAM is correct?",opts:["It retains data when power is switched off","It stores the computer's boot instructions","It holds data currently being used by the CPU","It can only be read, not written to"],ans:2,exp:"RAM temporarily holds programs and data that the CPU is actively using."},
+  {q:"What happens to data stored in RAM when the computer is switched off?",opts:["It is saved to the hard drive","It is compressed and stored in ROM","It is lost permanently","It is backed up automatically"],ans:2,exp:"RAM is volatile — all data is lost when power is removed."},
+  {q:"What type of data does ROM store?",opts:["The user's documents","The operating system","The startup/boot instructions (BIOS/firmware)","Currently running applications"],ans:2,exp:"ROM stores the BIOS/firmware — the startup instructions needed to initialise hardware and load the OS."},
+  {q:"Which type of primary storage is non-volatile?",opts:["RAM","Cache","Virtual memory","ROM"],ans:3,exp:"ROM is non-volatile — it retains its contents when the power is off."},
+  {q:"What is the primary purpose of cache memory?",opts:["To store the OS permanently","To provide extra storage for large files","To store frequently used data closer to the CPU for faster access","To back up data from RAM"],ans:2,exp:"Cache holds copies of frequently needed data so the CPU can access it faster than fetching from RAM."},
+  {q:"Which level of cache is the fastest?",opts:["L3","L2","L1","L4"],ans:2,exp:"L1 cache is the smallest and fastest, located directly inside the CPU core."},
+  {q:"A 'cache hit' occurs when:",opts:["The cache memory is full","The CPU finds the required data in the cache","Data must be fetched from RAM","The cache runs slower than expected"],ans:1,exp:"A cache hit means the CPU found the needed data in the cache — no need to access slower RAM."},
+  {q:"Why does having more RAM generally improve performance?",opts:["It makes the CPU clock speed faster","It allows more programs and data to be held in primary storage simultaneously","It increases the hard drive capacity","It reduces the size of files stored"],ans:1,exp:"More RAM means more programs can run without resorting to slow virtual memory."},
+  {q:"Which of the following is NOT a type of primary storage?",opts:["RAM","ROM","Cache","Hard disk drive"],ans:3,exp:"A hard disk drive is secondary storage — it holds data permanently but is not directly accessed by the CPU in the same way."},
+  {q:"ROM is described as 'read-only'. What does this mean?",opts:["Data can only be read once","The data stored cannot normally be modified","ROM can only store text","ROM must be read before booting"],ans:1,exp:"ROM is read-only — its contents are fixed and cannot normally be changed by the user or running programs."},
+  {q:"Which correctly describes cache levels in terms of speed?",opts:["L1 fastest, L3 slowest","L3 fastest, L1 slowest","All levels are the same speed","L2 is always the fastest"],ans:0,exp:"L1 is the fastest and smallest; L3 is the largest and slowest of the three cache levels."},
+  {q:"What does 'volatile' mean in the context of memory?",opts:["The memory is very fast","The memory is very small","Data is lost when power is removed","The memory can only store numbers"],ans:2,exp:"Volatile memory requires a constant power supply — remove power and the data is gone."},
+  {q:"The BIOS (Basic Input/Output System) is stored in:",opts:["RAM","Cache","ROM","The hard drive"],ans:2,exp:"BIOS/firmware is stored in ROM so it remains available even after the computer is switched off."},
+  {q:"A computer uses virtual memory when:",opts:["The CPU is running too fast","RAM is full and the OS uses hard drive space as overflow","ROM becomes corrupted","Cache memory is empty"],ans:1,exp:"Virtual memory is a portion of secondary storage used as an extension of RAM when physical RAM is full — much slower than real RAM."}
+];
+
+var WORKSHEET = [
+  {q:"State what RAM stands for.",marks:1,ms:"Random Access Memory."},
+  {q:"Explain why RAM is described as volatile.",marks:2,ms:"RAM requires a constant power supply to retain data (1). When the computer is switched off, all data stored in RAM is lost (1)."},
+  {q:"Describe the purpose of ROM in a computer system.",marks:2,ms:"ROM stores the startup/boot instructions (BIOS/firmware) (1). These are used to initialise hardware components and load the operating system when the computer is first switched on (1)."},
+  {q:"Explain how cache memory improves CPU performance.",marks:3,ms:"Cache stores copies of frequently used data and instructions (1). Cache is much faster to access than RAM (1). The CPU can retrieve this data more quickly, reducing waiting time and improving processing speed (1)."},
+  {q:"State the difference between a cache hit and a cache miss.",marks:2,ms:"A cache hit occurs when the CPU finds the required data in the cache (1). A cache miss occurs when the data is not in the cache and must be fetched from the slower RAM instead (1)."},
+  {q:"Compare RAM and ROM by completing this information: (a) Which is volatile? (b) Which can be written to? (c) What does each store?",marks:3,ms:"(a) RAM is volatile; ROM is non-volatile (1). (b) RAM can be read and written; ROM is read-only (1). (c) RAM stores currently running programs and data; ROM stores boot/startup instructions (1)."},
+  {q:"A student notices their computer slows down significantly when they open many programs at once. Explain why adding more RAM would help solve this problem.",marks:3,ms:"RAM temporarily stores the data and instructions for programs that are currently running (1). When RAM is full, the computer uses virtual memory (secondary storage used as overflow) which is much slower (1). More RAM allows more programs to run from primary storage simultaneously, avoiding the need for slow virtual memory (1)."},
+  {q:"Explain why L1 cache is faster than L3 cache, despite both being cache memory.",marks:2,ms:"L1 cache is located directly inside the CPU core, so data travel distance is minimal (1). L3 cache is larger and further from the CPU core (shared between all cores), meaning slightly longer access times, though still faster than RAM (1)."}
+];
+
+var KEY_TERMS = [
+  {w:"RAM",d:"Random Access Memory — volatile primary storage that holds currently running programs and data; lost when power is off."},
+  {w:"ROM",d:"Read-Only Memory — non-volatile primary storage containing boot/startup instructions (BIOS/firmware) that cannot normally be modified."},
+  {w:"Volatile",d:"Describes memory that loses all stored data when the power supply is removed (e.g. RAM, cache)."},
+  {w:"Non-volatile",d:"Describes memory that retains its data when the power is off (e.g. ROM, hard drives, SSDs)."},
+  {w:"Primary storage",d:"Memory directly accessible by the CPU — includes RAM, ROM and cache. Faster than secondary storage."},
+  {w:"Cache memory",d:"Very fast, small memory located between the CPU and RAM, storing frequently used data to reduce access time."},
+  {w:"L1 cache",d:"The fastest and smallest cache level, located directly inside each CPU core."},
+  {w:"L2 cache",d:"Medium-speed cache, larger than L1, either inside the core or shared between cores."},
+  {w:"L3 cache",d:"The largest but slowest cache level, typically shared between all CPU cores."},
+  {w:"Cache hit",d:"When the CPU finds the data it needs in the cache — results in fast access."},
+  {w:"Cache miss",d:"When data is not found in the cache and must be fetched from slower RAM."},
+  {w:"BIOS",d:"Basic Input/Output System — firmware stored in ROM that initialises hardware and loads the OS at startup."},
+  {w:"DRAM",d:"Dynamic RAM — the common type used as main memory; must be constantly refreshed. Cheaper but slower than SRAM."},
+  {w:"SRAM",d:"Static RAM — faster and more expensive than DRAM; used for cache memory. Does not need refreshing."},
+  {w:"Virtual memory",d:"A section of secondary storage (hard drive/SSD) used as an overflow when RAM is full. Much slower than real RAM."}
+];
+
+var TEST_MCQ = [
+  {q:"Which type of memory is both fast AND non-volatile?",opts:["RAM","ROM","Cache","DRAM"],ans:1,exp:"ROM is non-volatile. Cache and RAM are volatile. Note: modern flash-based storage can be non-volatile and fast, but among primary storage types, ROM fits this description."},
+  {q:"Why is cache memory used rather than just increasing RAM?",opts:["Cache is cheaper than RAM","Cache is located closer to the CPU so is much faster to access","Cache has more storage capacity","Cache is easier to manufacture"],ans:1,exp:"Cache sits physically closer to the CPU (often inside it), allowing much faster access times than RAM."},
+  {q:"What does BIOS stand for?",opts:["Binary Input/Output Storage","Basic Input/Output System","Binary Information Operating Software","Base Input/Output Storage"],ans:1,exp:"BIOS = Basic Input/Output System — the firmware stored in ROM that starts the computer."},
+  {q:"Which of the following best describes virtual memory?",opts:["Extra RAM added to the motherboard","A type of ROM","Secondary storage used as an overflow when RAM is full","A faster type of cache"],ans:2,exp:"Virtual memory uses secondary storage (HDD/SSD) as an extension of RAM — much slower but allows more programs to run."},
+  {q:"A computer has 4GB of RAM. A user opens too many programs and the computer slows down. Which is the most likely cause?",opts:["The CPU has too many cores","The ROM has become full","The computer is using virtual memory because RAM is full","The cache has too many misses"],ans:2,exp:"When RAM is full, the OS uses virtual memory (secondary storage) which is far slower, causing the slowdown."}
+];
+
+var TEST_SA = [
+  {q:"State two differences between RAM and ROM.",marks:2,ms:"Any two of: RAM is volatile / ROM is non-volatile; RAM can be written to / ROM is read-only; RAM stores running programs / ROM stores boot instructions; RAM is larger capacity / ROM is smaller."},
+  {q:"Explain what a cache miss is and what happens as a result.",marks:2,ms:"A cache miss is when the CPU cannot find the required data in the cache (1). As a result, the CPU must retrieve the data from the slower RAM, increasing access time (1)."},
+  {q:"Describe one advantage and one disadvantage of increasing the amount of cache memory in a CPU.",marks:2,ms:"Advantage: More data can be stored in cache, increasing the cache hit rate and reducing the number of times the CPU must access slower RAM (1). Disadvantage: Cache is expensive to produce/increases cost of the CPU significantly (1)."},
+  {q:"A student states: 'ROM stores the operating system.' Explain why this statement is incorrect.",marks:2,ms:"The operating system is stored on secondary storage (e.g. a hard drive or SSD) (1). When the computer starts, the BIOS (stored in ROM) loads the operating system from secondary storage into RAM (1). ROM only stores the startup/boot instructions (firmware)."},
+  {q:"Explain why increasing the amount of RAM in a computer can improve its performance.",marks:3,ms:"More RAM means more programs and data can be held in primary storage simultaneously (1). This reduces the need to use virtual memory (secondary storage used as RAM overflow) (1). Virtual memory is much slower than RAM, so avoiding it results in faster overall system performance (1)."}
+];
+
+// ---- Shared JS ----
+function showTab(id,btn){
+  document.querySelectorAll('.tab-content').forEach(function(el){el.style.display='none';});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('tab-'+id).style.display='';
+  btn.classList.add('active');
+}
+
+function buildQuiz(){
+  var c=document.getElementById('quiz-container');
+  if(!c)return;
+  QUIZ.forEach(function(q,i){
+    var d=document.createElement('div');d.className='quiz-q';d.id='qq'+i;
+    var html='<p>'+(i+1)+'. '+q.q+'</p>';
+    q.opts.forEach(function(o,j){
+      html+='<label class="quiz-opt" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';
+    });
+    html+='<div class="quiz-explain" id="qe'+i+'">'+q.exp+'</div>';
+    d.innerHTML=html;
+    c.appendChild(d);
+    d.querySelectorAll('.quiz-opt').forEach(function(lbl){
+      lbl.addEventListener('click',function(){
+        var val=parseInt(lbl.querySelector('input').value);
+        d.querySelectorAll('.quiz-opt').forEach(function(l){
+          l.classList.remove('correct','wrong');
+          l.style.pointerEvents='none';
+        });
+        lbl.classList.add(val===q.ans?'correct':'wrong');
+        if(val!==q.ans) document.getElementById('qo'+i+'_'+q.ans).classList.add('correct');
+        document.getElementById('qe'+i).style.display='block';
+        checkQuizDone();
+      });
+    });
+  });
+}
+
+function checkQuizDone(){
+  var answered=document.querySelectorAll('.quiz-opt.correct,.quiz-opt.wrong').length;
+  if(answered>=QUIZ.length){
+    var correct=document.querySelectorAll('.quiz-opt.correct').length;
+    var sc=document.getElementById('quiz-score');
+    document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;
+    sc.style.display='block';
+  }
+}
+function resetQuiz(){
+  document.getElementById('quiz-score').style.display='none';
+  document.getElementById('quiz-container').innerHTML='';
+  buildQuiz();
+}
+
+function buildWorksheet(){
+  var c=document.getElementById('ws-container');if(!c)return;
+  WORKSHEET.forEach(function(q,i){
+    var d=document.createElement('div');d.className='ws-q';
+    d.innerHTML='<div class="q-header"><span class="q-text">'+(i+1)+'. '+q.q+'</span><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div>'
+      +'<textarea placeholder="Write your answer here..."></textarea>'
+      +'<span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span>'
+      +'<div class="mark-scheme">'+q.ms+'</div>';
+    c.appendChild(d);
+  });
+}
+function toggleMS(el){
+  var ms=el.nextElementSibling;
+  if(ms.style.display==='block'){ms.style.display='none';el.textContent='Show Mark Scheme';}
+  else{ms.style.display='block';el.textContent='Hide Mark Scheme';}
+}
+
+function buildTestMCQ(){
+  var c=document.getElementById('test-mcq-container');if(!c)return;
+  TEST_MCQ.forEach(function(q,i){
+    var d=document.createElement('div');d.className='quiz-q';
+    var html='<p>'+(i+1)+'. '+q.q+'</p>';
+    q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});
+    html+='<div class="quiz-explain" id="tqe'+i+'">'+q.exp+'</div>';
+    d.innerHTML=html;
+    c.appendChild(d);
+    d.querySelectorAll('.quiz-opt').forEach(function(lbl){
+      lbl.addEventListener('click',function(){
+        var val=parseInt(lbl.querySelector('input').value);
+        d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});
+        lbl.classList.add(val===q.ans?'correct':'wrong');
+        if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('correct');
+        document.getElementById('tqe'+i).style.display='block';
+      });
+    });
+  });
+}
+
+function buildTestSA(){
+  var c=document.getElementById('test-sa-container');if(!c)return;
+  TEST_SA.forEach(function(q,i){
+    var d=document.createElement('div');d.className='sa-q';
+    d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span>'
+      +'<textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea>'
+      +'<span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span>'
+      +'<div class="mark-scheme">'+q.ms+'</div>';
+    c.appendChild(d);
+  });
+}
+
+function buildTerms(){
+  var c=document.getElementById('terms-grid');if(!c)return;
+  KEY_TERMS.forEach(function(t){
+    var d=document.createElement('div');d.className='term-card';
+    d.innerHTML='<div class="term-word">'+t.w+'</div><div class="term-def">'+t.d+'</div>';
+    c.appendChild(d);
+  });
+}
+
+function parseJwt(token){try{return JSON.parse(atob(token.split('.')[1]));}catch(e){return null;}}
+function getSB(){
+  return{auth:{getSession:function(){
+    return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}})
+    .then(function(r){return r.json();}).then(function(u){
+      if(u&&u.id){var s={user:u};return{data:{session:s}};}
+      return{data:{session:null}};
+    }).catch(function(){return{data:{session:null}};});
+  }}};
+}
+function checkAccess(){
+  fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{
+    headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}
+  }).then(function(r){return r.json();}).then(function(d){
+    if(!d||d.length===0)document.getElementById('paywall-overlay').style.display='flex';
+  }).catch(function(){});
+}
+
+window.addEventListener('DOMContentLoaded',function(){
+  buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){window.location.href='/';return;}
+    currentUser=session.user;
+    if(!IS_FREE)checkAccess();
+  });
+});
+</script>
+</body>
+</html>

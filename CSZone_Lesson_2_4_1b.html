@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.4.1b Truth Tables | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst" style="color:#818cf8">2.4 Boolean Logic</div>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-4-1b/" class="sl active">2.4.1b Truth Tables</a>
+    <div class="sst" style="color:#818cf8">2.5 Languages</div>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.4 Boolean Logic</div>
+  <div class="lesson-title">2.4.1b — Truth Tables</div>
+  <div class="lesson-meta">Component 2: Boolean Logic &nbsp;·&nbsp; ~22 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is a Truth Table?</h2>
+    <p>A <strong>truth table</strong> shows every possible combination of inputs to a logic circuit and the corresponding output. It is used to analyse and design Boolean logic circuits.</p>
+    <div class="kp"><strong>Key rule:</strong> For n inputs, there are 2ⁿ rows (combinations). 1 input = 2 rows. 2 inputs = 4 rows. 3 inputs = 8 rows.</div>
+  </div>
+  <div class="ns">
+    <h2>Building Truth Tables for Combined Circuits</h2>
+    <p>When a circuit has multiple gates, add intermediate columns for each gate's output — working left to right through the circuit.</p>
+    <div class="ic b">
+      <h4>Example: NOT(A AND B)</h4>
+      <p>Circuit: A and B → AND gate → NOT gate → Output</p>
+      <div style="overflow-x:auto;margin-top:10px">
+      <table style="border-collapse:collapse;font-size:13px">
+        <tr><th style="background:#252840;color:#c7d2fe;padding:9px 16px;border:1px solid #2d3148">A</th><th style="background:#252840;color:#c7d2fe;padding:9px 16px;border:1px solid #2d3148">B</th><th style="background:#252840;color:#c7d2fe;padding:9px 16px;border:1px solid #2d3148">A AND B</th><th style="background:#252840;color:#6ee7b7;padding:9px 16px;border:1px solid #2d3148">NOT(A AND B)</th></tr>
+        <tr><td style="padding:8px 16px;border:1px solid #2d3148;color:#94a3b8;text-align:center">0</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#94a3b8;text-align:center">0</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#fca5a5;text-align:center">0</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">1</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:8px 16px;border:1px solid #2d3148;color:#94a3b8;text-align:center">0</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#94a3b8;text-align:center">1</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#fca5a5;text-align:center">0</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">1</td></tr>
+        <tr><td style="padding:8px 16px;border:1px solid #2d3148;color:#94a3b8;text-align:center">1</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#94a3b8;text-align:center">0</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#fca5a5;text-align:center">0</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">1</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:8px 16px;border:1px solid #2d3148;color:#94a3b8;text-align:center">1</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#94a3b8;text-align:center">1</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">1</td><td style="padding:8px 16px;border:1px solid #2d3148;color:#fca5a5;text-align:center">0</td></tr>
+      </table>
+      </div>
+    </div>
+    <div class="ic b" style="margin-top:14px">
+      <h4>Example: (A OR B) AND (NOT A)</h4>
+      <p>Circuit: A → NOT gate → NOT_A; then A and B → OR gate → OR_out; then NOT_A and OR_out → AND gate → Final output</p>
+      <div style="overflow-x:auto;margin-top:10px">
+      <table style="border-collapse:collapse;font-size:13px">
+        <tr><th style="background:#252840;color:#c7d2fe;padding:8px 12px;border:1px solid #2d3148">A</th><th style="background:#252840;color:#c7d2fe;padding:8px 12px;border:1px solid #2d3148">B</th><th style="background:#252840;color:#c7d2fe;padding:8px 12px;border:1px solid #2d3148">NOT A</th><th style="background:#252840;color:#c7d2fe;padding:8px 12px;border:1px solid #2d3148">A OR B</th><th style="background:#252840;color:#6ee7b7;padding:8px 12px;border:1px solid #2d3148">Output</th></tr>
+        <tr><td style="padding:7px 12px;border:1px solid #2d3148;color:#94a3b8;text-align:center">0</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#94a3b8;text-align:center">0</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">1</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#fca5a5;text-align:center">0</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#fca5a5;text-align:center">0</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:7px 12px;border:1px solid #2d3148;color:#94a3b8;text-align:center">0</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#94a3b8;text-align:center">1</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">1</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">1</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">1</td></tr>
+        <tr><td style="padding:7px 12px;border:1px solid #2d3148;color:#94a3b8;text-align:center">1</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#94a3b8;text-align:center">0</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#fca5a5;text-align:center">0</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">1</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#fca5a5;text-align:center">0</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:7px 12px;border:1px solid #2d3148;color:#94a3b8;text-align:center">1</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#94a3b8;text-align:center">1</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#fca5a5;text-align:center">0</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">1</td><td style="padding:7px 12px;border:1px solid #2d3148;color:#fca5a5;text-align:center">0</td></tr>
+      </table>
+      </div>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Method: Completing a Truth Table</h2>
+    <ol style="padding-left:20px;color:#94a3b8;font-size:14px;line-height:2">
+      <li>Count the inputs (n). Add 2ⁿ rows.</li>
+      <li>Fill in input columns systematically: rightmost column alternates 0,1,0,1... Next column: 0,0,1,1,0,0,1,1... etc.</li>
+      <li>Add intermediate columns for each gate — work left to right through the circuit.</li>
+      <li>Complete the final output column.</li>
+    </ol>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Wrong number of rows — always 2ⁿ (2 inputs = 4 rows, 3 inputs = 8 rows)</li>
+        <li>Skipping intermediate columns — always add a column for each gate in a multi-gate circuit</li>
+        <li>Incorrect input ordering — use systematic binary counting (00, 01, 10, 11)</li>
+        <li>Confusing NOT(A AND B) with NOT A AND NOT B — these give different results</li>
+        <li>Applying NOT to entire expression when it only applies to one part</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-4-1a/" class="nb">← 2.4.1a Logic Gates</a>
+  <a href="/ocr-j277/2-5-1/" class="nb n">2.5.1 High &amp; Low Level →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-4-1b';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"How many rows does a truth table with 2 inputs require?",opts:["2","4","8","16"],ans:1,exp:"For n inputs, there are 2ⁿ rows. 2 inputs = 2² = 4 rows (00, 01, 10, 11)."},
+  {q:"How many rows does a truth table with 3 inputs require?",opts:["3","6","8","16"],ans:2,exp:"3 inputs = 2³ = 8 rows. The inputs go through all binary combinations: 000, 001, 010, 011, 100, 101, 110, 111."},
+  {q:"NOT(A AND B) where A=1, B=1. What is the output?",opts:["1","0","NOT defined","Error"],ans:1,exp:"AND(1,1) = 1. NOT(1) = 0. Output = 0."},
+  {q:"NOT(A AND B) where A=0, B=1. What is the output?",opts:["0","1","Not possible","Error"],ans:1,exp:"AND(0,1) = 0. NOT(0) = 1. Output = 1."},
+  {q:"(A OR B) where A=0, B=0. What is the output?",opts:["1","0","NOT defined","Error"],ans:1,exp:"OR(0,0) = 0. Both inputs must be 0 for OR to output 0."},
+  {q:"(NOT A) AND B where A=0, B=1. What is the output?",opts:["0","1","NOT A","Error"],ans:1,exp:"NOT(0) = 1. AND(1, 1) = 1. Output = 1."},
+  {q:"(NOT A) AND B where A=1, B=1. What is the output?",opts:["0","1","NOT defined","Error"],ans:0,exp:"NOT(1) = 0. AND(0, 1) = 0. Output = 0."},
+  {q:"A OR (NOT B) where A=0, B=1. What is the output?",opts:["0","1","Error","NOT B"],ans:0,exp:"NOT(1) = 0. OR(0, 0) = 0. Output = 0."},
+  {q:"A OR (NOT B) where A=1, B=1. What is the output?",opts:["0","1","NOT defined","Error"],ans:1,exp:"NOT(1) = 0. OR(1, 0) = 1. Output = 1."},
+  {q:"What is the first step when building a truth table for a complex circuit?",opts:["Write the final output immediately","Add intermediate columns for each gate — work left to right","Count from right to left","Skip the NOT gates"],ans:1,exp:"For multi-gate circuits, add an intermediate column for each gate's output. Work left to right through the circuit — compute each gate in order."},
+  {q:"A truth table has inputs 00, 01, 10, 11. What system is this?",opts:["Decimal counting","Binary counting","Hexadecimal","Random"],ans:1,exp:"Truth table inputs use systematic binary counting — all combinations in order. For 2 inputs: 00, 01, 10, 11."},
+  {q:"NOT(A OR B) where A=0, B=0. What is the output?",opts:["0","1","NOT defined","Error"],ans:1,exp:"OR(0,0) = 0. NOT(0) = 1. This is a NOR gate pattern — only outputs 1 when BOTH inputs are 0."},
+  {q:"NOT(A OR B) where A=1, B=0. What is the output?",opts:["0","1","NOT defined","Error"],ans:0,exp:"OR(1,0) = 1. NOT(1) = 0. Output = 0."},
+  {q:"Which of these is a correct intermediate column to add for the circuit: (A AND B) OR C?",opts:["NOT A","A AND B","A OR C","B AND C"],ans:1,exp:"The circuit first evaluates A AND B, then ORs the result with C. The intermediate column should be for (A AND B)."},
+  {q:"(A AND B) OR C where A=0, B=1, C=1. What is the output?",opts:["0","1","AND A B","Error"],ans:1,exp:"AND(0,1) = 0. OR(0, 1) = 1. Output = 1. The OR gate outputs 1 because C=1."}
+];
+var WORKSHEET=[
+  {q:"Complete the full truth table for NOT(A OR B):\nA | B | A OR B | NOT(A OR B)",marks:6,ms:"0,0: OR=0, NOT=1 (1+1). 0,1: OR=1, NOT=0 (1+1). 1,0: OR=1, NOT=0 (1+1). 1,1: OR=1, NOT=0 (implied). NOR outputs 1 ONLY when both inputs are 0."},
+  {q:"Complete the full truth table for (A AND B) OR C (8 rows needed).\nA | B | C | A AND B | Output",marks:5,ms:"Work through all 8 rows: 000→0, 001→1, 010→0, 011→1, 100→0, 101→1, 110→1, 111→1. [1 mark per 2 correct rows; 1 mark for correct intermediate column heading]"},
+  {q:"A circuit has A=1, B=0, C=1. They enter: A and B into AND gate (call output X). Then X and C into OR gate (final output). Show the intermediate step and find the output.",marks:3,ms:"X = AND(1, 0) = 0 (1). Output = OR(0, 1) = 1 (1). Final output = 1 (1)."},
+  {q:"Explain why intermediate columns are important in truth tables for complex circuits.",marks:2,ms:"Complex circuits have multiple gates — the output of one gate feeds into the next (1). Intermediate columns track each gate's output, preventing errors and making the working clear (1)."},
+  {q:"How many rows does a truth table with 4 inputs need? Explain.",marks:2,ms:"2⁴ = 16 rows (1). Because each input has 2 possible values (0 or 1) and all combinations must be listed (1)."},
+  {q:"Complete the truth table for (NOT A) AND (NOT B):\nA | B | NOT A | NOT B | Output",marks:5,ms:"0,0: NOTA=1, NOTB=1, AND=1 (1+1). 0,1: NOTA=1, NOTB=0, AND=0 (1+1). 1,0: NOTA=0, NOTB=1, AND=0 (1). 1,1: NOTA=0, NOTB=0, AND=0 (implied). Only outputs 1 when both inputs are 0."},
+  {q:"Is NOT(A AND B) the same as (NOT A) AND (NOT B)? Prove with a truth table row where they differ.",marks:3,ms:"No, they are NOT the same (1). Example: A=0, B=1. NOT(AND(0,1)) = NOT(0) = 1 (1). (NOT 0) AND (NOT 1) = 1 AND 0 = 0 (1). These give different results."},
+  {q:"Write the Boolean expression for: A and B enter an AND gate (output = P). P and C enter an OR gate (output = Q). Q then goes into a NOT gate (final output).",marks:3,ms:"P = A · B (1). Q = P + C = (A · B) + C (1). Final output = NOT((A · B) + C) with overline/bar (1)."}
+];
+var KEY_TERMS=[
+  {w:"Truth table",d:"A table listing every possible combination of inputs to a logic circuit and the corresponding output."},
+  {w:"2ⁿ rows",d:"The number of rows needed in a truth table for n inputs. 1 input=2, 2 inputs=4, 3 inputs=8, 4 inputs=16."},
+  {w:"Intermediate column",d:"A column in a truth table showing the output of an intermediate gate — used when evaluating complex multi-gate circuits."},
+  {w:"NOT(A AND B)",d:"NAND operation. Output is 0 ONLY when both A and B are 1. All other combinations give output 1."},
+  {w:"NOT(A OR B)",d:"NOR operation. Output is 1 ONLY when both A and B are 0. All other combinations give output 0."},
+  {w:"Boolean expression",d:"A mathematical expression using AND (·), OR (+), NOT (overline) to describe the output of a logic circuit."},
+  {w:"Input combination",d:"One row in a truth table — a specific set of 0/1 values assigned to each input."},
+  {w:"Binary counting",d:"Systematic method for filling truth table input columns: rightmost alternates 0,1,0,1; next: 0,0,1,1,0,0,1,1; etc."},
+  {w:"Logic circuit",d:"A combination of logic gates. Complex circuits are analysed using truth tables with intermediate columns."},
+  {w:"NAND",d:"NOT AND — output is 0 only when all inputs are 1. Opposite of AND."},
+  {w:"NOR",d:"NOT OR — output is 1 only when all inputs are 0. Opposite of OR."},
+  {w:"De Morgan's Law",d:"NOT(A AND B) = (NOT A) OR (NOT B). NOT(A OR B) = (NOT A) AND (NOT B). Not required at GCSE but useful to know."},
+  {w:"Gate output",d:"The binary value (0 or 1) produced by a logic gate for a given set of inputs."},
+  {w:"Final output column",d:"The rightmost column of a truth table — the overall output of the complete circuit."},
+  {w:"Boolean analysis",d:"Using truth tables or Boolean algebra to determine the output of a logic circuit for all possible inputs."}
+];
+var TEST_MCQ=[
+  {q:"How many rows does a truth table with 3 inputs require?",opts:["3","6","8","12"],ans:2,exp:"2³ = 8 rows. For n inputs, a truth table has 2ⁿ rows to cover all possible input combinations."},
+  {q:"NOT(A AND B) where A=1, B=1. What is the output?",opts:["1","0","NOT defined","Error"],ans:1,exp:"AND(1,1)=1. NOT(1)=0. This is a NAND gate — only outputs 0 when both inputs are 1."},
+  {q:"(A OR B) AND C where A=0, B=0, C=1. What is the output?",opts:["1","0","NOT defined","Error"],ans:1,exp:"OR(0,0)=0. AND(0,1)=0. Output=0. The OR gate outputs 0 for both inputs 0, so the AND gate gets 0 regardless of C."},
+  {q:"Why must intermediate columns be added for multi-gate circuits?",opts:["To make the table longer","Each gate's output feeds the next — tracking intermediate values avoids errors","OCR requires it","To add more inputs"],ans:1,exp:"In multi-gate circuits, the output of one gate is the input to the next. Intermediate columns track these values step-by-step, making the final output derivable."},
+  {q:"NOT(A AND B) where A=0, B=0. What is the output?",opts:["0","1","NOT defined","Error"],ans:1,exp:"AND(0,0)=0. NOT(0)=1. NAND outputs 1 for all input combinations EXCEPT A=1, B=1."}
+];
+var TEST_SA=[
+  {q:"Complete the truth table for NOT(A AND B) showing intermediate column:\nA | B | A AND B | NOT(A AND B)",marks:4,ms:"0,0: AND=0, NOT=1 (1). 0,1: AND=0, NOT=1 (1). 1,0: AND=0, NOT=1 (1). 1,1: AND=1, NOT=0 (1)."},
+  {q:"A circuit: A and B enter an OR gate. The OR output and C enter an AND gate. A=1, B=0, C=1. What is the final output? Show working.",marks:3,ms:"OR(1,0)=1 (1). AND(1,1)=1 (1). Final output=1 (1)."},
+  {q:"How many rows are needed for a truth table with 3 inputs? Explain why.",marks:2,ms:"8 rows (1). For n inputs there are 2ⁿ combinations — 2³=8 — because each input can be 0 or 1 (1)."},
+  {q:"Explain the difference between NOT(A AND B) and (NOT A) AND (NOT B).",marks:3,ms:"They are different Boolean expressions (1). NOT(A AND B) is NAND — outputs 0 ONLY when A=1 and B=1 (1). (NOT A) AND (NOT B) outputs 1 ONLY when both A=0 and B=0 (1)."},
+  {q:"What is the output of (NOT A) OR B when A=1 and B=0?",marks:2,ms:"NOT(1)=0 (1). OR(0,0)=0. Output=0 (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

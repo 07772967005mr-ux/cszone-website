@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.4.1 Network Threats | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 1</div>
+    <div class="sst" style="color:#818cf8">1.4 Security</div>
+    <a href="/ocr-j277/1-4-1/" class="sl fb active">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
+    <div class="sst" style="color:#818cf8">1.5 Systems Software</div>
+    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
+    <div class="sst" style="color:#818cf8">1.6 Ethical Issues</div>
+    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+    <div class="sst">Component 2</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.4 Security</div>
+  <div class="lesson-title">1.4.1 — Network Threats</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min &nbsp;·&nbsp; <span style="color:#10b981;font-weight:600">Free lesson</span></div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>Forms of Attack</h2>
+    <p>Networks and systems face a range of threats. Understanding these is crucial for both the exam and real-world security.</p>
+    <div class="ic r">
+      <h4>Malware</h4>
+      <ul>
+        <li><strong>Virus</strong> — self-replicating code that attaches to files; spreads when infected files are shared</li>
+        <li><strong>Worm</strong> — self-replicating; spreads independently across networks without needing to attach to a file</li>
+        <li><strong>Trojan</strong> — disguised as legitimate software; doesn't self-replicate but opens backdoors</li>
+        <li><strong>Ransomware</strong> — encrypts victim's files, demands payment for decryption key</li>
+        <li><strong>Spyware</strong> — monitors user activity, steals personal/financial data without consent</li>
+      </ul>
+    </div>
+    <div class="ic r">
+      <h4>Social Engineering</h4>
+      <ul>
+        <li><strong>Phishing</strong> — fraudulent emails/messages that trick users into revealing login credentials or personal data</li>
+        <li><strong>Vishing</strong> — voice phishing (phone calls); attacker poses as trusted authority (bank, IT support)</li>
+        <li><strong>Smishing</strong> — SMS phishing; fraudulent text messages</li>
+        <li><strong>Shoulder surfing</strong> — physically observing someone entering passwords/PINs</li>
+        <li><strong>Blagging</strong> — inventing a scenario to obtain information or access (also called pretexting)</li>
+      </ul>
+    </div>
+    <div class="ic r">
+      <h4>Technical Attacks</h4>
+      <ul>
+        <li><strong>Brute force attack</strong> — systematically tries every possible password combination until correct one found</li>
+        <li><strong>Denial of Service (DoS)</strong> — floods a server with requests so legitimate users cannot access it</li>
+        <li><strong>Distributed DoS (DDoS)</strong> — DoS from many compromised computers (botnet) simultaneously</li>
+        <li><strong>Man-in-the-Middle (MitM)</strong> — attacker intercepts communication between two parties without their knowledge</li>
+        <li><strong>SQL injection</strong> — malicious SQL code entered into a form field to manipulate a database</li>
+      </ul>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Confusing virus and worm — a virus NEEDS a host file to spread; a worm spreads independently</li>
+        <li>Forgetting DDoS is distributed (multiple machines) vs DoS (single machine)</li>
+        <li>Thinking phishing is only email — also includes text (smishing) and voice (vishing)</li>
+        <li>Not explaining HOW brute force works — must say "tries all combinations"</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/1-3-2b/" class="nb">← 1.3.2b Protocols</a>
+  <a href="/ocr-j277/1-4-2/" class="nb n">1.4.2 Vulnerabilities →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-4-1';var IS_FREE=true;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What is the key difference between a virus and a worm?",opts:["A virus is more dangerous","A worm requires a host file; a virus spreads independently","A virus requires a host file to spread; a worm spreads independently","They are the same thing"],ans:2,exp:"A virus attaches to a host file and spreads when that file is shared. A worm is self-replicating and spreads independently across networks without needing a host file."},
+  {q:"What type of attack floods a server with requests to prevent legitimate access?",opts:["Brute force","Phishing","SQL injection","Denial of Service (DoS)"],ans:3,exp:"A Denial of Service (DoS) attack overwhelms a server with traffic so genuine users cannot access it. A DDoS uses many compromised machines (a botnet) simultaneously."},
+  {q:"What is phishing?",opts:["Trying every password combination until the correct one is found","Fraudulent messages designed to trick users into revealing credentials or personal data","Malware that encrypts your files","Spreading malware through USB sticks"],ans:1,exp:"Phishing involves sending fraudulent emails or messages that appear genuine to trick victims into clicking links, revealing passwords, or entering card details on fake websites."},
+  {q:"What does ransomware do?",opts:["Monitors your internet connection","Replicates itself across a network","Encrypts the victim's files and demands payment to restore access","Deletes all files permanently"],ans:2,exp:"Ransomware encrypts the victim's data, making it inaccessible. The attacker then demands payment (ransom), usually in cryptocurrency, for the decryption key."},
+  {q:"A Trojan horse program is BEST described as:",opts:["A virus that spreads via email","Malware disguised as legitimate software that opens backdoors","A program that brute-forces passwords","A worm that spreads across Wi-Fi"],ans:1,exp:"A Trojan appears to be legitimate software but contains malicious code. Unlike viruses/worms, Trojans don't self-replicate — they rely on users installing them."},
+  {q:"What is a DDoS attack?",opts:["A Denial of Service attack from one machine","A distributed attack using many compromised machines to flood a server","A database attack using SQL commands","An attack where an attacker reads network traffic"],ans:1,exp:"DDoS = Distributed Denial of Service. Many compromised machines (a botnet) simultaneously send requests to overwhelm a server, making it impossible for legitimate users to connect."},
+  {q:"Smishing is a form of social engineering that uses:",opts:["Social media posts","Email","SMS/text messages","Voice calls"],ans:2,exp:"Smishing = SMS phishing. Fraudulent text messages trick recipients into clicking malicious links or calling fake numbers to steal credentials."},
+  {q:"What is a brute force attack?",opts:["Physically breaking into a server room","Sending many requests to crash a server","Systematically trying all possible password combinations","Intercepting network traffic"],ans:2,exp:"A brute force attack tries every possible password combination until the correct one is found. Mitigated by account lockout policies and complex passwords."},
+  {q:"Which attack involves an attacker secretly intercepting communication between two parties?",opts:["Brute force","Man-in-the-Middle (MitM)","SQL injection","Ransomware"],ans:1,exp:"In a Man-in-the-Middle attack, the attacker positions themselves between two communicating parties, reading or modifying data without either party knowing."},
+  {q:"What is SQL injection?",opts:["A type of virus that spreads via databases","Entering malicious SQL code into a form field to manipulate a database","A DoS attack targeting database servers","Stealing database backups"],ans:1,exp:"SQL injection inserts malicious SQL commands into input fields (e.g., login forms). If the application doesn't sanitise inputs, the attacker can read, modify, or delete database records."},
+  {q:"A user receives a phone call from someone claiming to be their bank, asking for their PIN. This is an example of:",opts:["Phishing","Smishing","Vishing","Shoulder surfing"],ans:2,exp:"Vishing = voice phishing. The attacker uses a phone call and a convincing story to manipulate the victim into revealing sensitive information."},
+  {q:"What is 'blagging' in the context of network security?",opts:["A type of malware","Inventing a scenario/story to manipulate someone into giving information","An automated password cracking tool","A network monitoring technique"],ans:1,exp:"Blagging (pretexting) involves creating a false scenario to trick someone into revealing confidential information, e.g. pretending to be a new employee needing password access."},
+  {q:"What is spyware?",opts:["Software that encrypts files for ransom","Software that monitors a user's activities and sends data to an attacker","A worm that spreads across networks","A program that blocks internet access"],ans:1,exp:"Spyware secretly monitors the user's activities — logging keystrokes, capturing screenshots, recording browsing habits — and sends this information to the attacker."},
+  {q:"Which of these is an example of shoulder surfing?",opts:["Sending a fake email","Watching someone type their PIN at an ATM","Flooding a server with requests","Guessing passwords systematically"],ans:1,exp:"Shoulder surfing means physically observing someone entering a password, PIN, or other sensitive information — either directly or via a hidden camera."},
+  {q:"A company's website becomes inaccessible after thousands of machines send requests simultaneously. What type of attack is this?",opts:["Brute force","Trojan horse","DDoS","SQL injection"],ans:2,exp:"This is a DDoS (Distributed Denial of Service) attack — many compromised machines (botnet) simultaneously flood the server with requests, overwhelming it and denying access to genuine users."}
+];
+var WORKSHEET=[
+  {q:"Explain the difference between a virus and a worm.",marks:2,ms:"A virus attaches itself to a host file and spreads when the infected file is shared/opened (1). A worm is self-replicating and spreads independently across a network without needing a host file (1)."},
+  {q:"Describe how a phishing attack works.",marks:3,ms:"A fraudulent email/message is sent that appears to come from a trusted source such as a bank (1). It contains a link to a fake website that looks legitimate (1). The user is tricked into entering credentials/personal data, which is captured by the attacker (1)."},
+  {q:"What is the difference between a DoS and a DDoS attack?",marks:2,ms:"A DoS attack floods a server from a single machine (1). A DDoS uses many compromised machines (a botnet) simultaneously to overwhelm the server, making it much harder to block (1)."},
+  {q:"A user receives an email asking them to click a link to verify their account. Explain what type of attack this could be and how the attacker benefits.",marks:3,ms:"This is a phishing attack (1). The link leads to a fake login page that looks genuine (1). When the user enters their credentials, the attacker captures them and can use them to access the victim's account (1)."},
+  {q:"Explain how a brute force attack works and state ONE way to protect against it.",marks:3,ms:"A brute force attack systematically tries every possible password combination until the correct one is found (1). This can eventually crack any password if there are no restrictions (1). Protection: account lockout after a number of failed attempts / use of CAPTCHA / requiring long complex passwords (1)."},
+  {q:"What is ransomware? State ONE way an organisation might protect against it.",marks:3,ms:"Ransomware is malware that encrypts the victim's files, making them inaccessible (1). The attacker demands payment (ransom) — usually in cryptocurrency — in exchange for the decryption key (1). Protection: regular backups (so data can be restored without paying) / keeping software updated / not opening suspicious email attachments (1)."},
+  {q:"Explain what SQL injection is and why it is dangerous.",marks:3,ms:"SQL injection involves entering malicious SQL commands into an input field on a website (1). If the application does not sanitise the input, the commands are executed on the database (1). This can allow attackers to read, modify, or delete database records — including usernames, passwords, and payment details (1)."},
+  {q:"State THREE different forms of social engineering attack.",marks:3,ms:"Any three: phishing (1); vishing (1); smishing (1); shoulder surfing (1); blagging/pretexting (1)."}
+];
+var KEY_TERMS=[
+  {w:"Malware",d:"Malicious software designed to disrupt, damage, or gain unauthorised access to a computer system."},
+  {w:"Virus",d:"Malware that attaches to a host file and replicates when the infected file is opened or shared."},
+  {w:"Worm",d:"Self-replicating malware that spreads independently across networks without needing a host file."},
+  {w:"Trojan",d:"Malware disguised as legitimate software. Does not self-replicate but creates backdoors or delivers payloads."},
+  {w:"Ransomware",d:"Malware that encrypts files and demands payment (ransom) for the decryption key."},
+  {w:"Spyware",d:"Malware that secretly monitors user activity and sends data (passwords, browsing history) to an attacker."},
+  {w:"Phishing",d:"Fraudulent emails or messages designed to trick users into revealing credentials or clicking malicious links."},
+  {w:"Vishing",d:"Voice phishing — using phone calls to trick victims into revealing sensitive information."},
+  {w:"Smishing",d:"SMS phishing — fraudulent text messages used to steal information or install malware."},
+  {w:"Shoulder surfing",d:"Physically observing someone entering a password or PIN without their knowledge."},
+  {w:"Blagging",d:"Inventing a false scenario (pretexting) to manipulate someone into revealing confidential information."},
+  {w:"Brute force attack",d:"Systematically trying every possible password combination until the correct one is found."},
+  {w:"DoS attack",d:"Denial of Service — flooding a server with requests from one machine so legitimate users can't access it."},
+  {w:"DDoS attack",d:"Distributed DoS — multiple compromised machines (botnet) simultaneously flood a server with requests."},
+  {w:"Man-in-the-Middle",d:"An attacker secretly intercepts and potentially alters communication between two parties."}
+];
+var TEST_MCQ=[
+  {q:"What is the main difference between a DoS and a DDoS attack?",opts:["DoS is more powerful","DDoS uses many machines simultaneously; DoS uses one","DoS targets databases; DDoS targets servers","They are identical"],ans:1,exp:"DDoS is distributed — many compromised machines (botnet) flood the target simultaneously. DoS comes from a single source."},
+  {q:"Which type of malware disguises itself as legitimate software?",opts:["Worm","Ransomware","Trojan","Spyware"],ans:2,exp:"A Trojan appears to be a legitimate program but contains hidden malicious code."},
+  {q:"A user is tricked into entering their password on a fake bank website after clicking an email link. This is:",opts:["Vishing","Shoulder surfing","Phishing","SQL injection"],ans:2,exp:"Phishing uses fraudulent emails with fake links/websites to steal credentials."},
+  {q:"What does ransomware do to a victim's files?",opts:["Deletes them","Copies them to the attacker","Encrypts them and demands payment","Replicates them across the network"],ans:2,exp:"Ransomware encrypts the victim's files, making them inaccessible until a ransom is paid."},
+  {q:"What is a brute force attack?",opts:["Flooding a server with traffic","Intercepting network packets","Trying all password combinations systematically","Injecting SQL into a form"],ans:2,exp:"Brute force tries every possible password combination until the correct one is found."}
+];
+var TEST_SA=[
+  {q:"Explain the difference between phishing and vishing.",marks:2,ms:"Phishing uses fraudulent emails or messages to trick users into revealing information (1). Vishing uses phone calls — the attacker speaks to the victim and poses as a trusted authority (1)."},
+  {q:"Describe how a worm spreads differently from a virus.",marks:2,ms:"A virus attaches to a host file and needs that file to be opened or shared to spread (1). A worm is self-replicating and spreads independently across a network without needing a host file (1)."},
+  {q:"State TWO technical attacks that could be used against a web server.",marks:2,ms:"Any two: DoS/DDoS (1); SQL injection (1); Man-in-the-Middle (1); brute force attack on admin login (1)."},
+  {q:"Explain what SQL injection is and ONE way to prevent it.",marks:3,ms:"SQL injection enters malicious SQL commands into input fields (1). If unsanitised, the commands execute on the database allowing data theft or manipulation (1). Prevention: input validation/sanitisation to reject SQL characters (1)."},
+  {q:"A company's database containing customer passwords has been accessed by an attacker who used SQL injection. State TWO things the company should do.",marks:2,ms:"Any two: inform affected customers immediately (1); reset all customer passwords (1); patch the SQL injection vulnerability (1); review and improve input validation (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();});
+</script>
+</body>
+</html>

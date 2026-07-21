@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.5.1 High &amp; Low Level Languages | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst" style="color:#818cf8">2.5 Languages &amp; IDEs</div>
+    <a href="/ocr-j277/2-5-1/" class="sl active fb">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.5 Languages &amp; IDEs</div>
+  <div class="lesson-title">2.5.1 — High &amp; Low Level Languages</div>
+  <div class="lesson-meta">Component 2: Languages &amp; IDEs &nbsp;·&nbsp; Free lesson &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>The Spectrum of Programming Languages</h2>
+    <p>Programming languages exist on a spectrum from <strong>low-level</strong> (close to the hardware, difficult for humans) to <strong>high-level</strong> (close to human language, easier to read and write).</p>
+    <div class="kp"><strong>CPU rule:</strong> The CPU can ONLY execute machine code (binary). All other languages must be translated before they can run.</div>
+  </div>
+  <div class="ns">
+    <h2>Machine Code</h2>
+    <p><strong>Machine code</strong> is the lowest-level language — binary instructions (0s and 1s) that the CPU executes directly. It is the only language a CPU understands natively.</p>
+    <div class="ic b">
+      <h4>Characteristics of machine code:</h4>
+      <ul>
+        <li>Binary — sequences of 0s and 1s</li>
+        <li>Executes directly on the CPU — NO translation needed</li>
+        <li>Extremely fast execution</li>
+        <li>Very difficult for humans to read or write</li>
+        <li>Processor-specific — code written for one CPU won't run on another (not portable)</li>
+      </ul>
+      <div class="code">11000111 01000101 11111100 00000101 00000000 00000000
+// A machine code instruction: store value 5</div>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Assembly Language</h2>
+    <p><strong>Assembly language</strong> is a low-level language that uses short <strong>mnemonics</strong> (memorable abbreviations) to represent machine code instructions. One assembly instruction corresponds to one machine code instruction.</p>
+    <div class="ic b">
+      <h4>Characteristics of assembly language:</h4>
+      <ul>
+        <li>Uses mnemonics: MOV, ADD, SUB, CMP, JMP, etc.</li>
+        <li>One-to-one mapping with machine code — very close to hardware</li>
+        <li>Must be translated by an <strong>assembler</strong> before running</li>
+        <li>Faster and more memory-efficient than high-level languages</li>
+        <li>Still processor-specific — not portable between different CPUs</li>
+        <li>Used where speed or direct hardware control is critical (e.g. device drivers, embedded systems)</li>
+      </ul>
+      <div class="code">MOV AX, 5    ; move value 5 into register AX
+ADD AX, 3    ; add 3 to AX (AX is now 8)
+MOV BX, AX   ; copy AX into BX</div>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>High-Level Languages</h2>
+    <p><strong>High-level languages</strong> (Python, Java, C#, etc.) are designed to be close to human language. They abstract away the hardware — programmers don't need to manage registers or memory addresses.</p>
+    <div class="ic g">
+      <h4>Advantages of high-level languages:</h4>
+      <ul>
+        <li>Easy to read, write, and understand — closer to English</li>
+        <li>Portable — same code can run on different hardware (after translation)</li>
+        <li>Faster to develop — one line can represent many machine code instructions</li>
+        <li>Large libraries and frameworks available</li>
+        <li>Easier to debug and maintain</li>
+      </ul>
+    </div>
+    <div class="ic a">
+      <h4>Disadvantages of high-level languages:</h4>
+      <ul>
+        <li>Must be translated (compiled or interpreted) — takes time</li>
+        <li>Less control over hardware — can't directly access CPU registers</li>
+        <li>Translated code is less efficient than hand-written machine code or assembly</li>
+      </ul>
+    </div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:12px">
+      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148"></th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Machine Code</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Assembly</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">High-Level</th></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Readability</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">Very hard</td><td style="padding:9px;border:1px solid #2d3148;color:#f59e0b">Hard</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Easy</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Execution speed</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Fastest</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Fast</td><td style="padding:9px;border:1px solid #2d3148;color:#f59e0b">Slower</td></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Portability</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">None</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">None</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Good</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Translation needed</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">None</td><td style="padding:9px;border:1px solid #2d3148;color:#f59e0b">Assembler</td><td style="padding:9px;border:1px solid #2d3148;color:#f59e0b">Compiler/Interpreter</td></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Hardware control</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Full</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Full</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">Limited</td></tr>
+    </table>
+    <div class="ic a" style="margin-top:14px">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Saying high-level languages are "closer to the machine" — they are closer to HUMANS; low-level is closer to the machine</li>
+        <li>Saying machine code needs to be translated — it does NOT. It is already binary and runs directly on the CPU</li>
+        <li>Saying assembly is high-level — it is still a LOW-level language that uses mnemonics</li>
+        <li>Confusing assembler (translates assembly) with compiler (translates high-level)</li>
+        <li>Thinking all assembly instructions correspond to multiple machine code instructions — it is ONE-to-ONE</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-4-1b/" class="nb">← 2.4.1b Truth Tables</a>
+  <a href="/ocr-j277/2-5-2a/" class="nb n">2.5.2a Translators →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-5-1';var IS_FREE=true;
+var QUIZ=[
+  {q:"Which type of language does the CPU execute directly, without translation?",opts:["Assembly","High-level","Machine code","Python"],ans:2,exp:"The CPU can ONLY execute machine code (binary). All other languages must be translated into machine code before the CPU can run them."},
+  {q:"What is a mnemonic in assembly language?",opts:["A type of error","A short abbreviation representing a machine code instruction","A high-level programming command","A binary number"],ans:1,exp:"Mnemonics are short memorable codes used in assembly: MOV, ADD, SUB, CMP, JMP. Each mnemonic represents one machine code instruction."},
+  {q:"How many machine code instructions does ONE assembly language instruction correspond to?",opts:["Many","None","Two","One"],ans:3,exp:"Assembly has a ONE-to-ONE correspondence with machine code. One mnemonic = one binary machine code instruction."},
+  {q:"Which of these is NOT an advantage of high-level languages?",opts:["Easy to read","Portable across different hardware","Direct access to CPU registers","Large libraries available"],ans:2,exp:"High-level languages abstract hardware away — you CANNOT directly access CPU registers. That is a feature of assembly and machine code. Direct hardware control is an advantage of LOW-level languages."},
+  {q:"What must assembly language be translated by?",opts:["Compiler","Interpreter","Assembler","Linker"],ans:2,exp:"An assembler translates assembly language mnemonics into machine code. Not a compiler (that's for high-level) or interpreter."},
+  {q:"Which language is most portable — able to run on different hardware?",opts:["Machine code","Assembly","High-level language","Binary code"],ans:2,exp:"High-level languages are portable — the same source code can be compiled/interpreted for different hardware. Machine code and assembly are processor-specific."},
+  {q:"Why is machine code difficult for humans to write?",opts:["It is written in English","It uses complex syntax","It consists of binary (0s and 1s) — very hard to read or debug","It requires a compiler"],ans:2,exp:"Machine code is raw binary — sequences of 0s and 1s. There are no human-readable names or structure. This makes it extremely difficult to read, write, or debug."},
+  {q:"Which of these is an example of a high-level language?",opts:["MOV AX, 5","11001010 00000101","Python","Binary"],ans:2,exp:"Python is a high-level language — close to English, portable, and needs a translator. MOV AX, 5 is assembly; 11001010... is machine code."},
+  {q:"What is the key advantage of low-level languages over high-level?",opts:["Easier to read","Portable across hardware","Greater control over hardware and faster execution","Fewer syntax rules"],ans:2,exp:"Low-level languages (assembly and machine code) offer direct hardware control and faster, more memory-efficient execution — at the cost of readability and portability."},
+  {q:"A programmer wants to write a device driver requiring direct memory access. Which language type is most appropriate?",opts:["High-level (Python)","Assembly","Both equally","Neither"],ans:1,exp:"Assembly (or C with low-level features) is most appropriate for device drivers — they require direct hardware and memory access that high-level languages abstract away."},
+  {q:"Which statement about machine code portability is correct?",opts:["Machine code is highly portable","Machine code written for one CPU can run on any CPU","Machine code is processor-specific — not portable to other CPU types","Machine code only runs on Windows"],ans:2,exp:"Machine code is processor-specific — binary instructions are tailored to a particular CPU architecture (e.g. x86, ARM). Code for one CPU won't run on a different CPU type."},
+  {q:"What does 'closer to the machine' mean for a programming language?",opts:["The program runs faster on all machines","The language more closely resembles the CPU's binary instruction set","The code is easier to write","The language is more portable"],ans:1,exp:"'Closer to the machine' means the language more directly represents the CPU's binary instruction set. Machine code is the closest; high-level languages are furthest (closest to human language)."},
+  {q:"Which language needs NO translation before the CPU can execute it?",opts:["Python","Java","C#","Machine code"],ans:3,exp:"Machine code is already in binary — the CPU executes it directly. Python, Java, and C# all require translation (compilation or interpretation)."},
+  {q:"Assembly language is described as 'low-level'. This means:",opts:["It is basic and easy","It runs at a low speed","It is close to the hardware/machine instruction set","It has few keywords"],ans:2,exp:"'Low-level' in this context means close to the hardware — close to the CPU's binary instruction set, NOT easy to use. Low-level = harder for humans, closer to the machine."},
+  {q:"Which language type requires the LEAST translation before execution?",opts:["Python","Java","Assembly","Machine code"],ans:3,exp:"Machine code requires NO translation — it is already in binary and runs directly. Assembly needs only a simple assembler pass. High-level languages need compilation or interpretation — the most translation."}
+];
+var WORKSHEET=[
+  {q:"Explain the difference between a high-level language and a low-level language.",marks:4,ms:"High-level: closer to human language, easy to read/write, portable, needs compiler/interpreter (1+1). Low-level: closer to the machine/hardware, harder to read, processor-specific, runs faster and gives more hardware control (1+1)."},
+  {q:"Describe THREE characteristics of machine code.",marks:3,ms:"Any three from: consists of binary (0s and 1s) (1). Executed directly by the CPU without translation (1). Extremely difficult for humans to read/write (1). Processor-specific — not portable (1). Very fast execution (1)."},
+  {q:"Explain why assembly language is considered a low-level language.",marks:2,ms:"It uses mnemonics that have a one-to-one correspondence with machine code instructions (1). It is close to the hardware and processor-specific — not portable between different CPU types (1)."},
+  {q:"State TWO advantages and TWO disadvantages of using a high-level language.",marks:4,ms:"Advantages (any 2): easy to read/write (1). Portable across different hardware (1). Faster development (1). Large libraries available (1). Disadvantages (any 2): must be translated — requires compiler or interpreter (1). Less control over hardware (1). Translated code less efficient than hand-written machine code (1)."},
+  {q:"Why is machine code not portable between different types of CPU?",marks:2,ms:"Machine code instructions are specific to a particular CPU's instruction set (1). A different CPU uses different binary instructions — code written for one architecture won't work on another (1)."},
+  {q:"What is the role of an assembler?",marks:2,ms:"An assembler translates assembly language (mnemonics) into machine code (1). It converts each assembly instruction into its equivalent binary machine code instruction (1)."},
+  {q:"A developer is writing software for an embedded system in a smart thermostat where speed and memory efficiency are critical. Which language type would you recommend and why?",marks:3,ms:"Assembly language or machine code (1). Because they give direct control over hardware (1). They execute faster and use less memory than high-level languages, which is critical in embedded systems with limited resources (1)."},
+  {q:"Explain the relationship between assembly language and machine code instructions.",marks:2,ms:"There is a one-to-one correspondence — each assembly instruction (mnemonic) maps to exactly one machine code instruction (1). The assembler converts each mnemonic directly to its binary equivalent (1)."}
+];
+var KEY_TERMS=[
+  {w:"Machine code",d:"The lowest-level language — binary (0s and 1s) instructions executed directly by the CPU. No translation needed."},
+  {w:"Assembly language",d:"A low-level language using mnemonics (e.g. MOV, ADD) that have a one-to-one correspondence with machine code. Translated by an assembler."},
+  {w:"High-level language",d:"A language close to human language (e.g. Python, Java). Portable, easy to read, but requires compilation or interpretation."},
+  {w:"Mnemonic",d:"A short abbreviation in assembly language representing a machine code instruction. e.g. MOV (move), ADD, SUB, CMP, JMP."},
+  {w:"Assembler",d:"A translator that converts assembly language mnemonics into machine code. NOT a compiler."},
+  {w:"Portable",d:"Code that can run on different hardware/operating systems without modification. High-level languages are portable; machine code is not."},
+  {w:"Processor-specific",d:"Code that only runs on a particular type of CPU. Machine code and assembly are processor-specific."},
+  {w:"Low-level",d:"Close to the hardware/machine instruction set. Harder for humans to read, but faster and gives more hardware control."},
+  {w:"High-level",d:"Close to human language. Easy to read and write. Portable. Requires translation before execution."},
+  {w:"Compiler",d:"A translator that converts an entire high-level program into machine code before execution. See 2.5.2a."},
+  {w:"Interpreter",d:"A translator that executes high-level code line by line. See 2.5.2a."},
+  {w:"Translation",d:"The process of converting code from one language to another — e.g. assembly to machine code, or high-level to machine code."},
+  {w:"Binary instruction",d:"A machine code instruction — a sequence of 0s and 1s that the CPU directly executes."},
+  {w:"Register",d:"A small, fast storage location inside the CPU. Assembly language can directly manipulate registers; high-level languages cannot."},
+  {w:"Embedded system",d:"A dedicated computer system within a device (e.g. thermostat, pacemaker). Often programmed in assembly/C for speed and efficiency."}
+];
+var TEST_MCQ=[
+  {q:"Which language does the CPU execute directly?",opts:["Python","Assembly","Machine code","C#"],ans:2,exp:"The CPU only executes machine code (binary). All other languages must be translated into machine code first."},
+  {q:"What is an advantage of high-level languages over low-level languages?",opts:["Faster execution","Direct hardware access","Greater portability across hardware","One-to-one mapping with machine code"],ans:2,exp:"High-level languages are portable — the same code runs on different hardware after compilation/interpretation. Low-level languages are processor-specific."},
+  {q:"What does an assembler do?",opts:["Translates Python into Java","Translates assembly mnemonics into machine code","Executes high-level code line by line","Compresses binary files"],ans:1,exp:"An assembler converts assembly language (mnemonics like MOV, ADD) into machine code (binary). Not a compiler — that handles high-level languages."},
+  {q:"Which statement about assembly language is correct?",opts:["It is a high-level language","One mnemonic corresponds to many machine code instructions","It is portable between different CPU types","One mnemonic corresponds to one machine code instruction"],ans:3,exp:"Assembly has a ONE-to-ONE correspondence: each mnemonic = one machine code instruction. It is low-level and processor-specific — not portable."},
+  {q:"Why might a developer choose assembly language over a high-level language?",opts:["Easier to read","More portable","Directly controls hardware — faster and more memory-efficient","Larger libraries available"],ans:2,exp:"Assembly gives direct control over hardware — useful for device drivers, embedded systems, and performance-critical code where speed and memory efficiency matter."}
+];
+var TEST_SA=[
+  {q:"Explain the difference between machine code and assembly language.",marks:4,ms:"Machine code: binary (0s and 1s), executed directly by CPU, no translation needed (1+1). Assembly: uses mnemonics (MOV, ADD), one-to-one correspondence with machine code (1), must be translated by an assembler (1)."},
+  {q:"State TWO advantages of high-level languages.",marks:2,ms:"Any two from: easy to read/write (1). Portable across hardware (1). Faster development (1). Large libraries available (1)."},
+  {q:"Why is machine code not portable?",marks:2,ms:"Machine code is specific to a CPU's instruction set (1). Different CPUs use different binary instructions — code for one won't run on another (1)."},
+  {q:"What is the role of an assembler?",marks:2,ms:"Translates assembly language mnemonics into machine code (1). Converts each mnemonic to its binary equivalent, one-to-one (1)."},
+  {q:"Give ONE reason why a developer might choose assembly over a high-level language.",marks:2,ms:"For greater control over hardware — e.g. directly managing CPU registers or memory addresses (1). This gives faster execution and lower memory usage, important in embedded/real-time systems (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();});
+</script>
+</body>
+</html>

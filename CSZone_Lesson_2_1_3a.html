@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.1.3a Linear Search | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sl active">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.1 Algorithms</div>
+  <div class="lesson-title">2.1.3a — Linear Search</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~18 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is a Linear Search?</h2>
+    <p>A <strong>linear search</strong> (also called sequential search) checks each item in a list one by one, from the start, until the target is found or the end of the list is reached.</p>
+    <div class="kp"><strong>Key fact:</strong> Works on UNSORTED data. No requirement for the list to be in order.</div>
+  </div>
+  <div class="ns">
+    <h2>How Linear Search Works</h2>
+    <div class="ic b">
+      <h4>Step-by-step:</h4>
+      <ol style="padding-left:20px;color:#94a3b8;font-size:13px">
+        <li>Start at the first element (index 0)</li>
+        <li>Compare the current element with the target</li>
+        <li>If they match → return the index (item found)</li>
+        <li>If not → move to the next element</li>
+        <li>Repeat until found or end of list reached</li>
+        <li>If end reached without finding → return -1 (not found)</li>
+      </ol>
+    </div>
+    <div class="ic b">
+      <h4>OCR Pseudocode:</h4>
+      <div class="code">function linearSearch(list, target)
+    for i = 0 to len(list) - 1
+        if list[i] == target then
+            return i
+        endif
+    next i
+    return -1
+endfunction</div>
+    </div>
+    <div class="ic b">
+      <h4>Example trace — searching for 7 in [3, 1, 7, 9, 2]:</h4>
+      <p style="font-size:13px;color:#94a3b8">i=0: list[0]=3, 3≠7 → continue<br>i=1: list[1]=1, 1≠7 → continue<br>i=2: list[2]=7, 7==7 → return 2 (found at index 2)</p>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Advantages and Disadvantages</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Advantages</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Disadvantages</th></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Works on unsorted lists</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Slow for large lists — checks every item</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Simple to understand and implement</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Inefficient: O(n) — worst case checks all n items</td></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Works on any data type</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Not suitable for very large datasets</td></tr>
+    </table>
+    <div class="kp"><strong>Complexity:</strong> Linear search is O(n) — time taken grows linearly with list size. Worst case: n comparisons (item at end or not present).</div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Saying linear search requires sorted data — it DOES NOT</li>
+        <li>Saying it always checks every item — it stops as soon as the item is found</li>
+        <li>Forgetting to handle the 'not found' case — return -1</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-1-2b/" class="nb">← 2.1.2b Pseudocode</a>
+  <a href="/ocr-j277/2-1-3b/" class="nb n">2.1.3b Binary Search →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-1-3a';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What does a linear search do?",opts:["Jumps to the middle of a list","Checks each element one by one from start to finish","Sorts the list first then searches","Only works on sorted lists"],ans:1,exp:"A linear search goes through each element in order, comparing each to the target until it finds it or reaches the end of the list."},
+  {q:"Does a linear search require the list to be sorted?",opts:["Yes — always","No — it works on unsorted lists","Only if the list has numbers","Only for lists over 100 items"],ans:1,exp:"A key advantage of linear search is that it works on UNSORTED data. Binary search requires sorting; linear search does not."},
+  {q:"What is returned if the target is NOT found in a linear search?",opts:["0","The last index","The length of the list","-1 (not found)"],ans:3,exp:"By convention, -1 is returned to indicate the target was not found. This is unambiguous because -1 is not a valid array index."},
+  {q:"Searching for 5 in [2, 8, 5, 1, 9]. How many comparisons does a linear search make?",opts:["1","5","3","2"],ans:2,exp:"i=0: 2≠5; i=1: 8≠5; i=2: 5==5 → found. 3 comparisons (checking index 0, 1, 2)."},
+  {q:"What is the worst-case number of comparisons for a linear search on a list of n items?",opts:["1","log n","n/2","n"],ans:3,exp:"Worst case: the target is at the last position or not in the list at all. The search must check all n items — so n comparisons."},
+  {q:"Which is an advantage of linear search over binary search?",opts:["It is faster","It works on unsorted lists","It requires less code","It uses less memory"],ans:1,exp:"Binary search requires the list to be sorted first. Linear search works on any list regardless of order — a significant practical advantage."},
+  {q:"A linear search on a list of 1000 items must find the last item. How many comparisons are needed?",opts:["1","500","10","1000"],ans:3,exp:"Worst case for linear search is n comparisons — the algorithm checks every item. With 1000 items, 1000 comparisons are made."},
+  {q:"What does linear search return when it finds the target?",opts:["true","The target value","The index (position) of the target","The number of comparisons made"],ans:2,exp:"When the target is found, linear search returns its INDEX (position) in the list — e.g., return 2 means the item is at index 2 (third position)."},
+  {q:"Why is linear search described as O(n)?",opts:["It always takes n seconds","The time taken grows linearly with the size of the list","It uses n bytes of memory","It makes n^2 comparisons"],ans:1,exp:"O(n) means 'order n' — the time taken grows proportionally with the number of items. Double the list = double the time in the worst case."},
+  {q:"Linear search on [7, 3, 9, 1, 5] looking for 9. At which index is it found?",opts:["0","1","2","3"],ans:2,exp:"i=0: 7≠9; i=1: 3≠9; i=2: 9==9 → return 2. Found at index 2."},
+  {q:"What happens after each comparison in a linear search if the target is NOT found?",opts:["The search stops","The list is sorted","The search moves to the next element","The target is added to the list"],ans:2,exp:"If the current element doesn't match the target, the search increments the index and checks the next element — continuing until found or end of list."},
+  {q:"Which of these scenarios is best suited to linear search?",opts:["Searching a sorted database of 1 million records","Searching a small unsorted list of 20 names","Searching a binary tree","Searching a hash table"],ans:1,exp:"Linear search is ideal for small, unsorted datasets. For large sorted datasets, binary search is much more efficient."},
+  {q:"In pseudocode, what does 'return -1' at the end of a linear search indicate?",opts:["The list is empty","The target was found at position -1","The target was not found in the list","An error occurred"],ans:2,exp:"'return -1' signals that the loop completed without finding the target — a convention for 'not found'. -1 is unambiguous as no valid array index is negative."},
+  {q:"Linear search on list [10, 20, 30, 40, 50]. Searching for 25. How many comparisons?",opts:["3","5","2","1"],ans:1,exp:"25 is not in the list. Linear search checks all 5 elements (10, 20, 30, 40, 50) before concluding it is not present — 5 comparisons. Returns -1."},
+  {q:"What is the BEST case number of comparisons for a linear search?",opts:["n","n/2","1","log n"],ans:2,exp:"Best case: the target is the FIRST element. Only 1 comparison is needed. Best case = 1. Worst case = n. Average case = n/2."}
+];
+var WORKSHEET=[
+  {q:"Describe how a linear search algorithm works.",marks:3,ms:"Start at the first element (index 0) (1). Compare each element with the target in turn (1). If the element matches the target, return its index; if the end is reached without finding it, return -1 (not found) (1)."},
+  {q:"Trace a linear search for the value 4 in the list [7, 2, 4, 9, 1]. Show each comparison.",marks:3,ms:"i=0: 7≠4 (1); i=1: 2≠4 (1); i=2: 4==4 → return 2 (found at index 2) (1)."},
+  {q:"State TWO advantages and ONE disadvantage of linear search.",marks:3,ms:"Advantages (any two): works on unsorted lists (1); simple to implement (1); works on any data type (1). Disadvantage: slow/inefficient for large lists — O(n) worst case checks every item (1)."},
+  {q:"Write pseudocode for a linear search function that searches for a target in a list and returns its index or -1.",marks:4,ms:"function linearSearch(list, target) (1); for i = 0 to len(list)-1 (1); if list[i] == target then return i; endif (1); next i; return -1 (1); endfunction."},
+  {q:"A list has 500 items. What is the worst-case number of comparisons for a linear search?",marks:1,ms:"500 — linear search must check every item in the worst case (item at end or not present)."},
+  {q:"Explain why linear search is described as O(n).",marks:2,ms:"O(n) means the time taken grows linearly with the size of the input (1). If the list doubles in size, the maximum number of comparisons doubles — so time scales proportionally with n (1)."},
+  {q:"A student says 'linear search is always slower than binary search'. Is this correct? Explain.",marks:2,ms:"Not always — for unsorted lists, linear search is often the only option as binary search requires a sorted list (1). For very small lists, the difference is negligible (1). However, for large sorted lists, binary search is significantly faster."},
+  {q:"A list of students [Alice, Bob, Charlie, Dave, Eve] is searched for 'Eve'. How many comparisons does a linear search make?",marks:1,ms:"5 — Eve is the last element, so the search checks Alice (1), Bob (2), Charlie (3), Dave (4), Eve (5)."}
+];
+var KEY_TERMS=[
+  {w:"Linear search",d:"A search algorithm that checks each element sequentially from start to finish until the target is found or the list ends."},
+  {w:"Sequential search",d:"Another name for linear search."},
+  {w:"Target",d:"The value being searched for in the list."},
+  {w:"Index",d:"The position of an element in a list. In OCR pseudocode, lists are zero-indexed (first element = index 0)."},
+  {w:"Worst case",d:"The maximum number of operations needed — for linear search: n comparisons (target at end or not found)."},
+  {w:"Best case",d:"The minimum number of operations — for linear search: 1 comparison (target at first position)."},
+  {w:"Average case",d:"The expected number of operations on average — for linear search: n/2 comparisons."},
+  {w:"O(n)",d:"Big O notation meaning time grows linearly with input size n. Linear search has O(n) time complexity."},
+  {w:"Not found",d:"When the target is absent from the list — linear search returns -1 by convention."},
+  {w:"Unsorted list",d:"A list in no particular order. Linear search works on unsorted lists; binary search requires sorted."},
+  {w:"Comparison",d:"Checking whether the current element equals the target — the fundamental operation of a search."},
+  {w:"Iteration",d:"The process of going through each element — linear search uses iteration via a loop."},
+  {w:"Time complexity",d:"A measure of how an algorithm's run time grows with input size, expressed in Big O notation."},
+  {w:"Search algorithm",d:"An algorithm for finding a specific item in a data structure."},
+  {w:"Return value",d:"What a function sends back — linear search returns the index if found, or -1 if not."}
+];
+var TEST_MCQ=[
+  {q:"A linear search checks items:",opts:["In random order","From the middle outward","One by one from start to finish","Only in sorted lists"],ans:2,exp:"Linear search is sequential — it checks each item in order from index 0 to the last element."},
+  {q:"Linear search on [5, 3, 8, 1, 6] for value 8. How many comparisons?",opts:["1","3","5","8"],ans:1,exp:"i=0: 5≠8; i=1: 3≠8; i=2: 8==8 → found. 3 comparisons."},
+  {q:"What is returned if the target is NOT in the list?",opts:["0","false","null","-1"],ans:3,exp:"-1 is the standard return value indicating 'not found'. It is unambiguous as no valid index is negative."},
+  {q:"Which is an advantage of linear search?",opts:["It is the fastest search algorithm","It works on unsorted lists","It uses binary logic","It requires less memory than other searches"],ans:1,exp:"Linear search's main advantage is that it works on ANY list regardless of order — no sorting required."},
+  {q:"What is the worst-case time complexity of linear search?",opts:["O(1)","O(log n)","O(n)","O(n^2)"],ans:2,exp:"O(n) — in the worst case, linear search checks all n items (target at end or not found)."}
+];
+var TEST_SA=[
+  {q:"Describe the linear search algorithm in steps.",marks:3,ms:"Start at index 0 (1). Compare each element with the target in turn (1). Return the index if found; return -1 if end reached without finding the target (1)."},
+  {q:"Trace a linear search for 9 in [4, 7, 9, 2, 6]. State how many comparisons are needed.",marks:3,ms:"i=0: 4≠9 (1); i=1: 7≠9 (1); i=2: 9==9 → return index 2 (1). 3 comparisons."},
+  {q:"Give ONE advantage and ONE disadvantage of linear search.",marks:2,ms:"Advantage: works on unsorted lists — no need to sort first (1). Disadvantage: slow for large lists — worst case checks every element — O(n) (1)."},
+  {q:"Write pseudocode for a linear search for target in a list.",marks:4,ms:"function linearSearch(list, target) (1); for i = 0 to len(list)-1 (1); if list[i] == target then return i; endif (1); next i; return -1; endfunction (1)."},
+  {q:"A list has 1,000 items. What is the worst-case number of comparisons for linear search?",marks:1,ms:"1,000 — in the worst case (item at end or not present), every element must be compared."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

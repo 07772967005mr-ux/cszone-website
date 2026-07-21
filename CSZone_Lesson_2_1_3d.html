@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.1.3d Merge Sort | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sl active">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.1 Algorithms</div>
+  <div class="lesson-title">2.1.3d — Merge Sort</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~22 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is Merge Sort?</h2>
+    <p><strong>Merge sort</strong> is a <em>divide and conquer</em> sorting algorithm. It works by repeatedly splitting a list in half until each sub-list has one element (which is trivially sorted), then merging those sub-lists back together in sorted order.</p>
+    <div class="kp"><strong>Key fact:</strong> Merge sort is O(n log n) — much more efficient than bubble sort's O(n²) for large datasets. It always takes O(n log n) regardless of input order.</div>
+  </div>
+  <div class="ns">
+    <h2>Two Phases of Merge Sort</h2>
+    <div class="ic b">
+      <h4>Phase 1 — Split (Divide):</h4>
+      <ol style="padding-left:20px;color:#94a3b8;font-size:13px">
+        <li>Find the midpoint of the list</li>
+        <li>Split into left half and right half</li>
+        <li>Recursively split each half</li>
+        <li>Stop when each sub-list has only 1 element (a single element is always sorted)</li>
+      </ol>
+    </div>
+    <div class="ic b">
+      <h4>Phase 2 — Merge (Conquer):</h4>
+      <ol style="padding-left:20px;color:#94a3b8;font-size:13px">
+        <li>Compare the first elements of two sorted sub-lists</li>
+        <li>Take the smaller element and add it to the merged list</li>
+        <li>Repeat until one sub-list is empty</li>
+        <li>Append remaining elements from the non-empty sub-list</li>
+        <li>The merged result is a sorted list</li>
+      </ol>
+    </div>
+    <div class="ic b">
+      <h4>Full example — [5, 2, 8, 1, 4, 7]:</h4>
+      <p style="font-size:13px;color:#94a3b8;line-height:2">
+      <strong>Split:</strong><br>
+      [5,2,8,1,4,7] → [5,2,8] and [1,4,7]<br>
+      [5,2,8] → [5,2] and [8] &nbsp;·&nbsp; [1,4,7] → [1,4] and [7]<br>
+      [5,2] → [5] and [2] &nbsp;·&nbsp; [1,4] → [1] and [4]<br>
+      <strong>Merge:</strong><br>
+      [5] + [2] → [2,5] &nbsp;·&nbsp; [1] + [4] → [1,4]<br>
+      [2,5] + [8] → [2,5,8] &nbsp;·&nbsp; [1,4] + [7] → [1,4,7]<br>
+      [2,5,8] + [1,4,7] → [1,2,4,5,7,8] ✓
+      </p>
+    </div>
+    <div class="ic b">
+      <h4>The Merge Step in detail — merging [2,5,8] and [1,4,7]:</h4>
+      <p style="font-size:13px;color:#94a3b8;line-height:1.9">
+      Compare 2 vs 1: take 1 → merged=[1]<br>
+      Compare 2 vs 4: take 2 → merged=[1,2]<br>
+      Compare 5 vs 4: take 4 → merged=[1,2,4]<br>
+      Compare 5 vs 7: take 5 → merged=[1,2,4,5]<br>
+      Compare 8 vs 7: take 7 → merged=[1,2,4,5,7]<br>
+      Left list empty, append remaining [8] → merged=[1,2,4,5,7,8]
+      </p>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Comparison: Merge Sort vs Bubble Sort</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148"></th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Merge Sort</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Bubble Sort</th></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Time complexity</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">O(n log n)</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">O(n²)</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Efficiency (large lists)</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Much faster</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">Much slower</td></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Memory usage</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">Extra memory for sub-lists</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">In-place (minimal extra)</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Complexity to code</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">More complex</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Simple</td></tr>
+    </table>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Confusing the split and merge phases — splitting produces individual elements; merging recombines in order</li>
+        <li>Saying merge sort is O(n²) — it is O(n log n)</li>
+        <li>Forgetting that merge sort requires extra memory for sub-lists (not in-place)</li>
+        <li>Not appending the remaining elements after one sub-list is exhausted in the merge step</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-1-3c/" class="nb">← 2.1.3c Bubble Sort</a>
+  <a href="/ocr-j277/2-1-3e/" class="nb n">2.1.3e Insertion Sort →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-1-3d';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What is the design strategy behind merge sort?",opts:["Greedy algorithm","Dynamic programming","Divide and conquer","Brute force"],ans:2,exp:"Merge sort uses divide and conquer: divide the problem (split) into smaller sub-problems, solve each (single elements), then conquer by combining solutions (merge)."},
+  {q:"What is the time complexity of merge sort?",opts:["O(n)","O(n²)","O(n log n)","O(log n)"],ans:2,exp:"Merge sort is O(n log n). The split phase takes O(log n) levels; the merge at each level takes O(n). Combined: O(n log n) — much better than bubble sort's O(n²)."},
+  {q:"When does the splitting phase of merge sort stop?",opts:["After 10 splits","When the list has two elements","When each sub-list has exactly one element","When the mid is 0"],ans:2,exp:"Splitting continues recursively until each sub-list has just ONE element. A single element is trivially sorted — this is the base case."},
+  {q:"Merging [1,3,5] and [2,4,6]. What is the first element placed in the merged list?",opts:["2","1","3","6"],ans:1,exp:"Compare first elements: 1 vs 2. 1 < 2, so 1 is taken first. Merged list starts with [1,...]."},
+  {q:"Merging [2,5] and [1,4]. After taking 1, what is compared next?",opts:["5 and 4","2 and 1","2 and 4","5 and 1"],ans:2,exp:"After taking 1 from the right list, the right pointer advances to 4. The left list still starts with 2. Next comparison: 2 vs 4."},
+  {q:"What is a key DISADVANTAGE of merge sort compared to bubble sort?",opts:["It is slower","It cannot sort numbers","It requires extra memory for sub-lists","It requires a sorted list"],ans:2,exp:"Merge sort is NOT in-place — it requires extra memory to store the sub-lists during splitting and merging. Bubble sort only needs O(1) extra memory."},
+  {q:"Splitting [4, 2, 7, 1]. What are the two halves?",opts:["[4] and [2,7,1]","[4,2] and [7,1]","[4,2,7] and [1]","[4,1] and [2,7]"],ans:1,exp:"The list is split at the midpoint. 4 items → mid = index 2. Left: [4,2], Right: [7,1]."},
+  {q:"How many levels of splitting are needed for a list of 8 items?",opts:["8","4","2","3"],ans:3,exp:"Each split halves the list: 8→4→2→1. That's 3 levels (log₂8 = 3). With 8 single-element sub-lists, merging begins."},
+  {q:"After splitting [8,3,6,1] to single elements, which sub-lists are merged first?",opts:["[3] and [6]","[8] and [3]","[6] and [1]","[8] and [1]"],ans:1,exp:"After split: [8],[3],[6],[1]. The first merges happen at the bottom level: [8]+[3]=[3,8] and [6]+[1]=[1,6]."},
+  {q:"What happens when one sub-list runs out of elements during the merge step?",opts:["The merge stops","The remaining elements from the other list are appended in order","The other list is reversed","The algorithm restarts"],ans:1,exp:"When one sub-list is exhausted, the remaining elements in the other sub-list are already sorted — they can be appended directly to the merged result."},
+  {q:"Merge sort vs bubble sort on a list of 1,000 items. Approximately how many operations does merge sort need?",opts:["1,000,000","500,000","10,000","250,000"],ans:2,exp:"Bubble sort: O(n²) = 1,000² = 1,000,000 operations worst case. Merge sort: O(n log n) = 1,000 × 10 ≈ 10,000 operations. About 100× faster."},
+  {q:"Why is a single-element list considered already sorted?",opts:["Because it has no elements to compare","There is only one element, so it cannot be out of order with itself","Because it has been through all merge levels","Because the algorithm flags it as sorted"],ans:1,exp:"A list with one element has nothing to compare — it trivially satisfies the definition of sorted. This is the base case that stops the recursion."},
+  {q:"What algorithmic technique does merge sort use that allows it to call itself on smaller sub-lists?",opts:["Iteration","Recursion","Memoisation","Hashing"],ans:1,exp:"Merge sort uses recursion — the function calls itself on smaller sub-lists until the base case (single element) is reached. It's a classic recursive divide-and-conquer algorithm."},
+  {q:"Which is true about merge sort?",opts:["It is always faster than bubble sort for any list size","It requires sorted input","It is in-place — needs no extra memory","It always runs in O(n log n) regardless of input order"],ans:3,exp:"Unlike bubble sort (which has O(n) best case on sorted data), merge sort ALWAYS runs O(n log n) — it always splits and merges regardless of the input."},
+  {q:"Merging [3,7] and [1,5,9]. What is the final merged result?",opts:["[1,3,5,7,9]","[3,1,7,5,9]","[1,3,7,5,9]","[1,5,3,7,9]"],ans:0,exp:"Compare 3 vs 1: take 1. Compare 3 vs 5: take 3. Compare 7 vs 5: take 5. Compare 7 vs 9: take 7. Append remaining [9]. Result: [1,3,5,7,9]."}
+];
+var WORKSHEET=[
+  {q:"Describe the TWO phases of merge sort.",marks:4,ms:"Phase 1 - Split/Divide: repeatedly split the list in half until each sub-list has one element (1). Single-element lists are trivially sorted — this is the base case (1). Phase 2 - Merge/Conquer: repeatedly merge pairs of sorted sub-lists by comparing front elements and taking the smaller each time (1). Append remaining elements when one sub-list empties (1)."},
+  {q:"Show the full split phase for [6, 3, 8, 2, 5, 1].",marks:3,ms:"[6,3,8,2,5,1] → [6,3,8] and [2,5,1] (1). [6,3,8]→[6,3] and [8]; [2,5,1]→[2,5] and [1] (1). [6,3]→[6] and [3]; [2,5]→[2] and [5] (1)."},
+  {q:"Show the merge step for [2,5,8] and [1,4,7]. Show each comparison.",marks:4,ms:"2 vs 1: take 1 (1). 2 vs 4: take 2 (1). 5 vs 4: take 4 (1). 5 vs 7: take 5. 8 vs 7: take 7. Append 8. Result: [1,2,4,5,7,8] (1)."},
+  {q:"What is the time complexity of merge sort? Compare this to bubble sort.",marks:2,ms:"Merge sort: O(n log n) (1). Bubble sort: O(n²). Merge sort is much more efficient for large lists — e.g. for n=1000, merge sort ≈10,000 operations vs bubble sort ≈1,000,000 (1)."},
+  {q:"State ONE advantage and ONE disadvantage of merge sort.",marks:2,ms:"Advantage: O(n log n) — much faster than bubble sort for large datasets (1). Disadvantage: requires extra memory for sub-lists — not in-place (1)."},
+  {q:"Explain what 'divide and conquer' means in the context of merge sort.",marks:3,ms:"Divide: split the problem (list) into smaller sub-problems (sub-lists) recursively (1). Conquer: solve each sub-problem — a single element is trivially sorted (1). Combine: merge sorted sub-lists back together to produce the final sorted list (1)."},
+  {q:"Show the complete merge sort process for [4, 1, 3, 2].",marks:5,ms:"Split: [4,1,3,2]→[4,1] and [3,2] (1). [4,1]→[4] and [1]; [3,2]→[3] and [2] (1). Merge: [4]+[1]→[1,4]; [3]+[2]→[2,3] (1). Merge [1,4]+[2,3]: 1vs2→1; 2vs4→2; 4vs3→3; append 4 (1). Result: [1,2,3,4] (1)."},
+  {q:"Why does merge sort need extra memory? How is this different from bubble sort?",marks:2,ms:"Merge sort creates new sub-lists during splitting and temporary lists during merging — requires O(n) extra memory (1). Bubble sort is in-place, swapping within the original array using only a constant amount of extra memory (temp variable) — O(1) extra (1)."}
+];
+var KEY_TERMS=[
+  {w:"Merge sort",d:"A divide-and-conquer sorting algorithm that splits a list into halves, sorts each half, then merges them back in order."},
+  {w:"Divide and conquer",d:"An algorithmic strategy: divide the problem into smaller sub-problems, solve each, then combine the solutions."},
+  {w:"Split phase",d:"Phase 1 of merge sort: recursively divide the list in half until each sub-list has one element."},
+  {w:"Merge phase",d:"Phase 2 of merge sort: combine sorted sub-lists by repeatedly comparing front elements and taking the smaller."},
+  {w:"Sub-list",d:"A smaller portion of the list created during the split phase. Single-element sub-lists are the base case."},
+  {w:"Base case",d:"The stopping condition for recursion — in merge sort, a list of ONE element (trivially sorted)."},
+  {w:"O(n log n)",d:"The time complexity of merge sort — much more efficient than O(n²) for large datasets."},
+  {w:"Recursion",d:"A technique where a function calls itself on smaller inputs. Merge sort uses recursion for splitting."},
+  {w:"In-place",d:"Sorting without requiring extra memory beyond the original list. Merge sort is NOT in-place — it needs O(n) extra memory."},
+  {w:"Extra memory",d:"A disadvantage of merge sort — it requires additional memory proportional to the list size for sub-lists and merging."},
+  {w:"Midpoint",d:"The split point: len(list) DIV 2. Divides the list into left and right halves."},
+  {w:"Append",d:"During the merge step, when one sub-list is exhausted, the remaining elements of the other are appended (they are already in order)."},
+  {w:"Efficient",d:"Merge sort is efficient — O(n log n) always. Unlike bubble sort, there is no best/worst case variation."},
+  {w:"Level",d:"Each level of splitting halves the list. A list of n items has log₂n levels."},
+  {w:"Sorted sub-list",d:"After splitting to single elements and merging, each step produces a larger sorted sub-list. Two sorted sub-lists are merged into one sorted list."}
+];
+var TEST_MCQ=[
+  {q:"Merge sort uses which algorithmic strategy?",opts:["Greedy","Brute force","Divide and conquer","Dynamic programming"],ans:2,exp:"Divide and conquer: split into smaller sub-problems, solve each, combine solutions. Merge sort splits → single elements → merges."},
+  {q:"What is the time complexity of merge sort?",opts:["O(n)","O(n²)","O(log n)","O(n log n)"],ans:3,exp:"O(n log n) — the log n levels of splitting, each requiring O(n) work for merging."},
+  {q:"When does the splitting phase stop?",opts:["After 5 splits","When list has 2 elements","When each sub-list has 1 element","When the list is sorted"],ans:2,exp:"The base case is a single-element list — it's trivially sorted. Splitting stops when all sub-lists contain exactly one element."},
+  {q:"What is a DISADVANTAGE of merge sort vs bubble sort?",opts:["It is slower","It cannot handle large lists","It requires extra memory","It can only sort numbers"],ans:2,exp:"Merge sort is NOT in-place — it requires O(n) extra memory for sub-lists. Bubble sort is in-place with O(1) extra memory."},
+  {q:"Merging [1,4] and [2,3]. The final result is:",opts:["[1,2,3,4]","[1,4,2,3]","[2,3,1,4]","[1,2,4,3]"],ans:0,exp:"1vs2→1; 4vs2→2; 4vs3→3; append 4. Result: [1,2,3,4]."}
+];
+var TEST_SA=[
+  {q:"Describe the two phases of merge sort.",marks:4,ms:"Split: recursively divide list in half until single elements (1). Single elements are trivially sorted — base case (1). Merge: compare front elements of two sorted sub-lists, take smaller, repeat (1). Append remaining elements when one list empties (1)."},
+  {q:"Show the split phase for [5, 2, 8, 3].",marks:2,ms:"[5,2,8,3]→[5,2] and [8,3] (1). [5,2]→[5] and [2]; [8,3]→[8] and [3] (1)."},
+  {q:"Show the merge step for [1,4] and [2,3,6].",marks:3,ms:"1vs2→1; 4vs2→2; 4vs3→3; 4vs6→4; append [6]. Result: [1,2,3,4,6] (1 per correct comparison step, max 3)."},
+  {q:"Give ONE advantage and ONE disadvantage of merge sort.",marks:2,ms:"Advantage: O(n log n) — much faster than bubble sort for large data (1). Disadvantage: requires extra memory for sub-lists — not in-place (1)."},
+  {q:"Why is a single-element list the base case for merge sort?",marks:1,ms:"A list with one element cannot be out of order — it is trivially sorted, so splitting stops here."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

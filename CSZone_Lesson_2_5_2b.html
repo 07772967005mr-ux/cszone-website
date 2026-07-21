@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.5.2b IDEs | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}.fin{background:linear-gradient(135deg,#1e1b4b,#1a1d2e);border:1px solid #3730a3;border-radius:12px;padding:28px;text-align:center;margin-bottom:28px}.fin h3{font-size:22px;font-weight:700;color:#818cf8;margin-bottom:8px}.fin p{font-size:14px;color:#94a3b8}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst" style="color:#818cf8">2.5 Languages &amp; IDEs</div>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sl active">2.5.2b IDEs</a>
+    <div class="sst" style="color:#10b981;margin-top:8px">All lessons complete!</div>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.5 Languages &amp; IDEs</div>
+  <div class="lesson-title">2.5.2b — IDEs</div>
+  <div class="lesson-meta">Component 2: Languages &amp; IDEs &nbsp;·&nbsp; Final lesson &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="fin">
+    <h3>🎉 Final OCR J277 Lesson</h3>
+    <p>You've reached the last lesson. Complete this and you've covered the entire OCR J277 GCSE specification.</p>
+  </div>
+  <div class="ns">
+    <h2>What is an IDE?</h2>
+    <p>An <strong>IDE</strong> (Integrated Development Environment) is a software application that provides comprehensive tools to help programmers write, test, and debug code — all in one place.</p>
+    <div class="kp"><strong>Key point:</strong> An IDE is NOT just a text editor. It integrates multiple tools — editor, translator, debugger, and more — into a single environment to speed up development.</div>
+    <p>Examples: Visual Studio Code, PyCharm, IDLE, Eclipse, IntelliJ IDEA, Thonny.</p>
+  </div>
+  <div class="ns">
+    <h2>IDE Features</h2>
+    <div class="ic b">
+      <h4>1. Code Editor</h4>
+      <p>The main area for writing code. Goes far beyond a simple text editor:</p>
+      <ul>
+        <li><strong>Syntax highlighting</strong> — different colours for keywords, strings, variables, comments. Makes code easier to read.</li>
+        <li><strong>Auto-indentation</strong> — automatically indents code inside loops, conditions, functions.</li>
+        <li><strong>Code completion / IntelliSense</strong> — suggests completions as you type, reducing typing errors.</li>
+        <li><strong>Bracket matching</strong> — highlights matching brackets to avoid mismatched brackets.</li>
+      </ul>
+    </div>
+    <div class="ic g">
+      <h4>2. Debugger</h4>
+      <p>A tool to find and fix errors in a running program:</p>
+      <ul>
+        <li><strong>Breakpoints</strong> — pause execution at a specific line to inspect the program's state.</li>
+        <li><strong>Step through</strong> — execute code one line at a time to trace where logic goes wrong.</li>
+        <li><strong>Variable watch</strong> — see the value of variables at any point during execution.</li>
+        <li><strong>Call stack</strong> — shows which functions have been called and in what order.</li>
+      </ul>
+    </div>
+    <div class="ic b">
+      <h4>3. Translator (Compiler / Interpreter)</h4>
+      <p>IDEs include a built-in translator — compile or run the program with a single button. Error messages from the translator are displayed directly in the IDE.</p>
+    </div>
+    <div class="ic g">
+      <h4>4. Error Diagnostics</h4>
+      <p>IDEs display errors and warnings:</p>
+      <ul>
+        <li>Syntax errors highlighted in the editor in real time (red underlines)</li>
+        <li>Error messages in a dedicated output/console panel</li>
+        <li>Quick-fix suggestions for common errors</li>
+      </ul>
+    </div>
+    <div class="ic b">
+      <h4>5. Other Common Features</h4>
+      <ul>
+        <li><strong>Version control integration</strong> — link to Git to track changes and revert to previous versions</li>
+        <li><strong>File manager</strong> — browse and manage project files within the IDE</li>
+        <li><strong>Terminal/console</strong> — run commands and see program output</li>
+        <li><strong>Refactoring tools</strong> — rename a variable everywhere at once, extract code into a function, etc.</li>
+        <li><strong>Extensions/plugins</strong> — add extra language support, themes, or tools</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Why Use an IDE?</h2>
+    <p>An IDE improves programmer productivity by bringing all necessary tools together. Instead of switching between a text editor, terminal, debugger, and file manager separately, everything is integrated and accessible in one window.</p>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Saying an IDE is just a "text editor" — an IDE integrates many tools; a text editor only edits text</li>
+        <li>Confusing syntax highlighting with error checking — syntax highlighting colours code; error checking identifies problems</li>
+        <li>Saying breakpoints "fix" bugs — breakpoints PAUSE execution so you can inspect state; you still must fix the bug yourself</li>
+        <li>Listing "auto-correct" as a feature — IDEs suggest completions but do NOT auto-correct code</li>
+        <li>IDE stands for Integrated Development Environment — not "Intelligent" or "Interactive"</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-5-2a/" class="nb">← 2.5.2a Translators</a>
+  <a href="/dashboard" class="nb n">Back to Dashboard →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-5-2b';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What does IDE stand for?",opts:["Intelligent Development Editor","Interactive Design Environment","Integrated Development Environment","International Debug Environment"],ans:2,exp:"IDE = Integrated Development Environment. 'Integrated' is the key word — it brings multiple development tools together into one application."},
+  {q:"What is syntax highlighting?",opts:["Automatically fixing syntax errors","Colouring different code elements (keywords, strings, variables) in different colours","Suggesting code completions","Pausing execution at a line"],ans:1,exp:"Syntax highlighting colours different parts of code — keywords in one colour, strings in another, comments in another, etc. This makes code much easier to read and spot errors."},
+  {q:"What is a breakpoint?",opts:["A line of code that causes a crash","A point where the IDE pauses program execution for inspection","An error in the code","A missing bracket"],ans:1,exp:"A breakpoint marks a line where the debugger pauses execution. This lets you inspect the program's state — variable values, call stack — at that exact moment."},
+  {q:"Which IDE feature allows you to execute code one line at a time?",opts:["Syntax highlighting","Auto-indentation","Step through (stepping)","Code completion"],ans:2,exp:"'Step through' (or 'step into') executes code one line at a time, so you can trace exactly where the logic goes wrong — very useful for finding logic errors."},
+  {q:"What is code completion in an IDE?",opts:["Automatically completing the whole program","Suggesting possible completions as you type","Checking for logic errors","Compiling the code"],ans:1,exp:"Code completion (IntelliSense) suggests possible method names, variables, or keywords as you type. This speeds up coding and reduces typing errors."},
+  {q:"What is the main advantage of an IDE over a simple text editor?",opts:["IDEs are free; text editors cost money","IDEs are faster to open","IDEs integrate multiple tools — editor, debugger, compiler — in one place","Text editors do not support colour"],ans:2,exp:"The key advantage is integration — an IDE brings the code editor, translator, debugger, error diagnostics, and more into one application, rather than having separate tools."},
+  {q:"A variable 'watch' feature in an IDE shows:",opts:["The time the variable was created","The value of a selected variable during program execution","The type of variable","The line number where the variable is declared"],ans:1,exp:"A variable watch displays the current value of selected variables during execution. Combined with breakpoints, you can observe exactly how values change at each step."},
+  {q:"What does auto-indentation do?",opts:["Fixes logic errors automatically","Automatically indents code inside loops, conditions, and functions","Converts tabs to spaces","Deletes blank lines"],ans:1,exp:"Auto-indentation automatically adds the correct level of indentation as you type — inside a loop or if statement, the next line is automatically indented. This improves readability."},
+  {q:"Which IDE feature shows which functions have been called, and in what order?",opts:["Variable watch","Breakpoint","Call stack","Syntax highlighter"],ans:2,exp:"The call stack shows the sequence of function calls that led to the current point in execution. Useful for tracing how a bug-inducing function was reached."},
+  {q:"What does an IDE's error diagnostics feature do?",opts:["Automatically fix errors","Display syntax errors in real time — often with red underlines","Run the program faster","Prevent all runtime errors"],ans:1,exp:"Error diagnostics display syntax errors (and sometimes logic warnings) in real time as you type — often shown as red underlines or markers. They appear in an output/console panel too."},
+  {q:"Give ONE example of an IDE.",opts:["Microsoft Word","Notepad","Visual Studio Code","Google Sheets"],ans:2,exp:"Visual Studio Code (VS Code) is a popular IDE. Other examples: PyCharm, IDLE, Eclipse, IntelliJ IDEA, Thonny. Notepad is a simple text editor, not an IDE."},
+  {q:"Why might a student use IDLE to write Python rather than Notepad?",opts:["IDLE is faster","IDLE is an IDE — it includes a Python interpreter, debugger, and syntax highlighting; Notepad only edits text","Notepad does not save files","IDLE costs less"],ans:1,exp:"IDLE is Python's built-in IDE — it includes a code editor with syntax highlighting, a Python interpreter, and basic debugging. Notepad only edits text with no coding support."},
+  {q:"What is the purpose of bracket matching in an IDE?",opts:["Automatically close all brackets","Highlight the matching opening bracket when you type a closing bracket — helps avoid mismatches","Count how many brackets are in the code","Remove extra brackets"],ans:1,exp:"Bracket matching highlights the corresponding open bracket when your cursor is near a close bracket (and vice versa). This helps you spot mismatched or missing brackets immediately."},
+  {q:"A developer uses a breakpoint on line 15. What happens when the program reaches line 15?",opts:["The program crashes","The program pauses — the developer can inspect variables and state","Line 15 is deleted","An error is thrown"],ans:1,exp:"A breakpoint pauses program execution at that line. The IDE's debugger then lets the developer inspect variables, the call stack, and step through subsequent lines."},
+  {q:"Which of these is NOT a typical IDE feature?",opts:["Syntax highlighting","Debugger with breakpoints","Auto-indentation","Automatically writing algorithms for you"],ans:3,exp:"IDEs do NOT write algorithms for you — they assist with editing, debugging, and translating. The programmer still writes the logic. [Note: modern AI coding assistants are separate add-ons, not core IDE features]"}
+];
+var WORKSHEET=[
+  {q:"What does IDE stand for? Explain what 'integrated' means in this context.",marks:3,ms:"Integrated Development Environment (1). 'Integrated' means multiple tools are combined — code editor, translator, debugger, error diagnostics — all in one application (1). Rather than using separate programs for each task (1)."},
+  {q:"Describe how syntax highlighting helps a programmer.",marks:2,ms:"Colours different code elements (keywords, strings, variables, comments) in different colours (1). Makes code easier to read and helps the programmer spot errors or mismatched types at a glance (1)."},
+  {q:"Explain what a breakpoint is and how it helps with debugging.",marks:3,ms:"A breakpoint is a marker that pauses program execution at a specific line (1). When paused, the programmer can inspect variable values and the call stack (1). This helps identify where the logic is going wrong without running the entire program (1)."},
+  {q:"Describe how 'step through' in a debugger helps find logic errors.",marks:2,ms:"Executes the program one line at a time (1). The programmer can observe exactly how variables change at each step, identifying the exact line where incorrect behaviour occurs (1)."},
+  {q:"Give FOUR features of an IDE and briefly describe what each one does.",marks:8,ms:"Any four: Syntax highlighting — colours code elements for readability (2). Debugger/breakpoints — pauses execution for inspection (2). Code completion — suggests completions as you type (2). Auto-indentation — automatically indents code inside blocks (2). Error diagnostics — displays errors in real time (2). Variable watch — shows variable values during execution (2). [2 marks per feature: 1 for name, 1 for correct description]"},
+  {q:"Explain the difference between an IDE and a simple text editor.",marks:3,ms:"A text editor only allows editing text — no coding-specific features (1). An IDE integrates multiple tools: code editor with syntax highlighting, a built-in translator (compiler/interpreter), debugger with breakpoints, error diagnostics, etc. (1). An IDE significantly speeds up the development and debugging process (1)."},
+  {q:"Explain how code completion (IntelliSense) benefits a programmer.",marks:2,ms:"Suggests possible method names, variables, or keyword completions as the programmer types (1). Reduces typing errors, speeds up coding, and helps the programmer discover available functions without needing documentation (1)."},
+  {q:"A student is struggling to find a bug in their program that causes the wrong answer to be output. Which IDE features would help most? Explain.",marks:4,ms:"Breakpoints — pause at a specific line to inspect state before the error (1+1). Variable watch — monitor variable values to see where an incorrect value appears (1+1). Step through — trace execution line by line to pinpoint where logic goes wrong (1). [4 marks: any two well-explained features]"}
+];
+var KEY_TERMS=[
+  {w:"IDE",d:"Integrated Development Environment — a software application combining code editor, translator, debugger, and other tools in one place."},
+  {w:"Syntax highlighting",d:"Colouring different code elements (keywords, strings, variables, comments) in different colours to improve readability."},
+  {w:"Debugger",d:"A tool within an IDE for finding and fixing errors. Includes breakpoints, step-through, variable watch, and call stack."},
+  {w:"Breakpoint",d:"A marker in the code that pauses program execution so the programmer can inspect variable values and program state."},
+  {w:"Step through",d:"Execute code one line at a time using the debugger — allows precise tracing of where logic errors occur."},
+  {w:"Variable watch",d:"An IDE feature that displays the current value of selected variables during execution."},
+  {w:"Call stack",d:"A debugger view showing which functions have been called and in what order — useful for tracing how execution reached a point."},
+  {w:"Code completion",d:"IDE feature (IntelliSense) that suggests possible completions as you type — reduces errors and speeds up coding."},
+  {w:"Auto-indentation",d:"IDE feature that automatically adds correct indentation inside loops, conditions, and functions as you type."},
+  {w:"Bracket matching",d:"IDE feature that highlights the corresponding bracket when your cursor is near a bracket — helps avoid mismatched brackets."},
+  {w:"Error diagnostics",d:"Real-time display of syntax errors in the code editor — often shown as red underlines — and in an output/console panel."},
+  {w:"Integrated",d:"The key characteristic of an IDE — multiple development tools (editor, translator, debugger) combined into one application."},
+  {w:"Refactoring",d:"IDE tools that restructure code without changing behaviour — e.g. rename a variable everywhere at once."},
+  {w:"Version control",d:"Many IDEs integrate with Git, allowing programmers to track changes and revert to previous versions."},
+  {w:"Console/terminal",d:"An integrated terminal within the IDE for running commands and viewing program output without switching applications."}
+];
+var TEST_MCQ=[
+  {q:"What does IDE stand for?",opts:["Intelligent Debug Engine","Integrated Development Environment","Interactive Design Editor","Internal Data Environment"],ans:1,exp:"IDE = Integrated Development Environment. The word 'integrated' is key — it means multiple programming tools are combined into one application."},
+  {q:"What is the purpose of a breakpoint in an IDE?",opts:["To fix a logic error automatically","To pause execution at a specific line for inspection","To delete a line of code","To speed up compilation"],ans:1,exp:"A breakpoint pauses program execution at a specific line. The debugger then lets you inspect variable values, step through code, and find where errors occur."},
+  {q:"Which feature suggests code completions as you type?",opts:["Syntax highlighting","Auto-indentation","Code completion / IntelliSense","Variable watch"],ans:2,exp:"Code completion (IntelliSense) suggests possible completions — method names, variables, keywords — as you type. This reduces typing errors and speeds up development."},
+  {q:"What does syntax highlighting do?",opts:["Automatically fixes syntax errors","Colours different code elements for readability","Pauses the program","Compiles the code"],ans:1,exp:"Syntax highlighting colours different parts of code — keywords, strings, comments, variables — in different colours. This makes code easier to read and spot errors."},
+  {q:"Which is NOT a typical IDE feature?",opts:["Debugger","Auto-indentation","Automatically writing program logic","Code editor with syntax highlighting"],ans:2,exp:"IDEs do NOT write program logic for you — they provide tools to help programmers write and debug code. The programmer must still design and implement the algorithm."}
+];
+var TEST_SA=[
+  {q:"What is an IDE? Name TWO features it provides.",marks:4,ms:"Integrated Development Environment — a software application combining multiple development tools in one place (1). Features (any two): syntax highlighting (1), debugger/breakpoints (1), code completion (1), auto-indentation (1), error diagnostics (1), variable watch (1). [2 marks for two valid features]"},
+  {q:"Explain how a debugger with breakpoints helps find a logic error.",marks:3,ms:"Set a breakpoint at a specific line (1). Program pauses at that line — programmer can inspect variable values (1). Use step-through to execute line by line and identify exactly where the logic produces incorrect output (1)."},
+  {q:"Describe the difference between an IDE and a simple text editor.",marks:3,ms:"A text editor only allows text editing — no coding-specific features (1). An IDE integrates editor, translator, debugger, syntax highlighting, and error diagnostics in one application (1). This makes development much more efficient — fewer tools to switch between (1)."},
+  {q:"Explain what syntax highlighting is and how it benefits a programmer.",marks:2,ms:"Colours different parts of code (keywords, strings, comments, variables) in different colours (1). Makes code easier to read, understand, and spot errors or inconsistencies at a glance (1)."},
+  {q:"A student is using Notepad to write Python. State TWO features they are missing that an IDE would provide.",marks:2,ms:"Any two from: syntax highlighting (1). Debugger/breakpoints for stepping through code (1). Code completion suggestions (1). Error diagnostics / real-time error highlighting (1). Auto-indentation (1). Integrated interpreter/compiler (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.1.3e Insertion Sort | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sl active">2.1.3e Insertion Sort</a>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.1 Algorithms</div>
+  <div class="lesson-title">2.1.3e — Insertion Sort</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~18 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is Insertion Sort?</h2>
+    <p><strong>Insertion sort</strong> builds a sorted list one element at a time. It takes each element and inserts it into the correct position within the already-sorted portion of the list — like sorting a hand of playing cards.</p>
+    <div class="kp"><strong>Key analogy:</strong> Think of sorting a hand of cards. You pick up each new card and slide it left until it's in the right place among the cards already sorted in your hand.</div>
+  </div>
+  <div class="ns">
+    <h2>How Insertion Sort Works</h2>
+    <div class="ic b">
+      <h4>Step-by-step:</h4>
+      <ol style="padding-left:20px;color:#94a3b8;font-size:13px">
+        <li>Start from index 1 (the first element, index 0, is trivially sorted)</li>
+        <li>Take the current element as the 'key'</li>
+        <li>Compare key with elements to its left (in the sorted portion)</li>
+        <li>Shift larger elements one position to the right</li>
+        <li>Insert the key in the correct position</li>
+        <li>Move to the next element and repeat</li>
+      </ol>
+    </div>
+    <div class="ic b">
+      <h4>OCR Pseudocode:</h4>
+      <div class="code">function insertionSort(list)
+    for i = 1 to len(list) - 1
+        key = list[i]
+        j = i - 1
+        while j >= 0 AND list[j] > key
+            list[j+1] = list[j]
+            j = j - 1
+        endwhile
+        list[j+1] = key
+    next i
+    return list
+endfunction</div>
+    </div>
+    <div class="ic b">
+      <h4>Full trace — [5, 2, 4, 1, 3]:</h4>
+      <p style="font-size:13px;color:#94a3b8;line-height:2">
+      <strong>i=1, key=2:</strong> 5&gt;2 → shift 5 right → insert 2 → [2,5,4,1,3]<br>
+      <strong>i=2, key=4:</strong> 5&gt;4 → shift 5 right; 2&lt;4 → stop → insert 4 → [2,4,5,1,3]<br>
+      <strong>i=3, key=1:</strong> 5&gt;1→shift; 4&gt;1→shift; 2&gt;1→shift; j=-1→stop → insert 1 → [1,2,4,5,3]<br>
+      <strong>i=4, key=3:</strong> 5&gt;3→shift; 4&gt;3→shift; 2&lt;3→stop → insert 3 → [1,2,3,4,5] ✓
+      </p>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Advantages and Disadvantages</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Advantages</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Disadvantages</th></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Efficient for small or nearly-sorted lists</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">O(n²) worst case — slow for large unsorted lists</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Simple to implement and understand</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Less efficient than merge sort for large data</td></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">In-place — O(1) extra memory</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Quadratic number of comparisons on reverse-sorted input</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Best case O(n) on already-sorted lists</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Not practical for large randomly-ordered datasets</td></tr>
+    </table>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Starting the outer loop at index 0 — the first element is already 'sorted'; start at index 1</li>
+        <li>Forgetting to shift elements right rather than swap — insertion sort shifts, not swaps</li>
+        <li>Saying insertion sort is O(n log n) — it is O(n²) worst case</li>
+        <li>Confusing insertion sort with selection sort — selection sort SELECTS the minimum and places it; insertion sort takes the next element and INSERTS it</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-1-3d/" class="nb">← 2.1.3d Merge Sort</a>
+  <a href="/ocr-j277/2-2-1a/" class="nb n">2.2.1a Variables &amp; Types →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-1-3e';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What is the key idea behind insertion sort?",opts:["Swap adjacent elements until sorted","Split the list in half and merge","Take each element and insert it into its correct position in the sorted portion","Find the smallest element and place it at the start"],ans:2,exp:"Insertion sort builds the sorted portion one element at a time. Each new element (the 'key') is compared with the sorted portion to its left and inserted in the correct position."},
+  {q:"Why does insertion sort's outer loop start at index 1, not index 0?",opts:["Index 0 is reserved","A single element (index 0) is already trivially sorted","To avoid an off-by-one error","The algorithm reads from right to left"],ans:1,exp:"The first element (index 0) has nothing to compare to — it forms a sorted sub-list of one. Insertion sort starts at index 1 and works right, growing the sorted portion."},
+  {q:"Insertion sort on [4, 2, 6, 1]. After processing i=1 (key=2), what is the list?",opts:["[2,4,6,1]","[4,2,6,1]","[1,2,4,6]","[2,4,1,6]"],ans:0,exp:"key=2. 4>2 → shift 4 right → insert 2 at index 0. Result: [2,4,6,1]."},
+  {q:"What does insertion sort do when it finds an element in the sorted portion that is SMALLER than the key?",opts:["It swaps them","It continues shifting left","It stops and inserts the key at the current position","It restarts the algorithm"],ans:2,exp:"When list[j] <= key, the correct insertion point has been found. The key is inserted at position j+1. No further shifting is needed."},
+  {q:"What is the worst-case time complexity of insertion sort?",opts:["O(n)","O(log n)","O(n²)","O(n log n)"],ans:2,exp:"Worst case: a reverse-sorted list. Every element must be compared with and shifted past all previously sorted elements — O(n²) total."},
+  {q:"What is the best-case time complexity of insertion sort?",opts:["O(n²)","O(n log n)","O(1)","O(n)"],ans:3,exp:"Best case: the list is already sorted. Each key only needs one comparison (with its left neighbour) to confirm it's in place — O(n) total."},
+  {q:"Insertion sort on [3, 1, 4, 2]. After processing i=2 (key=4), what is the list?",opts:["[1,3,4,2]","[1,3,2,4]","[3,1,4,2]","[1,4,3,2]"],ans:0,exp:"key=4. j=1: list[1]=3, 3<4 → stop. Insert 4 at j+1=2. List: [1,3,4,2] (only first 3 elements are sorted so far)."},
+  {q:"How is insertion sort different from bubble sort?",opts:["Bubble sort compares non-adjacent elements","Insertion sort shifts elements to insert; bubble sort swaps adjacent elements","Insertion sort is divide and conquer","Bubble sort is faster"],ans:1,exp:"Bubble sort swaps adjacent pairs. Insertion sort takes a 'key' element and shifts elements rightward to create a gap, then inserts the key in the correct position."},
+  {q:"Which real-world activity does insertion sort resemble?",opts:["Shuffling a deck of cards randomly","Sorting cards in your hand by picking each new card and inserting it in the right place","Dealing cards","Merging two separate piles"],ans:1,exp:"Insertion sort is like sorting playing cards in your hand — you pick up each new card and slide it into position among the already-sorted cards."},
+  {q:"Insertion sort on [5, 3, 8, 4, 2]. After i=3 (key=4), what is the sorted portion?",opts:["[3,4,5,8]","[3,5,8,4]","[4,3,5,8]","[3,4,8,5]"],ans:0,exp:"Before i=3: sorted portion is [3,5,8]. key=4. 8>4→shift; 5>4→shift; 3<4→stop. Insert 4: sorted portion becomes [3,4,5,8]."},
+  {q:"What is an advantage of insertion sort for nearly-sorted data?",opts:["It always uses O(n log n)","Very few shifts are needed — it runs close to O(n)","It is divide and conquer","It uses recursion"],ans:1,exp:"For nearly-sorted data, each key needs very few comparisons and shifts before finding its correct position. Performance approaches O(n) — much better than bubble sort in this scenario."},
+  {q:"In insertion sort, what does 'shifting' mean?",opts:["Swapping two non-adjacent elements","Moving an element one position to the right to create space for the key","Removing an element from the list","Moving the key to the far left"],ans:1,exp:"Shifting: list[j+1] = list[j]. Each element larger than the key is moved one place to the right, creating a gap for the key to be inserted."},
+  {q:"After the outer loop completes in insertion sort, what is guaranteed?",opts:["The list has been split into two halves","Every element has been compared with every other","The entire list is sorted","The largest element is at position 0"],ans:2,exp:"After the outer loop processes all elements from index 1 to n-1, the entire list is guaranteed to be sorted. Each iteration grows the sorted portion by one."},
+  {q:"Insertion sort on [2, 1, 3]. After i=1 (key=1): list is [1,2,3]. After i=2 (key=3): list is?",opts:["[1,2,3]","[1,3,2]","[3,1,2]","[2,1,3]"],ans:0,exp:"i=2, key=3. j=1: list[1]=2, 2<3 → stop immediately. Insert 3 at j+1=2. List: [1,2,3] — unchanged because 3 was already in the right position."},
+  {q:"Which is true about insertion sort's memory use?",opts:["It requires O(n) extra memory like merge sort","It is in-place — O(1) extra memory","It stores a copy of the entire list","It uses a stack of sub-lists"],ans:1,exp:"Insertion sort is in-place. It only needs one extra variable (key/temp) — O(1) extra space. This is an advantage over merge sort which requires O(n) extra memory."}
+];
+var WORKSHEET=[
+  {q:"Describe how insertion sort works.",marks:3,ms:"Take each element as a 'key' starting from index 1 (1). Compare the key with elements to its left in the sorted portion (1). Shift larger elements right and insert the key in the correct position (1)."},
+  {q:"Trace insertion sort on [4, 2, 5, 1, 3]. Show the list after processing each value of i.",marks:5,ms:"i=1,key=2: 4>2→shift; insert→[2,4,5,1,3] (1). i=2,key=5: 4<5→stop; insert→[2,4,5,1,3] (1). i=3,key=1: 5>1→shift;4>1→shift;2>1→shift;j=-1→stop; insert→[1,2,4,5,3] (1). i=4,key=3: 5>3→shift;4>3→shift;2<3→stop; insert→[1,2,3,4,5] (1). Sorted: [1,2,3,4,5] (1)."},
+  {q:"Write pseudocode for insertion sort.",marks:5,ms:"for i=1 to len(list)-1 (1); key=list[i]; j=i-1 (1); while j>=0 AND list[j]>key (1); list[j+1]=list[j]; j=j-1; endwhile (1); list[j+1]=key; next i (1)."},
+  {q:"What is the worst-case time complexity of insertion sort? When does this occur?",marks:2,ms:"O(n²) (1). Worst case: a reverse-sorted (descending) list — every element must shift past all elements in the sorted portion (1)."},
+  {q:"Explain why insertion sort performs well on nearly-sorted data.",marks:2,ms:"For nearly-sorted data, each key requires very few comparisons before finding its position (1). Few shifts are needed — performance approaches O(n) rather than O(n²) (1)."},
+  {q:"Compare insertion sort to bubble sort. Give TWO differences.",marks:4,ms:"Mechanism: insertion sort takes a key and inserts it into position; bubble sort compares and swaps adjacent pairs (1). Best case: both O(n) for sorted data (1). Memory: both in-place, O(1) extra (1). Similarity: both O(n²) worst case (award if stated as difference in phrasing) (1)."},
+  {q:"Why does the outer loop in insertion sort start at index 1 and not index 0?",marks:1,ms:"The first element at index 0 is already a sorted sub-list of one — there is nothing to compare it to. The algorithm starts at index 1."},
+  {q:"State ONE advantage of insertion sort over merge sort.",marks:1,ms:"Insertion sort is in-place — requires only O(1) extra memory. Merge sort requires O(n) extra memory for sub-lists."}
+];
+var KEY_TERMS=[
+  {w:"Insertion sort",d:"A sorting algorithm that builds a sorted list one element at a time by inserting each new element into its correct position among the already-sorted elements."},
+  {w:"Key",d:"The current element being inserted. It is taken from the unsorted portion and compared with elements in the sorted portion."},
+  {w:"Sorted portion",d:"The section of the list already in sorted order — grows by one element with each pass."},
+  {w:"Shift",d:"Moving an element one position to the right to create space for the key to be inserted."},
+  {w:"Outer loop",d:"Iterates from i=1 to len(list)-1, selecting each element as the key in turn."},
+  {w:"Inner loop (while)",d:"Compares the key with elements in the sorted portion and shifts them right while they are larger than the key."},
+  {w:"O(n²)",d:"Worst-case complexity of insertion sort — when the list is in reverse order."},
+  {w:"O(n)",d:"Best-case complexity of insertion sort — when the list is already sorted (only one comparison per element needed)."},
+  {w:"In-place",d:"Insertion sort sorts within the original array using only O(1) extra memory (the key variable)."},
+  {w:"Nearly-sorted",d:"A list where most elements are close to their correct positions. Insertion sort is efficient on nearly-sorted data."},
+  {w:"Card analogy",d:"Insertion sort resembles sorting a hand of cards — pick up each card and slide it into the right place among those already held."},
+  {w:"j = i - 1",d:"The inner loop starts at j = i-1 (the element immediately left of the key) and works leftward through the sorted portion."},
+  {w:"list[j+1] = key",d:"The final step of each insertion: place the key in its correct position after all larger elements have been shifted right."},
+  {w:"Reverse-sorted",d:"The worst case for insertion sort — every element must be shifted past all sorted elements, giving O(n²) performance."},
+  {w:"Comparison",d:"Checking whether list[j] > key. Insertion sort may make up to O(n²) comparisons in the worst case."}
+];
+var TEST_MCQ=[
+  {q:"What is the 'key' in insertion sort?",opts:["The smallest unsorted element","The middle element","The current element being inserted into the sorted portion","The last element of the list"],ans:2,exp:"The key is the current element (list[i]) being processed. It is compared with sorted elements to its left and inserted in the correct position."},
+  {q:"Insertion sort on [3, 1, 4]. After i=1 (key=1), the list is:",opts:["[1,3,4]","[3,1,4]","[1,4,3]","[3,4,1]"],ans:0,exp:"key=1. 3>1→shift right; j=-1→stop. Insert 1 at index 0. List: [1,3,4]."},
+  {q:"What is the worst-case time complexity of insertion sort?",opts:["O(n)","O(n log n)","O(n²)","O(1)"],ans:2,exp:"O(n²) — when the list is in reverse order, every element must shift past all sorted elements."},
+  {q:"When does insertion sort stop the inner while loop?",opts:["When j reaches the end of the list","When j < 0 OR list[j] <= key","When the list is fully sorted","When key equals list[0]"],ans:1,exp:"The inner while runs while j >= 0 AND list[j] > key. It stops when j goes below 0 (start of list) OR when an element smaller than/equal to the key is found."},
+  {q:"Which scenario is insertion sort BEST suited to?",opts:["A large randomly-ordered dataset","A nearly-sorted list","A reverse-sorted list","A list of 10,000 random numbers"],ans:1,exp:"Insertion sort is most efficient on nearly-sorted data — few shifts are needed, so performance approaches O(n). For large random data, merge sort is far better."}
+];
+var TEST_SA=[
+  {q:"Describe how insertion sort works.",marks:3,ms:"Take each element as a key starting from index 1 (1). Compare with sorted elements to the left, shifting larger ones right (1). Insert the key in its correct position (1)."},
+  {q:"Trace insertion sort on [3, 1, 2]. Show the list after each step.",marks:3,ms:"i=1,key=1: 3>1→shift; insert → [1,3,2] (1). i=2,key=2: 3>2→shift; 1<2→stop; insert → [1,2,3] (1). Final: [1,2,3] (1)."},
+  {q:"What is the worst-case complexity of insertion sort and when does it occur?",marks:2,ms:"O(n²) (1). When the list is reverse-sorted — every element must shift past all those in the sorted portion (1)."},
+  {q:"Give ONE advantage of insertion sort over merge sort and ONE disadvantage.",marks:2,ms:"Advantage: in-place — O(1) extra memory vs merge sort's O(n) (1). Disadvantage: O(n²) worst case vs merge sort's O(n log n) — much slower for large data (1)."},
+  {q:"Why does insertion sort start its outer loop at index 1?",marks:1,ms:"The element at index 0 forms a sorted sub-list of one — there are no elements to its left to compare with."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.5.1 Operating Systems | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 1</div>
+    <div class="sst" style="color:#818cf8">1.5 Systems Software</div>
+    <a href="/ocr-j277/1-5-1/" class="sl fb active">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
+    <div class="sst" style="color:#818cf8">1.6 Ethical Issues</div>
+    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+    <div class="sst">Component 2</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.5 Systems Software</div>
+  <div class="lesson-title">1.5.1 — Operating Systems</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min &nbsp;·&nbsp; <span style="color:#10b981;font-weight:600">Free lesson</span></div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is an Operating System?</h2>
+    <p>An <strong>Operating System (OS)</strong> is system software that manages hardware and software resources and provides an interface between the user and the computer. Without an OS, application software cannot run.</p>
+    <div class="kp">Examples: Windows 11, macOS Ventura, Linux Ubuntu, Android, iOS</div>
+  </div>
+  <div class="ns">
+    <h2>Functions of an Operating System</h2>
+    <div class="ic b">
+      <h4>1. Memory Management</h4>
+      <p>The OS decides which programs get how much RAM. It allocates and deallocates memory as programs start and finish. Prevents one program accessing another's memory space.</p>
+    </div>
+    <div class="ic b">
+      <h4>2. Processor/CPU Scheduling</h4>
+      <p>The OS manages which processes run on the CPU and when. Uses scheduling algorithms (e.g., round robin, priority scheduling) to give each process CPU time — creating the illusion of multitasking.</p>
+    </div>
+    <div class="ic b">
+      <h4>3. Peripheral Management (via device drivers)</h4>
+      <p>The OS communicates with peripherals (printer, keyboard, monitor) using <strong>device drivers</strong> — software that translates OS instructions into device-specific commands.</p>
+    </div>
+    <div class="ic b">
+      <h4>4. File Management</h4>
+      <p>The OS organises files in a hierarchical folder structure. It handles reading, writing, renaming, and deleting files. Controls permissions — who can access what files.</p>
+    </div>
+    <div class="ic b">
+      <h4>5. User Interface</h4>
+      <ul>
+        <li><strong>GUI (Graphical User Interface)</strong>: windows, icons, menus, pointer — visual and intuitive (Windows, macOS)</li>
+        <li><strong>CLI (Command Line Interface)</strong>: text-based commands — faster for experts, uses less memory (Linux terminal)</li>
+      </ul>
+    </div>
+    <div class="ic b">
+      <h4>6. User Management</h4>
+      <p>The OS handles multiple user accounts with different access rights and permissions. Ensures users can only access files and settings they are authorised for.</p>
+    </div>
+    <div class="ic b">
+      <h4>7. Security Management</h4>
+      <p>The OS enforces login authentication, manages user permissions, and provides basic security features.</p>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Saying the OS "runs programs" — it manages resources and provides an environment; the CPU runs programs</li>
+        <li>Forgetting device drivers — a key function of peripheral management</li>
+        <li>Confusing GUI and CLI — in the exam, CLI uses less memory/is faster for experts; GUI is more user-friendly</li>
+        <li>Leaving out CPU scheduling — a very commonly tested function</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/1-4-2/" class="nb">← 1.4.2 Vulnerabilities</a>
+  <a href="/ocr-j277/1-5-2/" class="nb n">1.5.2 Utility Software →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-5-1';var IS_FREE=true;
+var QUIZ=[
+  {q:"What is the main purpose of an Operating System?",opts:["To run video games","To manage hardware and software resources and provide an interface between user and computer","To connect to the internet","To store user files"],ans:1,exp:"An OS is system software that manages hardware resources (CPU, memory, peripherals) and provides an interface for users and applications to interact with the computer."},
+  {q:"What is the function of CPU scheduling in an OS?",opts:["It increases the CPU clock speed","It manages which processes get CPU time and when, enabling multitasking","It backs up processes to storage","It controls memory allocation"],ans:1,exp:"CPU scheduling (process scheduling) decides which processes run on the CPU and for how long. This creates the illusion of multitasking — multiple programs appear to run simultaneously."},
+  {q:"What is a device driver?",opts:["A program that speeds up internet connections","Software that translates OS instructions into commands a specific peripheral device understands","A type of storage device","A graphical user interface component"],ans:1,exp:"A device driver is software that allows the OS to communicate with hardware peripherals (printers, keyboards, graphics cards) by translating generic OS commands into device-specific instructions."},
+  {q:"Which type of user interface uses text-based commands?",opts:["GUI","API","BIOS","CLI"],ans:3,exp:"CLI (Command Line Interface) requires users to type text commands. It uses less memory than a GUI and is faster for experts, but has a steeper learning curve."},
+  {q:"What is an advantage of a GUI over a CLI?",opts:["Uses less memory","Faster for experienced users","More user-friendly — intuitive with windows, icons, and menus","Requires less processor power"],ans:2,exp:"A GUI (Graphical User Interface) uses visual elements like windows, icons, and menus — making it intuitive and accessible for non-expert users. The trade-off is it uses more memory and processing power than a CLI."},
+  {q:"Memory management in an OS involves:",opts:["Deleting old files to free space","Allocating and deallocating RAM to programs and ensuring they don't interfere with each other's memory","Compressing files on the hard drive","Monitoring network usage"],ans:1,exp:"The OS allocates RAM to programs as they start, deallocates it when they finish, and prevents programs from accessing each other's memory space — maintaining system stability."},
+  {q:"File management in an OS includes which of the following?",opts:["Encrypting internet traffic","Organising files in folders and controlling read/write permissions","Allocating CPU time to processes","Monitoring hardware temperatures"],ans:1,exp:"File management includes organising files in a hierarchical folder structure, handling file operations (read/write/rename/delete), and enforcing access permissions."},
+  {q:"An OS uses scheduling algorithms to manage multiple processes. Why is this necessary?",opts:["There are more files than storage space","Multiple programs want to use the CPU at the same time but only one can run at a time","The CPU runs too slowly without scheduling","Programs need internet access at the same time"],ans:1,exp:"A single-core CPU can only execute one instruction at a time. Scheduling algorithms (e.g. round robin) allocate CPU time to multiple processes in turn, creating the appearance of simultaneous execution."},
+  {q:"What is the role of user management in an OS?",opts:["Managing file compression","Providing different user accounts with appropriate access rights and permissions","Scheduling CPU processes","Installing device drivers"],ans:1,exp:"User management creates and manages user accounts. Different users get different permissions — e.g., a standard user cannot install software or access other users' files; an admin has full access."},
+  {q:"Which of the following is an example of an Operating System?",opts:["Microsoft Word","Google Chrome","Ubuntu Linux","Adobe Photoshop"],ans:2,exp:"Ubuntu Linux is an OS. Microsoft Word, Chrome, and Photoshop are application software that run ON top of an OS."},
+  {q:"A CLI uses less memory than a GUI. Why?",opts:["CLI doesn't require a keyboard","GUI requires memory to render visual elements (windows, icons, graphics) — CLI just displays text","CLI programs are smaller files","GUIs require more RAM for security checks"],ans:1,exp:"GUIs require significant memory to render graphical elements — windows, icons, animations, transparencies. A CLI only displays text, using far less RAM and processing power."},
+  {q:"What happens if an OS fails to manage memory properly?",opts:["The internet disconnects","Programs might overwrite each other's data causing crashes or security vulnerabilities","The display turns off","The keyboard stops working"],ans:1,exp:"Poor memory management can lead to programs accessing or overwriting each other's memory — causing system crashes (blue screen of death) or security vulnerabilities where programs can read other programs' sensitive data."},
+  {q:"Which OS function allows a computer to use a newly connected printer?",opts:["File management","CPU scheduling","Peripheral management via device drivers","User management"],ans:2,exp:"When a printer is connected, the OS uses a device driver to communicate with it. The driver translates the OS's generic print instructions into commands the specific printer understands."},
+  {q:"What is multitasking in the context of an OS?",opts:["Using multiple keyboards","Running multiple applications simultaneously — managed by the OS scheduler sharing CPU time","Storing files in multiple locations","Having multiple user accounts logged in"],ans:1,exp:"Multitasking is the ability to run multiple processes concurrently. The CPU switches between them rapidly (scheduling), so all appear to run at once — the OS scheduler manages this."},
+  {q:"A school computer lab has student and teacher accounts. Students cannot install software or access teacher files. Which OS function enables this?",opts:["CPU scheduling","Memory management","User management with access control","Device driver management"],ans:2,exp:"User management allows the OS to create accounts with different permission levels. Student accounts have restricted permissions — they cannot install software or access files not owned by them."}
+];
+var WORKSHEET=[
+  {q:"State FOUR functions of an operating system.",marks:4,ms:"Any four: memory management (1); CPU/process scheduling (1); peripheral management/device drivers (1); file management (1); user interface provision (1); user management (1); security management (1)."},
+  {q:"Explain the difference between a GUI and a CLI, giving an advantage of each.",marks:4,ms:"GUI = Graphical User Interface — uses windows, icons, menus, and a pointer (1). Advantage: user-friendly and intuitive — no need to memorise commands (1). CLI = Command Line Interface — uses text commands (1). Advantage: uses less memory / faster for experienced users / more precise control (1)."},
+  {q:"Explain the role of device drivers in peripheral management.",marks:2,ms:"A device driver is software that allows the OS to communicate with a hardware peripheral (1). It translates the OS's generic instructions into commands specific to that device, enabling the OS and device to work together (1)."},
+  {q:"Describe how an OS manages memory when multiple programs are open.",marks:3,ms:"The OS allocates a portion of RAM to each running program (1). It keeps track of which areas of memory are in use and by which process (1). It prevents programs from accessing each other's memory space, avoiding crashes and data corruption (1). When a program closes, memory is deallocated and made available again (1). [Max 3]"},
+  {q:"Explain why CPU scheduling is necessary.",marks:2,ms:"A CPU can only execute one instruction at a time, but many processes may want to use it simultaneously (1). The OS scheduler allocates CPU time to each process in turn (e.g., using round robin), giving the appearance of multitasking (1)."},
+  {q:"A user opens a word processor, plays music, and downloads a file simultaneously. Explain how the OS enables this to appear to happen at the same time.",marks:2,ms:"The OS uses CPU scheduling — rapidly switching the CPU between the three processes (1). Each process gets a very short time slice of CPU time in turn. The switching is so fast that all three appear to run simultaneously (1)."},
+  {q:"What is the purpose of user management in an operating system?",marks:2,ms:"User management creates and manages accounts for different users (1). It assigns different permission levels so users can only access files and settings they are authorised to — e.g., preventing students from installing software or accessing teacher files (1)."},
+  {q:"Explain why it is important for the OS to prevent programs accessing each other's memory.",marks:2,ms:"If one program could access another's memory, it could read or overwrite sensitive data (e.g., passwords stored in RAM by a browser) (1). It could also cause crashes — overwriting data another process needs to function correctly (1)."}
+];
+var KEY_TERMS=[
+  {w:"Operating System (OS)",d:"System software that manages hardware and software resources and provides an interface between user and computer."},
+  {w:"Memory management",d:"The OS function of allocating and deallocating RAM to programs, preventing them from interfering with each other."},
+  {w:"CPU scheduling",d:"The OS function of deciding which processes get CPU time and when — enables multitasking."},
+  {w:"Device driver",d:"Software that allows the OS to communicate with a hardware peripheral by translating generic OS instructions into device-specific commands."},
+  {w:"File management",d:"OS function handling file operations (read/write/delete) and organising files in a hierarchical folder structure."},
+  {w:"GUI",d:"Graphical User Interface — visual interface with windows, icons, menus, and a pointer. User-friendly but memory-intensive."},
+  {w:"CLI",d:"Command Line Interface — text-based interface requiring typed commands. Uses less memory; faster for experts."},
+  {w:"User management",d:"OS function creating/managing user accounts with different access permissions."},
+  {w:"Multitasking",d:"Running multiple programs simultaneously — achieved by the CPU scheduler rapidly switching between processes."},
+  {w:"Process",d:"A program in execution. The OS manages many processes simultaneously using scheduling."},
+  {w:"Round robin scheduling",d:"A scheduling algorithm that gives each process a fixed time slice of CPU time in rotation."},
+  {w:"Access control",d:"OS mechanisms that restrict what files and resources each user can access."},
+  {w:"RAM allocation",d:"The assignment of specific areas of RAM to running programs by the OS memory manager."},
+  {w:"System software",d:"Software that manages hardware and provides a platform for application software. The OS is the primary system software."},
+  {w:"Application software",d:"Programs designed for specific user tasks (e.g., word processor, browser) — run on top of the OS."}
+];
+var TEST_MCQ=[
+  {q:"Which OS function ensures that a word processor doesn't overwrite data used by a music player?",opts:["CPU scheduling","Memory management","File management","User management"],ans:1,exp:"Memory management allocates separate memory regions to each program and prevents cross-access."},
+  {q:"What is an advantage of a CLI over a GUI?",opts:["More intuitive","Better graphics","Uses less memory and is faster for experienced users","Easier for beginners"],ans:2,exp:"CLI only displays text — no graphical elements to render — so it uses significantly less RAM and processing power. Experts can work faster with typed commands."},
+  {q:"What does a device driver do?",opts:["Speeds up CPU processing","Translates OS instructions into commands a specific peripheral understands","Manages user accounts","Allocates memory to programs"],ans:1,exp:"A device driver bridges the OS and a peripheral device, translating generic OS commands into device-specific instructions."},
+  {q:"A teacher's account can install software; a student's account cannot. Which OS function enables this?",opts:["CPU scheduling","File management","User management with access control","Memory management"],ans:2,exp:"User management assigns different permission levels to different accounts, controlling what each user can and cannot do."},
+  {q:"Which of these is system software?",opts:["Microsoft Word","Ubuntu Linux (OS)","Adobe Photoshop","Google Chrome"],ans:1,exp:"Ubuntu Linux is an operating system — system software. Word, Photoshop, and Chrome are application software."}
+];
+var TEST_SA=[
+  {q:"State THREE functions of an Operating System.",marks:3,ms:"Any three: memory management (1); CPU/process scheduling (1); peripheral management/device drivers (1); file management (1); user interface (1); user management (1)."},
+  {q:"Explain the difference between a GUI and a CLI.",marks:2,ms:"A GUI uses graphical elements — windows, icons, menus (1). A CLI uses text commands typed by the user (1). GUIs are more intuitive but use more memory; CLIs are faster for experts and use less memory."},
+  {q:"Explain why CPU scheduling is necessary in a modern computer.",marks:2,ms:"The CPU can only process one instruction at a time (1). Scheduling allocates CPU time between many processes so multiple programs appear to run simultaneously (1)."},
+  {q:"What is the purpose of device drivers?",marks:2,ms:"Device drivers allow the OS to communicate with peripheral hardware (1). They translate generic OS instructions into commands specific to each device (1)."},
+  {q:"Describe how an OS handles file management.",marks:2,ms:"The OS organises files in a hierarchical folder structure (1) and controls which users can read, write, or delete each file through permissions (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();});
+</script>
+</body>
+</html>

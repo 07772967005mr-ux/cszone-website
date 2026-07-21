@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.1.3b Binary Search | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sl active">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.1 Algorithms</div>
+  <div class="lesson-title">2.1.3b — Binary Search</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is a Binary Search?</h2>
+    <p>A <strong>binary search</strong> finds a target in a <em>sorted</em> list by repeatedly halving the search space. It compares the target with the middle element and eliminates the half that cannot contain the target.</p>
+    <div class="kp"><strong>Critical requirement:</strong> The list MUST be sorted before binary search can be applied. This is the most commonly tested constraint.</div>
+  </div>
+  <div class="ns">
+    <h2>How Binary Search Works</h2>
+    <div class="ic b">
+      <h4>Step-by-step:</h4>
+      <ol style="padding-left:20px;color:#94a3b8;font-size:13px">
+        <li>Set low = 0, high = length − 1</li>
+        <li>Calculate mid = (low + high) DIV 2 (integer division)</li>
+        <li>If list[mid] == target → return mid (found)</li>
+        <li>If list[mid] &lt; target → set low = mid + 1 (search right half)</li>
+        <li>If list[mid] &gt; target → set high = mid − 1 (search left half)</li>
+        <li>Repeat from step 2 until found or low &gt; high (not found)</li>
+      </ol>
+    </div>
+    <div class="ic b">
+      <h4>OCR Pseudocode:</h4>
+      <div class="code">function binarySearch(list, target)
+    low = 0
+    high = len(list) - 1
+    while low &lt;= high
+        mid = (low + high) DIV 2
+        if list[mid] == target then
+            return mid
+        elseif list[mid] &lt; target then
+            low = mid + 1
+        else
+            high = mid - 1
+        endif
+    endwhile
+    return -1
+endfunction</div>
+    </div>
+    <div class="ic b">
+      <h4>Example trace — searching for 7 in [1, 3, 5, 7, 9, 11, 13]:</h4>
+      <p style="font-size:13px;color:#94a3b8">low=0, high=6 → mid=3, list[3]=7 → 7==7 → return 3 (found in 1 comparison!)</p>
+      <p style="font-size:13px;color:#94a3b8;margin-top:6px"><strong>Searching for 11:</strong><br>
+      Pass 1: low=0, high=6 → mid=3, list[3]=7; 11&gt;7 → low=4<br>
+      Pass 2: low=4, high=6 → mid=5, list[5]=11; 11==11 → return 5. Found in 2 comparisons!</p>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Comparison: Binary vs Linear Search</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148"></th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Binary Search</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Linear Search</th></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Sorted list required?</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Yes</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">No</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Time complexity</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">O(log n)</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">O(n)</td></tr>
+      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Speed (large lists)</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Much faster</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">Slower</td></tr>
+      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Complexity</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">More complex to write</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Simple</td></tr>
+    </table>
+    <div class="kp"><strong>O(log n):</strong> With 1,024 items, binary search needs at most 10 comparisons (log₂1024 = 10). Linear search needs up to 1,024.</div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Forgetting binary search REQUIRES a sorted list</li>
+        <li>Using normal division instead of integer division (DIV) for mid — mid must be a whole index</li>
+        <li>Saying binary search is "always better" — for unsorted lists, you must sort first (costly) or use linear search</li>
+        <li>Getting low/high updates wrong: target &gt; mid → low = mid+1; target &lt; mid → high = mid-1</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-1-3a/" class="nb">← 2.1.3a Linear Search</a>
+  <a href="/ocr-j277/2-1-3c/" class="nb n">2.1.3c Bubble Sort →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-1-3b';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What is the key requirement for binary search to work?",opts:["The list must contain numbers only","The list must be sorted","The list must have an odd number of elements","The list must be stored in RAM"],ans:1,exp:"Binary search REQUIRES the list to be sorted. It works by halving the search space, which only works correctly if data is in order."},
+  {q:"How does binary search reduce the search space each step?",opts:["It removes the first item","It removes the last item","It eliminates the half that cannot contain the target","It sorts the remaining items"],ans:2,exp:"Binary search compares the target with the middle element, then eliminates either the left or right half based on whether target is smaller or larger."},
+  {q:"Binary search on [2, 5, 8, 12, 16, 23, 38]. Searching for 23. What is the first mid index?",opts:["0","3","6","2"],ans:1,exp:"List has 7 elements (indices 0-6). mid = (0+6) DIV 2 = 3. list[3] = 12. 23 > 12 so search right half."},
+  {q:"What is the time complexity of binary search?",opts:["O(1)","O(n)","O(n²)","O(log n)"],ans:3,exp:"Binary search is O(log n) — each comparison halves the remaining search space. With 1,024 items, at most 10 comparisons needed."},
+  {q:"After comparing list[mid] and finding target > list[mid], what happens?",opts:["high = mid - 1","low = mid + 1","Return mid","Search ends"],ans:1,exp:"If target > list[mid], the target must be in the right half. Set low = mid + 1 to search only the right half next iteration."},
+  {q:"After comparing list[mid] and finding target < list[mid], what happens?",opts:["low = mid + 1","high = mid + 1","high = mid - 1","Return -1"],ans:2,exp:"If target < list[mid], the target must be in the left half. Set high = mid - 1 to search only the left half next iteration."},
+  {q:"When does binary search conclude the target is NOT in the list?",opts:["After 10 comparisons","When mid equals 0","When low > high","When high equals 0"],ans:2,exp:"The while loop condition is 'while low <= high'. When low > high, the search space is empty — the target is not in the list. Return -1."},
+  {q:"How many comparisons does binary search need to find an item in a list of 1,024 items (worst case)?",opts:["1024","512","10","32"],ans:2,exp:"O(log₂n) — log₂(1024) = 10. Binary search needs at most 10 comparisons for 1,024 items. Compare: linear search needs up to 1,024."},
+  {q:"Why must mid be calculated using integer division (DIV)?",opts:["To save memory","Because indices must be whole numbers","To make it faster","To handle negative numbers"],ans:1,exp:"Array indices must be whole numbers (integers). If (low+high) is odd, regular division gives a decimal — DIV truncates to give a valid integer index."},
+  {q:"Binary search on [1, 3, 5, 7, 9]. Searching for 1. How many comparisons?",opts:["1","2","3","5"],ans:1,exp:"mid = (0+4) DIV 2 = 2, list[2]=5; 1<5 → high=1. mid=(0+1) DIV 2=0, list[0]=1; 1==1 → found. 2 comparisons."},
+  {q:"Which scenario favours linear search over binary search?",opts:["Searching a sorted list of 10,000 records","Searching an unsorted list where sorting is expensive","Searching a database","Searching a phone directory"],ans:1,exp:"If the list is unsorted AND sorting would be expensive, linear search is better — it doesn't require sorting first. Binary search requires pre-sorted data."},
+  {q:"What does binary search return if the target IS found?",opts:["-1","The target value","The index of the target","true"],ans:2,exp:"Binary search returns the INDEX (position) of the target in the list — e.g., return 5 means the item is at index 5."},
+  {q:"List: [10, 20, 30, 40, 50, 60, 70]. Binary search for 70. What happens in pass 1?",opts:["low=0,high=6,mid=3,list[3]=40; 70>40→low=4","low=0,high=6,mid=3,list[3]=70; found","low=0,high=6,mid=6,list[6]=70; found","Not found — 70 is at the end"],ans:0,exp:"Pass 1: low=0, high=6, mid=3, list[3]=40; 70>40 so low=4. Pass 2: low=4, high=6, mid=5, list[5]=60; 70>60 so low=6. Pass 3: low=6, high=6, mid=6, list[6]=70; found."},
+  {q:"Binary search compared to linear search on a sorted list of 1 million items: binary search needs at most how many comparisons?",opts:["500,000","1,000,000","About 20","100"],ans:2,exp:"log₂(1,000,000) ≈ 20. Binary search needs at most ~20 comparisons. Linear search needs up to 1,000,000. This illustrates the massive efficiency gain."},
+  {q:"A student writes: 'mid = low + high / 2'. Is this correct OCR pseudocode for binary search?",opts:["Yes — always correct","No — must use (low+high) DIV 2","No — must use low*high","Yes — but only for even length lists"],ans:1,exp:"'low + high / 2' applies operator precedence incorrectly (divides high by 2 first). Must be (low+high) DIV 2 to add first then integer-divide. This is a very common mistake."}
+];
+var WORKSHEET=[
+  {q:"State the ONE key requirement for binary search to work.",marks:1,ms:"The list must be SORTED (in ascending or descending order) before binary search can be applied."},
+  {q:"Describe the binary search algorithm step by step.",marks:4,ms:"Set low=0, high=length-1 (1). Calculate mid=(low+high) DIV 2 (1). Compare list[mid] with target: if equal return mid; if target greater, set low=mid+1; if target smaller, set high=mid-1 (1). Repeat until found or low>high — return -1 if not found (1)."},
+  {q:"Trace a binary search for 15 in [2, 5, 8, 12, 15, 19, 24]. Show each pass.",marks:4,ms:"Pass 1: low=0,high=6,mid=3,list[3]=12; 15>12→low=4 (1). Pass 2: low=4,high=6,mid=5,list[5]=19; 15<19→high=4 (1). Pass 3: low=4,high=4,mid=4,list[4]=15; 15==15→return 4 (1). 3 comparisons (1)."},
+  {q:"Write pseudocode for a binary search function.",marks:5,ms:"function binarySearch(list,target) (1); low=0, high=len(list)-1 (1); while low<=high (1); mid=(low+high) DIV 2; if list[mid]==target then return mid; elseif list[mid]<target then low=mid+1; else high=mid-1; endif (1); endwhile; return -1; endfunction (1)."},
+  {q:"A sorted list has 256 items. What is the maximum number of comparisons binary search needs?",marks:1,ms:"8 — log₂(256) = 8."},
+  {q:"Compare binary search and linear search. Give TWO differences.",marks:4,ms:"Sorted data: binary requires sorted list; linear works on unsorted (1). Speed: binary O(log n) much faster; linear O(n) slower for large lists (1). Complexity: binary more complex to implement; linear is simple (1). Best case: both O(1) if item is at first/mid position (1). [Any 2 differences for 2 marks each]"},
+  {q:"Why should integer division (DIV) be used when calculating mid in binary search?",marks:2,ms:"Array indices must be whole numbers (integers) (1). If (low+high) is odd, regular division gives a decimal which is not a valid array index — DIV truncates to give an integer (1)."},
+  {q:"A student says 'binary search is always better than linear search'. Evaluate this statement.",marks:3,ms:"Not always — binary search requires a sorted list (1). If the list is unsorted, sorting must be done first which has its own time cost (1). For small lists or unsorted data, linear search may be more practical (1)."}
+];
+var KEY_TERMS=[
+  {w:"Binary search",d:"A search algorithm that repeatedly halves the search space by comparing the target with the middle element of a sorted list."},
+  {w:"Sorted list",d:"A prerequisite for binary search — items must be arranged in order (ascending or descending)."},
+  {w:"Mid (midpoint)",d:"The index of the middle element: (low + high) DIV 2. The element compared to the target each pass."},
+  {w:"Low",d:"The lower bound of the current search space — initially 0, updated to mid+1 when target is greater than list[mid]."},
+  {w:"High",d:"The upper bound of the current search space — initially length-1, updated to mid-1 when target is less than list[mid]."},
+  {w:"O(log n)",d:"The time complexity of binary search. Each comparison halves the search space — much more efficient than O(n)."},
+  {w:"Integer division (DIV)",d:"Division that discards the remainder, returning a whole number. Essential for calculating mid as array indices must be integers."},
+  {w:"Search space",d:"The portion of the list still being searched. Binary search halves this each pass."},
+  {w:"Not found (-1)",d:"The return value when the target is absent — returned when low > high (search space exhausted)."},
+  {w:"Pass",d:"One iteration of the binary search loop — involves calculating mid, comparing, and updating low or high."},
+  {w:"Efficient",d:"Binary search is efficient for large datasets — O(log n) means 1 million items need at most ~20 comparisons."},
+  {w:"Logarithm",d:"log₂n gives the number of times you can halve n before reaching 1 — equals the maximum comparisons in binary search."},
+  {w:"Halving",d:"The key operation in binary search — each comparison eliminates half the remaining items."},
+  {w:"Worst case",d:"For binary search: ⌈log₂n⌉ comparisons — when the target is at the very end of the search space or not present."},
+  {w:"Divide and conquer",d:"The strategy behind binary search — divide the problem in half each step. A classic algorithmic paradigm."}
+];
+var TEST_MCQ=[
+  {q:"What must be true of the list before binary search can be used?",opts:["It must contain only integers","It must be sorted","It must have fewer than 100 items","It must be stored in a database"],ans:1,exp:"Binary search requires a SORTED list. It works by halving the search space, which only functions correctly on sorted data."},
+  {q:"Binary search on [1,3,5,7,9,11,13]. Searching for 11. What is the mid index in pass 1?",opts:["0","3","6","2"],ans:1,exp:"7 items, indices 0-6. mid = (0+6) DIV 2 = 3. list[3]=7. 11>7 so low=4 for next pass."},
+  {q:"What is the time complexity of binary search?",opts:["O(n)","O(n²)","O(log n)","O(1)"],ans:2,exp:"O(log n) — each pass halves the search space. Much more efficient than linear search's O(n) for large datasets."},
+  {q:"When target > list[mid], what update is made?",opts:["high = mid - 1","low = mid - 1","high = mid + 1","low = mid + 1"],ans:3,exp:"If target is greater than the middle element, the target must be in the right half. Set low = mid + 1."},
+  {q:"What does binary search return if the target is not found?",opts:["0","false","null","-1"],ans:3,exp:"-1 indicates 'not found'. When low > high, the search space is empty — the target cannot be present."}
+];
+var TEST_SA=[
+  {q:"State TWO requirements or features of binary search.",marks:2,ms:"Requires sorted list (1). Works by halving the search space each comparison / O(log n) / compares with middle element (1)."},
+  {q:"Trace a binary search for 6 in [1, 3, 6, 8, 10]. Show each pass.",marks:3,ms:"low=0,high=4,mid=2,list[2]=6; 6==6→return 2 (1 mark per step shown, max 3). 1 comparison."},
+  {q:"Give ONE advantage and ONE disadvantage of binary search compared to linear search.",marks:2,ms:"Advantage: much faster for large lists — O(log n) vs O(n) (1). Disadvantage: requires sorted data — linear search works on unsorted lists (1)."},
+  {q:"Write pseudocode for the main loop of a binary search.",marks:4,ms:"while low<=high (1); mid=(low+high) DIV 2 (1); if list[mid]==target then return mid; elseif list[mid]<target then low=mid+1; else high=mid-1; endif (1); endwhile; return -1 (1)."},
+  {q:"A sorted list has 1,024 items. What is the maximum comparisons needed for binary search?",marks:1,ms:"10 — log₂(1024) = 10."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.2.1b Selection & Iteration | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sl active">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sl">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sl">2.2.1e Strings</a>
+    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.2 Programming</div>
+  <div class="lesson-title">2.2.1b — Selection &amp; Iteration</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~22 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>Selection — IF Statements</h2>
+    <p><strong>Selection</strong> allows a program to make decisions — executing different code depending on whether a condition is true or false.</p>
+    <div class="ic b">
+      <h4>IF / ELSEIF / ELSE:</h4>
+      <div class="code">if score >= 70 then
+    print("Grade A")
+elseif score >= 50 then
+    print("Grade B")
+elseif score >= 30 then
+    print("Grade C")
+else
+    print("Fail")
+endif</div>
+    </div>
+    <div class="ic b">
+      <h4>Comparison operators used in conditions:</h4>
+      <p style="font-size:13px;color:#94a3b8"><code style="background:#0f1117;padding:2px 5px;border-radius:3px">==</code> equal to &nbsp;·&nbsp; <code style="background:#0f1117;padding:2px 5px;border-radius:3px">!=</code> not equal to &nbsp;·&nbsp; <code style="background:#0f1117;padding:2px 5px;border-radius:3px">&lt;</code> less than &nbsp;·&nbsp; <code style="background:#0f1117;padding:2px 5px;border-radius:3px">&gt;</code> greater than &nbsp;·&nbsp; <code style="background:#0f1117;padding:2px 5px;border-radius:3px">&lt;=</code> less than or equal &nbsp;·&nbsp; <code style="background:#0f1117;padding:2px 5px;border-radius:3px">&gt;=</code> greater than or equal</p>
+    </div>
+    <div class="ic b">
+      <h4>Boolean operators:</h4>
+      <div class="code">if age >= 16 AND hasID == true then
+    print("Admitted")
+endif
+
+if x &lt; 0 OR x > 100 then
+    print("Out of range")
+endif
+
+if NOT active then
+    print("Inactive")
+endif</div>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Iteration — Loops</h2>
+    <p>Iteration allows code to be repeated. OCR J277 requires three types of loop.</p>
+    <div class="ic b">
+      <h4>FOR loop — count-controlled (known number of iterations):</h4>
+      <div class="code">for i = 1 to 5
+    print(i)
+next i
+// prints 1, 2, 3, 4, 5</div>
+    </div>
+    <div class="ic b">
+      <h4>WHILE loop — condition-controlled (pre-condition: checked BEFORE each iteration):</h4>
+      <div class="code">x = 1
+while x &lt;= 5
+    print(x)
+    x = x + 1
+endwhile
+// may execute 0 times if condition is initially false</div>
+    </div>
+    <div class="ic b">
+      <h4>DO UNTIL loop — post-condition (checked AFTER each iteration — always runs at least once):</h4>
+      <div class="code">do
+    password = input("Enter password: ")
+until password == "secret"
+// always runs at least once</div>
+    </div>
+    <div class="kp"><strong>Key difference:</strong> WHILE checks condition BEFORE (may never run). DO UNTIL checks AFTER (always runs at least once). FOR is used when number of iterations is known.</div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Forgetting endif / endwhile / next i — missing closing keywords cause syntax errors</li>
+        <li>Using = instead of == in a condition: if x = 5 should be if x == 5</li>
+        <li>Infinite loop — if a WHILE condition never becomes false, the loop runs forever</li>
+        <li>Confusing WHILE (pre-condition) and DO UNTIL (post-condition) — only DO UNTIL is guaranteed to run once</li>
+        <li>Off-by-one errors — for i = 1 to 5 gives 5 iterations; for i = 0 to 4 also gives 5 iterations</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-2-1a/" class="nb">← 2.2.1a Variables &amp; Types</a>
+  <a href="/ocr-j277/2-2-1c/" class="nb n">2.2.1c Arrays →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-2-1b';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What keyword must end an IF block in OCR pseudocode?",opts:["end","fi","endif","endblock"],ans:2,exp:"In OCR pseudocode, every IF block must be closed with 'endif'. Missing this causes a syntax error."},
+  {q:"A WHILE loop checks its condition:",opts:["After each iteration","Before each iteration","Once at the start and never again","After the last iteration only"],ans:1,exp:"WHILE is a pre-condition loop — the condition is checked BEFORE each iteration. If the condition is false initially, the body may execute zero times."},
+  {q:"A DO UNTIL loop is guaranteed to run at least:",opts:["0 times","1 time","2 times","Until the condition is true"],ans:1,exp:"DO UNTIL checks the condition AFTER the loop body executes. This means the body always runs at least once, even if the condition is true from the start."},
+  {q:"Which loop is most appropriate when the number of iterations is known in advance?",opts:["WHILE","DO UNTIL","FOR","IF"],ans:2,exp:"FOR loops are count-controlled — used when the exact number of iterations is known. WHILE and DO UNTIL are condition-controlled for when the number of iterations is uncertain."},
+  {q:"What does 'for i = 1 to 5' print if the loop body is 'print(i)'?",opts:["0 1 2 3 4","1 2 3 4 5","1 2 3 4","0 1 2 3 4 5"],ans:1,exp:"for i = 1 to 5 iterates with i taking values 1, 2, 3, 4, 5 — printing each. 5 iterations total."},
+  {q:"What operator represents 'not equal to' in OCR pseudocode?",opts:["<>","~=","!=","=/="],ans:2,exp:"!= represents 'not equal to' in OCR pseudocode. It is true when two values are different."},
+  {q:"Which boolean operator requires BOTH conditions to be true?",opts:["OR","NOT","AND","XOR"],ans:2,exp:"AND requires BOTH conditions to be true for the overall expression to be true. OR requires at least one to be true."},
+  {q:"Which scenario is best handled by a DO UNTIL loop?",opts:["Printing numbers 1 to 10","Sorting a list","Asking for a password until the correct one is entered","Checking if a number is even"],ans:2,exp:"DO UNTIL is ideal for input validation — you always need to ask at least once, and you keep repeating until a valid response is given."},
+  {q:"What is an infinite loop?",opts:["A loop that never starts","A loop that runs forever because the exit condition is never met","A loop with exactly 10 iterations","A loop inside another loop"],ans:1,exp:"An infinite loop occurs when the exit condition of a WHILE or DO UNTIL loop never becomes true (WHILE) or never becomes false (DO UNTIL), causing the program to run indefinitely."},
+  {q:"What does 'elseif' do in an IF statement?",opts:["Ends the IF block","Starts a new condition to check if the previous was false","Runs when all conditions are false","Creates a new loop"],ans:1,exp:"elseif adds additional conditions to an IF statement. It is only checked if all preceding conditions (if and previous elseif) were false. Multiple elseif clauses can chain together."},
+  {q:"A WHILE loop: 'x = 10; while x < 5; x = x + 1; endwhile'. How many times does it run?",opts:["0","5","10","Infinite"],ans:0,exp:"The condition 'x < 5' is checked first with x=10. Since 10 is NOT less than 5, the condition is immediately false. The loop body runs 0 times."},
+  {q:"What keyword ends a FOR loop in OCR pseudocode?",opts:["endfor","end","next i","loop end"],ans:2,exp:"In OCR pseudocode, FOR loops are closed with 'next i' (where i is the loop variable). Example: 'for i = 1 to 5 ... next i'."},
+  {q:"The condition in 'if age >= 16 AND hasID == true' is true when:",opts:["age >= 16 only","hasID == true only","BOTH age >= 16 AND hasID is true","EITHER age >= 16 OR hasID is true"],ans:2,exp:"AND requires both conditions to be true. Both 'age >= 16' must be true AND 'hasID == true' must be true for the overall condition to be true."},
+  {q:"What type of loop is 'while password != \"correct\"'?",opts:["Count-controlled","Post-condition","Pre-condition / condition-controlled","Infinite"],ans:2,exp:"A WHILE loop checks its condition before each iteration — it is a pre-condition, condition-controlled loop. The number of iterations depends on when the condition becomes false."},
+  {q:"Which of these correctly closes a WHILE loop in OCR pseudocode?",opts:["end while","endloop","endwhile","wend"],ans:2,exp:"'endwhile' is the correct closing keyword for a WHILE loop in OCR pseudocode. 'end while' (with space) is incorrect — no space allowed."}
+];
+var WORKSHEET=[
+  {q:"Write pseudocode using IF/ELSEIF/ELSE to assign a grade (A=90+, B=70+, C=50+, else Fail) based on a score variable.",marks:5,ms:"if score >= 90 then print(\"A\") (1); elseif score >= 70 then print(\"B\") (1); elseif score >= 50 then print(\"C\") (1); else print(\"Fail\") (1); endif (1)."},
+  {q:"Write a FOR loop to print the numbers 1 to 10.",marks:2,ms:"for i = 1 to 10 (1); print(i); next i (1)."},
+  {q:"Explain the difference between a WHILE loop and a DO UNTIL loop.",marks:4,ms:"WHILE checks condition BEFORE each iteration (pre-condition) (1). DO UNTIL checks condition AFTER each iteration (post-condition) (1). WHILE may execute 0 times if condition is initially false (1). DO UNTIL always executes at least once (1)."},
+  {q:"Write pseudocode using a DO UNTIL loop to keep asking for a number until the user enters a value between 1 and 10.",marks:4,ms:"do (1); num = int(input(\"Enter 1-10: \")) (1); until num >= 1 AND num <= 10 (1); [correct DO UNTIL structure with AND condition] (1)."},
+  {q:"Write pseudocode using a WHILE loop to count down from 10 to 1 and print each value.",marks:3,ms:"x = 10 (1); while x >= 1 (1); print(x); x = x - 1; endwhile (1)."},
+  {q:"What is an infinite loop? Give an example of pseudocode that creates one.",marks:2,ms:"An infinite loop runs forever — the exit condition is never met (1). Example: x = 1; while x > 0; print(x); endwhile — x never decreases so always > 0 (1)."},
+  {q:"Write pseudocode with nested IF statements to check if a number is positive, negative, or zero.",marks:3,ms:"if num > 0 then print(\"Positive\") (1); elseif num < 0 then print(\"Negative\") (1); else print(\"Zero\"); endif (1)."},
+  {q:"Trace this code: 'total = 0; for i = 1 to 4; total = total + i; next i; print(total)'. What is printed?",marks:2,ms:"Iterations: i=1:total=1; i=2:total=3; i=3:total=6; i=4:total=10 (1). Output: 10 (1)."}
+];
+var KEY_TERMS=[
+  {w:"Selection",d:"A programming construct that executes different code based on whether a condition is true or false. Implemented using IF/ELSEIF/ELSE."},
+  {w:"IF statement",d:"The primary selection construct. Checks a condition and executes the corresponding block if true."},
+  {w:"ELSEIF",d:"Additional condition in an IF block — checked only if all previous conditions were false."},
+  {w:"ELSE",d:"The default block in an IF statement — executes when all preceding conditions are false."},
+  {w:"ENDIF",d:"The keyword that closes an IF block in OCR pseudocode."},
+  {w:"Iteration",d:"Repeating a block of code multiple times using a loop. Three types: FOR, WHILE, DO UNTIL."},
+  {w:"FOR loop",d:"A count-controlled loop — repeats a set number of times. Closed with 'next i'."},
+  {w:"WHILE loop",d:"A pre-condition loop — checks condition BEFORE each iteration. May run 0 times."},
+  {w:"DO UNTIL loop",d:"A post-condition loop — checks condition AFTER each iteration. Always runs at least once."},
+  {w:"Pre-condition",d:"A condition checked BEFORE the loop body executes (WHILE). If false initially, body never runs."},
+  {w:"Post-condition",d:"A condition checked AFTER the loop body executes (DO UNTIL). Body always runs at least once."},
+  {w:"Infinite loop",d:"A loop that never terminates because its exit condition is never met."},
+  {w:"AND operator",d:"Boolean operator requiring BOTH conditions to be true for the expression to be true."},
+  {w:"OR operator",d:"Boolean operator requiring AT LEAST ONE condition to be true."},
+  {w:"NOT operator",d:"Boolean operator that inverts a condition: NOT true = false; NOT false = true."}
+];
+var TEST_MCQ=[
+  {q:"Which loop checks its condition BEFORE each iteration?",opts:["DO UNTIL","FOR","WHILE","All loops"],ans:2,exp:"WHILE is a pre-condition loop — it checks before each iteration. If the condition is false initially, the body never executes."},
+  {q:"'for i = 1 to 10': how many iterations?",opts:["9","10","11","Depends on the body"],ans:1,exp:"for i = 1 to 10 iterates with i = 1, 2, 3, ..., 10. That is 10 iterations."},
+  {q:"Which keyword ends an IF block in OCR pseudocode?",opts:["end","fi","endif","endblock"],ans:2,exp:"'endif' closes an IF block. Every IF must have a matching endif — missing it causes a syntax error."},
+  {q:"A DO UNTIL loop runs the body:",opts:["0 times if condition is false","At most once","At least once — always","Until condition is false"],ans:2,exp:"DO UNTIL always runs the body at least once before checking the condition. This guarantees one execution."},
+  {q:"What does the AND operator require?",opts:["At least one condition is true","Exactly one condition is true","Both conditions to be true","Neither condition is true"],ans:2,exp:"AND requires BOTH conditions to be true. If either is false, the whole AND expression is false."}
+];
+var TEST_SA=[
+  {q:"Explain the difference between WHILE and DO UNTIL loops.",marks:4,ms:"WHILE checks condition before (pre-condition) (1). DO UNTIL checks after (post-condition) (1). WHILE may run 0 times (1). DO UNTIL always runs at least once (1)."},
+  {q:"Write pseudocode using IF/ELSEIF/ELSE to print 'Hot' if temp > 30, 'Warm' if temp > 20, else 'Cold'.",marks:3,ms:"if temp > 30 then print(\"Hot\") (1); elseif temp > 20 then print(\"Warm\") (1); else print(\"Cold\"); endif (1)."},
+  {q:"Write a FOR loop to calculate and print the sum of all integers from 1 to 100.",marks:3,ms:"total = 0 (1); for i = 1 to 100; total = total + i; next i (1); print(total) (1)."},
+  {q:"What is an infinite loop and how can it occur with a WHILE loop?",marks:2,ms:"A loop that never terminates (1). Occurs when the WHILE condition never becomes false — e.g. the variable controlling the condition is never updated inside the loop (1)."},
+  {q:"Write a DO UNTIL loop that asks for a number between 1 and 5 inclusive.",marks:3,ms:"do (1); n = int(input(\"Enter 1-5: \")) (1); until n >= 1 AND n <= 5 (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

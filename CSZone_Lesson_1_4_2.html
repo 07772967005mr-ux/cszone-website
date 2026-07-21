@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.4.2 Vulnerabilities & Security | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 1</div>
+    <div class="sst" style="color:#818cf8">1.4 Security</div>
+    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sl active">1.4.2 Vulnerabilities</a>
+    <div class="sst" style="color:#818cf8">1.5 Systems Software</div>
+    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
+    <div class="sst" style="color:#818cf8">1.6 Ethical Issues</div>
+    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+    <div class="sst">Component 2</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.4 Security</div>
+  <div class="lesson-title">1.4.2 — Vulnerabilities &amp; Security Measures</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~22 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>Causes of Vulnerabilities</h2>
+    <p>Systems can have weaknesses that attackers exploit. Understanding causes helps with prevention.</p>
+    <div class="ic b">
+      <h4>Software vulnerabilities:</h4>
+      <ul>
+        <li><strong>Unpatched software</strong> — outdated software with known bugs that haven't been fixed</li>
+        <li><strong>Weak passwords</strong> — easy to guess or brute-force; no lockout policies</li>
+        <li><strong>Poor input validation</strong> — allows SQL injection, buffer overflow attacks</li>
+        <li><strong>Misconfigured systems</strong> — default passwords, unnecessary open ports</li>
+      </ul>
+    </div>
+    <div class="ic b">
+      <h4>People vulnerabilities:</h4>
+      <ul>
+        <li>Falling for social engineering (phishing, blagging)</li>
+        <li>Using the same password for multiple accounts</li>
+        <li>Not logging out of accounts on shared devices</li>
+        <li>Connecting to unsecured public Wi-Fi</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>Security Measures</h2>
+    <div class="ic g">
+      <h4>Penetration testing:</h4>
+      <p>Authorised ethical hackers attempt to break into a system to find vulnerabilities before real attackers do. Identifies weaknesses so they can be patched.</p>
+    </div>
+    <div class="ic g">
+      <h4>Network forensics:</h4>
+      <p>Monitoring and analysing network traffic to detect attacks, gather evidence, and understand how a breach occurred.</p>
+    </div>
+    <div class="ic g">
+      <h4>Firewalls:</h4>
+      <ul>
+        <li>Hardware or software that monitors and filters network traffic</li>
+        <li>Blocks unauthorised access based on rules</li>
+        <li>Can block specific IP addresses or ports</li>
+      </ul>
+    </div>
+    <div class="ic g">
+      <h4>Encryption:</h4>
+      <ul>
+        <li>Scrambles data so it can only be read with the correct key</li>
+        <li>Protects data in transit (HTTPS/TLS) and at rest (disk encryption)</li>
+        <li>Even if intercepted, encrypted data is unreadable</li>
+      </ul>
+    </div>
+    <div class="ic g">
+      <h4>Passwords &amp; Authentication:</h4>
+      <ul>
+        <li>Strong passwords: long, mix of uppercase/lowercase/numbers/symbols</li>
+        <li>Two-Factor Authentication (2FA/MFA): second verification step (SMS code, authenticator app)</li>
+        <li>Biometrics: fingerprint, face recognition</li>
+        <li>Account lockout after failed attempts</li>
+      </ul>
+    </div>
+    <div class="ic g">
+      <h4>Physical security:</h4>
+      <ul>
+        <li>Locked server rooms — restricts physical access to hardware</li>
+        <li>CCTV monitoring</li>
+        <li>Visitor logs and access cards</li>
+      </ul>
+    </div>
+    <div class="ic g">
+      <h4>Anti-malware software:</h4>
+      <ul>
+        <li>Scans files and processes for known malware signatures</li>
+        <li>Must be kept up to date — new malware is released constantly</li>
+        <li>Quarantines or deletes detected threats</li>
+      </ul>
+    </div>
+    <div class="ic g">
+      <h4>Regular updates/patches:</h4>
+      <p>Software vendors release patches to fix known security vulnerabilities. Regular updating reduces the window of exposure to known exploits.</p>
+    </div>
+    <div class="ic g">
+      <h4>User access levels / principle of least privilege:</h4>
+      <p>Users are only given the minimum access rights needed to do their job. Limits damage if an account is compromised.</p>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Confusing a firewall with anti-malware — firewalls filter traffic; anti-malware scans files</li>
+        <li>Saying "use a strong password" without explaining WHAT makes it strong</li>
+        <li>Forgetting 2FA — very important and commonly tested</li>
+        <li>Not distinguishing between encryption in transit vs at rest</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/1-4-1/" class="nb">← 1.4.1 Network Threats</a>
+  <a href="/ocr-j277/1-5-1/" class="nb n">1.5.1 Operating Systems →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-4-2';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What is penetration testing?",opts:["Testing a system's speed","Authorised hacking to find vulnerabilities before real attackers do","Installing antivirus software","Monitoring firewall logs"],ans:1,exp:"Penetration testing involves ethical hackers attempting to breach a system with permission. Results are reported to the organisation so vulnerabilities can be fixed."},
+  {q:"What does a firewall do?",opts:["Scans files for malware","Encrypts data in transit","Monitors and filters network traffic based on rules","Backs up data automatically"],ans:2,exp:"A firewall (hardware or software) monitors incoming and outgoing network traffic and blocks unauthorised access based on predefined security rules."},
+  {q:"What is two-factor authentication (2FA)?",opts:["Using two firewalls","A second verification step in addition to a password","Using two passwords","Encrypting data twice"],ans:1,exp:"2FA requires users to provide two forms of verification — typically something they know (password) and something they have (phone/authenticator app code). Makes accounts much harder to compromise."},
+  {q:"Why is it important to keep software up to date?",opts:["To improve graphics performance","Patches fix known security vulnerabilities, reducing the risk of exploitation","To increase storage space","To change the user interface"],ans:1,exp:"Software updates often include security patches. Unpatched software has known vulnerabilities that attackers can exploit — keeping software updated closes these security gaps."},
+  {q:"What does encryption do?",opts:["Prevents files being deleted","Speeds up data transmission","Scrambles data so it can only be read with the correct key","Backs up data to the cloud"],ans:2,exp:"Encryption transforms readable data (plaintext) into an unreadable format (ciphertext) using a key. Only someone with the correct decryption key can read the data."},
+  {q:"What is 'principle of least privilege'?",opts:["Only the CEO has full system access","Users are given only the minimum access rights needed for their job","Passwords must be at least 12 characters","All data must be encrypted"],ans:1,exp:"Least privilege means users are given only the permissions they need — nothing more. This limits the damage if an account is compromised."},
+  {q:"Which of these BEST describes anti-malware software?",opts:["A tool that filters web traffic","Software that scans for and removes malicious programs","A system that backs up your data","Hardware that encrypts network traffic"],ans:1,exp:"Anti-malware (antivirus) software scans files, processes, and emails for malware signatures, quarantines or deletes threats, and monitors for suspicious behaviour."},
+  {q:"What is a vulnerability caused by 'poor input validation'?",opts:["Weak Wi-Fi signal","Users choosing short passwords","Allowing SQL injection — malicious code entered into form fields","Not using a firewall"],ans:2,exp:"If a website doesn't validate or sanitise user input, attackers can enter malicious SQL code into form fields, which gets executed on the database (SQL injection)."},
+  {q:"Why should different accounts use different passwords?",opts:["To make them easier to remember","So if one account is breached, others remain secure","Because most sites require it","To avoid brute force detection"],ans:1,exp:"Password reuse is dangerous — if one account's password is stolen and used on other services, attackers can access all accounts using the same credentials (credential stuffing)."},
+  {q:"What is physical security in the context of network security?",opts:["Strong passwords","Encrypting network traffic","Restricting physical access to hardware (e.g., locked server rooms, CCTV)","Installing anti-malware"],ans:2,exp:"Physical security protects hardware from physical access. Locked server rooms, access cards, CCTV, and visitor logs prevent unauthorised people from physically accessing equipment."},
+  {q:"Which of the following would BEST prevent a brute force attack?",opts:["Installing a firewall","Account lockout after a set number of failed login attempts","Using HTTPS","Encrypting the hard drive"],ans:1,exp:"Account lockout policies lock accounts after (e.g.) 5 failed attempts, preventing automated brute force tools from trying millions of combinations."},
+  {q:"HTTPS protects data using which technology?",opts:["Firewall rules","Anti-malware scanning","TLS/SSL encryption","IP filtering"],ans:2,exp:"HTTPS uses TLS (Transport Layer Security) to encrypt data between the browser and server, protecting it from interception (Man-in-the-Middle attacks)."},
+  {q:"What is network forensics used for?",opts:["Designing network infrastructure","Encrypting data in transit","Analysing network traffic to detect attacks and gather evidence","Installing security patches"],ans:2,exp:"Network forensics involves capturing and analysing network traffic to detect security incidents, understand how breaches occurred, and gather evidence."},
+  {q:"A company has old software running on its servers that hasn't been updated in 2 years. What security risk does this create?",opts:["Slower internet speeds","Known vulnerabilities that attackers can exploit — as patches haven't been applied","Higher electricity costs","Loss of data from power failures"],ans:1,exp:"Unpatched software contains known security vulnerabilities. Attackers specifically search for systems running outdated software to exploit these published weaknesses."},
+  {q:"What is biometric authentication?",opts:["A long password with symbols","Using two separate passwords","Verifying identity using physical characteristics such as fingerprint or face recognition","Encrypting login credentials"],ans:2,exp:"Biometric authentication uses unique physical characteristics (fingerprint, iris, face) to verify identity. Harder to replicate than passwords."}
+];
+var WORKSHEET=[
+  {q:"Explain the purpose of penetration testing and who carries it out.",marks:3,ms:"Penetration testing is authorised hacking of a system to find security vulnerabilities (1). It is carried out by ethical hackers who have explicit permission from the organisation (1). The aim is to discover weaknesses before real attackers do so they can be fixed (1)."},
+  {q:"Describe TWO ways a firewall can protect a network.",marks:2,ms:"Any two: blocks traffic from unauthorised IP addresses (1); filters packets based on rules — e.g. blocking certain ports (1); monitors outgoing traffic for suspicious patterns (1)."},
+  {q:"Explain why two-factor authentication (2FA) is more secure than a password alone.",marks:2,ms:"Even if an attacker steals the user's password, they still cannot access the account without the second factor (1). The second factor is typically something the user has (a phone with an authenticator app or receiving an SMS code) — which the attacker is unlikely to possess (1)."},
+  {q:"A student uses the same password 'soccer1' for their email, school network, and social media. Identify TWO security weaknesses in this approach.",marks:2,ms:"Any two: the password is too short and weak — easy to brute force or guess (1); using the same password across multiple accounts means if one is breached, all are compromised (1)."},
+  {q:"Explain what encryption does and why it is used on websites handling payment details.",marks:3,ms:"Encryption converts readable data (plaintext) into an unreadable format (ciphertext) using a key (1). Only someone with the correct decryption key can read it (1). On payment websites, encryption (HTTPS/TLS) ensures that even if the data is intercepted, it cannot be read by attackers — protecting card numbers and personal data (1)."},
+  {q:"Why is it important to give users only the minimum access rights they need?",marks:2,ms:"This is the principle of least privilege (1). If a user's account is compromised, the attacker only has access to the minimum systems/data that account can reach — limiting the potential damage of the breach (1)."},
+  {q:"State THREE security measures an organisation should use to protect against malware.",marks:3,ms:"Any three: install and keep anti-malware/antivirus software up to date (1); keep operating system and software patched/updated (1); train staff not to open suspicious attachments or click unknown links (1); use a firewall to block suspicious traffic (1); restrict user download permissions (1)."},
+  {q:"What is the difference between a firewall and anti-malware software?",marks:2,ms:"A firewall monitors and filters incoming/outgoing network traffic — blocking unauthorised connections based on rules (1). Anti-malware software scans files, emails, and processes for malicious code and removes or quarantines threats that have reached the device (1)."}
+];
+var KEY_TERMS=[
+  {w:"Vulnerability",d:"A weakness in a system, software, or human behaviour that an attacker can exploit."},
+  {w:"Penetration testing",d:"Authorised ethical hacking to identify security vulnerabilities before real attackers do."},
+  {w:"Firewall",d:"Hardware or software that monitors and filters network traffic based on security rules."},
+  {w:"Encryption",d:"Scrambling data using a key so it can only be read by authorised parties with the correct decryption key."},
+  {w:"Two-Factor Authentication (2FA)",d:"A second verification step in addition to a password — e.g. SMS code, authenticator app."},
+  {w:"Anti-malware",d:"Software that scans for, detects, quarantines, and removes malicious programs."},
+  {w:"Patch/Update",d:"Software fix released by a vendor to address known security vulnerabilities."},
+  {w:"Principle of least privilege",d:"Users are given only the minimum access rights needed to perform their job."},
+  {w:"Physical security",d:"Measures to restrict physical access to hardware — locked rooms, access cards, CCTV."},
+  {w:"Network forensics",d:"Monitoring and analysing network traffic to detect incidents and gather evidence."},
+  {w:"Biometrics",d:"Authentication using unique physical characteristics — fingerprint, iris, face recognition."},
+  {w:"HTTPS/TLS",d:"Secure web protocol using TLS encryption to protect data transmitted between browser and server."},
+  {w:"Account lockout",d:"A policy that locks a user account after a set number of failed login attempts — prevents brute force."},
+  {w:"Input validation",d:"Checking and sanitising user input to prevent malicious data (e.g., SQL) from being processed."},
+  {w:"Access control",d:"Systems and rules that govern who can access what resources on a network."}
+];
+var TEST_MCQ=[
+  {q:"Which security measure would BEST protect against SQL injection?",opts:["Firewall","Encryption","Input validation","Two-factor authentication"],ans:2,exp:"Input validation sanitises user input, rejecting SQL commands entered into form fields before they reach the database."},
+  {q:"What is the purpose of encrypting data at rest?",opts:["To speed up access","To protect data stored on a device if it is stolen or accessed without authorisation","To reduce file size","To compress files for backup"],ans:1,exp:"Encrypting data at rest protects stored files. If a device is stolen, the data is unreadable without the decryption key."},
+  {q:"Which of these is a physical security measure?",opts:["Firewall rules","Installing anti-malware","Locked server room with access cards","Two-factor authentication"],ans:2,exp:"A locked server room with access card entry restricts physical access to network hardware — a physical security measure."},
+  {q:"Why must anti-malware software be regularly updated?",opts:["To improve internet speed","New malware is constantly released — updates add new threat signatures","To fix display bugs","To reduce memory usage"],ans:1,exp:"Malware databases must be updated with new threat signatures so the software can detect the latest malware. Outdated anti-malware cannot detect new threats."},
+  {q:"2FA adds which of the following to the login process?",opts:["A longer password","A second form of verification in addition to the password","Two firewalls","Encryption of the password"],ans:1,exp:"2FA requires a second verification factor — usually something the user has (phone/authenticator) — making stolen passwords alone insufficient to access the account."}
+];
+var TEST_SA=[
+  {q:"Describe TWO measures an organisation can take to protect against phishing attacks.",marks:2,ms:"Any two: train staff to recognise phishing emails (1); use email filters to block suspicious messages (1); enforce 2FA so stolen credentials alone don't grant access (1); use anti-phishing browser tools (1)."},
+  {q:"Explain why the principle of least privilege improves security.",marks:2,ms:"Users are only given access to the systems and data they need for their role (1). If an account is compromised, the attacker only has limited access — reducing the potential damage of the breach (1)."},
+  {q:"Why should a company perform regular penetration tests?",marks:2,ms:"New vulnerabilities are discovered in software and configurations over time (1). Regular penetration testing identifies weaknesses before attackers can exploit them, allowing the organisation to fix them proactively (1)."},
+  {q:"Describe the role of a firewall in network security.",marks:2,ms:"A firewall monitors incoming and outgoing network traffic (1). It filters packets based on rules — blocking unauthorised connections, suspicious IP addresses, or specific ports (1)."},
+  {q:"A laptop containing unencrypted patient data is stolen from a hospital. Explain what the hospital should have done differently.",marks:2,ms:"The laptop should have had full-disk encryption enabled (1). This would mean that even though the physical device was stolen, the data would be unreadable without the correct decryption key (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

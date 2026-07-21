@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.2.4b Hexadecimal | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}
+.shell{display:flex;width:100%;min-height:100vh}
+.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}
+.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}
+.sidebar-section{padding:8px 0}
+.sidebar-section-title{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}
+.sidebar-link{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}
+.sidebar-link:hover{color:#e2e8f0;background:#ffffff08}.sidebar-link.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}
+.sidebar-link.free-badge::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}
+.main{margin-left:260px;flex:1;display:flex;flex-direction:column}
+.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}
+.breadcrumb{font-size:12px;color:#64748b;margin-bottom:8px}.breadcrumb a{color:#6366f1;text-decoration:none}
+.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}
+.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}
+.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}
+.tab-btn{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s}
+.tab-btn:hover{color:#e2e8f0}.tab-btn.active{color:#818cf8;border-bottom-color:#6366f1}
+.tab-content{padding:32px 40px;max-width:900px}
+.notes-section{margin-bottom:32px}
+.notes-section h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}
+.notes-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}
+.notes-section p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}
+.notes-section ul{padding-left:20px;margin-bottom:10px}
+.notes-section ul li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}
+.info-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}
+.info-card.blue{border-left:3px solid #3b82f6}.info-card.green{border-left:3px solid #10b981}.info-card.amber{border-left:3px solid #f59e0b}.info-card.purple{border-left:3px solid #8b5cf6}
+.info-card h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}
+.info-card p,.info-card li{font-size:13px;color:#94a3b8;line-height:1.6}.info-card ul{padding-left:16px}
+.compare-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.compare-table th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:center;font-weight:600;border:1px solid #2d3148}
+.compare-table td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8;text-align:center}
+.compare-table tr:nth-child(even) td{background:#1a1d2e}
+.key-point{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}
+.key-point strong{color:#c7d2fe}
+.formula-box{background:#0f172a;border:1px solid #3730a3;border-radius:8px;padding:16px 20px;margin:12px 0;font-family:monospace;font-size:14px;color:#a5b4fc;line-height:1.8}
+.quiz-container{max-width:700px}
+.quiz-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
+.quiz-q p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}
+.quiz-opt{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;transition:.15s;font-size:13px;color:#94a3b8}
+.quiz-opt:hover{background:#252840;border-color:#4f46e5}.quiz-opt.correct{background:#052e16;border-color:#10b981;color:#6ee7b7}.quiz-opt.wrong{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}
+.quiz-opt input{display:none}
+.quiz-explain{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}
+.quiz-score{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}
+.btn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}
+.btn-outline{background:transparent;color:#6366f1;border:1px solid #6366f1}
+.ws-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
+.ws-q .q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.ws-q .q-text{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}
+.ws-q .marks{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}
+.ws-q textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}
+.ms-toggle{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}
+.mark-scheme{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.term-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}
+.term-word{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}
+.term-def{font-size:13px;color:#94a3b8;line-height:1.5}
+.test-section{margin-bottom:28px}.test-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}
+.sa-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}
+.sa-q p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}
+.sa-q .marks{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.lesson-nav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}
+.nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500;transition:.15s}
+.nav-btn:hover{color:#e2e8f0;border-color:#4f46e5}.nav-btn.next{background:#6366f108;border-color:#6366f1;color:#818cf8}
+#paywall-overlay{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}
+.paywall-box{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+.paywall-box h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
+.paywall-box p{font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6}
+.paywall-box .price{font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px}
+.paywall-box .price-sub{font-size:12px;color:#64748b;margin-bottom:24px}
+</style>
+</head>
+<body>
+<div id="paywall-overlay" style="display:none">
+  <div class="paywall-box">
+    <div style="font-size:48px;margin-bottom:16px">🔒</div>
+    <h2>Unlock Full Access</h2>
+    <p>Subscribe to access all 47 OCR J277 lessons, quizzes, worksheets and mini tests.</p>
+    <div class="price">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div>
+    <div class="price-sub">or £59/year — save 38%</div>
+    <a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px 20px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a>
+    <a href="/dashboard" style="font-size:13px;color:#64748b">Back to Dashboard</a>
+  </div>
+</div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Component 1</div>
+    <div class="sidebar-section-title" style="color:#818cf8">1.1 Systems Architecture</div>
+    <a href="/ocr-j277/1-1-1/" class="sidebar-link free-badge">1.1.1 Architecture of the CPU</a>
+    <a href="/ocr-j277/1-1-2/" class="sidebar-link">1.1.2 CPU Performance</a>
+    <a href="/ocr-j277/1-1-3/" class="sidebar-link">1.1.3 Embedded Systems</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.2 Memory &amp; Storage</div>
+    <a href="/ocr-j277/1-2-1/" class="sidebar-link free-badge">1.2.1 Primary Storage</a>
+    <a href="/ocr-j277/1-2-2/" class="sidebar-link">1.2.2 Secondary Storage</a>
+    <a href="/ocr-j277/1-2-3/" class="sidebar-link">1.2.3 Units of Storage</a>
+    <a href="/ocr-j277/1-2-4a/" class="sidebar-link">1.2.4a Binary &amp; Denary</a>
+    <a href="/ocr-j277/1-2-4b/" class="sidebar-link active">1.2.4b Hexadecimal</a>
+    <a href="/ocr-j277/1-2-4c/" class="sidebar-link">1.2.4c Binary Arithmetic</a>
+    <a href="/ocr-j277/1-2-4d/" class="sidebar-link">1.2.4d Binary Shifts</a>
+    <a href="/ocr-j277/1-2-4e/" class="sidebar-link">1.2.4e Character Encoding</a>
+    <a href="/ocr-j277/1-2-4f/" class="sidebar-link">1.2.4f Representing Images</a>
+    <a href="/ocr-j277/1-2-4g/" class="sidebar-link">1.2.4g Representing Sound</a>
+    <a href="/ocr-j277/1-2-5/" class="sidebar-link">1.2.5 Compression</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.3 Networks</div>
+    <a href="/ocr-j277/1-3-1a/" class="sidebar-link free-badge">1.3.1a LAN, WAN &amp; Performance</a>
+    <a href="/ocr-j277/1-3-1b/" class="sidebar-link">1.3.1b Network Types &amp; Hardware</a>
+    <a href="/ocr-j277/1-3-1c/" class="sidebar-link">1.3.1c Internet, DNS &amp; Cloud</a>
+    <a href="/ocr-j277/1-3-1d/" class="sidebar-link">1.3.1d Network Topologies</a>
+    <a href="/ocr-j277/1-3-2a/" class="sidebar-link">1.3.2a Wired &amp; Wireless</a>
+    <a href="/ocr-j277/1-3-2b/" class="sidebar-link">1.3.2b Protocols &amp; Layers</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.4 Network Security</div>
+    <a href="/ocr-j277/1-4-1/" class="sidebar-link free-badge">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sidebar-link">1.4.2 Preventing Vulnerabilities</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.5 Systems Software</div>
+    <a href="/ocr-j277/1-5-1/" class="sidebar-link free-badge">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sidebar-link">1.5.2 Utility Software</a>
+    <div class="sidebar-section-title" style="color:#818cf8">1.6 Impacts</div>
+    <a href="/ocr-j277/1-6-1a/" class="sidebar-link free-badge">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sidebar-link">1.6.1b Cultural &amp; Environmental</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Component 2</div>
+    <div class="sidebar-section-title" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sidebar-link free-badge">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sidebar-link">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sidebar-link">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sidebar-link">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sidebar-link">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sidebar-link">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sidebar-link">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sidebar-link">2.1.3e Insertion Sort</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sidebar-link free-badge">2.2.1a Variables &amp; Data Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sidebar-link">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sidebar-link">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sidebar-link">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sidebar-link">2.2.1e String Manipulation</a>
+    <a href="/ocr-j277/2-2-1f/" class="sidebar-link">2.2.1f Subroutines</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.3 Robust Programs</div>
+    <a href="/ocr-j277/2-3-1/" class="sidebar-link free-badge">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-3-2/" class="sidebar-link">2.3.2 Testing</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.4 Boolean Logic</div>
+    <a href="/ocr-j277/2-4-1a/" class="sidebar-link free-badge">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-4-1b/" class="sidebar-link">2.4.1b Truth Tables</a>
+    <div class="sidebar-section-title" style="color:#818cf8">2.5 Languages &amp; IDEs</div>
+    <a href="/ocr-j277/2-5-1/" class="sidebar-link free-badge">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sidebar-link">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sidebar-link">2.5.2b IDEs</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="breadcrumb"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.2 Memory &amp; Storage</div>
+  <div class="lesson-title">1.2.4b — Hexadecimal</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~25 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tab-btn" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tab-btn" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tab-btn" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tab-btn" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tab-btn" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tab-btn" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tab-content" id="tab-notes">
+  <div class="notes-section">
+    <h2>What is Hexadecimal?</h2>
+    <p>Hexadecimal (hex) is a <strong>base 16</strong> number system. It uses 16 symbols: the digits 0–9 and the letters A–F (where A=10, B=11, C=12, D=13, E=14, F=15).</p>
+    <table class="compare-table">
+      <tr><th>Denary</th><th>Hex</th><th>Binary (4-bit)</th></tr>
+      <tr><td>0</td><td>0</td><td>0000</td></tr>
+      <tr><td>1</td><td>1</td><td>0001</td></tr>
+      <tr><td>2</td><td>2</td><td>0010</td></tr>
+      <tr><td>3</td><td>3</td><td>0011</td></tr>
+      <tr><td>4</td><td>4</td><td>0100</td></tr>
+      <tr><td>5</td><td>5</td><td>0101</td></tr>
+      <tr><td>6</td><td>6</td><td>0110</td></tr>
+      <tr><td>7</td><td>7</td><td>0111</td></tr>
+      <tr><td>8</td><td>8</td><td>1000</td></tr>
+      <tr><td>9</td><td>9</td><td>1001</td></tr>
+      <tr><td>10</td><td>A</td><td>1010</td></tr>
+      <tr><td>11</td><td>B</td><td>1011</td></tr>
+      <tr><td>12</td><td>C</td><td>1100</td></tr>
+      <tr><td>13</td><td>D</td><td>1101</td></tr>
+      <tr><td>14</td><td>E</td><td>1110</td></tr>
+      <tr><td>15</td><td>F</td><td>1111</td></tr>
+    </table>
+    <div class="key-point"><strong>Key insight:</strong> Each hex digit represents exactly 4 binary digits (a nibble). This makes converting between hex and binary very easy.</div>
+  </div>
+
+  <div class="notes-section">
+    <h2>Why Use Hexadecimal?</h2>
+    <p>Hex is used because it provides a <strong>compact, human-readable representation of binary data</strong>.</p>
+    <div class="info-card blue">
+      <h4>Uses of Hexadecimal</h4>
+      <ul>
+        <li><strong>Memory addresses</strong> — RAM and CPU registers use hex addresses (e.g. 0x1F4A)</li>
+        <li><strong>Colour codes</strong> — HTML/CSS colours like #FF5733 (R=FF, G=57, B=33)</li>
+        <li><strong>Error codes</strong> — Windows error codes (e.g. 0x0000007F)</li>
+        <li><strong>MAC addresses</strong> — unique hardware identifiers (e.g. A1:B2:C3:D4:E5:F6)</li>
+        <li><strong>IPv6 addresses</strong> — internet addresses using hex groups</li>
+        <li><strong>Assembly/machine code</strong> — representing opcodes and data</li>
+      </ul>
+    </div>
+    <p>Two hex digits can represent a full byte (8 bits): e.g. FF₁₆ = 11111111₂ = 255₁₀</p>
+  </div>
+
+  <div class="notes-section">
+    <h2>Converting Hex to Denary</h2>
+    <p>Hex place values are powers of 16: 16⁰=1, 16¹=16, 16²=256, 16³=4096</p>
+    <div class="info-card green">
+      <h4>Worked Example: Convert 3F₁₆ to denary</h4>
+      <div class="formula-box">
+        3F has two digits: leftmost = 3, rightmost = F (=15)<br>
+        = (3 × 16) + (15 × 1)<br>
+        = 48 + 15<br>
+        = <strong>63</strong>
+      </div>
+    </div>
+    <div class="info-card blue">
+      <h4>Worked Example: Convert 2A₁₆ to denary</h4>
+      <div class="formula-box">
+        2A: 2 in 16s column, A (=10) in 1s column<br>
+        = (2 × 16) + (10 × 1)<br>
+        = 32 + 10<br>
+        = <strong>42</strong>
+      </div>
+    </div>
+    <div class="info-card green">
+      <h4>Worked Example: Convert 1B4₁₆ to denary</h4>
+      <div class="formula-box">
+        Place values: 256, 16, 1<br>
+        1=1, B=11, 4=4<br>
+        = (1 × 256) + (11 × 16) + (4 × 1)<br>
+        = 256 + 176 + 4<br>
+        = <strong>436</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-section">
+    <h2>Converting Denary to Hex</h2>
+    <p>Repeatedly divide by 16 and note the remainders (in reverse order).</p>
+    <div class="info-card green">
+      <h4>Worked Example: Convert 200 to hex</h4>
+      <div class="formula-box">
+        200 ÷ 16 = 12 remainder 8 → remainder = 8<br>
+        12 ÷ 16 = 0 remainder 12 → remainder = C<br>
+        Read remainders bottom to top: <strong>C8₁₆</strong><br><br>
+        Check: (12 × 16) + 8 = 192 + 8 = 200 ✓
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-section">
+    <h2>Converting Hex ↔ Binary (via Nibbles)</h2>
+    <p>The easiest method: each hex digit = exactly 4 binary bits (a nibble).</p>
+    <div class="info-card green">
+      <h4>Hex to Binary: Convert A7₁₆ to binary</h4>
+      <div class="formula-box">
+        A = 10 = 1010<br>
+        7 = 7 &nbsp;= 0111<br>
+        A7₁₆ = <strong>10100111₂</strong>
+      </div>
+    </div>
+    <div class="info-card blue">
+      <h4>Binary to Hex: Convert 11001101₂ to hex</h4>
+      <div class="formula-box">
+        Split into nibbles: 1100 | 1101<br>
+        1100 = 12 = C<br>
+        1101 = 13 = D<br>
+        = <strong>CD₁₆</strong>
+      </div>
+    </div>
+    <div class="key-point"><strong>Shortcut:</strong> To convert an 8-bit binary number to hex, split it into two nibbles and convert each to a hex digit. To go the other way, convert each hex digit to a 4-bit nibble.</div>
+    <div class="info-card amber">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Forgetting that A=10, B=11, C=12, D=13, E=14, F=15</li>
+        <li>Not padding nibbles to 4 bits (e.g. 7 = 0111 not 111)</li>
+        <li>Using wrong place values (hex uses 16s, not 10s)</li>
+        <li>Mixing up hex letters — E is 14, not 15 (F is 15)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-video" style="display:none"><div class="notes-section"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tab-content" id="tab-slides" style="display:none"><div class="notes-section"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tab-content" id="tab-worksheet" style="display:none">
+  <div class="notes-section"><h2>Worksheet — Hexadecimal</h2><p style="font-size:13px;color:#64748b;margin-bottom:20px">Show all working.</p></div>
+  <div id="ws-container"></div>
+</div>
+<div class="tab-content" id="tab-quiz" style="display:none">
+  <div class="notes-section"><h2>15-Question Quiz</h2></div>
+  <div class="quiz-container" id="quiz-container"></div>
+  <div class="quiz-score" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="btn btn-outline" onclick="resetQuiz()">Try Again</button></div>
+</div>
+<div class="tab-content" id="tab-test" style="display:none">
+  <div class="notes-section"><h2>Mini Test</h2></div>
+  <div class="test-section"><h3>Section A — Multiple Choice</h3><div id="test-mcq-container"></div></div>
+  <div class="test-section"><h3>Section B — Short Answer</h3><div id="test-sa-container"></div></div>
+</div>
+<div class="tab-content" id="tab-terms" style="display:none">
+  <div class="notes-section"><h2>Key Terms</h2></div>
+  <div class="terms-grid" id="terms-grid"></div>
+</div>
+<div class="lesson-nav">
+  <a href="/ocr-j277/1-2-4a/" class="nav-btn">← 1.2.4a Binary &amp; Denary</a>
+  <a href="/ocr-j277/1-2-4c/" class="nav-btn next">1.2.4c Binary Arithmetic →</a>
+</div>
+</div>
+</div>
+<script>
+var LESSON_ID='1-2-4b';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var currentUser=null;
+
+var QUIZ=[
+  {q:"How many symbols does the hexadecimal system use?",opts:["8","10","16","15"],ans:2,exp:"Hexadecimal (base 16) uses 16 symbols: 0–9 and A–F."},
+  {q:"What is the denary value of the hex digit F?",opts:["6","15","14","16"],ans:1,exp:"F is the last hex digit and has denary value 15."},
+  {q:"Convert 1A₁₆ to denary.",opts:["21","26","28","14"],ans:1,exp:"(1 × 16) + (10 × 1) = 16 + 10 = 26."},
+  {q:"Convert 11111111₂ to hexadecimal.",opts:["EF","FE","FF","F0"],ans:2,exp:"Split: 1111|1111. Each nibble 1111 = 15 = F. So FF₁₆."},
+  {q:"What is the binary equivalent of hex digit C?",opts:["1010","1100","1110","1011"],ans:1,exp:"C = 12 in denary = 1100 in binary."},
+  {q:"Convert B3₁₆ to denary.",opts:["163","179","173","183"],ans:1,exp:"(11 × 16) + (3 × 1) = 176 + 3 = 179."},
+  {q:"Which of these is a valid use of hexadecimal?",opts:["Storing audio samples","Representing HTML colour codes","Calculating image file sizes","Running a CPU clock"],ans:1,exp:"HTML colour codes like #FF0000 (red) are written in hexadecimal."},
+  {q:"Convert 10100101₂ to hexadecimal.",opts:["A4","A5","B5","95"],ans:1,exp:"Split: 1010|0101. 1010=A, 0101=5. So A5₁₆."},
+  {q:"What is the hex equivalent of denary 255?",opts:["EF","FE","FF","F0"],ans:2,exp:"255 = 16×15 + 15 = FF₁₆. Also: 11111111₂ split as 1111|1111 = FF."},
+  {q:"Convert 3C₁₆ to binary.",opts:["00111100","00110100","00111010","01001100"],ans:0,exp:"3 = 0011, C = 12 = 1100. So 00111100₂."},
+  {q:"How many binary bits does a single hex digit represent?",opts:["2","4","8","16"],ans:1,exp:"One hex digit = 1 nibble = 4 binary bits. 16 = 2⁴, so log₂(16) = 4."},
+  {q:"Convert 145 (denary) to hexadecimal.",opts:["8F","91","9F","8E"],ans:1,exp:"145 ÷ 16 = 9 rem 1. Read: 91₁₆. Check: 9×16+1=145 ✓."},
+  {q:"Which hex code represents the colour red in HTML (#RRGGBB)?",opts:["#00FF00","#FF0000","#0000FF","#FFFFFF"],ans:1,exp:"In HTML, colours use #RRGGBB. Red = maximum red (FF), no green (00), no blue (00) = #FF0000."},
+  {q:"Convert E0₁₆ to denary.",opts:["224","230","210","240"],ans:0,exp:"E=14. (14 × 16) + (0 × 1) = 224 + 0 = 224."},
+  {q:"Why is hexadecimal used instead of binary for representing memory addresses?",opts:["Hex is faster to process","Hex is more compact and easier for humans to read than long binary strings","Hex uses less memory","Hex is more precise than binary"],ans:1,exp:"A 32-bit memory address in binary has 32 digits; in hex it only needs 8 digits. Hex is much easier for humans to read and write."}
+];
+
+var WORKSHEET=[
+  {q:"Convert the following hex values to denary:\n(a) 4E  (b) A0  (c) FF  (d) 1C3",marks:4,ms:"(a) 4×16+14 = 78 (1). (b) 10×16+0 = 160 (1). (c) 15×16+15 = 255 (1). (d) 1×256+12×16+3 = 451 (1)."},
+  {q:"Convert the following denary numbers to hexadecimal:\n(a) 100  (b) 175  (c) 32",marks:3,ms:"(a) 100÷16=6 rem 4 → 64₁₆ (1). (b) 175÷16=10 rem 15 → AF₁₆ (1). (c) 32÷16=2 rem 0 → 20₁₆ (1)."},
+  {q:"Convert the following binary numbers to hexadecimal:\n(a) 10101010  (b) 11110000  (c) 01001101",marks:3,ms:"(a) 1010|1010 → AA₁₆ (1). (b) 1111|0000 → F0₁₆ (1). (c) 0100|1101 → 4D₁₆ (1)."},
+  {q:"Convert the following hex values to binary:\n(a) 9B  (b) C4  (c) 7F",marks:3,ms:"(a) 9=1001, B=1011 → 10011011 (1). (b) C=1100, 4=0100 → 11000100 (1). (c) 7=0111, F=1111 → 01111111 (1)."},
+  {q:"State three real-world uses of hexadecimal in computing.",marks:3,ms:"Any three of: memory addresses (1); HTML/CSS colour codes (1); error codes/crash codes (1); MAC addresses (1); IPv6 addresses (1); assembly/machine code (1)."},
+  {q:"Explain why hexadecimal is preferred over binary when displaying memory addresses to programmers.",marks:2,ms:"Binary strings for memory addresses are long (32 or 64 bits) and difficult to read and write accurately (1). Hexadecimal represents the same value using fewer characters (8 hex digits for 32-bit) while still being directly convertible to binary (1)."},
+  {q:"A CSS colour code is #6B3A9F. Convert the red component (6B) to denary and binary.",marks:3,ms:"Denary: 6×16+11=96+11=107 (1). Binary: 6=0110, B=1011 → 01101011 (1). Both required for full marks (1)."},
+  {q:"Convert 100 in denary to (a) binary and (b) hexadecimal. Show all working.",marks:3,ms:"(a) 64+32+4=100 → 01100100 (1). (b) 100÷16=6 rem 4 → 64₁₆ (1). Cross-check: 6|4 → 0110|0100 = 01100100 ✓ (1)."}
+];
+
+var KEY_TERMS=[
+  {w:"Hexadecimal",d:"Base 16 number system using digits 0–9 and letters A–F (A=10, B=11, C=12, D=13, E=14, F=15)."},
+  {w:"Base 16",d:"Another name for hexadecimal. Each digit can have 16 different values (0–F), and place values are powers of 16."},
+  {w:"Nibble",d:"4 binary bits — exactly equivalent to one hexadecimal digit."},
+  {w:"Place value (hex)",d:"In hexadecimal, place values are 1 (16⁰), 16 (16¹), 256 (16²), 4096 (16³) etc."},
+  {w:"Hex digit A",d:"Represents the denary value 10. Binary: 1010."},
+  {w:"Hex digit B",d:"Represents the denary value 11. Binary: 1011."},
+  {w:"Hex digit C",d:"Represents the denary value 12. Binary: 1100."},
+  {w:"Hex digit D",d:"Represents the denary value 13. Binary: 1101."},
+  {w:"Hex digit E",d:"Represents the denary value 14. Binary: 1110."},
+  {w:"Hex digit F",d:"Represents the denary value 15. Binary: 1111."},
+  {w:"Memory address",d:"A unique identifier for a location in memory, often displayed in hexadecimal (e.g. 0x1F4A0000)."},
+  {w:"HTML colour code",d:"A 6-digit hex value (#RRGGBB) representing the red, green, and blue components of a colour."},
+  {w:"MAC address",d:"A unique 48-bit hardware identifier for a network interface, written as 6 pairs of hex digits."},
+  {w:"Error code",d:"A numerical code identifying a specific software or hardware error, often displayed in hex (e.g. 0x0000007F)."},
+  {w:"0x notation",d:"A prefix used in programming to indicate a hexadecimal number (e.g. 0xFF = FF₁₆)."}
+];
+
+var TEST_MCQ=[
+  {q:"What is the denary value of E₁₆?",opts:["13","14","15","12"],ans:1,exp:"E is the 15th hex symbol (starting from 0), representing denary 14."},
+  {q:"Convert 5A₁₆ to denary.",opts:["80","90","94","85"],ans:1,exp:"(5 × 16) + (10 × 1) = 80 + 10 = 90."},
+  {q:"Convert 10011001₂ to hexadecimal.",opts:["9A","99","A9","98"],ans:1,exp:"1001|1001 → 9, 9 → 99₁₆."},
+  {q:"Which statement best explains why hex is used for memory addresses?",opts:["Hex is processed faster by the CPU","Hex requires less memory to store","Hex is more compact than binary and easier for humans to read","Hex is always more accurate"],ans:2,exp:"Hex provides a shorter, human-readable representation of binary data — ideal for memory addresses."},
+  {q:"Convert CF₁₆ to denary.",opts:["195","207","217","227"],ans:1,exp:"(12 × 16) + (15 × 1) = 192 + 15 = 207."}
+];
+
+var TEST_SA=[
+  {q:"Convert B9₁₆ to denary. Show your working.",marks:2,ms:"B=11. (11 × 16) + 9 = 176 + 9 = 185 (1 for working, 1 for answer)."},
+  {q:"Convert 11001010₂ to hexadecimal using the nibble method.",marks:2,ms:"Split: 1100|1010. 1100=C, 1010=A. Answer: CA₁₆ (1 for correct split, 1 for answer)."},
+  {q:"State two advantages of using hexadecimal over binary for programmers.",marks:2,ms:"Any two: Shorter/more compact representation (1); Easier to read and write without making errors (1); Simple to convert to/from binary (1)."},
+  {q:"Convert 250 (denary) to hexadecimal. Show your working.",marks:2,ms:"250 ÷ 16 = 15 rem 10. 15=F, 10=A. Answer: FA₁₆ (1 for method, 1 for answer)."},
+  {q:"A website uses the colour code #3C8FD2. How many bits would be needed to store just the red component (3C) in binary?",marks:2,ms:"3C₁₆ is one byte — two hex digits = 8 bits (1). 3=0011, C=1100, so 00111100 (1)."}
+];
+
+function showTab(id,btn){document.querySelectorAll('.tab-content').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='quiz-q';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="quiz-explain" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.quiz-opt').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'correct':'wrong');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('correct');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.quiz-opt.correct,.quiz-opt.wrong').length>=QUIZ.length){var correct=document.querySelectorAll('.quiz-opt.correct').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='ws-q';d.innerHTML='<div class="q-header"><span class="q-text">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:100px"></textarea><span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span><div class="mark-scheme">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;if(ms.style.display==='block'){ms.style.display='none';el.textContent='Show Mark Scheme';}else{ms.style.display='block';el.textContent='Hide Mark Scheme';}}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='quiz-q';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="quiz-explain" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.quiz-opt').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'correct':'wrong');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('correct');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sa-q';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span><div class="mark-scheme">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='term-card';d.innerHTML='<div class="term-word">'+t.w+'</div><div class="term-def">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id){return{data:{session:{user:u}}};}return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('paywall-overlay').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){window.location.href='/';return;}currentUser=session.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

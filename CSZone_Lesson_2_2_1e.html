@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.2.1e String Handling | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sl">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sl">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sl active">2.2.1e Strings</a>
+    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.2 Programming</div>
+  <div class="lesson-title">2.2.1e — String Handling</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>String Operations in OCR Pseudocode</h2>
+    <p>Strings are sequences of characters. OCR J277 requires knowledge of several string operations — these appear frequently in programming exam questions.</p>
+    <div class="kp"><strong>Strings are zero-indexed</strong> in OCR pseudocode — the first character is at position 0.</div>
+    <div class="ic b">
+      <h4>Key string operations — summary table:</h4>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px">
+        <tr><th style="background:#252840;color:#c7d2fe;padding:8px;text-align:left;border:1px solid #2d3148">Operation</th><th style="background:#252840;color:#c7d2fe;padding:8px;text-align:left;border:1px solid #2d3148">Syntax</th><th style="background:#252840;color:#c7d2fe;padding:8px;text-align:left;border:1px solid #2d3148">Example</th><th style="background:#252840;color:#c7d2fe;padding:8px;text-align:left;border:1px solid #2d3148">Result</th></tr>
+        <tr><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Length</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">len(s)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">len("Hello")</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">5</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Substring</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">substring(s, start, len)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">substring("Hello", 1, 3)</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">"ell"</td></tr>
+        <tr><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Upper case</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">upper(s)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">upper("hello")</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">"HELLO"</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Lower case</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">lower(s)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">lower("HELLO")</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">"hello"</td></tr>
+        <tr><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Concatenation</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">s1 + s2</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">"Hello" + " World"</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">"Hello World"</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">String to int</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">int(s)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">int("42")</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">42</td></tr>
+        <tr><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">Int to string</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">str(n)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">str(42)</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">"42"</td></tr>
+        <tr style="background:#1a1d2e"><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">ASCII value</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">ASC(char)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">ASC("A")</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">65</td></tr>
+        <tr><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">ASCII to char</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">CHR(n)</td><td style="padding:8px;border:1px solid #2d3148;color:#a5b4fc;font-family:monospace">CHR(65)</td><td style="padding:8px;border:1px solid #2d3148;color:#94a3b8">"A"</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="ns">
+    <h2>substring() Detail</h2>
+    <p>The <code style="background:#1e2235;padding:2px 6px;border-radius:3px;font-size:12px">substring(s, start, length)</code> function extracts part of a string. It takes three arguments: the string, the starting index (0-indexed), and the number of characters to extract.</p>
+    <div class="ic b">
+      <div class="code">word = "Computer"
+//       01234567
+
+substring(word, 0, 4)    // "Comp" — start at 0, take 4 chars
+substring(word, 3, 3)    // "put" — start at 3, take 3 chars
+substring(word, 4, 4)    // "uter" — start at 4, take 4 chars
+
+// Accessing individual characters (like an array):
+word[0]    // "C"
+word[7]    // "r"
+len(word)  // 8</div>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Treating strings as 1-indexed — they are zero-indexed: first character = index 0</li>
+        <li>Confusing substring(s, start, LENGTH) vs Python's s[start:end] — OCR uses length, not end index</li>
+        <li>Concatenating a number directly: "Score: " + score — must convert with str(score) first</li>
+        <li>Forgetting upper()/lower() for case-insensitive comparisons in validation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-2-1d/" class="nb">← 2.2.1d File Handling</a>
+  <a href="/ocr-j277/2-2-1f/" class="nb n">2.2.1f Subroutines →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-2-1e';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What does len(\"Hello\") return?",opts:["4","5","6","0"],ans:1,exp:"len() returns the number of characters in the string. \"Hello\" has 5 characters: H, e, l, l, o."},
+  {q:"s = \"Computing\". What is s[0]?",opts:["C","o","c","n"],ans:0,exp:"Strings are zero-indexed. s[0] is the first character = 'C'."},
+  {q:"What does upper(\"hello\") return?",opts:["Hello","HELLO","hello","hELLO"],ans:1,exp:"upper() converts all characters to uppercase. upper(\"hello\") = \"HELLO\"."},
+  {q:"What does substring(\"Science\", 2, 3) return?",opts:["Sci","cie","nce","ie"],ans:1,exp:"substring(s, start, length): start at index 2 ('c'), take 3 characters: 'c','i','e' = \"cie\"."},
+  {q:"What does ASC(\"A\") return?",opts:["1","65","97","0"],ans:1,exp:"ASC() returns the ASCII code of a character. 'A' has ASCII code 65. 'a' has ASCII code 97."},
+  {q:"What does CHR(65) return?",opts:["\"a\"","\"65\"","\"A\"","\"B\""],ans:2,exp:"CHR() converts an ASCII code to a character. CHR(65) = \"A\"."},
+  {q:"How do you concatenate two strings in OCR pseudocode?",opts:["Using AND","Using &","Using +","Using CONCAT"],ans:2,exp:"The + operator concatenates strings in OCR pseudocode: \"Hello\" + \" World\" = \"Hello World\"."},
+  {q:"What must you do before concatenating a number with a string?",opts:["Nothing — it works automatically","Convert the number to a string using str()","Convert the string to an integer","Use & instead of +"],ans:1,exp:"In OCR pseudocode, you cannot directly concatenate a number with a string. Use str() to convert: \"Score: \" + str(score)."},
+  {q:"s = \"Programming\". What is substring(s, 0, 7)?",opts:["Program","Program","Programm","Programmi"],ans:0,exp:"Start at index 0 ('P'), take 7 characters: P,r,o,g,r,a,m = \"Program\"."},
+  {q:"What does lower(\"HELLO\") return?",opts:["Hello","HELLO","hello","hELLO"],ans:2,exp:"lower() converts all characters to lowercase. lower(\"HELLO\") = \"hello\"."},
+  {q:"Why would you use upper() or lower() in input validation?",opts:["To save memory","To make comparisons case-insensitive — 'yes' and 'YES' both match","To encrypt data","To count characters"],ans:1,exp:"upper()/lower() normalises case so comparisons work regardless of how the user typed: if lower(input) == \"yes\" matches 'YES', 'yes', 'Yes', etc."},
+  {q:"s = \"GCSE\". What is len(s)?",opts:["3","4","5","6"],ans:1,exp:"\"GCSE\" has 4 characters: G, C, S, E. len(\"GCSE\") = 4."},
+  {q:"What does int(\"42\") do?",opts:["Converts 42 to the string \"42\"","Converts the string \"42\" to the integer 42","Returns the ASCII code of '4'","Adds quotes around 42"],ans:1,exp:"int() converts a string to an integer: int(\"42\") = 42 (number). Now you can do arithmetic on it."},
+  {q:"s = \"Hello World\". What does substring(s, 6, 5) return?",opts:["Hello","World","World ","ello "],ans:1,exp:"Start at index 6 ('W'), take 5 characters: W,o,r,l,d = \"World\"."},
+  {q:"What is the index of the LAST character in \"Python\"?",opts:["6","7","5","4"],ans:2,exp:"\"Python\" has 6 characters (indices 0-5). The last character 'n' is at index 5 = len(\"Python\") - 1."}
+];
+var WORKSHEET=[
+  {q:"s = \"Algorithm\". State the result of: (a) len(s)  (b) s[0]  (c) s[4]  (d) upper(s)",marks:4,ms:"(a) 9 (1). (b) 'A' (1). (c) 'r' (1). (d) \"ALGORITHM\" (1)."},
+  {q:"Evaluate: (a) substring(\"Computer\", 0, 4)  (b) substring(\"Computer\", 3, 3)  (c) substring(\"Computer\", 5, 3)",marks:3,ms:"(a) \"Comp\" (1). (b) \"put\" (1). (c) \"ter\" (1)."},
+  {q:"Write pseudocode to count how many vowels are in a string input by the user.",marks:5,ms:"s = input(\"Enter string: \"); s = lower(s); count = 0 (1); for i = 0 to len(s)-1 (1); if s[i] == \"a\" OR s[i] == \"e\" OR s[i] == \"i\" OR s[i] == \"o\" OR s[i] == \"u\" then (1); count = count + 1; endif (1); next i; print(count) (1)."},
+  {q:"What is the difference between ASC() and CHR()?",marks:2,ms:"ASC(char) converts a character to its ASCII integer code — e.g. ASC('A') = 65 (1). CHR(n) converts an ASCII integer code to a character — e.g. CHR(65) = 'A' (1). They are inverses of each other."},
+  {q:"Write pseudocode to reverse a string using substring or indexing.",marks:4,ms:"s = input(\"Enter string: \"); reversed = \"\" (1); for i = len(s)-1 to 0 step -1 (1); reversed = reversed + s[i] (1); next i; print(reversed) (1)."},
+  {q:"A student writes: print(\"Your score is: \" + score). What error might occur and how is it fixed?",marks:2,ms:"Attempting to concatenate a string with an integer causes a type error (1). Fix: print(\"Your score is: \" + str(score)) — convert score to string first (1)."},
+  {q:"Explain how upper() or lower() is used in input validation.",marks:2,ms:"Converts input to a consistent case (1). Allows case-insensitive comparisons — e.g. if lower(answer) == \"yes\" will match 'Yes', 'YES', 'yes' (1)."},
+  {q:"Write pseudocode to check if a string is a palindrome (reads same forwards and backwards).",marks:4,ms:"s = input(\"Enter: \"); isPalin = true (1); for i = 0 to len(s) DIV 2 - 1 (1); if s[i] != s[len(s)-1-i] then isPalin = false; endif (1); next i; if isPalin then print(\"Palindrome\") else print(\"Not a palindrome\") endif (1)."}
+];
+var KEY_TERMS=[
+  {w:"String",d:"A sequence of characters. Zero-indexed in OCR pseudocode — first character is at index 0."},
+  {w:"len(s)",d:"Returns the number of characters in string s. e.g. len(\"Hello\") = 5."},
+  {w:"substring(s, start, len)",d:"Extracts len characters from string s starting at position start (zero-indexed)."},
+  {w:"upper(s)",d:"Converts all characters in string s to uppercase. e.g. upper(\"hello\") = \"HELLO\"."},
+  {w:"lower(s)",d:"Converts all characters in string s to lowercase. e.g. lower(\"HELLO\") = \"hello\"."},
+  {w:"Concatenation (+)",d:"Joining two strings together: \"Hello\" + \" World\" = \"Hello World\"."},
+  {w:"str(n)",d:"Converts an integer or real to a string. Needed before concatenating numbers with strings."},
+  {w:"int(s)",d:"Converts a string to an integer. e.g. int(\"42\") = 42."},
+  {w:"float(s)",d:"Converts a string to a real (floating point) number. e.g. float(\"3.14\") = 3.14."},
+  {w:"ASC(char)",d:"Returns the ASCII code of a character. e.g. ASC('A') = 65, ASC('a') = 97."},
+  {w:"CHR(n)",d:"Returns the character with ASCII code n. e.g. CHR(65) = 'A'. Inverse of ASC()."},
+  {w:"Zero-indexed",d:"Strings start at index 0. First character = s[0]; last character = s[len(s)-1]."},
+  {w:"Case-insensitive",d:"Comparison that ignores whether letters are upper or lower case. Use upper()/lower() to normalise."},
+  {w:"ASCII",d:"American Standard Code for Information Interchange — assigns a numeric code to each character. 'A'=65, 'a'=97, '0'=48."},
+  {w:"String traversal",d:"Using a FOR loop from 0 to len(s)-1 to access each character s[i] in order."}
+];
+var TEST_MCQ=[
+  {q:"s = \"Computer\". What is s[3]?",opts:["m","p","o","u"],ans:1,exp:"Zero-indexed: C(0),o(1),m(2),p(3). s[3] = 'p'."},
+  {q:"What does substring(\"Science\", 0, 3) return?",opts:["Sci","cie","nce","Scie"],ans:0,exp:"Start at index 0 ('S'), take 3 characters: S,c,i = \"Sci\"."},
+  {q:"What does ASC('a') return?",opts:["65","97","32","48"],ans:1,exp:"ASCII code for lowercase 'a' is 97. Uppercase 'A' is 65."},
+  {q:"How do you join two strings in OCR pseudocode?",opts:["&","CONCAT","JOIN","+"],ans:3,exp:"The + operator concatenates strings: \"Hello\" + \" World\" = \"Hello World\"."},
+  {q:"What does str(99) return?",opts:["99","\"99\"","int 99","error"],ans:1,exp:"str() converts a number to a string: str(99) returns the string \"99\". Needed before concatenating numbers with strings."}
+];
+var TEST_SA=[
+  {q:"s = \"Python\". State: (a) len(s)  (b) s[0]  (c) substring(s, 2, 3)",marks:3,ms:"(a) 6 (1). (b) 'P' (1). (c) 'tho' — start at index 2 ('t'), take 3 chars: t,h,o (1)."},
+  {q:"Explain the purpose of upper() and lower() in string handling.",marks:2,ms:"Converts a string to all uppercase or lowercase (1). Used for case-insensitive comparisons in validation — ensures 'Yes', 'yes', 'YES' all match (1)."},
+  {q:"What is the difference between ASC() and CHR()?",marks:2,ms:"ASC(char) returns the ASCII numeric code for a character (1). CHR(n) returns the character corresponding to an ASCII code (1). They are inverses."},
+  {q:"A student writes 'print(\"Total: \" + total)' where total is an integer. What is the error and fix?",marks:2,ms:"Cannot concatenate an integer with a string directly — causes a type error (1). Fix: print(\"Total: \" + str(total)) (1)."},
+  {q:"Write pseudocode to check whether a string input by the user starts with the letter 'A'.",marks:2,ms:"s = input(\"Enter: \") (1); if upper(s[0]) == \"A\" then print(\"Starts with A\") endif (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

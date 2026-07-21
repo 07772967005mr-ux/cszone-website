@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2.1.2a Flowcharts | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sl active">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
+    <div class="sst" style="color:#818cf8">2.2 Programming</div>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <div class="sst" style="color:#818cf8">2.3–2.5</div>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.1 Algorithms</div>
+  <div class="lesson-title">2.1.2a — Flowcharts</div>
+  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~18 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is a Flowchart?</h2>
+    <p>A <strong>flowchart</strong> is a visual diagram that represents an algorithm using standard symbols connected by arrows. Flowcharts are used to plan and communicate how a program will work before writing code.</p>
+  </div>
+  <div class="ns">
+    <h2>Standard Flowchart Symbols</h2>
+    <table class="ct">
+      <tr><th>Shape</th><th>Name</th><th>Purpose</th></tr>
+      <tr><td>Oval / Rounded rectangle</td><td>Terminator (Start/Stop)</td><td>Marks the beginning and end of a flowchart</td></tr>
+      <tr><td>Rectangle</td><td>Process</td><td>A processing step — e.g., calculation, assignment, output</td></tr>
+      <tr><td>Parallelogram</td><td>Input/Output</td><td>Data being input or output (display to screen)</td></tr>
+      <tr><td>Diamond</td><td>Decision</td><td>A yes/no question — branches the flow based on a condition</td></tr>
+      <tr><td>Arrow</td><td>Flow line</td><td>Shows the direction of flow between steps</td></tr>
+    </table>
+    <div class="kp"><strong>Memory trick:</strong> O = Oval (stOp/start), R = Rectangle (pRocess), P = Parallelogram (Put in/out), D = Diamond (Decision)</div>
+  </div>
+  <div class="ns">
+    <h2>Control Structures in Flowcharts</h2>
+    <div class="ic b">
+      <h4>Sequence</h4>
+      <p>Steps follow one after another in order — boxes connected top to bottom with arrows.</p>
+    </div>
+    <div class="ic b">
+      <h4>Selection (branching)</h4>
+      <p>A diamond shape with two exits: YES and NO. The flow branches based on whether a condition is true or false.</p>
+      <p>Example: <code>Is score &gt;= 50?</code> → YES → "Pass" ; NO → "Fail"</p>
+    </div>
+    <div class="ic b">
+      <h4>Iteration (looping)</h4>
+      <p>An arrow loops back to an earlier point, creating a loop. The loop continues until a decision condition is met. The decision (diamond) controls when the loop exits.</p>
+      <p>Example: Loop that keeps asking for a valid password until one is entered correctly.</p>
+    </div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Using a rectangle for decisions — MUST use a diamond</li>
+        <li>Using a diamond for processes — diamonds are ONLY for yes/no decisions</li>
+        <li>Forgetting a terminator (START/STOP oval) at the beginning and end</li>
+        <li>Arrows without labels on decision diamonds — YES and NO must be labelled</li>
+        <li>Confusing input/output (parallelogram) with process (rectangle)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/2-1-1/" class="nb">← 2.1.1 Computational Thinking</a>
+  <a href="/ocr-j277/2-1-2b/" class="nb n">2.1.2b Pseudocode →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='2-1-2a';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var QUIZ=[
+  {q:"What shape is used to represent a DECISION in a flowchart?",opts:["Rectangle","Oval","Parallelogram","Diamond"],ans:3,exp:"A diamond shape represents a decision (yes/no question) in a flowchart. The two exits are labelled YES and NO (or TRUE and FALSE)."},
+  {q:"What shape is used for START and STOP in a flowchart?",opts:["Rectangle","Parallelogram","Oval/Rounded rectangle","Diamond"],ans:2,exp:"An oval (or rounded rectangle) is the terminator — used to mark the start and stop of a flowchart."},
+  {q:"What shape represents INPUT and OUTPUT in a flowchart?",opts:["Rectangle","Diamond","Oval","Parallelogram"],ans:3,exp:"A parallelogram (slanted rectangle) is used for input and output — e.g., 'INPUT name' or 'OUTPUT result'."},
+  {q:"Which shape is used to represent a PROCESS (e.g., a calculation)?",opts:["Diamond","Parallelogram","Rectangle","Oval"],ans:2,exp:"A rectangle represents a process — any step that processes, calculates, or modifies data, e.g., 'total = price * quantity'."},
+  {q:"In a flowchart, what does an arrow represent?",opts:["A decision","The direction of flow between steps","An input","A loop"],ans:1,exp:"Arrows (flow lines) connect the shapes and show the direction in which the algorithm flows from one step to the next."},
+  {q:"A flowchart has a diamond with 'Is age >= 18?' with YES and NO exits. This represents which programming construct?",opts:["Sequence","Iteration","Selection","A function call"],ans:2,exp:"A decision diamond with YES/NO exits represents selection — an IF statement in code. The flow branches based on whether the condition is true."},
+  {q:"How is iteration (a loop) shown in a flowchart?",opts:["With a circle","With an arrow that goes back to an earlier step","With a double rectangle","With a pentagon"],ans:1,exp:"Iteration is shown by an arrow looping back to an earlier step — controlled by a decision diamond. The loop continues until the condition is met."},
+  {q:"Which of the following would use a PARALLELOGRAM in a flowchart?",opts:["Calculating total = price + tax","Checking if age > 18","Displaying the result to the screen","Starting the program"],ans:2,exp:"Displaying a result to the screen is an OUTPUT — represented by a parallelogram. Calculation uses a rectangle; decision uses a diamond; start uses an oval."},
+  {q:"A programmer wants to show that a loop keeps running while a counter is less than 10. Which shape controls the loop exit?",opts:["Rectangle","Oval","Diamond","Parallelogram"],ans:2,exp:"A diamond controls the loop exit — it asks 'Is counter < 10?' If YES, the loop continues; if NO, the loop exits. The decision diamond is essential for iteration."},
+  {q:"What is the purpose of a flowchart?",opts:["To write actual code","To visually represent an algorithm using standard symbols","To test a program","To document security vulnerabilities"],ans:1,exp:"A flowchart visually represents an algorithm using standard symbols, making it easier to plan, communicate, and check the logic before coding."},
+  {q:"Which symbol must appear at BOTH the beginning and end of a flowchart?",opts:["Diamond","Rectangle","Oval (terminator)","Parallelogram"],ans:2,exp:"An oval (terminator) must appear at the start ('START') and end ('STOP') of every flowchart to mark the beginning and end of the algorithm."},
+  {q:"A student uses a rectangle for a decision. What is wrong with this?",opts:["Nothing — rectangles can be used for decisions","Decisions must use a diamond — otherwise the flowchart does not follow standard notation","Decisions should use circles","The rectangle is too small"],ans:1,exp:"Flowcharts use internationally recognised standard symbols. Using a rectangle for a decision is incorrect — diamonds are required for decisions to distinguish them from processes."},
+  {q:"Which control structure shows steps executing one after the other with no branching?",opts:["Iteration","Selection","Sequence","Subroutine call"],ans:2,exp:"Sequence is the most basic control structure — steps follow one after the other in order. In a flowchart, this is shown as boxes connected top-to-bottom with straight arrows."},
+  {q:"In a decision diamond, how many exits does it have?",opts:["One","Two (YES and NO)","Three","As many as needed"],ans:1,exp:"A decision diamond always has exactly TWO exits — one for YES (true) and one for NO (false). These must be clearly labelled."},
+  {q:"A flowchart box reads 'score = score + 1'. What shape should this be in?",opts:["Diamond — it's a decision","Oval — it's the start","Parallelogram — it's output","Rectangle — it's a process"],ans:3,exp:"'score = score + 1' is an assignment/process (modifying a variable). It uses a rectangle. A parallelogram would be used if the score were being displayed; a diamond if it were being tested."}
+];
+var WORKSHEET=[
+  {q:"State the name and purpose of FOUR different flowchart symbols.",marks:8,ms:"Oval/terminator: marks the start and stop of a flowchart (2). Rectangle/process: represents a processing step such as a calculation or assignment (2). Parallelogram/input-output: represents data input or output to/from the user (2). Diamond/decision: represents a yes/no decision that branches the flow (2)."},
+  {q:"What is the difference between a process box and a decision diamond in a flowchart?",marks:2,ms:"A process box (rectangle) represents an action or calculation — e.g., total = price * qty (1). A decision diamond represents a yes/no question — e.g., 'Is total > 100?' — and branches the flow based on the answer (1)."},
+  {q:"Explain how iteration (a loop) is represented in a flowchart.",marks:2,ms:"A loop is shown by an arrow flowing back to an earlier point in the flowchart (1). A decision diamond controls when the loop exits — one exit continues the loop, the other exits it (1)."},
+  {q:"A student is designing a flowchart for a login system. List the steps they would need to show.",marks:4,ms:"START (1); input username and password (parallelogram) (1); decision: 'Is username and password correct?' (1); YES → 'Access granted' (output) → STOP; NO → loop back to input or display 'Access denied' and STOP (1)."},
+  {q:"Why are standardised symbols used in flowcharts?",marks:2,ms:"Standard symbols ensure that any programmer or stakeholder — regardless of background or nationality — can read and understand the flowchart (1). It provides a common visual language for communication and reduces ambiguity (1)."},
+  {q:"State TWO advantages of using a flowchart to plan an algorithm before coding.",marks:2,ms:"Any two: makes it easier to spot logic errors before writing code (1); provides a clear visual plan for the programmer to follow (1); easier to communicate the design to others (1); helps identify edge cases and decision points (1)."},
+  {q:"What is wrong with a flowchart that uses a rectangle for the question 'Is score greater than 50?'",marks:2,ms:"A decision must use a diamond shape, not a rectangle (1). A rectangle is for processes — using it for a decision doesn't follow standard notation and makes the flowchart ambiguous (1)."},
+  {q:"Describe what THREE different flowchart symbols would be needed to represent: asking the user for their age, checking if it is 18 or over, and displaying 'Adult' or 'Under 18'.",marks:3,ms:"Parallelogram for input (INPUT age) (1); diamond for decision (Is age >= 18?) (1); parallelogram for each output (OUTPUT 'Adult' / OUTPUT 'Under 18') (1)."}
+];
+var KEY_TERMS=[
+  {w:"Flowchart",d:"A visual diagram representing an algorithm using standard symbols connected by arrows."},
+  {w:"Terminator",d:"An oval shape used to mark the START and STOP of a flowchart."},
+  {w:"Process box",d:"A rectangle representing a processing step — calculation, assignment, or action."},
+  {w:"Input/Output",d:"A parallelogram representing data entering or leaving the system — keyboard input or screen display."},
+  {w:"Decision diamond",d:"A diamond shape representing a yes/no question. Has two exits labelled YES and NO."},
+  {w:"Flow line",d:"An arrow connecting flowchart symbols showing the direction of execution."},
+  {w:"Sequence",d:"Steps executing one after the other in order — the simplest control structure."},
+  {w:"Selection",d:"A branching control structure — the path taken depends on whether a condition is true (YES) or false (NO)."},
+  {w:"Iteration",d:"A loop — a section of the flowchart that repeats until a condition is met, shown by an arrow looping back."},
+  {w:"Algorithm",d:"A precise set of step-by-step instructions for solving a problem."},
+  {w:"Control structure",d:"A construct that determines the order in which instructions are executed: sequence, selection, or iteration."},
+  {w:"Condition",d:"A logical expression evaluated in a decision diamond — produces a true/false (YES/NO) result."},
+  {w:"Standard notation",d:"The internationally recognised set of flowchart symbols that ensures universal readability."},
+  {w:"Loop body",d:"The set of steps inside a loop that are repeated each time the loop iterates."},
+  {w:"Exit condition",d:"The condition in a decision diamond that, when true, causes the loop to stop."}
+];
+var TEST_MCQ=[
+  {q:"What shape represents a DECISION in a standard flowchart?",opts:["Rectangle","Oval","Parallelogram","Diamond"],ans:3,exp:"A diamond shape is used for decisions (yes/no conditions). Both exits must be labelled YES and NO."},
+  {q:"What shape is used for INPUT and OUTPUT?",opts:["Rectangle","Oval","Parallelogram","Diamond"],ans:2,exp:"A parallelogram is used for input and output — e.g., 'INPUT number' or 'PRINT result'."},
+  {q:"How is a loop shown in a flowchart?",opts:["With an extra oval","By repeating all the boxes","With an arrow looping back to an earlier step, controlled by a decision","With a different colour"],ans:2,exp:"Iteration is shown by an arrow flowing back to an earlier step, with a decision diamond controlling when the loop exits."},
+  {q:"A box contains 'total = price * qty'. Which shape should it be?",opts:["Diamond","Oval","Parallelogram","Rectangle"],ans:3,exp:"This is a process (calculation/assignment). Processes use a rectangle."},
+  {q:"What is missing if a flowchart has no oval shapes?",opts:["Decisions","Inputs","Start and Stop terminators","Outputs"],ans:2,exp:"Ovals mark the START and STOP of a flowchart. Without them, it's unclear where the algorithm begins and ends."}
+];
+var TEST_SA=[
+  {q:"State the flowchart symbol used for each of the following: (a) a calculation, (b) a yes/no question, (c) displaying output.",marks:3,ms:"(a) Rectangle — process (1). (b) Diamond — decision (1). (c) Parallelogram — output (1)."},
+  {q:"Explain how selection is shown in a flowchart.",marks:2,ms:"Selection is shown using a diamond shape containing a yes/no condition (1). The flow branches into two paths — one for YES and one for NO — based on whether the condition is true or false (1)."},
+  {q:"Describe how a loop would appear in a flowchart for checking a password.",marks:3,ms:"A parallelogram to input the password (1); a decision diamond asking 'Is password correct?' (1); the NO exit loops back to the input step; the YES exit continues to the next step (1)."},
+  {q:"Why should standard symbols always be used in flowcharts?",marks:1,ms:"Standard symbols ensure the flowchart can be understood by any programmer regardless of their background — providing a universal, unambiguous visual language."},
+  {q:"What is the difference between a process box and an input/output box?",marks:2,ms:"A process box (rectangle) represents performing an action or calculation on data (1). An input/output box (parallelogram) represents data being received from the user or displayed to them (1)."}
+];
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>

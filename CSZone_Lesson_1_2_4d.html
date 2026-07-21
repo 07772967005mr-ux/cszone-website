@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1.2.4d Binary Shifts | CSZone OCR J277</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.fb2{background:#0f172a;border:1px solid #3730a3;border-radius:8px;padding:16px 20px;margin:12px 0;font-family:monospace;font-size:14px;color:#a5b4fc;line-height:1.8}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
+</style>
+</head>
+<body>
+<div id="po" style="display:none"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
+  <div class="sidebar-section">
+    <div class="sst">Component 1</div>
+    <div class="sst" style="color:#818cf8">1.2 Memory &amp; Storage</div>
+    <a href="/ocr-j277/1-2-1/" class="sl fb">1.2.1 Primary Storage</a>
+    <a href="/ocr-j277/1-2-2/" class="sl">1.2.2 Secondary Storage</a>
+    <a href="/ocr-j277/1-2-3/" class="sl">1.2.3 Units of Storage</a>
+    <a href="/ocr-j277/1-2-4a/" class="sl">1.2.4a Binary &amp; Denary</a>
+    <a href="/ocr-j277/1-2-4b/" class="sl">1.2.4b Hexadecimal</a>
+    <a href="/ocr-j277/1-2-4c/" class="sl">1.2.4c Binary Arithmetic</a>
+    <a href="/ocr-j277/1-2-4d/" class="sl active">1.2.4d Binary Shifts</a>
+    <a href="/ocr-j277/1-2-4e/" class="sl">1.2.4e Character Encoding</a>
+    <a href="/ocr-j277/1-2-4f/" class="sl">1.2.4f Representing Images</a>
+    <a href="/ocr-j277/1-2-4g/" class="sl">1.2.4g Representing Sound</a>
+    <a href="/ocr-j277/1-2-5/" class="sl">1.2.5 Compression</a>
+    <div class="sst" style="color:#818cf8">1.3 Networks</div>
+    <a href="/ocr-j277/1-3-1a/" class="sl fb">1.3.1a LAN, WAN</a>
+    <a href="/ocr-j277/1-3-1b/" class="sl">1.3.1b Network Types</a>
+    <a href="/ocr-j277/1-3-1c/" class="sl">1.3.1c Internet &amp; DNS</a>
+    <a href="/ocr-j277/1-3-1d/" class="sl">1.3.1d Topologies</a>
+    <a href="/ocr-j277/1-3-2a/" class="sl">1.3.2a Wired &amp; Wireless</a>
+    <a href="/ocr-j277/1-3-2b/" class="sl">1.3.2b Protocols</a>
+    <div class="sst" style="color:#818cf8">1.4–1.6</div>
+    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
+    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
+    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
+    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
+    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
+    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sst">Component 2</div>
+    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
+    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
+    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
+    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
+    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
+    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
+    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
+    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
+    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
+    <a href="/ocr-j277/2-2-1b/" class="sl">2.2.1b Selection &amp; Iteration</a>
+    <a href="/ocr-j277/2-2-1c/" class="sl">2.2.1c Arrays</a>
+    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
+    <a href="/ocr-j277/2-2-1e/" class="sl">2.2.1e Strings</a>
+    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
+    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
+    <a href="/ocr-j277/2-3-2/" class="sl">2.3.2 Testing</a>
+    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
+    <a href="/ocr-j277/2-4-1b/" class="sl">2.4.1b Truth Tables</a>
+    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
+    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+  </div>
+</nav>
+<div class="main">
+<div class="lesson-header">
+  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.2 Memory &amp; Storage</div>
+  <div class="lesson-title">1.2.4d — Binary Shifts</div>
+  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
+</div>
+<div class="tab-bar">
+  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
+  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
+  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
+  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
+  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
+  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
+  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+</div>
+
+<div class="tc" id="tab-notes">
+  <div class="ns">
+    <h2>What is a Binary Shift?</h2>
+    <p>A binary shift moves all the bits in a binary number left or right by a set number of positions. Empty positions are filled with zeros. Bits that fall off the end are lost.</p>
+    <div class="kp"><strong>Effect on value:</strong> Left shift × 2 per position &nbsp;|&nbsp; Right shift ÷ 2 per position</div>
+  </div>
+
+  <div class="ns">
+    <h2>Left Shift</h2>
+    <p>Shifting left by n positions multiplies the value by 2ⁿ.</p>
+    <div class="ic g">
+      <h4>Left shift by 2: 00010100 (= 20)</h4>
+      <div class="fb2">
+        Original: 0 0 0 1 0 1 0 0 &nbsp;= 20<br>
+        Shift ←2: 0 1 0 1 0 0 [0 0] &nbsp;← 2 zeros fill from right<br>
+        Result:&nbsp;&nbsp;0 1 0 1 0 0 0 0 &nbsp;= 80<br><br>
+        Check: 20 × 2² = 20 × 4 = 80 ✓
+      </div>
+    </div>
+    <div class="ic b">
+      <h4>Left shift by 1: 00110011 (= 51)</h4>
+      <div class="fb2">
+        Original: 0 0 1 1 0 0 1 1 = 51<br>
+        Shift ←1: 0 1 1 0 0 1 1 0 = 102<br>
+        Check: 51 × 2 = 102 ✓
+      </div>
+    </div>
+    <div class="ic a">
+      <h4>Left shift with overflow: 11000000 (= 192)</h4>
+      <div class="fb2">
+        Shift ←1: [1] 1 0 0 0 0 0 0 0<br>
+        8-bit result: 10000000 = 128 (WRONG — lost the leading 1)<br>
+        Overflow! 192 × 2 = 384, cannot store in 8 bits.
+      </div>
+    </div>
+  </div>
+
+  <div class="ns">
+    <h2>Right Shift</h2>
+    <p>Shifting right by n positions divides the value by 2ⁿ (integer division — any remainder is lost).</p>
+    <div class="ic g">
+      <h4>Right shift by 2: 01001000 (= 72)</h4>
+      <div class="fb2">
+        Original: 0 1 0 0 1 0 0 0 = 72<br>
+        Shift →2: [0 0] 0 1 0 0 1 0 ← 2 zeros fill from left<br>
+        Result:&nbsp;&nbsp; 0 0 0 1 0 0 1 0 = 18<br><br>
+        Check: 72 ÷ 4 = 18 ✓
+      </div>
+    </div>
+    <div class="ic b">
+      <h4>Right shift by 1 with data loss: 00000011 (= 3)</h4>
+      <div class="fb2">
+        Shift →1: 0 0 0 0 0 0 0 1 [1 lost]<br>
+        Result: 00000001 = 1<br>
+        Check: 3 ÷ 2 = 1 remainder 1 (remainder lost) ✓
+      </div>
+    </div>
+  </div>
+
+  <div class="ns">
+    <h2>Summary Table</h2>
+    <table class="ct">
+      <tr><th>Shift type</th><th>Direction</th><th>Effect on value</th><th>Empty bits</th></tr>
+      <tr><td>Left shift (×2)</td><td>Left</td><td>Multiply by 2 per place</td><td>Fill with 0s from right</td></tr>
+      <tr><td>Right shift (÷2)</td><td>Right</td><td>Divide by 2 per place (int)</td><td>Fill with 0s from left</td></tr>
+    </table>
+    <div class="kp"><strong>Useful shortcut:</strong> Left shift 3 = ×8 (2³). Right shift 4 = ÷16 (2⁴). Multiply by 2ⁿ or divide by 2ⁿ.</div>
+    <div class="ic a">
+      <h4>Common Mistakes</h4>
+      <ul>
+        <li>Forgetting that left shift multiplies (not adds) by 2 per position</li>
+        <li>Not filling empty positions with 0s</li>
+        <li>Forgetting that right-shifted odd numbers lose the remainder bit</li>
+        <li>Confusing left and right: left = bigger value (multiply), right = smaller (divide)</li>
+        <li>Not detecting when a left shift causes overflow</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
+<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet — Binary Shifts</h2><p style="font-size:13px;color:#64748b;margin-bottom:20px">Show bit positions and check in denary.</p></div><div id="ws-container"></div></div>
+<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
+<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
+<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
+<div class="lnav">
+  <a href="/ocr-j277/1-2-4c/" class="nb">← 1.2.4c Binary Arithmetic</a>
+  <a href="/ocr-j277/1-2-4e/" class="nb n">1.2.4e Character Encoding →</a>
+</div>
+</div>
+</div>
+
+<script>
+var LESSON_ID='1-2-4d';var IS_FREE=false;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+
+var QUIZ=[
+  {q:"What is the effect of a left binary shift by 1 position?",opts:["Divides the value by 2","Multiplies the value by 2","Adds 1 to the value","Subtracts 1 from the value"],ans:1,exp:"Left shift by 1 = ×2. Left shift by n = ×2ⁿ."},
+  {q:"Left shift 00000100 (= 4) by 2 positions. What is the result?",opts:["00010000 (16)","00001000 (8)","01000000 (64)","00100000 (32)"],ans:0,exp:"4 × 2² = 16. Bits move left 2 places: 00000100 → 00010000."},
+  {q:"What fills the empty positions after a left shift?",opts:["1s","The original bits","0s","Carry bits"],ans:2,exp:"Empty positions on the right are filled with 0s after a left shift."},
+  {q:"Right shift 01100000 (= 96) by 2 positions. What is the result?",opts:["00011000 (24)","00110000 (48)","00001100 (12)","00110000 (48)"],ans:0,exp:"96 ÷ 4 = 24. 01100000 → 00011000 = 24."},
+  {q:"What happens to bits that 'fall off' the edge during a shift?",opts:["They wrap around to the other end","They are stored in a temporary register","They are lost","They cause an error"],ans:2,exp:"Bits shifted off the end of the register are simply lost (discarded)."},
+  {q:"What is the effect of a right binary shift by 3 positions?",opts:["Divide by 3","Divide by 8","Multiply by 8","Divide by 6"],ans:1,exp:"Right shift by 3 = ÷2³ = ÷8."},
+  {q:"Left shift 01010000 by 1 position. What is the result?",opts:["10100000","00101000","11010000","01010001"],ans:0,exp:"Bits move left 1 place: 01010000 → 10100000. 80 × 2 = 160 ✓."},
+  {q:"Which of the following left shifts would cause overflow in 8 bits?",opts:["Shifting 00000001 left by 7","Shifting 10000000 left by 1","Shifting 00000100 left by 2","Shifting 00001111 left by 1"],ans:1,exp:"10000000 left shift by 1 → 1 0000000 — the 1 falls off the MSB end causing overflow. The 8-bit result (00000000) is incorrect."},
+  {q:"Shift 00001001 (= 9) right by 1. What is the result?",opts:["00000100 (4)","00010010 (18)","00000101 (5)","00001000 (8)"],ans:0,exp:"9 ÷ 2 = 4 remainder 1 (remainder lost). 00001001 → 00000100 = 4."},
+  {q:"A programmer needs to quickly multiply a value by 8. What binary shift should they use?",opts:["Left shift by 2","Right shift by 3","Left shift by 3","Right shift by 2"],ans:2,exp:"×8 = ×2³. Left shift by 3 positions multiplies by 2³ = 8."},
+  {q:"Left shift 00000011 (= 3) by 4. What is the result?",opts:["00110000 (48)","01100000 (96)","00001100 (12)","01000000 (64)"],ans:0,exp:"3 × 2⁴ = 3 × 16 = 48 = 00110000."},
+  {q:"Which direction of shift corresponds to integer division by a power of 2?",opts:["Left shift","Right shift","Both","Neither"],ans:1,exp:"Right shift divides by 2ⁿ (where n is the number of positions). Any remainder is lost."},
+  {q:"Right shift 10000000 (= 128 in unsigned) by 1. What is the result?",opts:["01000000","11000000","00000001","10000001"],ans:0,exp:"Bits move right 1: 10000000 → 01000000 = 64. 128 ÷ 2 = 64 ✓."},
+  {q:"A binary shift is described as 'losing information' when:",opts:["Bits move left","A left shift causes overflow OR a right shift removes a 1 bit","All bits are 0","The number of positions is more than 8"],ans:1,exp:"Information is lost in two cases: left overflow (MSB disappears) or right shift removes a 1 that represented a fractional remainder."},
+  {q:"What is the result of right-shifting 00000111 (= 7) by 2 positions?",opts:["00000001 (1)","00000011 (3)","00011100 (28)","00001110 (14)"],ans:0,exp:"7 ÷ 4 = 1 remainder 3. 00000111 → 00000001 = 1 (bits 00 and 1 are lost on the right)."}
+];
+
+var WORKSHEET=[
+  {q:"Perform the following left shifts on the 8-bit number 00000110 (= 6). State the result in binary and denary.\n(a) Left shift by 1  (b) Left shift by 3  (c) Left shift by 5",marks:3,ms:"(a) 00001100 = 12 = 6×2 (1). (b) 00110000 = 48 = 6×8 (1). (c) 11000000 = 192 = 6×32 (1)."},
+  {q:"Perform the following right shifts on 10110000 (= 176 unsigned). State the result in binary and denary.\n(a) Right shift by 1  (b) Right shift by 4",marks:2,ms:"(a) 01011000 = 88 = 176÷2 (1). (b) 00001011 = 11 = 176÷16 (1)."},
+  {q:"Explain why a left shift on 10000000 (= 128) by 1 position produces an incorrect result in 8-bit binary.",marks:2,ms:"The MSB (1) is shifted out of the 8-bit register and is lost — overflow occurs (1). The 8-bit result is 00000000 = 0, but the correct answer would be 256, which requires 9 bits (1)."},
+  {q:"A programmer wants to divide the value 240 by 16 using a binary shift. (a) What shift should be used? (b) Show the result in binary.",marks:2,ms:"(a) Right shift by 4 (divide by 2⁴=16) (1). (b) 240=11110000 → right shift 4 → 00001111 = 15 (1). Check: 240÷16=15 ✓."},
+  {q:"Explain how binary shifts can be used to perform fast multiplication and division in a computer. Why might this be faster than direct multiplication?",marks:3,ms:"Left shift by n = multiply by 2ⁿ; right shift by n = integer divide by 2ⁿ (1). Shift operations move bits directly in registers, which is a very simple hardware operation (1). Direct multiplication involves repeated addition and is more complex/slower for the ALU, while shifts complete in a single clock cycle (1)."},
+  {q:"Starting with 00000001, what value do you get after a left shift by 7? Is there any risk of overflow?",marks:2,ms:"00000001 left shift 7 → 10000000 = 128 (1). There is a risk if shifted by 8 — that would cause overflow. Shifting by 7 is the maximum safe left shift for this value (no overflow with 7, as the 1 reaches but doesn't exceed the MSB) (1)."},
+  {q:"A student claims that right-shifting 00000101 (= 5) by 1 gives 00000010 (= 2). Explain why this is correct as an integer but loses information.",marks:2,ms:"5 ÷ 2 = 2 in integer division, so 00000010 is the correct integer result (1). However, 5 is odd — the LSB (1) is discarded in the shift, losing the remainder of 1 (the true result is 2.5, but binary integers cannot represent fractions) (1)."},
+  {q:"Calculate the result of left-shifting 00000011 (= 3) by 4, then right-shifting the result by 2. What is the final value?",marks:2,ms:"Left shift 4: 00000011 → 00110000 = 48 (1). Right shift 2: 00110000 → 00001100 = 12 (1). Final value = 12 = 3×4."}
+];
+
+var KEY_TERMS=[
+  {w:"Binary shift",d:"An operation that moves all bits in a binary number left or right by a specified number of positions."},
+  {w:"Left shift",d:"Shifts bits towards the MSB. Multiplies the value by 2 for each position shifted. Empty bits on the right are filled with 0s."},
+  {w:"Right shift",d:"Shifts bits towards the LSB. Divides the value by 2 for each position shifted (integer division). Empty bits on the left are filled with 0s."},
+  {w:"Shift by n",d:"Shifts n positions. Left shift by n multiplies by 2ⁿ; right shift by n divides by 2ⁿ."},
+  {w:"Overflow (shift)",d:"Occurs during a left shift when a 1 bit is shifted beyond the MSB position and lost, producing an incorrect result."},
+  {w:"Data loss (shift)",d:"When bits shifted off the end of a register are discarded. Left overflow or right shift of odd numbers both cause data loss."},
+  {w:"Logical shift",d:"A shift that fills empty positions with 0s, regardless of the sign of the number. Treats the number as unsigned."},
+  {w:"Integer division",d:"Division that discards the remainder. Right shifts perform integer division by 2ⁿ."},
+  {w:"Multiply by 2ⁿ",d:"The mathematical effect of a left shift by n positions (assuming no overflow)."},
+  {w:"Divide by 2ⁿ",d:"The mathematical effect of a right shift by n positions."},
+  {w:"Register",d:"A small, fast storage location inside the CPU used to hold values during processing. Shifts operate on register contents."},
+  {w:"MSB",d:"Most Significant Bit — the leftmost bit, which is the first to be lost in a left-shift overflow."},
+  {w:"LSB",d:"Least Significant Bit — the rightmost bit, which is lost in a right shift when the value is odd."},
+  {w:"Bit position",d:"The location of a bit within a binary number. Counting from right: position 0 (value 1), position 1 (value 2), etc."},
+  {w:"Power of 2",d:"Numbers like 1, 2, 4, 8, 16, 32, 64, 128 — each step a binary shift. Multiplying/dividing by powers of 2 is very efficient for computers."}
+];
+
+var TEST_MCQ=[
+  {q:"Left-shift 00000010 (= 2) by 3 positions. What is the result?",opts:["00010000 (16)","00001000 (8)","00000010","01000000 (64)"],ans:0,exp:"2 × 2³ = 2 × 8 = 16 = 00010000."},
+  {q:"Right-shift 01010100 (= 84) by 2. What is the result?",opts:["00010101 (21)","00101010 (42)","00010100 (20)","00101000 (40)"],ans:0,exp:"84 ÷ 4 = 21. 01010100 → 00010101 = 21."},
+  {q:"A left shift of 3 multiplies the value by:",opts:["3","6","8","16"],ans:2,exp:"Left shift by 3 = × 2³ = × 8."},
+  {q:"Which shift operation would you use to quickly divide by 4?",opts:["Left shift by 4","Right shift by 2","Left shift by 2","Right shift by 4"],ans:1,exp:"÷4 = ÷2² → right shift by 2."},
+  {q:"What value do you get after right-shifting 00001001 (= 9) by 1?",opts:["00000100 (4)","00000101 (5)","00010010 (18)","00000011 (3)"],ans:0,exp:"9 ÷ 2 = 4 (remainder 1 lost). 00001001 → 00000100 = 4."}
+];
+
+var TEST_SA=[
+  {q:"Left-shift 00000101 (= 5) by 3. State the result in binary and denary.",marks:2,ms:"00000101 → 00101000 = 40. 5 × 8 = 40 ✓ (1 for binary, 1 for denary)."},
+  {q:"Explain what happens to bits that are 'shifted out' during a binary shift.",marks:1,ms:"Bits shifted out of the register (beyond the MSB for left, or below the LSB for right) are lost/discarded permanently."},
+  {q:"State one advantage of using binary shifts to multiply or divide instead of standard multiplication.",marks:1,ms:"Shift operations are much faster for the CPU as they are simple hardware operations that move bits directly, completing in a single clock cycle, whereas standard multiplication requires more complex computation."},
+  {q:"Right-shift 01110000 (= 112) by 3. Check your answer in denary.",marks:2,ms:"01110000 → 00001110 = 14 (1). 112 ÷ 8 = 14 ✓ (1)."},
+  {q:"Explain why right-shifting an odd binary number always loses information.",marks:2,ms:"Odd binary numbers have a 1 as their least significant bit (LSB) (1). When right-shifted, this LSB is discarded — it represents the remainder (0.5) that cannot be stored in an integer format, so information is permanently lost (1)."}
+];
+
+function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
+function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
+function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
+function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
+function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:100px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
+function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
+function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
+function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
+function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
+function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
+window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+</script>
+</body>
+</html>
