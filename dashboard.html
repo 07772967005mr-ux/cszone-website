@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard — CSZone</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:#f9f8ff;color:#0f172a;line-height:1.5;}
+nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #ede9fe;padding:0 28px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-size:20px;font-weight:900;color:#0f172a;text-decoration:none;letter-spacing:-0.5px;}
+.nav-logo span{color:#7c3aed;}
+.nav-right{display:flex;align-items:center;gap:14px;font-size:13px;}
+.nav-email{color:#64748b;font-weight:500;}
+.badge-free{background:#fff7ed;color:#c2410c;border:1.5px solid #fed7aa;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;}
+.badge-pro{background:#f5f3ff;color:#7c3aed;border:1.5px solid #ddd6fe;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;}
+.btn-logout{background:none;border:1.5px solid #e2e8f0;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:600;color:#64748b;cursor:pointer;font-family:inherit;}
+.btn-logout:hover{border-color:#7c3aed;color:#7c3aed;}
+
+.main{max-width:900px;margin:0 auto;padding:32px 24px;}
+
+.welcome{margin-bottom:24px;}
+.welcome h1{font-size:26px;font-weight:800;color:#0f172a;letter-spacing:-0.5px;margin-bottom:4px;}
+.welcome p{color:#64748b;font-size:14px;}
+
+.upgrade-banner{background:linear-gradient(135deg,#7c3aed,#6d28d9);border-radius:16px;padding:20px 24px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.upgrade-text h3{color:#fff;font-size:16px;font-weight:700;margin-bottom:4px;}
+.upgrade-text p{color:rgba(255,255,255,.75);font-size:13px;}
+.upgrade-btns{display:flex;gap:8px;flex-shrink:0;}
+.btn-upgrade{background:#fff;color:#7c3aed;border:none;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;text-decoration:none;display:inline-block;}
+.btn-upgrade-yr{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3);border-radius:10px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;}
+
+.pro-banner{background:#ecfdf5;border:1.5px solid #6ee7b7;border-radius:16px;padding:20px 24px;margin-bottom:28px;display:none;align-items:center;gap:14px;}
+.pro-banner-icon{font-size:28px;}
+.pro-banner h3{color:#065f46;font-size:16px;font-weight:700;margin-bottom:3px;}
+.pro-banner p{color:#047857;font-size:13px;}
+
+.board-tabs{display:flex;gap:4px;margin-bottom:24px;background:#fff;border-radius:12px;padding:6px;border:1px solid #ede9fe;width:fit-content;}
+.board-tab{padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;color:#64748b;cursor:pointer;border:none;background:none;font-family:inherit;}
+.board-tab.active{background:#7c3aed;color:#fff;}
+
+.topic-card{background:#fff;border-radius:16px;border:1px solid #ede9fe;margin-bottom:16px;overflow:hidden;}
+.topic-header{display:flex;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid #f5f3ff;}
+.topic-num{width:40px;height:40px;background:linear-gradient(135deg,#7c3aed,#9f67f5);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800;flex-shrink:0;}
+.topic-title{font-size:16px;font-weight:700;color:#0f172a;}
+.topic-count{margin-left:auto;font-size:12px;color:#94a3b8;font-weight:500;}
+.lessons-list{padding:8px 12px;}
+.lesson-row{display:flex;align-items:center;gap:12px;padding:10px 10px;border-radius:10px;cursor:pointer;text-decoration:none;color:inherit;transition:background .15s;}
+.lesson-row:hover{background:#f9f8ff;}
+.lesson-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.lesson-icon.free-icon{background:#ecfdf5;}
+.lesson-icon.pro-icon{background:#fef3c7;}
+.lesson-info{flex:1;}
+.lesson-name{font-size:13.5px;font-weight:600;color:#0f172a;margin-bottom:1px;}
+.lesson-meta{font-size:11px;color:#94a3b8;}
+.lesson-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;flex-shrink:0;}
+.badge-green{background:#ecfdf5;color:#059669;}
+.badge-locked{background:#f1f5f9;color:#94a3b8;}
+.badge-unlocked{background:#f5f3ff;color:#7c3aed;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">CS<span>Zone</span></a>
+  <div class="nav-right">
+    <span class="nav-email">Logged in as <strong id="nav-email">...</strong></span>
+    <span id="nav-badge" class="badge-free">Free</span>
+    <button class="btn-logout" onclick="logout()">Log out</button>
+  </div>
+</nav>
+
+<div class="main">
+  <div class="welcome">
+    <h1>Welcome back, <span id="first-name">there</span>! 👋</h1>
+    <p>Pick up where you left off — your revision dashboard is ready.</p>
+  </div>
+
+  <!-- Shown for free users -->
+  <div class="upgrade-banner" id="upgrade-banner">
+    <div class="upgrade-text">
+      <h3>You're on the free plan — unlock everything</h3>
+      <p>Full access to all topics, worksheets, mock papers and instant-marked practice.</p>
+    </div>
+    <div class="upgrade-btns">
+      <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="btn-upgrade">£7.99/month →</a>
+      <button class="btn-upgrade-yr" onclick="window.location.href='https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00'">£59/year</button>
+    </div>
+  </div>
+
+  <!-- Shown for pro users -->
+  <div class="pro-banner" id="pro-banner">
+    <div class="pro-banner-icon">🎉</div>
+    <div>
+      <h3>Welcome to CSZone Pro!</h3>
+      <p>All content is now unlocked. Click any lesson to start revising.</p>
+    </div>
+  </div>
+
+  <div class="board-tabs">
+    <button class="board-tab active">GCSE</button>
+    <button class="board-tab">iGCSE</button>
+    <button class="board-tab">A-Level</button>
+    <button class="board-tab">Int'l A-Level</button>
+  </div>
+
+  <!-- OCR J277 Course Listing -->
+  <div id="course-list">
+
+    <!-- 1.1 Systems Architecture -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">1.1</div>
+        <div class="topic-title">Systems Architecture</div>
+        <div class="topic-count">3 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/1-1-1/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Architecture of the CPU</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-1-2/">
+          <div class="lesson-icon pro-icon">🔒</div>
+          <div class="lesson-info"><div class="lesson-name">CPU Performance Factors</div><div class="lesson-meta">Unlock with Pro</div></div>
+          <span class="lesson-badge badge-locked">Pro</span>
+        </div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-1-3/">
+          <div class="lesson-icon pro-icon">🔒</div>
+          <div class="lesson-info"><div class="lesson-name">Embedded Systems</div><div class="lesson-meta">Unlock with Pro</div></div>
+          <span class="lesson-badge badge-locked">Pro</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1.2 Memory & Storage -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">1.2</div>
+        <div class="topic-title">Memory & Storage</div>
+        <div class="topic-count">11 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/1-2-1/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Primary and Secondary Storage</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-2-2/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Units of Storage</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-2-3/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Binary & Hexadecimal</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-2-4a/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Character Encoding (ASCII & Unicode)</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-2-4b/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Representing Images</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-2-4c/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Representing Sound</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-2-4d/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Compression</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-2-4e/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Lossless vs Lossy Compression</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-2-4f/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Run Length Encoding</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-2-4g/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Huffman Coding</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-2-5/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Encryption</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+      </div>
+    </div>
+
+    <!-- 1.3 Computer Networks -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">1.3</div>
+        <div class="topic-title">Computer Networks</div>
+        <div class="topic-count">6 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/1-3-1a/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Networks and Topologies</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-3-1b/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Network Hardware</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-3-1c/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">The Internet & Cloud</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-3-1d/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Network Protocols</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-3-2a/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Network Security Threats</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-3-2b/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Network Security Countermeasures</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+      </div>
+    </div>
+
+    <!-- 1.4 Network Security -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">1.4</div>
+        <div class="topic-title">Network Security</div>
+        <div class="topic-count">2 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/1-4-1/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Threats to Computer Systems</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-4-2/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Prevention & Countermeasures</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+      </div>
+    </div>
+
+    <!-- 1.5 Systems Software -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">1.5</div>
+        <div class="topic-title">Systems Software</div>
+        <div class="topic-count">2 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/1-5-1/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Operating Systems</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-5-2/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Utility Software</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+      </div>
+    </div>
+
+    <!-- 1.6 Ethical, Legal, Cultural & Environmental -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">1.6</div>
+        <div class="topic-title">Ethical, Legal, Cultural & Environmental</div>
+        <div class="topic-count">2 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/1-6-1a/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Ethical & Cultural Issues</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/1-6-1b/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Legal, Environmental & Privacy Issues</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+      </div>
+    </div>
+
+    <!-- 2.1 Algorithms -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">2.1</div>
+        <div class="topic-title">Algorithms</div>
+        <div class="topic-count">8 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/2-1-1/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Computational Thinking</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-1-2a/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Linear Search</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-1-2b/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Binary Search</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-1-3a/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Bubble Sort</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-1-3b/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Merge Sort</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-1-3c/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Insertion Sort</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-1-3d/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Quick Sort</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-1-3e/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Comparing Sorting Algorithms</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+      </div>
+    </div>
+
+    <!-- 2.2 Programming Fundamentals -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">2.2</div>
+        <div class="topic-title">Programming Fundamentals</div>
+        <div class="topic-count">6 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/2-2-1a/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Data Types & Variables</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-2-1b/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Sequence, Selection & Iteration</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-2-1c/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Arrays & Lists</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-2-1d/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">File Handling</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-2-1e/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Subroutines</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-2-1f/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">String Manipulation</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+      </div>
+    </div>
+
+    <!-- 2.3 Producing Robust Programs -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">2.3</div>
+        <div class="topic-title">Producing Robust Programs</div>
+        <div class="topic-count">2 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/2-3-1/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Defensive Design</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-3-2/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Testing</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+      </div>
+    </div>
+
+    <!-- 2.4 Boolean Logic -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">2.4</div>
+        <div class="topic-title">Boolean Logic</div>
+        <div class="topic-count">2 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/2-4-1a/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Boolean Logic & Expressions</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-4-1b/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Logic Gates & Circuits</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+      </div>
+    </div>
+
+    <!-- 2.5 Languages & IDEs -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-num">2.5</div>
+        <div class="topic-title">Languages & IDEs</div>
+        <div class="topic-count">3 lessons</div>
+      </div>
+      <div class="lessons-list">
+        <a class="lesson-row" href="/ocr-j277/2-5-1/">
+          <div class="lesson-icon free-icon">📖</div>
+          <div class="lesson-info"><div class="lesson-name">Programming Languages & Translators</div><div class="lesson-meta">Notes · Quiz · Worksheet · Mini Test</div></div>
+          <span class="lesson-badge badge-green">Free</span>
+        </a>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-5-2a/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">IDEs</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+        <div class="lesson-row pro-lesson" data-href="/ocr-j277/2-5-2b/"><div class="lesson-icon pro-icon">🔒</div><div class="lesson-info"><div class="lesson-name">Compilers, Interpreters & Assemblers</div><div class="lesson-meta">Unlock with Pro</div></div><span class="lesson-badge badge-locked">Pro</span></div>
+      </div>
+    </div>
+
+  </div><!-- /course-list -->
+</div><!-- /main -->
+
+<script>
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var ADMIN_EMAIL='07772967005mr@gmail.com';
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+
+function logout(){getSB().auth.signOut().then(function(){window.location.href='/';});}
+
+function showPro(){
+  document.getElementById('upgrade-banner').style.display='none';
+  document.getElementById('pro-banner').style.display='flex';
+  document.getElementById('nav-badge').className='badge-pro';
+  document.getElementById('nav-badge').textContent='Pro';
+  // Unlock all pro lesson rows
+  document.querySelectorAll('.pro-lesson').forEach(function(row){
+    var href=row.getAttribute('data-href');
+    row.style.cursor='pointer';
+    row.querySelector('.lesson-icon').textContent='📖';
+    row.querySelector('.lesson-icon').className='lesson-icon free-icon';
+    row.querySelector('.lesson-meta').textContent='Notes · Quiz · Worksheet · Mini Test';
+    row.querySelector('.lesson-badge').className='lesson-badge badge-unlocked';
+    row.querySelector('.lesson-badge').textContent='Pro ✓';
+    row.onclick=function(){window.location.href=href;};
+  });
+}
+
+function showFree(){
+  document.getElementById('upgrade-banner').style.display='flex';
+  document.getElementById('pro-banner').style.display='none';
+}
+
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){window.location.href='/';return;}
+    var user=session.user;
+    document.getElementById('nav-email').textContent=user.email;
+    document.getElementById('first-name').textContent=user.email.split('@')[0];
+
+    // ADMIN BYPASS — always show as Pro
+    if(user.email===ADMIN_EMAIL){showPro();return;}
+
+    // Check subscription
+    var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};
+    fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(user.sub||user.id)+'&status=eq.active&select=id',{headers:h})
+      .then(function(res){return res.json();})
+      .then(function(d){
+        if(d&&d.length>0){showPro();}else{showFree();}
+      })
+      .catch(function(){showFree();});
+  });
+});
+</script>
+</body>
+</html>
