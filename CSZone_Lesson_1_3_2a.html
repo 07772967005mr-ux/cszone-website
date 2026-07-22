@@ -1,229 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.3.2a Wired & Wireless | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.3.2a Network Protocols — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .protocol-card{background:#f5f3ff;border:1.5px solid #e8e9ff;border-radius:12px;padding:16px 20px;margin-bottom:12px;}
+    .protocol-name{font-size:16px;font-weight:800;color:#7c3aed;margin-bottom:6px;}
+    .protocol-stands{font-size:13px;color:#64748b;margin-bottom:6px;}
+    .protocol-desc{font-size:14.5px;color:#334155;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-card{background:#fff;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-bottom:10px;width:100%;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 1</div>
-    <div class="sst" style="color:#818cf8">1.3 Networks</div>
-    <a href="/ocr-j277/1-3-1a/" class="sl fb">1.3.1a LAN &amp; WAN</a>
-    <a href="/ocr-j277/1-3-1b/" class="sl">1.3.1b Network Types</a>
-    <a href="/ocr-j277/1-3-1c/" class="sl">1.3.1c Internet &amp; DNS</a>
-    <a href="/ocr-j277/1-3-1d/" class="sl">1.3.1d Topologies</a>
-    <a href="/ocr-j277/1-3-2a/" class="sl active">1.3.2a Wired &amp; Wireless</a>
-    <a href="/ocr-j277/1-3-2b/" class="sl">1.3.2b Protocols</a>
-    <div class="sst" style="color:#818cf8">1.4–1.6</div>
-    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
-    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
-    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
-    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
-    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
-    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
-    <div class="sst">Component 2</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.3 Networks</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.3.2a Network Protocols</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.3 Networks</div>
-  <div class="lesson-title">1.3.2a — Wired &amp; Wireless Networks</div>
-  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
+  <div class="lesson-badge">🌐 Component 1 · 1.3 Computer Networks</div>
+  <div class="lesson-title">1.3.2a Network Protocols (TCP/IP, HTTP, DNS &amp; more)</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~14 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>Wired vs Wireless — Overview</h2>
-    <p>Networks can use physical cables (wired) or radio waves (wireless) to transmit data. Each has distinct advantages and disadvantages.</p>
-  </div>
-  <div class="ns">
-    <h2>Wired Connections</h2>
-    <div class="ic b">
-      <h4>Ethernet (copper cable):</h4>
-      <ul>
-        <li>Uses twisted pair copper cables (Cat5e, Cat6, etc.)</li>
-        <li>Typical speeds: 100 Mbps (Fast Ethernet) to 10 Gbps (10GbE)</li>
-        <li>Reliable — not affected by interference from other devices</li>
-        <li>More secure — harder to intercept than wireless</li>
-        <li>Requires physical cable installation</li>
-      </ul>
-    </div>
-    <div class="ic g">
-      <h4>Fibre optic cable:</h4>
-      <ul>
-        <li>Transmits data as pulses of light through glass/plastic fibres</li>
-        <li>Very high speeds (Gbps–Tbps range)</li>
-        <li>Not affected by electrical interference (EMI)</li>
-        <li>Ideal for long-distance and high-bandwidth links</li>
-        <li>More expensive to install than copper</li>
-      </ul>
-    </div>
-  </div>
-  <div class="ns">
-    <h2>Wireless Connections (Wi-Fi)</h2>
-    <div class="ic b">
-      <h4>Wi-Fi:</h4>
-      <ul>
-        <li>Uses radio waves to transmit data</li>
-        <li>Devices connect via a Wireless Access Point (WAP)</li>
-        <li>Portable — devices can move while connected</li>
-        <li>Speed and range affected by walls, distance, interference</li>
-        <li>Less secure than wired (signals can be intercepted if not encrypted)</li>
-      </ul>
-    </div>
-    <div class="ic b">
-      <h4>Bluetooth:</h4>
-      <ul>
-        <li>Short-range wireless connection (typically up to 10 metres)</li>
-        <li>Used for peripheral devices (keyboards, mice, headphones)</li>
-        <li>Lower power consumption than Wi-Fi</li>
-        <li>Personal Area Network (PAN)</li>
-      </ul>
-    </div>
-  </div>
-  <div class="ns">
-    <h2>Factors Affecting Network Performance</h2>
-    <table class="ct">
-      <tr><th>Factor</th><th>Effect on performance</th></tr>
-      <tr><td>Bandwidth</td><td>Higher bandwidth = more data transferred per second</td></tr>
-      <tr><td>Latency</td><td>Delay in data transmission — lower is better</td></tr>
-      <tr><td>Interference</td><td>Other wireless devices, walls, microwaves reduce Wi-Fi signal</td></tr>
-      <tr><td>Number of users</td><td>More devices sharing a connection = less bandwidth each</td></tr>
-      <tr><td>Distance</td><td>Wi-Fi weakens with distance; wired performance is consistent</td></tr>
-      <tr><td>Transmission medium</td><td>Fibre &gt; copper cable &gt; wireless for speed and reliability</td></tr>
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>What is a Protocol?</h2>
+    <p>A <strong>protocol</strong> is a set of rules that govern how data is transmitted and communicated over a network. Protocols ensure that devices from different manufacturers can communicate with each other — they define the format, timing, sequencing, and error checking of data.</p>
+    <p>Without agreed protocols, devices would not be able to understand each other's data, just as two people speaking different languages cannot communicate without a common language.</p>
+
+    <h2>The TCP/IP Protocol Stack</h2>
+    <p>The <strong>TCP/IP model</strong> is the fundamental model for internet communication. It has four layers, each with specific protocols:</p>
+    <table>
+      <thead><tr><th>Layer</th><th>Name</th><th>Function</th><th>Protocols</th></tr></thead>
+      <tbody>
+        <tr><td>4</td><td>Application</td><td>Provides network services to applications (web browsing, email, file transfer)</td><td>HTTP, HTTPS, FTP, SMTP, DNS</td></tr>
+        <tr><td>3</td><td>Transport</td><td>Breaks data into packets; ensures reliable delivery; handles errors</td><td>TCP, UDP</td></tr>
+        <tr><td>2</td><td>Internet/Network</td><td>Logical addressing (IP addresses); routes packets across networks</td><td>IP</td></tr>
+        <tr><td>1</td><td>Link/Network Interface</td><td>Physical transmission of data on the local network</td><td>Ethernet, Wi-Fi</td></tr>
+      </tbody>
     </table>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
+    <p>Data is <strong>encapsulated</strong> as it passes down through the layers — each layer adds a header with its own control information. At the receiving end, the process is reversed (<strong>de-encapsulation</strong>).</p>
+
+    <h2>Key Protocols — OCR J277</h2>
+    <div class="protocol-card">
+      <div class="protocol-name">HTTP</div>
+      <div class="protocol-stands">HyperText Transfer Protocol</div>
+      <div class="protocol-desc">Used for transmitting web pages over the internet. Operates at the Application layer. When you type a URL, your browser sends an HTTP request to the web server; the server responds with the web page. HTTP data is <strong>unencrypted</strong> — anyone intercepting it can read it.</div>
+    </div>
+    <div class="protocol-card">
+      <div class="protocol-name">HTTPS</div>
+      <div class="protocol-stands">HyperText Transfer Protocol Secure</div>
+      <div class="protocol-desc">The secure version of HTTP. Uses <strong>SSL/TLS encryption</strong> to protect data in transit. Essential for online banking, shopping, and any site requiring login credentials. You can identify HTTPS by the padlock icon in the browser address bar.</div>
+    </div>
+    <div class="protocol-card">
+      <div class="protocol-name">FTP</div>
+      <div class="protocol-stands">File Transfer Protocol</div>
+      <div class="protocol-desc">Used to transfer files between a client and a server over a network. Commonly used to upload files to web servers or download large files. Uses ports 20 and 21. FTP is unencrypted; SFTP (Secure FTP) adds encryption.</div>
+    </div>
+    <div class="protocol-card">
+      <div class="protocol-name">SMTP</div>
+      <div class="protocol-stands">Simple Mail Transfer Protocol</div>
+      <div class="protocol-desc">Used to <strong>send</strong> email messages between mail servers. When you send an email, your mail client uses SMTP to deliver it to the recipient's mail server. Uses port 25 (or 587 with encryption). IMAP/POP3 are used to <strong>receive</strong> email.</div>
+    </div>
+    <div class="protocol-card">
+      <div class="protocol-name">DNS</div>
+      <div class="protocol-stands">Domain Name System</div>
+      <div class="protocol-desc">Translates human-readable <strong>domain names</strong> (e.g. www.bbc.co.uk) into <strong>IP addresses</strong> (e.g. 151.101.64.81) that computers can use. DNS servers maintain a database of domain name to IP address mappings. Without DNS, users would have to memorise IP addresses to visit websites.</div>
+    </div>
+    <div class="protocol-card">
+      <div class="protocol-name">TCP</div>
+      <div class="protocol-stands">Transmission Control Protocol</div>
+      <div class="protocol-desc">A <strong>connection-oriented</strong> protocol at the Transport layer. Breaks data into packets, sends them, and ensures all arrive correctly and in order. If a packet is lost, TCP requests it to be resent. Slower but reliable. Used for web browsing, email, file transfers.</div>
+    </div>
+    <div class="protocol-card">
+      <div class="protocol-name">IP</div>
+      <div class="protocol-stands">Internet Protocol</div>
+      <div class="protocol-desc">Handles <strong>logical addressing</strong> — assigns IP addresses to devices and routes packets across networks. Each packet is sent independently and may take different routes. IP does not guarantee delivery — that's TCP's job.</div>
+    </div>
+
+    <h2>How DNS Works — Step by Step</h2>
+    <ul>
+      <li>User types <strong>www.example.com</strong> in the browser</li>
+      <li>The computer checks its <strong>local DNS cache</strong> — if found, done</li>
+      <li>If not cached, it queries the <strong>DNS resolver</strong> (usually the ISP's DNS server)</li>
+      <li>The resolver queries the <strong>root DNS server</strong> → finds the .com name server</li>
+      <li>The .com name server directs to <strong>example.com's authoritative DNS server</strong></li>
+      <li>The authoritative server returns the <strong>IP address</strong></li>
+      <li>The browser connects to the server at that IP address using HTTP/HTTPS</li>
+    </ul>
+
+    <h2>Protocol Comparison Table</h2>
+    <table>
+      <thead><tr><th>Protocol</th><th>Layer</th><th>Purpose</th><th>Port</th></tr></thead>
+      <tbody>
+        <tr><td>HTTP</td><td>Application</td><td>Web page transfer (unencrypted)</td><td>80</td></tr>
+        <tr><td>HTTPS</td><td>Application</td><td>Secure web page transfer (SSL/TLS)</td><td>443</td></tr>
+        <tr><td>FTP</td><td>Application</td><td>File transfer</td><td>20/21</td></tr>
+        <tr><td>SMTP</td><td>Application</td><td>Send email</td><td>25/587</td></tr>
+        <tr><td>DNS</td><td>Application</td><td>Domain name → IP address</td><td>53</td></tr>
+        <tr><td>TCP</td><td>Transport</td><td>Reliable data delivery (connection-oriented)</td><td>—</td></tr>
+        <tr><td>IP</td><td>Internet</td><td>Logical addressing and routing</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> Know what each protocol does and which layer it belongs to. HTTP vs HTTPS is a frequent question — key difference is HTTPS uses SSL/TLS encryption. DNS question types: "What does DNS do?" → translates domain names to IP addresses. Know that TCP is connection-oriented and ensures reliable delivery. Don't confuse SMTP (sends email) with POP3/IMAP (receives email).
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Saying wireless is always better — wired is faster and more reliable</li>
-        <li>Confusing bandwidth and speed — bandwidth is the maximum capacity; actual speed may be lower</li>
-        <li>Forgetting that Wi-Fi signals can be intercepted — always emphasise encryption (WPA2/WPA3)</li>
-        <li>Saying fibre optic uses electrical signals — it uses light</li>
+        <li>Saying HTTP is secure — it is NOT; HTTPS is the secure version using SSL/TLS</li>
+        <li>Confusing DNS with DHCP — DNS = domain names to IP addresses; DHCP = automatically assigns IP addresses</li>
+        <li>Saying SMTP is for receiving email — SMTP is for SENDING; POP3/IMAP are for receiving</li>
+        <li>Saying TCP is fast — TCP is reliable but slower than UDP; UDP is faster but not guaranteed</li>
+        <li>Forgetting that IP addresses are what computers actually use — DNS just translates</li>
       </ul>
     </div>
-  </div>
-  <div class="ns">
-    <h2>Wired vs Wireless Comparison</h2>
-    <table class="ct">
-      <tr><th>Feature</th><th>Wired (Ethernet)</th><th>Wireless (Wi-Fi)</th></tr>
-      <tr><td>Speed</td><td>Generally faster</td><td>Can be fast but affected by interference</td></tr>
-      <tr><td>Reliability</td><td>More reliable</td><td>Can drop connection</td></tr>
-      <tr><td>Security</td><td>More secure (hard to intercept)</td><td>Less secure (requires encryption)</td></tr>
-      <tr><td>Flexibility</td><td>Fixed location (cable)</td><td>Mobile — devices can roam</td></tr>
-      <tr><td>Installation</td><td>Requires cabling</td><td>Easy — just a WAP needed</td></tr>
-      <tr><td>Cost</td><td>More expensive to install</td><td>Cheaper to set up</td></tr>
-    </table>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/1-3-1d/" class="nb">← 1.3.1d Topologies</a>
-  <a href="/ocr-j277/1-3-2b/" class="nb n">1.3.2b Protocols →</a>
-</div>
-</div>
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;">What's in this video</h3>
+    <ul style="list-style:none;padding:0;">
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• TCP/IP model: 4 layers explained with examples</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• HTTP vs HTTPS: what SSL/TLS does</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• DNS: step-by-step domain lookup animation</li>
+      <li style="padding:8px 0;font-size:14.5px;color:#334155;">• FTP, SMTP: when and why you use them</li>
+    </ul>
+  </div>
 </div>
 
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_1.3.2a_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 1.3.2a Network Protocols</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">What is a network protocol? Why are protocols necessary?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A set of rules governing how data is transmitted between devices on a network [1]; protocols are necessary so that devices from different manufacturers can communicate (allows interoperability) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">State the difference between HTTP and HTTPS.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-2" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">HTTP transmits web pages without encryption (data is unprotected/readable by others) [1]; HTTPS uses SSL/TLS encryption to protect data in transit (secure) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Describe what DNS does. Give an example to illustrate your answer.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-3" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">DNS (Domain Name System) translates domain names into IP addresses [1]; this is necessary because computers use IP addresses not domain names to communicate [1]; e.g. www.bbc.co.uk → 151.101.64.81 [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">What is FTP used for? Name one use case.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">FTP (File Transfer Protocol) is used to transfer files between a client and a server [1]; e.g. uploading website files to a web server / downloading large files from a server [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Name the protocol used to send emails. What protocol is used to receive emails?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-5" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">SMTP (Simple Mail Transfer Protocol) is used to send emails [1]; POP3 or IMAP is used to receive emails [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">Describe the role of TCP in data transmission. Why is it described as "connection-oriented"?</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-6" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">TCP (Transmission Control Protocol) breaks data into packets and ensures they all arrive at the destination correctly and in order [1]; if a packet is lost it is requested again (retransmission) [1]; "connection-oriented" means a connection is established before data is sent and maintained throughout the transmission (three-way handshake) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">Describe the four layers of the TCP/IP model and state one protocol used at each layer.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-7" style="min-height:130px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Application layer: user-facing services e.g. HTTP/HTTPS/FTP/SMTP/DNS [1]; Transport layer: breaks data into packets, reliable delivery e.g. TCP [1]; Internet/Network layer: logical addressing and routing e.g. IP [1]; Link/Network Interface layer: physical transmission on local network e.g. Ethernet/Wi-Fi [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">A user visits www.cszone.co.uk for the first time. Describe the process that occurs to resolve the domain name to an IP address.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-8" style="min-height:130px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">The browser checks the local DNS cache [1]; not found, so queries the DNS resolver (ISP's DNS server) [1]; the resolver queries root and then .co.uk name servers to find the authoritative DNS server for cszone.co.uk [1]; the authoritative server returns the IP address [1]; browser connects to the web server at that IP using HTTP/HTTPS. Award 1 mark for each correct step (max 4).</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 1.3.2a Network Protocols</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What does HTTPS provide that HTTP does not?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Faster loading</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> SSL/TLS encryption</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> DNS lookup</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> File transfer</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">Which protocol translates domain names into IP addresses?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> SMTP</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> FTP</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> DNS</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> TCP</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">Which protocol is used to send email?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> HTTP</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> IMAP</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> FTP</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> SMTP</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">At which layer of the TCP/IP model does HTTP operate?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> Transport</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> Internet</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> Link</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> Application</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Which protocol is described as "connection-oriented" and ensures reliable delivery?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> IP</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> UDP</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> TCP</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> DNS</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">What does FTP stand for and what is it used for?</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>File Transfer Protocol [½]; used to transfer files between a client and a server [½]. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Why do websites use HTTPS rather than HTTP for login pages?</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>HTTPS encrypts data using SSL/TLS, so passwords/personal data cannot be intercepted and read by others during transmission. HTTP sends data unencrypted. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">Describe what happens when a user types www.bbc.co.uk and presses Enter (DNS step only).</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>The browser queries a DNS server to translate the domain name www.bbc.co.uk into an IP address; the DNS server returns the IP address and the browser then connects to that address. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">State the role of IP (Internet Protocol) in data transmission.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>IP handles logical addressing (assigns IP addresses) and routes data packets across networks from source to destination. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">State one protocol operating at the Transport layer of the TCP/IP model and describe its purpose.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>TCP (Transmission Control Protocol) [½]; breaks data into packets, ensures reliable ordered delivery, retransmits lost packets [½]. [1]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/1-3-1d/" class="bottom-nav-btn">← 1.3.1d Network Topologies</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">1.3 Computer Networks</span>
+  <a href="/ocr-j277/1-3-2b/" class="bottom-nav-btn next-btn">1.3.2b The Internet →</a>
+</div>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:14.5px;color:#64748b;line-height:1.6;margin-bottom:24px;">Subscribe to access all OCR J277 lessons.</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
 <script>
-var LESSON_ID='1-3-2a';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-3-2a';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+    if(!IS_FREE)checkAccess();
+  });
+});
+function checkAccess(){getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h}).then(function(r){return r.json();}).then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});});}
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"Which transmission medium is the fastest and most resistant to interference?",opts:["Copper cable","Wi-Fi","Fibre optic cable","Bluetooth"],ans:2,exp:"Fibre optic transmits data as light pulses — very high speed and immune to electrical interference (EMI)."},
-  {q:"What technology does Wi-Fi use to transmit data?",opts:["Light pulses","Electrical signals in copper cable","Radio waves","Sound waves"],ans:2,exp:"Wi-Fi uses radio waves to wirelessly transmit data between devices and a WAP (Wireless Access Point)."},
-  {q:"Which connection type is MORE secure?",opts:["Wi-Fi","Bluetooth","Wired (Ethernet)","Satellite"],ans:2,exp:"Wired connections are harder to intercept — data travels through physical cables. Wireless signals can be intercepted if not properly encrypted."},
-  {q:"What is a WAP?",opts:["Wide Area Protocol","Wireless Access Point — provides Wi-Fi connectivity","Wired Access Port","Wide Antenna Protocol"],ans:1,exp:"WAP = Wireless Access Point. It broadcasts Wi-Fi signals, allowing wireless devices to connect to the network."},
-  {q:"Which factor does NOT directly affect Wi-Fi performance?",opts:["Distance from WAP","Number of walls between device and WAP","Colour of the router","Number of devices connected"],ans:2,exp:"The colour of the router has no effect on Wi-Fi performance. Distance, obstacles (walls), interference, and number of users all affect it."},
-  {q:"What does 'bandwidth' mean in networking?",opts:["The physical width of the cable","The maximum amount of data that can be transferred per second","The speed of light in a fibre cable","The number of devices on a network"],ans:1,exp:"Bandwidth is the maximum data transfer capacity of a connection, measured in Mbps or Gbps. Higher bandwidth = more data per second."},
-  {q:"What is latency?",opts:["The maximum speed of a network","The delay in data transmission from source to destination","The number of packets in transit","The strength of a Wi-Fi signal"],ans:1,exp:"Latency is the time delay between sending and receiving data. Low latency is critical for applications like gaming, video calls, and real-time communication."},
-  {q:"Fibre optic cables transmit data using:",opts:["Electrical signals","Radio waves","Pulses of light","Sound waves"],ans:2,exp:"Fibre optic cables use light pulses (laser or LED) to transmit data through glass or plastic fibres at very high speeds."},
-  {q:"Which of these is an advantage of wireless over wired networking?",opts:["Faster speeds","More reliable connection","Mobile — devices can move around while connected","More secure"],ans:2,exp:"The main advantage of wireless is mobility — users can move around freely within the Wi-Fi range without being tethered by a cable."},
-  {q:"A school wants to provide internet in a large outdoor courtyard. Which is most suitable?",opts:["Run copper cables across the courtyard","Install Wireless Access Points (WAPs)","Use Bluetooth","Connect directly to the internet router"],ans:1,exp:"WAPs are ideal for providing wireless coverage in areas where running cables is impractical (outdoors, old buildings). They broadcast Wi-Fi to cover the courtyard."},
-  {q:"What encryption standard is recommended for modern Wi-Fi security?",opts:["WEP","WPA2 or WPA3","Base64","AES-128 only"],ans:1,exp:"WPA2 and WPA3 (Wi-Fi Protected Access) are the recommended standards for encrypting Wi-Fi to prevent unauthorised access or interception."},
-  {q:"Which of the following reduces Wi-Fi signal strength?",opts:["Using a wired switch","Thick walls between device and WAP","Higher bandwidth router","Using fibre optic backbone"],ans:1,exp:"Physical obstacles like thick walls, floors, and furniture absorb radio waves, reducing Wi-Fi signal strength and speed."},
-  {q:"Bluetooth is used for:",opts:["Long-range internet connections","Connecting devices in a PAN — short range up to about 10 metres","Replacing fibre optic cables","Connecting to the internet wirelessly"],ans:1,exp:"Bluetooth is a short-range wireless technology for personal area networks (PANs). It connects peripherals like keyboards, headphones, and mice within about 10 metres."},
-  {q:"A hospital needs reliable, fast connections for transferring large patient scan files between buildings. Which is most suitable?",opts:["Bluetooth","Wi-Fi","Fibre optic cable","Dial-up modem"],ans:2,exp:"Fibre optic provides the fastest, most reliable, and interference-free connection — essential for large medical files where speed and reliability are critical."},
-  {q:"What happens to network performance when many devices share the same Wi-Fi connection?",opts:["Each device gets faster","Performance improves","Available bandwidth per device decreases — performance drops","Nothing changes"],ans:2,exp:"Bandwidth is shared among all connected devices. More devices = less available bandwidth each = slower performance for everyone."}
+  {q:"What does HTTP stand for?",opts:["HyperText Transfer Protocol","High Transfer Text Protocol","HyperText Transmission Process","Host Transfer Text Protocol"],a:0,exp:"HTTP stands for HyperText Transfer Protocol. It is used to transfer web pages from a server to a browser. Port 80."},
+  {q:"What is the key difference between HTTP and HTTPS?",opts:["HTTPS is faster","HTTPS uses SSL/TLS encryption; HTTP does not","HTTPS stands for HyperText Secure Protocol","HTTP requires a password"],a:1,exp:"HTTPS uses SSL/TLS to encrypt data in transit, protecting it from interception. HTTP transmits data in plaintext — anyone on the network can read it."},
+  {q:"What does DNS stand for and what does it do?",opts:["Domain Name System — translates IP addresses to physical addresses","Domain Network Service — allocates IP addresses","Domain Name System — translates domain names to IP addresses","Data Node System — routes packets"],a:2,exp:"DNS = Domain Name System. It translates human-readable domain names (e.g. www.google.com) into IP addresses (e.g. 142.250.74.46) that computers use to communicate."},
+  {q:"Which protocol is used to transfer files between a client and a server?",opts:["SMTP","HTTP","FTP","DNS"],a:2,exp:"FTP (File Transfer Protocol) is used to transfer files between a client and server. It uses ports 20 and 21. Commonly used to upload web files to hosting servers."},
+  {q:"What is SMTP used for?",opts:["Receiving emails","Sending emails","Browsing the web","File transfer"],a:1,exp:"SMTP (Simple Mail Transfer Protocol) is used to SEND emails between mail servers. POP3 and IMAP are used to RECEIVE emails."},
+  {q:"Which layer of the TCP/IP model does IP operate at?",opts:["Application","Transport","Internet/Network","Link"],a:2,exp:"IP (Internet Protocol) operates at the Internet/Network layer. It handles logical addressing (IP addresses) and routes packets between networks."},
+  {q:"What does TCP do if a data packet is lost during transmission?",opts:["Ignores the lost packet","Terminates the connection","Requests the packet to be resent","Replaces it with zeros"],a:2,exp:"TCP ensures reliable delivery. If a packet is lost, TCP detects this (via acknowledgements) and requests the sender to retransmit the missing packet."},
+  {q:"What port does HTTPS use?",opts:["80","21","443","25"],a:2,exp:"HTTPS uses port 443. HTTP uses port 80. FTP uses ports 20/21. SMTP uses port 25 (or 587). DNS uses port 53."},
+  {q:"A website shows a padlock icon in the browser address bar. What does this indicate?",opts:["The website is fast","The website uses HTTPS and encrypts data","The website requires a login","The website is government-approved"],a:1,exp:"The padlock icon indicates the site uses HTTPS — data between your browser and the server is encrypted using SSL/TLS. This protects passwords and personal information."},
+  {q:"At which layer of the TCP/IP model does TCP operate?",opts:["Application","Transport","Internet","Link"],a:1,exp:"TCP operates at the Transport layer. This layer is responsible for breaking data into packets, ensuring reliable ordered delivery, and error checking."},
+  {q:"Why is DNS necessary?",opts:["Computers cannot communicate without it","It speeds up internet connections","Computers use IP addresses, not domain names — DNS converts domain names to IP addresses","It assigns IP addresses to devices"],a:2,exp:"Computers communicate using IP addresses, not domain names. DNS acts as a 'phone book', converting human-friendly names like www.bbc.co.uk into IP addresses like 151.101.64.81."},
+  {q:"What does FTP stand for?",opts:["Fast Transfer Protocol","File Transfer Protocol","Format Transfer Protocol","Free Transfer Program"],a:1,exp:"FTP = File Transfer Protocol. Used to transfer files between a client and server, typically via ports 20 (data) and 21 (control)."},
+  {q:"Which protocol handles logical addressing and routing of packets?",opts:["TCP","HTTP","DNS","IP"],a:3,exp:"IP (Internet Protocol) handles logical addressing — each device gets an IP address — and routing — determining the path packets take across networks."},
+  {q:"What is encapsulation in the context of the TCP/IP model?",opts:["Encrypting data using HTTPS","Adding headers at each layer as data passes down the TCP/IP stack","Breaking data into packets","Translating domain names to IP addresses"],a:1,exp:"Encapsulation is the process of adding a header (control information) to data at each layer as it passes down the TCP/IP model. At the destination, headers are removed at each layer (de-encapsulation)."},
+  {q:"Which of the following is used to RECEIVE email?",opts:["SMTP","FTP","HTTP","IMAP"],a:3,exp:"IMAP (and POP3) are used to RECEIVE email. SMTP is used to SEND email. This is a common confusion point in exams."}
 ];
-var WORKSHEET=[
-  {q:"State TWO advantages of wired over wireless network connections.",marks:2,ms:"Any two: faster speeds (1); more reliable — not affected by interference (1); more secure — harder to intercept (1); consistent performance regardless of distance (1)."},
-  {q:"State TWO advantages of wireless over wired network connections.",marks:2,ms:"Any two: flexible — devices can move around (1); easier and cheaper to set up (1); no need to run physical cables (1); works in areas where cabling is impractical (1)."},
-  {q:"A student wants to connect their laptop to the school network wirelessly. What device must already be installed in the building?",marks:1,ms:"A Wireless Access Point (WAP) — this broadcasts the Wi-Fi signal that the laptop can detect and connect to."},
-  {q:"Explain why fibre optic cables are better than copper cables for long-distance data transmission.",marks:3,ms:"Fibre optic uses light pulses rather than electrical signals (1). Light travels faster and suffers less signal degradation over distance than electrical signals in copper (1). Fibre is also immune to electromagnetic interference (EMI), which can affect copper cables (1)."},
-  {q:"Explain why a busy Wi-Fi network in a café might feel slow even though the broadband connection is fast.",marks:2,ms:"Bandwidth is shared between all connected devices (1). If many users are streaming video, downloading, or browsing simultaneously, each device receives a smaller share of the total bandwidth, resulting in slower speeds for everyone (1)."},
-  {q:"A company is setting up a new office. Explain ONE reason to use wired connections for desktop PCs and ONE reason to provide Wi-Fi for laptops and mobile devices.",marks:2,ms:"Wired for desktops: faster and more reliable — desktop PCs don't need to move, so cabling provides consistent high-speed performance (1). Wi-Fi for laptops/mobiles: provides flexibility — employees can move between meeting rooms and hot desks without losing connectivity (1)."},
-  {q:"What is latency and why does it matter for online gaming?",marks:2,ms:"Latency is the time delay between sending data and receiving a response (1). In online gaming, high latency (lag) causes actions to respond slowly — a player presses a button but the game character reacts late, affecting gameplay and giving an unfair disadvantage (1)."},
-  {q:"Explain why Wi-Fi connections are considered less secure than wired connections, and state how this risk can be reduced.",marks:3,ms:"Wi-Fi transmits data as radio waves that travel through the air and beyond the building — anyone within range could potentially intercept the signal (1). Wired data travels through cables which are physically harder to access (1). The risk is reduced by encrypting the Wi-Fi using WPA2 or WPA3 and using a strong password so only authorised users can join (1)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Wired network",d:"A network using physical cables (copper or fibre optic) to connect devices. Faster and more reliable than wireless."},
-  {w:"Wireless network",d:"A network using radio waves (Wi-Fi) or other wireless signals. Flexible but potentially slower and less secure."},
-  {w:"Ethernet",d:"A standard for wired LAN connections using copper cable. Common speeds: 100 Mbps to 10 Gbps."},
-  {w:"Fibre optic",d:"A cable that transmits data as pulses of light through glass fibres. Very fast, immune to EMI, expensive."},
-  {w:"Wi-Fi",d:"A wireless networking technology using radio waves. Allows devices to connect to a network without cables."},
-  {w:"WAP (Wireless Access Point)",d:"A device that broadcasts Wi-Fi signals, allowing wireless devices to connect to a network."},
-  {w:"Bluetooth",d:"Short-range wireless technology (up to ~10m) for personal area networks (PANs). Used for peripherals."},
-  {w:"Bandwidth",d:"The maximum amount of data that can be transferred per second. Measured in Mbps or Gbps."},
-  {w:"Latency",d:"The time delay in data transmission. Low latency = fast response. Critical for gaming and video calls."},
-  {w:"Interference",d:"Disruption to wireless signals from other devices, walls, or electromagnetic sources, reducing performance."},
-  {w:"WPA2/WPA3",d:"Wi-Fi Protected Access — encryption standards for securing wireless networks. WPA3 is the most modern and secure."},
-  {w:"PAN",d:"Personal Area Network — a small network for personal devices. Bluetooth creates PANs."},
-  {w:"EMI (Electromagnetic Interference)",d:"Electrical noise that can disrupt copper cable signals. Fibre optic is immune; copper cable is not."},
-  {w:"Signal strength",d:"How strong a wireless signal is at a given location. Affected by distance and obstacles."},
-  {w:"Transmission medium",d:"The physical means of carrying data: copper cable, fibre optic, or wireless (radio waves)."}
+  {term:"Protocol",def:"A set of rules governing how data is transmitted between devices on a network. Protocols ensure devices from different manufacturers can communicate with each other."},
+  {term:"HTTP",def:"HyperText Transfer Protocol. Used to transfer web pages over the internet. Operates at the Application layer. Data is unencrypted — port 80."},
+  {term:"HTTPS",def:"HyperText Transfer Protocol Secure. Secure version of HTTP using SSL/TLS encryption. Identified by padlock icon in browser. Port 443."},
+  {term:"SSL/TLS",def:"Secure Sockets Layer / Transport Layer Security. Encryption protocols used by HTTPS to protect data in transit from interception."},
+  {term:"FTP",def:"File Transfer Protocol. Used to transfer files between a client and server. Uses ports 20 (data) and 21 (control). FTP is unencrypted; SFTP adds security."},
+  {term:"SMTP",def:"Simple Mail Transfer Protocol. Used to SEND emails between mail servers. Port 25 or 587. Not for receiving — POP3/IMAP handle receiving."},
+  {term:"DNS",def:"Domain Name System. Translates human-readable domain names (e.g. www.bbc.co.uk) into IP addresses (e.g. 151.101.64.81). Acts as a 'phone book' for the internet."},
+  {term:"TCP",def:"Transmission Control Protocol. Connection-oriented transport protocol. Breaks data into packets, ensures all arrive correctly and in order, retransmits lost packets. Reliable but slower."},
+  {term:"IP",def:"Internet Protocol. Handles logical addressing (IP addresses) and routing of packets between networks. Works at the Internet layer. Does not guarantee delivery — TCP does."},
+  {term:"TCP/IP model",def:"Four-layer model for internet communication: Application (HTTP, DNS, FTP), Transport (TCP), Internet (IP), Link (Ethernet, Wi-Fi)."},
+  {term:"Application layer",def:"Top layer of TCP/IP model. Provides network services to user applications. Protocols: HTTP, HTTPS, FTP, SMTP, DNS."},
+  {term:"Transport layer",def:"Second layer of TCP/IP model. Breaks data into packets, provides reliable delivery. Protocol: TCP (connection-oriented) or UDP (faster, unreliable)."},
+  {term:"Internet layer",def:"Third layer of TCP/IP model. Handles logical addressing and routing using IP addresses. Protocol: IP."},
+  {term:"Encapsulation",def:"Process of adding a header to data at each layer as it passes down the TCP/IP model. Reverse process (de-encapsulation) occurs at the receiving end."},
+  {term:"IMAP/POP3",def:"Internet Message Access Protocol / Post Office Protocol 3. Both used to RECEIVE emails from a mail server. IMAP keeps mail on server; POP3 downloads to device."}
 ];
-var TEST_MCQ=[
-  {q:"Which is MORE reliable for transferring large files quickly in an office?",opts:["Bluetooth","Wi-Fi","Wired Ethernet","Satellite"],ans:2,exp:"Wired Ethernet is faster and more reliable than Wi-Fi — not affected by interference or signal strength issues."},
-  {q:"What does 'latency' measure?",opts:["Network bandwidth","Speed of light in fibre","Time delay between sending and receiving data","Number of connected devices"],ans:2,exp:"Latency is the delay (in milliseconds) between sending data and receiving a response."},
-  {q:"Why might a Wi-Fi connection be slower at peak times in a school?",opts:["The WAP runs out of battery","More devices share the bandwidth, reducing each device's share","Wi-Fi is switched off at peak times","Wired connections interfere with Wi-Fi"],ans:1,exp:"Bandwidth is shared. More users = less per device = slower speeds."},
-  {q:"Which of these reduces Wi-Fi security risk?",opts:["Using WEP","Using WPA3 encryption with a strong password","Leaving the network open","Using a hub instead of switch"],ans:1,exp:"WPA3 with a strong password encrypts the Wi-Fi, preventing unauthorised interception."},
-  {q:"Fibre optic cables use what to transmit data?",opts:["Electricity","Microwaves","Light pulses","Sound"],ans:2,exp:"Fibre optic uses laser or LED light pulses through glass or plastic fibres."}
-];
-var TEST_SA=[
-  {q:"State ONE advantage and ONE disadvantage of using Wi-Fi instead of wired Ethernet.",marks:2,ms:"Advantage: mobile — users can move freely without cables (1). Disadvantage: slower and less reliable — affected by interference, walls, and distance (1)."},
-  {q:"Explain why fibre optic is preferred for connections between buildings in a large campus.",marks:2,ms:"Fibre optic provides much higher speeds and can carry data over longer distances without significant signal degradation (1). It is immune to electromagnetic interference unlike copper cables (1)."},
-  {q:"What is bandwidth and how does it affect network performance?",marks:2,ms:"Bandwidth is the maximum amount of data that can be transferred per second (1). Higher bandwidth means more data can be transferred simultaneously — when many users share a connection, higher bandwidth means less slowdown per user (1)."},
-  {q:"Why should a school's Wi-Fi be secured with WPA2/WPA3?",marks:2,ms:"Wi-Fi signals travel through air and can be intercepted by anyone nearby (1). WPA2/WPA3 encryption ensures data is scrambled and only users with the correct password can connect and read the data (1)."},
-  {q:"State TWO factors that affect the performance of a Wi-Fi network.",marks:2,ms:"Any two: distance from WAP (1); physical obstacles (walls/floors) (1); interference from other wireless devices (1); number of devices connected (1)."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:90px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,3,3,2];
+var TEST_MCQ_LABELS=[['Faster loading','SSL/TLS encryption','DNS lookup','File transfer'],['SMTP','FTP','DNS','TCP'],['HTTP','IMAP','FTP','SMTP'],['Transport','Internet','Link','Application'],['IP','UDP','TCP','DNS']];
+var TEST_MCQ_EXPLAIN=['HTTPS = HTTP + SSL/TLS encryption.','DNS = Domain Name System: translates domain names to IP addresses.','SMTP = Simple Mail Transfer Protocol: sends email.','HTTP is at the Application (top) layer.','TCP is connection-oriented and ensures reliable delivery.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['FTP meaning and use?','Why HTTPS for logins?','DNS step for www.bbc.co.uk?','Role of IP?','Transport layer protocol?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

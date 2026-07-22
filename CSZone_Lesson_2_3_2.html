@@ -1,201 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>2.3.2 Testing | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3.2 Testing — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:6px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;}
+    .notes-content td.label{font-weight:700;color:#0f172a;background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .test-data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px;}
+    .test-data-table th{background:#0f172a;color:#a78bfa;font-weight:700;padding:10px 14px;text-align:left;}
+    .test-data-table td{padding:9px 14px;border:1px solid #e2e8f0;}
+    .test-data-table tr:nth-child(even) td{background:#f8fafc;}
+    .td-normal{background:#f0fdf4 !important;color:#166534;}
+    .td-boundary{background:#eff6ff !important;color:#1e40af;}
+    .td-erroneous{background:#fff1f2 !important;color:#9f1239;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:17px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .paywall-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:999;}
+    .paywall-card{background:#fff;border-radius:24px;padding:40px 36px;text-align:center;max-width:380px;width:90%;box-shadow:0 24px 80px rgba(0,0,0,0.2);}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;margin-bottom:12px;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst" style="color:#818cf8">2.3 Producing Robust Programs</div>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-3-2/" class="sl active">2.3.2 Testing</a>
-    <div class="sst" style="color:#818cf8">2.4 Boolean Logic</div>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-4-1b/" class="sl">2.4.1b Truth Tables</a>
-    <div class="sst" style="color:#818cf8">2.5 Languages</div>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
-    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
-    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">2.3 Robust Programs</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">2.3.2 Testing</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.3 Producing Robust Programs</div>
-  <div class="lesson-title">2.3.2 — Testing</div>
-  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~22 min</div>
+  <div class="lesson-badge">🛡️ Component 2 · 2.3 Producing Robust Programs</div>
+  <div class="lesson-title">2.3.2 Testing</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~12 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>Why Test?</h2>
-    <p>Testing verifies that a program works as expected and produces correct outputs for all inputs — including valid, invalid, and edge case inputs. Testing identifies <strong>logic errors</strong> and unexpected behaviour before a program is deployed.</p>
-    <div class="kp"><strong>Key distinction:</strong> Errors found during testing are fixed. Errors found by end users after deployment are expensive and damage trust.</div>
-  </div>
-  <div class="ns">
-    <h2>Types of Test Data</h2>
-    <p>For any input, three categories of test data should be used:</p>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:10px">
-      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Type</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Description</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Example (age, valid 0–100)</th></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7;font-weight:500">Normal</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Typical, valid data within expected range</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc">25, 40, 67</td></tr>
-      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#f59e0b;font-weight:500">Boundary</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Values at the exact limits of acceptable range</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc">0, 1, 99, 100</td></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5;font-weight:500">Erroneous</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Invalid data outside range or wrong type — program must handle/reject it</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc">-1, 101, "hello"</td></tr>
-    </table>
-    <div class="ic b" style="margin-top:14px">
-      <h4>Why boundary data matters:</h4>
-      <p>Most errors occur at the limits — off-by-one errors are very common. Testing 0 and 100 (the exact boundaries) checks the condition operators (&lt;, &lt;=, &gt;, &gt;=) are correct. Also test 1 and 99 (just inside) and -1 and 101 (just outside = erroneous).</p>
-    </div>
-  </div>
-  <div class="ns">
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>Why Testing?</h2>
+    <p>Testing is used to find and fix <strong>errors (bugs)</strong> in a program before it is released. A well-tested program produces correct output for all inputs, including unexpected ones. No testing = undetected bugs = unreliable software.</p>
+
     <h2>Types of Testing</h2>
-    <div class="ic b">
-      <h4>Iterative testing</h4>
-      <p>Testing is done throughout the development process — each small section is tested as it is written. Errors are found and fixed early, when they are cheapest to fix. Also called "testing as you go".</p>
-    </div>
-    <div class="ic g">
-      <h4>Final (terminal) testing</h4>
-      <p>The complete program is tested as a whole at the end of development — checking all components work together correctly. Also called <strong>system testing</strong> or <strong>acceptance testing</strong>.</p>
-    </div>
-    <div class="ic b">
-      <h4>Alpha testing</h4>
-      <p>Carried out by the development team (internal testers) before release to the public. Identifies bugs in a controlled environment.</p>
-    </div>
-    <div class="ic g">
-      <h4>Beta testing</h4>
-      <p>A limited release to a selected group of real users outside the development team. Identifies bugs under real-world usage conditions that the developers didn't think to test.</p>
-    </div>
-  </div>
-  <div class="ns">
-    <h2>Trace Tables</h2>
-    <p>A <strong>trace table</strong> is used to manually track the values of variables at each step of an algorithm. It is used to identify logic errors by showing exactly what happens at each iteration or step.</p>
-    <div class="ic b">
-      <h4>Example: trace table for a loop summing 1 to 4</h4>
-      <div style="overflow-x:auto">
-      <table style="border-collapse:collapse;font-size:13px;min-width:300px">
-        <tr><th style="background:#252840;color:#c7d2fe;padding:8px 14px;border:1px solid #2d3148">i</th><th style="background:#252840;color:#c7d2fe;padding:8px 14px;border:1px solid #2d3148">total</th><th style="background:#252840;color:#c7d2fe;padding:8px 14px;border:1px solid #2d3148">i &lt;= 4?</th></tr>
-        <tr><td style="padding:7px 14px;border:1px solid #2d3148;color:#a5b4fc">1</td><td style="padding:7px 14px;border:1px solid #2d3148;color:#a5b4fc">1</td><td style="padding:7px 14px;border:1px solid #2d3148;color:#6ee7b7">true</td></tr>
-        <tr style="background:#1a1d2e"><td style="padding:7px 14px;border:1px solid #2d3148;color:#a5b4fc">2</td><td style="padding:7px 14px;border:1px solid #2d3148;color:#a5b4fc">3</td><td style="padding:7px 14px;border:1px solid #2d3148;color:#6ee7b7">true</td></tr>
-        <tr><td style="padding:7px 14px;border:1px solid #2d3148;color:#a5b4fc">3</td><td style="padding:7px 14px;border:1px solid #2d3148;color:#a5b4fc">6</td><td style="padding:7px 14px;border:1px solid #2d3148;color:#6ee7b7">true</td></tr>
-        <tr style="background:#1a1d2e"><td style="padding:7px 14px;border:1px solid #2d3148;color:#a5b4fc">4</td><td style="padding:7px 14px;border:1px solid #2d3148;color:#a5b4fc">10</td><td style="padding:7px 14px;border:1px solid #2d3148;color:#6ee7b7">true</td></tr>
-        <tr><td style="padding:7px 14px;border:1px solid #2d3148;color:#a5b4fc">5</td><td style="padding:7px 14px;border:1px solid #2d3148;color:#a5b4fc">10</td><td style="padding:7px 14px;border:1px solid #2d3148;color:#fca5a5">false → exit</td></tr>
-      </table>
-      </div>
-    </div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
+    <table>
+      <thead><tr><th>Type</th><th>Definition</th><th>Who does it?</th></tr></thead>
+      <tbody>
+        <tr><td class="label">Iterative testing</td><td>Testing carried out during development — testing each module/component as it is written</td><td>Developer</td></tr>
+        <tr><td class="label">Final (terminal) testing</td><td>Testing carried out at the end of development once the complete program is built</td><td>Developer / Client</td></tr>
+        <tr><td class="label">Alpha testing</td><td>In-house testing by the development team / company before public release</td><td>Developer team</td></tr>
+        <tr><td class="label">Beta testing</td><td>Testing by a limited group of real users (outside the company) before public release</td><td>Real users (testers)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Test Data Types</h2>
+    <p>When writing a test plan, OCR J277 expects you to use three categories of test data:</p>
+    <table>
+      <thead><tr><th>Category</th><th>Description</th><th>Example (age, 0–120)</th></tr></thead>
+      <tbody>
+        <tr><td class="label" style="color:#166534;">Normal</td><td>Valid data the program should accept and process correctly</td><td>25, 50, 100</td></tr>
+        <tr><td class="label" style="color:#1e40af;">Boundary</td><td>Data at the very edge of the valid range (just inside, on, and just outside)</td><td>0, 1, 119, 120, -1, 121</td></tr>
+        <tr><td class="label" style="color:#9f1239;">Erroneous</td><td>Invalid data that should be rejected — wrong type, completely out of range</td><td>-10, 200, "abc", ""</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Test Data Table — Worked Example</h2>
+    <p>Program: accepts an age between 0 and 120 (inclusive).</p>
+    <table class="test-data-table">
+      <thead><tr><th>Test</th><th>Category</th><th>Input</th><th>Expected Output</th><th>Actual Output</th><th>Pass/Fail</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="td-normal">Normal</td><td>25</td><td>"Age accepted"</td><td>"Age accepted"</td><td>✅ Pass</td></tr>
+        <tr><td>2</td><td class="td-normal">Normal</td><td>75</td><td>"Age accepted"</td><td>"Age accepted"</td><td>✅ Pass</td></tr>
+        <tr><td>3</td><td class="td-boundary">Boundary</td><td>0</td><td>"Age accepted"</td><td>"Age accepted"</td><td>✅ Pass</td></tr>
+        <tr><td>4</td><td class="td-boundary">Boundary</td><td>120</td><td>"Age accepted"</td><td>"Age accepted"</td><td>✅ Pass</td></tr>
+        <tr><td>5</td><td class="td-boundary">Boundary</td><td>-1</td><td>Error message</td><td>Error message</td><td>✅ Pass</td></tr>
+        <tr><td>6</td><td class="td-boundary">Boundary</td><td>121</td><td>Error message</td><td>Error message</td><td>✅ Pass</td></tr>
+        <tr><td>7</td><td class="td-erroneous">Erroneous</td><td>"hello"</td><td>Error message</td><td>Error message</td><td>✅ Pass</td></tr>
+        <tr><td>8</td><td class="td-erroneous">Erroneous</td><td>500</td><td>Error message</td><td>Error message</td><td>✅ Pass</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Types of Errors</h2>
+    <table>
+      <thead><tr><th>Error Type</th><th>Description</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="label">Syntax error</td><td>Code breaks the rules of the programming language — program cannot run</td><td>PINT "Hello" (missing 'R' in PRINT)</td></tr>
+        <tr><td class="label">Logic error</td><td>Program runs but produces incorrect output — algorithm is wrong</td><td>Using + instead of - in a formula</td></tr>
+        <tr><td class="label">Runtime error</td><td>Error that occurs while the program is running — causes a crash</td><td>Division by zero; index out of bounds</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Iterative vs Final Testing</h2>
+    <ul>
+      <li><strong>Iterative:</strong> test as you build — catch bugs early when they're cheap to fix; each module tested before the next is written</li>
+      <li><strong>Final:</strong> whole program tested together — checks integration of all parts; more complex bugs found here</li>
+      <li>Both are used in practice — iterative during development, final before release</li>
+    </ul>
+
+    <div class="exam-tip"><strong>Exam tip:</strong> OCR J277 tests you on: (1) the three test data types — always give an example for each when asked; (2) the difference between iterative and final testing; (3) completing a test table (fill in expected output or category); (4) identifying error types from code/description. Boundary data is the most commonly missed — it includes values just inside, exactly on, AND just outside the boundary.</div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Confusing boundary with erroneous — boundary is valid (at the limit); erroneous is INVALID (outside the limit)</li>
-        <li>Only testing normal data — exams specifically ask about boundary and erroneous test data</li>
-        <li>Confusing alpha (internal/dev team) with beta (external/real users)</li>
-        <li>Saying iterative testing is done at the end — it is done THROUGHOUT development</li>
-        <li>Thinking testing proves a program is correct — testing can only find errors, not guarantee correctness</li>
+        <li>Forgetting that boundary data includes BOTH the valid boundary (accept) AND just outside (reject)</li>
+        <li>Calling all wrong inputs "erroneous" — wrong TYPE is erroneous; wrong VALUE at the edge is boundary</li>
+        <li>Confusing syntax errors (won't run) with logic errors (runs but wrong output)</li>
+        <li>Only testing with normal data — boundary and erroneous tests are just as important to OCR J277</li>
+        <li>Writing "the program works" as expected output instead of the specific expected output</li>
       </ul>
     </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/2-3-1/" class="nb">← 2.3.1 Defensive Design</a>
-  <a href="/ocr-j277/2-4-1a/" class="nb n">2.4.1a Logic Gates →</a>
-</div>
-</div>
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
 </div>
 
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_2.3.2_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 2.3.2 Testing</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">Explain the purpose of testing a program. Why is it not enough to simply check the code looks correct?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1"></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Testing runs the program with test data to find errors (bugs) that cause incorrect output, crashes, or unexpected behaviour [1]. Simply reading code (desk checking) may miss runtime errors, logic errors, or edge cases — the program must actually run with specific inputs to verify it behaves correctly [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">State the three types of test data and describe each with one example for a program that accepts scores from 0 to 100.</span><span class="ws-q-marks">[6]</span></div><textarea class="ws-textarea" id="ws-ans-2"></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Normal data: valid data within range [1] — e.g. 50 (should be accepted) [1]. Boundary data: data at the edge of the valid range [1] — e.g. 0, 1, 99, 100 (accept) and -1, 101 (reject) [1]. Erroneous data: invalid data that should be rejected [1] — e.g. "abc", -50, 200 (wrong type or far out of range) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Explain the difference between iterative and final testing.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-3"></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Iterative testing is carried out during development — each module is tested as it is written to find errors early [1]. Final testing is carried out at the end of development when the complete program is finished [1]. Iterative testing catches bugs early (cheap to fix); final testing checks that all parts work together correctly [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">Identify the type of error in each case: (a) OUTPUT "Helo" — intended "Hello" (b) total = price + tax, should be price * tax (c) division = 10 / 0</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-4"></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">(a) Logic error [1] — the program runs but produces the wrong output ("Helo" instead of "Hello"). (b) Logic error [1] — wrong operator used; runs but calculates incorrectly. (c) Runtime error [1] — division by zero causes a crash while the program is running.</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Describe the difference between alpha testing and beta testing.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-5"></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Alpha testing is done in-house by the development team before any public release [1]. Beta testing is done by a limited group of real users outside the company to find remaining bugs and usability issues before the full public launch [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">For a program that accepts integers from 1 to 10 only, complete the test table below by identifying the category and expected output for each test: Input: 5, Input: 1, Input: 0, Input: "five"</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-6"></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">5 = Normal → accepted / "Valid input" [1]. 1 = Boundary → accepted / "Valid input" [1]. 0 = Boundary → rejected / error message [1]. "five" = Erroneous → rejected / error message [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">Why is boundary testing particularly important? Give an example of a common programming mistake that boundary testing would catch.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-7"></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Boundary testing is important because errors often occur at the edge of allowed values rather than in the middle [1]. Example: a programmer uses age > 0 instead of age >= 0, so 0 is incorrectly rejected. Boundary test with 0 reveals this mistake [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">A syntax error prevents a program from running. Explain what a syntax error is and give one example.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-8"></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A syntax error occurs when the code breaks the rules (grammar) of the programming language, so the translator cannot convert it into executable code [1]. Example: missing keyword, misspelled command (e.g. PINT instead of PRINT), missing bracket, or incorrect indentation in Python [1].</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;" onclick="restartQuiz()">Try again</button>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 10</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 2.3.2 Testing</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">A program accepts ages 0–120. Which test data is BOUNDARY?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> 50</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> 0</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> "twenty"</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> -50</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">A student writes "PINT 'Hello'" instead of "PRINT 'Hello'". What type of error is this?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> Logic error</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> Runtime error</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> Syntax error</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> Boundary error</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">Testing carried out during development, module by module, is called:</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> Beta testing</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> Final testing</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> Alpha testing</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> Iterative testing</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">A program calculates total = price - tax (should be price + tax). The program runs but gives wrong answers. This is a:</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> Syntax error</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> Logic error</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> Runtime error</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> Boundary error</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Testing by real users outside the development company before public release is called:</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> Alpha testing</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> Iterative testing</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> Beta testing</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> Final testing</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">Describe the three categories of test data (normal, boundary, erroneous) and give one example of each for a program that accepts scores from 1 to 50.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>Normal: valid data in range [1] e.g. 25. Boundary: data at the edges [1] e.g. 1, 50 (accept), 0, 51 (reject). Erroneous: invalid type/far out of range [1] e.g. "abc" or -100.</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Explain the difference between a logic error and a runtime error. Give an example of each.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>Logic error: program runs but produces incorrect output due to a flaw in the algorithm [1] e.g. using > instead of >= in a validation check [1]. Runtime error: program crashes while running [1] e.g. dividing by zero or accessing an invalid array index [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">State two advantages of iterative testing over final-only testing.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>Any 2: bugs caught early when they are cheaper and easier to fix [1]; modules are verified to work correctly before being combined [1]; issues are easier to locate (isolated to the module just written) [1]; the development team can make progress with confidence [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">Why is it important to include boundary test data when testing a program? Why is testing only normal data insufficient?</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Errors frequently occur at the edge of valid ranges [1]. A programmer might accidentally use > instead of >= which would wrongly reject the boundary value — only a boundary test catches this [1]. Normal data tests the typical case but does not expose off-by-one errors at the limits [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">Describe what information should be recorded in a test table for each test case.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>A test table should record: test number [½]; test category (normal/boundary/erroneous) [1]; input data used [1]; expected output (what the program should produce) [1]; actual output (what the program actually produces) [1]; pass or fail [½].</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/2-3-1/" class="bottom-nav-btn">← 2.3.1 Defensive Design</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">2.3 Robust Programs</span>
+  <a href="/ocr-j277/2-4-1a/" class="bottom-nav-btn next-btn">2.4.1a Boolean Logic →</a>
+</div>
 <script>
-var LESSON_ID='2-3-2';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='2-3-2';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+function checkAccess(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;
+    if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;
+    var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};
+    fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h})
+      .then(function(r){return r.json();})
+      .then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});
+  });
+}
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    checkAccess();initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What are the THREE types of test data used in testing?",opts:["Normal, boundary, and erroneous","Alpha, beta, and gamma","Valid, invalid, and random","Iterative, final, and acceptance"],ans:0,exp:"The three types are: Normal (typical valid data), Boundary (values at the exact limits), and Erroneous (invalid data outside the acceptable range or wrong type)."},
-  {q:"A program accepts ages 0–100. Which of the following is BOUNDARY test data?",opts:["50","101","0 and 100","-1"],ans:2,exp:"Boundary data is at the exact limits: 0 (lower boundary) and 100 (upper boundary). 50 is normal data. -1 and 101 are erroneous data."},
-  {q:"A program accepts ages 0–100. Which is ERRONEOUS test data?",opts:["0","100","50","-1 and 101"],ans:3,exp:"Erroneous data is outside the valid range or the wrong type: -1 (below minimum) and 101 (above maximum). The program should reject these."},
-  {q:"What is iterative testing?",opts:["Testing the whole program at the end","Testing done throughout development as each section is written","Testing done by users before release","Testing with random data only"],ans:1,exp:"Iterative testing = testing as you go. Each small section or subroutine is tested as it is written, so errors are found and fixed early when they are cheapest to correct."},
-  {q:"What is final (terminal) testing?",opts:["Testing done while writing each function","Testing the complete program as a whole at the end of development","Testing by the client only","Checking for syntax errors"],ans:1,exp:"Final (terminal) testing tests the complete, integrated program at the end of development — verifying all components work together correctly as a whole system."},
-  {q:"What is the purpose of a trace table?",opts:["To speed up the program","To manually track variable values at each step to identify logic errors","To check syntax","To format the output"],ans:1,exp:"A trace table manually records the value of each variable at each step of execution. It is used to find logic errors by showing exactly what the program does at each stage."},
-  {q:"What is alpha testing?",opts:["Testing by end users","Testing by the development team before public release","Testing with boundary data","Final system testing"],ans:1,exp:"Alpha testing is carried out by the development team (internal testers) in a controlled environment before any public release. It catches bugs early."},
-  {q:"What is beta testing?",opts:["Testing by the development team","Testing the program with erroneous data","A limited release to selected real users outside the development team","Testing each function individually"],ans:2,exp:"Beta testing releases the program to a limited group of real users outside the development team. They discover real-world bugs the developers didn't anticipate."},
-  {q:"Why is boundary data particularly important to test?",opts:["It is the most common input","Most logic errors occur at the limits of ranges — especially off-by-one errors","It is always invalid","It tests the wrong type of input"],ans:1,exp:"Off-by-one errors (using < instead of <=, for example) are very common. Testing exact boundary values (0 and 100, not just 50) reveals these errors in the condition operators."},
-  {q:"Which statement about testing is correct?",opts:["Thorough testing proves a program is fully correct","Testing can only find errors — it cannot guarantee correctness","Only normal data needs testing","Testing is only done at the end"],ans:1,exp:"Testing can FIND errors but cannot prove a program is error-free. Even exhaustive testing may not cover every possible input. This is a fundamental principle in computer science."},
-  {q:"A program accepts integers only. A user types 'hello'. What type of test data is this?",opts:["Normal","Boundary","Erroneous","Alpha"],ans:2,exp:"'hello' is erroneous — it is the wrong data type (string instead of integer). The program's error handling/validation should catch and reject this input."},
-  {q:"For a program that accepts scores 1–10, which values should be used as boundary data?",opts:["5","1, 2, 9, 10","0 and 11","1 and 10 only"],ans:1,exp:"Thorough boundary testing includes: 1 and 10 (exact lower/upper limits) AND 2 and 9 (just inside). 0 and 11 are erroneous."},
-  {q:"Why is it better to find errors during development rather than after deployment?",opts:["Errors found later affect fewer users","Errors found early are cheaper and faster to fix — no damage to reputation","The program cannot be changed after release","Users never notice errors"],ans:1,exp:"Errors found during development are cheaper to fix — fewer people are affected and the code is still fresh. Post-deployment errors damage user trust and may require expensive patches."},
-  {q:"A developer tests each function as they write it. This describes which type of testing?",opts:["Final testing","Beta testing","Iterative testing","Alpha testing"],ans:2,exp:"Testing each function as it is written is iterative testing — testing throughout development rather than waiting until the end."},
-  {q:"What is a logic error?",opts:["When the code has invalid syntax","When the program runs but produces incorrect results due to a flaw in the algorithm","When the program crashes on startup","When a variable name is misspelled"],ans:1,exp:"A logic error is when the code is syntactically valid and runs without crashing, but produces incorrect output due to a flaw in the algorithm's logic. Trace tables help find these."}
+  {q:"What are the three categories of test data in OCR J277?",opts:["Valid, invalid, extreme","Normal, boundary, erroneous","Correct, incorrect, edge","Type, range, format"],a:1,exp:"OCR J277 specifies three test data categories: Normal (valid, accepted), Boundary (at the edge of valid range), and Erroneous (invalid — should be rejected). You must know all three."},
+  {q:"A program accepts numbers 1–10. Which is NORMAL test data?",opts:["0","11","5","'hello'"],a:2,exp:"Normal data is valid data well within the accepted range. 5 is well within 1–10, so it is normal data. 0 and 11 are boundary/erroneous; 'hello' is erroneous (wrong type)."},
+  {q:"For a program accepting 1–10, which values are BOUNDARY data?",opts:["5, 6, 7","1 and 10 (and 0 and 11)","'hello' and 0","Any value between 2 and 9"],a:1,exp:"Boundary data is at the edge of the valid range. For 1–10: the valid boundaries are 1 (accept) and 10 (accept), plus just outside: 0 (reject) and 11 (reject). All four are boundary test cases."},
+  {q:"'abc' entered into a program that expects an integer is classified as:",opts:["Normal data","Boundary data","Erroneous data","Extreme data"],a:2,exp:"Erroneous data is data that is completely invalid — wrong type, nonsensical, or far outside the valid range. 'abc' cannot be processed as an integer, so it is erroneous."},
+  {q:"A program runs but outputs 250 instead of the correct 25. This is most likely a:",opts:["Syntax error","Runtime error","Logic error","Boundary error"],a:2,exp:"A logic error causes the program to run without crashing, but produce incorrect output. The algorithm has a flaw — perhaps a wrong operator (* instead of +) or incorrect formula."},
+  {q:"Which error type prevents a program from running at all?",opts:["Logic error","Runtime error","Syntax error","Test error"],a:2,exp:"A syntax error breaks the language rules — the translator (compiler or interpreter) cannot understand the code, so it refuses to run the program. The error must be fixed before execution."},
+  {q:"What is iterative testing?",opts:["Testing by real users before release","Testing only the final, completed program","Testing each module/component as it is developed","Testing on multiple different computers"],a:2,exp:"Iterative testing means testing during development — each component is tested as it is written. This catches bugs early, when they are easier and cheaper to fix."},
+  {q:"What is the main advantage of iterative over final-only testing?",opts:["It takes less time overall","Bugs are caught and fixed early, when they are cheaper to identify and correct","It tests more data types","It doesn't require a test plan"],a:1,exp:"Finding and fixing bugs early (during iterative testing) is much cheaper than fixing them late. A bug discovered in one module is easy to isolate; bugs in a completed program are harder to track down."},
+  {q:"Beta testing is done by:",opts:["The programming team before code is written","The development company's own testers","Real users outside the company, before public release","Automated testing software"],a:2,exp:"Beta testing is conducted by a limited group of real users from outside the development company. They test the nearly-finished product and report bugs and usability issues before the full public release."},
+  {q:"A test table records which of the following?",opts:["Only the expected output","Input, expected output, actual output, pass/fail","Just the test number and category","The programmer's name and date"],a:1,exp:"A complete test table records: test number, test category, input data, expected output, actual output, and pass/fail. Both expected and actual output are needed to determine if the test passed."},
+  {q:"A runtime error is best described as:",opts:["An error in the code's grammar/syntax","An error in the algorithm's logic","An error that causes the program to crash while it is running","An error discovered during code review"],a:2,exp:"Runtime errors occur while the program is executing — they cause a crash. Common examples: division by zero, array index out of bounds, or accessing a file that doesn't exist."},
+  {q:"Why is boundary testing particularly important?",opts:["It is the easiest type of test to write","Programmers often make off-by-one errors at the edges of valid ranges","Boundary data is the most common type of input","It finds syntax errors"],a:1,exp:"Off-by-one errors are extremely common — using > instead of >= wrongly rejects the boundary value. Boundary testing specifically targets these edge cases that normal data testing would miss."},
+  {q:"Alpha testing is different from beta testing because:",opts:["Alpha uses erroneous data; beta uses normal data","Alpha is done by the development team; beta is done by real external users","Alpha tests one module; beta tests the whole program","Alpha happens after release; beta before release"],a:1,exp:"Alpha testing is in-house testing by the development team. Beta testing is by external users (real users outside the company). Both happen before the public release."},
+  {q:"A developer uses 0 as a test value for a program that accepts 1–100. This is:",opts:["Normal data","Erroneous data","Boundary data","Invalid test data"],a:2,exp:"0 is just outside the lower boundary of the valid range (1–100). It is boundary data — it should be rejected. Boundary values include those just inside (1) and just outside (0 and 101) the valid range."},
+  {q:"During final testing, a tester discovers a bug. Compared to iterative testing, fixing this bug is likely to be:",opts:["Faster, because the whole program is visible","Cheaper, because testers are not developers","More expensive and time-consuming, as it could affect other completed modules","Easier, because the program is complete"],a:2,exp:"Bugs found late (in final testing) are more expensive to fix. Changing code in a completed program can break other parts. Iterative testing finds bugs early when modules are isolated — much cheaper to fix."}
 ];
-var WORKSHEET=[
-  {q:"Explain the difference between normal, boundary, and erroneous test data. Give an example of each for a field that accepts integers 1–50.",marks:6,ms:"Normal: typical valid data in range — e.g. 25 (1). Boundary: values at exact limits — e.g. 1 and 50 (2). Erroneous: invalid data outside range or wrong type — e.g. 0, 51, or 'hello' (2). [1 extra mark for clear, accurate explanation of purpose]"},
-  {q:"Explain the difference between iterative testing and final testing.",marks:4,ms:"Iterative: testing done throughout development as each section is written (1). Errors found and fixed early when cheapest (1). Final: testing the complete program as a whole at the end of development (1). Checks all components work together (1)."},
-  {q:"Explain the difference between alpha and beta testing.",marks:4,ms:"Alpha: carried out by the development team internally before release (1). Controlled environment (1). Beta: carried out by selected real users outside the development team (1). Real-world conditions — finds bugs developers didn't anticipate (1)."},
-  {q:"Complete a trace table for the following code with input list = [3, 1, 4, 1]:\nfor i = 0 to 3:\n    if list[i] > 2:\n        print(list[i])",marks:4,ms:"Row i=0: list[0]=3, 3>2 true, print 3 (1). Row i=1: list[1]=1, 1>2 false (1). Row i=2: list[2]=4, 4>2 true, print 4 (1). Row i=3: list[3]=1, 1>2 false (1). Output: 3 then 4."},
-  {q:"Explain why testing cannot prove that a program is completely correct.",marks:2,ms:"It is impossible to test every possible input combination — there are too many (1). Testing can only reveal errors that exist; it cannot prove no errors remain (1)."},
-  {q:"A program accepts a month number (1–12). Give one normal, two boundary, and two erroneous test values. Explain your choices.",marks:5,ms:"Normal: e.g. 6 — typical valid value (1). Boundary: 1 (lower limit) and 12 (upper limit) (2). Erroneous: 0 (below minimum) and 13 (above maximum) [also accept 'abc' or other wrong type] (2)."},
-  {q:"Why is it important to use erroneous test data?",marks:2,ms:"To verify the program correctly handles invalid input (1). Without erroneous testing, the program may crash or produce wrong results when real users enter invalid data (1)."},
-  {q:"What is the purpose of a trace table? Describe how one is completed.",marks:3,ms:"A trace table manually tracks variable values at each step of execution (1). A column is created for each variable/condition (1). At each step, new values are entered — helping identify where variables have incorrect values (logic errors) (1)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Normal test data",d:"Typical, valid input within the expected range. Used to check the program handles standard inputs correctly. e.g. age = 25 (valid range 0–100)."},
-  {w:"Boundary test data",d:"Values at the exact limits of the acceptable range. Tests off-by-one errors in conditions. e.g. 0 and 100 for valid range 0–100."},
-  {w:"Erroneous test data",d:"Invalid data outside the acceptable range or wrong type. The program should reject/handle it gracefully. e.g. -1 or 'hello' for an integer 0–100 field."},
-  {w:"Iterative testing",d:"Testing carried out throughout development as each section is written. Errors are found and fixed early when cheapest."},
-  {w:"Final (terminal) testing",d:"Testing the complete program as a whole at the end of development — verifying all components work correctly together."},
-  {w:"Alpha testing",d:"Testing by the development team in a controlled environment before any public release."},
-  {w:"Beta testing",d:"Testing by selected real users outside the development team, under real-world usage conditions."},
-  {w:"Trace table",d:"A table used to manually track variable values at each step of an algorithm — used to identify logic errors."},
-  {w:"Logic error",d:"A bug where code runs without crashing but produces incorrect results due to a flaw in the algorithm."},
-  {w:"Syntax error",d:"A coding error where the code doesn't follow the language's rules — the program won't run at all."},
-  {w:"Off-by-one error",d:"A common logic error where a loop or condition is out by one iteration — e.g. using < instead of <=."},
-  {w:"Test plan",d:"A document listing specific test cases, input data, expected outputs, and actual outputs — used to systematically verify a program."},
-  {w:"Acceptance testing",d:"Testing to verify the program meets the client's requirements — often done as part of final testing."},
-  {w:"System testing",d:"Testing the complete integrated system — checking all modules work together correctly."},
-  {w:"Debugging",d:"The process of finding and fixing errors (bugs) in a program. Trace tables and IDE debugging tools assist this process."}
+  {term:"Normal test data",def:"Valid data that falls within the acceptable range and should be accepted and processed correctly by the program. E.g. for age 0–120: test with 50."},
+  {term:"Boundary test data",def:"Data at the very edge of the valid range — values just inside (accept) and just outside (reject) the boundary. E.g. for age 0–120: test with 0, 1, 119, 120 (accept) and -1, 121 (reject)."},
+  {term:"Erroneous test data",def:"Invalid data that should be rejected — wrong data type or completely outside the valid range. E.g. 'abc', -50, 500 for a program expecting age 0–120."},
+  {term:"Iterative testing",def:"Testing carried out during program development — each module or component is tested as it is written. Catches bugs early when they are cheap to fix."},
+  {term:"Final testing",def:"Testing carried out at the end of development when the complete program is finished. Checks that all parts work together correctly. Also called terminal testing."},
+  {term:"Alpha testing",def:"In-house testing by the development team before public release. Finds bugs in a controlled environment."},
+  {term:"Beta testing",def:"Testing by a limited group of real external users before the full public release. Finds bugs and usability issues that internal testing may have missed."},
+  {term:"Syntax error",def:"An error in code that breaks the rules (grammar) of the programming language. The program cannot run at all. E.g. misspelled keyword, missing bracket."},
+  {term:"Logic error",def:"An error in the algorithm — the program runs without crashing but produces incorrect output. E.g. using - instead of + in a formula."},
+  {term:"Runtime error",def:"An error that occurs while the program is executing — causes a crash. E.g. division by zero, array index out of bounds, file not found."}
 ];
-var TEST_MCQ=[
-  {q:"What type of test data is 101 for a program accepting ages 0–100?",opts:["Normal","Boundary","Erroneous","Alpha"],ans:2,exp:"101 is outside the valid range (0–100), making it erroneous test data. The program should reject it."},
-  {q:"What is the purpose of iterative testing?",opts:["Test the whole program at the end","Test with only erroneous data","Test each section as it is written, finding errors early","Test with real users"],ans:2,exp:"Iterative testing tests each section as it is written. Errors are found while the code is fresh and cheapest to fix — before they cascade into bigger problems."},
-  {q:"What is a trace table used for?",opts:["Speed up execution","Track variable values at each step to find logic errors","Remove syntax errors","Format program output"],ans:1,exp:"A trace table manually records variable values at each step of an algorithm — it shows exactly where the logic goes wrong, helping debug without running the code."},
-  {q:"Which testing type uses real users outside the development team?",opts:["Alpha","Iterative","Final","Beta"],ans:3,exp:"Beta testing uses real external users. They discover real-world bugs in conditions the development team didn't anticipate during controlled alpha testing."},
-  {q:"Why is boundary data important?",opts:["It is the most common input","Off-by-one errors are common at the limits of ranges","It is always invalid","It is required by OCR"],ans:1,exp:"Most logic errors occur at boundaries. Testing exact limits (e.g. 0 and 100) reveals whether condition operators (<, <=, >, >=) are correctly specified."}
-];
-var TEST_SA=[
-  {q:"Explain the THREE types of test data used in program testing. Give one example of each for a field accepting integers 1–20.",marks:6,ms:"Normal: typical valid value in range (1), e.g. 10 (1). Boundary: at exact limits (1), e.g. 1 and 20 (1). Erroneous: outside range or wrong type (1), e.g. 0, 21, or 'abc' (1)."},
-  {q:"Explain the difference between alpha testing and beta testing.",marks:4,ms:"Alpha: internal development team, controlled environment (1), before public release (1). Beta: selected external real users (1), real-world conditions to find unexpected bugs (1)."},
-  {q:"What is a trace table? Describe how you would use one to find a logic error.",marks:3,ms:"A table tracking variable values at each step of an algorithm (1). Create columns for each variable and condition (1). Work through each step, recording the value — where the actual value differs from expected, that is where the logic error is (1)."},
-  {q:"A program accepts a score from 1 to 10. Give one example of boundary data and explain why it is important to test.",marks:2,ms:"Boundary data: 1 or 10 (exact limits) (1). Important because off-by-one errors are common — testing the exact limit checks the condition operator (< vs <=) is correct (1)."},
-  {q:"Explain why testing cannot guarantee a program is completely error-free.",marks:2,ms:"It is impossible to test every possible combination of inputs (1). Testing can only reveal errors that exist — it cannot prove no other errors remain (1)."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});document.getElementById('fc-progress').textContent='Card 1 of '+KEY_TERMS.length;showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,3,1,2];
+var TEST_MCQ_LABELS=[['50',  '0','twenty','-50'],['Logic error','Runtime error','Syntax error','Boundary error'],['Beta testing','Final testing','Alpha testing','Iterative testing'],['Syntax error','Logic error','Runtime error','Boundary error'],['Alpha testing','Iterative testing','Beta testing','Final testing']];
+var TEST_MCQ_EXPLAIN=['Boundary data is at the edge of the valid range. 0 is the lower boundary for ages 0–120.','PINT instead of PRINT is a misspelled keyword — a syntax error. The program cannot run.','Iterative testing tests each module as it is developed — during the build process.','Wrong operator (- instead of +): program runs but gives wrong result = logic error.','Beta testing is by real external users before full public release.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['Three test data types for 1–50','Logic vs runtime errors','Advantages of iterative testing','Why boundary testing matters','Test table contents'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

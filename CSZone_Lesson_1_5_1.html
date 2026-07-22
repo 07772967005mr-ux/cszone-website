@@ -1,183 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.5.1 Operating Systems | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.5.1 Ethical, Legal, Cultural &amp; Environmental Issues — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:6px;text-transform:uppercase;}
+    .free-badge{display:inline-flex;align-items:center;gap:5px;background:#f0fdf4;color:#166534;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #bbf7d0;margin-bottom:6px;margin-left:8px;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .issue-card{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:12px;padding:16px 20px;margin-bottom:12px;}
+    .issue-name{font-size:16px;font-weight:800;color:#1d4ed8;margin-bottom:6px;}
+    .issue-desc{font-size:14.5px;color:#334155;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166634;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:220px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 1</div>
-    <div class="sst" style="color:#818cf8">1.5 Systems Software</div>
-    <a href="/ocr-j277/1-5-1/" class="sl fb active">1.5.1 Operating Systems</a>
-    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
-    <div class="sst" style="color:#818cf8">1.6 Ethical Issues</div>
-    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
-    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
-    <div class="sst">Component 2</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.5 Impacts of Technology</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.5.1 Ethical &amp; Cultural Issues</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.5 Systems Software</div>
-  <div class="lesson-title">1.5.1 — Operating Systems</div>
-  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min &nbsp;·&nbsp; <span style="color:#10b981;font-weight:600">Free lesson</span></div>
-</div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
-</div>
-
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>What is an Operating System?</h2>
-    <p>An <strong>Operating System (OS)</strong> is system software that manages hardware and software resources and provides an interface between the user and the computer. Without an OS, application software cannot run.</p>
-    <div class="kp">Examples: Windows 11, macOS Ventura, Linux Ubuntu, Android, iOS</div>
-  </div>
-  <div class="ns">
-    <h2>Functions of an Operating System</h2>
-    <div class="ic b">
-      <h4>1. Memory Management</h4>
-      <p>The OS decides which programs get how much RAM. It allocates and deallocates memory as programs start and finish. Prevents one program accessing another's memory space.</p>
-    </div>
-    <div class="ic b">
-      <h4>2. Processor/CPU Scheduling</h4>
-      <p>The OS manages which processes run on the CPU and when. Uses scheduling algorithms (e.g., round robin, priority scheduling) to give each process CPU time — creating the illusion of multitasking.</p>
-    </div>
-    <div class="ic b">
-      <h4>3. Peripheral Management (via device drivers)</h4>
-      <p>The OS communicates with peripherals (printer, keyboard, monitor) using <strong>device drivers</strong> — software that translates OS instructions into device-specific commands.</p>
-    </div>
-    <div class="ic b">
-      <h4>4. File Management</h4>
-      <p>The OS organises files in a hierarchical folder structure. It handles reading, writing, renaming, and deleting files. Controls permissions — who can access what files.</p>
-    </div>
-    <div class="ic b">
-      <h4>5. User Interface</h4>
-      <ul>
-        <li><strong>GUI (Graphical User Interface)</strong>: windows, icons, menus, pointer — visual and intuitive (Windows, macOS)</li>
-        <li><strong>CLI (Command Line Interface)</strong>: text-based commands — faster for experts, uses less memory (Linux terminal)</li>
-      </ul>
-    </div>
-    <div class="ic b">
-      <h4>6. User Management</h4>
-      <p>The OS handles multiple user accounts with different access rights and permissions. Ensures users can only access files and settings they are authorised for.</p>
-    </div>
-    <div class="ic b">
-      <h4>7. Security Management</h4>
-      <p>The OS enforces login authentication, manages user permissions, and provides basic security features.</p>
-    </div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
-      <ul>
-        <li>Saying the OS "runs programs" — it manages resources and provides an environment; the CPU runs programs</li>
-        <li>Forgetting device drivers — a key function of peripheral management</li>
-        <li>Confusing GUI and CLI — in the exam, CLI uses less memory/is faster for experts; GUI is more user-friendly</li>
-        <li>Leaving out CPU scheduling — a very commonly tested function</li>
-      </ul>
-    </div>
+  <div class="lesson-badge">🌍 Component 1 · 1.5 Impacts of Technology</div>
+  <div class="free-badge">✓ Free lesson</div>
+  <div class="lesson-title">1.5.1 Ethical, Legal, Cultural &amp; Environmental Issues</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~13 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
   </div>
 </div>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
+</div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/1-4-2/" class="nb">← 1.4.2 Vulnerabilities</a>
-  <a href="/ocr-j277/1-5-2/" class="nb n">1.5.2 Utility Software →</a>
-</div>
-</div>
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>The Impact of Technology on Society</h2>
+    <p>Computing technology affects society in many ways — ethically, legally, culturally, and environmentally. OCR J277 requires students to discuss these impacts, considering multiple perspectives.</p>
+
+    <h2>Ethical Issues</h2>
+    <p><strong>Ethics</strong> concerns what is morally right or wrong. Technology raises many ethical questions:</p>
+    <div class="issue-card">
+      <div class="issue-name">Privacy and Surveillance</div>
+      <div class="issue-desc">Governments and corporations can monitor individuals' activities online (browsing history, emails, location). Smart devices (Alexa, CCTV) collect vast amounts of data. Is constant surveillance acceptable? Who has access to this data?</div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-name">Artificial Intelligence and Bias</div>
+      <div class="issue-desc">AI systems can inherit biases from training data, leading to discriminatory decisions in hiring, loan approval, or facial recognition. Who is responsible when an AI makes a harmful decision?</div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-name">Autonomous Weapons and Drones</div>
+      <div class="issue-desc">Military AI systems can make life-or-death decisions without human input. This raises questions about accountability, rules of engagement, and the ethics of removing human judgment from lethal decisions.</div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-name">Data Collection and Consent</div>
+      <div class="issue-desc">Companies collect personal data without users fully understanding what is collected or how it's used. Cookie consent forms are often designed to be confusing (dark patterns).</div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-name">Automation and Job Displacement</div>
+      <div class="issue-desc">Robots and AI replace manual and cognitive jobs — manufacturing, customer service, data entry. Creates structural unemployment but also new job categories. Who benefits from automation, and who is left behind?</div>
+    </div>
+
+    <h2>Legal Issues</h2>
+    <p>Laws try to keep pace with technology:</p>
+    <table>
+      <thead><tr><th>Issue</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Intellectual property</strong></td><td>Software, music, films, and creative works are protected by copyright. Illegal copying (piracy) is widespread but hard to enforce globally.</td></tr>
+        <tr><td><strong>Digital evidence</strong></td><td>Courts must accept digital evidence (emails, CCTV footage, metadata). Raises questions about chain of custody and tampering.</td></tr>
+        <tr><td><strong>Jurisdiction</strong></td><td>The internet crosses borders — whose laws apply when a crime is committed in one country, hosted in another, and affects victims in a third?</td></tr>
+        <tr><td><strong>Right to be forgotten</strong></td><td>GDPR gives individuals the right to request deletion of their personal data from online services. Conflicts with freedom of information.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Cultural Issues</h2>
+    <div class="issue-card">
+      <div class="issue-name">Digital Divide</div>
+      <div class="issue-desc">The gap between those who have access to technology (devices, internet, digital skills) and those who don't. Affects elderly, low-income, and rural communities disproportionately. Creates inequality in access to education, healthcare, and employment.</div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-name">Online Communities and Social Media</div>
+      <div class="issue-desc">Technology enables global communities but also echo chambers, misinformation, cyberbullying, and social media addiction. Mental health impacts, particularly on young people.</div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-name">Globalisation of Culture</div>
+      <div class="issue-desc">The internet spreads English-language and Western culture globally, potentially marginalising local cultures and languages. Simultaneously allows local cultures to reach global audiences.</div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-name">Accessibility</div>
+      <div class="issue-desc">Technology can improve accessibility for disabled users (screen readers, voice control, closed captions) but poor design excludes them. Developers have an ethical responsibility to consider accessibility.</div>
+    </div>
+
+    <h2>Environmental Issues</h2>
+    <table>
+      <thead><tr><th>Issue</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Energy consumption</strong></td><td>Data centres consume ~1-2% of global electricity. Bitcoin mining uses more electricity than many countries. Streaming video generates significant CO₂.</td></tr>
+        <tr><td><strong>E-waste</strong></td><td>Electronic waste is the fastest-growing waste stream globally. Toxic materials (lead, mercury, cadmium) leach into soil/water. Only ~20% is formally recycled.</td></tr>
+        <tr><td><strong>Manufacturing</strong></td><td>Producing devices requires rare earth minerals mined in environmentally damaging ways. Supply chains have large carbon footprints.</td></tr>
+        <tr><td><strong>Benefits</strong></td><td>Technology can reduce emissions: smart grids, remote working reduces commuting, precision agriculture reduces resource waste.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Open Source vs Proprietary Software</h2>
+    <table>
+      <thead><tr><th></th><th>Open Source</th><th>Proprietary</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Source code</strong></td><td>Publicly available</td><td>Closed/secret</td></tr>
+        <tr><td><strong>Cost</strong></td><td>Usually free</td><td>Usually paid</td></tr>
+        <tr><td><strong>Examples</strong></td><td>Linux, Firefox, Python, LibreOffice</td><td>Windows, Microsoft Office, Adobe Photoshop</td></tr>
+        <tr><td><strong>Advantages</strong></td><td>Community-reviewed, free, customisable, transparent</td><td>Dedicated support, polished UI, reliability guarantees</td></tr>
+        <tr><td><strong>Disadvantages</strong></td><td>No formal support, quality varies</td><td>Vendor lock-in, expensive, cannot audit code</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> For 6-mark discuss questions, give both sides and a conclusion. Digital divide — know what it means and why it's significant. E-waste — fastest-growing waste stream, toxic materials. Open source vs proprietary — know examples for each. AI bias — who is responsible? These are discussion questions, so use "on the one hand... however..." structure. Learn key legislation for 1.5.2 — this lesson sets the ethical context.
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
+      <ul>
+        <li>Only giving one perspective on ethical issues — exam questions ask you to "discuss", requiring multiple viewpoints</li>
+        <li>Confusing ethics and law — ethics is about what is morally right; law is about what is legally required</li>
+        <li>Not naming specific examples — "a company" is weaker than "Facebook's Cambridge Analytica data scandal"</li>
+        <li>Forgetting environmental benefits of technology — not just negative impacts</li>
+        <li>Confusing digital divide with internet access only — it includes skills, hardware, and ability to use technology effectively</li>
+      </ul>
+    </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
+  </div>
 </div>
 
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_1.5.1_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 1.5.1 Ethical, Cultural &amp; Environmental Issues</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">What is the "digital divide"? Give two groups who might be disadvantaged by it.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">The digital divide is the gap between those who have access to technology and the internet and those who do not [1]; disadvantaged groups include (any two): elderly people [1]; low-income households [1]; people in rural areas with poor connectivity [1]; developing countries [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">Explain one ethical concern raised by the widespread use of surveillance technology.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-2" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Any valid ethical concern, e.g.: constant surveillance may infringe on individuals' right to privacy [1]; data collected may be used without consent or for purposes the individual didn't agree to [1]; state surveillance may be used to suppress dissent or target minorities [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Describe two environmental impacts of increasing use of computing technology.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-3" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">E-waste: electronic devices contain toxic materials (lead, mercury) that pollute soil and water when not disposed of correctly [1+1]; Energy consumption: data centres and cryptocurrency mining consume vast amounts of electricity, contributing to CO₂ emissions [1+1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">What is open source software? Give two advantages over proprietary software.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-4" style="min-height:100px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Open source software has its source code publicly available for anyone to view, modify, and distribute [1]; advantages: usually free to use [1]; community-reviewed so security flaws can be spotted by many users [1]; can be customised to suit specific needs [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Discuss one cultural impact of social media and the internet.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-5" style="min-height:100px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Example: Social media creates "echo chambers" where users only see content that reinforces their existing views [1]; this can increase polarisation and spread misinformation [1]; however, it also enables people to connect globally and access diverse perspectives [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">Explain how automation can have both positive and negative effects on employment.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-6" style="min-height:120px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Negative: automation replaces jobs in manufacturing, customer service, and data entry, leading to structural unemployment [1+1]; Positive: automation creates new jobs in technology development, maintenance, and oversight [1]; frees workers from dangerous/repetitive tasks [1]; can increase productivity and lower costs for consumers [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">What is the "right to be forgotten" and which law provides it?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">The right to be forgotten allows individuals to request that their personal data be deleted from online services and search engines [1]; it is provided by GDPR (General Data Protection Regulation) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">Discuss whether the benefits of AI outweigh its ethical risks. Give arguments for and against.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-8" style="min-height:130px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">For (benefits): AI can diagnose diseases more accurately than doctors; improve road safety through autonomous vehicles; process data at speeds humans cannot [1+1]; Against (risks): AI systems can be biased, leading to discriminatory decisions in hiring/lending; autonomous systems may make fatal errors with no accountability; surveillance AI threatens privacy [1+1]; Conclusion: balanced discussion needed for full marks — must present both sides.</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 1.5.1 Ethical &amp; Cultural Issues</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What is the "digital divide"?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> The difference in processing speed between old and new computers</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> The gap between those with access to technology and those without</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> The division between wired and wireless networks</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> The difference between open source and proprietary software</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">Which of these is an example of open source software?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> Microsoft Windows</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> Adobe Photoshop</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> Linux</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> Microsoft Office</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">Which law gives individuals the right to request deletion of their personal data?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> Computer Misuse Act</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> GDPR</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> Copyright Act</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> Freedom of Information Act</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">What is e-waste?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> Junk email (spam)</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> Electronic equipment that has been discarded</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> Data that has been permanently deleted</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> Electricity wasted by inefficient computers</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Which of the following is an ethical concern about AI systems?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> AI systems use too much storage space</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> AI systems can inherit biases from training data, leading to discriminatory decisions</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> AI systems are always slower than humans</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> AI systems are too expensive to maintain</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">State two groups who may be disadvantaged by the digital divide.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>Any two: elderly people; low-income households; people in rural areas; people in developing countries; people with disabilities. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">State one advantage of open source software over proprietary software.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>Usually free to use; source code can be viewed and audited by many people (so security flaws can be spotted); can be customised; no vendor lock-in. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">State one negative environmental impact of computing technology.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>E-waste: discarded electronics contain toxic materials; Data centres use significant electricity contributing to CO₂ emissions; manufacturing devices requires rare earth minerals mined destructively. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">Explain what "automation and job displacement" means.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Automation (using machines/AI) replaces human workers in tasks such as manufacturing or customer service, leading to unemployment in those sectors. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">State one difference between ethics and law in the context of computing.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>Ethics concerns what is morally right or wrong; law concerns what is legally required/prohibited. Something may be legal but unethical (e.g. excessive data collection with consent) or illegal but considered ethically justifiable. [1]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/1-4-2/" class="bottom-nav-btn">← 1.4.2 Security Measures</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">1.5 Impacts of Technology</span>
+  <a href="/ocr-j277/1-5-2/" class="bottom-nav-btn next-btn">1.5.2 Legislation →</a>
+</div>
 <script>
-var LESSON_ID='1-5-1';var IS_FREE=true;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-5-1';
+var IS_FREE=true;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What is the main purpose of an Operating System?",opts:["To run video games","To manage hardware and software resources and provide an interface between user and computer","To connect to the internet","To store user files"],ans:1,exp:"An OS is system software that manages hardware resources (CPU, memory, peripherals) and provides an interface for users and applications to interact with the computer."},
-  {q:"What is the function of CPU scheduling in an OS?",opts:["It increases the CPU clock speed","It manages which processes get CPU time and when, enabling multitasking","It backs up processes to storage","It controls memory allocation"],ans:1,exp:"CPU scheduling (process scheduling) decides which processes run on the CPU and for how long. This creates the illusion of multitasking — multiple programs appear to run simultaneously."},
-  {q:"What is a device driver?",opts:["A program that speeds up internet connections","Software that translates OS instructions into commands a specific peripheral device understands","A type of storage device","A graphical user interface component"],ans:1,exp:"A device driver is software that allows the OS to communicate with hardware peripherals (printers, keyboards, graphics cards) by translating generic OS commands into device-specific instructions."},
-  {q:"Which type of user interface uses text-based commands?",opts:["GUI","API","BIOS","CLI"],ans:3,exp:"CLI (Command Line Interface) requires users to type text commands. It uses less memory than a GUI and is faster for experts, but has a steeper learning curve."},
-  {q:"What is an advantage of a GUI over a CLI?",opts:["Uses less memory","Faster for experienced users","More user-friendly — intuitive with windows, icons, and menus","Requires less processor power"],ans:2,exp:"A GUI (Graphical User Interface) uses visual elements like windows, icons, and menus — making it intuitive and accessible for non-expert users. The trade-off is it uses more memory and processing power than a CLI."},
-  {q:"Memory management in an OS involves:",opts:["Deleting old files to free space","Allocating and deallocating RAM to programs and ensuring they don't interfere with each other's memory","Compressing files on the hard drive","Monitoring network usage"],ans:1,exp:"The OS allocates RAM to programs as they start, deallocates it when they finish, and prevents programs from accessing each other's memory space — maintaining system stability."},
-  {q:"File management in an OS includes which of the following?",opts:["Encrypting internet traffic","Organising files in folders and controlling read/write permissions","Allocating CPU time to processes","Monitoring hardware temperatures"],ans:1,exp:"File management includes organising files in a hierarchical folder structure, handling file operations (read/write/rename/delete), and enforcing access permissions."},
-  {q:"An OS uses scheduling algorithms to manage multiple processes. Why is this necessary?",opts:["There are more files than storage space","Multiple programs want to use the CPU at the same time but only one can run at a time","The CPU runs too slowly without scheduling","Programs need internet access at the same time"],ans:1,exp:"A single-core CPU can only execute one instruction at a time. Scheduling algorithms (e.g. round robin) allocate CPU time to multiple processes in turn, creating the appearance of simultaneous execution."},
-  {q:"What is the role of user management in an OS?",opts:["Managing file compression","Providing different user accounts with appropriate access rights and permissions","Scheduling CPU processes","Installing device drivers"],ans:1,exp:"User management creates and manages user accounts. Different users get different permissions — e.g., a standard user cannot install software or access other users' files; an admin has full access."},
-  {q:"Which of the following is an example of an Operating System?",opts:["Microsoft Word","Google Chrome","Ubuntu Linux","Adobe Photoshop"],ans:2,exp:"Ubuntu Linux is an OS. Microsoft Word, Chrome, and Photoshop are application software that run ON top of an OS."},
-  {q:"A CLI uses less memory than a GUI. Why?",opts:["CLI doesn't require a keyboard","GUI requires memory to render visual elements (windows, icons, graphics) — CLI just displays text","CLI programs are smaller files","GUIs require more RAM for security checks"],ans:1,exp:"GUIs require significant memory to render graphical elements — windows, icons, animations, transparencies. A CLI only displays text, using far less RAM and processing power."},
-  {q:"What happens if an OS fails to manage memory properly?",opts:["The internet disconnects","Programs might overwrite each other's data causing crashes or security vulnerabilities","The display turns off","The keyboard stops working"],ans:1,exp:"Poor memory management can lead to programs accessing or overwriting each other's memory — causing system crashes (blue screen of death) or security vulnerabilities where programs can read other programs' sensitive data."},
-  {q:"Which OS function allows a computer to use a newly connected printer?",opts:["File management","CPU scheduling","Peripheral management via device drivers","User management"],ans:2,exp:"When a printer is connected, the OS uses a device driver to communicate with it. The driver translates the OS's generic print instructions into commands the specific printer understands."},
-  {q:"What is multitasking in the context of an OS?",opts:["Using multiple keyboards","Running multiple applications simultaneously — managed by the OS scheduler sharing CPU time","Storing files in multiple locations","Having multiple user accounts logged in"],ans:1,exp:"Multitasking is the ability to run multiple processes concurrently. The CPU switches between them rapidly (scheduling), so all appear to run at once — the OS scheduler manages this."},
-  {q:"A school computer lab has student and teacher accounts. Students cannot install software or access teacher files. Which OS function enables this?",opts:["CPU scheduling","Memory management","User management with access control","Device driver management"],ans:2,exp:"User management allows the OS to create accounts with different permission levels. Student accounts have restricted permissions — they cannot install software or access files not owned by them."}
+  {q:"What is the digital divide?",opts:["The difference in speed between old and new computers","The gap between those with and without access to technology","The divide between IPv4 and IPv6","The difference between wired and wireless networks"],a:1,exp:"The digital divide is the gap between those who have access to technology, internet, and digital skills, and those who don't. It affects elderly, low-income, rural, and developing-world populations."},
+  {q:"Which of the following is open source software?",opts:["Microsoft Windows","Adobe Photoshop","Linux","Microsoft Office"],a:2,exp:"Linux is open source — its source code is publicly available. Windows, Photoshop, and Microsoft Office are proprietary software with closed source code."},
+  {q:"What does 'open source' mean?",opts:["Software that is free to use","Software that can only be used on open networks","Software whose source code is publicly available for anyone to view, modify, and distribute","Software without any licence restrictions"],a:2,exp:"Open source means the source code is publicly accessible. Anyone can view, modify, and distribute it. This encourages community collaboration and security auditing."},
+  {q:"What is e-waste?",opts:["Spam email","Unwanted data on a hard drive","Discarded electronic equipment such as old phones, computers, and TVs","Electricity wasted by computers on standby"],a:2,exp:"E-waste (electronic waste) is discarded electronic equipment. It is the fastest-growing waste stream globally and contains toxic materials (lead, mercury, cadmium) that can contaminate soil and water."},
+  {q:"What is a major ethical concern about AI bias?",opts:["AI systems are too slow","AI systems can make discriminatory decisions if trained on biased data","AI systems are too expensive to develop","AI cannot replace human jobs"],a:1,exp:"AI bias occurs when AI systems are trained on biased data, causing them to produce discriminatory outcomes — e.g. unfairly rejecting job applications from certain groups or misidentifying people in facial recognition."},
+  {q:"What is the 'right to be forgotten'?",opts:["The right to anonymous browsing","The right to request deletion of personal data from online services","The right to have your browsing history cleared automatically","The right to opt out of CCTV"],a:1,exp:"The right to be forgotten (Article 17 of GDPR) allows individuals to request that their personal data be deleted from online services and search engines when they no longer consent to its storage."},
+  {q:"Why might automation be considered harmful to society?",opts:["Automation makes computers run slower","Automation replaces human jobs, causing unemployment in certain sectors","Automation increases energy costs","Automation reduces access to the internet"],a:1,exp:"Automation uses machines and AI to perform tasks previously done by humans. This can cause structural unemployment — particularly affecting manufacturing, retail, and administrative workers."},
+  {q:"What is proprietary software?",opts:["Software developed by a charity","Software whose source code is kept private and owned by the developer","Software that runs on old hardware","Free software for government use only"],a:1,exp:"Proprietary software has closed source code — only the developer can view and modify it. Users must pay a licence fee and cannot customise the software. Examples: Windows, Microsoft Office, Photoshop."},
+  {q:"Which of the following is a cultural impact of social media?",opts:["Increased electricity consumption","Echo chambers that reinforce existing views and spread misinformation","Increased data centre cooling costs","Reduced software development costs"],a:1,exp:"Social media algorithms show users content similar to what they already engage with, creating 'echo chambers' that reinforce existing beliefs and can contribute to polarisation and the spread of misinformation."},
+  {q:"What percentage of e-waste is formally recycled globally (approximately)?",opts:["80%","50%","20%","5%"],a:2,exp:"Only approximately 20% of e-waste is formally recycled globally. The majority is sent to landfill, burned, or processed in unsafe conditions in developing countries."},
+  {q:"Which of the following would be a positive environmental impact of technology?",opts:["Increased e-waste","Higher energy consumption by data centres","Remote working reducing commuting and carbon emissions","Increased rare earth mineral mining"],a:2,exp:"Remote working (enabled by technology) reduces commuting, cutting transport emissions. Smart energy grids, precision agriculture, and route optimisation also reduce environmental impact."},
+  {q:"What is intellectual property in the context of computing?",opts:["The physical hardware in a computer","Creative works such as software, music, and films protected by copyright","Data stored in the cloud","The patents held by hardware manufacturers"],a:1,exp:"Intellectual property includes creative and innovative works protected by law — software code, algorithms, music, and films. Copyright protects these from being copied without permission."},
+  {q:"What is 'vendor lock-in' in the context of proprietary software?",opts:["A hardware fault that prevents software from running","When a user becomes dependent on a specific supplier's products and finds it difficult to switch","When an antivirus program blocks all software","When software is only licensed for one computer"],a:1,exp:"Vendor lock-in occurs when a user becomes so dependent on a proprietary system (due to file formats, integrations, or training) that switching to a competitor is difficult and costly. A risk of proprietary software."},
+  {q:"What does GDPR stand for?",opts:["General Data Protection Regulation","Global Digital Privacy Rights","Government Data Processing Rules","General Digital Privacy Regulation"],a:0,exp:"GDPR = General Data Protection Regulation. It is EU law (adopted in the UK post-Brexit as UK-GDPR) that governs how personal data must be collected, stored, and used. It gives individuals rights including the right to be forgotten."},
+  {q:"Which group is MOST likely to be negatively affected by the digital divide?",opts:["Software developers","Young professionals in cities","Elderly people with limited technology access","University students"],a:2,exp:"Elderly people are disproportionately affected by the digital divide due to limited exposure to technology, lower digital literacy, and often fixed incomes making devices/internet access less affordable."}
 ];
-var WORKSHEET=[
-  {q:"State FOUR functions of an operating system.",marks:4,ms:"Any four: memory management (1); CPU/process scheduling (1); peripheral management/device drivers (1); file management (1); user interface provision (1); user management (1); security management (1)."},
-  {q:"Explain the difference between a GUI and a CLI, giving an advantage of each.",marks:4,ms:"GUI = Graphical User Interface — uses windows, icons, menus, and a pointer (1). Advantage: user-friendly and intuitive — no need to memorise commands (1). CLI = Command Line Interface — uses text commands (1). Advantage: uses less memory / faster for experienced users / more precise control (1)."},
-  {q:"Explain the role of device drivers in peripheral management.",marks:2,ms:"A device driver is software that allows the OS to communicate with a hardware peripheral (1). It translates the OS's generic instructions into commands specific to that device, enabling the OS and device to work together (1)."},
-  {q:"Describe how an OS manages memory when multiple programs are open.",marks:3,ms:"The OS allocates a portion of RAM to each running program (1). It keeps track of which areas of memory are in use and by which process (1). It prevents programs from accessing each other's memory space, avoiding crashes and data corruption (1). When a program closes, memory is deallocated and made available again (1). [Max 3]"},
-  {q:"Explain why CPU scheduling is necessary.",marks:2,ms:"A CPU can only execute one instruction at a time, but many processes may want to use it simultaneously (1). The OS scheduler allocates CPU time to each process in turn (e.g., using round robin), giving the appearance of multitasking (1)."},
-  {q:"A user opens a word processor, plays music, and downloads a file simultaneously. Explain how the OS enables this to appear to happen at the same time.",marks:2,ms:"The OS uses CPU scheduling — rapidly switching the CPU between the three processes (1). Each process gets a very short time slice of CPU time in turn. The switching is so fast that all three appear to run simultaneously (1)."},
-  {q:"What is the purpose of user management in an operating system?",marks:2,ms:"User management creates and manages accounts for different users (1). It assigns different permission levels so users can only access files and settings they are authorised to — e.g., preventing students from installing software or accessing teacher files (1)."},
-  {q:"Explain why it is important for the OS to prevent programs accessing each other's memory.",marks:2,ms:"If one program could access another's memory, it could read or overwrite sensitive data (e.g., passwords stored in RAM by a browser) (1). It could also cause crashes — overwriting data another process needs to function correctly (1)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Operating System (OS)",d:"System software that manages hardware and software resources and provides an interface between user and computer."},
-  {w:"Memory management",d:"The OS function of allocating and deallocating RAM to programs, preventing them from interfering with each other."},
-  {w:"CPU scheduling",d:"The OS function of deciding which processes get CPU time and when — enables multitasking."},
-  {w:"Device driver",d:"Software that allows the OS to communicate with a hardware peripheral by translating generic OS instructions into device-specific commands."},
-  {w:"File management",d:"OS function handling file operations (read/write/delete) and organising files in a hierarchical folder structure."},
-  {w:"GUI",d:"Graphical User Interface — visual interface with windows, icons, menus, and a pointer. User-friendly but memory-intensive."},
-  {w:"CLI",d:"Command Line Interface — text-based interface requiring typed commands. Uses less memory; faster for experts."},
-  {w:"User management",d:"OS function creating/managing user accounts with different access permissions."},
-  {w:"Multitasking",d:"Running multiple programs simultaneously — achieved by the CPU scheduler rapidly switching between processes."},
-  {w:"Process",d:"A program in execution. The OS manages many processes simultaneously using scheduling."},
-  {w:"Round robin scheduling",d:"A scheduling algorithm that gives each process a fixed time slice of CPU time in rotation."},
-  {w:"Access control",d:"OS mechanisms that restrict what files and resources each user can access."},
-  {w:"RAM allocation",d:"The assignment of specific areas of RAM to running programs by the OS memory manager."},
-  {w:"System software",d:"Software that manages hardware and provides a platform for application software. The OS is the primary system software."},
-  {w:"Application software",d:"Programs designed for specific user tasks (e.g., word processor, browser) — run on top of the OS."}
+  {term:"Digital divide",def:"The gap between those who have access to technology (devices, internet, digital skills) and those who don't. Affects elderly, low-income, rural communities, and developing countries."},
+  {term:"E-waste",def:"Electronic waste — discarded electronic equipment (phones, computers, TVs). Fastest-growing waste stream globally. Contains toxic materials (lead, mercury, cadmium). Only ~20% formally recycled."},
+  {term:"Open source software",def:"Software whose source code is publicly available for anyone to view, modify, and distribute. Usually free. Examples: Linux, Firefox, Python, LibreOffice."},
+  {term:"Proprietary software",def:"Software with closed source code owned by the developer. Users pay a licence fee. Cannot be modified or audited by users. Examples: Windows, Microsoft Office, Adobe Photoshop."},
+  {term:"Ethics",def:"The study of what is morally right or wrong. In computing: privacy, surveillance, AI bias, automation, data collection, and responsible use of technology."},
+  {term:"AI bias",def:"When AI systems produce discriminatory outcomes because they were trained on biased data. Can affect hiring decisions, loan approvals, facial recognition. Raises questions of accountability."},
+  {term:"Right to be forgotten",def:"A right under GDPR allowing individuals to request deletion of their personal data from online services and search engines. Also known as the right to erasure (Article 17 GDPR)."},
+  {term:"GDPR",def:"General Data Protection Regulation. EU law governing collection, storage, and use of personal data. Provides individuals with rights including access, correction, and deletion of their data."},
+  {term:"Automation",def:"Using machines, robots, or AI to perform tasks previously done by humans. Creates structural unemployment in some sectors (manufacturing, retail) while creating new tech jobs."},
+  {term:"Vendor lock-in",def:"When a user becomes so dependent on a proprietary supplier's products (file formats, integrations) that switching to an alternative is difficult and costly."},
+  {term:"Echo chamber",def:"Social media phenomenon where algorithms show users content that reinforces their existing views, reducing exposure to different perspectives and potentially increasing polarisation."},
+  {term:"Data centre",def:"Large facilities housing servers that store and process internet data. Consume approximately 1-2% of global electricity. Major contributors to CO₂ emissions if powered by fossil fuels."},
+  {term:"Intellectual property",def:"Creative works and inventions protected by law: software, music, films, algorithms. Copyright prevents unauthorised copying. Piracy is a major global issue."},
+  {term:"Surveillance",def:"Monitoring of individuals' activities. Technology enables mass surveillance by governments and corporations through CCTV, internet monitoring, smart devices. Raises privacy concerns."},
+  {term:"Accessibility",def:"Designing technology to be usable by people with disabilities. Screen readers, voice control, closed captions, and high-contrast modes improve access. Poor design excludes disabled users."}
 ];
-var TEST_MCQ=[
-  {q:"Which OS function ensures that a word processor doesn't overwrite data used by a music player?",opts:["CPU scheduling","Memory management","File management","User management"],ans:1,exp:"Memory management allocates separate memory regions to each program and prevents cross-access."},
-  {q:"What is an advantage of a CLI over a GUI?",opts:["More intuitive","Better graphics","Uses less memory and is faster for experienced users","Easier for beginners"],ans:2,exp:"CLI only displays text — no graphical elements to render — so it uses significantly less RAM and processing power. Experts can work faster with typed commands."},
-  {q:"What does a device driver do?",opts:["Speeds up CPU processing","Translates OS instructions into commands a specific peripheral understands","Manages user accounts","Allocates memory to programs"],ans:1,exp:"A device driver bridges the OS and a peripheral device, translating generic OS commands into device-specific instructions."},
-  {q:"A teacher's account can install software; a student's account cannot. Which OS function enables this?",opts:["CPU scheduling","File management","User management with access control","Memory management"],ans:2,exp:"User management assigns different permission levels to different accounts, controlling what each user can and cannot do."},
-  {q:"Which of these is system software?",opts:["Microsoft Word","Ubuntu Linux (OS)","Adobe Photoshop","Google Chrome"],ans:1,exp:"Ubuntu Linux is an operating system — system software. Word, Photoshop, and Chrome are application software."}
-];
-var TEST_SA=[
-  {q:"State THREE functions of an Operating System.",marks:3,ms:"Any three: memory management (1); CPU/process scheduling (1); peripheral management/device drivers (1); file management (1); user interface (1); user management (1)."},
-  {q:"Explain the difference between a GUI and a CLI.",marks:2,ms:"A GUI uses graphical elements — windows, icons, menus (1). A CLI uses text commands typed by the user (1). GUIs are more intuitive but use more memory; CLIs are faster for experts and use less memory."},
-  {q:"Explain why CPU scheduling is necessary in a modern computer.",marks:2,ms:"The CPU can only process one instruction at a time (1). Scheduling allocates CPU time between many processes so multiple programs appear to run simultaneously (1)."},
-  {q:"What is the purpose of device drivers?",marks:2,ms:"Device drivers allow the OS to communicate with peripheral hardware (1). They translate generic OS instructions into commands specific to each device (1)."},
-  {q:"Describe how an OS handles file management.",marks:2,ms:"The OS organises files in a hierarchical folder structure (1) and controls which users can read, write, or delete each file through permissions (1)."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,1,1,1];
+var TEST_MCQ_LABELS=[['The difference in processing speed between old and new computers','The gap between those with access to technology and those without','The division between wired and wireless networks','The difference between open source and proprietary software'],['Microsoft Windows','Adobe Photoshop','Linux','Microsoft Office'],['Computer Misuse Act','GDPR','Copyright Act','Freedom of Information Act'],['Junk email (spam)','Electronic equipment that has been discarded','Data that has been permanently deleted','Electricity wasted by inefficient computers'],['AI systems use too much storage space','AI systems can inherit biases from training data, leading to discriminatory decisions','AI systems are always slower than humans','AI systems are too expensive to maintain']];
+var TEST_MCQ_EXPLAIN=['Digital divide = gap between those with/without technology access.','Linux is open source. Windows, Photoshop, and Office are proprietary.','GDPR (General Data Protection Regulation) provides the right to erasure.','E-waste = discarded electronics (phones, computers, TVs).','AI bias: systems trained on biased data produce discriminatory outcomes.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['Two digital divide groups?','Open source advantage?','Negative environmental impact?','Automation and jobs?','Ethics vs law?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

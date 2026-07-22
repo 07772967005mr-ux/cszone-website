@@ -1,210 +1,532 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>2.2.1b Selection & Iteration | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2.1b Data Types — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:6px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .notes-content code{background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:'Courier New',monospace;font-size:13px;color:#7c3aed;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .code-block{background:#0f172a;border-radius:12px;padding:20px 24px;margin:16px 0;font-family:'Courier New',monospace;font-size:14px;line-height:1.9;color:#e2e8f0;overflow-x:auto;}
+    .code-block .kw{color:#a78bfa;}
+    .code-block .str{color:#86efac;}
+    .code-block .cmt{color:#64748b;font-style:italic;}
+    .code-block .num{color:#fbbf24;}
+    .dtype-card{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+    .dtype-item{background:#f5f3ff;border:1.5px solid #e9d5ff;border-radius:12px;padding:14px 18px;}
+    .dtype-name{font-size:15px;font-weight:800;color:#7c3aed;margin-bottom:4px;}
+    .dtype-desc{font-size:13.5px;color:#334155;margin-bottom:4px;}
+    .dtype-eg{font-size:12px;color:#64748b;font-family:'Courier New',monospace;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:17px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:180px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .paywall-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:999;}
+    .paywall-card{background:#fff;border-radius:24px;padding:40px 36px;text-align:center;max-width:380px;width:90%;box-shadow:0 24px 80px rgba(0,0,0,0.2);}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;margin-bottom:12px;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 2</div>
-    <div class="sst" style="color:#818cf8">2.2 Programming</div>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <a href="/ocr-j277/2-2-1b/" class="sl active">2.2.1b Selection &amp; Iteration</a>
-    <a href="/ocr-j277/2-2-1c/" class="sl">2.2.1c Arrays</a>
-    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
-    <a href="/ocr-j277/2-2-1e/" class="sl">2.2.1e Strings</a>
-    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
-    <div class="sst" style="color:#818cf8">2.3–2.5</div>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">2.2 Programming</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">2.2.1b Data Types</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.2 Programming</div>
-  <div class="lesson-title">2.2.1b — Selection &amp; Iteration</div>
-  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~22 min</div>
-</div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
-</div>
-
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>Selection — IF Statements</h2>
-    <p><strong>Selection</strong> allows a program to make decisions — executing different code depending on whether a condition is true or false.</p>
-    <div class="ic b">
-      <h4>IF / ELSEIF / ELSE:</h4>
-      <div class="code">if score >= 70 then
-    print("Grade A")
-elseif score >= 50 then
-    print("Grade B")
-elseif score >= 30 then
-    print("Grade C")
-else
-    print("Fail")
-endif</div>
-    </div>
-    <div class="ic b">
-      <h4>Comparison operators used in conditions:</h4>
-      <p style="font-size:13px;color:#94a3b8"><code style="background:#0f1117;padding:2px 5px;border-radius:3px">==</code> equal to &nbsp;·&nbsp; <code style="background:#0f1117;padding:2px 5px;border-radius:3px">!=</code> not equal to &nbsp;·&nbsp; <code style="background:#0f1117;padding:2px 5px;border-radius:3px">&lt;</code> less than &nbsp;·&nbsp; <code style="background:#0f1117;padding:2px 5px;border-radius:3px">&gt;</code> greater than &nbsp;·&nbsp; <code style="background:#0f1117;padding:2px 5px;border-radius:3px">&lt;=</code> less than or equal &nbsp;·&nbsp; <code style="background:#0f1117;padding:2px 5px;border-radius:3px">&gt;=</code> greater than or equal</p>
-    </div>
-    <div class="ic b">
-      <h4>Boolean operators:</h4>
-      <div class="code">if age >= 16 AND hasID == true then
-    print("Admitted")
-endif
-
-if x &lt; 0 OR x > 100 then
-    print("Out of range")
-endif
-
-if NOT active then
-    print("Inactive")
-endif</div>
-    </div>
+  <div class="lesson-badge">💻 Component 2 · 2.2 Programming</div>
+  <div class="lesson-title">2.2.1b Data Types</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~10 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
   </div>
-  <div class="ns">
-    <h2>Iteration — Loops</h2>
-    <p>Iteration allows code to be repeated. OCR J277 requires three types of loop.</p>
-    <div class="ic b">
-      <h4>FOR loop — count-controlled (known number of iterations):</h4>
-      <div class="code">for i = 1 to 5
-    print(i)
-next i
-// prints 1, 2, 3, 4, 5</div>
+</div>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
+</div>
+<div class="lesson-body">
+
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>Why Data Types Matter</h2>
+    <p>Every piece of data stored in a program has a <strong>data type</strong> — it tells the computer how to store it in memory and what operations can be performed on it. Using the wrong data type causes errors: you can't multiply a string, and you can't store a decimal in an integer without truncation.</p>
+
+    <h2>The OCR J277 Data Types</h2>
+    <div class="dtype-card">
+      <div class="dtype-item">
+        <div class="dtype-name">Integer</div>
+        <div class="dtype-desc">Whole numbers (positive, negative, or zero). No decimal point.</div>
+        <div class="dtype-eg">Examples: 0, 42, -7, 1000</div>
+      </div>
+      <div class="dtype-item">
+        <div class="dtype-name">Real / Float</div>
+        <div class="dtype-desc">Numbers with a decimal point. Also called 'real' in OCR J277.</div>
+        <div class="dtype-eg">Examples: 3.14, -0.5, 9.81, 1.0</div>
+      </div>
+      <div class="dtype-item">
+        <div class="dtype-name">Boolean</div>
+        <div class="dtype-desc">Can only store True or False. Used in conditions and flags.</div>
+        <div class="dtype-eg">Examples: True, False</div>
+      </div>
+      <div class="dtype-item">
+        <div class="dtype-name">Character (Char)</div>
+        <div class="dtype-desc">A single character enclosed in single quotes.</div>
+        <div class="dtype-eg">Examples: 'A', '5', '!', ' '</div>
+      </div>
+      <div class="dtype-item">
+        <div class="dtype-name">String</div>
+        <div class="dtype-desc">A sequence of zero or more characters. Enclosed in double quotes.</div>
+        <div class="dtype-eg">Examples: "hello", "Alice", "123"</div>
+      </div>
     </div>
-    <div class="ic b">
-      <h4>WHILE loop — condition-controlled (pre-condition: checked BEFORE each iteration):</h4>
-      <div class="code">x = 1
-while x &lt;= 5
-    print(x)
-    x = x + 1
-endwhile
-// may execute 0 times if condition is initially false</div>
+
+    <h2>Data Types — Comparison Table</h2>
+    <table>
+      <thead><tr><th>Data type</th><th>What it stores</th><th>Memory</th><th>OCR example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Integer</strong></td><td>Whole numbers, no decimal</td><td>Typically 4 bytes</td><td><code>age = 16</code></td></tr>
+        <tr><td><strong>Real/Float</strong></td><td>Numbers with decimal point</td><td>Typically 8 bytes</td><td><code>price = 9.99</code></td></tr>
+        <tr><td><strong>Boolean</strong></td><td>True or False only</td><td>1 bit (1 byte typical)</td><td><code>passed = True</code></td></tr>
+        <tr><td><strong>Character</strong></td><td>Single character</td><td>1–4 bytes (Unicode)</td><td><code>grade = 'A'</code></td></tr>
+        <tr><td><strong>String</strong></td><td>Sequence of characters</td><td>Variable</td><td><code>name = "Bob"</code></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Type Casting — Converting Between Types</h2>
+    <p>Sometimes you need to convert between data types. OCR J277 pseudocode uses these casting functions:</p>
+    <table>
+      <thead><tr><th>Function</th><th>Converts to</th><th>Example</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td><code>int(x)</code></td><td>Integer</td><td><code>int("42")</code></td><td>42</td></tr>
+        <tr><td><code>float(x)</code></td><td>Real/float</td><td><code>float("3.14")</code></td><td>3.14</td></tr>
+        <tr><td><code>str(x)</code></td><td>String</td><td><code>str(100)</code></td><td>"100"</td></tr>
+        <tr><td><code>bool(x)</code></td><td>Boolean</td><td><code>bool(1)</code></td><td>True</td></tr>
+        <tr><td><code>ord(c)</code></td><td>ASCII code (integer)</td><td><code>ord('A')</code></td><td>65</td></tr>
+        <tr><td><code>chr(n)</code></td><td>Character</td><td><code>chr(65)</code></td><td>'A'</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Common Use Cases</h2>
+    <div class="code-block">
+<span class="cmt">// Getting input and converting</span><br>
+<span class="kw">userInput</span> = input(<span class="str">"Enter your age: "</span>)&nbsp;&nbsp;<span class="cmt">// input() always returns a string</span><br>
+<span class="kw">age</span> = int(userInput)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">// convert to integer for arithmetic</span><br><br>
+<span class="cmt">// Building a message with concatenation</span><br>
+<span class="kw">score</span> = <span class="num">95</span><br>
+<span class="kw">OUTPUT</span> <span class="str">"Your score is: "</span> + str(score)&nbsp;<span class="cmt">// must convert int to string</span><br><br>
+<span class="cmt">// Boolean use case</span><br>
+<span class="kw">gameOver</span> = <span class="kw">False</span><br>
+<span class="kw">IF</span> lives == <span class="num">0</span> <span class="kw">THEN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;gameOver = <span class="kw">True</span><br>
+<span class="kw">END IF</span>
     </div>
-    <div class="ic b">
-      <h4>DO UNTIL loop — post-condition (checked AFTER each iteration — always runs at least once):</h4>
-      <div class="code">do
-    password = input("Enter password: ")
-until password == "secret"
-// always runs at least once</div>
-    </div>
-    <div class="kp"><strong>Key difference:</strong> WHILE checks condition BEFORE (may never run). DO UNTIL checks AFTER (always runs at least once). FOR is used when number of iterations is known.</div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
+
+    <h2>String vs Integer — "123" vs 123</h2>
+    <p>The value <code>"123"</code> (string) is NOT the same as <code>123</code> (integer). The string is stored as three characters. You cannot do arithmetic on it. If a user types a number into an <code>input()</code> box, it arrives as a string — you must use <code>int()</code> to convert it before arithmetic.</p>
+
+    <div class="exam-tip"><strong>Exam tip:</strong> A very common exam question is "State the most appropriate data type for..." followed by a scenario. Key rules: age, score, quantity = integer. Price, weight, percentage = real/float. Yes/no, on/off, pass/fail = Boolean. Single letter/symbol = character. Name, address, message = string. Also know that input() always returns a string in most languages — you must cast it.</div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Forgetting endif / endwhile / next i — missing closing keywords cause syntax errors</li>
-        <li>Using = instead of == in a condition: if x = 5 should be if x == 5</li>
-        <li>Infinite loop — if a WHILE condition never becomes false, the loop runs forever</li>
-        <li>Confusing WHILE (pre-condition) and DO UNTIL (post-condition) — only DO UNTIL is guaranteed to run once</li>
-        <li>Off-by-one errors — for i = 1 to 5 gives 5 iterations; for i = 0 to 4 also gives 5 iterations</li>
+        <li>Saying "123" (string) is the same data type as 123 (integer) — they are NOT</li>
+        <li>Using a real/float for something that should be an integer (e.g. number of students)</li>
+        <li>Confusing character (single char) and string (multiple chars) — 'A' vs "A"</li>
+        <li>Forgetting to convert input() from string before doing arithmetic</li>
+        <li>Saying Boolean stores 0 and 1 — it stores True and False (even if implemented as 0/1)</li>
       </ul>
     </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/2-2-1a/" class="nb">← 2.2.1a Variables &amp; Types</a>
-  <a href="/ocr-j277/2-2-1c/" class="nb n">2.2.1c Arrays →</a>
-</div>
-</div>
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
 </div>
 
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_2.2.1b_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 2.2.1b Data Types</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">State the five data types you need to know for OCR J277 and give one example value for each.</span><span class="ws-q-marks">[5]</span></div><textarea class="ws-textarea" id="ws-ans-1"></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">One mark each for name + valid example: Integer (42) [1]; Real/float (3.14) [1]; Boolean (True/False) [1]; Character ('A') [1]; String ("hello") [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">State the most appropriate data type for each: (a) A student's name (b) A test score out of 100 (c) Whether a door is locked (d) The price of an item (e) A single grade letter</span><span class="ws-q-marks">[5]</span></div><textarea class="ws-textarea" id="ws-ans-2"></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">(a) String [1]. (b) Integer [1]. (c) Boolean [1]. (d) Real/float [1]. (e) Character [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">A program asks the user to input their age. The input() function returns a string. Write the pseudocode to get and convert this input correctly.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-3"></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">userInput = input("Enter your age: ") [1]; age = int(userInput) [1] (or in one line: age = int(input("Enter your age: ")))</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">Explain why the statement OUTPUT "Score: " + score causes an error if score is an integer.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4"></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">You cannot concatenate (join) a string and an integer using + [1]. The integer must first be converted to a string using str(score) before concatenating: "Score: " + str(score) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">What is the difference between the integer 42 and the string "42"?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-5"></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">The integer 42 is stored as a numeric value and arithmetic can be performed on it (e.g. 42 + 8 = 50) [1]. The string "42" is stored as two characters ('4' and '2') and arithmetic cannot be performed on it — "42" + "8" = "428" (concatenation) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">What does ord('Z') return and what does this tell us?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-6"></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">ord('Z') returns 90 [1]. This is the ASCII code (integer value) for the character 'Z' — each character has a unique numeric code. chr(90) would return 'Z' [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">Why would you use a Boolean rather than a string to store whether a user has logged in?</span><span class="ws-q-marks">[1]</span></div><textarea class="ws-textarea" id="ws-ans-7"></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A Boolean (True/False) uses less memory than a string and is more efficient for a two-state condition [1]. It can be directly used in IF conditions without string comparison. Also avoids typos (e.g. "Ture").</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">A program stores the number of goals scored in a football match. Should it use integer or real? Justify your answer.</span><span class="ws-q-marks">[1]</span></div><textarea class="ws-textarea" id="ws-ans-8"></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Integer [1] — you cannot score half a goal; goals are whole numbers. Using a real/float would waste memory and allow impossible values like 1.5.</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;" onclick="restartQuiz()">Try again</button>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 9</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 2.2.1b Data Types</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What data type should be used to store a person's height in metres (e.g. 1.75)?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Integer</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> Real/Float</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> Boolean</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> String</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">A Boolean variable can store which values?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> 0 and 1</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> "yes" and "no"</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> True and False</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> Any number</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">What does int("25") return?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> "25"</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> 25 (as an integer)</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> 25.0</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> An error</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">What is the difference between a character and a string?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> A character uses double quotes, a string uses single</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> A character stores exactly one character; a string stores zero or more</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> They are identical</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> Characters store numbers, strings store letters</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">What does ord('A') return?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> 'A'</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> 1</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> 65</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> "A"</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">State the most appropriate data type for each: (a) number of items in a basket (b) temperature in Celsius (c) whether an alarm is active</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>(a) Integer — whole number of items [1]. (b) Real/float — temperature can be decimal e.g. 36.6°C [1]. (c) Boolean — alarm is either active or not (True/False) [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Explain why you must use int() when processing a number entered by the user via input().</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>input() always returns data as a string [1]. Arithmetic cannot be performed on strings, so it must be converted to an integer using int() before calculations [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">A programmer stores a phone number as an integer. Give one problem with this.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>Any valid problem: leading zeros are dropped (e.g. 07700 becomes 7700) [1]; cannot store spaces, hyphens or + signs used in international numbers [1]; arithmetic (like addition) doesn't make sense for a phone number [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">What is type casting? Give one example.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Type casting is converting a value from one data type to another [1]. E.g. int("42") converts the string "42" to the integer 42; str(100) converts integer 100 to string "100" [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">What is the result of "10" + "20" in a programming language? Explain why.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>"1020" [1]. Both values are strings, so + performs concatenation (joining) not addition. To get 30, both must be converted to integers first: int("10") + int("20") [1].</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/2-2-1a/" class="bottom-nav-btn">← 2.2.1a Variables &amp; Operators</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">2.2 Programming</span>
+  <a href="/ocr-j277/2-2-1c/" class="bottom-nav-btn next-btn">2.2.1c Sequence, Selection, Iteration →</a>
+</div>
 <script>
-var LESSON_ID='2-2-1b';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='2-2-1b';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+function checkAccess(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;
+    if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;
+    var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};
+    fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h})
+      .then(function(r){return r.json();})
+      .then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});
+  });
+}
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    checkAccess();initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What keyword must end an IF block in OCR pseudocode?",opts:["end","fi","endif","endblock"],ans:2,exp:"In OCR pseudocode, every IF block must be closed with 'endif'. Missing this causes a syntax error."},
-  {q:"A WHILE loop checks its condition:",opts:["After each iteration","Before each iteration","Once at the start and never again","After the last iteration only"],ans:1,exp:"WHILE is a pre-condition loop — the condition is checked BEFORE each iteration. If the condition is false initially, the body may execute zero times."},
-  {q:"A DO UNTIL loop is guaranteed to run at least:",opts:["0 times","1 time","2 times","Until the condition is true"],ans:1,exp:"DO UNTIL checks the condition AFTER the loop body executes. This means the body always runs at least once, even if the condition is true from the start."},
-  {q:"Which loop is most appropriate when the number of iterations is known in advance?",opts:["WHILE","DO UNTIL","FOR","IF"],ans:2,exp:"FOR loops are count-controlled — used when the exact number of iterations is known. WHILE and DO UNTIL are condition-controlled for when the number of iterations is uncertain."},
-  {q:"What does 'for i = 1 to 5' print if the loop body is 'print(i)'?",opts:["0 1 2 3 4","1 2 3 4 5","1 2 3 4","0 1 2 3 4 5"],ans:1,exp:"for i = 1 to 5 iterates with i taking values 1, 2, 3, 4, 5 — printing each. 5 iterations total."},
-  {q:"What operator represents 'not equal to' in OCR pseudocode?",opts:["<>","~=","!=","=/="],ans:2,exp:"!= represents 'not equal to' in OCR pseudocode. It is true when two values are different."},
-  {q:"Which boolean operator requires BOTH conditions to be true?",opts:["OR","NOT","AND","XOR"],ans:2,exp:"AND requires BOTH conditions to be true for the overall expression to be true. OR requires at least one to be true."},
-  {q:"Which scenario is best handled by a DO UNTIL loop?",opts:["Printing numbers 1 to 10","Sorting a list","Asking for a password until the correct one is entered","Checking if a number is even"],ans:2,exp:"DO UNTIL is ideal for input validation — you always need to ask at least once, and you keep repeating until a valid response is given."},
-  {q:"What is an infinite loop?",opts:["A loop that never starts","A loop that runs forever because the exit condition is never met","A loop with exactly 10 iterations","A loop inside another loop"],ans:1,exp:"An infinite loop occurs when the exit condition of a WHILE or DO UNTIL loop never becomes true (WHILE) or never becomes false (DO UNTIL), causing the program to run indefinitely."},
-  {q:"What does 'elseif' do in an IF statement?",opts:["Ends the IF block","Starts a new condition to check if the previous was false","Runs when all conditions are false","Creates a new loop"],ans:1,exp:"elseif adds additional conditions to an IF statement. It is only checked if all preceding conditions (if and previous elseif) were false. Multiple elseif clauses can chain together."},
-  {q:"A WHILE loop: 'x = 10; while x < 5; x = x + 1; endwhile'. How many times does it run?",opts:["0","5","10","Infinite"],ans:0,exp:"The condition 'x < 5' is checked first with x=10. Since 10 is NOT less than 5, the condition is immediately false. The loop body runs 0 times."},
-  {q:"What keyword ends a FOR loop in OCR pseudocode?",opts:["endfor","end","next i","loop end"],ans:2,exp:"In OCR pseudocode, FOR loops are closed with 'next i' (where i is the loop variable). Example: 'for i = 1 to 5 ... next i'."},
-  {q:"The condition in 'if age >= 16 AND hasID == true' is true when:",opts:["age >= 16 only","hasID == true only","BOTH age >= 16 AND hasID is true","EITHER age >= 16 OR hasID is true"],ans:2,exp:"AND requires both conditions to be true. Both 'age >= 16' must be true AND 'hasID == true' must be true for the overall condition to be true."},
-  {q:"What type of loop is 'while password != \"correct\"'?",opts:["Count-controlled","Post-condition","Pre-condition / condition-controlled","Infinite"],ans:2,exp:"A WHILE loop checks its condition before each iteration — it is a pre-condition, condition-controlled loop. The number of iterations depends on when the condition becomes false."},
-  {q:"Which of these correctly closes a WHILE loop in OCR pseudocode?",opts:["end while","endloop","endwhile","wend"],ans:2,exp:"'endwhile' is the correct closing keyword for a WHILE loop in OCR pseudocode. 'end while' (with space) is incorrect — no space allowed."}
+  {q:"Which data type stores only True or False?",opts:["Integer","String","Boolean","Character"],a:2,exp:"Boolean stores only two values: True or False. It's used for flags, conditions, and binary states like on/off, yes/no, pass/fail."},
+  {q:"What is the correct data type for storing the value 3.14?",opts:["Integer","Boolean","Character","Real/Float"],a:3,exp:"3.14 has a decimal point, so it must be stored as a real (float) — not an integer, which would truncate it to 3."},
+  {q:"A programmer stores a person's first name. Which data type should they use?",opts:["Integer","Boolean","String","Character"],a:2,exp:"A name is a sequence of characters — so it must be stored as a string. A character can only store a single letter."},
+  {q:"What does the function str(42) return?",opts:["42","\"42\"","42.0","True"],a:1,exp:"str() converts a value to a string. str(42) returns the string \"42\" — not the integer 42. This is useful when concatenating numbers with strings for output."},
+  {q:"Which function converts a character to its ASCII code?",opts:["chr()","ascii()","int()","ord()"],a:3,exp:"ord() returns the ASCII (Unicode) code of a character. E.g. ord('A') = 65. The reverse is chr(): chr(65) = 'A'."},
+  {q:"A student stores the number 07123456789 as an integer. What problem occurs?",opts:["Nothing — it works fine","The leading 0 is dropped","It converts to a float","It becomes a string"],a:1,exp:"Integers cannot have leading zeros — 07123456789 would be stored as 7123456789, losing the leading zero. Phone numbers and postcodes should be stored as strings."},
+  {q:"What does int(\"3.7\") return?",opts:["3.7","4 (rounded up)","3 (truncated)","An error in all cases"],a:2,exp:"int() truncates (removes the decimal) — it does NOT round. int(\"3.7\") = 3. Note: this may cause an error in some languages if the string contains a decimal — float(\"3.7\") first, then int() would be safer."},
+  {q:"input() in most programming languages always returns data as which type?",opts:["Integer","Float","Boolean","String"],a:3,exp:"input() always returns a string — even if the user types a number. You must use int() or float() to convert it before arithmetic."},
+  {q:"Which of these is a character (char) type value?",opts:["\"hello\"","42","'X'","True"],a:2,exp:"A character is a single character in single quotes: 'X'. Note the difference from a string \"hello\" (double quotes, multiple characters) and from True (Boolean)."},
+  {q:"What data type should store a percentage like 87.5%?",opts:["Integer","Boolean","String","Real/Float"],a:3,exp:"87.5 has a decimal point, so it must be real/float. An integer would truncate to 87, losing the .5."},
+  {q:"A game stores the player's lives (always a whole number). Which type is best?",opts:["Real/Float","String","Boolean","Integer"],a:3,exp:"Lives are always whole numbers (3, 2, 1, 0) — use integer. A float wastes memory and allows meaningless values like 2.5 lives."},
+  {q:"What is 'type casting'?",opts:["Testing a program's types for errors","Converting a value from one data type to another","Declaring multiple variables at once","A type of loop in pseudocode"],a:1,exp:"Type casting is converting a value from one data type to another. E.g. int(\"42\") converts the string \"42\" to integer 42. str(99) converts integer 99 to string \"99\"."},
+  {q:"What is the result of \"12\" + \"34\" in most programming languages?",opts:["46","1234","\"46\"","An error"],a:1,exp:"Both are strings, so + concatenates rather than adds. \"12\" + \"34\" = \"1234\" — they are joined as text, not added as numbers."},
+  {q:"Which type is most appropriate for storing a National Insurance number like 'AB 12 34 56 C'?",opts:["Integer","Float","String","Boolean"],a:2,exp:"A National Insurance number contains letters, digits, and spaces — it must be a string. An integer can only store digits and cannot contain spaces or letters."},
+  {q:"What does chr(97) return?",opts:["A","a","1","97"],a:1,exp:"chr() converts an ASCII code to a character. ASCII 97 = lowercase 'a'. (ASCII 65 = uppercase 'A'). chr(97) returns 'a'."}
 ];
-var WORKSHEET=[
-  {q:"Write pseudocode using IF/ELSEIF/ELSE to assign a grade (A=90+, B=70+, C=50+, else Fail) based on a score variable.",marks:5,ms:"if score >= 90 then print(\"A\") (1); elseif score >= 70 then print(\"B\") (1); elseif score >= 50 then print(\"C\") (1); else print(\"Fail\") (1); endif (1)."},
-  {q:"Write a FOR loop to print the numbers 1 to 10.",marks:2,ms:"for i = 1 to 10 (1); print(i); next i (1)."},
-  {q:"Explain the difference between a WHILE loop and a DO UNTIL loop.",marks:4,ms:"WHILE checks condition BEFORE each iteration (pre-condition) (1). DO UNTIL checks condition AFTER each iteration (post-condition) (1). WHILE may execute 0 times if condition is initially false (1). DO UNTIL always executes at least once (1)."},
-  {q:"Write pseudocode using a DO UNTIL loop to keep asking for a number until the user enters a value between 1 and 10.",marks:4,ms:"do (1); num = int(input(\"Enter 1-10: \")) (1); until num >= 1 AND num <= 10 (1); [correct DO UNTIL structure with AND condition] (1)."},
-  {q:"Write pseudocode using a WHILE loop to count down from 10 to 1 and print each value.",marks:3,ms:"x = 10 (1); while x >= 1 (1); print(x); x = x - 1; endwhile (1)."},
-  {q:"What is an infinite loop? Give an example of pseudocode that creates one.",marks:2,ms:"An infinite loop runs forever — the exit condition is never met (1). Example: x = 1; while x > 0; print(x); endwhile — x never decreases so always > 0 (1)."},
-  {q:"Write pseudocode with nested IF statements to check if a number is positive, negative, or zero.",marks:3,ms:"if num > 0 then print(\"Positive\") (1); elseif num < 0 then print(\"Negative\") (1); else print(\"Zero\"); endif (1)."},
-  {q:"Trace this code: 'total = 0; for i = 1 to 4; total = total + i; next i; print(total)'. What is printed?",marks:2,ms:"Iterations: i=1:total=1; i=2:total=3; i=3:total=6; i=4:total=10 (1). Output: 10 (1)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Selection",d:"A programming construct that executes different code based on whether a condition is true or false. Implemented using IF/ELSEIF/ELSE."},
-  {w:"IF statement",d:"The primary selection construct. Checks a condition and executes the corresponding block if true."},
-  {w:"ELSEIF",d:"Additional condition in an IF block — checked only if all previous conditions were false."},
-  {w:"ELSE",d:"The default block in an IF statement — executes when all preceding conditions are false."},
-  {w:"ENDIF",d:"The keyword that closes an IF block in OCR pseudocode."},
-  {w:"Iteration",d:"Repeating a block of code multiple times using a loop. Three types: FOR, WHILE, DO UNTIL."},
-  {w:"FOR loop",d:"A count-controlled loop — repeats a set number of times. Closed with 'next i'."},
-  {w:"WHILE loop",d:"A pre-condition loop — checks condition BEFORE each iteration. May run 0 times."},
-  {w:"DO UNTIL loop",d:"A post-condition loop — checks condition AFTER each iteration. Always runs at least once."},
-  {w:"Pre-condition",d:"A condition checked BEFORE the loop body executes (WHILE). If false initially, body never runs."},
-  {w:"Post-condition",d:"A condition checked AFTER the loop body executes (DO UNTIL). Body always runs at least once."},
-  {w:"Infinite loop",d:"A loop that never terminates because its exit condition is never met."},
-  {w:"AND operator",d:"Boolean operator requiring BOTH conditions to be true for the expression to be true."},
-  {w:"OR operator",d:"Boolean operator requiring AT LEAST ONE condition to be true."},
-  {w:"NOT operator",d:"Boolean operator that inverts a condition: NOT true = false; NOT false = true."}
+  {term:"Integer",def:"A data type that stores whole numbers (positive, negative, or zero) with no decimal point. E.g. 0, 42, -7. Uses arithmetic operators (+, -, *, DIV, MOD)."},
+  {term:"Real / Float",def:"A data type that stores numbers with a decimal point. Also called 'real' in OCR J277. E.g. 3.14, -0.5, 9.81. Uses more memory than integer."},
+  {term:"Boolean",def:"A data type that can only store True or False. Used in conditions (IF statements, WHILE loops) and flag variables. Named after mathematician George Boole."},
+  {term:"Character (Char)",def:"A data type that stores exactly one character, enclosed in single quotes. E.g. 'A', '5', '!'. Different from a string — cannot store more than one character."},
+  {term:"String",def:"A data type that stores a sequence of zero or more characters, enclosed in double quotes. E.g. \"Alice\", \"hello\", \"123\". The + operator concatenates strings."},
+  {term:"Type casting",def:"Converting a value from one data type to another. E.g. int(\"42\") converts string to integer; str(100) converts integer to string. Required when mixing types."},
+  {term:"ord()",def:"A function that returns the ASCII (Unicode) integer code for a character. E.g. ord('A') = 65, ord('a') = 97. The reverse is chr()."},
+  {term:"chr()",def:"A function that converts an ASCII integer code to a character. E.g. chr(65) = 'A', chr(97) = 'a'. The reverse is ord()."},
+  {term:"Concatenation",def:"Joining strings together using the + operator. E.g. \"Hello\" + \" \" + \"World\" = \"Hello World\". Cannot concatenate a string and an integer — must cast first."}
 ];
-var TEST_MCQ=[
-  {q:"Which loop checks its condition BEFORE each iteration?",opts:["DO UNTIL","FOR","WHILE","All loops"],ans:2,exp:"WHILE is a pre-condition loop — it checks before each iteration. If the condition is false initially, the body never executes."},
-  {q:"'for i = 1 to 10': how many iterations?",opts:["9","10","11","Depends on the body"],ans:1,exp:"for i = 1 to 10 iterates with i = 1, 2, 3, ..., 10. That is 10 iterations."},
-  {q:"Which keyword ends an IF block in OCR pseudocode?",opts:["end","fi","endif","endblock"],ans:2,exp:"'endif' closes an IF block. Every IF must have a matching endif — missing it causes a syntax error."},
-  {q:"A DO UNTIL loop runs the body:",opts:["0 times if condition is false","At most once","At least once — always","Until condition is false"],ans:2,exp:"DO UNTIL always runs the body at least once before checking the condition. This guarantees one execution."},
-  {q:"What does the AND operator require?",opts:["At least one condition is true","Exactly one condition is true","Both conditions to be true","Neither condition is true"],ans:2,exp:"AND requires BOTH conditions to be true. If either is false, the whole AND expression is false."}
-];
-var TEST_SA=[
-  {q:"Explain the difference between WHILE and DO UNTIL loops.",marks:4,ms:"WHILE checks condition before (pre-condition) (1). DO UNTIL checks after (post-condition) (1). WHILE may run 0 times (1). DO UNTIL always runs at least once (1)."},
-  {q:"Write pseudocode using IF/ELSEIF/ELSE to print 'Hot' if temp > 30, 'Warm' if temp > 20, else 'Cold'.",marks:3,ms:"if temp > 30 then print(\"Hot\") (1); elseif temp > 20 then print(\"Warm\") (1); else print(\"Cold\"); endif (1)."},
-  {q:"Write a FOR loop to calculate and print the sum of all integers from 1 to 100.",marks:3,ms:"total = 0 (1); for i = 1 to 100; total = total + i; next i (1); print(total) (1)."},
-  {q:"What is an infinite loop and how can it occur with a WHILE loop?",marks:2,ms:"A loop that never terminates (1). Occurs when the WHILE condition never becomes false — e.g. the variable controlling the condition is never updated inside the loop (1)."},
-  {q:"Write a DO UNTIL loop that asks for a number between 1 and 5 inclusive.",marks:3,ms:"do (1); n = int(input(\"Enter 1-5: \")) (1); until n >= 1 AND n <= 5 (1)."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});document.getElementById('fc-progress').textContent='Card 1 of '+KEY_TERMS.length;showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,1,1,2];
+var TEST_MCQ_LABELS=[['Integer','Real/Float','Boolean','String'],['0 and 1','"yes" and "no"','True and False','Any number'],['\"25\"','25 (integer)','25.0','An error'],['Single and double quotes differ','Single char; zero or more chars','They are identical','Chars store numbers'],['\'A\'','1','65','"A"']];
+var TEST_MCQ_EXPLAIN=['1.75 is a decimal — must be real/float. Integer would truncate to 1.','Boolean stores True or False — not 0/1 or yes/no (even if implemented as such internally).','int() converts a string to an integer. int("25") = 25.','Character stores exactly one character; string stores zero or more.','ord(\'A\') = 65. This is A\'s ASCII code.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['Best data types for scenarios','Why use int() for input?','Phone number as integer — problem','What is type casting?','"12"+"34" — result?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

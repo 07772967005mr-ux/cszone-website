@@ -1,262 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.2.4e Character Encoding | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.fb2{background:#0f172a;border:1px solid #3730a3;border-radius:8px;padding:16px 20px;margin:12px 0;font-family:monospace;font-size:14px;color:#a5b4fc;line-height:1.8}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2.4e Character Encoding — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;text-align:center;}
+    .notes-content td:first-child{text-align:left;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-card{background:#fff;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-bottom:10px;width:100%;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 1</div>
-    <div class="sst" style="color:#818cf8">1.2 Memory &amp; Storage</div>
-    <a href="/ocr-j277/1-2-1/" class="sl fb">1.2.1 Primary Storage</a>
-    <a href="/ocr-j277/1-2-2/" class="sl">1.2.2 Secondary Storage</a>
-    <a href="/ocr-j277/1-2-3/" class="sl">1.2.3 Units of Storage</a>
-    <a href="/ocr-j277/1-2-4a/" class="sl">1.2.4a Binary &amp; Denary</a>
-    <a href="/ocr-j277/1-2-4b/" class="sl">1.2.4b Hexadecimal</a>
-    <a href="/ocr-j277/1-2-4c/" class="sl">1.2.4c Binary Arithmetic</a>
-    <a href="/ocr-j277/1-2-4d/" class="sl">1.2.4d Binary Shifts</a>
-    <a href="/ocr-j277/1-2-4e/" class="sl active">1.2.4e Character Encoding</a>
-    <a href="/ocr-j277/1-2-4f/" class="sl">1.2.4f Representing Images</a>
-    <a href="/ocr-j277/1-2-4g/" class="sl">1.2.4g Representing Sound</a>
-    <a href="/ocr-j277/1-2-5/" class="sl">1.2.5 Compression</a>
-    <div class="sst" style="color:#818cf8">1.3 Networks</div>
-    <a href="/ocr-j277/1-3-1a/" class="sl fb">1.3.1a LAN, WAN</a>
-    <a href="/ocr-j277/1-3-1b/" class="sl">1.3.1b Network Types</a>
-    <a href="/ocr-j277/1-3-1c/" class="sl">1.3.1c Internet &amp; DNS</a>
-    <a href="/ocr-j277/1-3-1d/" class="sl">1.3.1d Topologies</a>
-    <a href="/ocr-j277/1-3-2a/" class="sl">1.3.2a Wired &amp; Wireless</a>
-    <a href="/ocr-j277/1-3-2b/" class="sl">1.3.2b Protocols</a>
-    <div class="sst" style="color:#818cf8">1.4–1.6</div>
-    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
-    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
-    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
-    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
-    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
-    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.2 Data Representation</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.2.4e Character Encoding</span>
+    </div>
   </div>
-  <div class="sidebar-section">
-    <div class="sst">Component 2</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
-    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
-    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
-    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
-    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
-    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
-    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <a href="/ocr-j277/2-2-1b/" class="sl">2.2.1b Selection &amp; Iteration</a>
-    <a href="/ocr-j277/2-2-1c/" class="sl">2.2.1c Arrays</a>
-    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
-    <a href="/ocr-j277/2-2-1e/" class="sl">2.2.1e Strings</a>
-    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-3-2/" class="sl">2.3.2 Testing</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-4-1b/" class="sl">2.4.1b Truth Tables</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
-    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
-    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.2 Memory &amp; Storage</div>
-  <div class="lesson-title">1.2.4e — Character Encoding</div>
-  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
-</div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
-</div>
-
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>Why Does Character Encoding Exist?</h2>
-    <p>Computers can only store numbers. To store text, each character must be assigned a unique number. A character encoding standard defines the mapping between characters and their numeric codes.</p>
-    <div class="kp"><strong>Key idea:</strong> Every letter, digit, symbol, and control character has a unique binary number assigned to it by a standard.</div>
+  <div class="lesson-badge">🔤 Component 1 · 1.2 Data Representation</div>
+  <div class="lesson-title">1.2.4e Character Encoding (ASCII &amp; Unicode)</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~11 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
   </div>
-  <div class="ns">
-    <h2>ASCII</h2>
-    <p>ASCII (American Standard Code for Information Interchange) was developed in the 1960s. It uses <strong>7 bits</strong> per character, giving 2⁷ = <strong>128 possible characters</strong>.</p>
-    <div class="ic b">
-      <h4>ASCII includes:</h4>
-      <ul>
-        <li>Uppercase A–Z (65–90)</li>
-        <li>Lowercase a–z (97–122)</li>
-        <li>Digits 0–9 (48–57)</li>
-        <li>Punctuation and symbols (e.g. space = 32, ! = 33)</li>
-        <li>Control characters (e.g. newline = 10, tab = 9)</li>
-      </ul>
-    </div>
-    <div class="ic g">
-      <h4>Key ASCII values to know</h4>
-      <table class="ct">
-        <tr><th>Character</th><th>Decimal</th><th>Binary (7-bit)</th></tr>
-        <tr><td>A</td><td>65</td><td>1000001</td></tr>
-        <tr><td>B</td><td>66</td><td>1000010</td></tr>
-        <tr><td>Z</td><td>90</td><td>1011010</td></tr>
-        <tr><td>a</td><td>97</td><td>1100001</td></tr>
-        <tr><td>z</td><td>122</td><td>1111010</td></tr>
-        <tr><td>0</td><td>48</td><td>0110000</td></tr>
-        <tr><td>9</td><td>57</td><td>0111001</td></tr>
+</div>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
+</div>
+<div class="lesson-body">
+
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>Character Encoding</h2>
+    <p>A <strong>character encoding</strong> is a system that assigns a unique binary number (code point) to each character — letters, digits, punctuation and special symbols — so that computers can store and transmit text.</p>
+    <p>Every character you type is stored internally as a binary number. The encoding standard defines which number represents which character.</p>
+
+    <h2>ASCII (American Standard Code for Information Interchange)</h2>
+    <ul>
+      <li><strong>7-bit ASCII</strong>: Uses 7 bits per character → 2⁷ = <strong>128 characters</strong> (codes 0–127)</li>
+      <li><strong>Extended ASCII</strong>: Uses 8 bits → 256 characters (codes 0–255)</li>
+      <li>Includes: uppercase letters (A–Z), lowercase letters (a–z), digits (0–9), punctuation, and control characters</li>
+      <li>ASCII is an American standard — it only covers English characters</li>
+    </ul>
+    <h3>Key ASCII Values to Know for OCR J277</h3>
+    <table>
+      <thead><tr><th>Character</th><th>Denary</th><th>Binary (7-bit)</th></tr></thead>
+      <tbody>
+        <tr><td>'A'</td><td>65</td><td>1000001</td></tr>
+        <tr><td>'B'</td><td>66</td><td>1000010</td></tr>
+        <tr><td>'Z'</td><td>90</td><td>1011010</td></tr>
+        <tr><td>'a'</td><td>97</td><td>1100001</td></tr>
+        <tr><td>'z'</td><td>122</td><td>1111010</td></tr>
+        <tr><td>'0'</td><td>48</td><td>0110000</td></tr>
+        <tr><td>'9'</td><td>57</td><td>0111001</td></tr>
         <tr><td>Space</td><td>32</td><td>0100000</td></tr>
-      </table>
-    </div>
-    <div class="kp"><strong>Pattern:</strong> A=65, B=66 ... a=97, b=98. Lowercase letters are exactly 32 more than uppercase (difference = 0b0100000). Digits start at 48.</div>
-    <div class="ic a">
-      <h4>ASCII Limitation</h4>
-      <p>128 characters is not enough for the world's languages. ASCII has no characters for é, ñ, Chinese, Arabic, emoji, etc. This led to the development of Unicode.</p>
-    </div>
-  </div>
-  <div class="ns">
-    <h2>Extended ASCII</h2>
-    <p>Extended ASCII uses 8 bits (1 byte) per character = 256 characters. The extra 128 slots (128–255) were used for accented characters and symbols. However, different systems used different Extended ASCII variants, causing compatibility problems.</p>
-  </div>
-  <div class="ns">
-    <h2>Unicode</h2>
-    <p>Unicode was created to encode characters from all the world's writing systems in a single standard. It supports over <strong>1 million</strong> possible code points.</p>
-    <div class="ic b">
-      <h4>Key Unicode facts:</h4>
-      <ul>
-        <li>The first 128 code points are identical to ASCII (backward compatible)</li>
-        <li>Supports Latin, Cyrillic, Arabic, Chinese, emoji, and more</li>
-        <li>Most commonly implemented as UTF-8 (variable length: 1–4 bytes per character)</li>
-        <li>UTF-8 uses 1 byte for ASCII characters, 2–4 bytes for other characters</li>
-        <li>UTF-16 uses 2 or 4 bytes per character</li>
-        <li>UTF-32 uses 4 bytes per character (fixed)</li>
-      </ul>
-    </div>
-    <div class="kp"><strong>Unicode vs ASCII:</strong> Unicode uses more bits per character than ASCII (more storage), but can represent characters from all languages. UTF-8 is efficient because common English characters still only need 1 byte.</div>
-  </div>
-  <div class="ns">
-    <h2>ASCII vs Unicode Comparison</h2>
-    <table class="ct">
-      <tr><th>Feature</th><th>ASCII</th><th>Unicode (UTF-8)</th></tr>
-      <tr><td>Bits per character</td><td>7 (often stored in 8)</td><td>8–32 (variable)</td></tr>
-      <tr><td>Number of characters</td><td>128</td><td>1,000,000+</td></tr>
-      <tr><td>Languages supported</td><td>English only</td><td>All world languages + emoji</td></tr>
-      <tr><td>Storage</td><td>Less</td><td>More (for non-ASCII chars)</td></tr>
-      <tr><td>Backward compatibility</td><td>N/A</td><td>First 128 = ASCII</td></tr>
+      </tbody>
     </table>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
+    <p><strong>Pattern:</strong> 'A' = 65, so 'B' = 66, 'C' = 67 … 'Z' = 90. The lowercase equivalents are exactly 32 higher: 'a' = 97 = 65 + 32.</p>
+
+    <h2>Limitations of ASCII</h2>
+    <ul>
+      <li>Only 128 (or 256 with extended ASCII) characters — not enough for global languages</li>
+      <li>Cannot represent Chinese, Arabic, Hindi, emoji, mathematical symbols, or most world scripts</li>
+      <li>The internet and globalisation require a universal encoding system</li>
+    </ul>
+
+    <h2>Unicode</h2>
+    <p><strong>Unicode</strong> is an international standard that assigns a unique code point to every character in every writing system in the world, including emoji and historic scripts.</p>
+    <ul>
+      <li>UTF-8: Variable length (1–4 bytes per character). Most common on the web. Backwards compatible with ASCII.</li>
+      <li>UTF-16: Uses 2 or 4 bytes. Common in operating systems and programming environments.</li>
+      <li>UTF-32: Uses exactly 4 bytes. Fixed-length, simple but uses more memory.</li>
+      <li>Unicode can encode over <strong>1.1 million</strong> possible characters (currently ~150,000 assigned)</li>
+    </ul>
+
+    <h2>ASCII vs Unicode Comparison</h2>
+    <table>
+      <thead><tr><th>Feature</th><th>ASCII</th><th>Unicode (UTF-8)</th></tr></thead>
+      <tbody>
+        <tr><td>Bits per character</td><td>7 (or 8 extended)</td><td>8–32 (variable)</td></tr>
+        <tr><td>Character set size</td><td>128 (or 256)</td><td>Over 1.1 million possible</td></tr>
+        <tr><td>Languages supported</td><td>English only</td><td>All world languages + emoji</td></tr>
+        <tr><td>File size</td><td>Smaller</td><td>Larger (for multi-byte characters)</td></tr>
+        <tr><td>Compatibility</td><td>Widely supported</td><td>Backwards compatible with ASCII</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Why Unicode is Needed</h2>
+    <p>Before Unicode, different countries used incompatible encoding systems. A file created in Japan might display as garbage on a Western computer. Unicode standardises encoding globally, so text can be shared across any computer, operating system, or language without corruption.</p>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> Key numbers to know: ASCII = 7 bits = 128 characters. A=65, a=97 (difference of 32). Unicode supports millions of characters. UTF-8 is backwards compatible with ASCII. OCR J277 commonly asks: "Why does Unicode use more bits than ASCII?" Answer: Unicode must represent a much larger set of characters from all world languages and symbols.
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Confusing the <em>character</em> '0' (ASCII 48) with the <em>number</em> 0 (binary 00000000)</li>
-        <li>Saying Unicode uses 16 bits — UTF-8 uses 8 to 32 bits depending on the character</li>
-        <li>Forgetting ASCII has 128 characters (7 bits = 2⁷ = 128), not 256</li>
-        <li>Forgetting lowercase letters have ASCII codes 32 higher than uppercase</li>
-        <li>Saying Unicode replaced ASCII — Unicode's first 128 code points ARE identical to ASCII</li>
+        <li>Saying ASCII uses 8 bits — standard ASCII is 7 bits (128 characters). Extended ASCII is 8 bits.</li>
+        <li>Confusing the ASCII code for '0' (denary 48) with denary 0 — the character '0' ≠ the number 0</li>
+        <li>Saying Unicode and UTF-8 are the same thing — Unicode is the standard; UTF-8 is one encoding of it</li>
+        <li>Forgetting that Unicode is backwards compatible with ASCII for the first 128 characters</li>
+        <li>Saying Unicode uses more storage than ASCII always — UTF-8 uses 1 byte for ASCII characters, same as ASCII</li>
       </ul>
+    </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;">What's in this video</h3>
+    <ul style="list-style:none;padding:0;">
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• What character encoding is and why it's needed</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• ASCII: 7-bit, 128 characters, key code values (A=65, a=97)</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Limitations of ASCII: English only, can't represent global scripts</li>
+      <li style="padding:8px 0;font-size:14.5px;color:#334155;">• Unicode: UTF-8/16/32, millions of characters, backwards compatible</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_1.2.4e_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 1.2.4e Character Encoding</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">What is character encoding? Why is it needed?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Character encoding is a system that assigns a unique binary number (code point) to each character [1]; it is needed because computers can only store binary data, so text must be converted to numbers to be stored or transmitted [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">How many bits does standard ASCII use? How many characters can it represent?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-2" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">7 bits [1]; 2⁷ = 128 characters [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">The ASCII code for 'A' is 65. What is the ASCII code for 'D'? Explain how you worked it out.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-3" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">68 [1]; the letters A–Z are consecutive in ASCII, so D is the 4th letter: 65 + 3 = 68 [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">Why is 'a' (lowercase) different from 'A' (uppercase) in ASCII? What is the ASCII code for 'a'?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">ASCII assigns different code points to uppercase and lowercase letters — they are treated as distinct characters [1]; 'a' = 97 (= 65 + 32) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">State two limitations of ASCII that led to the development of Unicode.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-5" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Any 2 from: only supports English/Latin characters [1]; cannot represent characters from languages such as Chinese, Arabic, Japanese [1]; cannot represent emoji or mathematical symbols [1]; only 128 characters — far too few for global use [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">Compare ASCII and Unicode in terms of: (i) number of characters, (ii) bits per character, (iii) language support.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-6" style="min-height:120px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">(i) ASCII: 128 (7-bit) or 256 (8-bit); Unicode: over 1.1 million possible [1]<br>(ii) ASCII: 7 bits; Unicode/UTF-8: variable 8–32 bits [1]<br>(iii) ASCII: English only; Unicode: all world languages plus symbols and emoji [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">Explain why a file that uses Unicode encoding may have a larger file size than the same file in ASCII encoding.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Unicode uses more bits per character (UTF-16 uses 2 bytes, UTF-32 uses 4 bytes) compared to ASCII's 7/8 bits [1]; therefore each character takes up more storage space, increasing file size [1]. Note: UTF-8 uses 1 byte for ASCII characters, so the difference only arises for non-ASCII characters.</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">A string "Hi" is stored using 7-bit ASCII. (a) What are the ASCII denary values? (b) Convert each to binary. (c) How many bits are used in total?</span><span class="ws-q-marks">[5]</span></div><textarea class="ws-textarea" id="ws-ans-8" style="min-height:130px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">(a) 'H'=72, 'i'=105 [1]<br>(b) 72 = 1001000; 105 = 1101001 [1 each]<br>(c) 2 characters × 7 bits = 14 bits total [1]<br>Allow follow-through for correct binary from stated denary values.</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 18 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
     </div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet — Character Encoding</h2><p style="font-size:13px;color:#64748b;margin-bottom:20px">Use the ASCII table and your knowledge of encoding standards.</p></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/1-2-4d/" class="nb">← 1.2.4d Binary Shifts</a>
-  <a href="/ocr-j277/1-2-4f/" class="nb n">1.2.4f Representing Images →</a>
-</div>
-</div>
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
 </div>
 
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 1.2.4e Character Encoding</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">How many characters can 7-bit ASCII represent?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> 64</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> 128</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> 256</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> 512</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">What is the ASCII denary value for 'A'?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> 97</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> 48</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> 65</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> 90</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">Which statement about Unicode is correct?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> Unicode uses 7 bits per character</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> Unicode can represent characters from all world languages</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> Unicode is only used in English</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> Unicode replaces binary encoding</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">Why does Unicode need more bits than ASCII?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> It stores both upper and lowercase</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> It must represent a much larger set of characters from all world languages</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> It uses binary instead of hex</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> It was developed later than ASCII</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">What is the ASCII denary code for 'a' (lowercase)?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> 65</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> 90</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> 97</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> 48</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">What does ASCII stand for?</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>American Standard Code for Information Interchange. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">If 'A' = 65, what is the ASCII code for 'C'? Show your reasoning.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>67 (A=65, B=66, C=67 — letters are consecutive in ASCII). [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">State one reason why Unicode was developed to replace ASCII.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>ASCII only supports English/Latin characters and cannot represent characters from other languages such as Chinese, Arabic, or Japanese. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">Which encoding format — UTF-8, UTF-16, or UTF-32 — is most commonly used on the web? State one reason why.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>UTF-8 [1]; it is backwards compatible with ASCII and uses only 1 byte for common Latin characters, making web pages compact. [1] (award 1 mark for UTF-8 with valid reason)</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">A text file contains the word "CAT" in 7-bit ASCII. What is the total number of bits used? Show your working.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>3 characters × 7 bits = 21 bits. [1]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/1-2-4d/" class="bottom-nav-btn">← 1.2.4d Hexadecimal</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">1.2 Data Representation</span>
+  <a href="/ocr-j277/1-2-4f/" class="bottom-nav-btn next-btn">1.2.4f Representing Images →</a>
+</div>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:14.5px;color:#64748b;line-height:1.6;margin-bottom:24px;">Subscribe to access all OCR J277 lessons.</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
 <script>
-var LESSON_ID='1-2-4e';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
-
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-2-4e';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+    if(!IS_FREE)checkAccess();
+  });
+});
+function checkAccess(){getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h}).then(function(r){return r.json();}).then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});});}
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"How many bits does standard ASCII use per character?",opts:["8","7","16","6"],ans:1,exp:"ASCII uses 7 bits, giving 2⁷ = 128 possible characters. It is often stored in an 8-bit byte, but the standard is 7-bit."},
-  {q:"How many characters can standard 7-bit ASCII represent?",opts:["256","128","512","64"],ans:1,exp:"2⁷ = 128. ASCII can represent 128 different characters."},
-  {q:"What is the ASCII decimal value of the letter 'A'?",opts:["65","97","64","1"],ans:0,exp:"'A' = 65 in ASCII. Uppercase A–Z run from 65 to 90."},
-  {q:"What is the ASCII code of lowercase 'a'?",opts:["65","32","97","48"],ans:2,exp:"Lowercase 'a' = 97. Lowercase letters are 32 more than their uppercase equivalents (97 = 65 + 32)."},
-  {q:"What is the ASCII code for the digit '0' (the character, not the number)?",opts:["0","48","57","32"],ans:1,exp:"The character '0' has ASCII code 48. Digit characters '0'–'9' are codes 48–57."},
-  {q:"What is the main limitation of ASCII?",opts:["It is too slow","It can only represent 128 characters (English only — no other languages or emoji)","It uses too much memory","It is not compatible with computers"],ans:1,exp:"ASCII only supports 128 characters and is limited to English characters. It cannot represent characters from other languages, accented letters, emoji, etc."},
-  {q:"Unicode was created to:",opts:["Replace ASCII completely","Allow characters from all the world's writing systems to be encoded","Speed up text processing","Reduce file sizes"],ans:1,exp:"Unicode was created to provide a universal character encoding that covers all world languages, symbols, and emoji — not just English."},
-  {q:"How many code points can Unicode support?",opts:["256","65,536","Over 1 million","1,024"],ans:2,exp:"Unicode supports over 1,000,000 possible code points, far more than any previous standard."},
-  {q:"Which statement about Unicode and ASCII is true?",opts:["They are completely incompatible","The first 128 Unicode code points are identical to ASCII","Unicode uses fewer bits than ASCII","ASCII came after Unicode"],ans:1,exp:"Unicode was designed to be backward compatible — its first 128 code points exactly match ASCII values."},
-  {q:"UTF-8 is:",opts:["A fixed 8-bit encoding","A variable-length encoding using 1 to 4 bytes","Only for Asian languages","The same as ASCII"],ans:1,exp:"UTF-8 is variable-length: ASCII characters use 1 byte, other characters use 2–4 bytes. It is the most widely used Unicode encoding."},
-  {q:"What is the ASCII binary code for 'B' (B = 66)?",opts:["01000001","01000010","01000000","01100010"],ans:1,exp:"66 in binary = 01000010. (64+2 = 01000010.) A=65=01000001, B=66=01000010."},
-  {q:"The ASCII code for 'C' is 67. What is the ASCII code for 'c'?",opts:["67","89","99","35"],ans:2,exp:"Lowercase = uppercase + 32. 67 + 32 = 99."},
-  {q:"Extended ASCII uses 8 bits. How many characters does it support?",opts:["128","512","256","64"],ans:2,exp:"8 bits = 2⁸ = 256 characters. Extended ASCII adds 128 extra characters beyond standard ASCII."},
-  {q:"A text file contains the word 'Hi' encoded in ASCII. How many bytes does it take to store?",opts:["1","2","7","14"],ans:1,exp:"'H' and 'i' are two characters. ASCII stores each as 1 byte (8 bits). 2 characters × 1 byte = 2 bytes."},
-  {q:"Which encoding would you use to store text in Chinese characters?",opts:["ASCII","Extended ASCII","Unicode (UTF-8 or UTF-16)","Binary"],ans:2,exp:"Chinese characters require Unicode. ASCII and Extended ASCII only cover English/Latin characters. Unicode supports Chinese, Japanese, Arabic, and all other writing systems."}
+  {q:"What does ASCII stand for?",opts:["American Standard Code for Information Interchange","Advanced System for Computer Input Interchange","Automated Standard Code for Internet Information","American System of Character and Image Input"],a:0,exp:"ASCII = American Standard Code for Information Interchange."},
+  {q:"How many bits does standard (7-bit) ASCII use per character?",opts:["4","8","7","16"],a:2,exp:"Standard ASCII uses 7 bits per character, giving 2⁷ = 128 possible characters."},
+  {q:"How many characters can 7-bit ASCII represent?",opts:["64","256","128","512"],a:2,exp:"2⁷ = 128 characters."},
+  {q:"What is the ASCII denary code for 'A'?",opts:["97","65","90","48"],a:1,exp:"'A' = 65 in ASCII. This is a key value to memorise."},
+  {q:"What is the ASCII denary code for 'a' (lowercase)?",opts:["65","48","122","97"],a:3,exp:"'a' = 97 = 65 + 32. Lowercase letters are 32 higher than their uppercase equivalents."},
+  {q:"If 'A' = 65, what is 'E'?",opts:["68","70","69","67"],a:2,exp:"E is the 5th letter. 65 + 4 = 69."},
+  {q:"What is the ASCII code for the character '0' (zero digit)?",opts:["0","48","32","65"],a:1,exp:"The digit character '0' has ASCII code 48. This is different from the number 0."},
+  {q:"Which of the following is a limitation of ASCII?",opts:["It uses too many bits","It cannot represent characters from most world languages","It cannot represent numbers","It is too slow for modern computers"],a:1,exp:"ASCII covers only English/Latin characters. Languages like Chinese, Arabic and Japanese cannot be represented."},
+  {q:"Unicode was developed primarily to:",opts:["Make file sizes smaller","Represent characters from all world languages and scripts","Replace binary encoding","Remove the need for character codes"],a:1,exp:"Unicode was created to provide a universal encoding standard for all world scripts, symbols and emoji."},
+  {q:"Which Unicode format is most commonly used on the web?",opts:["UTF-32","UTF-16","ASCII-8","UTF-8"],a:3,exp:"UTF-8 is the dominant encoding on the web. It is backwards compatible with ASCII and efficient for common Latin-script text."},
+  {q:"How many characters can Unicode potentially encode?",opts:["256","65,536","Over 1 million","Exactly 128"],a:2,exp:"Unicode has over 1.1 million possible code points, with around 150,000 currently assigned."},
+  {q:"UTF-8 uses how many bytes for characters in the ASCII range?",opts:["2","4","1","3"],a:2,exp:"UTF-8 uses 1 byte (8 bits) for the first 128 characters, making it backwards compatible with ASCII."},
+  {q:"What is the relationship between ASCII codes for uppercase and lowercase letters?",opts:["Lowercase = uppercase + 16","Lowercase = uppercase + 64","Lowercase = uppercase + 32","They have no fixed relationship"],a:2,exp:"Lowercase letters always have ASCII codes exactly 32 higher than their uppercase equivalents. e.g. A=65, a=97 (97-65=32)."},
+  {q:"A text file contains 100 ASCII characters (7-bit). How many bits are needed?",opts:["100","700","800","1400"],a:1,exp:"100 characters × 7 bits = 700 bits."},
+  {q:"Which of these can Unicode represent that ASCII cannot?",opts:["The letter Z","The digit 5","The emoji 😀","The full stop"],a:2,exp:"Emoji are part of the Unicode standard but cannot be represented in ASCII. Unicode covers emoji, mathematical symbols, and all world scripts."}
 ];
-
-var WORKSHEET=[
-  {q:"State the ASCII decimal codes for the letters 'G', 'g', and the digit character '5'.",marks:3,ms:"G = 71 (A=65, G is 7th letter, 65+6=71) (1). g = 103 (G+32 = 71+32 = 103) (1). '5' = 53 (digits start at 48 for '0', '5' is 5th digit, 48+5=53) (1)."},
-  {q:"Convert the ASCII code 72 to its character. Show your working.",marks:2,ms:"A = 65. 72 - 65 = 7, so it is the 8th letter of the alphabet (1). The character is 'H' (1)."},
-  {q:"Explain the difference between ASCII and Unicode. Include the number of characters each can represent.",marks:4,ms:"ASCII uses 7 bits and can represent 128 characters, limited to English letters, digits, and symbols (1). Unicode can represent over 1 million characters from all the world's writing systems including emoji and special symbols (1). ASCII cannot represent characters from non-English languages such as Chinese or Arabic (1). Unicode is backward compatible — its first 128 code points match ASCII exactly (1)."},
-  {q:"A student says 'the number 0 and the character 0 are stored the same way in ASCII'. Are they correct? Explain.",marks:2,ms:"No, they are incorrect (1). The number 0 is stored as 00000000 (binary zero), whereas the character '0' has the ASCII code 48, stored as 00110000 (1)."},
-  {q:"Explain why Unicode requires more storage than ASCII for most documents.",marks:2,ms:"Unicode uses more bits per character — UTF-8 uses 1 byte for ASCII characters but 2–4 bytes for characters from other languages (1). A document with many non-English characters will require significantly more storage than the same document encoded in ASCII (1)."},
-  {q:"The word 'Cat' is encoded in ASCII. Write the decimal ASCII codes for each character.",marks:3,ms:"C = 67 (1). a = 97 (1). t = 116 (t is 20th letter: 96+20=116) (1)."},
-  {q:"Explain why there are different variants of Extended ASCII and why this caused problems.",marks:3,ms:"Extended ASCII uses the extra 128 slots (128–255) for additional characters (1). Different manufacturers and countries assigned different characters to these codes, creating incompatible variants (1). A file created on one system might display wrong characters when opened on another system with a different Extended ASCII variant (1)."},
-  {q:"Calculate the number of possible characters that can be represented by: (a) 7-bit ASCII (b) 8-bit Extended ASCII (c) 16-bit Unicode.",marks:3,ms:"(a) 2⁷ = 128 characters (1). (b) 2⁸ = 256 characters (1). (c) 2¹⁶ = 65,536 characters (1). Note: Full Unicode allows over 1 million code points using up to 21 bits, but UTF-16 covers 65,536 base characters."}
-];
-
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Character encoding",d:"A standard that assigns a unique number (code point) to each character so computers can store and transmit text."},
-  {w:"ASCII",d:"American Standard Code for Information Interchange. A 7-bit encoding standard with 128 characters covering English letters, digits, and symbols."},
-  {w:"7-bit ASCII",d:"Standard ASCII uses 7 bits per character, giving 2⁷ = 128 unique characters."},
-  {w:"Extended ASCII",d:"An 8-bit extension of ASCII with 256 characters. Different variants caused compatibility problems between systems."},
-  {w:"Unicode",d:"A universal character encoding standard that supports over 1 million code points, covering all the world's writing systems and emoji."},
-  {w:"UTF-8",d:"The most common Unicode encoding. Variable length: uses 1 byte for ASCII characters and 2–4 bytes for other characters."},
-  {w:"UTF-16",d:"A Unicode encoding that uses 2 or 4 bytes per character. Efficient for languages using characters outside the ASCII range."},
-  {w:"Code point",d:"A unique number assigned to a character in a character encoding standard (e.g. 'A' has code point 65 in ASCII/Unicode)."},
-  {w:"Backward compatible",d:"Unicode's first 128 code points are identical to ASCII, so ASCII text is valid Unicode."},
-  {w:"Control characters",d:"Non-printable ASCII characters (codes 0–31) used to control text processing, such as newline (10), tab (9), and carriage return (13)."},
-  {w:"'A' = 65",d:"Key fact: uppercase A = ASCII 65. A–Z = 65–90. Lowercase a–z = 97–122 (uppercase + 32)."},
-  {w:"Digit '0' = 48",d:"Key fact: the character '0' has ASCII code 48. Characters '0'–'9' have codes 48–57. Not the same as the number 0."},
-  {w:"Lowercase = Uppercase + 32",d:"Lowercase ASCII codes are always 32 greater than their uppercase equivalents. E.g. 'A'=65, 'a'=97 (65+32=97)."},
-  {w:"128 vs 1,000,000+",d:"ASCII supports 128 characters; Unicode supports over 1,000,000. The huge difference explains why Unicode is needed for global computing."},
-  {w:"Variable-length encoding",d:"An encoding where different characters use different numbers of bytes. UTF-8 is variable-length: 1–4 bytes per character."}
+  {term:"Character encoding",def:"A system that assigns a unique binary number (code point) to each character so computers can store and transmit text."},
+  {term:"ASCII",def:"American Standard Code for Information Interchange. A 7-bit character encoding with 128 characters (0–127), covering English letters, digits and punctuation."},
+  {term:"7-bit ASCII",def:"Standard ASCII uses 7 bits per character, giving 2⁷ = 128 possible characters."},
+  {term:"Extended ASCII",def:"An 8-bit extension of ASCII giving 256 characters (0–255). Includes accented characters and special symbols."},
+  {term:"'A' = 65",def:"The ASCII denary code for uppercase A. Letters A–Z run from 65 to 90 sequentially."},
+  {term:"'a' = 97",def:"The ASCII denary code for lowercase a. All lowercase letters are exactly 32 higher than their uppercase equivalents."},
+  {term:"'0' = 48",def:"The ASCII code for the digit character '0'. Note: this is the character, not the number — they are different things."},
+  {term:"Unicode",def:"An international character encoding standard that assigns code points to characters from all world languages, scripts, symbols and emoji."},
+  {term:"UTF-8",def:"A variable-length Unicode encoding using 1–4 bytes per character. Most common on the web. Backwards compatible with ASCII for the first 128 characters."},
+  {term:"UTF-16",def:"A Unicode encoding using 2 or 4 bytes per character. Common in operating systems and programming environments."},
+  {term:"UTF-32",def:"A fixed-length Unicode encoding using exactly 4 bytes per character. Simple but uses more memory than UTF-8."},
+  {term:"Code point",def:"The unique number assigned to a character in a character encoding system. e.g. U+0041 is the Unicode code point for 'A'."},
+  {term:"Backwards compatible",def:"UTF-8 is backwards compatible with ASCII: the first 128 Unicode code points match ASCII exactly, so ASCII files are valid UTF-8."},
+  {term:"Why Unicode was needed",def:"ASCII only covers English/Latin characters. The internet requires a universal encoding for all world languages, symbols and emoji."},
+  {term:"1.1 million",def:"The number of possible Unicode code points (17 planes × 65,536). Currently ~150,000 are assigned."}
 ];
-
-var TEST_MCQ=[
-  {q:"What is the ASCII code for the uppercase letter 'D'?",opts:["68","100","36","64"],ans:0,exp:"A=65, B=66, C=67, D=68."},
-  {q:"How many bits does Unicode UTF-8 use for standard English (ASCII) characters?",opts:["32","16","4","8"],ans:3,exp:"UTF-8 uses 1 byte (8 bits) for standard ASCII characters — the same storage as Extended ASCII."},
-  {q:"Which statement about Unicode is FALSE?",opts:["It supports emoji","It can encode Chinese characters","It is completely incompatible with ASCII","It uses variable-length encoding in UTF-8"],ans:2,exp:"This is false. Unicode's first 128 code points ARE identical to ASCII — it is backward compatible with ASCII."},
-  {q:"The character 'M' has ASCII code 77. What is the code for 'm'?",opts:["77","45","109","104"],ans:2,exp:"Lowercase = uppercase + 32. 77 + 32 = 109."},
-  {q:"A text file stores 5 ASCII characters. How many bytes does it use?",opts:["35","5","10","40"],ans:1,exp:"ASCII characters are stored in 1 byte each. 5 characters × 1 byte = 5 bytes."}
-];
-
-var TEST_SA=[
-  {q:"Give TWO reasons why Unicode was developed to replace ASCII.",marks:2,ms:"ASCII can only represent 128 characters, limited to English (1). It cannot represent characters from other languages (Chinese, Arabic, etc.) or modern symbols like emoji (1). Any two valid reasons accepted."},
-  {q:"The ASCII code for 'W' is 87. What is the ASCII code for 'w'? Show your working.",marks:2,ms:"Lowercase = uppercase + 32 (1). 87 + 32 = 119. So 'w' = 119 (1)."},
-  {q:"Explain why a text file in Chinese requires more storage when using UTF-8 compared to an English text file of the same number of characters.",marks:2,ms:"Chinese characters are not in the ASCII range, so UTF-8 uses 3 bytes per Chinese character (1). English ASCII characters only use 1 byte per character in UTF-8, so a Chinese file uses approximately 3× more storage (1)."},
-  {q:"State the number of characters that can be represented by 7-bit ASCII and explain why this is a limitation.",marks:2,ms:"2⁷ = 128 characters (1). This is a limitation because it only covers English letters, digits, and basic symbols — it cannot represent characters from any other language or modern symbols like emoji (1)."},
-  {q:"A student claims that the digit '3' and the number 3 are stored the same way in a computer. Is this correct? Explain.",marks:2,ms:"No (1). The character '3' has ASCII code 51 (stored as 00110011), whereas the integer 3 is stored as 00000011 in binary — they are different values (1)."}
-];
-
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:100px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,1,1,2];
+var TEST_MCQ_LABELS=[['64','128','256','512'],['97','48','65','90'],['Unicode uses 7 bits','Unicode represents all world languages','Unicode is only for English','Unicode replaces binary'],['It stores upper and lowercase','It must represent a much larger character set','It uses binary not hex','It was developed later'],['65','90','97','48']];
+var TEST_MCQ_EXPLAIN=['2⁷=128.','A=65.','Unicode supports all world scripts, symbols and emoji.','Unicode covers all world languages — far more than ASCII\'s 128 characters.','a=97=65+32.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['What does ASCII stand for?','ASCII code for C?','Why was Unicode needed?','Most common web encoding + reason?','Bits for "CAT" in 7-bit ASCII?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

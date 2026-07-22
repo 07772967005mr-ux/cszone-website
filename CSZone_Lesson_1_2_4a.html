@@ -1,404 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.2.4a Binary &amp; Denary | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}
-.shell{display:flex;width:100%;min-height:100vh}
-.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}
-.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}
-.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}
-.sidebar-logo span{color:#6366f1}
-.sidebar-section{padding:8px 0}
-.sidebar-section-title{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}
-.sidebar-link{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}
-.sidebar-link:hover{color:#e2e8f0;background:#ffffff08}
-.sidebar-link.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}
-.sidebar-link.free-badge::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}
-.main{margin-left:260px;flex:1;display:flex;flex-direction:column}
-.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}
-.breadcrumb{font-size:12px;color:#64748b;margin-bottom:8px}.breadcrumb a{color:#6366f1;text-decoration:none}
-.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}
-.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}
-.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}
-.tab-btn{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s}
-.tab-btn:hover{color:#e2e8f0}.tab-btn.active{color:#818cf8;border-bottom-color:#6366f1}
-.tab-content{padding:32px 40px;max-width:900px}
-.notes-section{margin-bottom:32px}
-.notes-section h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}
-.notes-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}
-.notes-section p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}
-.notes-section ul{padding-left:20px;margin-bottom:10px}
-.notes-section ul li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}
-.info-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}
-.info-card.blue{border-left:3px solid #3b82f6}.info-card.green{border-left:3px solid #10b981}
-.info-card.amber{border-left:3px solid #f59e0b}.info-card.purple{border-left:3px solid #8b5cf6}
-.info-card h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}
-.info-card p,.info-card li{font-size:13px;color:#94a3b8;line-height:1.6}
-.info-card ul{padding-left:16px}
-.compare-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
-.compare-table th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:center;font-weight:600;border:1px solid #2d3148}
-.compare-table td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8;text-align:center}
-.compare-table tr:nth-child(even) td{background:#1a1d2e}
-.key-point{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}
-.key-point strong{color:#c7d2fe}
-.formula-box{background:#0f172a;border:1px solid #3730a3;border-radius:8px;padding:16px 20px;margin:12px 0;font-family:monospace;font-size:14px;color:#a5b4fc;line-height:1.8}
-.bit-grid{display:flex;gap:4px;margin:12px 0;flex-wrap:wrap}
-.bit-cell{background:#252840;border:1px solid #3730a3;border-radius:6px;padding:8px 12px;text-align:center;min-width:56px}
-.bit-cell .power{font-size:11px;color:#818cf8;margin-bottom:4px}
-.bit-cell .value{font-size:16px;font-weight:700;color:#c7d2fe}
-.bit-cell .bit{font-size:18px;font-weight:700;color:#10b981}
-.quiz-container{max-width:700px}
-.quiz-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
-.quiz-q p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}
-.quiz-opt{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;transition:.15s;font-size:13px;color:#94a3b8}
-.quiz-opt:hover{background:#252840;border-color:#4f46e5}
-.quiz-opt.correct{background:#052e16;border-color:#10b981;color:#6ee7b7}
-.quiz-opt.wrong{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}
-.quiz-opt input{display:none}
-.quiz-explain{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}
-.quiz-score{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}
-.btn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}
-.btn-outline{background:transparent;color:#6366f1;border:1px solid #6366f1}
-.ws-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
-.ws-q .q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
-.ws-q .q-text{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}
-.ws-q .marks{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}
-.ws-q textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}
-.ms-toggle{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}
-.mark-scheme{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}
-.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
-.term-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}
-.term-word{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}
-.term-def{font-size:13px;color:#94a3b8;line-height:1.5}
-.test-section{margin-bottom:28px}.test-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}
-.sa-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}
-.sa-q p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}
-.sa-q .marks{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}
-.lesson-nav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}
-.nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500;transition:.15s}
-.nav-btn:hover{color:#e2e8f0;border-color:#4f46e5}.nav-btn.next{background:#6366f108;border-color:#6366f1;color:#818cf8}
-#paywall-overlay{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}
-.paywall-box{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-.paywall-box h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
-.paywall-box p{font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6}
-.paywall-box .price{font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px}
-.paywall-box .price-sub{font-size:12px;color:#64748b;margin-bottom:24px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2.4a Binary &amp; Denary — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .prog-sep{color:#e2e8f0;font-size:10px;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;text-align:center;}
+    .notes-content td:first-child{text-align:left;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .bottom-nav-center{font-size:13px;color:#94a3b8;font-weight:500;}
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-card{background:#fff;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-bottom:10px;width:100%;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="paywall-overlay" style="display:none">
-  <div class="paywall-box">
-    <div style="font-size:48px;margin-bottom:16px">🔒</div>
-    <h2>Unlock Full Access</h2>
-    <p>Subscribe to access all 47 OCR J277 lessons, quizzes, worksheets and mini tests.</p>
-    <div class="price">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div>
-    <div class="price-sub">or £59/year — save 38%</div>
-    <a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px 20px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a>
-    <a href="/dashboard" style="font-size:13px;color:#64748b">Back to Dashboard</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.2 Memory &amp; Storage</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.2.4a Binary &amp; Denary</span>
+    </div>
   </div>
-</div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sidebar-section-title">Component 1</div>
-    <div class="sidebar-section-title" style="color:#818cf8">1.1 Systems Architecture</div>
-    <a href="/ocr-j277/1-1-1/" class="sidebar-link free-badge">1.1.1 Architecture of the CPU</a>
-    <a href="/ocr-j277/1-1-2/" class="sidebar-link">1.1.2 CPU Performance</a>
-    <a href="/ocr-j277/1-1-3/" class="sidebar-link">1.1.3 Embedded Systems</a>
-    <div class="sidebar-section-title" style="color:#818cf8">1.2 Memory &amp; Storage</div>
-    <a href="/ocr-j277/1-2-1/" class="sidebar-link free-badge">1.2.1 Primary Storage</a>
-    <a href="/ocr-j277/1-2-2/" class="sidebar-link">1.2.2 Secondary Storage</a>
-    <a href="/ocr-j277/1-2-3/" class="sidebar-link">1.2.3 Units of Storage</a>
-    <a href="/ocr-j277/1-2-4a/" class="sidebar-link active">1.2.4a Binary &amp; Denary</a>
-    <a href="/ocr-j277/1-2-4b/" class="sidebar-link">1.2.4b Hexadecimal</a>
-    <a href="/ocr-j277/1-2-4c/" class="sidebar-link">1.2.4c Binary Arithmetic</a>
-    <a href="/ocr-j277/1-2-4d/" class="sidebar-link">1.2.4d Binary Shifts</a>
-    <a href="/ocr-j277/1-2-4e/" class="sidebar-link">1.2.4e Character Encoding</a>
-    <a href="/ocr-j277/1-2-4f/" class="sidebar-link">1.2.4f Representing Images</a>
-    <a href="/ocr-j277/1-2-4g/" class="sidebar-link">1.2.4g Representing Sound</a>
-    <a href="/ocr-j277/1-2-5/" class="sidebar-link">1.2.5 Compression</a>
-    <div class="sidebar-section-title" style="color:#818cf8">1.3 Networks</div>
-    <a href="/ocr-j277/1-3-1a/" class="sidebar-link free-badge">1.3.1a LAN, WAN &amp; Performance</a>
-    <a href="/ocr-j277/1-3-1b/" class="sidebar-link">1.3.1b Network Types &amp; Hardware</a>
-    <a href="/ocr-j277/1-3-1c/" class="sidebar-link">1.3.1c Internet, DNS &amp; Cloud</a>
-    <a href="/ocr-j277/1-3-1d/" class="sidebar-link">1.3.1d Network Topologies</a>
-    <a href="/ocr-j277/1-3-2a/" class="sidebar-link">1.3.2a Wired &amp; Wireless</a>
-    <a href="/ocr-j277/1-3-2b/" class="sidebar-link">1.3.2b Protocols &amp; Layers</a>
-    <div class="sidebar-section-title" style="color:#818cf8">1.4 Network Security</div>
-    <a href="/ocr-j277/1-4-1/" class="sidebar-link free-badge">1.4.1 Network Threats</a>
-    <a href="/ocr-j277/1-4-2/" class="sidebar-link">1.4.2 Preventing Vulnerabilities</a>
-    <div class="sidebar-section-title" style="color:#818cf8">1.5 Systems Software</div>
-    <a href="/ocr-j277/1-5-1/" class="sidebar-link free-badge">1.5.1 Operating Systems</a>
-    <a href="/ocr-j277/1-5-2/" class="sidebar-link">1.5.2 Utility Software</a>
-    <div class="sidebar-section-title" style="color:#818cf8">1.6 Impacts</div>
-    <a href="/ocr-j277/1-6-1a/" class="sidebar-link free-badge">1.6.1a Ethical &amp; Legal</a>
-    <a href="/ocr-j277/1-6-1b/" class="sidebar-link">1.6.1b Cultural &amp; Environmental</a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-section-title">Component 2</div>
-    <div class="sidebar-section-title" style="color:#818cf8">2.1 Algorithms</div>
-    <a href="/ocr-j277/2-1-1/" class="sidebar-link free-badge">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-1-2a/" class="sidebar-link">2.1.2a Flowcharts</a>
-    <a href="/ocr-j277/2-1-2b/" class="sidebar-link">2.1.2b Pseudocode</a>
-    <a href="/ocr-j277/2-1-3a/" class="sidebar-link">2.1.3a Linear Search</a>
-    <a href="/ocr-j277/2-1-3b/" class="sidebar-link">2.1.3b Binary Search</a>
-    <a href="/ocr-j277/2-1-3c/" class="sidebar-link">2.1.3c Bubble Sort</a>
-    <a href="/ocr-j277/2-1-3d/" class="sidebar-link">2.1.3d Merge Sort</a>
-    <a href="/ocr-j277/2-1-3e/" class="sidebar-link">2.1.3e Insertion Sort</a>
-    <div class="sidebar-section-title" style="color:#818cf8">2.2 Programming</div>
-    <a href="/ocr-j277/2-2-1a/" class="sidebar-link free-badge">2.2.1a Variables &amp; Data Types</a>
-    <a href="/ocr-j277/2-2-1b/" class="sidebar-link">2.2.1b Selection &amp; Iteration</a>
-    <a href="/ocr-j277/2-2-1c/" class="sidebar-link">2.2.1c Arrays</a>
-    <a href="/ocr-j277/2-2-1d/" class="sidebar-link">2.2.1d File Handling</a>
-    <a href="/ocr-j277/2-2-1e/" class="sidebar-link">2.2.1e String Manipulation</a>
-    <a href="/ocr-j277/2-2-1f/" class="sidebar-link">2.2.1f Subroutines</a>
-    <div class="sidebar-section-title" style="color:#818cf8">2.3 Robust Programs</div>
-    <a href="/ocr-j277/2-3-1/" class="sidebar-link free-badge">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-3-2/" class="sidebar-link">2.3.2 Testing</a>
-    <div class="sidebar-section-title" style="color:#818cf8">2.4 Boolean Logic</div>
-    <a href="/ocr-j277/2-4-1a/" class="sidebar-link free-badge">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-4-1b/" class="sidebar-link">2.4.1b Truth Tables</a>
-    <div class="sidebar-section-title" style="color:#818cf8">2.5 Languages &amp; IDEs</div>
-    <a href="/ocr-j277/2-5-1/" class="sidebar-link free-badge">2.5.1 High &amp; Low Level</a>
-    <a href="/ocr-j277/2-5-2a/" class="sidebar-link">2.5.2a Translators</a>
-    <a href="/ocr-j277/2-5-2b/" class="sidebar-link">2.5.2b IDEs</a>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="breadcrumb"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.2 Memory &amp; Storage</div>
-  <div class="lesson-title">1.2.4a — Binary &amp; Denary Conversion</div>
-  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~25 min</div>
+  <div class="lesson-badge">🔢 Component 1 · 1.2 Data Representation</div>
+  <div class="lesson-title">1.2.4a Binary &amp; Denary Conversion</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~11 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tab-btn active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tab-btn" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tab-btn" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tab-btn" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tab-btn" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tab-btn" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tab-btn" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tab-content" id="tab-notes">
-  <div class="notes-section">
-    <h2>Number Systems</h2>
-    <p>Computers use the <strong>binary</strong> (base 2) number system because electronic components have two states: on (1) or off (0). Humans use <strong>denary</strong> (base 10, also called decimal) which has 10 digits: 0–9.</p>
-    <table class="compare-table">
-      <tr><th>System</th><th>Base</th><th>Digits used</th><th>Example</th></tr>
-      <tr><td>Denary (decimal)</td><td>Base 10</td><td>0–9</td><td>42</td></tr>
-      <tr><td>Binary</td><td>Base 2</td><td>0 and 1</td><td>00101010</td></tr>
-    </table>
-    <div class="key-point"><strong>Notation:</strong> To avoid confusion, binary numbers are often written with subscript 2 (e.g. 1010₂) and denary with subscript 10 (e.g. 10₁₀).</div>
-  </div>
-
-  <div class="notes-section">
-    <h2>Binary Place Values</h2>
-    <p>Just as denary uses place values of powers of 10 (1, 10, 100, 1000...), binary uses powers of 2. For an 8-bit number:</p>
-    <div class="bit-grid">
-      <div class="bit-cell"><div class="power">2⁷</div><div class="value">128</div></div>
-      <div class="bit-cell"><div class="power">2⁶</div><div class="value">64</div></div>
-      <div class="bit-cell"><div class="power">2⁵</div><div class="value">32</div></div>
-      <div class="bit-cell"><div class="power">2⁴</div><div class="value">16</div></div>
-      <div class="bit-cell"><div class="power">2³</div><div class="value">8</div></div>
-      <div class="bit-cell"><div class="power">2²</div><div class="value">4</div></div>
-      <div class="bit-cell"><div class="power">2¹</div><div class="value">2</div></div>
-      <div class="bit-cell"><div class="power">2⁰</div><div class="value">1</div></div>
-    </div>
-    <p>The <strong>most significant bit (MSB)</strong> is on the left (128), the <strong>least significant bit (LSB)</strong> is on the right (1).</p>
-    <p>An 8-bit number can represent values from 0 to 255 (2⁸ − 1 = 255).</p>
-  </div>
-
-  <div class="notes-section">
-    <h2>Converting Binary to Denary</h2>
-    <p>Write out the place values, then add up the values where the binary digit is 1.</p>
-    <div class="info-card green">
-      <h4>Worked Example: Convert 10110101₂ to denary</h4>
-      <div style="font-family:monospace;font-size:13px;color:#94a3b8;line-height:2">
-        128 | 64 | 32 | 16 | 8 | 4 | 2 | 1<br>
-        &nbsp;1 &nbsp;| &nbsp;0 &nbsp;| &nbsp;1 &nbsp;| &nbsp;1 &nbsp;| 0 | 1 | 0 | 1<br>
-        <br>
-        = 128 + 32 + 16 + 4 + 1<br>
-        = <strong style="color:#6ee7b7">181</strong>
-      </div>
-    </div>
-    <div class="info-card blue">
-      <h4>Worked Example: Convert 01001100₂ to denary</h4>
-      <div style="font-family:monospace;font-size:13px;color:#94a3b8;line-height:2">
-        128 | 64 | 32 | 16 | 8 | 4 | 2 | 1<br>
-        &nbsp;0 &nbsp;| &nbsp;1 &nbsp;| &nbsp;0 &nbsp;| &nbsp;0 &nbsp;| 1 | 1 | 0 | 0<br>
-        <br>
-        = 64 + 8 + 4<br>
-        = <strong style="color:#93c5fd">76</strong>
-      </div>
-    </div>
-  </div>
-
-  <div class="notes-section">
-    <h2>Converting Denary to Binary</h2>
-    <p>Method: Work from the largest place value (128) downward. If the remaining value is ≥ the place value, put a 1 and subtract; otherwise put a 0.</p>
-    <div class="info-card green">
-      <h4>Worked Example: Convert 197 to 8-bit binary</h4>
-      <div style="font-family:monospace;font-size:13px;color:#94a3b8;line-height:1.9">
-        197 ≥ 128? YES → put 1, remainder = 197 − 128 = 69<br>
-        69 ≥ 64? &nbsp;YES → put 1, remainder = 69 − 64 = 5<br>
-        5 ≥ 32? &nbsp;&nbsp;NO &nbsp;→ put 0, remainder = 5<br>
-        5 ≥ 16? &nbsp;&nbsp;NO &nbsp;→ put 0, remainder = 5<br>
-        5 ≥ 8? &nbsp;&nbsp;&nbsp;NO &nbsp;→ put 0, remainder = 5<br>
-        5 ≥ 4? &nbsp;&nbsp;&nbsp;YES → put 1, remainder = 5 − 4 = 1<br>
-        1 ≥ 2? &nbsp;&nbsp;&nbsp;NO &nbsp;→ put 0, remainder = 1<br>
-        1 ≥ 1? &nbsp;&nbsp;&nbsp;YES → put 1, remainder = 0<br>
-        <br>
-        Result: <strong style="color:#6ee7b7">11000101₂</strong>
-      </div>
-    </div>
-    <div class="info-card blue">
-      <h4>Worked Example: Convert 45 to 8-bit binary</h4>
-      <div style="font-family:monospace;font-size:13px;color:#94a3b8;line-height:1.9">
-        45 ≥ 128? NO → 0 &nbsp;| 45 ≥ 64? NO → 0 &nbsp;| 45 ≥ 32? YES → 1, rem=13<br>
-        13 ≥ 16? NO → 0 &nbsp;| 13 ≥ 8? YES → 1, rem=5 &nbsp;| 5 ≥ 4? YES → 1, rem=1<br>
-        1 ≥ 2? NO → 0 &nbsp;| 1 ≥ 1? YES → 1<br>
-        Result: <strong style="color:#93c5fd">00101101₂</strong>
-      </div>
-    </div>
-    <div class="key-point"><strong>Check:</strong> Always verify by converting your binary answer back to denary!</div>
-  </div>
-
-  <div class="notes-section">
-    <h2>Key Facts to Remember</h2>
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>Number Systems Used in Computing</h2>
+    <p>OCR J277 requires knowledge of <strong>denary</strong> (base 10), <strong>binary</strong> (base 2), and <strong>hexadecimal</strong> (base 16). This lesson focuses on converting between denary and binary.</p>
     <ul>
-      <li>8-bit binary: 0 to 255 (2⁸ values)</li>
-      <li>With n bits, you can represent 2ⁿ different values (0 to 2ⁿ − 1)</li>
-      <li>The MSB (leftmost bit) has the highest value (128 for 8-bit)</li>
-      <li>The LSB (rightmost bit) always has value 1</li>
-      <li>All 1s in 8-bit = 11111111₂ = 255₁₀</li>
-      <li>All 0s = 00000000₂ = 0₁₀</li>
+      <li><strong>Denary (decimal)</strong> — the everyday number system. Digits 0–9. Base 10.</li>
+      <li><strong>Binary</strong> — the number system computers use internally. Digits 0 and 1 only. Base 2.</li>
     </ul>
-    <div class="info-card amber">
-      <h4>Common Mistakes</h4>
+
+    <h2>Why Computers Use Binary</h2>
+    <p>All data in a computer is represented as electrical signals — either ON (1) or OFF (0). Binary maps directly to these two states. Every piece of data — text, images, sound, programs — is ultimately stored and processed as sequences of 0s and 1s.</p>
+
+    <h2>Binary Column Values (8-bit)</h2>
+    <p>For an 8-bit binary number, each position (bit) has a place value that is a power of 2:</p>
+    <table>
+      <thead><tr><th>Bit position</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+      <tbody>
+        <tr><td>Column value</td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+        <tr><td>Power of 2</td><td>2⁷</td><td>2⁶</td><td>2⁵</td><td>2⁴</td><td>2³</td><td>2²</td><td>2¹</td><td>2⁰</td></tr>
+      </tbody>
+    </table>
+    <p>The <strong>most significant bit (MSB)</strong> is on the left (value 128); the <strong>least significant bit (LSB)</strong> is on the right (value 1).</p>
+
+    <h2>Binary to Denary Conversion</h2>
+    <p><strong>Method:</strong> Identify which bits are 1, then add up their column values.</p>
+    <h3>Example: Convert 10110101 to denary</h3>
+    <table>
+      <thead><tr><th>128</th><th>64</th><th>32</th><th>16</th><th>8</th><th>4</th><th>2</th><th>1</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+      </tbody>
+    </table>
+    <p>1s are in columns: 128, 32, 16, 4, 1</p>
+    <p>128 + 32 + 16 + 4 + 1 = <strong>181</strong></p>
+
+    <h2>Denary to Binary Conversion</h2>
+    <p><strong>Method:</strong> Work from the largest column value downward. Subtract if it fits (put 1), skip if it doesn't (put 0).</p>
+    <h3>Example: Convert 75 to binary</h3>
+    <ul>
+      <li>128 &gt; 75 → 0</li>
+      <li>64 ≤ 75 → 1 (75 − 64 = 11 remaining)</li>
+      <li>32 &gt; 11 → 0</li>
+      <li>16 &gt; 11 → 0</li>
+      <li>8 ≤ 11 → 1 (11 − 8 = 3 remaining)</li>
+      <li>4 &gt; 3 → 0</li>
+      <li>2 ≤ 3 → 1 (3 − 2 = 1 remaining)</li>
+      <li>1 ≤ 1 → 1 (1 − 1 = 0)</li>
+    </ul>
+    <p>Result: <strong>01001011</strong></p>
+    <p>Check: 64 + 8 + 2 + 1 = 75 ✓</p>
+
+    <h2>Key Worked Examples</h2>
+    <table>
+      <thead><tr><th>Denary</th><th>Binary (8-bit)</th><th>Check</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>00000000</td><td>—</td></tr>
+        <tr><td>1</td><td>00000001</td><td>1</td></tr>
+        <tr><td>10</td><td>00001010</td><td>8+2=10</td></tr>
+        <tr><td>25</td><td>00011001</td><td>16+8+1=25</td></tr>
+        <tr><td>100</td><td>01100100</td><td>64+32+4=100</td></tr>
+        <tr><td>200</td><td>11001000</td><td>128+64+8=200</td></tr>
+        <tr><td>255</td><td>11111111</td><td>128+64+32+16+8+4+2+1=255</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Note:</strong> 255 is the maximum value for an 8-bit binary number (all bits = 1). An 8-bit number can represent 256 values: 0–255.</p>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> Always write your column headers (128, 64, 32, 16, 8, 4, 2, 1) before starting a conversion. This avoids place value errors. Always show your working in conversion questions — you can gain method marks even if your final answer is wrong.
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Starting place values from the wrong end (always start with 128 on the left)</li>
-        <li>Forgetting leading zeros in 8-bit representation (e.g. 45 = 00101101, not 101101)</li>
-        <li>Adding up all place values instead of only those with a 1</li>
-        <li>Confusing binary (base 2) with denary (base 10)</li>
+        <li>Starting from the wrong end — always start from the largest column value (128) and work right</li>
+        <li>Writing 9 bits instead of 8 — always use exactly 8 bits and include leading zeros (e.g. 00000101 not 101)</li>
+        <li>Adding column values incorrectly — write the check sum to verify</li>
+        <li>Confusing binary with denary — binary uses only 0 and 1; any digit 2–9 is NOT binary</li>
+        <li>Forgetting that 255 is the max 8-bit value and 256 values in total (0–255)</li>
       </ul>
     </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
   </div>
 </div>
 
-<div class="tab-content" id="tab-video" style="display:none"><div class="notes-section"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tab-content" id="tab-slides" style="display:none"><div class="notes-section"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tab-content" id="tab-worksheet" style="display:none">
-  <div class="notes-section"><h2>Worksheet — Binary &amp; Denary</h2><p style="font-size:13px;color:#64748b;margin-bottom:20px">Show all working.</p></div>
-  <div id="ws-container"></div>
-</div>
-<div class="tab-content" id="tab-quiz" style="display:none">
-  <div class="notes-section"><h2>15-Question Quiz</h2></div>
-  <div class="quiz-container" id="quiz-container"></div>
-  <div class="quiz-score" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="btn btn-outline" onclick="resetQuiz()">Try Again</button></div>
-</div>
-<div class="tab-content" id="tab-test" style="display:none">
-  <div class="notes-section"><h2>Mini Test</h2></div>
-  <div class="test-section"><h3>Section A — Multiple Choice</h3><div id="test-mcq-container"></div></div>
-  <div class="test-section"><h3>Section B — Short Answer</h3><div id="test-sa-container"></div></div>
-</div>
-<div class="tab-content" id="tab-terms" style="display:none">
-  <div class="notes-section"><h2>Key Terms</h2></div>
-  <div class="terms-grid" id="terms-grid"></div>
-</div>
-<div class="lesson-nav">
-  <a href="/ocr-j277/1-2-3/" class="nav-btn">← 1.2.3 Units of Storage</a>
-  <a href="/ocr-j277/1-2-4b/" class="nav-btn next">1.2.4b Hexadecimal →</a>
-</div>
-</div>
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;">What's in this video</h3>
+    <ul style="list-style:none;padding:0;">
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Why computers use binary (two-state logic)</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• The 8-bit column header method: 128 64 32 16 8 4 2 1</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Binary → Denary: sum of active column values</li>
+      <li style="padding:8px 0;font-size:14.5px;color:#334155;">• Denary → Binary: repeated subtraction method</li>
+    </ul>
+  </div>
 </div>
 
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_1.2.4a_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 1.2.4a Binary &amp; Denary</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks · Show all working</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">State the column values for an 8-bit binary number, from MSB to LSB.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">128, 64, 32, 16, 8, 4, 2, 1 [2 — all 8 correct for 2 marks; accept 6+ for 1 mark]</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">Convert the binary number 01001010 to denary. Show your working.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-2" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Column values with 1s: 64, 8, 2 [1 for correct method]; 64 + 8 + 2 = 74 [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Convert 10111001 to denary.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-3" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">128 + 32 + 16 + 8 + 1 [1] = 185 [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">Convert the denary number 47 to 8-bit binary. Show your working.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-4" style="min-height:120px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">128 → 0; 64 → 0; 32 ≤ 47 → 1 (15 left); 16 → 0 (15&lt;16); 8 ≤ 15 → 1 (7 left); 4 ≤ 7 → 1 (3 left); 2 ≤ 3 → 1 (1 left); 1 → 1 [1 for method]; result 00101111 [1]; check 32+8+4+2+1=47 [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Convert 130 to 8-bit binary.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-5" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">128 → 1 (2 left); 64 → 0; 32 → 0; 16 → 0; 8 → 0; 4 → 0; 2 → 1 (0 left); 1 → 0 [1 for method]; 10000010 [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">What is the maximum value that can be stored in an 8-bit binary number? State it in both binary and denary.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-6" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">11111111 in binary [1]; 255 in denary [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">How many different values can be represented by an 8-bit binary number? Explain how you calculated this.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">256 different values [1]; because 2⁸ = 256 (each bit has 2 possible states, and with 8 bits: 2×2×2×2×2×2×2×2 = 256) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">Explain why computers use binary rather than denary to represent data.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-8" style="min-height:120px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">• Electronic components (transistors) have two stable states: on or off [1]<br>• Binary (0 and 1) maps directly to these two states [1]<br>• It is easier to build reliable circuits that distinguish two states than ten (0–9 in denary) [1]<br>• All data types can be encoded as binary patterns [1] (any 3)</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel">
+    <div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div>
+    <div style="font-size:15px;color:#64748b;margin-top:6px;">out of 18 — self-mark above</div>
+    <button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 1.2.4a Binary &amp; Denary</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <ul style="list-style:none;padding:0;margin-bottom:28px;">
+        <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;">• 5 multiple choice + 5 conversion questions</li>
+        <li style="padding:6px 0;">• Show all working for conversions</li>
+      </ul>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What is the denary value of 00001010 in binary?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> 8</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> 10</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> 12</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> 5</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">What is the maximum value of an 8-bit binary number?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> 256</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> 128</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> 255</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> 127</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">Which of the following is a valid 8-bit binary number?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> 10201001</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> 11001100</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> 1A001100</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> 10020011</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">What is the column value of the MSB in an 8-bit binary number?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> 1</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> 64</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> 256</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> 128</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">How many different values can be represented by 8 bits?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> 255</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> 256</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> 128</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> 512</label></div></div>
+    <div class="test-section-label">Section B — Conversions [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">Convert 01100100 to denary. Show your working.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>64 + 32 + 4 = 100. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Convert 11000011 to denary.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>128 + 64 + 2 + 1 = 195. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">Convert denary 37 to 8-bit binary.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>00100101 (32 + 4 + 1 = 37). [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">Convert denary 200 to 8-bit binary.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>11001000 (128 + 64 + 8 = 200). [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">State one reason why computers use binary rather than denary.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>Electronic components (transistors) have two stable states (on/off), which maps directly to binary 0 and 1. [1]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/1-2-3/" class="bottom-nav-btn">← 1.2.3 Units of Storage</a>
+  <span class="bottom-nav-center">1.2 Data Representation</span>
+  <a href="/ocr-j277/1-2-4b/" class="bottom-nav-btn next-btn">1.2.4b Binary Addition →</a>
+</div>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:14.5px;color:#64748b;line-height:1.6;margin-bottom:24px;">Subscribe to unlock all 47 OCR J277 lessons.</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
 <script>
-var LESSON_ID='1-2-4a';var IS_FREE=false;
 var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
 var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-2-4a';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
 var currentUser=null;
-
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+    if(!IS_FREE)checkAccess();
+  });
+});
+function checkAccess(){getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h}).then(function(r){return r.json();}).then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});});}
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What is the denary value of the 8-bit binary number 00000001?",opts:["128","1","0","2"],ans:1,exp:"The rightmost bit has a place value of 2⁰ = 1."},
-  {q:"What is the denary value of 10000000 in binary?",opts:["1","8","128","64"],ans:2,exp:"The leftmost bit (MSB) of an 8-bit number has a place value of 2⁷ = 128."},
-  {q:"Convert 11111111 (binary) to denary.",opts:["128","256","254","255"],ans:3,exp:"128+64+32+16+8+4+2+1 = 255. An 8-bit number's maximum is 255."},
-  {q:"What is 45 in 8-bit binary?",opts:["00101101","00101100","00110101","01001101"],ans:0,exp:"32+8+4+1 = 45. So bits for 32,8,4,1 are 1: 00101101."},
-  {q:"Convert 10110010 to denary.",opts:["128","178","170","160"],ans:1,exp:"128+32+16+2 = 178."},
-  {q:"What is the maximum value that can be stored in 8 bits?",opts:["128","256","255","127"],ans:2,exp:"2⁸ − 1 = 255. With 8 bits you can represent 256 values (0 to 255)."},
-  {q:"Which bit is the MSB (Most Significant Bit) in an 8-bit number?",opts:["The rightmost bit","The leftmost bit","The middle bit","The bit with value 1"],ans:1,exp:"MSB = Most Significant Bit = the leftmost bit, which has the highest place value (128 in 8-bit)."},
-  {q:"Convert 11 (denary) to binary.",opts:["00001011","00001101","00001110","00010001"],ans:0,exp:"8+2+1 = 11. So bits for 8,2,1 are 1: 00001011."},
-  {q:"How many different values can be represented by 4 bits?",opts:["4","8","15","16"],ans:3,exp:"2⁴ = 16 different values (0 to 15)."},
-  {q:"What is 10000001 in denary?",opts:["127","128","129","191"],ans:2,exp:"128+1 = 129."},
-  {q:"Convert 200 to 8-bit binary.",opts:["11001000","11000100","10001100","11001100"],ans:0,exp:"128+64+8 = 200. So: 11001000."},
-  {q:"What does LSB stand for?",opts:["Left Significant Bit","Least Significant Bit","Large Storage Byte","Low Speed Binary"],ans:1,exp:"LSB = Least Significant Bit — the rightmost bit with the lowest place value (1)."},
-  {q:"Convert 01100110 to denary.",opts:["96","100","102","110"],ans:2,exp:"64+32+4+2 = 102."},
-  {q:"How many bits in 8-bit binary represent the value 64?",opts:["1","2","64","6"],ans:0,exp:"64 is represented by a single bit at position 2⁶. Only one bit is needed to represent 64."},
-  {q:"A student converts 10010000 to denary and gets 108. Is this correct?",opts:["Yes","No — the answer is 144","No — the answer is 128","No — the answer is 176"],ans:1,exp:"128+16 = 144, not 108. The student likely misidentified the place values."}
+  {q:"What is the denary value of 00001111?",opts:["8","15","16","12"],a:1,exp:"8 + 4 + 2 + 1 = 15. Bits 3,2,1,0 are all 1."},
+  {q:"What is 11111111 in denary?",opts:["128","256","255","127"],a:2,exp:"128+64+32+16+8+4+2+1 = 255. All 8 bits set to 1."},
+  {q:"What is the 8-bit binary for denary 100?",opts:["01100100","01000100","01100000","01100010"],a:0,exp:"64+32+4 = 100. 01100100."},
+  {q:"What is the column value of bit position 0 (LSB)?",opts:["128","64","8","1"],a:3,exp:"The LSB (rightmost bit) has value 2⁰ = 1."},
+  {q:"What is the column value of bit position 7 (MSB)?",opts:["64","128","256","32"],a:1,exp:"The MSB (leftmost of 8 bits) has value 2⁷ = 128."},
+  {q:"Convert 01010101 to denary.",opts:["75","85","95","55"],a:1,exp:"64+16+4+1 = 85."},
+  {q:"Convert denary 25 to binary.",opts:["00011001","00010011","00011010","00010101"],a:0,exp:"16+8+1 = 25 → 00011001."},
+  {q:"How many different values can 8 bits represent?",opts:["255","128","512","256"],a:3,exp:"2⁸ = 256 values (0 to 255 inclusive)."},
+  {q:"What is the maximum 8-bit value in denary?",opts:["256","254","128","255"],a:3,exp:"All 8 bits = 1: 128+64+32+16+8+4+2+1 = 255."},
+  {q:"Convert denary 128 to 8-bit binary.",opts:["01000000","10000000","11000000","00100000"],a:1,exp:"128 fits in bit 7 only: 10000000."},
+  {q:"What is 10000001 in denary?",opts:["127","128","129","131"],a:2,exp:"128 + 1 = 129."},
+  {q:"Which denary value cannot be represented by an 8-bit binary number?",opts:["0","255","200","260"],a:3,exp:"8-bit maximum is 255. 260 exceeds this — it would require more than 8 bits."},
+  {q:"Convert denary 64 to 8-bit binary.",opts:["01000000","10000000","00100000","01100000"],a:0,exp:"64 is 2⁶, so only bit 6 is 1: 01000000."},
+  {q:"What is the binary for denary 3?",opts:["00000011","00000110","00000101","00000100"],a:0,exp:"2+1 = 3: 00000011."},
+  {q:"Why do computers use binary?",opts:["It's faster than other systems","Electronic components have two stable states (on/off)","Binary numbers are smaller","It was chosen by convention only"],a:1,exp:"Transistors (electronic switches) operate in two states: on (1) or off (0). Binary directly maps to this."}
 ];
-
-var WORKSHEET=[
-  {q:"Convert the following binary numbers to denary (show your working using place values):\n(a) 01010101 \n(b) 11001010 \n(c) 10100111",marks:3,ms:"(a) 64+16+4+1 = 85 (1). (b) 128+64+8+2 = 202 (1). (c) 128+32+4+2+1 = 167 (1)."},
-  {q:"Convert the following denary numbers to 8-bit binary (show all working):\n(a) 37 \n(b) 156 \n(c) 219",marks:3,ms:"(a) 32+4+1: 00100101 (1). (b) 128+16+8+4: 10011100 (1). (c) 128+64+16+8+2+1: 11011011 (1)."},
-  {q:"State the maximum denary value that can be stored in 8 bits. Explain why.",marks:2,ms:"255 (1). With 8 bits, all bits set to 1: 128+64+32+16+8+4+2+1 = 255 = 2⁸ − 1 (1)."},
-  {q:"State the meaning of MSB and LSB. In the 8-bit number 10100110, identify which bit is the MSB and its denary value.",marks:3,ms:"MSB = Most Significant Bit (leftmost) (1). LSB = Least Significant Bit (rightmost) (1). In 10100110, the MSB is the 1 in position 128, and has denary value 128 (1)."},
-  {q:"A student claims that 11001100 in binary equals 192 in denary. Show working to check whether this is correct.",marks:2,ms:"128+64+8+4 = 204 (1). The student is incorrect — the correct answer is 204, not 192 (1)."},
-  {q:"Explain why computers use binary rather than denary.",marks:2,ms:"Binary has only two states (0 and 1) (1), which correspond directly to the two electrical states of electronic components — on (1) and off (0) — making it simple and reliable for computers to process (1)."},
-  {q:"How many different values can be represented by: (a) 4 bits (b) 16 bits?",marks:2,ms:"(a) 2⁴ = 16 different values (1). (b) 2¹⁶ = 65,536 different values (1)."},
-  {q:"Convert 10101010 to denary. Then convert the result back to binary to verify.",marks:3,ms:"128+32+8+2 = 170 (1). Convert 170: 128+32+8+2 = 170 ✓. Binary: 10101010 (2 marks for correct conversion back with working)."}
-];
-
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to the notes.'],['Getting there!','More practice needed.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Binary",d:"Base 2 number system using only 0 and 1. Used by computers because electronic components have two states (on/off)."},
-  {w:"Denary",d:"Base 10 number system (also called decimal) using digits 0–9. The number system humans naturally use."},
-  {w:"Bit",d:"A single binary digit — either 0 or 1. The smallest unit of digital data."},
-  {w:"Byte",d:"8 bits. The standard unit for measuring data storage."},
-  {w:"Place value",d:"The value of a digit based on its position. In binary, place values are powers of 2 (1, 2, 4, 8, 16...)."},
-  {w:"MSB",d:"Most Significant Bit — the leftmost bit in a binary number, which has the highest place value."},
-  {w:"LSB",d:"Least Significant Bit — the rightmost bit in a binary number, which has the lowest place value (1)."},
-  {w:"Base 2",d:"Another name for the binary number system where each digit is a power of 2."},
-  {w:"Base 10",d:"Another name for denary/decimal where each digit is a power of 10."},
-  {w:"8-bit number",d:"A binary number using 8 digits, able to represent values from 0 to 255 (2⁸ different values)."},
-  {w:"2ⁿ",d:"Formula for the number of different values representable with n bits. E.g. n=8 gives 2⁸ = 256 values."},
-  {w:"Converting",d:"Changing a number from one base to another (e.g. binary to denary or denary to binary)."},
-  {w:"Leading zeros",d:"Zeros written at the start of a binary number to pad it to the required number of bits (e.g. 00101101 for 8-bit)."},
-  {w:"Subscript notation",d:"Writing the base as a small number after the value to indicate which number system: 101₂ (binary), 5₁₀ (denary)."},
-  {w:"Subtraction method",d:"Converting denary to binary by subtracting the largest possible power of 2 repeatedly until zero."}
+  {term:"Binary",def:"A number system using base 2. Only uses digits 0 and 1. Used by computers because transistors have two states: on (1) or off (0)."},
+  {term:"Denary (decimal)",def:"The everyday number system. Base 10, using digits 0–9."},
+  {term:"Bit",def:"A single binary digit — either 0 or 1. The smallest unit of data."},
+  {term:"MSB (Most Significant Bit)",def:"The leftmost bit in a binary number, with the highest place value (128 in an 8-bit number)."},
+  {term:"LSB (Least Significant Bit)",def:"The rightmost bit in a binary number, with the lowest place value (1 in an 8-bit number)."},
+  {term:"8-bit number",def:"A binary number using 8 bit positions. Can represent 256 values (0–255). Column values: 128, 64, 32, 16, 8, 4, 2, 1."},
+  {term:"Place value",def:"The value of a digit's position in a number. In binary, positions are powers of 2 (1, 2, 4, 8, 16, 32, 64, 128...)."},
+  {term:"Binary to denary",def:"To convert: identify which bits are 1, then sum their column values."},
+  {term:"Denary to binary",def:"To convert: work from largest column value (128) downward. Subtract if it fits (write 1), skip if not (write 0)."},
+  {term:"2⁸ = 256",def:"An 8-bit binary number can represent 256 different values (0 to 255). Each additional bit doubles the range."},
+  {term:"Base 2",def:"The number base used in binary. Each digit position represents a power of 2."},
+  {term:"Base 10",def:"The number base used in denary (decimal). Each digit represents a power of 10."},
+  {term:"Transistor",def:"An electronic switch inside a CPU. Has two states: on (representing 1) or off (representing 0) — the basis for binary."},
+  {term:"Leading zeros",def:"Zeros added to the left of a binary number to make it the correct number of bits. E.g. 5 in 8-bit is 00000101 not just 101."},
+  {term:"255",def:"The maximum value of an 8-bit binary number (11111111). Sum: 128+64+32+16+8+4+2+1 = 255."}
 ];
-
-var TEST_MCQ=[
-  {q:"Convert 01001001 binary to denary.",opts:["73","82","41","65"],ans:0,exp:"64+8+1 = 73."},
-  {q:"What is 100 in 8-bit binary?",opts:["01100100","01100000","01010000","10000100"],ans:0,exp:"64+32+4 = 100. So: 01100100."},
-  {q:"What is the maximum value representable with 4 bits?",opts:["8","15","16","255"],ans:1,exp:"2⁴ − 1 = 15. Four bits can represent 0 to 15 (16 values total)."},
-  {q:"Convert 11110000 to denary.",opts:["240","224","248","192"],ans:0,exp:"128+64+32+16 = 240."},
-  {q:"Which statement is correct about binary?",opts:["It uses digits 0–9","It uses base 10","It only uses digits 0 and 1","It is the same as hexadecimal"],ans:2,exp:"Binary is base 2 — it uses only two digits: 0 and 1."}
-];
-
-var TEST_SA=[
-  {q:"Convert 10111000 to denary. Show your working.",marks:2,ms:"128+32+16+8 = 184 (1 for correct working, 1 for correct answer)."},
-  {q:"Convert 73 to 8-bit binary. Show your working.",marks:2,ms:"64+8+1 = 73. Binary: 01001001 (1 for working, 1 for correct answer)."},
-  {q:"Explain what is meant by the 'most significant bit' in an 8-bit binary number.",marks:2,ms:"The most significant bit is the leftmost bit (1). It has the highest place value — 128 in an 8-bit number — so it contributes the most to the overall value (1)."},
-  {q:"How many different values can be stored in 6 bits? What is the maximum value?",marks:2,ms:"2⁶ = 64 different values (1). Maximum = 2⁶ − 1 = 63 (1)."},
-  {q:"A student converts 77 to binary and writes 01001110. Check this answer and correct any errors.",marks:2,ms:"01001110 = 64+8+4+2 = 78, not 77 (1). Correct binary for 77: 64+8+4+1 = 77, so 01001101 (1)."}
-];
-
-function showTab(id,btn){document.querySelectorAll('.tab-content').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='quiz-q';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="quiz-explain" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.quiz-opt').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'correct':'wrong');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('correct');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.quiz-opt.correct,.quiz-opt.wrong').length>=QUIZ.length){var correct=document.querySelectorAll('.quiz-opt.correct').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='ws-q';d.innerHTML='<div class="q-header"><span class="q-text">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:100px"></textarea><span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span><div class="mark-scheme">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;if(ms.style.display==='block'){ms.style.display='none';el.textContent='Show Mark Scheme';}else{ms.style.display='block';el.textContent='Hide Mark Scheme';}}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='quiz-q';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="quiz-explain" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.quiz-opt').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'correct':'wrong');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('correct');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sa-q';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span><div class="mark-scheme">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='term-card';d.innerHTML='<div class="term-word">'+t.w+'</div><div class="term-def">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id){return{data:{session:{user:u}}};}return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('paywall-overlay').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){window.location.href='/';return;}currentUser=session.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,1,3,1];
+var TEST_MCQ_LABELS=[['8','10','12','5'],['256','128','255','127'],['10201001','11001100','1A001100','10020011'],['1','64','256','128'],['255','256','128','512']];
+var TEST_MCQ_EXPLAIN=['8+2=10: 00001010.','All bits set = 255.','Binary uses only 0 and 1.','MSB of 8-bit = 2⁷ = 128.','2⁸ = 256 values.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Conversions: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['Convert 01100100 to denary.','Convert 11000011 to denary.','Convert 37 to 8-bit binary.','Convert 200 to 8-bit binary.','Why do computers use binary?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

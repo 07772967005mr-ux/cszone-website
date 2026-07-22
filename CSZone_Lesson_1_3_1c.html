@@ -1,236 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.3.1c Internet & DNS | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.fb2{background:#0f172a;border:1px solid #3730a3;border-radius:8px;padding:16px 20px;margin:12px 0;font-family:monospace;font-size:13px;color:#a5b4fc;line-height:1.8}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.3.1c Network Hardware — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-card{background:#fff;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-bottom:10px;width:100%;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 1</div>
-    <div class="sst" style="color:#818cf8">1.3 Networks</div>
-    <a href="/ocr-j277/1-3-1a/" class="sl fb">1.3.1a LAN &amp; WAN</a>
-    <a href="/ocr-j277/1-3-1b/" class="sl">1.3.1b Network Types</a>
-    <a href="/ocr-j277/1-3-1c/" class="sl active">1.3.1c Internet &amp; DNS</a>
-    <a href="/ocr-j277/1-3-1d/" class="sl">1.3.1d Topologies</a>
-    <a href="/ocr-j277/1-3-2a/" class="sl">1.3.2a Wired &amp; Wireless</a>
-    <a href="/ocr-j277/1-3-2b/" class="sl">1.3.2b Protocols</a>
-    <div class="sst" style="color:#818cf8">1.4–1.6</div>
-    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
-    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
-    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
-    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
-    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
-    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
-    <div class="sst">Component 2</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.3 Networks</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.3.1c Network Hardware</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.3 Networks</div>
-  <div class="lesson-title">1.3.1c — The Internet &amp; DNS</div>
-  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
-</div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
-</div>
-
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>The Internet vs The World Wide Web</h2>
-    <p>These two terms are NOT the same:</p>
-    <div class="ic b">
-      <h4>The Internet</h4>
-      <p>A global network of interconnected networks (a WAN). The physical infrastructure — cables, routers, servers — that connects billions of devices worldwide. The internet existed before the World Wide Web.</p>
-    </div>
-    <div class="ic g">
-      <h4>The World Wide Web (WWW)</h4>
-      <p>A service that runs on top of the internet. It is a collection of web pages and resources accessed via URLs using the HTTP/HTTPS protocol. Invented by Tim Berners-Lee in 1989.</p>
-    </div>
-    <div class="kp"><strong>The internet = the physical network infrastructure. The WWW = a service that runs on it (like email, FTP, and VoIP are also services that run on the internet).</strong></div>
-  </div>
-
-  <div class="ns">
-    <h2>IP Addresses</h2>
-    <p>Every device on the internet has a unique IP (Internet Protocol) address. This is used to identify and locate it for routing data.</p>
-    <div class="ic b">
-      <h4>IPv4 vs IPv6</h4>
-      <ul>
-        <li><strong>IPv4</strong>: 32-bit address written as 4 groups of decimal numbers (e.g. 192.168.1.1). About 4.3 billion possible addresses.</li>
-        <li><strong>IPv6</strong>: 128-bit address written in hexadecimal (e.g. 2001:0db8:85a3:0000:0000:8a2e:0370:7334). Vastly more addresses — needed because IPv4 addresses are running out.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="ns">
-    <h2>DNS — Domain Name System</h2>
-    <p>Humans remember domain names (like www.google.com) but computers communicate using IP addresses. DNS is a system that translates domain names into IP addresses.</p>
-    <div class="ic g">
-      <h4>How DNS works (step by step):</h4>
-      <div class="fb2">
-        1. User types www.google.com in browser<br>
-        2. Device checks its local DNS cache first<br>
-        3. If not found, device sends query to a DNS server<br>
-        4. DNS server looks up the domain and returns the IP address<br>
-        5. Browser uses the IP address to connect to Google's server<br>
-        6. Web page loads
-      </div>
-    </div>
-    <div class="kp"><strong>DNS = the internet's "phone book" — it converts human-readable domain names into machine-readable IP addresses.</strong></div>
-  </div>
-
-  <div class="ns">
-    <h2>Cloud Computing</h2>
-    <p>Cloud computing means using remote servers (hosted on the internet) to store, manage, and process data, instead of local hardware.</p>
-    <div class="ic b">
-      <h4>Examples of cloud services:</h4>
-      <ul>
-        <li>Storage: Google Drive, iCloud, OneDrive, Dropbox</li>
-        <li>Software: Google Docs, Microsoft 365 (online)</li>
-        <li>Servers: Amazon Web Services (AWS), Microsoft Azure</li>
-        <li>Streaming: Netflix, Spotify (data processed on remote servers)</li>
-      </ul>
-    </div>
-    <div class="ic g">
-      <h4>Advantages of cloud:</h4>
-      <ul>
-        <li>Access files from any device with internet access</li>
-        <li>No need to buy and maintain physical storage/servers</li>
-        <li>Files automatically backed up by provider</li>
-        <li>Scalable — pay for more storage/computing as needed</li>
-        <li>Always up-to-date software versions</li>
-      </ul>
-    </div>
-    <div class="ic r">
-      <h4>Disadvantages of cloud:</h4>
-      <ul>
-        <li>Requires internet connection — cannot access offline</li>
-        <li>Data stored on third-party servers — privacy and security concerns</li>
-        <li>Recurring subscription costs</li>
-        <li>If provider goes offline, you lose access to your data</li>
-      </ul>
-    </div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
-      <ul>
-        <li>Saying the internet and WWW are the same thing — they are not</li>
-        <li>Saying DNS converts IP addresses to domain names — it does the opposite (domain name → IP address)</li>
-        <li>Forgetting that the cloud still uses physical servers — the term "cloud" is a metaphor</li>
-      </ul>
-    </div>
+  <div class="lesson-badge">🔌 Component 1 · 1.3 Computer Networks</div>
+  <div class="lesson-title">1.3.1c Network Hardware (NIC, Switch, Router &amp; WAP)</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~11 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
   </div>
 </div>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
+</div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet — Internet &amp; DNS</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/1-3-1b/" class="nb">← 1.3.1b Network Types</a>
-  <a href="/ocr-j277/1-3-1d/" class="nb n">1.3.1d Topologies →</a>
-</div>
-</div>
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>Network Interface Card (NIC)</h2>
+    <p>A <strong>Network Interface Card (NIC)</strong> is a hardware component that connects a device to a network. Every device that needs to connect to a network requires a NIC.</p>
+    <ul>
+      <li>Wired NIC: connects via an Ethernet cable (RJ-45 port)</li>
+      <li>Wireless NIC: connects via Wi-Fi (radio waves)</li>
+      <li>Each NIC has a unique <strong>MAC address</strong> (Media Access Control address) — a 48-bit hardware address assigned at manufacture</li>
+      <li>Modern computers often have both wired and wireless NICs built in</li>
+    </ul>
+
+    <h2>Switch</h2>
+    <p>A <strong>switch</strong> is a networking device used to connect multiple devices within a LAN. It receives data from one device and forwards it only to the intended device on the network.</p>
+    <ul>
+      <li>Uses <strong>MAC addresses</strong> to identify which device is connected to which port</li>
+      <li>Maintains a <strong>MAC address table</strong> (also called a switching table)</li>
+      <li>More efficient than a hub — sends data only to the destination device, not to all devices</li>
+      <li>Operates at the <strong>Data Link layer</strong> of the OSI model</li>
+    </ul>
+    <table>
+      <thead><tr><th>Feature</th><th>Switch</th><th>Hub</th></tr></thead>
+      <tbody>
+        <tr><td>Data forwarding</td><td>Only to destination device</td><td>To all connected devices</td></tr>
+        <tr><td>Efficiency</td><td>High</td><td>Low (creates unnecessary traffic)</td></tr>
+        <tr><td>Security</td><td>Better</td><td>Poor (all devices see all data)</td></tr>
+        <tr><td>Used in</td><td>Modern networks</td><td>Legacy/cheap networks</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Router</h2>
+    <p>A <strong>router</strong> connects different networks together and routes data packets between them. It connects your home/office LAN to the internet (WAN).</p>
+    <ul>
+      <li>Uses <strong>IP addresses</strong> to route data to the correct destination across networks</li>
+      <li>Determines the best path for data packets to travel</li>
+      <li>Maintains a <strong>routing table</strong> — a list of known networks and best paths</li>
+      <li>Operates at the <strong>Network layer</strong> of the OSI model</li>
+      <li>Home routers often combine router, switch, and WAP in one device</li>
+    </ul>
+    <p><strong>Switch vs Router:</strong> A switch connects devices within a LAN using MAC addresses. A router connects different networks (e.g. LAN to internet) using IP addresses.</p>
+
+    <h2>Wireless Access Point (WAP)</h2>
+    <p>A <strong>Wireless Access Point (WAP)</strong> allows wireless devices to connect to a wired LAN. It broadcasts a Wi-Fi signal that devices can connect to.</p>
+    <ul>
+      <li>Connected to a switch or router via an Ethernet cable</li>
+      <li>Extends the reach of a wired network to wireless devices</li>
+      <li>Used in offices, schools, and public spaces</li>
+      <li>Multiple WAPs can be installed to provide coverage across a large building</li>
+    </ul>
+
+    <h2>Summary of Network Hardware</h2>
+    <table>
+      <thead><tr><th>Device</th><th>Purpose</th><th>Key feature</th></tr></thead>
+      <tbody>
+        <tr><td>NIC</td><td>Connects a device to a network</td><td>Has unique MAC address; wired or wireless</td></tr>
+        <tr><td>Switch</td><td>Connects devices within a LAN</td><td>Uses MAC addresses; sends data only to destination</td></tr>
+        <tr><td>Router</td><td>Connects different networks; routes packets</td><td>Uses IP addresses; connects LAN to internet</td></tr>
+        <tr><td>WAP</td><td>Allows wireless devices to connect to a wired LAN</td><td>Broadcasts Wi-Fi; connected to switch/router via cable</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> Know all four devices (NIC, switch, router, WAP) and what each one does. The key distinction: a switch uses MAC addresses to send data to a specific device within a LAN; a router uses IP addresses to send data between different networks. Also know: a router at home connects your LAN to the internet. NIC = every device needs one to connect. WAP = needed for Wi-Fi access.
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
+      <ul>
+        <li>Confusing a switch with a router — a switch connects devices WITHIN a network; a router connects BETWEEN networks</li>
+        <li>Saying a router uses MAC addresses — routers use IP addresses; switches use MAC addresses</li>
+        <li>Saying a WAP is the same as a router — a WAP only provides wireless access; a router routes data between networks</li>
+        <li>Forgetting that every device needs a NIC to connect to a network</li>
+        <li>Confusing a switch with a hub — a switch is intelligent (sends to destination only); a hub broadcasts to all</li>
+      </ul>
+    </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
+  </div>
 </div>
 
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;">What's in this video</h3>
+    <ul style="list-style:none;padding:0;">
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• NIC — every device needs one; MAC address; wired/wireless</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Switch — MAC addresses, LAN only, sends to destination device only</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Router — IP addresses, connects networks, internet gateway</li>
+      <li style="padding:8px 0;font-size:14.5px;color:#334155;">• WAP — wireless access to wired LAN, Wi-Fi broadcasts</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_1.3.1c_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 1.3.1c Network Hardware</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">What is a Network Interface Card (NIC)? What does each NIC have that makes it unique?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A NIC is a hardware component that connects a device to a network [1]; each NIC has a unique MAC (Media Access Control) address assigned at manufacture [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">What is a switch and how does it differ from a hub?</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-2" style="min-height:100px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A switch connects devices within a LAN [1]; a switch uses MAC addresses to send data only to the intended device [1]; a hub broadcasts data to all connected devices, making it less efficient and less secure [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Explain the role of a router in a network.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-3" style="min-height:100px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A router connects different networks together [1]; it uses IP addresses to determine the best path for data packets to travel between networks [1]; it connects a home/office LAN to the internet (WAN) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">State the difference between how a switch and a router forward data.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A switch uses MAC addresses to forward data to a specific device within the same network (LAN) [1]; a router uses IP addresses to route data between different networks [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">What is a Wireless Access Point (WAP) and what is its purpose?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-5" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A WAP is a device that allows wireless devices to connect to a wired LAN [1]; it broadcasts a Wi-Fi signal and is connected to the LAN via an Ethernet cable [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">A school wants to allow tablets to connect wirelessly to the existing wired LAN. Which device should be installed? Explain why.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-6" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A Wireless Access Point (WAP) [1]; it broadcasts a Wi-Fi signal allowing wireless devices to connect to the existing wired LAN without needing a physical cable [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">Describe the purpose of a MAC address and explain how a switch uses it.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-7" style="min-height:100px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A MAC address is a unique hardware identifier assigned to a NIC at manufacture [1]; a switch maintains a table of MAC addresses and the port each device is connected to [1]; when data arrives, the switch looks up the destination MAC address and sends the data only to that port/device [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">List the four main pieces of network hardware covered in this topic and briefly state the purpose of each.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-8" style="min-height:120px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">NIC — connects a device to a network [1]; Switch — connects devices within a LAN using MAC addresses [1]; Router — connects different networks using IP addresses; routes packets to internet [1]; WAP — allows wireless devices to connect to a wired LAN [1].</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 1.3.1c Network Hardware</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What does NIC stand for?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Network Identifier Card</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> Network Interface Card</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> Network Internet Controller</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> Node Interface Component</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">Which device connects different networks together and uses IP addresses?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> Switch</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> Hub</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> Router</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> WAP</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">A switch uses which addresses to forward data to the correct device?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> IP addresses</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> MAC addresses</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> Port numbers</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> URL addresses</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">What is the purpose of a WAP?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> Connect different networks using IP addresses</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> Allow wireless devices to connect to a wired LAN</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> Connect all devices using Ethernet cables</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> Provide a firewall for the network</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Why is a switch more efficient than a hub?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> A switch is faster due to higher bandwidth</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> A switch sends data only to the destination device; a hub sends to all devices</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> A switch uses IP addresses; a hub does not</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> A switch can connect to the internet; a hub cannot</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">What is a MAC address and which device has one?</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>A MAC (Media Access Control) address is a unique hardware identifier assigned to a NIC at manufacture. Every NIC has one. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">State the difference between a switch and a router.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>A switch connects devices within a LAN using MAC addresses; a router connects different networks (e.g. LAN to internet) using IP addresses. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">A large office building needs Wi-Fi throughout all floors. What device(s) should be installed? Explain.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>Multiple Wireless Access Points (WAPs) [½]; installed on each floor, connected to the LAN switch via Ethernet cable, providing Wi-Fi coverage throughout the building [½]. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">What does a router use to determine where to send data packets?</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>IP addresses — the router checks its routing table to find the best path to the destination IP address. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">Name the hardware device needed for any computer to connect to a network.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>A Network Interface Card (NIC). [1]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/1-3-1b/" class="bottom-nav-btn">← 1.3.1b Network Performance</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">1.3 Computer Networks</span>
+  <a href="/ocr-j277/1-3-1d/" class="bottom-nav-btn next-btn">1.3.1d Network Topologies →</a>
+</div>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:14.5px;color:#64748b;line-height:1.6;margin-bottom:24px;">Subscribe to access all OCR J277 lessons.</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
 <script>
-var LESSON_ID='1-3-1c';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
-
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-3-1c';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+    if(!IS_FREE)checkAccess();
+  });
+});
+function checkAccess(){getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h}).then(function(r){return r.json();}).then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});});}
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What is the difference between the internet and the World Wide Web?",opts:["They are the same thing","The internet is the global network infrastructure; the WWW is a service (web pages) that runs on it","The WWW is the physical infrastructure; the internet is web pages","The internet is faster than the WWW"],ans:1,exp:"The internet is the physical global network. The WWW is a service running on it — a collection of web pages accessed via HTTP/HTTPS. Tim Berners-Lee invented the WWW in 1989."},
-  {q:"What does DNS stand for?",opts:["Domain Name Server","Data Network System","Domain Name System","Dynamic Network Service"],ans:2,exp:"DNS = Domain Name System. It translates domain names (like www.google.com) into IP addresses that computers use."},
-  {q:"What is the main purpose of DNS?",opts:["To compress web pages for faster loading","To convert domain names into IP addresses","To convert IP addresses into domain names","To secure connections with encryption"],ans:1,exp:"DNS translates human-readable domain names into numeric IP addresses, allowing browsers to connect to the correct server."},
-  {q:"What is an IP address?",opts:["A website address like www.google.com","A unique numerical address identifying a device on a network","A type of network protocol","A password for accessing the internet"],ans:1,exp:"An IP address is a unique numerical identifier for a device on a network. Routers use IP addresses to route data to the correct destination."},
-  {q:"What is the format of an IPv4 address?",opts:["128-bit hexadecimal","32-bit written as 4 groups of decimal numbers (e.g. 192.168.1.1)","64-bit binary","4 letters separated by dots"],ans:1,exp:"IPv4 uses 32 bits, written as 4 decimal groups separated by dots, e.g. 192.168.1.1. Each group ranges from 0 to 255."},
-  {q:"Why was IPv6 developed?",opts:["To make addresses easier to type","Because IPv4 addresses were running out — IPv6 provides vastly more addresses","To speed up the internet","To replace DNS"],ans:1,exp:"IPv4 only has about 4.3 billion possible addresses. With billions of devices connected, IPv6 (128-bit addresses) was developed to provide a virtually unlimited supply of addresses."},
-  {q:"Which step happens FIRST when you type a URL in your browser?",opts:["Your device sends a request directly to the web server","Your device checks its DNS cache or sends a DNS query to resolve the domain name to an IP address","The web page is encrypted","Your device connects to a VLAN"],ans:1,exp:"Before connecting to any server, the domain name must be resolved to an IP address. The device checks its DNS cache first, then queries a DNS server if needed."},
-  {q:"Cloud computing means:",opts:["Computing using wireless connections only","Using remote servers on the internet for storage, processing, and software","Computing using low-power devices","Any type of online activity"],ans:1,exp:"Cloud computing uses remote servers (hosted in data centres, accessed over the internet) for storage, processing, and software — rather than local hardware."},
-  {q:"Which of these is an example of a cloud storage service?",opts:["Microsoft Word installed on a laptop","A USB hard drive","Google Drive","A switch"],ans:2,exp:"Google Drive is cloud storage — files are stored on Google's remote servers and accessed over the internet."},
-  {q:"What is a key advantage of cloud computing?",opts:["No internet connection required","Files can only be accessed from one device","Files can be accessed from any device with internet access","Data is always stored locally"],ans:2,exp:"Cloud files are accessible from any device with an internet connection — unlike local storage which can only be accessed on that specific device."},
-  {q:"What is a key disadvantage of cloud computing?",opts:["Files cannot be backed up","Requires internet connection — cannot access files offline","Cloud services are always free","Data is stored on your own device"],ans:1,exp:"Cloud services require internet access. Without a connection, you cannot access your files, software, or data."},
-  {q:"Who invented the World Wide Web?",opts:["Bill Gates","Steve Jobs","Tim Berners-Lee","Vint Cerf"],ans:2,exp:"Tim Berners-Lee invented the World Wide Web in 1989 at CERN. He also created the first web browser and web server."},
-  {q:"What protocol is used to access web pages on the World Wide Web?",opts:["FTP","SMTP","HTTP/HTTPS","POP3"],ans:2,exp:"HTTP (HyperText Transfer Protocol) and HTTPS (secure version) are the protocols used to transfer web pages on the World Wide Web."},
-  {q:"A company stores all its data on cloud servers. What is ONE security risk of this approach?",opts:["The company cannot access its data","The data could be accessed by the cloud provider or intercepted if the connection is not secure","Cloud data is always unencrypted","Cloud servers cannot be backed up"],ans:1,exp:"Storing data with a third-party cloud provider means the provider has physical access to the servers. If the connection is not secure or if the provider is breached, data could be compromised."},
-  {q:"What happens if the DNS servers go offline?",opts:["The internet shuts down completely","Web pages can still be accessed using IP addresses directly, but domain names cannot be resolved","All data on the internet is deleted","Router connections are lost"],ans:1,exp:"DNS failure means domain names can't be resolved, so typing www.google.com won't work. However, if you know the IP address, you could still reach the server. DNS is critical for the usability of the internet."}
+  {q:"What does NIC stand for?",opts:["Network Identifier Card","Network Interface Card","Network Internet Controller","Node Interface Component"],a:1,exp:"NIC = Network Interface Card. It is the hardware component that connects a device to a network. Every networked device requires a NIC."},
+  {q:"What unique identifier does every NIC have?",opts:["IP address","URL","MAC address","DNS address"],a:2,exp:"Every NIC has a MAC (Media Access Control) address — a unique 48-bit hardware address assigned at manufacture by the manufacturer."},
+  {q:"Which device connects devices within a LAN using MAC addresses?",opts:["Router","Hub","WAP","Switch"],a:3,exp:"A switch connects devices within a LAN. It reads the destination MAC address in each data frame and forwards it only to the correct device's port."},
+  {q:"Which device connects different networks and uses IP addresses to route data?",opts:["Switch","NIC","WAP","Router"],a:3,exp:"A router connects different networks (e.g. a LAN to the internet). It uses IP addresses and a routing table to determine the best path for data packets."},
+  {q:"What does WAP stand for?",opts:["Wide Area Protocol","Wireless Access Point","Wired Access Protocol","Web Application Proxy"],a:1,exp:"WAP = Wireless Access Point. It broadcasts a Wi-Fi signal, allowing wireless devices to connect to a wired LAN."},
+  {q:"A switch is more efficient than a hub because:",opts:["It has faster chips","It sends data only to the destination device","It uses IP addresses","It can connect to the internet"],a:1,exp:"A switch reads the destination MAC address and forwards data only to the intended device's port. A hub broadcasts to all devices, wasting bandwidth and exposing data to all devices."},
+  {q:"A router in a home network connects:",opts:["Two devices within the same LAN","The LAN to the internet (WAN)","All devices via Bluetooth","Multiple WAPs together"],a:1,exp:"A home router connects the home LAN to the internet (WAN). It routes data between the local network and external networks."},
+  {q:"What does a router use to forward data between networks?",opts:["MAC addresses","Port numbers","IP addresses","Serial numbers"],a:2,exp:"Routers use IP addresses and routing tables to determine the best path for data between different networks."},
+  {q:"Where is a WAP typically connected?",opts:["Directly to the internet","To a computer's USB port","To a switch or router via Ethernet cable","To a printer"],a:2,exp:"A WAP is connected to the LAN (typically a switch or router) via an Ethernet cable. It then broadcasts a wireless signal for wireless devices."},
+  {q:"A company has 50 computers needing to share files. Which device should interconnect them in the LAN?",opts:["50 separate routers","A switch","50 WAPs","A modem only"],a:1,exp:"A switch connects multiple devices within a LAN and forwards data efficiently using MAC addresses. It's the standard way to interconnect computers in an office LAN."},
+  {q:"What information does a switch store in its MAC address table?",opts:["IP addresses of all websites","The MAC address of each connected device and which port they are connected to","All routing paths to external networks","Wi-Fi passwords"],a:1,exp:"A switch builds a MAC address table that maps each device's MAC address to the physical port it's connected to. This allows it to send data directly to the right port."},
+  {q:"Can a device connect to a network without a NIC?",opts:["Yes, using an IP address alone","Yes, using a router","No, every device needs a NIC to connect to a network","Yes, if it has Bluetooth"],a:2,exp:"No. A NIC is required for any device to connect to a network, whether wired (Ethernet) or wireless (Wi-Fi). The NIC provides the hardware interface for network communication."},
+  {q:"Which device would you add to extend wireless coverage to a large building?",opts:["Additional routers","Additional switches","Additional WAPs","Additional NICs"],a:2,exp:"Multiple WAPs can be installed throughout a building, each connected to the LAN switch via Ethernet. They provide overlapping Wi-Fi coverage across floors and rooms."},
+  {q:"What is a routing table?",opts:["A list of MAC addresses used by a switch","A list of known networks and the best paths to reach them, stored by a router","A table of IP addresses used by WAPs","A log of all connected devices"],a:1,exp:"A routing table is stored in a router and contains known network addresses and the best routes (paths) to reach them. The router uses this to forward packets to the correct next hop."},
+  {q:"Which network hardware device was the predecessor to the switch and sent data to all connected devices?",opts:["Router","Modem","Hub","Bridge"],a:2,exp:"A hub is the predecessor to the switch. Unlike a switch, a hub broadcasts data to all connected devices regardless of the destination — inefficient and less secure."}
 ];
-
-var WORKSHEET=[
-  {q:"Explain the difference between the internet and the World Wide Web.",marks:3,ms:"The internet is the global physical network infrastructure — the hardware (cables, routers, servers) that connects billions of devices worldwide (1). The World Wide Web is a service that runs on top of the internet — it is a collection of web pages and resources accessed via URLs using the HTTP/HTTPS protocol (1). Other services also run on the internet, such as email and FTP, which are separate from the WWW (1)."},
-  {q:"Describe how DNS works when a user types 'www.bbc.co.uk' into their browser.",marks:4,ms:"The browser checks the local DNS cache to see if it already knows the IP address for www.bbc.co.uk (1). If not cached, the device sends a DNS query to a DNS server (1). The DNS server looks up the domain name and returns the corresponding IP address (1). The browser then uses this IP address to connect directly to the BBC's web server and request the web page (1)."},
-  {q:"Explain why IPv6 was developed to replace IPv4.",marks:2,ms:"IPv4 uses 32-bit addresses, providing approximately 4.3 billion unique addresses (1). With billions of internet-connected devices (computers, smartphones, IoT devices), IPv4 addresses have been exhausted. IPv6 uses 128-bit addresses, providing vastly more unique addresses for the growing number of devices (1)."},
-  {q:"State TWO advantages and TWO disadvantages of cloud computing.",marks:4,ms:"Advantages (any two): access files from any device with internet connection (1); files backed up automatically by the provider (1); scalable — pay for storage/computing as needed (1); no need to maintain physical servers (1). Disadvantages (any two): requires internet connection (1); data stored on third-party servers — privacy/security concerns (1); recurring subscription costs (1); if provider goes offline, you lose access (1)."},
-  {q:"A hospital is considering moving its patient records to a cloud service. Discuss whether this is a good idea.",marks:4,ms:"Benefits: records accessible from any hospital terminal (1); automatic backups reduce risk of data loss (1). Risks: patient data is highly sensitive — storing it on third-party servers creates privacy concerns (1); if internet or cloud service goes offline, doctors may be unable to access critical patient records (1). Overall: would need strong security, encryption, and reliability guarantees from the provider before it would be appropriate for medical records."},
-  {q:"What is an IP address and why does every device on the internet need a unique one?",marks:2,ms:"An IP address is a unique numerical identifier for a device on a network (1). Every device needs a unique IP so that data packets can be routed to and from the correct device — if two devices had the same IP address, it would be impossible to know which one a data packet is intended for (1)."},
-  {q:"Explain why the World Wide Web is described as 'running on top of' the internet rather than being the same as it.",marks:2,ms:"The internet is the underlying physical infrastructure of cables, routers, and protocols that allows any data to be transmitted globally (1). The WWW is just one of many services that use this infrastructure — it specifically refers to web pages accessed via HTTP/HTTPS. Other services like email (SMTP), file transfer (FTP), and video calls also use the internet but are not part of the WWW (1)."},
-  {q:"Describe ONE advantage and ONE disadvantage of using cloud storage instead of local storage for a student's coursework.",marks:2,ms:"Advantage: the student can access their coursework from any device (school, home, phone) without carrying a USB drive, and it is automatically backed up (1). Disadvantage: if the student has no internet connection (e.g. in an area with no Wi-Fi), they cannot access their work (1)."}
-];
-
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Internet",d:"A global network of interconnected networks (a WAN). The physical infrastructure connecting billions of devices worldwide."},
-  {w:"World Wide Web (WWW)",d:"A service running on the internet — a collection of web pages accessed via URLs using HTTP/HTTPS. Invented by Tim Berners-Lee, 1989."},
-  {w:"IP address",d:"Internet Protocol address — a unique numerical label identifying a device on a network. Used by routers to direct data packets."},
-  {w:"IPv4",d:"32-bit IP addressing (e.g. 192.168.1.1) — approximately 4.3 billion possible addresses. Running out due to device growth."},
-  {w:"IPv6",d:"128-bit IP addressing written in hex (e.g. 2001:0db8::1) — vastly more addresses to accommodate the growth of connected devices."},
-  {w:"DNS",d:"Domain Name System — translates human-readable domain names (e.g. www.google.com) into IP addresses so computers can connect."},
-  {w:"Domain name",d:"A human-readable address for a website (e.g. cszone.co.uk). DNS resolves this to an IP address."},
-  {w:"DNS cache",d:"A local store of recently resolved domain name–IP address pairs. Checked first before a DNS server is queried, speeding up browsing."},
-  {w:"URL",d:"Uniform Resource Locator — the full address of a resource on the WWW, e.g. https://www.cszone.co.uk/lesson."},
-  {w:"HTTP/HTTPS",d:"HyperText Transfer Protocol (Secure) — the protocol for transferring web pages. HTTPS uses encryption (TLS/SSL)."},
-  {w:"Cloud computing",d:"Using remote servers on the internet for storage, processing, and software instead of local hardware."},
-  {w:"Tim Berners-Lee",d:"British computer scientist who invented the World Wide Web in 1989. Also created the first web browser and web server."},
-  {w:"Hosting",d:"Storing a website or service on a server connected to the internet so it can be accessed by users worldwide."},
-  {w:"Data centre",d:"A large facility containing thousands of servers that host cloud services, websites, and other internet services."},
-  {w:"Internet ≠ WWW",d:"Key distinction: the internet is the physical global network; the WWW is just one service that runs on it. Other services (email, FTP, VoIP) also use the internet."}
+  {term:"NIC (Network Interface Card)",def:"Hardware component that connects a device to a network. Every networked device needs one. Has a unique MAC address. Can be wired (Ethernet) or wireless (Wi-Fi)."},
+  {term:"MAC address",def:"Media Access Control address — a unique 48-bit hardware identifier assigned to a NIC at manufacture. Used by switches to identify devices on a LAN."},
+  {term:"Switch",def:"Network device that connects multiple devices within a LAN. Uses MAC addresses to send data only to the destination device. More efficient and secure than a hub."},
+  {term:"Router",def:"Network device that connects different networks together. Uses IP addresses and a routing table to route data packets. Connects a home/office LAN to the internet."},
+  {term:"WAP (Wireless Access Point)",def:"Device that allows wireless devices to connect to a wired LAN. Broadcasts Wi-Fi signal. Connected to the switch/router via Ethernet cable."},
+  {term:"Hub",def:"Legacy networking device that connects devices in a LAN but broadcasts data to all connected devices. Less efficient and less secure than a switch. Rarely used today."},
+  {term:"Routing table",def:"A list stored in a router that maps known network addresses to the best next-hop paths. Used to determine where to forward data packets."},
+  {term:"MAC address table",def:"A table stored in a switch that maps each device's MAC address to the port it's connected to. Used to send data directly to the correct device."},
+  {term:"Switch vs Router",def:"Switch: connects devices WITHIN a LAN using MAC addresses. Router: connects BETWEEN different networks using IP addresses."},
+  {term:"IP address",def:"Internet Protocol address — a logical address assigned to each device on a network. Used by routers to route data between networks. Can change (unlike MAC addresses)."},
+  {term:"Wired NIC",def:"A NIC that connects via an Ethernet cable (RJ-45 port). Provides a stable, fast, and secure connection to the LAN."},
+  {term:"Wireless NIC",def:"A NIC that connects via Wi-Fi using radio waves. Allows mobile devices to connect without physical cables."},
+  {term:"Data Link layer",def:"Layer 2 of the OSI model. The layer at which switches operate — using MAC addresses to transfer data between devices on the same network."},
+  {term:"Network layer",def:"Layer 3 of the OSI model. The layer at which routers operate — using IP addresses to route packets between different networks."},
+  {term:"Modem",def:"Modulator-Demodulator. Converts digital network signals to analogue for transmission over telephone lines, and vice versa. Often combined with a router in home devices."}
 ];
-
-var TEST_MCQ=[
-  {q:"What is the purpose of DNS?",opts:["To encrypt web traffic","To translate domain names into IP addresses","To connect LANs to WANs","To manage cloud storage"],ans:1,exp:"DNS converts domain names (like www.google.com) to IP addresses so browsers can connect to the right server."},
-  {q:"Which statement correctly distinguishes the internet from the World Wide Web?",opts:["They are exactly the same thing","The internet is the physical network; the WWW is a service of web pages running on it","The WWW is the physical network; the internet is web pages","The internet is only used for email"],ans:1,exp:"The internet is the physical global infrastructure. The WWW is one service that runs on it, consisting of web pages accessed via HTTP/HTTPS."},
-  {q:"Why was IPv6 needed?",opts:["To make IP addresses shorter","Because IPv4 was too slow","Because IPv4's 4.3 billion addresses were running out","To replace DNS"],ans:2,exp:"IPv4 only allows ~4.3 billion unique addresses. With billions of internet-connected devices, these ran out. IPv6 provides 128-bit addresses — enough for virtually unlimited devices."},
-  {q:"Which is a disadvantage of cloud computing?",opts:["Automatic backups","Access from any device","Requires internet connection to access files","Scalable storage"],ans:2,exp:"Cloud files cannot be accessed without an internet connection — this is a key limitation compared to local storage."},
-  {q:"What is a key benefit of cloud storage for a student?",opts:["Files can only be accessed at school","No internet needed","Files can be accessed from any device with internet","Files are automatically deleted after use"],ans:2,exp:"Cloud storage allows access from any internet-connected device — students can work at school, home, or on a mobile."}
-];
-
-var TEST_SA=[
-  {q:"Explain what DNS is and why it is needed.",marks:3,ms:"DNS stands for Domain Name System (1). Computers communicate using IP addresses, but humans find it easier to remember domain names like www.google.com (1). DNS translates these domain names into the corresponding IP addresses so that browsers can connect to the correct server (1)."},
-  {q:"State the difference between the internet and the World Wide Web.",marks:2,ms:"The internet is the global physical network infrastructure (cables, routers) that connects devices worldwide (1). The WWW is a service that runs on the internet — a collection of web pages accessed via HTTP/HTTPS (1)."},
-  {q:"Give ONE advantage and ONE disadvantage of cloud storage.",marks:2,ms:"Advantage: files can be accessed from any device with internet access / automatic backups protect against data loss (1). Disadvantage: requires internet access to use / data stored on third-party servers raises privacy concerns (1)."},
-  {q:"Why do companies use IPv6 rather than IPv4 for new devices?",marks:2,ms:"IPv4 has only about 4.3 billion possible addresses, which have been exhausted due to the large number of internet-connected devices (1). IPv6 uses 128-bit addresses, providing a vastly larger number of unique addresses to accommodate continued growth (1)."},
-  {q:"Describe ONE security concern with cloud computing.",marks:1,ms:"Data is stored on third-party servers, so the cloud provider has physical access to it. If the provider is hacked or has a data breach, user data could be accessed by unauthorised parties."}
-];
-
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:90px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,1,1,1];
+var TEST_MCQ_LABELS=[['Network Identifier Card','Network Interface Card','Network Internet Controller','Node Interface Component'],['Switch','Hub','Router','WAP'],['IP addresses','MAC addresses','Port numbers','URL addresses'],['Connect different networks using IP addresses','Allow wireless devices to connect to a wired LAN','Connect all devices using Ethernet cables','Provide a firewall for the network'],['A switch is faster due to higher bandwidth','A switch sends data only to the destination device; a hub sends to all devices','A switch uses IP addresses; a hub does not','A switch can connect to the internet; a hub cannot']];
+var TEST_MCQ_EXPLAIN=['NIC = Network Interface Card.','Router connects different networks using IP addresses.','Switch uses MAC addresses.','WAP allows wireless devices to connect to a wired LAN.','Switch sends to destination only; hub broadcasts to all.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['What is a MAC address?','Switch vs router difference?','Device for office-wide Wi-Fi?','What does a router use to route data?','Hardware needed to connect to a network?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

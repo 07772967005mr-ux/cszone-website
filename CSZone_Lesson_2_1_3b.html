@@ -1,206 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>2.1.3b Binary Search | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1.3b Merge Sort — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:6px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .pseudocode-box{background:#0f172a;border-radius:12px;padding:20px 24px;margin:16px 0;font-family:'Courier New',monospace;font-size:14px;color:#e2e8f0;line-height:1.8;}
+    .pseudocode-box .kw{color:#a78bfa;}
+    .pseudocode-box .cm{color:#64748b;font-style:italic;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .merge-tree{margin:20px 0;}
+    .merge-level{display:flex;justify-content:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;}
+    .merge-node{background:#f5f3ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:6px 12px;font-weight:700;font-size:14px;color:#7c3aed;white-space:nowrap;}
+    .merge-node.single{background:#ede9fe;border-color:#c4b5fd;}
+    .merge-node.merged{background:#f0fdf4;border-color:#bbf7d0;color:#166534;}
+    .merge-arrow{text-align:center;font-size:18px;color:#a78bfa;margin:4px 0;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:220px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .paywall-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:999;}
+    .paywall-card{background:#fff;border-radius:24px;padding:40px 36px;text-align:center;max-width:380px;width:90%;box-shadow:0 24px 80px rgba(0,0,0,0.2);}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;margin-bottom:12px;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 2</div>
-    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
-    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
-    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
-    <a href="/ocr-j277/2-1-3b/" class="sl active">2.1.3b Binary Search</a>
-    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
-    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
-    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
-    <div class="sst" style="color:#818cf8">2.2 Programming</div>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <div class="sst" style="color:#818cf8">2.3–2.5</div>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">2.1 Algorithms</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">2.1.3b Merge Sort</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.1 Algorithms</div>
-  <div class="lesson-title">2.1.3b — Binary Search</div>
-  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~20 min</div>
+  <div class="lesson-badge">🔢 Component 2 · 2.1 Algorithms</div>
+  <div class="lesson-title">2.1.3b Merge Sort</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~12 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>What is a Binary Search?</h2>
-    <p>A <strong>binary search</strong> finds a target in a <em>sorted</em> list by repeatedly halving the search space. It compares the target with the middle element and eliminates the half that cannot contain the target.</p>
-    <div class="kp"><strong>Critical requirement:</strong> The list MUST be sorted before binary search can be applied. This is the most commonly tested constraint.</div>
-  </div>
-  <div class="ns">
-    <h2>How Binary Search Works</h2>
-    <div class="ic b">
-      <h4>Step-by-step:</h4>
-      <ol style="padding-left:20px;color:#94a3b8;font-size:13px">
-        <li>Set low = 0, high = length − 1</li>
-        <li>Calculate mid = (low + high) DIV 2 (integer division)</li>
-        <li>If list[mid] == target → return mid (found)</li>
-        <li>If list[mid] &lt; target → set low = mid + 1 (search right half)</li>
-        <li>If list[mid] &gt; target → set high = mid − 1 (search left half)</li>
-        <li>Repeat from step 2 until found or low &gt; high (not found)</li>
-      </ol>
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>What Is Merge Sort?</h2>
+    <p>Merge sort is a <strong>divide and conquer</strong> sorting algorithm. It works in two phases:</p>
+    <ul>
+      <li><strong>Divide:</strong> Repeatedly split the list in half until every sub-list has just one element (a single element is always sorted).</li>
+      <li><strong>Merge (conquer):</strong> Repeatedly merge pairs of sorted sub-lists back together in sorted order until one fully sorted list remains.</li>
+    </ul>
+    <p>Merge sort is <strong>much more efficient than bubble sort</strong> for large datasets because it has a time complexity of <strong>O(n log n)</strong>.</p>
+
+    <h2>Worked Example — [38, 27, 43, 3, 9, 82, 10]</h2>
+
+    <div class="merge-tree">
+      <div style="font-size:13px;font-weight:700;color:#7c3aed;margin-bottom:8px;">DIVIDE PHASE — split until single elements:</div>
+      <div class="merge-level">
+        <div class="merge-node">[38, 27, 43, 3, 9, 82, 10]</div>
+      </div>
+      <div class="merge-arrow">↓ split</div>
+      <div class="merge-level">
+        <div class="merge-node">[38, 27, 43]</div>
+        <div class="merge-node">[3, 9, 82, 10]</div>
+      </div>
+      <div class="merge-arrow">↓ split</div>
+      <div class="merge-level">
+        <div class="merge-node">[38]</div>
+        <div class="merge-node">[27, 43]</div>
+        <div class="merge-node">[3, 9]</div>
+        <div class="merge-node">[82, 10]</div>
+      </div>
+      <div class="merge-arrow">↓ split</div>
+      <div class="merge-level">
+        <div class="merge-node single">[38]</div>
+        <div class="merge-node single">[27]</div>
+        <div class="merge-node single">[43]</div>
+        <div class="merge-node single">[3]</div>
+        <div class="merge-node single">[9]</div>
+        <div class="merge-node single">[82]</div>
+        <div class="merge-node single">[10]</div>
+      </div>
+      <div style="margin-top:20px;font-size:13px;font-weight:700;color:#7c3aed;margin-bottom:8px;">MERGE PHASE — merge pairs in sorted order:</div>
+      <div class="merge-arrow">↑ merge pairs</div>
+      <div class="merge-level">
+        <div class="merge-node merged">[27, 38]</div>
+        <div class="merge-node merged">[3, 43]</div>
+        <div class="merge-node merged">[9, 82]</div>
+        <div class="merge-node merged">[10]</div>
+      </div>
+      <div class="merge-arrow">↑ merge</div>
+      <div class="merge-level">
+        <div class="merge-node merged">[3, 27, 38, 43]</div>
+        <div class="merge-node merged">[9, 10, 82]</div>
+      </div>
+      <div class="merge-arrow">↑ final merge</div>
+      <div class="merge-level">
+        <div class="merge-node merged">[3, 9, 10, 27, 38, 43, 82] ✓</div>
+      </div>
     </div>
-    <div class="ic b">
-      <h4>OCR Pseudocode:</h4>
-      <div class="code">function binarySearch(list, target)
-    low = 0
-    high = len(list) - 1
-    while low &lt;= high
-        mid = (low + high) DIV 2
-        if list[mid] == target then
-            return mid
-        elseif list[mid] &lt; target then
-            low = mid + 1
-        else
-            high = mid - 1
-        endif
-    endwhile
-    return -1
-endfunction</div>
-    </div>
-    <div class="ic b">
-      <h4>Example trace — searching for 7 in [1, 3, 5, 7, 9, 11, 13]:</h4>
-      <p style="font-size:13px;color:#94a3b8">low=0, high=6 → mid=3, list[3]=7 → 7==7 → return 3 (found in 1 comparison!)</p>
-      <p style="font-size:13px;color:#94a3b8;margin-top:6px"><strong>Searching for 11:</strong><br>
-      Pass 1: low=0, high=6 → mid=3, list[3]=7; 11&gt;7 → low=4<br>
-      Pass 2: low=4, high=6 → mid=5, list[5]=11; 11==11 → return 5. Found in 2 comparisons!</p>
-    </div>
-  </div>
-  <div class="ns">
-    <h2>Comparison: Binary vs Linear Search</h2>
-    <table style="width:100%;border-collapse:collapse;font-size:13px">
-      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148"></th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Binary Search</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Linear Search</th></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Sorted list required?</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Yes</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">No</td></tr>
-      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Time complexity</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">O(log n)</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">O(n)</td></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Speed (large lists)</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Much faster</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">Slower</td></tr>
-      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Complexity</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5">More complex to write</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7">Simple</td></tr>
+
+    <h2>How the Merge Step Works</h2>
+    <p>When merging two sorted sub-lists, compare the front element of each. Take the smaller one, add it to the result, then repeat until both sub-lists are empty.</p>
+    <p><strong>Example:</strong> Merging [3, 27, 38] and [9, 10, 82]:</p>
+    <table>
+      <thead><tr><th>Step</th><th>Left pointer</th><th>Right pointer</th><th>Result so far</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>3</td><td>9</td><td>[3] — take 3 (smaller)</td></tr>
+        <tr><td>2</td><td>27</td><td>9</td><td>[3, 9] — take 9 (smaller)</td></tr>
+        <tr><td>3</td><td>27</td><td>10</td><td>[3, 9, 10] — take 10</td></tr>
+        <tr><td>4</td><td>27</td><td>82</td><td>[3, 9, 10, 27] — take 27</td></tr>
+        <tr><td>5</td><td>38</td><td>82</td><td>[3, 9, 10, 27, 38] — take 38</td></tr>
+        <tr><td>6</td><td>(empty)</td><td>82</td><td>[3, 9, 10, 27, 38, 82] — append remaining</td></tr>
+      </tbody>
     </table>
-    <div class="kp"><strong>O(log n):</strong> With 1,024 items, binary search needs at most 10 comparisons (log₂1024 = 10). Linear search needs up to 1,024.</div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
+
+    <h2>Pseudocode</h2>
+    <div class="pseudocode-box"><span class="cm">// Merge sort — divides and merges</span>
+<span class="kw">FUNCTION</span> mergeSort(list)
+  <span class="kw">IF</span> length(list) &lt;= 1 <span class="kw">THEN</span>
+    <span class="kw">RETURN</span> list  <span class="cm">// Base case: already sorted</span>
+  <span class="kw">END IF</span>
+  mid = length(list) DIV 2
+  left = mergeSort(list[0..mid-1])   <span class="cm">// Recursively sort left half</span>
+  right = mergeSort(list[mid..end])  <span class="cm">// Recursively sort right half</span>
+  <span class="kw">RETURN</span> merge(left, right)
+
+<span class="kw">FUNCTION</span> merge(left, right)
+  result = []
+  <span class="kw">WHILE</span> length(left) &gt; 0 <span class="kw">AND</span> length(right) &gt; 0
+    <span class="kw">IF</span> left[0] &lt;= right[0] <span class="kw">THEN</span>
+      result.append(left[0])
+      left = left[1..]
+    <span class="kw">ELSE</span>
+      result.append(right[0])
+      right = right[1..]
+    <span class="kw">END IF</span>
+  <span class="kw">END WHILE</span>
+  <span class="kw">RETURN</span> result + left + right  <span class="cm">// Append any remaining elements</span>
+<span class="kw">END FUNCTION</span></div>
+
+    <h2>Key Properties of Merge Sort</h2>
+    <table>
+      <thead><tr><th>Property</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Time complexity</td><td>O(n log n) — all cases (best, average, worst)</td></tr>
+        <tr><td>Space complexity</td><td>O(n) — requires additional memory for sub-lists</td></tr>
+        <tr><td>Technique</td><td>Divide and conquer + recursion</td></tr>
+        <tr><td>In-place?</td><td>No — creates new lists during splitting/merging</td></tr>
+        <tr><td>Presort required?</td><td>No</td></tr>
+        <tr><td>Stable sort?</td><td>Yes — maintains relative order of equal elements</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Merge Sort vs Bubble Sort</h2>
+    <table>
+      <thead><tr><th>Feature</th><th>Merge Sort</th><th>Bubble Sort</th></tr></thead>
+      <tbody>
+        <tr><td>Time complexity</td><td><strong>O(n log n)</strong></td><td>O(n²)</td></tr>
+        <tr><td>Speed for large n</td><td>Much faster</td><td>Much slower</td></tr>
+        <tr><td>Memory usage</td><td>Extra O(n) memory needed</td><td>In-place — O(1) extra</td></tr>
+        <tr><td>Implementation</td><td>More complex (recursive)</td><td>Simple</td></tr>
+        <tr><td>Best for</td><td>Large datasets</td><td>Small / teaching</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> In a merge sort trace question, show the divide phase as a tree diagram (splitting in half each time), then show the merge phase building up sorted sub-lists. Remember: merge sort uses O(n log n) time complexity — contrast this with bubble sort's O(n²). The key disadvantage of merge sort is that it needs extra memory — it is NOT in-place. Mention "divide and conquer" and "recursion" in description questions.
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Forgetting binary search REQUIRES a sorted list</li>
-        <li>Using normal division instead of integer division (DIV) for mid — mid must be a whole index</li>
-        <li>Saying binary search is "always better" — for unsorted lists, you must sort first (costly) or use linear search</li>
-        <li>Getting low/high updates wrong: target &gt; mid → low = mid+1; target &lt; mid → high = mid-1</li>
+        <li>Saying merge sort is in-place — it is NOT; it requires extra memory for sub-lists</li>
+        <li>Forgetting to show the merge phase — you must show how sorted sub-lists are combined</li>
+        <li>Getting the split wrong — always split into roughly equal halves (use integer division)</li>
+        <li>Not continuing the merge phase to completion — work all the way up to the final merged list</li>
+        <li>Confusing merge sort's complexity — it's O(n log n), not O(n²) like bubble sort</li>
       </ul>
     </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/2-1-3a/" class="nb">← 2.1.3a Linear Search</a>
-  <a href="/ocr-j277/2-1-3c/" class="nb n">2.1.3c Bubble Sort →</a>
-</div>
-</div>
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
 </div>
 
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_2.1.3b_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 2.1.3b Merge Sort</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">Describe the two phases of merge sort.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Divide phase: the list is repeatedly split in half until individual single-element lists remain [1]. Merge phase: adjacent sub-lists are merged back together in sorted order until one fully sorted list is produced [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">Show the divide phase of merge sort on [8, 3, 5, 1, 7, 2].</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" style="min-height:100px;" id="ws-ans-2" placeholder="Show as a tree diagram or list each split..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Split 1: [8,3,5] | [1,7,2] [1]. Split 2: [8] | [3,5] | [1] | [7,2] [1]. Split 3: [8] | [3] | [5] | [1] | [7] | [2] — all single elements [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Show the merge phase for the list from Q2, combining sub-lists in sorted order.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" style="min-height:120px;" id="ws-ans-3" placeholder="Show each merge step..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Merge [8]+[3]=[3,8]; [5] stays [5]; merge [1]+[7]=[1,7]; [2] stays [2] [1]. Merge [3,8]+[5]=[3,5,8] [1]. Merge [1,7]+[2]=[1,2,7] [1]. Final merge [3,5,8]+[1,2,7]=[1,2,3,5,7,8] [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">State the time complexity of merge sort and explain what this means.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">O(n log n) [1] — the time taken grows as n multiplied by log n, making it much more efficient than O(n²) for large lists [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Explain what "divide and conquer" means in the context of merge sort.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-5" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Divide and conquer means breaking the problem into smaller sub-problems [1], solving each sub-problem (sorting individual elements/pairs), then combining the solutions back together to solve the original problem [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">Is merge sort an in-place sorting algorithm? Explain your answer.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-6" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">No [1] — merge sort requires additional memory to store the sub-lists created during the divide phase and the temporary merged lists during the merge phase. It is not sorted within the original array [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">Give two advantages of merge sort over bubble sort.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Any two: much faster — O(n log n) vs O(n²) [1]; more efficient for large datasets [1]; performance doesn't degrade as badly with large n [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">Explain why a single-element list is considered already sorted in merge sort.</span><span class="ws-q-marks">[1]</span></div><textarea class="ws-textarea" id="ws-ans-8" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A list of one element has nothing to compare — it is trivially sorted by definition. This is the base case that stops the recursive splitting [1].</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;" onclick="restartQuiz()">Try again</button>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 10</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 2.1.3b Merge Sort</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What technique does merge sort use?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Brute force</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> Divide and conquer</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> Greedy algorithm</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> Linear scanning</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">What is the time complexity of merge sort?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> O(n²)</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> O(n)</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> O(n log n)</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> O(log n)</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">Is merge sort an in-place sorting algorithm?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> Yes — it only uses a temp variable</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> No — it requires extra memory for sub-lists</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> Yes — it sorts within the original array</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> It depends on the list size</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">What is the base case for the divide phase of merge sort?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> When the list has 2 items</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> When a sub-list has only 1 element</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> When no swaps are made</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> When the middle element is found</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">When merging [2, 5, 9] and [1, 4, 7], what is the first element of the result?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> 2</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> 5</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> 1</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> 4</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">Describe the divide phase of merge sort.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>The list is repeatedly split into two halves [1] until every sub-list contains only a single element (base case) [1]. A single-element list is considered already sorted.</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Explain one advantage and one disadvantage of merge sort compared to bubble sort.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>Advantage: much faster — O(n log n) vs O(n²) for bubble sort [1]. Disadvantage: requires more memory — not in-place, needs extra space for sub-lists [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">Show the first split of merge sort on [6, 2, 9, 4, 1, 8].</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>[6, 2, 9] and [4, 1, 8] [1] — split at the midpoint (index 3 of 6).</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">When merging two sorted lists [3, 8] and [1, 5], show the complete merge process step by step.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Compare 3 and 1 → take 1 (result: [1]) [1]; compare 3 and 5 → take 3 (result: [1, 3]) [1]; compare 8 and 5 → take 5 (result: [1, 3, 5]) [1]; append remaining 8 (result: [1, 3, 5, 8]) [1]. Award 1 mark for each correct comparison/take step.</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">Why is merge sort preferred over bubble sort for large datasets?</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>Merge sort is O(n log n) while bubble sort is O(n²) [1] — for large n, this difference is enormous (e.g. 1 million items: ~20 million ops for merge sort vs ~1 trillion for bubble sort) [1].</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/2-1-3a/" class="bottom-nav-btn">← 2.1.3a Bubble Sort</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">2.1 Algorithms</span>
+  <a href="/ocr-j277/2-1-3c/" class="bottom-nav-btn next-btn">2.1.3c Insertion Sort →</a>
+</div>
 <script>
-var LESSON_ID='2-1-3b';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='2-1-3b';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+function checkAccess(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;
+    if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;
+    var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};
+    fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h})
+      .then(function(r){return r.json();})
+      .then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});
+  });
+}
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    checkAccess();
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What is the key requirement for binary search to work?",opts:["The list must contain numbers only","The list must be sorted","The list must have an odd number of elements","The list must be stored in RAM"],ans:1,exp:"Binary search REQUIRES the list to be sorted. It works by halving the search space, which only works correctly if data is in order."},
-  {q:"How does binary search reduce the search space each step?",opts:["It removes the first item","It removes the last item","It eliminates the half that cannot contain the target","It sorts the remaining items"],ans:2,exp:"Binary search compares the target with the middle element, then eliminates either the left or right half based on whether target is smaller or larger."},
-  {q:"Binary search on [2, 5, 8, 12, 16, 23, 38]. Searching for 23. What is the first mid index?",opts:["0","3","6","2"],ans:1,exp:"List has 7 elements (indices 0-6). mid = (0+6) DIV 2 = 3. list[3] = 12. 23 > 12 so search right half."},
-  {q:"What is the time complexity of binary search?",opts:["O(1)","O(n)","O(n²)","O(log n)"],ans:3,exp:"Binary search is O(log n) — each comparison halves the remaining search space. With 1,024 items, at most 10 comparisons needed."},
-  {q:"After comparing list[mid] and finding target > list[mid], what happens?",opts:["high = mid - 1","low = mid + 1","Return mid","Search ends"],ans:1,exp:"If target > list[mid], the target must be in the right half. Set low = mid + 1 to search only the right half next iteration."},
-  {q:"After comparing list[mid] and finding target < list[mid], what happens?",opts:["low = mid + 1","high = mid + 1","high = mid - 1","Return -1"],ans:2,exp:"If target < list[mid], the target must be in the left half. Set high = mid - 1 to search only the left half next iteration."},
-  {q:"When does binary search conclude the target is NOT in the list?",opts:["After 10 comparisons","When mid equals 0","When low > high","When high equals 0"],ans:2,exp:"The while loop condition is 'while low <= high'. When low > high, the search space is empty — the target is not in the list. Return -1."},
-  {q:"How many comparisons does binary search need to find an item in a list of 1,024 items (worst case)?",opts:["1024","512","10","32"],ans:2,exp:"O(log₂n) — log₂(1024) = 10. Binary search needs at most 10 comparisons for 1,024 items. Compare: linear search needs up to 1,024."},
-  {q:"Why must mid be calculated using integer division (DIV)?",opts:["To save memory","Because indices must be whole numbers","To make it faster","To handle negative numbers"],ans:1,exp:"Array indices must be whole numbers (integers). If (low+high) is odd, regular division gives a decimal — DIV truncates to give a valid integer index."},
-  {q:"Binary search on [1, 3, 5, 7, 9]. Searching for 1. How many comparisons?",opts:["1","2","3","5"],ans:1,exp:"mid = (0+4) DIV 2 = 2, list[2]=5; 1<5 → high=1. mid=(0+1) DIV 2=0, list[0]=1; 1==1 → found. 2 comparisons."},
-  {q:"Which scenario favours linear search over binary search?",opts:["Searching a sorted list of 10,000 records","Searching an unsorted list where sorting is expensive","Searching a database","Searching a phone directory"],ans:1,exp:"If the list is unsorted AND sorting would be expensive, linear search is better — it doesn't require sorting first. Binary search requires pre-sorted data."},
-  {q:"What does binary search return if the target IS found?",opts:["-1","The target value","The index of the target","true"],ans:2,exp:"Binary search returns the INDEX (position) of the target in the list — e.g., return 5 means the item is at index 5."},
-  {q:"List: [10, 20, 30, 40, 50, 60, 70]. Binary search for 70. What happens in pass 1?",opts:["low=0,high=6,mid=3,list[3]=40; 70>40→low=4","low=0,high=6,mid=3,list[3]=70; found","low=0,high=6,mid=6,list[6]=70; found","Not found — 70 is at the end"],ans:0,exp:"Pass 1: low=0, high=6, mid=3, list[3]=40; 70>40 so low=4. Pass 2: low=4, high=6, mid=5, list[5]=60; 70>60 so low=6. Pass 3: low=6, high=6, mid=6, list[6]=70; found."},
-  {q:"Binary search compared to linear search on a sorted list of 1 million items: binary search needs at most how many comparisons?",opts:["500,000","1,000,000","About 20","100"],ans:2,exp:"log₂(1,000,000) ≈ 20. Binary search needs at most ~20 comparisons. Linear search needs up to 1,000,000. This illustrates the massive efficiency gain."},
-  {q:"A student writes: 'mid = low + high / 2'. Is this correct OCR pseudocode for binary search?",opts:["Yes — always correct","No — must use (low+high) DIV 2","No — must use low*high","Yes — but only for even length lists"],ans:1,exp:"'low + high / 2' applies operator precedence incorrectly (divides high by 2 first). Must be (low+high) DIV 2 to add first then integer-divide. This is a very common mistake."}
+  {q:"What technique does merge sort use?",opts:["Greedy algorithm","Brute force search","Divide and conquer","Linear scanning"],a:2,exp:"Merge sort uses divide and conquer: divide the problem into smaller sub-problems, solve each, then combine the solutions."},
+  {q:"What is the time complexity of merge sort in ALL cases?",opts:["O(n²)","O(n log n)","O(n)","O(log n)"],a:1,exp:"Merge sort is always O(n log n) — best, average, and worst case. This is because it always divides in half (log n levels) and merges all n elements at each level."},
+  {q:"Is merge sort in-place?",opts:["Yes — only a temp variable is used","Yes — it sorts in the original array","No — it needs extra memory for sub-lists","It depends on the input size"],a:2,exp:"Merge sort is NOT in-place. It creates new sub-lists during the divide phase and temporary lists during the merge phase, requiring O(n) extra memory."},
+  {q:"When does the divide phase of merge sort stop?",opts:["When no swaps are needed","When the list has 2 elements","When each sub-list has 1 element","When the list is sorted"],a:2,exp:"The base case is a single-element list. A list of 1 element is trivially sorted — nothing to compare. This stops the recursive splitting."},
+  {q:"Merging [2, 7] and [3, 5], what is the merged result?",opts:["[2, 3, 5, 7]","[2, 7, 3, 5]","[2, 3, 7, 5]","[3, 2, 5, 7]"],a:0,exp:"Compare 2 and 3 → take 2. Compare 7 and 3 → take 3. Compare 7 and 5 → take 5. Append 7. Result: [2, 3, 5, 7]."},
+  {q:"How many levels of splitting does merge sort do on a list of 8 items?",opts:["2","3","4","8"],a:1,exp:"8 → 4 → 2 → 1 — that's 3 splits. In general, log₂n levels of splitting. log₂8 = 3."},
+  {q:"What is the main advantage of merge sort over bubble sort?",opts:["Merge sort uses less memory","Merge sort is simpler to code","Merge sort is O(n log n) vs bubble sort O(n²) — much faster for large lists","Merge sort doesn't need a comparison"],a:2,exp:"The key advantage is efficiency: O(n log n) vs O(n²). For 1000 items, merge sort makes ~10,000 operations vs bubble sort's ~1,000,000."},
+  {q:"What is the main disadvantage of merge sort compared to bubble sort?",opts:["Merge sort is always slower","Merge sort cannot sort strings","Merge sort requires extra memory — not in-place","Merge sort has O(n²) complexity"],a:2,exp:"Merge sort needs O(n) extra memory for sub-lists. Bubble sort is in-place (only a temp variable). For memory-constrained systems, this matters."},
+  {q:"After the divide phase of [5, 3, 8, 1], what are the individual sub-lists?",opts:["[5], [3], [8, 1]","[5, 3], [8, 1]","[5], [3], [8], [1]","[5, 3, 8], [1]"],a:2,exp:"The divide phase splits until single elements: [5], [3], [8], [1]. Two splits needed: [5,3]|[8,1] then [5]|[3]|[8]|[1]."},
+  {q:"Which of these correctly describes the merge step?",opts:["Swap adjacent elements repeatedly","Compare front elements of two sorted sub-lists, take the smaller into the result","Find the midpoint and split","Sort each sub-list individually using bubble sort"],a:1,exp:"The merge step takes two sorted sub-lists and repeatedly compares their front (smallest remaining) elements, taking the smaller one into the result list until both sub-lists are empty."},
+  {q:"Merge sort on [4, 2, 6, 1]: what does the first merge step produce?",opts:["[2, 4, 1, 6]","[2, 4] and [1, 6]","[1, 2, 4, 6]","[4, 2] and [6, 1]"],a:1,exp:"After splitting [4,2]|[6,1] → [4]|[2]|[6]|[1], the first merges are [4]+[2]=[2,4] and [6]+[1]=[1,6]."},
+  {q:"Why does merge sort always achieve O(n log n)?",opts:["Because it only compares adjacent elements","Because it halves the list each time (log n levels) and merges all n elements at each level","Because it uses the fastest possible swap","Because it is recursive"],a:1,exp:"There are log₂n levels of splitting (each level halves the size). At each level, all n elements are processed during merging. So total work = n × log₂n = O(n log n)."},
+  {q:"A student says merge sort and bubble sort have the same best-case time. Is this true?",opts:["Yes — both are O(n) best case","No — merge sort is always O(n log n); optimised bubble sort can be O(n) best case","Yes — both are O(n²)","No — merge sort is O(n) and bubble sort is O(n log n)"],a:1,exp:"False. Optimised bubble sort detects an already-sorted list in one pass → O(n) best case. Merge sort always does all splits and merges → O(n log n) even for sorted data."},
+  {q:"What does 'stable sort' mean, and is merge sort stable?",opts:["Equal elements keep their relative original order — yes, merge sort is stable","It can sort any data type — no","It always produces the same output — yes","It has consistent O(n log n) time — yes"],a:0,exp:"A stable sort preserves the original relative order of equal elements. Merge sort is stable because equal elements are taken from the left sub-list first during merging."},
+  {q:"Which scenario would make you choose merge sort over bubble sort?",opts:["Sorting 5 numbers for a simple program","Sorting 1 million customer records","The list is already sorted","Memory is extremely limited"],a:1,exp:"Merge sort is best for large datasets. For 1 million records, O(n log n) ≈ 20 million operations vs O(n²) ≈ 1 trillion for bubble sort. The extra memory overhead is worth it."}
 ];
-var WORKSHEET=[
-  {q:"State the ONE key requirement for binary search to work.",marks:1,ms:"The list must be SORTED (in ascending or descending order) before binary search can be applied."},
-  {q:"Describe the binary search algorithm step by step.",marks:4,ms:"Set low=0, high=length-1 (1). Calculate mid=(low+high) DIV 2 (1). Compare list[mid] with target: if equal return mid; if target greater, set low=mid+1; if target smaller, set high=mid-1 (1). Repeat until found or low>high — return -1 if not found (1)."},
-  {q:"Trace a binary search for 15 in [2, 5, 8, 12, 15, 19, 24]. Show each pass.",marks:4,ms:"Pass 1: low=0,high=6,mid=3,list[3]=12; 15>12→low=4 (1). Pass 2: low=4,high=6,mid=5,list[5]=19; 15<19→high=4 (1). Pass 3: low=4,high=4,mid=4,list[4]=15; 15==15→return 4 (1). 3 comparisons (1)."},
-  {q:"Write pseudocode for a binary search function.",marks:5,ms:"function binarySearch(list,target) (1); low=0, high=len(list)-1 (1); while low<=high (1); mid=(low+high) DIV 2; if list[mid]==target then return mid; elseif list[mid]<target then low=mid+1; else high=mid-1; endif (1); endwhile; return -1; endfunction (1)."},
-  {q:"A sorted list has 256 items. What is the maximum number of comparisons binary search needs?",marks:1,ms:"8 — log₂(256) = 8."},
-  {q:"Compare binary search and linear search. Give TWO differences.",marks:4,ms:"Sorted data: binary requires sorted list; linear works on unsorted (1). Speed: binary O(log n) much faster; linear O(n) slower for large lists (1). Complexity: binary more complex to implement; linear is simple (1). Best case: both O(1) if item is at first/mid position (1). [Any 2 differences for 2 marks each]"},
-  {q:"Why should integer division (DIV) be used when calculating mid in binary search?",marks:2,ms:"Array indices must be whole numbers (integers) (1). If (low+high) is odd, regular division gives a decimal which is not a valid array index — DIV truncates to give an integer (1)."},
-  {q:"A student says 'binary search is always better than linear search'. Evaluate this statement.",marks:3,ms:"Not always — binary search requires a sorted list (1). If the list is unsorted, sorting must be done first which has its own time cost (1). For small lists or unsorted data, linear search may be more practical (1)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Binary search",d:"A search algorithm that repeatedly halves the search space by comparing the target with the middle element of a sorted list."},
-  {w:"Sorted list",d:"A prerequisite for binary search — items must be arranged in order (ascending or descending)."},
-  {w:"Mid (midpoint)",d:"The index of the middle element: (low + high) DIV 2. The element compared to the target each pass."},
-  {w:"Low",d:"The lower bound of the current search space — initially 0, updated to mid+1 when target is greater than list[mid]."},
-  {w:"High",d:"The upper bound of the current search space — initially length-1, updated to mid-1 when target is less than list[mid]."},
-  {w:"O(log n)",d:"The time complexity of binary search. Each comparison halves the search space — much more efficient than O(n)."},
-  {w:"Integer division (DIV)",d:"Division that discards the remainder, returning a whole number. Essential for calculating mid as array indices must be integers."},
-  {w:"Search space",d:"The portion of the list still being searched. Binary search halves this each pass."},
-  {w:"Not found (-1)",d:"The return value when the target is absent — returned when low > high (search space exhausted)."},
-  {w:"Pass",d:"One iteration of the binary search loop — involves calculating mid, comparing, and updating low or high."},
-  {w:"Efficient",d:"Binary search is efficient for large datasets — O(log n) means 1 million items need at most ~20 comparisons."},
-  {w:"Logarithm",d:"log₂n gives the number of times you can halve n before reaching 1 — equals the maximum comparisons in binary search."},
-  {w:"Halving",d:"The key operation in binary search — each comparison eliminates half the remaining items."},
-  {w:"Worst case",d:"For binary search: ⌈log₂n⌉ comparisons — when the target is at the very end of the search space or not present."},
-  {w:"Divide and conquer",d:"The strategy behind binary search — divide the problem in half each step. A classic algorithmic paradigm."}
+  {term:"Merge sort",def:"A divide and conquer sorting algorithm that splits the list into halves recursively until single elements, then merges them back in sorted order. Time complexity: O(n log n)."},
+  {term:"Divide and conquer",def:"An algorithm design technique that breaks a problem into smaller sub-problems, solves each recursively, then combines the solutions. Used by merge sort."},
+  {term:"Divide phase",def:"The first phase of merge sort: repeatedly split the list in half until every sub-list contains a single element (base case)."},
+  {term:"Merge phase",def:"The second phase of merge sort: repeatedly combine pairs of sorted sub-lists by comparing front elements and taking the smaller, producing progressively larger sorted lists."},
+  {term:"Base case (merge sort)",def:"A single-element list — it is trivially sorted. This stops the recursive splitting in the divide phase."},
+  {term:"O(n log n)",def:"The time complexity of merge sort in all cases. More efficient than O(n²) for large datasets. For 1 million items: ~20 million vs ~1 trillion operations for O(n²)."},
+  {term:"Not in-place (merge sort)",def:"Merge sort requires O(n) extra memory for the sub-lists created during splitting and temporary lists during merging. It does not sort within the original array."},
+  {term:"Recursion (merge sort)",def:"Merge sort calls itself on each half of the list during the divide phase. The function calls itself until the base case (single element) is reached."},
+  {term:"Stable sort",def:"Merge sort is stable: equal elements retain their original relative order after sorting. This is because equal left-half elements are taken before equal right-half elements during merging."},
+  {term:"Merge step",def:"Combining two sorted sub-lists: compare the smallest (front) element of each; take the smaller into the result; repeat until both sub-lists are empty; append any remaining elements."}
 ];
-var TEST_MCQ=[
-  {q:"What must be true of the list before binary search can be used?",opts:["It must contain only integers","It must be sorted","It must have fewer than 100 items","It must be stored in a database"],ans:1,exp:"Binary search requires a SORTED list. It works by halving the search space, which only functions correctly on sorted data."},
-  {q:"Binary search on [1,3,5,7,9,11,13]. Searching for 11. What is the mid index in pass 1?",opts:["0","3","6","2"],ans:1,exp:"7 items, indices 0-6. mid = (0+6) DIV 2 = 3. list[3]=7. 11>7 so low=4 for next pass."},
-  {q:"What is the time complexity of binary search?",opts:["O(n)","O(n²)","O(log n)","O(1)"],ans:2,exp:"O(log n) — each pass halves the search space. Much more efficient than linear search's O(n) for large datasets."},
-  {q:"When target > list[mid], what update is made?",opts:["high = mid - 1","low = mid - 1","high = mid + 1","low = mid + 1"],ans:3,exp:"If target is greater than the middle element, the target must be in the right half. Set low = mid + 1."},
-  {q:"What does binary search return if the target is not found?",opts:["0","false","null","-1"],ans:3,exp:"-1 indicates 'not found'. When low > high, the search space is empty — the target cannot be present."}
-];
-var TEST_SA=[
-  {q:"State TWO requirements or features of binary search.",marks:2,ms:"Requires sorted list (1). Works by halving the search space each comparison / O(log n) / compares with middle element (1)."},
-  {q:"Trace a binary search for 6 in [1, 3, 6, 8, 10]. Show each pass.",marks:3,ms:"low=0,high=4,mid=2,list[2]=6; 6==6→return 2 (1 mark per step shown, max 3). 1 comparison."},
-  {q:"Give ONE advantage and ONE disadvantage of binary search compared to linear search.",marks:2,ms:"Advantage: much faster for large lists — O(log n) vs O(n) (1). Disadvantage: requires sorted data — linear search works on unsorted lists (1)."},
-  {q:"Write pseudocode for the main loop of a binary search.",marks:4,ms:"while low<=high (1); mid=(low+high) DIV 2 (1); if list[mid]==target then return mid; elseif list[mid]<target then low=mid+1; else high=mid-1; endif (1); endwhile; return -1 (1)."},
-  {q:"A sorted list has 1,024 items. What is the maximum comparisons needed for binary search?",marks:1,ms:"10 — log₂(1024) = 10."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});document.getElementById('fc-progress').textContent='Card 1 of '+KEY_TERMS.length;showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,1,1,2];
+var TEST_MCQ_LABELS=[['Brute force','Divide and conquer','Greedy algorithm','Linear scanning'],['O(n²)','O(n)','O(n log n)','O(log n)'],['Yes — it only uses a temp variable','No — it requires extra memory for sub-lists','Yes — it sorts within the original array','It depends on the list size'],['When the list has 2 items','When a sub-list has only 1 element','When no swaps are made','When the middle element is found'],['2','5','1','4']];
+var TEST_MCQ_EXPLAIN=['Merge sort uses divide and conquer — split into sub-problems, solve each, combine.','O(n log n) — always. Splits create log n levels, all n elements merged at each level.','Not in-place — requires O(n) extra memory for sub-lists.','Base case: single-element list — trivially sorted, stops recursion.','Compare 2 and 1: take 1 (smallest). First element is 1.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['Divide phase?','Advantage vs disadvantage vs bubble?','First split of [6,2,9,4,1,8]?','Merge [3,8] and [1,5]?','Why merge sort for large data?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

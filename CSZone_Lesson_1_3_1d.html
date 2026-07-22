@@ -1,230 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.3.1d Network Topologies | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.3.1d Network Topologies — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .topo-diagram{background:#f5f3ff;border-radius:14px;border:1.5px solid #e8e9ff;padding:20px;margin:16px 0;text-align:center;}
+    .topo-diagram svg{max-width:100%;height:auto;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-card{background:#fff;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-bottom:10px;width:100%;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 1</div>
-    <div class="sst" style="color:#818cf8">1.3 Networks</div>
-    <a href="/ocr-j277/1-3-1a/" class="sl fb">1.3.1a LAN &amp; WAN</a>
-    <a href="/ocr-j277/1-3-1b/" class="sl">1.3.1b Network Types</a>
-    <a href="/ocr-j277/1-3-1c/" class="sl">1.3.1c Internet &amp; DNS</a>
-    <a href="/ocr-j277/1-3-1d/" class="sl active">1.3.1d Topologies</a>
-    <a href="/ocr-j277/1-3-2a/" class="sl">1.3.2a Wired &amp; Wireless</a>
-    <a href="/ocr-j277/1-3-2b/" class="sl">1.3.2b Protocols</a>
-    <div class="sst" style="color:#818cf8">1.4–1.6</div>
-    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
-    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
-    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
-    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
-    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
-    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
-    <div class="sst">Component 2</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.3 Networks</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.3.1d Network Topologies</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.3 Networks</div>
-  <div class="lesson-title">1.3.1d — Network Topologies</div>
-  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
+  <div class="lesson-badge">🕸 Component 1 · 1.3 Computer Networks</div>
+  <div class="lesson-title">1.3.1d Network Topologies (Star, Mesh &amp; Bus)</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~13 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-notes">
-  <div class="ns">
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
     <h2>What is a Network Topology?</h2>
-    <p>A network topology describes the arrangement of devices and how they are connected. OCR J277 requires knowledge of <strong>star</strong> and <strong>mesh</strong> topologies (and basic awareness of bus).</p>
-  </div>
+    <p>A <strong>network topology</strong> describes how devices are physically or logically arranged and connected in a network. OCR J277 requires knowledge of three topologies: <strong>star</strong>, <strong>mesh</strong>, and <strong>bus</strong>.</p>
 
-  <div class="ns">
     <h2>Star Topology</h2>
-    <p>All devices connect to a central switch or hub. All data passes through the central device.</p>
-    <div style="text-align:center;padding:20px;background:#0f172a;border-radius:10px;margin:12px 0;font-family:monospace;font-size:13px;color:#a5b4fc">
-      Device — Switch — Device<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Device
+    <p>In a <strong>star topology</strong>, all devices connect to a <strong>central switch or hub</strong>. Data travels from a device to the central switch, which then forwards it to the destination device.</p>
+    <div class="topo-diagram">
+      <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" width="260" height="200">
+        <circle cx="130" cy="100" r="18" fill="#7c3aed" opacity="0.9"/>
+        <text x="130" y="104" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Switch</text>
+        <circle cx="130" cy="30" r="12" fill="#a78bfa"/><text x="130" y="34" text-anchor="middle" fill="white" font-size="8">PC</text>
+        <line x1="130" y1="82" x2="130" y2="42" stroke="#7c3aed" stroke-width="2"/>
+        <circle cx="210" cy="60" r="12" fill="#a78bfa"/><text x="210" y="64" text-anchor="middle" fill="white" font-size="8">PC</text>
+        <line x1="145" y1="88" x2="202" y2="68" stroke="#7c3aed" stroke-width="2"/>
+        <circle cx="220" cy="130" r="12" fill="#a78bfa"/><text x="220" y="134" text-anchor="middle" fill="white" font-size="8">PC</text>
+        <line x1="148" y1="103" x2="208" y2="128" stroke="#7c3aed" stroke-width="2"/>
+        <circle cx="160" cy="180" r="12" fill="#a78bfa"/><text x="160" y="184" text-anchor="middle" fill="white" font-size="8">PC</text>
+        <line x1="138" y1="118" x2="155" y2="168" stroke="#7c3aed" stroke-width="2"/>
+        <circle cx="100" cy="180" r="12" fill="#a78bfa"/><text x="100" y="184" text-anchor="middle" fill="white" font-size="8">PC</text>
+        <line x1="122" y1="118" x2="105" y2="168" stroke="#7c3aed" stroke-width="2"/>
+        <circle cx="40" cy="130" r="12" fill="#a78bfa"/><text x="40" y="134" text-anchor="middle" fill="white" font-size="8">PC</text>
+        <line x1="112" y1="103" x2="52" y2="128" stroke="#7c3aed" stroke-width="2"/>
+        <circle cx="50" cy="60" r="12" fill="#a78bfa"/><text x="50" y="64" text-anchor="middle" fill="white" font-size="8">PC</text>
+        <line x1="115" y1="88" x2="62" y2="68" stroke="#7c3aed" stroke-width="2"/>
+      </svg>
+      <p style="font-size:12px;color:#64748b;margin-top:8px;">Star topology — all devices connected to a central switch</p>
     </div>
-    <div class="ic g">
-      <h4>Advantages:</h4>
-      <ul>
-        <li>If one cable or device fails, only that device is affected — others continue working</li>
-        <li>Easy to add new devices (just connect to the switch)</li>
-        <li>Easy to manage and troubleshoot (central point)</li>
-        <li>High performance — each device has its own connection to the switch</li>
-      </ul>
-    </div>
-    <div class="ic r">
-      <h4>Disadvantages:</h4>
-      <ul>
-        <li>If the central switch fails, the whole network fails</li>
-        <li>Requires more cable than other topologies (each device needs its own cable to the switch)</li>
-        <li>Central switch is expensive</li>
-      </ul>
-    </div>
-    <div class="kp"><strong>Star is the most common topology for modern LANs</strong> — most school and office networks use star topology with a central switch.</div>
-  </div>
-
-  <div class="ns">
-    <h2>Mesh Topology</h2>
-    <p>Every device is connected to every other device (full mesh) or to several others (partial mesh). Multiple paths exist between any two devices.</p>
-    <div class="ic g">
-      <h4>Advantages:</h4>
-      <ul>
-        <li>Highly fault tolerant — if one connection fails, data can take an alternative route</li>
-        <li>No single point of failure (unlike star's central switch)</li>
-        <li>High reliability — used in critical systems and the internet's backbone</li>
-        <li>Can handle high traffic as multiple paths are available</li>
-      </ul>
-    </div>
-    <div class="ic r">
-      <h4>Disadvantages:</h4>
-      <ul>
-        <li>Very expensive — requires many cables and connections</li>
-        <li>Difficult to install and manage</li>
-        <li>Full mesh: n(n-1)/2 connections needed for n devices (e.g. 10 devices = 45 connections)</li>
-      </ul>
-    </div>
-    <div class="kp"><strong>The internet uses a partial mesh topology</strong> — routers have multiple connections so data can route around failures.</div>
-  </div>
-
-  <div class="ns">
-    <h2>Star vs Mesh Comparison</h2>
-    <table class="ct">
-      <tr><th>Feature</th><th>Star</th><th>Mesh</th></tr>
-      <tr><td>Central device?</td><td>Yes (switch/hub)</td><td>No</td></tr>
-      <tr><td>Single point of failure</td><td>Yes (the switch)</td><td>No</td></tr>
-      <tr><td>Fault tolerance</td><td>Moderate (device failure safe, switch failure = network down)</td><td>High (alternative paths)</td></tr>
-      <tr><td>Cabling cost</td><td>Moderate</td><td>Very high (many connections)</td></tr>
-      <tr><td>Ease of management</td><td>Easy</td><td>Difficult</td></tr>
-      <tr><td>Used in</td><td>Most LANs (schools, offices)</td><td>Internet backbone, military, critical infrastructure</td></tr>
+    <table>
+      <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+      <tbody>
+        <tr><td>Failure of one device does not affect others</td><td>If the central switch fails, the whole network fails</td></tr>
+        <tr><td>Easy to add new devices</td><td>More cable needed than bus topology</td></tr>
+        <tr><td>Easy to diagnose faults</td><td>Higher cost due to central switch</td></tr>
+        <tr><td>Good performance — dedicated connection to switch</td><td></td></tr>
+      </tbody>
     </table>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
+
+    <h2>Mesh Topology</h2>
+    <p>In a <strong>mesh topology</strong>, each device connects directly to some or all other devices. There are two types:</p>
+    <ul>
+      <li><strong>Full mesh</strong>: every device connects to every other device. n devices need n(n-1)/2 connections.</li>
+      <li><strong>Partial mesh</strong>: only some devices are fully interconnected.</li>
+    </ul>
+    <table>
+      <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+      <tbody>
+        <tr><td>Highly fault tolerant — data can take alternative routes if one path fails</td><td>Expensive — requires many cables</td></tr>
+        <tr><td>No single point of failure</td><td>Complex to set up and manage</td></tr>
+        <tr><td>Data can take the most efficient route</td><td>Many connections needed: n(n-1)/2 for full mesh</td></tr>
+        <tr><td>Good for critical infrastructure (internet backbone, military)</td><td></td></tr>
+      </tbody>
+    </table>
+    <p>The internet's backbone uses a mesh-like structure to ensure data can always find a route even if some links fail.</p>
+
+    <h2>Bus Topology</h2>
+    <p>In a <strong>bus topology</strong>, all devices connect to a single shared cable (the "bus" or backbone). Data is sent along the cable and received by all devices, but only the intended recipient processes it.</p>
+    <div class="topo-diagram">
+      <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg" width="300" height="80">
+        <line x1="20" y1="50" x2="280" y2="50" stroke="#7c3aed" stroke-width="3"/>
+        <text x="20" y="68" font-size="9" fill="#7c3aed">▐ Term</text>
+        <text x="260" y="68" font-size="9" fill="#7c3aed">Term ▌</text>
+        <circle cx="70" cy="50" r="5" fill="#7c3aed"/>
+        <line x1="70" y1="50" x2="70" y2="20" stroke="#7c3aed" stroke-width="1.5"/>
+        <rect x="58" y="10" width="24" height="10" rx="2" fill="#a78bfa"/>
+        <text x="70" y="18" text-anchor="middle" fill="white" font-size="7">PC</text>
+        <circle cx="130" cy="50" r="5" fill="#7c3aed"/>
+        <line x1="130" y1="50" x2="130" y2="20" stroke="#7c3aed" stroke-width="1.5"/>
+        <rect x="118" y="10" width="24" height="10" rx="2" fill="#a78bfa"/>
+        <text x="130" y="18" text-anchor="middle" fill="white" font-size="7">PC</text>
+        <circle cx="190" cy="50" r="5" fill="#7c3aed"/>
+        <line x1="190" y1="50" x2="190" y2="20" stroke="#7c3aed" stroke-width="1.5"/>
+        <rect x="178" y="10" width="24" height="10" rx="2" fill="#a78bfa"/>
+        <text x="190" y="18" text-anchor="middle" fill="white" font-size="7">PC</text>
+        <circle cx="240" cy="50" r="5" fill="#7c3aed"/>
+        <line x1="240" y1="50" x2="240" y2="20" stroke="#7c3aed" stroke-width="1.5"/>
+        <rect x="228" y="10" width="24" height="10" rx="2" fill="#a78bfa"/>
+        <text x="240" y="18" text-anchor="middle" fill="white" font-size="7">PC</text>
+      </svg>
+      <p style="font-size:12px;color:#64748b;margin-top:8px;">Bus topology — all devices share a single backbone cable with terminators at each end</p>
+    </div>
+    <table>
+      <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+      <tbody>
+        <tr><td>Less cable required — cheap to install</td><td>Entire network fails if backbone cable breaks</td></tr>
+        <tr><td>Simple to set up — no central device needed</td><td>Performance degrades as more devices are added (all share one cable)</td></tr>
+        <tr><td></td><td>Difficult to diagnose faults</td></tr>
+        <tr><td></td><td>Data collisions possible when two devices transmit simultaneously</td></tr>
+        <tr><td></td><td>Less secure — all devices see all data</td></tr>
+      </tbody>
+    </table>
+    <p>Bus topology requires <strong>terminators</strong> at each end of the cable to prevent signal reflection.</p>
+
+    <h2>Comparing Topologies</h2>
+    <table>
+      <thead><tr><th>Feature</th><th>Star</th><th>Mesh</th><th>Bus</th></tr></thead>
+      <tbody>
+        <tr><td>Single point of failure</td><td>Central switch</td><td>None (full mesh)</td><td>Backbone cable</td></tr>
+        <tr><td>Cable required</td><td>Medium</td><td>High (n(n-1)/2)</td><td>Low</td></tr>
+        <tr><td>Fault tolerance</td><td>Medium</td><td>High</td><td>Low</td></tr>
+        <tr><td>Ease of setup</td><td>Easy</td><td>Complex</td><td>Simple</td></tr>
+        <tr><td>Typical use</td><td>Schools, offices (LAN)</td><td>Internet backbone, military</td><td>Legacy/small networks</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> Star topology is the most common in modern LANs — know its advantages (fault isolation, easy expansion) and disadvantages (central switch is single point of failure). Bus topology is rarely used today but is still on the OCR spec. Mesh is used in the internet and critical systems. Always know what the "single point of failure" is for each topology — this is a frequent exam question.
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Saying star has no single point of failure — the central switch IS a single point of failure</li>
-        <li>Saying mesh is used in typical LANs — it's too expensive; star is used instead</li>
-        <li>Confusing the central device in star as a router — it's a switch (though routers can serve this role)</li>
-        <li>Forgetting that the internet backbone uses mesh (partial), not star</li>
+        <li>Saying "if one device fails in a star, the whole network fails" — it's the SWITCH that causes this, not individual devices</li>
+        <li>Saying bus topology has no single point of failure — the backbone cable IS a single point of failure</li>
+        <li>Confusing mesh with star — mesh has direct connections between devices; star has everything through a central switch</li>
+        <li>Forgetting bus topology needs terminators</li>
+        <li>Not stating WHICH device is the single point of failure — "the switch" not just "a device"</li>
       </ul>
+    </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;">What's in this video</h3>
+    <ul style="list-style:none;padding:0;">
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Star topology: diagram, central switch, advantages/disadvantages</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Mesh topology: full vs partial, fault tolerance, internet backbone</li>
+      <li style="padding:8px 0;font-size:14.5px;color:#334155;">• Bus topology: backbone cable, terminators, why it's obsolete</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_1.3.1d_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 1.3.1d Network Topologies</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">Describe a star topology. What device is at the centre?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">All devices connect to a central device [1]; the central device is a switch (or hub) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">State two advantages and two disadvantages of a star topology.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-2" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Advantages: if one device fails, others are unaffected [1]; easy to add new devices [1]; Disadvantages: if the central switch fails, the whole network fails [1]; requires more cable than bus topology [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Explain what a mesh topology is. What is the difference between full and partial mesh?</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-3" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A mesh topology has devices connected directly to some or all other devices [1]; full mesh: every device connects to every other device [1]; partial mesh: only some devices are fully interconnected [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">Why is a mesh topology used in critical infrastructure such as the internet backbone?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">If one connection/route fails, data can take an alternative path [1]; there is no single point of failure, so the network remains operational [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Describe a bus topology. What are terminators and why are they needed?</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-5" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">All devices connect to a single shared backbone cable [1]; terminators are placed at each end of the bus cable [1]; they absorb the signal to prevent it from reflecting back along the cable and causing interference [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">State the single point of failure for each of the three topologies.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-6" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Star: the central switch [1]; Bus: the backbone cable [1]; Mesh: none (full mesh has no single point of failure) / in partial mesh, some paths may be critical [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">A new school is setting up its LAN. Suggest the most suitable topology and justify your answer.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Star topology [1]; easy to add new devices; if one device fails it does not affect others; easy to manage and diagnose faults [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">In a full mesh network of 6 devices, how many connections are required? Show your working.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-8" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Formula: n(n-1)/2 [1]; 6×5/2 = 15 connections [1].</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
     </div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet — Network Topologies</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/1-3-1c/" class="nb">← 1.3.1c Internet &amp; DNS</a>
-  <a href="/ocr-j277/1-3-2a/" class="nb n">1.3.2a Wired &amp; Wireless →</a>
-</div>
-</div>
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
 </div>
 
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 1.3.1d Network Topologies</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">In a star topology, what is the single point of failure?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Any connected device</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> The backbone cable</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> The central switch</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> The router</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">Which topology is most fault tolerant with no single point of failure?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> Star</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> Bus</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> Full mesh</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> Ring</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">How many connections are needed in a full mesh of 5 devices?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> 5</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> 10</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> 20</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> 25</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">In a bus topology, what is needed at each end of the cable?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> A switch</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> A router</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> A terminator</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> A NIC</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Which topology is most commonly used in modern LANs?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> Bus</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> Full mesh</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> Ring</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> Star</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">State one advantage of a star topology over a bus topology.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>If one device fails in a star, it does not affect others (vs bus where backbone failure takes all down) / easier to diagnose faults / performance not degraded by adding devices. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Why is a mesh topology used in the internet's backbone?</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>If one route fails, data can take an alternative path; no single point of failure ensures the internet remains operational. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">What happens to a bus network if the backbone cable breaks?</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>The entire network fails — no device can communicate because they all share the same backbone cable. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">State one disadvantage of a mesh topology.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Expensive — many cables/connections needed; n(n-1)/2 connections for full mesh [½]; complex to set up and manage [½]. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">Calculate the number of connections in a full mesh of 4 devices.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>n(n-1)/2 = 4×3/2 = 6 connections. [1]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/1-3-1c/" class="bottom-nav-btn">← 1.3.1c Network Hardware</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">1.3 Computer Networks</span>
+  <a href="/ocr-j277/1-3-2a/" class="bottom-nav-btn next-btn">1.3.2a Protocols →</a>
+</div>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:14.5px;color:#64748b;line-height:1.6;margin-bottom:24px;">Subscribe to access all OCR J277 lessons.</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
 <script>
-var LESSON_ID='1-3-1d';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
-
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-3-1d';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+    if(!IS_FREE)checkAccess();
+  });
+});
+function checkAccess(){getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h}).then(function(r){return r.json();}).then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});});}
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"In a star topology, what is all devices connect to?",opts:["Each other directly","A central switch or hub","The internet router only","A server"],ans:1,exp:"In a star topology, all devices connect to a central switch or hub. All communication passes through this central device."},
-  {q:"What is the main single point of failure in a star topology?",opts:["Any one device","The central switch","The cables","The internet connection"],ans:1,exp:"The central switch is the single point of failure in a star network. If it fails, all devices lose connectivity."},
-  {q:"What happens in a star topology if one non-central device fails?",opts:["The whole network fails","Only that device is affected; others continue normally","The switch must be reset","All cables must be replaced"],ans:1,exp:"In star topology, each device has its own connection to the switch. If one device or cable fails, only that device is affected — the rest of the network continues."},
-  {q:"In a mesh topology, how are devices connected?",opts:["All connect to one central switch","Each device connects to every other device (or multiple others)","Devices are arranged in a ring","All connect to one server"],ans:1,exp:"In a full mesh, every device is connected to every other device. In a partial mesh, devices connect to several others. Multiple paths exist between any two devices."},
-  {q:"What is a key advantage of mesh topology over star?",opts:["Cheaper to install","Easier to manage","No single point of failure — data can route around broken connections","Requires a central switch"],ans:2,exp:"Mesh topology has multiple paths between devices. If one connection fails, data takes an alternative route — making it highly fault tolerant with no single point of failure."},
-  {q:"Why is mesh topology rarely used in home or school LANs?",opts:["It is too slow","It is very expensive and complex to install with many cable connections","It cannot support wireless devices","It requires a server"],ans:1,exp:"Full mesh requires n(n-1)/2 connections. For 10 devices that is 45 connections — extremely expensive and complex to install and manage."},
-  {q:"Which topology is the most common in modern LANs such as schools and offices?",opts:["Mesh","Ring","Bus","Star"],ans:3,exp:"Star topology is the most common for modern LANs. It's easy to manage, devices can be added easily, and a single cable fault doesn't bring down the network."},
-  {q:"The internet backbone uses which type of topology?",opts:["Star","Bus","Partial mesh","Ring"],ans:2,exp:"The internet uses a partial mesh topology — routers have multiple connections so data can be rerouted around failures, providing high resilience."},
-  {q:"How many cable connections are needed for a full mesh network with 5 devices?",opts:["5","10","20","25"],ans:1,exp:"Full mesh connections = n(n-1)/2 = 5×4/2 = 10 connections."},
-  {q:"Which topology requires the most cabling?",opts:["Star","Mesh","Ring","Bus"],ans:1,exp:"Mesh requires the most cabling — each device must be connected to every other device (or many others), resulting in a large number of physical connections."},
-  {q:"A school network where all computers connect to a central switch is using which topology?",opts:["Mesh","Bus","Ring","Star"],ans:3,exp:"Central switch with all devices connecting to it = star topology."},
-  {q:"What happens to a star network when the central switch breaks down?",opts:["Only one device is affected","The whole network loses connectivity","Devices can still communicate with each other","Data is rerouted automatically"],ans:1,exp:"The switch is the single point of failure. If it fails, all connected devices lose the ability to communicate — the whole network goes down."},
-  {q:"Which topology is BEST suited for a critical military communication network that must survive if some connections are destroyed?",opts:["Star","Bus","Mesh","Ring"],ans:2,exp:"Mesh provides multiple redundant paths. If some connections are destroyed, data can still route around the damage using alternative paths — critical for resilient communication."},
-  {q:"Adding a new device to a star network requires:",opts:["Reconfiguring all other devices","Connecting to the central switch","Installing a separate switch","Rewiring the whole network"],ans:1,exp:"In star topology, adding a device is simple — just connect it to the central switch with a cable. No other devices are affected."},
-  {q:"A network in which each device connects to two neighbours in a closed loop is called:",opts:["Mesh","Star","Ring","Bus"],ans:2,exp:"A ring topology connects each device to exactly two neighbours, forming a closed loop. (Note: ring is not a main focus of OCR J277 but is sometimes referenced.)"}
+  {q:"What device is at the centre of a star topology?",opts:["Router","Hub or switch","Modem","WAP"],a:1,exp:"A star topology has all devices connected to a central switch (or hub). The switch receives data and forwards it to the correct device."},
+  {q:"What happens in a star topology if the central switch fails?",opts:["Only one device loses connection","Nothing — the network continues","The whole network fails","Performance degrades but network continues"],a:2,exp:"The central switch is the single point of failure. If it fails, all devices lose connectivity because they all depend on it for communication."},
+  {q:"In a star topology, if one device's cable breaks:",opts:["The whole network fails","Only that device loses connection; others are unaffected","The switch reboots","All other devices slow down"],a:1,exp:"In star topology, each device has its own dedicated cable to the switch. If one device's connection fails, only that device is affected. Other devices continue normally."},
+  {q:"Which topology has every device connected to every other device?",opts:["Star","Bus","Partial mesh","Full mesh"],a:3,exp:"Full mesh topology connects every device directly to every other device. For n devices, n(n-1)/2 connections are needed."},
+  {q:"How many connections are needed in a full mesh network with 4 devices?",opts:["4","8","6","16"],a:2,exp:"Formula: n(n-1)/2 = 4×3/2 = 6 connections. For 5 devices: 5×4/2 = 10. For 6 devices: 6×5/2 = 15."},
+  {q:"Why does a mesh topology have no single point of failure?",opts:["It uses wireless connections only","All devices are connected to a central switch","If one connection fails, data can take an alternative route","Mesh networks use higher bandwidth"],a:2,exp:"In a full mesh, multiple paths exist between any two devices. If one route fails, data can be rerouted via an alternative path, so the network continues to function."},
+  {q:"In a bus topology, what does all data travel along?",opts:["A central switch","A dedicated cable per device","A single shared backbone cable","A wireless signal"],a:2,exp:"In bus topology, all devices share a single backbone cable. Data is broadcast along the cable and each device checks whether the data is addressed to it."},
+  {q:"What is the purpose of terminators in a bus topology?",opts:["They amplify the signal","They encrypt the data","They absorb the signal at each end to prevent reflection","They connect the cable to a switch"],a:2,exp:"Terminators are placed at each end of the bus cable to absorb the electrical signal, preventing it from reflecting back along the cable which would cause interference."},
+  {q:"Which topology uses the least amount of cable?",opts:["Star","Mesh","Bus","Ring"],a:2,exp:"Bus topology requires only a single shared cable (backbone) that all devices connect to, making it the cheapest in terms of cable required."},
+  {q:"What happens if the backbone cable breaks in a bus topology?",opts:["Only nearby devices are affected","The whole network fails","Traffic is rerouted","Performance decreases by 50%"],a:1,exp:"The backbone cable is the single point of failure in a bus topology. If it breaks, no devices can communicate as they all share this one cable."},
+  {q:"Which topology is most commonly used in modern office/school LANs?",opts:["Bus","Full mesh","Star","Ring"],a:2,exp:"Star topology is the standard for modern LANs. Each device connects to a central switch, giving good fault isolation, easy expansion, and reliable performance."},
+  {q:"Which topology is best suited to a critical system requiring high fault tolerance?",opts:["Bus","Star","Full mesh","Partial mesh"],a:2,exp:"Full mesh provides the highest fault tolerance — multiple alternative paths exist between any two devices, so no single failure can isolate devices."},
+  {q:"A network has 10 devices in a full mesh. How many connections are needed?",opts:["10","45","100","90"],a:1,exp:"n(n-1)/2 = 10×9/2 = 45 connections. This shows why full mesh is expensive for large networks."},
+  {q:"What is a partial mesh topology?",opts:["A topology where only some devices are interconnected directly","A mesh with half the devices","A star with extra cables","A bus with a switch"],a:0,exp:"In a partial mesh, only some devices are fully interconnected. Others may be connected through other devices. It balances cost and fault tolerance."},
+  {q:"What is the main disadvantage of bus topology that makes it uncommon today?",opts:["Too expensive","Requires a switch at every connection","Single point of failure (backbone cable); data collisions and poor performance with many devices","Cannot support Wi-Fi"],a:2,exp:"Bus topology's backbone cable is a single point of failure, all devices share the cable causing data collisions, performance degrades with more devices, and security is poor (all devices see all data)."}
 ];
-
-var WORKSHEET=[
-  {q:"Describe the star topology and explain how devices communicate in it.",marks:3,ms:"In a star topology, all devices are connected to a central switch or hub (1). When a device wants to communicate with another, it sends data to the central switch (1). The switch then forwards the data directly to the intended recipient device (1)."},
-  {q:"State TWO advantages and TWO disadvantages of a star topology.",marks:4,ms:"Advantages (any two): if one cable/device fails, only that device is affected — others continue (1); easy to add new devices (1); easy to manage from a central point (1); high performance (1). Disadvantages (any two): central switch is a single point of failure (1); requires more cabling than bus topology (1); cost of central switch (1)."},
-  {q:"Explain why mesh topology provides high fault tolerance.",marks:2,ms:"In mesh topology, each device is connected to multiple other devices (1). If one connection or device fails, data can be automatically rerouted via alternative paths — ensuring communication is maintained (1)."},
-  {q:"Calculate the number of connections needed for a full mesh network with 8 devices. Show your working.",marks:2,ms:"Formula: n(n-1)/2 (1). 8 × 7 / 2 = 28 connections (1)."},
-  {q:"A school IT manager is deciding between star and mesh topology for the school's new network. Which would you recommend and why?",marks:3,ms:"Star topology is recommended (1). Star is much cheaper and easier to install than mesh — it requires only one cable per device to the switch rather than connections to every device (1). For a school LAN, fault tolerance of individual devices is sufficient — the cost and complexity of mesh is not justified (1)."},
-  {q:"Explain why the internet uses mesh (partial) topology rather than star.",marks:2,ms:"The internet is a global network with billions of users — a central switch for star topology would be impossible at this scale and would be a catastrophic single point of failure (1). Mesh allows data to route around broken or overloaded connections, providing the resilience needed for a global network (1)."},
-  {q:"State ONE similarity and ONE difference between star and mesh topology.",marks:2,ms:"Similarity: both can connect multiple devices in a LAN (1). Difference: star has a central switch (single point of failure); mesh has multiple paths and no single point of failure (1)."},
-  {q:"Give ONE reason why mesh topology is used in military communications networks.",marks:1,ms:"Military networks require high resilience — if some connections are damaged or destroyed (e.g. in combat), mesh ensures data can still be routed via alternative paths, keeping communication alive."}
-];
-
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Network topology",d:"The arrangement of devices and connections in a network — the physical or logical layout."},
-  {w:"Star topology",d:"All devices connect to a central switch or hub. Most common LAN topology. Central switch is a single point of failure."},
-  {w:"Central switch",d:"The central device in a star network to which all other devices connect. If it fails, the whole network fails."},
-  {w:"Single point of failure",d:"A component whose failure brings down the whole network. The central switch in a star is a single point of failure."},
-  {w:"Mesh topology",d:"Devices connected to multiple others, providing multiple paths for data. Highly fault tolerant — no single point of failure."},
-  {w:"Full mesh",d:"Every device connected to every other. Requires n(n-1)/2 connections. Very expensive but maximally fault tolerant."},
-  {w:"Partial mesh",d:"Devices connected to several (but not all) others. Used in the internet backbone — balances fault tolerance and cost."},
-  {w:"Fault tolerant",d:"Able to continue operating even if part of the network fails. Mesh is highly fault tolerant; star is moderately so."},
-  {w:"n(n-1)/2",d:"Formula for the number of connections in a full mesh network, where n is the number of devices."},
-  {w:"Star vs mesh",d:"Star: cheaper, easier, has single point of failure. Mesh: expensive, complex, no single point of failure."},
-  {w:"Internet backbone",d:"The core high-capacity infrastructure of the internet. Uses partial mesh topology for resilience and redundancy."},
-  {w:"Redundancy",d:"Having multiple paths or backup connections so that if one fails, another can take over. Mesh provides redundancy."},
-  {w:"Node",d:"Any device connected in a network (computer, printer, switch, etc.)."},
-  {w:"Bus topology",d:"All devices connect to a single shared cable (the bus). Simple and cheap but a fault in the cable affects all devices. Less common today."},
-  {w:"Adding devices (star)",d:"In star topology, adding a device requires only connecting it to the central switch — no reconfiguration of other devices needed."}
+  {term:"Network topology",def:"The physical or logical arrangement of devices in a network. OCR J277 covers star, mesh, and bus topologies."},
+  {term:"Star topology",def:"All devices connect to a central switch. Most common LAN topology. Single point of failure: the central switch. Fault in one device does not affect others."},
+  {term:"Mesh topology",def:"Devices are directly connected to multiple (or all) other devices. Full mesh: no single point of failure; data can take alternative routes. Used in internet backbone."},
+  {term:"Full mesh",def:"Every device connects directly to every other device. Number of connections = n(n-1)/2 where n = number of devices. Highest fault tolerance; highest cost."},
+  {term:"Partial mesh",def:"Only some devices are directly interconnected. Balances fault tolerance and cost. More practical for large networks than full mesh."},
+  {term:"Bus topology",def:"All devices share a single backbone cable. Requires terminators at each end. Cheap to install but single point of failure (backbone). Data collisions possible."},
+  {term:"Backbone cable",def:"The single shared cable in a bus topology. All devices connect to it. If it breaks, the entire network fails."},
+  {term:"Terminator",def:"A device placed at each end of a bus topology cable. Absorbs the electrical signal to prevent it reflecting back and causing interference."},
+  {term:"Single point of failure",def:"A component whose failure causes the whole network to fail. Star: the switch. Bus: the backbone cable. Full mesh: none."},
+  {term:"Fault tolerance",def:"A network's ability to continue operating when one or more components fail. Full mesh: highest fault tolerance. Bus: lowest fault tolerance."},
+  {term:"n(n-1)/2",def:"Formula for the number of connections in a full mesh network, where n = number of devices. e.g. 5 devices → 5×4/2 = 10 connections."},
+  {term:"Star topology advantage",def:"Failure of one device does not affect others; easy to add devices; easy to diagnose faults; dedicated connection to switch gives good performance."},
+  {term:"Star topology disadvantage",def:"Central switch is a single point of failure; more cable needed than bus; cost of central switch."},
+  {term:"Bus topology advantage",def:"Less cable required; cheap and simple to install; no central device needed."},
+  {term:"Mesh topology advantage",def:"Highly fault tolerant — data can take alternative routes if a path fails; no single point of failure; suitable for critical infrastructure."}
 ];
-
-var TEST_MCQ=[
-  {q:"In a star topology, which device is the single point of failure?",opts:["Any end device","The central switch","The router","The server"],ans:1,exp:"If the central switch fails in a star network, all connected devices lose network connectivity."},
-  {q:"What is the main advantage of mesh over star topology?",opts:["Cheaper to install","Easier to manage","No single point of failure","Uses less cabling"],ans:2,exp:"Mesh provides multiple paths between devices. If one connection fails, data routes around it — there is no single point of failure."},
-  {q:"How many connections does a full mesh with 6 devices need?",opts:["6","12","15","30"],ans:2,exp:"n(n-1)/2 = 6×5/2 = 15 connections."},
-  {q:"Which topology is most common in school and office LANs?",opts:["Mesh","Ring","Bus","Star"],ans:3,exp:"Star topology is standard for modern LANs — it's easy to manage, add devices to, and is cost-effective."},
-  {q:"What happens when one NON-central cable breaks in a star network?",opts:["All devices lose connection","Only the device connected by that cable loses connection","The switch must be replaced","All devices reconnect automatically"],ans:1,exp:"Only the device on that cable is affected. Other devices have independent connections to the switch and are unaffected."}
-];
-
-var TEST_SA=[
-  {q:"State TWO advantages of a star topology.",marks:2,ms:"Any two: if one cable or device fails, only that device is affected (1); easy to add new devices (1); easy to manage from a central point (1); each device has a dedicated connection giving good performance (1)."},
-  {q:"Explain what is meant by a 'single point of failure' in a star network.",marks:2,ms:"A single point of failure is a component whose failure causes the whole network to stop working (1). In a star network, the central switch is the single point of failure — if it fails, all devices lose connectivity (1)."},
-  {q:"Give ONE advantage and ONE disadvantage of mesh topology.",marks:2,ms:"Advantage: no single point of failure — data can be rerouted via alternative paths if a connection fails (1). Disadvantage: very expensive and complex to install — requires many cable connections (1)."},
-  {q:"Why is mesh topology used for the internet but not for typical school networks?",marks:2,ms:"The internet needs high resilience — data must route around failures in a global network, so mesh is essential (1). School networks don't need this level of redundancy — star topology is much cheaper and easier to manage for a small LAN (1)."},
-  {q:"Calculate the number of connections needed for a full mesh of 7 devices.",marks:2,ms:"n(n-1)/2 = 7×6/2 = 21 connections."}
-];
-
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:90px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[2,2,1,2,3];
+var TEST_MCQ_LABELS=[['Any connected device','The backbone cable','The central switch','The router'],['Star','Bus','Full mesh','Ring'],['5','10','20','25'],['A switch','A router','A terminator','A NIC'],['Bus','Full mesh','Ring','Star']];
+var TEST_MCQ_EXPLAIN=['Star: single point of failure = central switch.','Full mesh: no single point of failure.','5×4/2 = 10 connections.','Terminators absorb signal to prevent reflection.','Star topology is standard in modern LANs.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['Star advantage over bus?','Why mesh in internet backbone?','Bus backbone breaks?','Mesh disadvantage?','Full mesh of 4 devices = connections?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

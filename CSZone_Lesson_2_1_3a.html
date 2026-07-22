@@ -1,194 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>2.1.3a Linear Search | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1.3a Bubble Sort — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:6px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .pseudocode-box{background:#0f172a;border-radius:12px;padding:20px 24px;margin:16px 0;font-family:'Courier New',monospace;font-size:14px;color:#e2e8f0;line-height:1.8;}
+    .pseudocode-box .kw{color:#a78bfa;}
+    .pseudocode-box .cm{color:#64748b;font-style:italic;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166634;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .pass-row{display:flex;gap:6px;margin-bottom:4px;align-items:center;}
+    .pass-label{font-size:12px;font-weight:700;color:#7c3aed;min-width:52px;}
+    .sort-cell{min-width:38px;padding:8px 6px;border-radius:8px;text-align:center;font-weight:700;font-size:15px;background:#f5f3ff;border:1.5px solid #e9d5ff;}
+    .sort-cell.swapped{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
+    .sort-cell.placed{background:#f0fdf4;border-color:#bbf7d0;color:#166534;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:220px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .paywall-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:999;}
+    .paywall-card{background:#fff;border-radius:24px;padding:40px 36px;text-align:center;max-width:380px;width:90%;box-shadow:0 24px 80px rgba(0,0,0,0.2);}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;margin-bottom:12px;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 2</div>
-    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
-    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
-    <a href="/ocr-j277/2-1-3a/" class="sl active">2.1.3a Linear Search</a>
-    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
-    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
-    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
-    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
-    <div class="sst" style="color:#818cf8">2.2 Programming</div>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <div class="sst" style="color:#818cf8">2.3–2.5</div>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">2.1 Algorithms</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">2.1.3a Bubble Sort</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.1 Algorithms</div>
-  <div class="lesson-title">2.1.3a — Linear Search</div>
-  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~18 min</div>
+  <div class="lesson-badge">🔢 Component 2 · 2.1 Algorithms</div>
+  <div class="lesson-title">2.1.3a Bubble Sort</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~12 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>What is a Linear Search?</h2>
-    <p>A <strong>linear search</strong> (also called sequential search) checks each item in a list one by one, from the start, until the target is found or the end of the list is reached.</p>
-    <div class="kp"><strong>Key fact:</strong> Works on UNSORTED data. No requirement for the list to be in order.</div>
-  </div>
-  <div class="ns">
-    <h2>How Linear Search Works</h2>
-    <div class="ic b">
-      <h4>Step-by-step:</h4>
-      <ol style="padding-left:20px;color:#94a3b8;font-size:13px">
-        <li>Start at the first element (index 0)</li>
-        <li>Compare the current element with the target</li>
-        <li>If they match → return the index (item found)</li>
-        <li>If not → move to the next element</li>
-        <li>Repeat until found or end of list reached</li>
-        <li>If end reached without finding → return -1 (not found)</li>
-      </ol>
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>What Is Bubble Sort?</h2>
+    <p>Bubble sort is a simple sorting algorithm that repeatedly steps through the list, <strong>compares adjacent elements</strong>, and <strong>swaps them if they are in the wrong order</strong>. Larger values gradually "bubble up" to the end of the list with each pass.</p>
+    <p>After each complete pass, the <strong>largest unsorted element is guaranteed to be in its correct final position</strong>.</p>
+
+    <h2>How Bubble Sort Works</h2>
+    <p>For list: <strong>[5, 3, 8, 1, 4]</strong> (sort ascending)</p>
+
+    <div style="margin:20px 0;">
+      <div style="font-size:13px;font-weight:700;color:#7c3aed;margin-bottom:8px;">Pass 1 — largest value bubbles to end:</div>
+      <div class="pass-row"><span class="pass-label">Start:</span><div class="sort-cell">5</div><div class="sort-cell">3</div><div class="sort-cell">8</div><div class="sort-cell">1</div><div class="sort-cell">4</div></div>
+      <div class="pass-row"><span class="pass-label">Compare 5,3 → swap:</span><div class="sort-cell swapped">3</div><div class="sort-cell swapped">5</div><div class="sort-cell">8</div><div class="sort-cell">1</div><div class="sort-cell">4</div></div>
+      <div class="pass-row"><span class="pass-label">Compare 5,8 → ok:</span><div class="sort-cell">3</div><div class="sort-cell">5</div><div class="sort-cell">8</div><div class="sort-cell">1</div><div class="sort-cell">4</div></div>
+      <div class="pass-row"><span class="pass-label">Compare 8,1 → swap:</span><div class="sort-cell">3</div><div class="sort-cell">5</div><div class="sort-cell swapped">1</div><div class="sort-cell swapped">8</div><div class="sort-cell">4</div></div>
+      <div class="pass-row"><span class="pass-label">Compare 8,4 → swap:</span><div class="sort-cell">3</div><div class="sort-cell">5</div><div class="sort-cell">1</div><div class="sort-cell swapped">4</div><div class="sort-cell placed">8</div></div>
+
+      <div style="font-size:13px;font-weight:700;color:#7c3aed;margin:14px 0 8px;">Pass 2:</div>
+      <div class="pass-row"><span class="pass-label">Compare 3,5 → ok:</span><div class="sort-cell">3</div><div class="sort-cell">5</div><div class="sort-cell">1</div><div class="sort-cell">4</div><div class="sort-cell placed">8</div></div>
+      <div class="pass-row"><span class="pass-label">Compare 5,1 → swap:</span><div class="sort-cell">3</div><div class="sort-cell swapped">1</div><div class="sort-cell swapped">5</div><div class="sort-cell">4</div><div class="sort-cell placed">8</div></div>
+      <div class="pass-row"><span class="pass-label">Compare 5,4 → swap:</span><div class="sort-cell">3</div><div class="sort-cell">1</div><div class="sort-cell swapped">4</div><div class="sort-cell placed">5</div><div class="sort-cell placed">8</div></div>
+
+      <div style="font-size:13px;font-weight:700;color:#7c3aed;margin:14px 0 8px;">Pass 3:</div>
+      <div class="pass-row"><span class="pass-label">Compare 3,1 → swap:</span><div class="sort-cell swapped">1</div><div class="sort-cell swapped">3</div><div class="sort-cell">4</div><div class="sort-cell placed">5</div><div class="sort-cell placed">8</div></div>
+      <div class="pass-row"><span class="pass-label">Compare 3,4 → ok:</span><div class="sort-cell">1</div><div class="sort-cell">3</div><div class="sort-cell placed">4</div><div class="sort-cell placed">5</div><div class="sort-cell placed">8</div></div>
+
+      <div style="font-size:13px;font-weight:700;color:#7c3aed;margin:14px 0 8px;">Pass 4 — no swaps → SORTED:</div>
+      <div class="pass-row"><span class="pass-label">Final:</span><div class="sort-cell placed">1</div><div class="sort-cell placed">3</div><div class="sort-cell placed">4</div><div class="sort-cell placed">5</div><div class="sort-cell placed">8</div></div>
+      <div style="margin-top:8px;"><span style="font-size:12px;color:#64748b;font-weight:600;">🟨 Yellow = swapped this step &nbsp; 🟩 Green = final position</span></div>
     </div>
-    <div class="ic b">
-      <h4>OCR Pseudocode:</h4>
-      <div class="code">function linearSearch(list, target)
-    for i = 0 to len(list) - 1
-        if list[i] == target then
-            return i
-        endif
-    next i
-    return -1
-endfunction</div>
-    </div>
-    <div class="ic b">
-      <h4>Example trace — searching for 7 in [3, 1, 7, 9, 2]:</h4>
-      <p style="font-size:13px;color:#94a3b8">i=0: list[0]=3, 3≠7 → continue<br>i=1: list[1]=1, 1≠7 → continue<br>i=2: list[2]=7, 7==7 → return 2 (found at index 2)</p>
-    </div>
-  </div>
-  <div class="ns">
-    <h2>Advantages and Disadvantages</h2>
-    <table style="width:100%;border-collapse:collapse;font-size:13px">
-      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Advantages</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Disadvantages</th></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Works on unsorted lists</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Slow for large lists — checks every item</td></tr>
-      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Simple to understand and implement</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Inefficient: O(n) — worst case checks all n items</td></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Works on any data type</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Not suitable for very large datasets</td></tr>
+
+    <h2>Pseudocode — Basic Bubble Sort</h2>
+    <div class="pseudocode-box"><span class="cm">// Bubble sort — ascending order</span>
+n = length(list)
+<span class="kw">FOR</span> pass = 1 <span class="kw">TO</span> n - 1
+  <span class="kw">FOR</span> i = 0 <span class="kw">TO</span> n - 1 - pass
+    <span class="kw">IF</span> list[i] &gt; list[i+1] <span class="kw">THEN</span>
+      temp = list[i]
+      list[i] = list[i+1]
+      list[i+1] = temp
+    <span class="kw">END IF</span>
+  <span class="kw">END FOR</span>
+<span class="kw">END FOR</span></div>
+
+    <h2>Pseudocode — Optimised Bubble Sort (with early exit)</h2>
+    <p>The optimised version adds a <strong>swap flag</strong>. If a full pass makes no swaps, the list is already sorted — exit early.</p>
+    <div class="pseudocode-box"><span class="cm">// Optimised bubble sort — exits early if already sorted</span>
+n = length(list)
+<span class="kw">FOR</span> pass = 1 <span class="kw">TO</span> n - 1
+  swapped = <span class="kw">FALSE</span>
+  <span class="kw">FOR</span> i = 0 <span class="kw">TO</span> n - 1 - pass
+    <span class="kw">IF</span> list[i] &gt; list[i+1] <span class="kw">THEN</span>
+      temp = list[i]
+      list[i] = list[i+1]
+      list[i+1] = temp
+      swapped = <span class="kw">TRUE</span>
+    <span class="kw">END IF</span>
+  <span class="kw">END FOR</span>
+  <span class="kw">IF</span> swapped == <span class="kw">FALSE</span> <span class="kw">THEN</span>
+    <span class="kw">RETURN</span> list  <span class="cm">// Already sorted — exit early</span>
+  <span class="kw">END IF</span>
+<span class="kw">END FOR</span></div>
+
+    <h2>Bubble Sort — Key Facts</h2>
+    <table>
+      <thead><tr><th>Property</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Number of passes (worst case)</td><td>n − 1 (where n = number of items)</td></tr>
+        <tr><td>Comparisons per pass</td><td>Decreases each pass (n−pass comparisons in pass #pass)</td></tr>
+        <tr><td>Time complexity (worst)</td><td>O(n²)</td></tr>
+        <tr><td>Time complexity (best — optimised)</td><td>O(n) — already sorted, detected in 1 pass</td></tr>
+        <tr><td>Works on unsorted data?</td><td>Yes — no presort needed</td></tr>
+        <tr><td>In-place sort?</td><td>Yes — sorts within the original array</td></tr>
+      </tbody>
     </table>
-    <div class="kp"><strong>Complexity:</strong> Linear search is O(n) — time taken grows linearly with list size. Worst case: n comparisons (item at end or not present).</div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
+
+    <h2>Advantages and Disadvantages</h2>
+    <table>
+      <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+      <tbody>
+        <tr><td>Simple to understand and implement</td><td>Slow for large lists — O(n²) worst case</td></tr>
+        <tr><td>Can detect already-sorted lists quickly (optimised version)</td><td>Inefficient compared to merge sort for large data</td></tr>
+        <tr><td>Works on unsorted data — no prerequisite</td><td>Many swaps needed even for near-sorted data</td></tr>
+        <tr><td>In-place — no extra memory needed</td><td>Not suitable for large datasets</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> In a bubble sort trace table, show every comparison and every swap. After each complete pass, the largest unsorted element moves to its correct final position — cross off the sorted elements. Count the number of swaps in each pass. For the optimised version, mention the "swap flag" — if no swaps occur in a pass, the algorithm terminates early. The inner loop runs n−1−pass times in pass number "pass".
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Saying linear search requires sorted data — it DOES NOT</li>
-        <li>Saying it always checks every item — it stops as soon as the item is found</li>
-        <li>Forgetting to handle the 'not found' case — return -1</li>
+        <li>Not showing every comparison in a trace table — you must show ALL comparisons, even when no swap occurs</li>
+        <li>Saying the largest value goes to position 0 — it goes to the END (bubbles up to the right)</li>
+        <li>Forgetting the inner loop shortens by 1 each pass — after pass 1, index n-1 is in place</li>
+        <li>Confusing the swap: always use a temp variable — you cannot write list[i]=list[i+1]; list[i+1]=list[i]</li>
+        <li>Saying bubble sort is always O(n²) — the optimised version is O(n) best case for an already-sorted list</li>
       </ul>
     </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/2-1-2b/" class="nb">← 2.1.2b Pseudocode</a>
-  <a href="/ocr-j277/2-1-3b/" class="nb n">2.1.3b Binary Search →</a>
-</div>
-</div>
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
 </div>
 
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_2.1.3a_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 2.1.3a Bubble Sort</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">Describe how bubble sort works.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Adjacent elements are compared [1] and swapped if they are in the wrong order; this is repeated until the list is fully sorted [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">Perform a bubble sort on the list [7, 2, 9, 4, 1]. Show each pass in full.</span><span class="ws-q-marks">[5]</span></div><textarea class="ws-textarea" style="min-height:160px;" id="ws-ans-2" placeholder="Show every comparison and swap for each pass..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Pass 1: [7,2,9,4,1]→swap 7,2→[2,7,9,4,1]; 7&lt;9 no swap; swap 9,4→[2,7,4,9,1]; swap 9,1→[2,7,4,1,9] [1]. Pass 2: 2&lt;7 no swap; swap 7,4→[2,4,7,1,9]; swap 7,1→[2,4,1,7,9] [1]. Pass 3: 2&lt;4 no swap; swap 4,1→[2,1,4,7,9] [1]. Pass 4: swap 2,1→[1,2,4,7,9] [1]. Pass 5: no swaps, done [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">After the first pass of bubble sort on a list of n items, where is the largest value?</span><span class="ws-q-marks">[1]</span></div><textarea class="ws-textarea" id="ws-ans-3" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">At the last position (index n−1) / at the end of the list [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">What is the worst-case time complexity of bubble sort? Explain when this occurs.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">O(n²) [1] — occurs when the list is sorted in reverse order, requiring the maximum number of comparisons and swaps [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Describe the optimisation that can be added to bubble sort to improve its best-case performance.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-5" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Add a swap flag (Boolean variable) set to False at the start of each pass [1]. If a swap occurs, set it to True [1]. After each pass, if the flag is still False (no swaps occurred), the list is already sorted — exit early [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">Why must a temporary variable be used when swapping two elements?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-6" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Without a temp variable, one of the values would be overwritten and lost [1]. E.g. if list[i]=list[i+1] is done first, the original value of list[i] is gone and cannot be assigned to list[i+1] [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">State two advantages and two disadvantages of bubble sort.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Advantages (any 2): simple to understand/implement [1]; can exit early when sorted (optimised) [1]; in-place — no extra memory [1]. Disadvantages (any 2): slow for large lists — O(n²) [1]; inefficient compared to merge sort [1]; many swaps even for near-sorted data [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">For a list of 5 items, how many comparisons does the inner loop make in pass 1? In pass 2?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-8" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Pass 1: 4 comparisons (n−1 = 5−1) [1]; Pass 2: 3 comparisons (n−2) [1]. The inner loop shortens by 1 each pass because the last element is already sorted.</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 10</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 2.1.3a Bubble Sort</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What does bubble sort compare during each pass?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Every element with every other element</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> Adjacent elements</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> The first element with all others</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> The middle element with each end</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">After pass 1 of bubble sort on [6,3,8,2], what does the list look like?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> [2, 3, 6, 8]</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> [3, 6, 2, 8]</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> [3, 6, 8, 2]</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> [6, 3, 2, 8]</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">What is the worst-case time complexity of bubble sort?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> O(n)</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> O(log n)</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> O(n²)</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> O(n log n)</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">What variable is used in the optimised bubble sort to allow early exit?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> counter</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> temp</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> swapped (flag)</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> mid</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">In bubble sort, why is a temp variable needed for a swap?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> To save memory</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> To speed up the algorithm</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> To prevent overwriting and losing a value during the swap</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> Because OCR requires it in pseudocode</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">Describe how bubble sort sorts a list in ascending order.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>Repeatedly compare adjacent elements [1]; swap them if the left one is greater [1]; repeat passes until no swaps occur [1]. Award 1-2 marks for clear description.</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">After pass 1 of bubble sort, where is the largest element? Explain why.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>At the end/last index [1] — the largest element is always larger than any adjacent element, so it is swapped all the way to the end during pass 1 [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">Explain what "in-place sorting" means and give an example of whether bubble sort is in-place.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>In-place sorting means the algorithm sorts within the original data structure without creating a new copy [1]. Bubble sort IS in-place — it only uses a single temp variable for swaps [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">For [4, 1, 7, 3, 9], how many comparisons are made in pass 1?</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>4 comparisons [1] — the inner loop runs n−1 times in pass 1 (where n=5, so 5−1=4). Pairs compared: (4,1), (4,7), (7,3), (7,9). Note: after swap (4,1)→(1,4), then compare 4 and 7 etc. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">State one advantage and one disadvantage of bubble sort compared to merge sort.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>Advantage: bubble sort is simpler to understand and implement [1]. Disadvantage: bubble sort is much slower — O(n²) vs O(n log n) for merge sort, making it unsuitable for large datasets [1].</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/2-1-2b/" class="bottom-nav-btn">← 2.1.2b Binary Search</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">2.1 Algorithms</span>
+  <a href="/ocr-j277/2-1-3b/" class="bottom-nav-btn next-btn">2.1.3b Merge Sort →</a>
+</div>
 <script>
-var LESSON_ID='2-1-3a';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='2-1-3a';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+function checkAccess(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;
+    if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;
+    var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};
+    fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h})
+      .then(function(r){return r.json();})
+      .then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});
+  });
+}
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    checkAccess();
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What does a linear search do?",opts:["Jumps to the middle of a list","Checks each element one by one from start to finish","Sorts the list first then searches","Only works on sorted lists"],ans:1,exp:"A linear search goes through each element in order, comparing each to the target until it finds it or reaches the end of the list."},
-  {q:"Does a linear search require the list to be sorted?",opts:["Yes — always","No — it works on unsorted lists","Only if the list has numbers","Only for lists over 100 items"],ans:1,exp:"A key advantage of linear search is that it works on UNSORTED data. Binary search requires sorting; linear search does not."},
-  {q:"What is returned if the target is NOT found in a linear search?",opts:["0","The last index","The length of the list","-1 (not found)"],ans:3,exp:"By convention, -1 is returned to indicate the target was not found. This is unambiguous because -1 is not a valid array index."},
-  {q:"Searching for 5 in [2, 8, 5, 1, 9]. How many comparisons does a linear search make?",opts:["1","5","3","2"],ans:2,exp:"i=0: 2≠5; i=1: 8≠5; i=2: 5==5 → found. 3 comparisons (checking index 0, 1, 2)."},
-  {q:"What is the worst-case number of comparisons for a linear search on a list of n items?",opts:["1","log n","n/2","n"],ans:3,exp:"Worst case: the target is at the last position or not in the list at all. The search must check all n items — so n comparisons."},
-  {q:"Which is an advantage of linear search over binary search?",opts:["It is faster","It works on unsorted lists","It requires less code","It uses less memory"],ans:1,exp:"Binary search requires the list to be sorted first. Linear search works on any list regardless of order — a significant practical advantage."},
-  {q:"A linear search on a list of 1000 items must find the last item. How many comparisons are needed?",opts:["1","500","10","1000"],ans:3,exp:"Worst case for linear search is n comparisons — the algorithm checks every item. With 1000 items, 1000 comparisons are made."},
-  {q:"What does linear search return when it finds the target?",opts:["true","The target value","The index (position) of the target","The number of comparisons made"],ans:2,exp:"When the target is found, linear search returns its INDEX (position) in the list — e.g., return 2 means the item is at index 2 (third position)."},
-  {q:"Why is linear search described as O(n)?",opts:["It always takes n seconds","The time taken grows linearly with the size of the list","It uses n bytes of memory","It makes n^2 comparisons"],ans:1,exp:"O(n) means 'order n' — the time taken grows proportionally with the number of items. Double the list = double the time in the worst case."},
-  {q:"Linear search on [7, 3, 9, 1, 5] looking for 9. At which index is it found?",opts:["0","1","2","3"],ans:2,exp:"i=0: 7≠9; i=1: 3≠9; i=2: 9==9 → return 2. Found at index 2."},
-  {q:"What happens after each comparison in a linear search if the target is NOT found?",opts:["The search stops","The list is sorted","The search moves to the next element","The target is added to the list"],ans:2,exp:"If the current element doesn't match the target, the search increments the index and checks the next element — continuing until found or end of list."},
-  {q:"Which of these scenarios is best suited to linear search?",opts:["Searching a sorted database of 1 million records","Searching a small unsorted list of 20 names","Searching a binary tree","Searching a hash table"],ans:1,exp:"Linear search is ideal for small, unsorted datasets. For large sorted datasets, binary search is much more efficient."},
-  {q:"In pseudocode, what does 'return -1' at the end of a linear search indicate?",opts:["The list is empty","The target was found at position -1","The target was not found in the list","An error occurred"],ans:2,exp:"'return -1' signals that the loop completed without finding the target — a convention for 'not found'. -1 is unambiguous as no valid array index is negative."},
-  {q:"Linear search on list [10, 20, 30, 40, 50]. Searching for 25. How many comparisons?",opts:["3","5","2","1"],ans:1,exp:"25 is not in the list. Linear search checks all 5 elements (10, 20, 30, 40, 50) before concluding it is not present — 5 comparisons. Returns -1."},
-  {q:"What is the BEST case number of comparisons for a linear search?",opts:["n","n/2","1","log n"],ans:2,exp:"Best case: the target is the FIRST element. Only 1 comparison is needed. Best case = 1. Worst case = n. Average case = n/2."}
+  {q:"Bubble sort works by comparing:",opts:["The first element with all others","Each element with the middle element","Adjacent elements and swapping if out of order","Every element with every other element"],a:2,exp:"Bubble sort compares adjacent (next-door) elements. If the left one is greater than the right one (for ascending sort), they are swapped."},
+  {q:"After pass 1 of bubble sort, which element is guaranteed to be in its final position?",opts:["The smallest element","The middle element","The element at index 0","The largest element"],a:3,exp:"After pass 1, the largest element has 'bubbled up' to the last position (end of list) and is in its final sorted position."},
+  {q:"What is the worst-case time complexity of bubble sort?",opts:["O(n)","O(log n)","O(n log n)","O(n²)"],a:3,exp:"Bubble sort is O(n²) in the worst case. For a list of n items, the outer loop runs n-1 times and the inner loop runs up to n-1 times, giving approximately n² comparisons."},
+  {q:"Which variable is used in the optimised bubble sort to enable early termination?",opts:["count","mid","swapped (Boolean flag)","temp"],a:2,exp:"A Boolean 'swapped' flag is set to False at the start of each pass. If a pass completes without any swaps, swapped remains False and the algorithm exits — the list is sorted."},
+  {q:"Why is a temp variable needed when swapping two elements?",opts:["To reduce memory usage","To store the index","To prevent the overwritten value from being lost","OCR pseudocode requires it"],a:2,exp:"Without temp: if list[i] = list[i+1] is done first, the original value of list[i] is permanently overwritten. temp = list[i] saves it before it's replaced."},
+  {q:"For a list of 6 items, how many comparisons are made in pass 2 of bubble sort?",opts:["6","5","4","3"],a:2,exp:"In pass 2, the inner loop runs n-1-pass = 6-1-2 = 3... wait: pass 1 = n-1=5, pass 2 = n-2=4 comparisons. Inner loop: FOR i=0 TO n-1-pass. With pass=2, n-1-pass = 6-1-2 = 3, so indices 0 to 3 = 4 comparisons."},
+  {q:"Which statement about bubble sort is true?",opts:["It requires the list to be sorted first","It only works on numbers","It is an in-place sorting algorithm","It is faster than merge sort for large lists"],a:2,exp:"Bubble sort is in-place — it sorts within the original array using only a small constant amount of extra memory (just temp). It does not create a new array."},
+  {q:"Bubble sort on [9,1,5,3]. After pass 1, how many swaps were made?",opts:["1","2","3","4"],a:2,exp:"Compare 9,1 → swap (3 times counting: 9>1 swap→[1,9,5,3]; 9>5 swap→[1,5,9,3]; 9>3 swap→[1,5,3,9]). 3 swaps total in pass 1."},
+  {q:"What is the best-case time complexity of the optimised bubble sort?",opts:["O(n²)","O(n log n)","O(n) — already sorted, detected in 1 pass","O(1)"],a:2,exp:"With the swap flag optimisation, if the list is already sorted, pass 1 makes no swaps, the flag stays False, and the algorithm exits after just n-1 comparisons = O(n)."},
+  {q:"Which of these is a disadvantage of bubble sort?",opts:["It is difficult to implement","It requires more memory than merge sort","It is slow for large lists — O(n²)","It cannot sort strings, only numbers"],a:2,exp:"The main disadvantage is inefficiency for large lists. O(n²) means a list of 1000 items could need ~500,000 comparisons. Merge sort with O(n log n) would need only ~10,000."},
+  {q:"In bubble sort pseudocode, the inner loop runs FROM 0 TO n-1-pass. Why does it subtract 'pass'?",opts:["To avoid index errors","Because the last 'pass' elements are already in final position","To speed up the algorithm","So the loop doesn't run backwards"],a:1,exp:"After each pass, the last 'pass' elements are in their final correct positions and don't need to be compared again. Subtracting pass prevents unnecessary work."},
+  {q:"A list [2,4,6,8,10] is run through optimised bubble sort. How many passes occur?",opts:["4","0","1","5"],a:2,exp:"Pass 1 compares all adjacent pairs: 2<4 (no swap), 4<6 (no swap), 6<8 (no swap), 8<10 (no swap). No swaps occurred, so swapped=False and the algorithm exits after just 1 pass."},
+  {q:"What happens to the inner loop length in each successive pass of bubble sort?",opts:["It stays the same","It increases by 1","It decreases by 1","It halves"],a:2,exp:"Each pass places one more element in its final position. The inner loop shortens by 1 each pass to avoid re-checking already-sorted elements at the end."},
+  {q:"Bubble sort is described as a 'comparison-based sort'. What does this mean?",opts:["It only sorts numbers","Elements are moved based on comparing them to each other","It uses the middle element as a comparison point","It compares the list to a second sorted list"],a:1,exp:"Comparison-based sort means the algorithm determines the correct order by comparing elements to each other using > or < comparisons, then swapping or moving accordingly."},
+  {q:"Which of these correctly describes when a swap occurs in ascending bubble sort?",opts:["When list[i] < list[i+1]","When list[i] == list[i+1]","When list[i] > list[i+1]","When list[i] >= list[i+1]"],a:2,exp:"For ascending order: swap when list[i] > list[i+1] — the left element is larger than the right, so they're in the wrong order and must be swapped."}
 ];
-var WORKSHEET=[
-  {q:"Describe how a linear search algorithm works.",marks:3,ms:"Start at the first element (index 0) (1). Compare each element with the target in turn (1). If the element matches the target, return its index; if the end is reached without finding it, return -1 (not found) (1)."},
-  {q:"Trace a linear search for the value 4 in the list [7, 2, 4, 9, 1]. Show each comparison.",marks:3,ms:"i=0: 7≠4 (1); i=1: 2≠4 (1); i=2: 4==4 → return 2 (found at index 2) (1)."},
-  {q:"State TWO advantages and ONE disadvantage of linear search.",marks:3,ms:"Advantages (any two): works on unsorted lists (1); simple to implement (1); works on any data type (1). Disadvantage: slow/inefficient for large lists — O(n) worst case checks every item (1)."},
-  {q:"Write pseudocode for a linear search function that searches for a target in a list and returns its index or -1.",marks:4,ms:"function linearSearch(list, target) (1); for i = 0 to len(list)-1 (1); if list[i] == target then return i; endif (1); next i; return -1 (1); endfunction."},
-  {q:"A list has 500 items. What is the worst-case number of comparisons for a linear search?",marks:1,ms:"500 — linear search must check every item in the worst case (item at end or not present)."},
-  {q:"Explain why linear search is described as O(n).",marks:2,ms:"O(n) means the time taken grows linearly with the size of the input (1). If the list doubles in size, the maximum number of comparisons doubles — so time scales proportionally with n (1)."},
-  {q:"A student says 'linear search is always slower than binary search'. Is this correct? Explain.",marks:2,ms:"Not always — for unsorted lists, linear search is often the only option as binary search requires a sorted list (1). For very small lists, the difference is negligible (1). However, for large sorted lists, binary search is significantly faster."},
-  {q:"A list of students [Alice, Bob, Charlie, Dave, Eve] is searched for 'Eve'. How many comparisons does a linear search make?",marks:1,ms:"5 — Eve is the last element, so the search checks Alice (1), Bob (2), Charlie (3), Dave (4), Eve (5)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Linear search",d:"A search algorithm that checks each element sequentially from start to finish until the target is found or the list ends."},
-  {w:"Sequential search",d:"Another name for linear search."},
-  {w:"Target",d:"The value being searched for in the list."},
-  {w:"Index",d:"The position of an element in a list. In OCR pseudocode, lists are zero-indexed (first element = index 0)."},
-  {w:"Worst case",d:"The maximum number of operations needed — for linear search: n comparisons (target at end or not found)."},
-  {w:"Best case",d:"The minimum number of operations — for linear search: 1 comparison (target at first position)."},
-  {w:"Average case",d:"The expected number of operations on average — for linear search: n/2 comparisons."},
-  {w:"O(n)",d:"Big O notation meaning time grows linearly with input size n. Linear search has O(n) time complexity."},
-  {w:"Not found",d:"When the target is absent from the list — linear search returns -1 by convention."},
-  {w:"Unsorted list",d:"A list in no particular order. Linear search works on unsorted lists; binary search requires sorted."},
-  {w:"Comparison",d:"Checking whether the current element equals the target — the fundamental operation of a search."},
-  {w:"Iteration",d:"The process of going through each element — linear search uses iteration via a loop."},
-  {w:"Time complexity",d:"A measure of how an algorithm's run time grows with input size, expressed in Big O notation."},
-  {w:"Search algorithm",d:"An algorithm for finding a specific item in a data structure."},
-  {w:"Return value",d:"What a function sends back — linear search returns the index if found, or -1 if not."}
+  {term:"Bubble sort",def:"A simple sorting algorithm that repeatedly compares adjacent elements and swaps them if they are in the wrong order. Larger values 'bubble up' to the end of the list with each pass."},
+  {term:"Pass (bubble sort)",def:"One complete iteration through the list, comparing all adjacent pairs. After each pass, at least one more element is in its final correct position."},
+  {term:"Adjacent elements",def:"Elements that are next to each other in the list (at indices i and i+1). Bubble sort only ever compares and swaps adjacent elements."},
+  {term:"Swap",def:"Exchanging the positions of two elements. In bubble sort, uses a temp variable: temp=list[i]; list[i]=list[i+1]; list[i+1]=temp."},
+  {term:"Temp variable",def:"A temporary variable used to hold one value during a swap, preventing it from being overwritten and lost."},
+  {term:"Swap flag (optimised bubble sort)",def:"A Boolean variable set to False at the start of each pass. If any swap occurs, it's set to True. If a pass ends with False, the list is already sorted and the algorithm exits early."},
+  {term:"O(n²)",def:"The worst-case time complexity of bubble sort. For n items, approximately n² comparisons may be needed — slow for large lists."},
+  {term:"O(n) best case",def:"The best-case complexity of optimised bubble sort. If the list is already sorted, only one pass (n-1 comparisons) is needed to confirm this."},
+  {term:"In-place sorting",def:"Sorting within the original data structure without creating a copy. Bubble sort is in-place — it uses only a tiny amount of extra memory (temp variable)."},
+  {term:"Inner loop shortening",def:"In each successive pass of bubble sort, the inner loop runs one fewer time (n-1-pass comparisons) because the last 'pass' elements are already in their correct final positions."}
 ];
-var TEST_MCQ=[
-  {q:"A linear search checks items:",opts:["In random order","From the middle outward","One by one from start to finish","Only in sorted lists"],ans:2,exp:"Linear search is sequential — it checks each item in order from index 0 to the last element."},
-  {q:"Linear search on [5, 3, 8, 1, 6] for value 8. How many comparisons?",opts:["1","3","5","8"],ans:1,exp:"i=0: 5≠8; i=1: 3≠8; i=2: 8==8 → found. 3 comparisons."},
-  {q:"What is returned if the target is NOT in the list?",opts:["0","false","null","-1"],ans:3,exp:"-1 is the standard return value indicating 'not found'. It is unambiguous as no valid index is negative."},
-  {q:"Which is an advantage of linear search?",opts:["It is the fastest search algorithm","It works on unsorted lists","It uses binary logic","It requires less memory than other searches"],ans:1,exp:"Linear search's main advantage is that it works on ANY list regardless of order — no sorting required."},
-  {q:"What is the worst-case time complexity of linear search?",opts:["O(1)","O(log n)","O(n)","O(n^2)"],ans:2,exp:"O(n) — in the worst case, linear search checks all n items (target at end or not found)."}
-];
-var TEST_SA=[
-  {q:"Describe the linear search algorithm in steps.",marks:3,ms:"Start at index 0 (1). Compare each element with the target in turn (1). Return the index if found; return -1 if end reached without finding the target (1)."},
-  {q:"Trace a linear search for 9 in [4, 7, 9, 2, 6]. State how many comparisons are needed.",marks:3,ms:"i=0: 4≠9 (1); i=1: 7≠9 (1); i=2: 9==9 → return index 2 (1). 3 comparisons."},
-  {q:"Give ONE advantage and ONE disadvantage of linear search.",marks:2,ms:"Advantage: works on unsorted lists — no need to sort first (1). Disadvantage: slow for large lists — worst case checks every element — O(n) (1)."},
-  {q:"Write pseudocode for a linear search for target in a list.",marks:4,ms:"function linearSearch(list, target) (1); for i = 0 to len(list)-1 (1); if list[i] == target then return i; endif (1); next i; return -1; endfunction (1)."},
-  {q:"A list has 1,000 items. What is the worst-case number of comparisons for linear search?",marks:1,ms:"1,000 — in the worst case (item at end or not present), every element must be compared."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});document.getElementById('fc-progress').textContent='Card 1 of '+KEY_TERMS.length;showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,1,2,2,2];
+var TEST_MCQ_LABELS=[['Every element with every other element','Adjacent elements','The first element with all others','The middle element with each end'],['[2, 3, 6, 8]','[3, 6, 2, 8]','[3, 6, 8, 2]','[6, 3, 2, 8]'],['O(n)','O(log n)','O(n²)','O(n log n)'],['counter','temp','swapped (flag)','mid'],['To save memory','To speed up the algorithm','To prevent overwriting and losing a value during the swap','Because OCR requires it in pseudocode']];
+var TEST_MCQ_EXPLAIN=['Bubble sort compares adjacent (neighbouring) elements — those at index i and i+1.','[6,3,8,2]: compare 6,3 → swap→[3,6,8,2]; compare 6,8 → ok; compare 8,2 → swap→[3,6,2,8]. Result: [3,6,2,8].','O(n²) — two nested loops, each running up to n times.','The "swapped" Boolean flag — if no swaps in a pass, exit early (list is sorted).','Without temp: list[i]=list[i+1] overwrites the original list[i] value before it can be copied to list[i+1].'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['How bubble sort works?','Where is largest after pass 1?','What is in-place sorting?','Comparisons in pass 1 of [4,1,7,3,9]?','Bubble sort vs merge sort?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

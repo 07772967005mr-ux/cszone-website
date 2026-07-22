@@ -1,198 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>2.4.1a Logic Gates | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4.1a Boolean Logic — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .free-badge{background:#dcfce7;color:#166534;border:1.5px solid #bbf7d0;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:700;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:6px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:center;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;text-align:center;}
+    .notes-content td.label{text-align:left;font-weight:700;color:#0f172a;background:#fafafe;}
+    .tt-1{background:#f0fdf4;color:#166534;font-weight:700;}
+    .tt-0{background:#fff1f2;color:#9f1239;font-weight:700;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:17px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:180px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+  </style>
 </head>
 <body>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst" style="color:#818cf8">2.4 Boolean Logic</div>
-    <a href="/ocr-j277/2-4-1a/" class="sl active fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-4-1b/" class="sl">2.4.1b Truth Tables</a>
-    <div class="sst" style="color:#818cf8">2.5 Languages</div>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
-    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
-    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">2.4 Boolean Logic</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">2.4.1a Boolean Logic</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="free-badge">✓ Free lesson</span>
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.4 Boolean Logic</div>
-  <div class="lesson-title">2.4.1a — Logic Gates</div>
-  <div class="lesson-meta">Component 2: Boolean Logic &nbsp;·&nbsp; Free lesson &nbsp;·&nbsp; ~20 min</div>
+  <div class="lesson-badge">🔣 Component 2 · 2.4 Boolean Logic</div>
+  <div class="lesson-title">2.4.1a Boolean Logic &amp; Truth Tables</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~12 min read</strong> · <span style="color:#166534;font-weight:600;">Free lesson</span></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-notes">
-  <div class="ns">
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
     <h2>What is Boolean Logic?</h2>
-    <p><strong>Boolean logic</strong> deals with values that are either TRUE (1) or FALSE (0). Logic gates are electronic components that implement Boolean operations — they take one or more binary inputs and produce a single binary output.</p>
-    <div class="kp"><strong>OCR requires:</strong> AND, OR, NOT gates — symbols, function, and how to combine them. XOR is NOT required at GCSE but may appear.</div>
-  </div>
-  <div class="ns">
-    <h2>The Three Logic Gates</h2>
-    <div class="ic b">
-      <h4>AND Gate</h4>
-      <p>Output is 1 ONLY IF both inputs are 1. Like the AND operator in programming — all conditions must be true.</p>
-      <p style="margin-top:8px"><strong>Symbol:</strong> D-shape with a flat left edge (two inputs on left, one output on right)</p>
-      <div style="display:grid;grid-template-columns:repeat(3,80px);gap:0;margin-top:10px;font-family:'Courier New',monospace;font-size:13px">
-        <div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">A</div><div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">B</div><div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">A AND B</div>
-        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#fca5a5">0</div>
-        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#fca5a5;background:#1a1d2e">0</div>
-        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#fca5a5">0</div>
-        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#6ee7b7;background:#1a1d2e">1</div>
-      </div>
+    <p>Boolean logic is the foundation of computing. Every decision a computer makes is based on values that are either <strong>True (1)</strong> or <strong>False (0)</strong>. Three fundamental Boolean operators are used in OCR J277: <strong>AND</strong>, <strong>OR</strong>, and <strong>NOT</strong>.</p>
+    <p>Boolean expressions evaluate to True or False. They are used in IF conditions, WHILE loops, and to design logic circuits.</p>
+
+    <h2>The AND Operator</h2>
+    <p>AND outputs <strong>True only when ALL inputs are True</strong>. If any input is False, the output is False.</p>
+    <p><strong>Real example:</strong> "You can enter a concert IF you have a ticket AND you are over 18."</p>
+    <table>
+      <thead><tr><th>A</th><th>B</th><th>A AND B</th></tr></thead>
+      <tbody>
+        <tr><td class="tt-0">0</td><td class="tt-0">0</td><td class="tt-0">0</td></tr>
+        <tr><td class="tt-0">0</td><td class="tt-1">1</td><td class="tt-0">0</td></tr>
+        <tr><td class="tt-1">1</td><td class="tt-0">0</td><td class="tt-0">0</td></tr>
+        <tr><td class="tt-1">1</td><td class="tt-1">1</td><td class="tt-1">1</td></tr>
+      </tbody>
+    </table>
+
+    <h2>The OR Operator</h2>
+    <p>OR outputs <strong>True when AT LEAST ONE input is True</strong>. It only outputs False when ALL inputs are False.</p>
+    <p><strong>Real example:</strong> "You get a discount IF you are a student OR a senior citizen."</p>
+    <table>
+      <thead><tr><th>A</th><th>B</th><th>A OR B</th></tr></thead>
+      <tbody>
+        <tr><td class="tt-0">0</td><td class="tt-0">0</td><td class="tt-0">0</td></tr>
+        <tr><td class="tt-0">0</td><td class="tt-1">1</td><td class="tt-1">1</td></tr>
+        <tr><td class="tt-1">1</td><td class="tt-0">0</td><td class="tt-1">1</td></tr>
+        <tr><td class="tt-1">1</td><td class="tt-1">1</td><td class="tt-1">1</td></tr>
+      </tbody>
+    </table>
+
+    <h2>The NOT Operator</h2>
+    <p>NOT takes a <strong>single input</strong> and <strong>inverts</strong> it. True becomes False; False becomes True.</p>
+    <p><strong>Real example:</strong> "NOT logged in → show login page"</p>
+    <table>
+      <thead><tr><th>A</th><th>NOT A</th></tr></thead>
+      <tbody>
+        <tr><td class="tt-0">0</td><td class="tt-1">1</td></tr>
+        <tr><td class="tt-1">1</td><td class="tt-0">0</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Combining Operators</h2>
+    <p>Operators can be combined to make more complex expressions. Evaluate <strong>NOT first</strong>, then <strong>AND</strong>, then <strong>OR</strong> — unless brackets change the order.</p>
+    <p><strong>Example:</strong> A AND NOT B</p>
+    <table>
+      <thead><tr><th>A</th><th>B</th><th>NOT B</th><th>A AND NOT B</th></tr></thead>
+      <tbody>
+        <tr><td class="tt-0">0</td><td class="tt-0">0</td><td class="tt-1">1</td><td class="tt-0">0</td></tr>
+        <tr><td class="tt-0">0</td><td class="tt-1">1</td><td class="tt-0">0</td><td class="tt-0">0</td></tr>
+        <tr><td class="tt-1">1</td><td class="tt-0">0</td><td class="tt-1">1</td><td class="tt-1">1</td></tr>
+        <tr><td class="tt-1">1</td><td class="tt-1">1</td><td class="tt-0">0</td><td class="tt-0">0</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Boolean in Programming (OCR J277)</h2>
+    <p>Boolean operators appear directly in OCR J277 pseudocode conditions:</p>
+    <div style="background:#0f172a;border-radius:12px;padding:20px 24px;margin:16px 0;font-family:'Courier New',monospace;font-size:14px;line-height:1.9;color:#e2e8f0;">
+<span style="color:#a78bfa;">IF</span> age >= <span style="color:#fbbf24;">18</span> <span style="color:#a78bfa;">AND</span> hasTicket == <span style="color:#a78bfa;">True</span> <span style="color:#a78bfa;">THEN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#a78bfa;">OUTPUT</span> <span style="color:#86efac;">"Entry granted"</span><br>
+<span style="color:#a78bfa;">END IF</span><br><br>
+<span style="color:#a78bfa;">IF</span> isStudent <span style="color:#a78bfa;">OR</span> isSenior <span style="color:#a78bfa;">THEN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#a78bfa;">OUTPUT</span> <span style="color:#86efac;">"Discount applied"</span><br>
+<span style="color:#a78bfa;">END IF</span><br><br>
+<span style="color:#a78bfa;">IF NOT</span> loggedIn <span style="color:#a78bfa;">THEN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#a78bfa;">OUTPUT</span> <span style="color:#86efac;">"Please log in"</span><br>
+<span style="color:#a78bfa;">END IF</span>
     </div>
-    <div class="ic b">
-      <h4>OR Gate</h4>
-      <p>Output is 1 IF at least one input is 1. Output is 0 ONLY when BOTH inputs are 0.</p>
-      <p style="margin-top:8px"><strong>Symbol:</strong> Curved D-shape with a curved left edge (pointing arrow shape)</p>
-      <div style="display:grid;grid-template-columns:repeat(3,80px);gap:0;margin-top:10px;font-family:'Courier New',monospace;font-size:13px">
-        <div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">A</div><div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">B</div><div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">A OR B</div>
-        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#fca5a5">0</div>
-        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#6ee7b7;background:#1a1d2e">1</div>
-        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#6ee7b7">1</div>
-        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#6ee7b7;background:#1a1d2e">1</div>
-      </div>
-    </div>
-    <div class="ic b">
-      <h4>NOT Gate (Inverter)</h4>
-      <p>Takes ONE input and inverts (flips) it. 1 becomes 0; 0 becomes 1. Also called a NOT gate or inverter.</p>
-      <p style="margin-top:8px"><strong>Symbol:</strong> Triangle with a small circle (bubble) at the output</p>
-      <div style="display:grid;grid-template-columns:repeat(2,80px);gap:0;margin-top:10px;font-family:'Courier New',monospace;font-size:13px">
-        <div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">A</div><div style="background:#252840;padding:6px;text-align:center;border:1px solid #2d3148;color:#c7d2fe;font-weight:600">NOT A</div>
-        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8">0</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#6ee7b7">1</div>
-        <div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#94a3b8;background:#1a1d2e">1</div><div style="padding:6px;text-align:center;border:1px solid #2d3148;color:#fca5a5;background:#1a1d2e">0</div>
-      </div>
-    </div>
-  </div>
-  <div class="ns">
-    <h2>Boolean Expressions</h2>
-    <p>Logic gate circuits can be written as <strong>Boolean expressions</strong>. OCR uses the following notation:</p>
-    <div class="ic b">
+
+    <h2>How Many Rows in a Truth Table?</h2>
+    <p>A truth table with <strong>n inputs</strong> has <strong>2ⁿ rows</strong>. Two inputs → 4 rows (2²). Three inputs → 8 rows (2³).</p>
+
+    <div class="exam-tip"><strong>Exam tip:</strong> OCR J277 most commonly tests: (1) completing truth tables for AND, OR, NOT, and combinations like A AND NOT B; (2) explaining what each operator does in plain English; (3) evaluating Boolean expressions with given values. The fastest way to check AND: only one row is True (all inputs = 1). OR: only one row is False (all inputs = 0). NOT: just flip it.</div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li><strong>AND</strong>: A · B &nbsp;&nbsp;(dot, or sometimes A AND B)</li>
-        <li><strong>OR</strong>: A + B &nbsp;&nbsp;(plus sign, or A OR B)</li>
-        <li><strong>NOT</strong>: Ā &nbsp;&nbsp;(bar over the variable, or NOT A)</li>
+        <li>Confusing AND with OR — AND needs ALL True; OR needs AT LEAST ONE True</li>
+        <li>Forgetting NOT only takes ONE input (it's a unary operator)</li>
+        <li>Evaluating expressions in wrong order — NOT first, then AND, then OR</li>
+        <li>NOT writing 0 and 1 (or True/False) consistently in truth tables — use one system throughout</li>
+        <li>Missing rows in a truth table — 2 inputs = 4 rows, always</li>
       </ul>
     </div>
-    <div class="ic b">
-      <h4>Example circuit expression:</h4>
-      <p>A circuit with: A and B go into an AND gate, whose output goes into a NOT gate:</p>
-      <p style="margin-top:8px;color:#a5b4fc;font-family:'Courier New',monospace">Output = NOT(A AND B) = (A · B) with bar over it</p>
-      <p style="margin-top:8px">This is a NAND gate — output is 0 ONLY when both A=1 and B=1.</p>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_2.4.1a_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 2.4.1a Boolean Logic</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">Describe the function of each Boolean operator: AND, OR, NOT.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-1"></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">AND: outputs True only when ALL inputs are True [1]. OR: outputs True when AT LEAST ONE input is True [1]. NOT: inverts a single input — True becomes False, False becomes True [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">Complete the truth table for A OR B.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-2" placeholder="A=0,B=0: ?, A=0,B=1: ?, A=1,B=0: ?, A=1,B=1: ?"></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A=0,B=0 → 0 [1]; A=0,B=1 → 1 [1]; A=1,B=0 → 1 [1]; A=1,B=1 → 1 [1]. OR is False only when BOTH inputs are 0.</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Complete the truth table for A AND B.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-3" placeholder="A=0,B=0: ?, A=0,B=1: ?, A=1,B=0: ?, A=1,B=1: ?"></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A=0,B=0 → 0 [1]; A=0,B=1 → 0 [1]; A=1,B=0 → 0 [1]; A=1,B=1 → 1 [1]. AND is True only when BOTH inputs are 1.</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">Evaluate: (a) 1 AND 0 (b) 1 OR 0 (c) NOT 1 (d) 0 AND (NOT 0)</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-4"></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">(a) 1 AND 0 = 0 [1] (both must be 1). (b) 1 OR 0 = 1 [1] (at least one is 1). (c) NOT 1 = 0 [1] (invert). (d) NOT 0 = 1; 0 AND 1 = 0 [1] (evaluate NOT first).</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Complete the truth table for A AND NOT B (include NOT B column).</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-5" placeholder="List all 4 rows with columns A, B, NOT B, A AND NOT B"></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A=0,B=0: NOT B=1, result=0 [1]. A=0,B=1: NOT B=0, result=0 [1]. A=1,B=0: NOT B=1, result=1 [1]. A=1,B=1: NOT B=0, result=0 [1]. Result is 1 only when A=1 and B=0.</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">How many rows are in a truth table with 3 inputs? Explain your answer.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-6"></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">8 rows [1]. With n inputs there are 2ⁿ combinations. 3 inputs → 2³ = 8 rows (000, 001, 010, 011, 100, 101, 110, 111) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">A login system grants access if: username is correct AND (password is correct OR PIN is correct). Write this as a Boolean expression using A = username correct, B = password correct, C = PIN correct.</span><span class="ws-q-marks">[1]</span></div><textarea class="ws-textarea" id="ws-ans-7"></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A AND (B OR C) [1]. The brackets ensure OR is evaluated first (B OR C), then AND with A. Without brackets, AND would be evaluated before OR.</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">A = True, B = False. Evaluate: (a) A AND B (b) A OR B (c) NOT A (d) A AND NOT B</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-8"></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">(a) True AND False = False [½]. (b) True OR False = True [½]. (c) NOT True = False [½]. (d) NOT False = True; True AND True = True [½].</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
     </div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
-      <ul>
-        <li>Confusing AND with OR — AND requires ALL inputs to be 1; OR only requires ONE</li>
-        <li>Forgetting NOT has only ONE input — it cannot have two inputs</li>
-        <li>Saying AND output is 1 when "at least one" input is 1 — that describes OR</li>
-        <li>Drawing the wrong gate symbol — AND is flat-left D-shape; OR has a curved left edge</li>
-        <li>Confusing 1=TRUE and 0=FALSE with actual numbers</li>
-      </ul>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;" onclick="restartQuiz()">Try again</button>
     </div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/2-3-2/" class="nb">← 2.3.2 Testing</a>
-  <a href="/ocr-j277/2-4-1b/" class="nb n">2.4.1b Truth Tables →</a>
-</div>
-</div>
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 8</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
 </div>
 
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 2.4.1a Boolean Logic</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What is the result of 1 AND 0?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> 1</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> 0</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> True</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> Undefined</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">What is the result of 0 OR 0?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> 1</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> 0</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> True</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> Undefined</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">What is NOT 0?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> 0</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> 1</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> 2</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> Undefined</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">How many rows are in a truth table with 2 inputs?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> 2</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> 4</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> 8</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> 3</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">A=1, B=0. What is A AND NOT B?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> 0</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> 1</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> B</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> Undefined</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">Explain in plain English what the AND operator does, and give a real-world example.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>AND outputs True only when ALL inputs are True [1]. Real example: bank requires age 18+ AND valid ID to open account — both must be true [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Complete the truth table for NOT A OR B. Include intermediate column NOT A. (4 rows)</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="A B NOT A | NOT A OR B"></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>A=0,B=0: NOT A=1, result=1 [1]; A=0,B=1: NOT A=1, result=1 [1]; A=1,B=0: NOT A=0, result=0 [1]; A=1,B=1: NOT A=0, result=1 [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">A = True, B = True, C = False. Evaluate: A AND (B OR C).</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Show your working..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>B OR C = True OR False = True [1]; A AND True = True AND True = True [1]. Final answer: True.</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">How many rows would a truth table have with 4 inputs? Show your working.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>2⁴ = 16 rows [1]. With n inputs: 2ⁿ combinations. 4 inputs → 2×2×2×2 = 16 [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">Write a Boolean expression for: "Access is granted if the user is an admin OR the user has a subscription AND is not banned."</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Use variables: A = admin, S = subscription, B = banned"></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>A OR (S AND NOT B) [1]. The AND binds more tightly than OR by default, but brackets make it explicit: subscription AND not banned, or admin [1]. Accept A OR S AND NOT B if correct precedence explained.</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/2-3-2/" class="bottom-nav-btn">← 2.3.2 Testing</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">2.4 Boolean Logic</span>
+  <a href="/ocr-j277/2-4-1b/" class="bottom-nav-btn next-btn">2.4.1b Logic Circuits →</a>
+</div>
 <script>
-var LESSON_ID='2-4-1a';var IS_FREE=true;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='2-4-1a';
+var IS_FREE=true;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What is Boolean logic?",opts:["Logic using decimal numbers","Logic where values are either TRUE (1) or FALSE (0)","A type of programming language","The study of sorting algorithms"],ans:1,exp:"Boolean logic deals with binary values — TRUE (1) or FALSE (0). Logic gates implement Boolean operations in hardware."},
-  {q:"An AND gate has inputs A=1, B=0. What is the output?",opts:["1","0","Depends on A","Depends on B"],ans:1,exp:"AND outputs 1 ONLY if both inputs are 1. Since B=0, the output is 0."},
-  {q:"An OR gate has inputs A=0, B=1. What is the output?",opts:["0","1","Depends on order","Error"],ans:1,exp:"OR outputs 1 if at least ONE input is 1. B=1, so output is 1."},
-  {q:"A NOT gate has input A=1. What is the output?",opts:["1","0","2","NOT defined"],ans:1,exp:"NOT inverts the input. NOT(1) = 0. The output is 0."},
-  {q:"An AND gate has inputs A=1, B=1. What is the output?",opts:["0","1","Depends","Error"],ans:1,exp:"AND outputs 1 ONLY when BOTH inputs are 1. A=1 and B=1, so output is 1."},
-  {q:"An OR gate has inputs A=0, B=0. What is the output?",opts:["1","0","Both","Neither"],ans:1,exp:"OR outputs 0 ONLY when BOTH inputs are 0. A=0 and B=0, so output is 0."},
-  {q:"How many inputs does a NOT gate have?",opts:["2","3","1","4"],ans:2,exp:"A NOT gate has exactly ONE input. It inverts (flips) that single input. It cannot have two inputs."},
-  {q:"What is the Boolean expression for an AND gate with inputs A and B?",opts:["A + B","A · B","NOT A","A XOR B"],ans:1,exp:"AND is written as A · B (dot notation). The + symbol represents OR."},
-  {q:"What is the Boolean expression for an OR gate with inputs A and B?",opts:["A · B","A + B","NOT A","A - B"],ans:1,exp:"OR is written as A + B (plus notation). The · symbol represents AND."},
-  {q:"An AND gate outputs 1 when:",opts:["At least one input is 1","Both inputs are 0","Both inputs are 1","At least one input is 0"],ans:2,exp:"AND outputs 1 ONLY when ALL inputs are 1. This is the key rule for AND."},
-  {q:"An OR gate outputs 0 only when:",opts:["Both inputs are 1","At least one input is 1","Both inputs are 0","One input is 1"],ans:2,exp:"OR outputs 0 ONLY when ALL inputs are 0. As soon as any input is 1, OR outputs 1."},
-  {q:"A circuit: A=0, B=1. They go into an AND gate. The AND gate output then goes into a NOT gate. What is the final output?",opts:["0","1","A","B"],ans:1,exp:"AND(0,1) = 0. Then NOT(0) = 1. Final output = 1."},
-  {q:"A circuit: A=1, B=1. They go into an AND gate, then a NOT gate. What is the final output?",opts:["0","1","2","Error"],ans:0,exp:"AND(1,1) = 1. Then NOT(1) = 0. Final output = 0. This is a NAND gate combination."},
-  {q:"Which gate acts as an inverter?",opts:["AND","OR","NOT","XOR"],ans:2,exp:"The NOT gate inverts its single input: 0 becomes 1, 1 becomes 0. It is also called an inverter."},
-  {q:"In Boolean notation, NOT A is written as:",opts:["A + 1","A · 0","A with a bar over it (Ā)","A XOR 1"],ans:2,exp:"NOT A is written as Ā — a bar (overline) over the variable. In some notations it is written as A' or ~A, but OCR uses the overline."}
+  {q:"What is the output of AND when both inputs are 0?",opts:["1","0","Undefined","True"],a:1,exp:"AND outputs 1 (True) only when ALL inputs are 1. Both inputs are 0, so 0 AND 0 = 0. AND is the strict operator — everything must be True."},
+  {q:"What is the output of OR when A=0 and B=1?",opts:["0","1","Undefined","It depends"],a:1,exp:"OR outputs 1 whenever AT LEAST ONE input is 1. B=1, so 0 OR 1 = 1. OR is False only when ALL inputs are 0."},
+  {q:"What does NOT do?",opts:["Combines two inputs","Inverts a single input — True becomes False, False becomes True","Outputs True when all inputs are True","Outputs False when all inputs are False"],a:1,exp:"NOT is a unary operator — it takes ONE input and inverts it. NOT 0 = 1. NOT 1 = 0. It flips the Boolean value."},
+  {q:"A=1, B=1. What is A AND B?",opts:["0","1","True and False","Undefined"],a:1,exp:"AND outputs 1 (True) only when ALL inputs are 1. Here A=1 AND B=1, so the result is 1. This is the only row in an AND truth table that gives 1."},
+  {q:"A=1, B=0. What is A OR B?",opts:["0","1","Undefined","It depends"],a:1,exp:"OR outputs 1 when AT LEAST ONE input is 1. A=1, so 1 OR 0 = 1. OR is only 0 when ALL inputs are 0."},
+  {q:"How many rows are in a truth table with 2 inputs?",opts:["2","4","6","8"],a:1,exp:"With n inputs: 2ⁿ rows. 2 inputs → 2² = 4 rows: (0,0), (0,1), (1,0), (1,1). Each input can be 0 or 1, giving 2×2 = 4 combinations."},
+  {q:"Evaluate: NOT 1",opts:["1","0","Undefined","2"],a:1,exp:"NOT 1 = 0. NOT inverts the value. True (1) becomes False (0). NOT 0 = 1. NOT 1 = 0."},
+  {q:"A=0, B=0. What is A AND NOT B?",opts:["0","1","NOT 0","Undefined"],a:0,exp:"Step 1: NOT B = NOT 0 = 1. Step 2: A AND 1 = 0 AND 1 = 0. Result: 0. Always evaluate NOT first."},
+  {q:"A=1, B=0. What is A AND NOT B?",opts:["0","1","NOT 1","True and False"],a:1,exp:"Step 1: NOT B = NOT 0 = 1. Step 2: A AND 1 = 1 AND 1 = 1. Result: 1. A AND NOT B is True only when A=1 and B=0."},
+  {q:"Which row of an AND truth table gives output 1?",opts:["A=0, B=0","A=0, B=1","A=1, B=0","A=1, B=1"],a:3,exp:"AND outputs 1 only when ALL inputs are 1. Only A=1, B=1 satisfies this. All other combinations give 0."},
+  {q:"Which row of an OR truth table gives output 0?",opts:["A=0, B=0","A=0, B=1","A=1, B=0","A=1, B=1"],a:0,exp:"OR outputs 0 only when ALL inputs are 0. Only A=0, B=0 satisfies this. All other combinations give 1."},
+  {q:"A = True, B = False. What is A OR NOT B?",opts:["False","True","Undefined","NOT True"],a:1,exp:"NOT B = NOT False = True. A OR True = True OR True = True. Result: True. Once one part of OR is True, the whole expression is True."},
+  {q:"Boolean logic uses two possible values. What are they?",opts:["Yes and No","1 and 2","True and False (or 1 and 0)","On and Off only"],a:2,exp:"Boolean logic has exactly two values: True and False, which are equivalent to 1 and 0 respectively. All Boolean operations produce one of these two values."},
+  {q:"How many rows are in a truth table with 3 inputs?",opts:["6","3","8","4"],a:2,exp:"With n inputs: 2ⁿ rows. 3 inputs → 2³ = 8 rows. All combinations of three 0/1 values: 000, 001, 010, 011, 100, 101, 110, 111."},
+  {q:"Evaluate: A AND (B OR C) when A=1, B=0, C=1",opts:["0","1","Undefined","C"],a:1,exp:"Step 1 (brackets first): B OR C = 0 OR 1 = 1. Step 2: A AND 1 = 1 AND 1 = 1. Result: 1. Evaluate brackets first, then AND."}
 ];
-var WORKSHEET=[
-  {q:"Complete the truth table for an AND gate:\nA=0,B=0 → ?\nA=0,B=1 → ?\nA=1,B=0 → ?\nA=1,B=1 → ?",marks:4,ms:"0,0→0 (1). 0,1→0 (1). 1,0→0 (1). 1,1→1 (1). AND only outputs 1 when BOTH inputs are 1."},
-  {q:"Complete the truth table for an OR gate:\nA=0,B=0 → ?\nA=0,B=1 → ?\nA=1,B=0 → ?\nA=1,B=1 → ?",marks:4,ms:"0,0→0 (1). 0,1→1 (1). 1,0→1 (1). 1,1→1 (1). OR outputs 1 when AT LEAST ONE input is 1."},
-  {q:"Complete the truth table for a NOT gate:\nA=0 → ?\nA=1 → ?",marks:2,ms:"0→1 (1). 1→0 (1). NOT inverts the input."},
-  {q:"Describe what each of the three gates (AND, OR, NOT) does.",marks:3,ms:"AND: outputs 1 ONLY if both inputs are 1 (1). OR: outputs 1 if at least one input is 1 (1). NOT: inverts its single input — 0 becomes 1, 1 becomes 0 (1)."},
-  {q:"A circuit has A=1 and B=0 entering an OR gate, then the output enters a NOT gate. What is the final output? Show your working.",marks:3,ms:"OR(1,0) = 1 (1). NOT(1) = 0 (1). Final output = 0 (1)."},
-  {q:"Write the Boolean expression for: inputs A and B into an AND gate, whose output goes into an OR gate with input C.",marks:2,ms:"(A · B) + C (1). The AND result is (A · B), then OR'd with C (1)."},
-  {q:"Explain why logic gates are important in computer hardware.",marks:2,ms:"Logic gates are the basic building blocks of all digital circuits (1). They process binary (0/1) signals, performing all computation in a CPU including arithmetic and decision-making (1)."},
-  {q:"A student says 'AND outputs 1 if at least one input is 1'. Identify and correct their mistake.",marks:2,ms:"The description given is for OR, not AND (1). AND outputs 1 ONLY IF ALL inputs are 1 — both A and B must be 1 for the output to be 1 (1)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Boolean logic",d:"A system of logic where all values are either TRUE (1) or FALSE (0). Forms the basis of all digital circuits."},
-  {w:"Logic gate",d:"An electronic component that takes one or more binary inputs and produces a single binary output based on a Boolean operation."},
-  {w:"AND gate",d:"Outputs 1 ONLY when ALL inputs are 1. If any input is 0, the output is 0. Symbol: flat-left D-shape."},
-  {w:"OR gate",d:"Outputs 1 when at least ONE input is 1. Only outputs 0 when ALL inputs are 0. Symbol: curved D-shape."},
-  {w:"NOT gate",d:"Has ONE input. Inverts (flips) the input: 0 becomes 1, 1 becomes 0. Also called an inverter. Symbol: triangle with output bubble."},
-  {w:"Boolean expression",d:"A mathematical notation representing a logic circuit. AND = · , OR = + , NOT = bar over variable (Ā)."},
-  {w:"TRUE / 1",d:"One of two Boolean values. Represented as 1 in binary. High voltage in digital circuits."},
-  {w:"FALSE / 0",d:"One of two Boolean values. Represented as 0 in binary. Low voltage in digital circuits."},
-  {w:"Inverter",d:"Another name for a NOT gate — it inverts the binary input."},
-  {w:"NAND",d:"NOT AND — an AND gate followed by a NOT gate. Output is 0 ONLY when both inputs are 1."},
-  {w:"NOR",d:"NOT OR — an OR gate followed by a NOT gate. Output is 1 ONLY when both inputs are 0."},
-  {w:"Truth table",d:"A table showing all possible input combinations for a logic gate/circuit and the corresponding output."},
-  {w:"Binary input",d:"A single bit input to a logic gate — either 0 or 1."},
-  {w:"Logic circuit",d:"A combination of multiple logic gates connected together to process binary signals."},
-  {w:"Boolean algebra",d:"The branch of mathematics dealing with Boolean variables and operations. AND, OR, NOT are the fundamental operations."}
+  {term:"Boolean logic",def:"A system of logic using only two values: True (1) and False (0). Every decision in a computer is based on Boolean logic. Named after mathematician George Boole."},
+  {term:"AND operator",def:"A Boolean operator that outputs True (1) only when ALL inputs are True. Truth table: 0,0=0; 0,1=0; 1,0=0; 1,1=1."},
+  {term:"OR operator",def:"A Boolean operator that outputs True (1) when AT LEAST ONE input is True. Only outputs False (0) when ALL inputs are False. Truth table: 0,0=0; 0,1=1; 1,0=1; 1,1=1."},
+  {term:"NOT operator",def:"A Boolean operator that takes ONE input and INVERTS it. NOT 0 = 1; NOT 1 = 0. Also called a unary operator or inverter."},
+  {term:"Truth table",def:"A table showing all possible combinations of inputs and their corresponding outputs for a Boolean expression. With n inputs, there are 2ⁿ rows."},
+  {term:"Boolean expression",def:"A combination of variables and Boolean operators that evaluates to True or False. E.g. A AND NOT B, A OR (B AND C)."},
+  {term:"Operator precedence",def:"The order in which Boolean operators are evaluated: NOT first, then AND, then OR — unless brackets change the order. Brackets always take priority."},
+  {term:"Binary values",def:"The two values in Boolean logic: 0 (False) and 1 (True). All computer operations ultimately reduce to binary values."}
 ];
-var TEST_MCQ=[
-  {q:"What is the output of an AND gate when A=1 and B=0?",opts:["1","0","Depends on A","Error"],ans:1,exp:"AND: output is 1 ONLY when both inputs are 1. B=0, so output = 0."},
-  {q:"What is the output of an OR gate when A=1 and B=1?",opts:["0","1","2","Error"],ans:1,exp:"OR: output is 1 when at least one input is 1. Both are 1, so output = 1."},
-  {q:"A NOT gate receives input 0. What is the output?",opts:["0","1","NOT defined","2"],ans:1,exp:"NOT inverts. NOT(0) = 1."},
-  {q:"In Boolean notation, AND is written as:",opts:["A + B","A - B","A · B","A XOR B"],ans:2,exp:"AND = A · B (dot notation). OR = A + B."},
-  {q:"Which gate has only ONE input?",opts:["AND","OR","NOT","All of them"],ans:2,exp:"The NOT gate has exactly one input — it inverts that single value. AND and OR gates have two (or more) inputs."}
-];
-var TEST_SA=[
-  {q:"Complete the truth table for an AND gate (all 4 rows: A, B, Output).",marks:4,ms:"0,0,0 (1). 0,1,0 (1). 1,0,0 (1). 1,1,1 (1)."},
-  {q:"Describe the function of an OR gate.",marks:2,ms:"Outputs 1 when at least one input is 1 (1). Only outputs 0 when all inputs are 0 (1)."},
-  {q:"A=1, B=1 enter an AND gate. The output goes into a NOT gate. What is the final output? Show working.",marks:3,ms:"AND(1,1) = 1 (1). NOT(1) = 0 (1). Final output = 0 (1)."},
-  {q:"What does NOT(A) equal when A=0? What does it equal when A=1?",marks:2,ms:"NOT(0) = 1 (1). NOT(1) = 0 (1)."},
-  {q:"Explain how Boolean logic relates to computer hardware.",marks:2,ms:"Computers store and process data as binary (0s and 1s) (1). Logic gates implement Boolean operations in hardware — they form the circuits that make all computation possible (1)."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});document.getElementById('fc-progress').textContent='Card 1 of '+KEY_TERMS.length;showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,1,1,1,1];
+var TEST_MCQ_LABELS=[['1','0','True','Undefined'],['1','0','True','Undefined'],['0','1','2','Undefined'],['2','4','8','3'],['0','1','B','Undefined']];
+var TEST_MCQ_EXPLAIN=['AND: both inputs must be 1 for output to be 1. 1 AND 0 = 0.','OR: output is 0 only when ALL inputs are 0. 0 OR 0 = 0.','NOT inverts. NOT 0 = 1.','2 inputs: 2² = 4 rows.','NOT B = NOT 0 = 1. A AND 1 = 1 AND 1 = 1.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['AND operator explanation','NOT A OR B truth table','Evaluate A AND (B OR C)','4-input truth table rows','Boolean expression for access'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

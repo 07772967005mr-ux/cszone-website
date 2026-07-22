@@ -1,212 +1,563 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>2.1.2b Pseudocode | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1.2b Binary Search — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:6px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .pseudocode-box{background:#0f172a;border-radius:12px;padding:20px 24px;margin:16px 0;font-family:'Courier New',monospace;font-size:14px;color:#e2e8f0;line-height:1.8;}
+    .pseudocode-box .kw{color:#a78bfa;}
+    .pseudocode-box .cm{color:#64748b;font-style:italic;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166634;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .worked-example{background:#f0f9ff;border:1.5px solid #bae6fd;border-radius:12px;padding:20px 24px;margin:16px 0;}
+    .worked-example-title{font-size:15px;font-weight:800;color:#0369a1;margin-bottom:12px;}
+    .step-card{background:#faf9ff;border:1.5px solid #e8e9ff;border-radius:10px;padding:14px 18px;margin-bottom:8px;}
+    .step-card .step-num{font-size:11px;font-weight:700;color:#7c3aed;text-transform:uppercase;margin-bottom:5px;}
+    .step-card p{margin:0;font-size:14px;color:#334155;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:220px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .paywall-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:999;}
+    .paywall-card{background:#fff;border-radius:24px;padding:40px 36px;text-align:center;max-width:380px;width:90%;box-shadow:0 24px 80px rgba(0,0,0,0.2);}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;margin-bottom:12px;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 2</div>
-    <div class="sst" style="color:#818cf8">2.1 Algorithms</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
-    <a href="/ocr-j277/2-1-2b/" class="sl active">2.1.2b Pseudocode</a>
-    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
-    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
-    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
-    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
-    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
-    <div class="sst" style="color:#818cf8">2.2 Programming</div>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <div class="sst" style="color:#818cf8">2.3–2.5</div>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">2.1 Algorithms</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">2.1.2b Binary Search</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.1 Algorithms</div>
-  <div class="lesson-title">2.1.2b — Pseudocode</div>
-  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; ~20 min</div>
-</div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
-</div>
-
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>What is Pseudocode?</h2>
-    <p><strong>Pseudocode</strong> is a way of writing an algorithm in structured English that resembles programming but is not tied to any specific programming language. It is used to plan programs and communicate algorithms clearly.</p>
-    <div class="kp">OCR J277 uses its own pseudocode style. You must be able to READ and WRITE OCR pseudocode in the exam.</div>
+  <div class="lesson-badge">🔍 Component 2 · 2.1 Algorithms</div>
+  <div class="lesson-title">2.1.2b Binary Search</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~12 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
   </div>
-  <div class="ns">
-    <h2>OCR Pseudocode Reference</h2>
-    <div class="ic b">
-      <h4>Variables and assignment:</h4>
-      <div class="code">x = 5
-name = "Alice"
-total = price * quantity</div>
-    </div>
-    <div class="ic b">
-      <h4>Input and Output:</h4>
-      <div class="code">name = input("Enter your name: ")
-print("Hello " + name)</div>
-    </div>
-    <div class="ic b">
-      <h4>Selection (IF statements):</h4>
-      <div class="code">if score >= 50 then
-    print("Pass")
-else
-    print("Fail")
-endif</div>
-    </div>
-    <div class="ic b">
-      <h4>Iteration — count-controlled (FOR loop):</h4>
-      <div class="code">for i = 1 to 10
-    print(i)
-next i</div>
-    </div>
-    <div class="ic b">
-      <h4>Iteration — condition-controlled (WHILE loop):</h4>
-      <div class="code">while password != "secret"
-    password = input("Enter password: ")
-endwhile</div>
-    </div>
-    <div class="ic b">
-      <h4>DO UNTIL loop:</h4>
-      <div class="code">do
-    number = input("Enter a positive number: ")
-until number > 0</div>
-    </div>
-    <div class="ic b">
-      <h4>Arrays:</h4>
-      <div class="code">scores = [45, 67, 89, 23, 55]
-print(scores[0])    // First element
-scores[2] = 90      // Update element</div>
-    </div>
-    <div class="ic b">
-      <h4>Subroutines (Procedures and Functions):</h4>
-      <div class="code">procedure greet(name)
-    print("Hello " + name)
-endprocedure
+</div>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
+</div>
+<div class="lesson-body">
 
-function square(n)
-    return n * n
-endfunction</div>
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>What Is a Binary Search?</h2>
+    <p>A <strong>binary search</strong> is an efficient searching algorithm that works by repeatedly halving the search space. It compares the target to the <strong>middle element</strong> of a sorted list, then eliminates the half that cannot contain the target.</p>
+    <p><strong>Critical requirement:</strong> The list <em>must</em> be sorted before binary search can be applied. This is its key limitation compared to linear search.</p>
+
+    <h2>How Binary Search Works — Step by Step</h2>
+    <div class="step-card"><div class="step-num">Step 1 — Find the midpoint</div><p>Calculate the middle index: <strong>mid = (low + high) ÷ 2</strong> (integer division). Compare list[mid] with the target.</p></div>
+    <div class="step-card"><div class="step-num">Step 2 — Compare</div><p>If list[mid] == target → <strong>found!</strong> Return mid.<br>If list[mid] &lt; target → target must be in the <strong>right half</strong>. Set low = mid + 1.<br>If list[mid] &gt; target → target must be in the <strong>left half</strong>. Set high = mid - 1.</p></div>
+    <div class="step-card"><div class="step-num">Step 3 — Repeat</div><p>Repeat with the new search range (low to high) until the target is found, or low &gt; high (target not in list).</p></div>
+
+    <h2>Worked Example — Trace Table</h2>
+    <p>Sorted list: <strong>[2, 5, 8, 12, 16, 23, 38, 45, 56, 72]</strong> — Search for <strong>23</strong></p>
+    <div style="overflow-x:auto;margin:12px 0;">
+      <div style="display:flex;gap:4px;margin-bottom:6px;">
+        <div style="min-width:42px;text-align:center;font-size:11px;color:#94a3b8;">idx 0</div>
+        <div style="min-width:42px;text-align:center;font-size:11px;color:#94a3b8;">idx 1</div>
+        <div style="min-width:42px;text-align:center;font-size:11px;color:#94a3b8;">idx 2</div>
+        <div style="min-width:42px;text-align:center;font-size:11px;color:#94a3b8;">idx 3</div>
+        <div style="min-width:42px;text-align:center;font-size:11px;color:#94a3b8;">idx 4</div>
+        <div style="min-width:42px;text-align:center;font-size:11px;color:#94a3b8;">idx 5</div>
+        <div style="min-width:42px;text-align:center;font-size:11px;color:#94a3b8;">idx 6</div>
+        <div style="min-width:42px;text-align:center;font-size:11px;color:#94a3b8;">idx 7</div>
+        <div style="min-width:42px;text-align:center;font-size:11px;color:#94a3b8;">idx 8</div>
+        <div style="min-width:42px;text-align:center;font-size:11px;color:#94a3b8;">idx 9</div>
+      </div>
+      <div style="display:flex;gap:4px;">
+        <div style="min-width:42px;background:#f5f3ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:10px 4px;text-align:center;font-weight:700;">2</div>
+        <div style="min-width:42px;background:#f5f3ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:10px 4px;text-align:center;font-weight:700;">5</div>
+        <div style="min-width:42px;background:#f5f3ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:10px 4px;text-align:center;font-weight:700;">8</div>
+        <div style="min-width:42px;background:#f5f3ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:10px 4px;text-align:center;font-weight:700;">12</div>
+        <div style="min-width:42px;background:#fffbeb;border:1.5px solid #fde68a;border-radius:8px;padding:10px 4px;text-align:center;font-weight:700;color:#92400e;">16<br><span style="font-size:10px;">mid①</span></div>
+        <div style="min-width:42px;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:8px;padding:10px 4px;text-align:center;font-weight:700;color:#166534;">23<br><span style="font-size:10px;">✓found</span></div>
+        <div style="min-width:42px;background:#f5f3ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:10px 4px;text-align:center;font-weight:700;">38</div>
+        <div style="min-width:42px;background:#f5f3ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:10px 4px;text-align:center;font-weight:700;">45</div>
+        <div style="min-width:42px;background:#f5f3ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:10px 4px;text-align:center;font-weight:700;">56</div>
+        <div style="min-width:42px;background:#f5f3ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:10px 4px;text-align:center;font-weight:700;">72</div>
+      </div>
     </div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
+    <div class="worked-example">
+      <div class="worked-example-title">Trace table:</div>
+      <table>
+        <thead><tr><th>Pass</th><th>low</th><th>high</th><th>mid</th><th>list[mid]</th><th>Compare to 23</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>0</td><td>9</td><td>4</td><td>16</td><td>16 &lt; 23</td><td>low = mid+1 = 5</td></tr>
+          <tr><td>2</td><td>5</td><td>9</td><td>7</td><td>45</td><td>45 &gt; 23</td><td>high = mid-1 = 6</td></tr>
+          <tr><td>3</td><td>5</td><td>6</td><td>5</td><td>23</td><td>23 == 23</td><td><strong>Found at index 5</strong></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:13.5px;color:#0369a1;margin-top:10px;"><strong>Only 3 comparisons</strong> needed for a 10-item list — compare with up to 10 for linear search.</p>
+    </div>
+
+    <h2>Pseudocode</h2>
+    <div class="pseudocode-box"><span class="cm">// Binary search — list must be sorted</span>
+<span class="kw">FUNCTION</span> binarySearch(list, target)
+  low = 0
+  high = length(list) - 1
+  <span class="kw">WHILE</span> low &lt;= high
+    mid = (low + high) DIV 2
+    <span class="kw">IF</span> list[mid] == target <span class="kw">THEN</span>
+      <span class="kw">RETURN</span> mid  <span class="cm">// Found!</span>
+    <span class="kw">ELSE IF</span> list[mid] &lt; target <span class="kw">THEN</span>
+      low = mid + 1  <span class="cm">// Target in right half</span>
+    <span class="kw">ELSE</span>
+      high = mid - 1  <span class="cm">// Target in left half</span>
+    <span class="kw">END IF</span>
+  <span class="kw">END WHILE</span>
+  <span class="kw">RETURN</span> -1  <span class="cm">// Not found</span>
+<span class="kw">END FUNCTION</span></div>
+
+    <h2>Why Binary Search Is Faster — O(log n)</h2>
+    <p>Binary search is O(log₂n) — with each comparison, the search space is <strong>halved</strong>. For a sorted list of 1024 items, binary search needs at most <strong>10 comparisons</strong> (log₂1024 = 10), while linear search could need <strong>1024</strong>.</p>
+    <table>
+      <thead><tr><th>List size (n)</th><th>Binary: max comparisons (log₂n)</th><th>Linear: max comparisons</th></tr></thead>
+      <tbody>
+        <tr><td>8</td><td>3</td><td>8</td></tr>
+        <tr><td>64</td><td>6</td><td>64</td></tr>
+        <tr><td>1,024</td><td>10</td><td>1,024</td></tr>
+        <tr><td>1,048,576</td><td>20</td><td>1,048,576</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Advantages and Disadvantages</h2>
+    <table>
+      <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+      <tbody>
+        <tr><td>Much faster than linear search for large lists — O(log n)</td><td><strong>Requires the list to be sorted first</strong></td></tr>
+        <tr><td>Efficient — eliminates half the remaining items each pass</td><td>Sorting adds overhead if data is not already sorted</td></tr>
+        <tr><td>Suitable for large datasets</td><td>More complex to implement than linear search</td></tr>
+        <tr><td>Predictable maximum comparisons</td><td>Not suitable for data that changes frequently</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Comparison: Linear vs Binary Search</h2>
+    <table>
+      <thead><tr><th>Feature</th><th>Linear Search</th><th>Binary Search</th></tr></thead>
+      <tbody>
+        <tr><td>Sorted list required?</td><td>No</td><td><strong>Yes</strong></td></tr>
+        <tr><td>Time complexity (worst)</td><td>O(n)</td><td>O(log n)</td></tr>
+        <tr><td>Best for</td><td>Small / unsorted lists</td><td>Large sorted lists</td></tr>
+        <tr><td>How it searches</td><td>One by one from start</td><td>Halves search space each time</td></tr>
+        <tr><td>Not found return</td><td>-1</td><td>-1</td></tr>
+        <tr><td>Implementation</td><td>Simpler</td><td>More complex</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> In binary search trace table questions, always show low, high, and mid values for each pass. Remember: mid = (low + high) DIV 2 (integer division — round down). After finding mid, if list[mid] &lt; target then low = mid + 1; if list[mid] &gt; target then high = mid - 1. The search ends when low &gt; high (not found) or list[mid] == target (found). Always state the index returned, not just the value.
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Forgetting endif, endwhile, next i — OCR requires closing keywords</li>
-        <li>Using = for comparison instead of == — in OCR pseudocode use == for comparison</li>
-        <li>Writing Python/real code in pseudocode questions — pseudocode is language-independent</li>
-        <li>Forgetting that array indexes start at 0</li>
+        <li>Forgetting that binary search requires a sorted list — always state this as a prerequisite</li>
+        <li>Using the wrong mid formula — OCR exams use integer division (DIV): (low + high) DIV 2</li>
+        <li>Setting low = mid (not mid+1) or high = mid (not mid-1) — this can cause infinite loops</li>
+        <li>Confusing what "low &gt; high" means — it means not found, not an error</li>
+        <li>Saying binary search is always better — for small or unsorted lists, linear search may be preferred</li>
       </ul>
     </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/2-1-2a/" class="nb">← 2.1.2a Flowcharts</a>
-  <a href="/ocr-j277/2-1-3a/" class="nb n">2.1.3a Linear Search →</a>
-</div>
-</div>
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
 </div>
 
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_2.1.2b_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 2.1.2b Binary Search</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">State one requirement for a binary search to work.</span><span class="ws-q-marks">[1]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">The list must be sorted (in ascending or descending order) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">Describe how a binary search works.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" style="min-height:100px;" id="ws-ans-2" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Find the middle element of the list [1]; compare it with the target — if equal, found; if target is greater, search the right half; if target is smaller, search the left half [1]; repeat with the new half until found or no elements remain [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Perform a binary search on the sorted list [3, 7, 11, 14, 18, 22, 27, 31] for target = 22. Show a full trace table.</span><span class="ws-q-marks">[5]</span></div><textarea class="ws-textarea" style="min-height:140px;" id="ws-ans-3" placeholder="Include low, high, mid, list[mid] for each pass..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Pass 1: low=0, high=7, mid=3, list[3]=14. 14&lt;22 so low=4 [1]. Pass 2: low=4, high=7, mid=5, list[5]=22. 22==22 [1], return index 5 [1]. 2 comparisons [1]. Correct layout with low/high/mid columns [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">State the formula for calculating the mid-point index in a binary search.</span><span class="ws-q-marks">[1]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">mid = (low + high) DIV 2 [1] (integer/floor division).</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">A binary search is performed on a list of 1024 items. What is the maximum number of comparisons needed?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-5" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">10 comparisons [1] — because log₂(1024) = 10 [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">Give two advantages and one disadvantage of binary search compared to linear search.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-6" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Advantages (any two): much faster for large lists [1]; O(log n) efficiency [1]; eliminates half the data per comparison [1]. Disadvantage: requires the list to be sorted [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">A binary search for target = 5 on list [1, 3, 5, 7, 9, 11, 13] returns what index? Show your working.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" style="min-height:110px;" id="ws-ans-7" placeholder="Show trace..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Pass 1: low=0, high=6, mid=3, list[3]=7. 7&gt;5, high=2 [1]. Pass 2: low=0, high=2, mid=1, list[1]=3. 3&lt;5, low=2 [1]. Pass 3: low=2, high=2, mid=2, list[2]=5. Found at index 2 [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">A student says "binary search is always better than linear search." Evaluate this statement.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-8" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Not always — binary search is only better for large sorted lists [1]. Linear search is preferable when the list is unsorted or too small to justify sorting [1].</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 10</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 2.1.2b Binary Search</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What is required before a binary search can be performed?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> The list must be empty</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> The list must be sorted</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> The list must have an even number of items</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> The list must contain only numbers</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">For list [2, 5, 8, 12, 16], what is the mid index in pass 1?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> 1</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> 2</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> 3</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> 4</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">Binary search has a worst-case time complexity of:</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> O(n)</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> O(n²)</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> O(log n)</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> O(1)</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">In a binary search, if list[mid] > target, what happens next?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> low = mid + 1</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> high = mid - 1</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> high = mid + 1</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> low = mid - 1</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">For a sorted list of 64 items, what is the maximum comparisons binary search makes?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> 32</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> 6</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> 64</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> 8</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">State the formula for calculating the midpoint in a binary search.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>mid = (low + high) DIV 2 [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Why is binary search more efficient than linear search for large sorted lists?</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>Binary search eliminates half of the remaining elements with each comparison [1], so it only needs O(log n) comparisons vs O(n) for linear search [1]. Award 1 for any valid comparative explanation.</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">Trace binary search on [4, 9, 15, 21, 30, 45] for target = 30. State the index returned.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>Pass 1: low=0,high=5,mid=2,list[2]=15. 15&lt;30, low=3 [1]. Pass 2: low=3,high=5,mid=4,list[4]=30. Found! Return index 4 [1]. 2 comparisons [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">What is returned if the target is not found in a binary search?</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>-1 (or equivalent "not found" indicator) [1]. This is returned when low > high — the search space is exhausted.</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">Give one situation where you would choose linear search over binary search.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>Any valid: when the list is unsorted and cannot be sorted [1]; when the list is small [1]; when data changes frequently making sorting impractical [1]. Award 1 mark for any valid situation.</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/2-1-2a/" class="bottom-nav-btn">← 2.1.2a Linear Search</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">2.1 Algorithms</span>
+  <a href="/ocr-j277/2-1-3a/" class="bottom-nav-btn next-btn">2.1.3a Bubble Sort →</a>
+</div>
 <script>
-var LESSON_ID='2-1-2b';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='2-1-2b';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+function checkAccess(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;
+    if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;
+    var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};
+    fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h})
+      .then(function(r){return r.json();})
+      .then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});
+  });
+}
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    checkAccess();
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What is pseudocode?",opts:["Actual code that runs on a computer","A visual diagram of an algorithm","Structured English that describes an algorithm without using a specific language","A type of assembly language"],ans:2,exp:"Pseudocode is informal, structured English that describes an algorithm. It's language-independent — it can be translated into any programming language."},
-  {q:"In OCR pseudocode, which keyword ends an IF statement?",opts:["end","stop","endif","fi"],ans:2,exp:"OCR pseudocode uses 'endif' to close an IF statement. Forgetting this in the exam loses marks."},
-  {q:"What does 'x = input(\"Enter a number: \")' do in pseudocode?",opts:["Prints a number","Assigns 5 to x","Takes user input and stores it in x","Declares x as a variable"],ans:2,exp:"The input() function reads data from the user and returns it. Here it is assigned to x — so x holds whatever the user types."},
-  {q:"Which loop type is used when you know exactly how many times to repeat?",opts:["while loop","do...until loop","for loop","repeat loop"],ans:2,exp:"A for loop (count-controlled) runs a specific number of times: 'for i = 1 to 10'. When you know the number of iterations in advance, use a for loop."},
-  {q:"What is the difference between a WHILE loop and a DO...UNTIL loop?",opts:["They are identical","WHILE checks condition before each iteration; DO UNTIL checks after — so DO UNTIL always runs at least once","WHILE is faster","DO UNTIL is for strings only"],ans:1,exp:"A WHILE loop checks the condition BEFORE executing — if false from the start, the loop body never runs. A DO...UNTIL checks AFTER — guaranteeing at least one execution of the body."},
-  {q:"What does 'return n * n' do in a function?",opts:["Prints n squared","Ends the program","Sends the value of n*n back to wherever the function was called","Stores n*n in a global variable"],ans:2,exp:"'return' sends a value back to the calling code. The function calculates n*n and returns it — the caller receives this value and can use or store it."},
-  {q:"In OCR pseudocode, what does scores[0] refer to?",opts:["The last element","The element at position 1","The first element of the scores array","The length of the array"],ans:2,exp:"Arrays in OCR pseudocode (and most programming languages) are zero-indexed — [0] is the FIRST element, [1] is the second, etc."},
-  {q:"Which keyword ends a WHILE loop in OCR pseudocode?",opts:["end","wend","endwhile","loop"],ans:2,exp:"OCR pseudocode uses 'endwhile' to close a while loop. Equivalent to the closing brace '}' in many languages."},
-  {q:"What is the purpose of pseudocode?",opts:["To run programs without a compiler","To plan algorithms in a language-independent way before coding","To test programs automatically","To encrypt code for security"],ans:1,exp:"Pseudocode is used at the design stage to plan an algorithm without committing to a specific language. It can then be translated into any language."},
-  {q:"Which of the following correctly shows a FOR loop in OCR pseudocode?",opts:["for i in range(10):","for i = 1 to 10 ... next i","FOR I = 1 TO 10 NEXT","loop 10 times"],ans:1,exp:"OCR pseudocode uses: 'for i = 1 to 10 [body] next i'. The 'next i' keyword closes the loop and increments i."},
-  {q:"What does 'procedure' vs 'function' mean in OCR pseudocode?",opts:["They are identical","A procedure does not return a value; a function returns a value using 'return'","A function doesn't need parameters; a procedure does","Functions use for loops; procedures use while loops"],ans:1,exp:"A procedure performs a task but returns no value. A function performs a task AND returns a value using 'return'. Both are called subroutines."},
-  {q:"In OCR pseudocode, how do you check if two values are equal?",opts:["=","equals","==","is"],ans:2,exp:"In OCR pseudocode, == is used for comparison (checking equality), while = is used for assignment. This is a common source of errors."},
-  {q:"A WHILE loop has condition 'while count < 5'. If count starts at 10, how many times does the body run?",opts:["5","10","0 — the condition is immediately false","1"],ans:2,exp:"WHILE checks the condition BEFORE the body. Since count (10) is NOT less than 5, the condition is immediately false — the body never executes. (0 times)"},
-  {q:"Which pseudocode correctly assigns the value 42 to a variable called 'answer'?",opts:["answer == 42","int answer = 42","answer = 42","let answer = 42"],ans:2,exp:"In OCR pseudocode, simple assignment uses =. There are no type declarations or 'let' keywords — just 'variableName = value'."},
-  {q:"What does 'print(scores[3])' output if scores = [10, 20, 30, 40, 50]?",opts:["30","10","40","50"],ans:2,exp:"Arrays are zero-indexed: scores[0]=10, scores[1]=20, scores[2]=30, scores[3]=40, scores[4]=50. So scores[3] = 40."}
+  {q:"What is the main requirement for binary search to work?",opts:["The list must be empty","The list must be sorted","The list must have an odd number of items","The list must contain unique values"],a:1,exp:"Binary search requires the list to be sorted in ascending (or descending) order. Without this, the algorithm cannot correctly determine which half to search."},
+  {q:"In pass 1, binary search on list [1,3,5,7,9] calculates mid as:",opts:["1","2","3","4"],a:1,exp:"low=0, high=4, mid=(0+4) DIV 2 = 2. list[2]=5. Mid index is 2."},
+  {q:"What is the time complexity of binary search in the worst case?",opts:["O(n)","O(n²)","O(log n)","O(1)"],a:2,exp:"Binary search is O(log n) because each comparison halves the search space. After log₂n comparisons, at most 1 element remains."},
+  {q:"In a binary search, if list[mid] < target, what do you update?",opts:["high = mid - 1","low = mid + 1","mid = mid + 1","low = high"],a:1,exp:"If list[mid] < target, the target must be in the RIGHT half. So we set low = mid + 1 to search from mid+1 to high."},
+  {q:"What does a binary search return if the item is not in the list?",opts:["0","The last index","The length of the list","-1 (not found)"],a:3,exp:"-1 is returned when the search space is exhausted (low > high). This signals that the target was not found."},
+  {q:"A sorted list has 128 items. The maximum comparisons for a binary search is:",opts:["128","64","7","8"],a:2,exp:"log₂(128) = 7. After 7 halvings, only 1 element remains. Binary search needs at most 7 comparisons for 128 items."},
+  {q:"Binary search on [2,6,10,14,18,22,26,30], target=26. What is list[mid] in pass 1?",opts:["10","14","18","22"],a:1,exp:"low=0, high=7, mid=(0+7) DIV 2 = 3. list[3]=14. So the first midpoint value compared is 14."},
+  {q:"After pass 1 above (target=26, list[mid]=14), what happens?",opts:["high = 2","low = 4","Search ends","Return index 3"],a:1,exp:"14 < 26, so the target is in the right half. Set low = mid + 1 = 4. Now search from index 4 to 7."},
+  {q:"Which algorithm would you choose to search a list of 1 million sorted phone numbers?",opts:["Linear search — simpler","Binary search — much faster","Either — same efficiency","Neither — use hashing only"],a:1,exp:"Binary search is far superior for large sorted lists. log₂(1,000,000) ≈ 20 comparisons vs up to 1,000,000 for linear search."},
+  {q:"Binary search: if low > high, it means:",opts:["A bug has occurred","The list is too small","The target was not found","The list needs sorting"],a:2,exp:"When low > high, the search space is empty — every element has been eliminated. The target is not in the list, so -1 is returned."},
+  {q:"What is DIV in the formula mid = (low + high) DIV 2?",opts:["Division with remainder","Integer (floor) division","Multiplication","Modulo"],a:1,exp:"DIV means integer division — round down. E.g. 7 DIV 2 = 3 (not 3.5). This ensures mid is always a valid integer index."},
+  {q:"Binary search on [5,10,15,20,25], target=15. How many comparisons?",opts:["1","2","3","5"],a:0,exp:"Pass 1: low=0,high=4,mid=2,list[2]=15. 15==15 — FOUND immediately! Only 1 comparison needed when target is at the midpoint."},
+  {q:"A student uses binary search on an unsorted list. What will happen?",opts:["It will work but be slower","It may give incorrect results","It will sort the list first","It will always return -1"],a:1,exp:"Binary search makes assumptions about order — if the list is unsorted, the algorithm may eliminate the half containing the target, giving wrong results. Always sort first."},
+  {q:"Which of these is a disadvantage of binary search?",opts:["It is slow","It only works on numbers","It requires the list to be sorted","It can only search from left to right"],a:2,exp:"Binary search's main disadvantage is that it requires a sorted list. If data is unsorted, it must be sorted first, which adds computational overhead."},
+  {q:"For a list of n items, binary search makes at most how many comparisons?",opts:["n","n/2","log₂n","n²"],a:2,exp:"Binary search makes at most ⌈log₂n⌉ comparisons. Each pass halves the search space, so after log₂n halvings, at most 1 item remains."}
 ];
-var WORKSHEET=[
-  {q:"Write pseudocode to input two numbers from the user, add them together, and output the result.",marks:3,ms:"a = input('Enter first number: ') (1); b = input('Enter second number: ') (1); print(a + b) — or total = a + b then print(total) (1)."},
-  {q:"Write pseudocode for an IF statement that checks if a temperature is above 30 and prints 'Hot', otherwise prints 'Cool'.",marks:3,ms:"if temperature > 30 then (1); print('Hot') (1); else; print('Cool'); endif (1). Award marks for correct if/else/endif structure."},
-  {q:"Write pseudocode for a FOR loop that prints the numbers 1 to 5.",marks:3,ms:"for i = 1 to 5 (1); print(i) (1); next i (1)."},
-  {q:"Write pseudocode for a WHILE loop that keeps asking for a password until the user enters 'secret'.",marks:3,ms:"password = input('Enter password: ') (1); while password != 'secret' (1); password = input('Enter password: '); endwhile (1)."},
-  {q:"Explain the difference between a WHILE loop and a DO...UNTIL loop.",marks:2,ms:"WHILE checks the condition before the loop body executes — if false initially, the body never runs (1). DO...UNTIL checks the condition after the body — so the body always executes at least once (1)."},
-  {q:"Write pseudocode for a function called 'multiply' that takes two parameters and returns their product.",marks:3,ms:"function multiply(a, b) (1); return a * b (1); endfunction (1)."},
-  {q:"Given scores = [85, 42, 67, 91, 55], write pseudocode to print the third element.",marks:2,ms:"print(scores[2]) (1). Explanation: arrays start at index 0, so the third element is at index 2 (1)."},
-  {q:"Write pseudocode for a procedure called 'greet' that takes a name parameter and prints a greeting.",marks:3,ms:"procedure greet(name) (1); print('Hello ' + name) (1); endprocedure (1)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Pseudocode",d:"Structured English used to describe an algorithm — language-independent, not actual code."},
-  {w:"Assignment",d:"Storing a value in a variable: x = 5. In OCR pseudocode, = is used for assignment."},
-  {w:"Input",d:"Reading data from the user: name = input('Enter name:')"},
-  {w:"Output",d:"Displaying data: print('Hello ' + name)"},
-  {w:"IF statement",d:"Selection construct: if [condition] then ... else ... endif"},
-  {w:"FOR loop",d:"Count-controlled iteration: for i = 1 to n ... next i. Runs a fixed number of times."},
-  {w:"WHILE loop",d:"Condition-controlled loop: while [condition] ... endwhile. Checks before each iteration."},
-  {w:"DO...UNTIL loop",d:"Post-condition loop: do ... until [condition]. Body always executes at least once."},
-  {w:"Procedure",d:"A named subroutine that performs a task but does NOT return a value."},
-  {w:"Function",d:"A named subroutine that performs a task and RETURNS a value using 'return'."},
-  {w:"Parameter",d:"A variable passed into a subroutine when it is called."},
-  {w:"Array",d:"An ordered list of values stored under one name. Indexed from 0 in OCR pseudocode."},
-  {w:"Index",d:"The position of an element in an array. OCR arrays are zero-indexed: first element = [0]."},
-  {w:"Return",d:"Keyword in a function that sends a value back to the calling code."},
-  {w:"Iteration",d:"Repeating a block of code — using FOR, WHILE, or DO...UNTIL loops."}
+  {term:"Binary search",def:"A searching algorithm that works by repeatedly halving the search space. It compares the target to the middle element of a sorted list, then discards the half that cannot contain the target."},
+  {term:"Sorted list (requirement)",def:"Binary search requires the list to be sorted in order (ascending or descending) before searching begins. If unsorted, results may be incorrect."},
+  {term:"Low pointer",def:"The index of the first element of the current search range. Starts at 0 and increases when the target is in the right half."},
+  {term:"High pointer",def:"The index of the last element of the current search range. Starts at n-1 and decreases when the target is in the left half."},
+  {term:"Mid (midpoint)",def:"The middle index of the current search range: mid = (low + high) DIV 2. The element at this index is compared to the target each pass."},
+  {term:"O(log n)",def:"The time complexity of binary search. The number of comparisons grows logarithmically — doubling the list size only adds one more comparison."},
+  {term:"Not found condition",def:"When low > high, the search space is exhausted and the target is not in the list. Binary search returns -1 (or equivalent)."},
+  {term:"DIV",def:"Integer division (floor division). Used in the mid formula: (low + high) DIV 2. Rounds down to give a whole number index."},
+  {term:"Search space",def:"The range of elements still being considered (from low to high). Binary search halves the search space with each comparison."},
+  {term:"O(n) vs O(log n)",def:"Linear search is O(n) — comparisons grow with list size. Binary search is O(log n) — much more efficient for large sorted lists. E.g. 1024 items: 1024 vs 10 comparisons."}
 ];
-var TEST_MCQ=[
-  {q:"Which keyword ends an IF statement in OCR pseudocode?",opts:["end","fi","stop","endif"],ans:3,exp:"OCR pseudocode uses 'endif' to close an IF statement."},
-  {q:"What is the index of the FIRST element of an array in OCR pseudocode?",opts:["1","0","-1","Any number"],ans:1,exp:"Arrays in OCR pseudocode are zero-indexed — the first element is at index [0]."},
-  {q:"What is the difference between a procedure and a function?",opts:["Functions have parameters; procedures don't","A procedure doesn't return a value; a function returns a value","Procedures use for loops; functions use while loops","They are identical"],ans:1,exp:"A procedure performs a task but returns nothing. A function returns a value using 'return'."},
-  {q:"A DO...UNTIL loop runs the body BEFORE checking the condition. What does this guarantee?",opts:["The loop never runs more than once","The loop runs a fixed number of times","The loop body runs at least once","The condition is always true"],ans:2,exp:"Because the condition is checked AFTER the body, the loop body always runs at least once regardless of the condition."},
-  {q:"In OCR pseudocode, what symbol is used for comparison (checking equality)?",opts:["=","equals","==","!="],ans:2,exp:"== is used for comparison in OCR pseudocode. = is used for assignment. Confusing them is a common error."}
-];
-var TEST_SA=[
-  {q:"Write pseudocode to ask the user for their age. If age >= 18, print 'Adult', otherwise print 'Minor'.",marks:3,ms:"age = input('Enter age:') (1); if age >= 18 then (1); print('Adult'); else; print('Minor'); endif (1)."},
-  {q:"Write pseudocode for a FOR loop that calculates the sum of numbers from 1 to 100.",marks:3,ms:"total = 0 (1); for i = 1 to 100 (1); total = total + i; next i; print(total) (1)."},
-  {q:"Explain the difference between a WHILE loop and a DO...UNTIL loop.",marks:2,ms:"WHILE checks the condition before each iteration — if false from the start the body never runs (1). DO...UNTIL checks the condition after — guaranteeing the body runs at least once (1)."},
-  {q:"Write pseudocode for a function that takes a number and returns its square.",marks:3,ms:"function square(n) (1); return n * n (1); endfunction (1)."},
-  {q:"What does scores[0] refer to if scores = [10, 20, 30]?",marks:1,ms:"The first element of the array — value 10. Arrays are zero-indexed so [0] = first element."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});document.getElementById('fc-progress').textContent='Card 1 of '+KEY_TERMS.length;showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,1,2,1,1];
+var TEST_MCQ_LABELS=[['The list must be empty','The list must be sorted','The list must have an even number of items','The list must contain only numbers'],['1','2','3','4'],['O(n)','O(n²)','O(log n)','O(1)'],['low = mid + 1','high = mid - 1','high = mid + 1','low = mid - 1'],['32','6','64','8']];
+var TEST_MCQ_EXPLAIN=['Binary search requires the list to be sorted — otherwise it may incorrectly eliminate the half containing the target.','low=0,high=4,mid=(0+4)DIV2=2. Index 2.','O(log n) — each comparison halves the search space.','list[mid] > target means target is in the LEFT half, so high = mid - 1.','log₂(64) = 6. After 6 halvings, at most 1 element remains.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['Mid formula?','Why is binary faster?','Trace [4,9,15,21,30,45] for 30?','Not found return value?','When prefer linear over binary?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

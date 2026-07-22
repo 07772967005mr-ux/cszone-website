@@ -1,250 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.3.1a LAN & WAN | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.3.1a Networks — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;}
+    .free-badge{display:inline-flex;align-items:center;gap:5px;background:#f0fdf4;color:#166534;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #bbf7d0;margin-bottom:10px;margin-left:8px;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166634;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 1</div>
-    <div class="sst" style="color:#818cf8">1.2 Memory &amp; Storage</div>
-    <a href="/ocr-j277/1-2-1/" class="sl fb">1.2.1 Primary Storage</a>
-    <a href="/ocr-j277/1-2-2/" class="sl">1.2.2 Secondary Storage</a>
-    <a href="/ocr-j277/1-2-3/" class="sl">1.2.3 Units of Storage</a>
-    <a href="/ocr-j277/1-2-4a/" class="sl">1.2.4a Binary &amp; Denary</a>
-    <a href="/ocr-j277/1-2-4b/" class="sl">1.2.4b Hexadecimal</a>
-    <a href="/ocr-j277/1-2-4c/" class="sl">1.2.4c Binary Arithmetic</a>
-    <a href="/ocr-j277/1-2-4d/" class="sl">1.2.4d Binary Shifts</a>
-    <a href="/ocr-j277/1-2-4e/" class="sl">1.2.4e Character Encoding</a>
-    <a href="/ocr-j277/1-2-4f/" class="sl">1.2.4f Representing Images</a>
-    <a href="/ocr-j277/1-2-4g/" class="sl">1.2.4g Representing Sound</a>
-    <a href="/ocr-j277/1-2-5/" class="sl">1.2.5 Compression</a>
-    <div class="sst" style="color:#818cf8">1.3 Networks</div>
-    <a href="/ocr-j277/1-3-1a/" class="sl fb active">1.3.1a LAN &amp; WAN</a>
-    <a href="/ocr-j277/1-3-1b/" class="sl">1.3.1b Network Types</a>
-    <a href="/ocr-j277/1-3-1c/" class="sl">1.3.1c Internet &amp; DNS</a>
-    <a href="/ocr-j277/1-3-1d/" class="sl">1.3.1d Topologies</a>
-    <a href="/ocr-j277/1-3-2a/" class="sl">1.3.2a Wired &amp; Wireless</a>
-    <a href="/ocr-j277/1-3-2b/" class="sl">1.3.2b Protocols</a>
-    <div class="sst" style="color:#818cf8">1.4–1.6</div>
-    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
-    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
-    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
-    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
-    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
-    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.3 Networks</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.3.1a Types of Networks</span>
+    </div>
   </div>
-  <div class="sidebar-section">
-    <div class="sst">Component 2</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
-    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
-    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
-    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
-    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
-    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
-    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <a href="/ocr-j277/2-2-1b/" class="sl">2.2.1b Selection &amp; Iteration</a>
-    <a href="/ocr-j277/2-2-1c/" class="sl">2.2.1c Arrays</a>
-    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
-    <a href="/ocr-j277/2-2-1e/" class="sl">2.2.1e Strings</a>
-    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-3-2/" class="sl">2.3.2 Testing</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-4-1b/" class="sl">2.4.1b Truth Tables</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
-    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
-    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.3 Networks</div>
-  <div class="lesson-title">1.3.1a — LAN &amp; WAN</div>
-  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min &nbsp;·&nbsp; <span style="color:#10b981;font-weight:600">FREE</span></div>
+  <div>
+    <div class="lesson-badge">🌐 Component 1 · 1.3 Computer Networks</div>
+    <div class="free-badge">✓ Free lesson</div>
+  </div>
+  <div class="lesson-title">1.3.1a Types of Networks (LAN, WAN &amp; PAN)</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~11 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-notes">
-  <div class="ns">
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
     <h2>What is a Network?</h2>
-    <p>A computer network is two or more computing devices connected together to share resources and communicate. Networks allow devices to share files, printers, internet access, and applications.</p>
-  </div>
-  <div class="ns">
+    <p>A <strong>computer network</strong> is two or more computers or devices connected together to share resources, data, and services. Networks allow sharing of files, printers, internet connections, and applications.</p>
+    <p>Networks can be categorised by their <strong>geographical size</strong>:</p>
+
     <h2>LAN — Local Area Network</h2>
-    <p>A LAN connects devices over a small geographical area, typically a single building or site (e.g. a school, home, or office).</p>
-    <div class="ic g">
-      <h4>LAN characteristics:</h4>
-      <ul>
-        <li>Covers a small geographical area (one building/site)</li>
-        <li>Owned and controlled by the organisation using it</li>
-        <li>Uses network hardware such as switches, routers, and cables or Wi-Fi</li>
-        <li>High data transfer speeds (typically 100 Mbps–10 Gbps)</li>
-        <li>Relatively cheap to set up and maintain</li>
-        <li>Examples: school network, home network, office network</li>
-      </ul>
-    </div>
-  </div>
-  <div class="ns">
-    <h2>WAN — Wide Area Network</h2>
-    <p>A WAN connects devices or LANs over a large geographical area — sometimes spanning cities, countries, or continents. WANs use infrastructure owned by third parties (e.g. telephone companies).</p>
-    <div class="ic b">
-      <h4>WAN characteristics:</h4>
-      <ul>
-        <li>Covers a large geographical area (city, country, worldwide)</li>
-        <li>Infrastructure owned by telecommunications companies, not the user</li>
-        <li>Lower speeds than a LAN for the same connection (though this varies)</li>
-        <li>More expensive than a LAN</li>
-        <li>Connects multiple LANs together</li>
-        <li>Examples: the internet (the largest WAN), a company with offices in multiple cities connected together</li>
-      </ul>
-    </div>
-    <div class="kp"><strong>The internet is the largest WAN in the world</strong> — it connects billions of devices across the globe.</div>
-  </div>
-  <div class="ns">
-    <h2>LAN vs WAN Comparison</h2>
-    <table class="ct">
-      <tr><th>Feature</th><th>LAN</th><th>WAN</th></tr>
-      <tr><td>Geographical area</td><td>Small (one building/site)</td><td>Large (cities/countries)</td></tr>
-      <tr><td>Ownership</td><td>Owned by organisation</td><td>Infrastructure rented/owned by telecoms</td></tr>
-      <tr><td>Speed</td><td>Generally high (100Mbps–10Gbps)</td><td>Generally lower (varies widely)</td></tr>
-      <tr><td>Cost</td><td>Relatively cheap</td><td>More expensive</td></tr>
-      <tr><td>Security</td><td>Easier to secure</td><td>Harder to secure (public infrastructure)</td></tr>
-      <tr><td>Example</td><td>School, home, office</td><td>The internet, multinational corporate network</td></tr>
+    <p>A <strong>LAN</strong> covers a <strong>small geographical area</strong> — typically a single building, office, school, or home.</p>
+    <table>
+      <thead><tr><th>Property</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Coverage area</td><td>Small: single building / site / home</td></tr>
+        <tr><td>Ownership</td><td>Usually owned and managed by the organisation using it</td></tr>
+        <tr><td>Connection media</td><td>Ethernet cable (wired) or Wi-Fi (wireless)</td></tr>
+        <tr><td>Speed</td><td>Typically fast — 100 Mbps to 10 Gbps</td></tr>
+        <tr><td>Examples</td><td>School network, office network, home Wi-Fi</td></tr>
+      </tbody>
     </table>
-  </div>
-  <div class="ns">
-    <h2>Network Hardware</h2>
-    <div class="ic b">
-      <h4>Key devices:</h4>
+    <p>In a LAN, devices are connected using <strong>Ethernet cables</strong> or <strong>wireless access points (WAPs)</strong>. The infrastructure (cables, switches, routers) is usually owned by the organisation.</p>
+
+    <h2>WAN — Wide Area Network</h2>
+    <p>A <strong>WAN</strong> covers a <strong>large geographical area</strong> — spanning cities, countries, or even the entire world. The <strong>Internet</strong> is the largest WAN in existence.</p>
+    <table>
+      <thead><tr><th>Property</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Coverage area</td><td>Large: cities, countries, worldwide</td></tr>
+        <tr><td>Ownership</td><td>Infrastructure owned by telecom companies (BT, Virgin, etc.)</td></tr>
+        <tr><td>Connection media</td><td>Telephone lines, fibre optic cables, satellite links, microwave</td></tr>
+        <tr><td>Speed</td><td>Typically slower than LAN; varies greatly</td></tr>
+        <tr><td>Examples</td><td>The Internet, a company's network across multiple offices worldwide</td></tr>
+      </tbody>
+    </table>
+    <p>Organisations use <strong>leased lines</strong> (dedicated connections rented from telecoms companies) or public internet connections to link their LANs across a WAN.</p>
+
+    <h2>PAN — Personal Area Network</h2>
+    <p>A <strong>PAN</strong> is a very small network — typically within a few metres of a person. It connects personal devices together.</p>
+    <table>
+      <thead><tr><th>Property</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Coverage area</td><td>Very small: a few metres</td></tr>
+        <tr><td>Technology</td><td>Bluetooth, NFC, USB, infrared</td></tr>
+        <tr><td>Examples</td><td>Smartphone to wireless headphones, smartwatch to phone, laptop to Bluetooth keyboard</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Comparing LAN, WAN and PAN</h2>
+    <table>
+      <thead><tr><th>Feature</th><th>PAN</th><th>LAN</th><th>WAN</th></tr></thead>
+      <tbody>
+        <tr><td>Coverage</td><td>~metres</td><td>Building/site</td><td>Cities/countries/worldwide</td></tr>
+        <tr><td>Speed</td><td>Low–medium</td><td>High</td><td>Variable (often lower)</td></tr>
+        <tr><td>Infrastructure owner</td><td>Individual</td><td>Organisation</td><td>Telecoms company</td></tr>
+        <tr><td>Technology</td><td>Bluetooth, NFC</td><td>Ethernet, Wi-Fi</td><td>Fibre, leased lines, satellite</td></tr>
+        <tr><td>Example</td><td>Bluetooth headphones</td><td>School network</td><td>The Internet</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Advantages of Networking</h2>
+    <ul>
+      <li><strong>Shared resources</strong>: printers, scanners, storage can be shared by many users</li>
+      <li><strong>Shared internet connection</strong>: one broadband connection shared across many devices</li>
+      <li><strong>Centralised data storage</strong>: files stored on a server accessible from any device</li>
+      <li><strong>Communication</strong>: email, messaging, video calls</li>
+      <li><strong>Centralised security &amp; updates</strong>: easier to apply updates and manage security</li>
+    </ul>
+
+    <h2>Disadvantages of Networking</h2>
+    <ul>
+      <li><strong>Security risks</strong>: networks are a target for hackers and malware</li>
+      <li><strong>Cost of setup</strong>: cables, switches, routers, server hardware</li>
+      <li><strong>Dependence on network</strong>: if network fails, users cannot access shared resources</li>
+      <li><strong>Data can be intercepted</strong>: sensitive data at risk if not encrypted</li>
+    </ul>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> Know the three types — LAN, WAN, PAN — and their key features: coverage area, typical technology, ownership. The Internet is a WAN. A school network is a LAN. Bluetooth headphones = PAN. OCR questions often ask you to identify network type from a scenario and justify your answer — make sure you explain WHY (e.g. "it covers a small area — one building — so it is a LAN").
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li><strong>Router</strong> — connects a LAN to a WAN (e.g. internet). Directs data packets between networks. Assigns IP addresses via DHCP.</li>
-        <li><strong>Switch</strong> — connects devices within a LAN. Forwards data only to the intended device (using MAC addresses). More efficient than a hub.</li>
-        <li><strong>Hub</strong> — connects devices in a LAN but broadcasts data to all devices (less efficient, largely replaced by switches).</li>
-        <li><strong>NIC (Network Interface Card)</strong> — hardware in each device that enables it to connect to a network. Has a unique MAC address.</li>
-        <li><strong>WAP (Wireless Access Point)</strong> — provides Wi-Fi connectivity, allowing wireless devices to connect to the network.</li>
-        <li><strong>Transmission media</strong> — the physical means of transmitting data: copper cables (ethernet), fibre optic cables, or wireless (Wi-Fi).</li>
+        <li>Saying "WAN is faster than LAN" — LANs are typically faster; WANs are larger but often slower</li>
+        <li>Saying "the internet is a LAN" — the internet is the world's largest WAN</li>
+        <li>Confusing PAN with LAN — PANs are personal (few metres, Bluetooth); LANs are building-scale</li>
+        <li>Saying organisations own WAN infrastructure — telecom companies do</li>
+        <li>Not justifying answers — "it is a LAN because it covers one school building" scores more marks than just "LAN"</li>
       </ul>
     </div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
-      <ul>
-        <li>Saying a WAN is always slower than a LAN — modern fibre WANs can be very fast</li>
-        <li>Saying the internet is a LAN — the internet is a WAN (the world's largest)</li>
-        <li>Confusing a switch and a hub — a switch sends data only to the target device; a hub broadcasts to all</li>
-        <li>Forgetting that WAN infrastructure is owned by telecoms companies, not the user</li>
-      </ul>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;">What's in this video</h3>
+    <ul style="list-style:none;padding:0;">
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• What is a computer network and why networks exist</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• LAN: coverage, ownership, Ethernet, Wi-Fi, school example</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• WAN: coverage, telecoms ownership, the Internet</li>
+      <li style="padding:8px 0;font-size:14.5px;color:#334155;">• PAN: Bluetooth, personal devices; advantages and disadvantages of networking</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_1.3.1a_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 1.3.1a Types of Networks</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">What is a computer network?</span><span class="ws-q-marks">[1]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Two or more computers/devices connected together to share data, resources, and services [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">What does LAN stand for? Describe what it is.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-2" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Local Area Network [1]; a network that covers a small geographical area — typically a single building or site [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">What does WAN stand for? Give one example of a WAN.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-3" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Wide Area Network [1]; the Internet / a bank's network connecting branches across multiple countries [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">A student pairs their phone with Bluetooth headphones. What type of network is this? Justify your answer.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">PAN (Personal Area Network) [1]; it connects personal devices over a very short range (a few metres) using Bluetooth [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">State two differences between a LAN and a WAN.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-5" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">LAN covers a small area (building); WAN covers a large area (cities/countries) [1+1]; LAN infrastructure is owned by the organisation; WAN infrastructure is owned by telecoms companies [1+1]. (Or: LAN typically faster than WAN [1+1] with explanation.)</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">State two advantages of connecting computers in a network.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-6" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Any two: shared resources (printers, storage) [1]; shared internet connection [1]; centralised data storage [1]; communication via email/messaging [1]; centralised software updates/security management [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">State two disadvantages of networking.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Any two: security risks — hacking/malware [1]; cost of hardware/setup [1]; reliance on the network — if it fails, shared resources unavailable [1]; data can be intercepted [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">A hospital connects computers in its reception, wards and operating rooms — all within one large building. A separate branch 200 miles away connects via the Internet. Identify the type of network used (a) within the building and (b) between the two sites. Justify each answer.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-8" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">(a) LAN [1] — covers a single building/site [1]; (b) WAN [1] — connects over a large geographical distance (200 miles); uses Internet infrastructure owned by telecoms companies [1].</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
     </div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet — LAN &amp; WAN</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/1-2-5/" class="nb">← 1.2.5 Compression</a>
-  <a href="/ocr-j277/1-3-1b/" class="nb n">1.3.1b Network Types →</a>
-</div>
-</div>
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
 </div>
 
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 1.3.1a Networks</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">Which network type covers a single building?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> WAN</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> LAN</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> PAN</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> WLAN</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">The Internet is an example of which network type?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> LAN</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> PAN</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> WAN</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> MAN</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">Bluetooth headphones connected to a phone is an example of:</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> LAN</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> WAN</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> PAN</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> Intranet</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">Who typically owns WAN infrastructure?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> The organisation using it</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> The government</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> Telecommunications companies</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> Individual users</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Which is an advantage of networking computers?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> Files cannot be shared</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> Resources such as printers can be shared</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> Computers run faster when networked</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> No security risks</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">What does LAN stand for?</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>Local Area Network. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">State one advantage and one disadvantage of networking.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>Advantage: shared resources/internet/centralised storage/communication [½]; Disadvantage: security risks/cost/dependence on network [½]. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">A shop has computers connected in its one-floor store. What type of network is this? Justify.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>LAN [½]; covers a single site/building [½]. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">State two technologies used in a LAN.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Ethernet cables [½]; Wi-Fi / wireless access points [½]. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">What does PAN stand for? Give one example.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>Personal Area Network [½]; e.g. Bluetooth headphones connected to a phone / smartwatch to phone [½]. [1]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/1-2-5/" class="bottom-nav-btn">← 1.2.5 Compression</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">1.3 Computer Networks</span>
+  <a href="/ocr-j277/1-3-1b/" class="bottom-nav-btn next-btn">1.3.1b Network Performance →</a>
+</div>
 <script>
-var LESSON_ID='1-3-1a';var IS_FREE=true;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
-
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-3-1a';
+var IS_FREE=true;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What does LAN stand for?",opts:["Large Area Network","Local Area Network","Linked Area Network","Long-range Area Network"],ans:1,exp:"LAN = Local Area Network. It covers a small geographical area such as a building or site."},
-  {q:"What does WAN stand for?",opts:["Wireless Area Network","Wide-Angle Network","Wide Area Network","Wired Area Network"],ans:2,exp:"WAN = Wide Area Network. It covers a large geographical area such as cities, countries or continents."},
-  {q:"A school connects all its computers in one building. This is an example of:",opts:["WAN","The internet","LAN","MAN"],ans:2,exp:"A school building is a small geographical area — this is a LAN (Local Area Network)."},
-  {q:"What is the internet?",opts:["The largest LAN in the world","A local area network used by businesses","The largest WAN in the world","A private network for governments"],ans:2,exp:"The internet is the world's largest WAN — it connects billions of devices across the globe."},
-  {q:"Who typically owns the infrastructure of a WAN?",opts:["The individual users","The organisation using it","Telecommunications companies","Local governments"],ans:2,exp:"WAN infrastructure (cables, exchanges, etc.) is owned by third-party telecommunications companies. Users pay to access it."},
-  {q:"Which device connects a LAN to the internet (WAN)?",opts:["Switch","Hub","Router","NIC"],ans:2,exp:"A router connects a local network (LAN) to a wider network (WAN/internet). It directs data packets between different networks."},
-  {q:"What is the difference between a switch and a hub?",opts:["A switch is wireless; a hub is wired","A switch sends data only to the intended device; a hub broadcasts to all connected devices","A switch only works in a WAN; a hub only in a LAN","There is no difference"],ans:1,exp:"A switch is smarter — it uses MAC addresses to send data only to the intended recipient. A hub broadcasts data to all connected devices, which is inefficient."},
-  {q:"What does NIC stand for?",opts:["Network Interface Card","Network Internet Connection","Normal Interconnect Channel","Node Interface Controller"],ans:0,exp:"NIC = Network Interface Card. Every network-connected device has one. It has a unique MAC address for identification on the network."},
-  {q:"Which of the following is a characteristic of a LAN?",opts:["Covers a large geographical area","Infrastructure owned by telecoms companies","Typically owned and controlled by the organisation using it","Always uses wireless connections"],ans:2,exp:"A LAN is typically owned and managed by the organisation using it — unlike a WAN where the infrastructure belongs to telecoms providers."},
-  {q:"A company has offices in London, Tokyo, and New York that are connected. This is an example of:",opts:["A LAN","A WAN","A PAN","A single network node"],ans:1,exp:"Multiple LANs connected across cities and countries form a WAN (Wide Area Network). The internet is the most common WAN used for this."},
-  {q:"What is a Wireless Access Point (WAP)?",opts:["A router that connects to the internet","A device that provides Wi-Fi access for devices to connect to the network","A switch that uses wireless signals","A NIC for laptop computers"],ans:1,exp:"A WAP (Wireless Access Point) provides Wi-Fi connectivity — it allows wireless devices to connect to a wired network or LAN."},
-  {q:"Which transmission medium provides the fastest and most reliable data transfer?",opts:["Wi-Fi (wireless)","Copper cable (ethernet)","Fibre optic cable","Bluetooth"],ans:2,exp:"Fibre optic cables transmit data as light at very high speeds with low interference — they are the fastest and most reliable transmission medium for networks."},
-  {q:"A home network with a router, two laptops, and a smart TV is an example of:",opts:["A WAN","A LAN","The internet","A server farm"],ans:1,exp:"A home network is a LAN — it covers a small area (one home) and is owned/managed by the household."},
-  {q:"Which statement about WANs is correct?",opts:["WANs are always faster than LANs","WANs cover a smaller area than LANs","WANs connect multiple LANs across large geographical areas","WANs are always free to use"],ans:2,exp:"WANs connect LANs across large areas. The infrastructure is owned by third parties, and users pay to connect. The internet is the world's largest WAN."},
-  {q:"What does a router use to direct data packets to the correct destination?",opts:["MAC addresses","IP addresses","Port numbers","Wireless signals"],ans:1,exp:"Routers use IP addresses to direct packets between networks. Switches use MAC addresses to forward data within a LAN."}
+  {q:"What does LAN stand for?",opts:["Local Area Network","Large Area Network","Long-range Area Network","Linked Area Network"],a:0,exp:"LAN = Local Area Network. It covers a small area such as a single building, office, or school."},
+  {q:"What does WAN stand for?",opts:["Wireless Area Network","Wide Area Network","Web Area Network","Wired Area Network"],a:1,exp:"WAN = Wide Area Network. It covers large geographical areas — cities, countries, or worldwide."},
+  {q:"Which is the world's largest WAN?",opts:["A school network","A company intranet","The Internet","A home Wi-Fi network"],a:2,exp:"The Internet is the largest WAN in existence. It connects billions of devices worldwide."},
+  {q:"A LAN typically covers:",opts:["Cities and countries","A single building or site","The entire world","A few metres around one person"],a:1,exp:"A LAN covers a small geographical area — typically one building, office, school, or home."},
+  {q:"What does PAN stand for?",opts:["Public Access Network","Personal Area Network","Private Area Network","Peripheral Area Network"],a:1,exp:"PAN = Personal Area Network. It connects personal devices over a very short range (a few metres), typically using Bluetooth."},
+  {q:"Which technology is commonly used in a LAN?",opts:["Fibre optic national infrastructure","Satellite links","Ethernet cables and Wi-Fi","Mobile phone towers"],a:2,exp:"LANs typically use Ethernet cables (wired) or Wi-Fi / wireless access points. These are within the organisation's own building."},
+  {q:"Who owns the infrastructure used by a WAN?",opts:["The organisation using it","Individual users","Telecommunications companies","The local council"],a:2,exp:"WAN infrastructure — fibre optic cables, telephone lines, satellite links — is owned by telecommunications companies such as BT or Virgin."},
+  {q:"A student connects their smartwatch to their phone via Bluetooth. What network type is this?",opts:["LAN","WAN","PAN","Intranet"],a:2,exp:"This is a PAN — a Personal Area Network. It uses Bluetooth to connect personal devices at close range (a few metres)."},
+  {q:"Which is an advantage of networking?",opts:["Computers become immune to viruses","Hardware must be duplicated for every user","Files and printers can be shared across devices","Networks are always faster than standalone computers"],a:2,exp:"Networking allows hardware (printers, scanners) and files to be shared, reducing cost and increasing efficiency."},
+  {q:"Which is a disadvantage of networking?",opts:["Resources cannot be shared","Communication between users is impossible","Security risks — the network is a target for hackers and malware","Networks always improve performance"],a:2,exp:"A networked computer is a target for hackers, malware, and data interception. Security measures (firewalls, encryption) must be implemented."},
+  {q:"Which connection media is used in a WAN to connect distant sites?",opts:["Ethernet cables","Wi-Fi access points","Fibre optic cables, telephone lines, satellite links","USB cables"],a:2,exp:"WANs use long-distance media: fibre optic cables, telephone lines, satellite links, and microwave connections — owned by telecoms companies."},
+  {q:"A school connects all its computers in one building to share files and a printer. This is:",opts:["A WAN","A PAN","A LAN","The Internet"],a:2,exp:"Connecting computers within one building to share resources is a LAN. It covers a single site and is owned by the school."},
+  {q:"An organisation connects its offices in London, New York, and Tokyo. This is:",opts:["A LAN","A PAN","A WAN","A standalone network"],a:2,exp:"Connecting offices across different countries creates a WAN — it spans a large geographical area."},
+  {q:"Which network type is typically the fastest?",opts:["WAN","PAN","LAN","Satellite network"],a:2,exp:"LANs are typically faster than WANs. LAN speeds can reach 10 Gbps on wired connections. WAN speeds depend on telecoms infrastructure and are often slower."},
+  {q:"What is an intranet?",opts:["The same as the Internet","A private internal network using internet technologies, accessible only within an organisation","A wireless PAN","A type of WAN"],a:1,exp:"An intranet is a private network within an organisation that uses internet technologies (web browsers, HTTP) but is not publicly accessible from outside."}
 ];
-
-var WORKSHEET=[
-  {q:"State TWO differences between a LAN and a WAN.",marks:2,ms:"Any two from: LAN covers a small geographic area; WAN covers a large area (1). LAN infrastructure is owned by the organisation; WAN infrastructure is owned by telecoms companies (1). LAN is typically faster; WAN speeds vary more widely (1). LAN is cheaper to set up; WAN is more expensive (1)."},
-  {q:"A student says 'the internet is a LAN'. Explain why this is incorrect.",marks:2,ms:"The internet is not a LAN (1). The internet is the world's largest WAN — it connects billions of devices across multiple countries and continents, far beyond the single-site scope of a LAN (1)."},
-  {q:"Explain the difference between a switch and a hub, and state which is more efficient.",marks:3,ms:"A switch forwards data only to the intended recipient device, using MAC addresses to identify it (1). A hub broadcasts data to all connected devices, regardless of the intended recipient (1). A switch is more efficient — it reduces unnecessary network traffic and improves performance (1)."},
-  {q:"Describe the role of a router in a network.",marks:2,ms:"A router connects different networks together — typically a LAN to a WAN (internet) (1). It reads the destination IP address of each data packet and forwards it along the most appropriate route (1)."},
-  {q:"Give TWO examples of a LAN and TWO examples of a WAN.",marks:4,ms:"LAN examples (any two): school network, home network, office network, hospital internal network (2). WAN examples (any two): the internet, a bank's network connecting branches across the country, a multinational company's global network (2)."},
-  {q:"Explain what a NIC is and why every network device needs one.",marks:2,ms:"A NIC (Network Interface Card) is hardware inside a computing device that enables it to connect to a network (1). Every device needs one because it contains a unique MAC (Media Access Control) address used to identify the device on the network, and provides the physical interface for connection (1)."},
-  {q:"A school is designing its network and must decide between wired (ethernet) and wireless (Wi-Fi) connections. Give ONE advantage of each.",marks:2,ms:"Wired (ethernet) advantage: faster and more reliable data transfer with no interference (1). Wireless (Wi-Fi) advantage: more flexible — devices can connect from anywhere within the signal range without physical cables (1)."},
-  {q:"Explain why businesses with offices in different countries use WANs rather than LANs to connect their sites.",marks:2,ms:"A LAN can only cover a small geographical area such as a single building (1). To connect offices in different countries, a WAN must be used — WANs cover large geographic areas by using telecommunications infrastructure such as undersea cables, satellite links, or leased lines (1)."}
-];
-
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Network",d:"Two or more computing devices connected together to share resources, files, or internet access."},
-  {w:"LAN",d:"Local Area Network — a network covering a small geographical area (single building or site). Owned by the organisation."},
-  {w:"WAN",d:"Wide Area Network — a network covering a large geographical area (cities, countries). Infrastructure owned by telecoms companies."},
-  {w:"The internet",d:"The world's largest WAN — a global network connecting billions of devices using a common set of protocols (TCP/IP)."},
-  {w:"Router",d:"A device that connects different networks. Forwards data packets using IP addresses. Connects a LAN to the internet (WAN)."},
-  {w:"Switch",d:"A network device that connects devices within a LAN. Forwards data only to the intended device using MAC addresses. More efficient than a hub."},
-  {w:"Hub",d:"An older network device that connects devices in a LAN but broadcasts data to all connected devices. Less efficient than a switch."},
-  {w:"NIC",d:"Network Interface Card — hardware that enables a device to connect to a network. Contains a unique MAC address."},
-  {w:"MAC address",d:"Media Access Control address — a unique hardware identifier assigned to each NIC. Used by switches to direct data within a LAN."},
-  {w:"WAP",d:"Wireless Access Point — a device that provides Wi-Fi connectivity, allowing wireless devices to connect to a network."},
-  {w:"Transmission media",d:"The physical means by which data travels through a network. Examples: copper cable (ethernet), fibre optic cable, wireless (Wi-Fi)."},
-  {w:"Fibre optic",d:"A transmission medium that sends data as pulses of light through glass fibres. Very fast and resistant to interference."},
-  {w:"Ethernet",d:"A standard for wired networking using copper cables. Common speeds: 100 Mbps (Fast Ethernet) to 10 Gbps (10 Gigabit Ethernet)."},
-  {w:"Bandwidth",d:"The maximum data transfer rate of a network connection, measured in Mbps or Gbps. Higher bandwidth = faster data transfer."},
-  {w:"IP address",d:"Internet Protocol address — a numerical label identifying each device on a network. Routers use IP addresses to route data packets."}
+  {term:"Network",def:"Two or more computers or devices connected together to share data, resources, and services such as files, printers, and internet connections."},
+  {term:"LAN",def:"Local Area Network — a network covering a small geographical area such as a single building, office, or school. Infrastructure owned by the organisation."},
+  {term:"WAN",def:"Wide Area Network — covers large geographical areas: cities, countries, or worldwide. Infrastructure owned by telecommunications companies."},
+  {term:"PAN",def:"Personal Area Network — connects personal devices over a very short range (a few metres) using Bluetooth or NFC. Example: phone to Bluetooth headphones."},
+  {term:"The Internet",def:"The world's largest Wide Area Network (WAN). A global system of interconnected networks using the TCP/IP protocol suite."},
+  {term:"Ethernet",def:"A wired networking technology commonly used in LANs. Cables connect devices to switches. Fast and reliable. Speeds up to 10 Gbps."},
+  {term:"Wi-Fi",def:"A wireless networking technology used in LANs. Devices connect to a Wireless Access Point (WAP) using radio waves."},
+  {term:"Bluetooth",def:"Short-range wireless technology used in PANs. Range typically under 10 metres. Used for headphones, keyboards, smartwatches."},
+  {term:"Leased line",def:"A dedicated, permanent connection rented from a telecoms company. Used by organisations to link their sites across a WAN with guaranteed bandwidth."},
+  {term:"Intranet",def:"A private internal network that uses internet technologies but is only accessible within an organisation — not publicly available on the Internet."},
+  {term:"LAN vs WAN ownership",def:"LAN infrastructure is owned by the organisation using it. WAN infrastructure is owned by telecommunications companies (e.g. BT, Virgin)."},
+  {term:"Shared resources",def:"A key advantage of networking — printers, storage, and internet connections can be shared by many users, reducing cost."},
+  {term:"Centralised storage",def:"Files stored on a server that any networked device can access. Simplifies backups and allows users to work from any device."},
+  {term:"Network security risk",def:"A disadvantage of networking. Networks are targets for hackers, malware, and data interception. Firewalls and encryption help mitigate this."},
+  {term:"WAP",def:"Wireless Access Point — a device that creates a wireless network (Wi-Fi) in a building, allowing wireless devices to connect to the LAN."}
 ];
-
-var TEST_MCQ=[
-  {q:"Which of these is an example of a WAN?",opts:["A home network","A school network","The internet","An office LAN"],ans:2,exp:"The internet is the world's largest WAN. Home, school, and office networks are all LANs."},
-  {q:"Which device is used to connect a LAN to the internet?",opts:["Switch","Hub","WAP","Router"],ans:3,exp:"A router connects a LAN to a WAN (the internet). It routes data packets using IP addresses."},
-  {q:"Who owns the infrastructure of a WAN?",opts:["The organisation using it","Individual users","Telecommunications companies","The government"],ans:2,exp:"WAN infrastructure (cables, exchanges, etc.) is owned by third-party telecoms companies. Organisations pay to use it."},
-  {q:"What is the main advantage of a switch over a hub?",opts:["A switch is cheaper","A switch sends data only to the intended device, reducing unnecessary traffic","A switch provides Wi-Fi","A switch connects to the internet"],ans:1,exp:"Unlike a hub (which broadcasts to all), a switch uses MAC addresses to send data only to the target device — much more efficient."},
-  {q:"A LAN is typically defined as a network that covers:",opts:["A large area such as a city","A small geographical area such as a single building or site","The entire country","Multiple countries"],ans:1,exp:"LAN = Local Area Network. It covers a small area — typically one building, campus, or site."}
-];
-
-var TEST_SA=[
-  {q:"Define LAN and give ONE example.",marks:2,ms:"LAN = Local Area Network — a network covering a small geographical area such as a single building or site (1). Example: school network, home network, office network (1)."},
-  {q:"State TWO differences between a LAN and a WAN.",marks:2,ms:"Any two from: LAN covers a small area / WAN covers a large area (1). LAN is owned by the organisation / WAN infrastructure is owned by telecoms companies (1). LAN is generally faster / WAN speeds vary more (1)."},
-  {q:"Describe the role of a router on a home network.",marks:2,ms:"The router connects the home LAN to the internet (WAN) (1). It receives incoming data packets and forwards them to the correct device on the LAN using IP addresses (1)."},
-  {q:"Explain the difference between a switch and a hub.",marks:2,ms:"A switch sends data only to the intended recipient device, using MAC addresses (1). A hub broadcasts data to all connected devices, regardless of the intended recipient, which is less efficient (1)."},
-  {q:"State what NIC stands for and explain its purpose.",marks:2,ms:"NIC = Network Interface Card (1). It is hardware that enables a device to connect to a network, and it contains a unique MAC address for identification (1)."}
-];
-
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:90px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,2,2,1];
+var TEST_MCQ_LABELS=[['WAN','LAN','PAN','WLAN'],['LAN','PAN','WAN','MAN'],['LAN','WAN','PAN','Intranet'],['The organisation using it','The government','Telecommunications companies','Individual users'],['Files cannot be shared','Resources such as printers can be shared','Computers run faster','No security risks']];
+var TEST_MCQ_EXPLAIN=['LAN = Local Area Network = single building.','The Internet = WAN.','Bluetooth headphones to phone = PAN.','WAN infrastructure owned by telecom companies.','Shared printers/files = key network advantage.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['What does LAN stand for?','Advantage + disadvantage of networking?','What type of network is a single-store shop?','Two technologies in a LAN?','What does PAN stand for + example?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

@@ -1,408 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.2.4b Hexadecimal | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}
-.shell{display:flex;width:100%;min-height:100vh}
-.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}
-.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}
-.sidebar-section{padding:8px 0}
-.sidebar-section-title{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}
-.sidebar-link{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}
-.sidebar-link:hover{color:#e2e8f0;background:#ffffff08}.sidebar-link.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}
-.sidebar-link.free-badge::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}
-.main{margin-left:260px;flex:1;display:flex;flex-direction:column}
-.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}
-.breadcrumb{font-size:12px;color:#64748b;margin-bottom:8px}.breadcrumb a{color:#6366f1;text-decoration:none}
-.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}
-.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}
-.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}
-.tab-btn{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s}
-.tab-btn:hover{color:#e2e8f0}.tab-btn.active{color:#818cf8;border-bottom-color:#6366f1}
-.tab-content{padding:32px 40px;max-width:900px}
-.notes-section{margin-bottom:32px}
-.notes-section h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}
-.notes-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}
-.notes-section p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}
-.notes-section ul{padding-left:20px;margin-bottom:10px}
-.notes-section ul li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}
-.info-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}
-.info-card.blue{border-left:3px solid #3b82f6}.info-card.green{border-left:3px solid #10b981}.info-card.amber{border-left:3px solid #f59e0b}.info-card.purple{border-left:3px solid #8b5cf6}
-.info-card h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}
-.info-card p,.info-card li{font-size:13px;color:#94a3b8;line-height:1.6}.info-card ul{padding-left:16px}
-.compare-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
-.compare-table th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:center;font-weight:600;border:1px solid #2d3148}
-.compare-table td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8;text-align:center}
-.compare-table tr:nth-child(even) td{background:#1a1d2e}
-.key-point{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}
-.key-point strong{color:#c7d2fe}
-.formula-box{background:#0f172a;border:1px solid #3730a3;border-radius:8px;padding:16px 20px;margin:12px 0;font-family:monospace;font-size:14px;color:#a5b4fc;line-height:1.8}
-.quiz-container{max-width:700px}
-.quiz-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
-.quiz-q p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}
-.quiz-opt{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;transition:.15s;font-size:13px;color:#94a3b8}
-.quiz-opt:hover{background:#252840;border-color:#4f46e5}.quiz-opt.correct{background:#052e16;border-color:#10b981;color:#6ee7b7}.quiz-opt.wrong{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}
-.quiz-opt input{display:none}
-.quiz-explain{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}
-.quiz-score{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}
-.btn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}
-.btn-outline{background:transparent;color:#6366f1;border:1px solid #6366f1}
-.ws-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}
-.ws-q .q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
-.ws-q .q-text{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}
-.ws-q .marks{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}
-.ws-q textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}
-.ms-toggle{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}
-.mark-scheme{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}
-.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
-.term-card{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}
-.term-word{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}
-.term-def{font-size:13px;color:#94a3b8;line-height:1.5}
-.test-section{margin-bottom:28px}.test-section h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}
-.sa-q{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}
-.sa-q p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}
-.sa-q .marks{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}
-.lesson-nav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}
-.nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500;transition:.15s}
-.nav-btn:hover{color:#e2e8f0;border-color:#4f46e5}.nav-btn.next{background:#6366f108;border-color:#6366f1;color:#818cf8}
-#paywall-overlay{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}
-.paywall-box{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-.paywall-box h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
-.paywall-box p{font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6}
-.paywall-box .price{font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px}
-.paywall-box .price-sub{font-size:12px;color:#64748b;margin-bottom:24px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2.4b Binary Addition &amp; Overflow — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;text-align:center;}
+    .notes-content td:first-child{text-align:left;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-card{background:#fff;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-bottom:10px;width:100%;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="paywall-overlay" style="display:none">
-  <div class="paywall-box">
-    <div style="font-size:48px;margin-bottom:16px">🔒</div>
-    <h2>Unlock Full Access</h2>
-    <p>Subscribe to access all 47 OCR J277 lessons, quizzes, worksheets and mini tests.</p>
-    <div class="price">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div>
-    <div class="price-sub">or £59/year — save 38%</div>
-    <a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px 20px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a>
-    <a href="/dashboard" style="font-size:13px;color:#64748b">Back to Dashboard</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.2 Memory &amp; Storage</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.2.4b Binary Addition</span>
+    </div>
   </div>
-</div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sidebar-section-title">Component 1</div>
-    <div class="sidebar-section-title" style="color:#818cf8">1.1 Systems Architecture</div>
-    <a href="/ocr-j277/1-1-1/" class="sidebar-link free-badge">1.1.1 Architecture of the CPU</a>
-    <a href="/ocr-j277/1-1-2/" class="sidebar-link">1.1.2 CPU Performance</a>
-    <a href="/ocr-j277/1-1-3/" class="sidebar-link">1.1.3 Embedded Systems</a>
-    <div class="sidebar-section-title" style="color:#818cf8">1.2 Memory &amp; Storage</div>
-    <a href="/ocr-j277/1-2-1/" class="sidebar-link free-badge">1.2.1 Primary Storage</a>
-    <a href="/ocr-j277/1-2-2/" class="sidebar-link">1.2.2 Secondary Storage</a>
-    <a href="/ocr-j277/1-2-3/" class="sidebar-link">1.2.3 Units of Storage</a>
-    <a href="/ocr-j277/1-2-4a/" class="sidebar-link">1.2.4a Binary &amp; Denary</a>
-    <a href="/ocr-j277/1-2-4b/" class="sidebar-link active">1.2.4b Hexadecimal</a>
-    <a href="/ocr-j277/1-2-4c/" class="sidebar-link">1.2.4c Binary Arithmetic</a>
-    <a href="/ocr-j277/1-2-4d/" class="sidebar-link">1.2.4d Binary Shifts</a>
-    <a href="/ocr-j277/1-2-4e/" class="sidebar-link">1.2.4e Character Encoding</a>
-    <a href="/ocr-j277/1-2-4f/" class="sidebar-link">1.2.4f Representing Images</a>
-    <a href="/ocr-j277/1-2-4g/" class="sidebar-link">1.2.4g Representing Sound</a>
-    <a href="/ocr-j277/1-2-5/" class="sidebar-link">1.2.5 Compression</a>
-    <div class="sidebar-section-title" style="color:#818cf8">1.3 Networks</div>
-    <a href="/ocr-j277/1-3-1a/" class="sidebar-link free-badge">1.3.1a LAN, WAN &amp; Performance</a>
-    <a href="/ocr-j277/1-3-1b/" class="sidebar-link">1.3.1b Network Types &amp; Hardware</a>
-    <a href="/ocr-j277/1-3-1c/" class="sidebar-link">1.3.1c Internet, DNS &amp; Cloud</a>
-    <a href="/ocr-j277/1-3-1d/" class="sidebar-link">1.3.1d Network Topologies</a>
-    <a href="/ocr-j277/1-3-2a/" class="sidebar-link">1.3.2a Wired &amp; Wireless</a>
-    <a href="/ocr-j277/1-3-2b/" class="sidebar-link">1.3.2b Protocols &amp; Layers</a>
-    <div class="sidebar-section-title" style="color:#818cf8">1.4 Network Security</div>
-    <a href="/ocr-j277/1-4-1/" class="sidebar-link free-badge">1.4.1 Network Threats</a>
-    <a href="/ocr-j277/1-4-2/" class="sidebar-link">1.4.2 Preventing Vulnerabilities</a>
-    <div class="sidebar-section-title" style="color:#818cf8">1.5 Systems Software</div>
-    <a href="/ocr-j277/1-5-1/" class="sidebar-link free-badge">1.5.1 Operating Systems</a>
-    <a href="/ocr-j277/1-5-2/" class="sidebar-link">1.5.2 Utility Software</a>
-    <div class="sidebar-section-title" style="color:#818cf8">1.6 Impacts</div>
-    <a href="/ocr-j277/1-6-1a/" class="sidebar-link free-badge">1.6.1a Ethical &amp; Legal</a>
-    <a href="/ocr-j277/1-6-1b/" class="sidebar-link">1.6.1b Cultural &amp; Environmental</a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-section-title">Component 2</div>
-    <div class="sidebar-section-title" style="color:#818cf8">2.1 Algorithms</div>
-    <a href="/ocr-j277/2-1-1/" class="sidebar-link free-badge">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-1-2a/" class="sidebar-link">2.1.2a Flowcharts</a>
-    <a href="/ocr-j277/2-1-2b/" class="sidebar-link">2.1.2b Pseudocode</a>
-    <a href="/ocr-j277/2-1-3a/" class="sidebar-link">2.1.3a Linear Search</a>
-    <a href="/ocr-j277/2-1-3b/" class="sidebar-link">2.1.3b Binary Search</a>
-    <a href="/ocr-j277/2-1-3c/" class="sidebar-link">2.1.3c Bubble Sort</a>
-    <a href="/ocr-j277/2-1-3d/" class="sidebar-link">2.1.3d Merge Sort</a>
-    <a href="/ocr-j277/2-1-3e/" class="sidebar-link">2.1.3e Insertion Sort</a>
-    <div class="sidebar-section-title" style="color:#818cf8">2.2 Programming</div>
-    <a href="/ocr-j277/2-2-1a/" class="sidebar-link free-badge">2.2.1a Variables &amp; Data Types</a>
-    <a href="/ocr-j277/2-2-1b/" class="sidebar-link">2.2.1b Selection &amp; Iteration</a>
-    <a href="/ocr-j277/2-2-1c/" class="sidebar-link">2.2.1c Arrays</a>
-    <a href="/ocr-j277/2-2-1d/" class="sidebar-link">2.2.1d File Handling</a>
-    <a href="/ocr-j277/2-2-1e/" class="sidebar-link">2.2.1e String Manipulation</a>
-    <a href="/ocr-j277/2-2-1f/" class="sidebar-link">2.2.1f Subroutines</a>
-    <div class="sidebar-section-title" style="color:#818cf8">2.3 Robust Programs</div>
-    <a href="/ocr-j277/2-3-1/" class="sidebar-link free-badge">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-3-2/" class="sidebar-link">2.3.2 Testing</a>
-    <div class="sidebar-section-title" style="color:#818cf8">2.4 Boolean Logic</div>
-    <a href="/ocr-j277/2-4-1a/" class="sidebar-link free-badge">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-4-1b/" class="sidebar-link">2.4.1b Truth Tables</a>
-    <div class="sidebar-section-title" style="color:#818cf8">2.5 Languages &amp; IDEs</div>
-    <a href="/ocr-j277/2-5-1/" class="sidebar-link free-badge">2.5.1 High &amp; Low Level</a>
-    <a href="/ocr-j277/2-5-2a/" class="sidebar-link">2.5.2a Translators</a>
-    <a href="/ocr-j277/2-5-2b/" class="sidebar-link">2.5.2b IDEs</a>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="breadcrumb"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.2 Memory &amp; Storage</div>
-  <div class="lesson-title">1.2.4b — Hexadecimal</div>
-  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~25 min</div>
+  <div class="lesson-badge">➕ Component 1 · 1.2 Data Representation</div>
+  <div class="lesson-title">1.2.4b Binary Addition &amp; Overflow</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~10 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tab-btn active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tab-btn" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tab-btn" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tab-btn" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tab-btn" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tab-btn" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tab-btn" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tab-content" id="tab-notes">
-  <div class="notes-section">
-    <h2>What is Hexadecimal?</h2>
-    <p>Hexadecimal (hex) is a <strong>base 16</strong> number system. It uses 16 symbols: the digits 0–9 and the letters A–F (where A=10, B=11, C=12, D=13, E=14, F=15).</p>
-    <table class="compare-table">
-      <tr><th>Denary</th><th>Hex</th><th>Binary (4-bit)</th></tr>
-      <tr><td>0</td><td>0</td><td>0000</td></tr>
-      <tr><td>1</td><td>1</td><td>0001</td></tr>
-      <tr><td>2</td><td>2</td><td>0010</td></tr>
-      <tr><td>3</td><td>3</td><td>0011</td></tr>
-      <tr><td>4</td><td>4</td><td>0100</td></tr>
-      <tr><td>5</td><td>5</td><td>0101</td></tr>
-      <tr><td>6</td><td>6</td><td>0110</td></tr>
-      <tr><td>7</td><td>7</td><td>0111</td></tr>
-      <tr><td>8</td><td>8</td><td>1000</td></tr>
-      <tr><td>9</td><td>9</td><td>1001</td></tr>
-      <tr><td>10</td><td>A</td><td>1010</td></tr>
-      <tr><td>11</td><td>B</td><td>1011</td></tr>
-      <tr><td>12</td><td>C</td><td>1100</td></tr>
-      <tr><td>13</td><td>D</td><td>1101</td></tr>
-      <tr><td>14</td><td>E</td><td>1110</td></tr>
-      <tr><td>15</td><td>F</td><td>1111</td></tr>
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>Binary Addition Rules</h2>
+    <p>Binary addition works like denary addition but uses only 0s and 1s. There are only four rules to remember:</p>
+    <table>
+      <thead><tr><th>Addition</th><th>Result</th><th>Carry</th></tr></thead>
+      <tbody>
+        <tr><td>0 + 0</td><td>0</td><td>0</td></tr>
+        <tr><td>0 + 1</td><td>1</td><td>0</td></tr>
+        <tr><td>1 + 0</td><td>1</td><td>0</td></tr>
+        <tr><td>1 + 1</td><td>0</td><td>1 (carry 1)</td></tr>
+        <tr><td>1 + 1 + 1 (with carry)</td><td>1</td><td>1 (carry 1)</td></tr>
+      </tbody>
     </table>
-    <div class="key-point"><strong>Key insight:</strong> Each hex digit represents exactly 4 binary digits (a nibble). This makes converting between hex and binary very easy.</div>
-  </div>
+    <p>The key rule: <strong>1 + 1 = 10 in binary</strong> (denary 2). You write 0 and carry 1 to the next column.</p>
 
-  <div class="notes-section">
-    <h2>Why Use Hexadecimal?</h2>
-    <p>Hex is used because it provides a <strong>compact, human-readable representation of binary data</strong>.</p>
-    <div class="info-card blue">
-      <h4>Uses of Hexadecimal</h4>
+    <h2>Worked Example 1: 00110101 + 00011011</h2>
+    <p>Add these two 8-bit binary numbers:</p>
+    <table>
+      <thead><tr><th></th><th>128</th><th>64</th><th>32</th><th>16</th><th>8</th><th>4</th><th>2</th><th>1</th></tr></thead>
+      <tbody>
+        <tr><td>Number 1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>Number 2</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>Carry</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td><strong>Result</strong></td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+    <p>Check: 00110101 = 53, 00011011 = 27, 53 + 27 = 80 = 01010000 ✓</p>
+
+    <h2>Worked Example 2: 11001010 + 00101100</h2>
+    <table>
+      <thead><tr><th></th><th>128</th><th>64</th><th>32</th><th>16</th><th>8</th><th>4</th><th>2</th><th>1</th></tr></thead>
+      <tbody>
+        <tr><td>Number 1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>Number 2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td>Carry</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td><strong>Result</strong></td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+      </tbody>
+    </table>
+    <p>Check: 202 + 44 = 246 = 11110110 ✓</p>
+
+    <h2>Overflow</h2>
+    <p><strong>Overflow</strong> occurs when the result of a binary addition is too large to be stored in the available number of bits. With 8 bits, the maximum value is 255 (11111111). If the result exceeds 255, a carry is generated beyond the MSB — this carry is lost (as there are no more bits to hold it), and the result stored is incorrect.</p>
+    <h3>Overflow Example: 11110000 + 00110000</h3>
+    <p>11110000 = 240, 00110000 = 48. 240 + 48 = 288 — but 288 &gt; 255, so overflow occurs.</p>
+    <table>
+      <thead><tr><th></th><th>128</th><th>64</th><th>32</th><th>16</th><th>8</th><th>4</th><th>2</th><th>1</th><th>Carry out</th></tr></thead>
+      <tbody>
+        <tr><td>Number 1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td></tr>
+        <tr><td>Number 2</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td></tr>
+        <tr><td><strong>Result</strong></td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1 (lost!)</td></tr>
+      </tbody>
+    </table>
+    <p>The 8-bit result is <strong>00100000 = 32</strong> — this is <strong>wrong</strong> because the carry bit has been lost. This is overflow. The correct answer (288) cannot be stored in 8 bits.</p>
+
+    <h2>Detecting and Handling Overflow</h2>
+    <ul>
+      <li>A carry out of the MSB position is the <strong>overflow flag</strong> — it signals that the result is too large</li>
+      <li>Computers use an <strong>overflow flag</strong> in the status register to signal this error</li>
+      <li>To avoid overflow, use <strong>more bits</strong> (e.g. 16-bit or 32-bit numbers instead of 8-bit)</li>
+    </ul>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> When adding binary numbers in an exam, always work from right to left (LSB to MSB). Show carry bits clearly above each column. If a carry is generated from the MSB column, state that this is overflow and the result is incorrect. You will get marks for identifying overflow even if your arithmetic has a small error elsewhere.
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li><strong>Memory addresses</strong> — RAM and CPU registers use hex addresses (e.g. 0x1F4A)</li>
-        <li><strong>Colour codes</strong> — HTML/CSS colours like #FF5733 (R=FF, G=57, B=33)</li>
-        <li><strong>Error codes</strong> — Windows error codes (e.g. 0x0000007F)</li>
-        <li><strong>MAC addresses</strong> — unique hardware identifiers (e.g. A1:B2:C3:D4:E5:F6)</li>
-        <li><strong>IPv6 addresses</strong> — internet addresses using hex groups</li>
-        <li><strong>Assembly/machine code</strong> — representing opcodes and data</li>
+        <li>Forgetting the carry — the most common error. A carry from column 1 must be added to column 2</li>
+        <li>Working left to right instead of right to left (start at the LSB)</li>
+        <li>Confusing overflow with a wrong answer — overflow is a specific condition where the carry exits the MSB</li>
+        <li>Writing "10" as two digits instead of carrying — 1+1=10 means write 0 carry 1</li>
+        <li>Not checking your answer: convert result back to denary to verify</li>
       </ul>
     </div>
-    <p>Two hex digits can represent a full byte (8 bits): e.g. FF₁₆ = 11111111₂ = 255₁₀</p>
-  </div>
 
-  <div class="notes-section">
-    <h2>Converting Hex to Denary</h2>
-    <p>Hex place values are powers of 16: 16⁰=1, 16¹=16, 16²=256, 16³=4096</p>
-    <div class="info-card green">
-      <h4>Worked Example: Convert 3F₁₆ to denary</h4>
-      <div class="formula-box">
-        3F has two digits: leftmost = 3, rightmost = F (=15)<br>
-        = (3 × 16) + (15 × 1)<br>
-        = 48 + 15<br>
-        = <strong>63</strong>
-      </div>
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;">What's in this video</h3>
+    <ul style="list-style:none;padding:0;">
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• The four binary addition rules (0+0, 0+1, 1+1, 1+1+carry)</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Step-by-step column addition with carry tracking</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• What overflow is and when it occurs</li>
+      <li style="padding:8px 0;font-size:14.5px;color:#334155;">• How to identify overflow in exam questions</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_1.2.4b_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 1.2.4b Binary Addition &amp; Overflow</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks · Show all working including carry bits</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">State the result of 1 + 1 in binary. What happens to the carry?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">1 + 1 = 10 in binary (write 0, carry 1) [1]; the carry is passed to the next (higher value) column [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">Add 00110011 + 00001010. Show carry bits and give the result in binary and denary.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-2" style="min-height:120px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">51 + 10 = 61. Binary: 00111101. [1 method showing carries, 1 correct binary result, 1 denary check].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Add 01100100 + 00011001. Show your working.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-3" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">100 + 25 = 125 = 01111101. [1 for method, 1 for correct result].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">What is overflow in the context of binary addition? Give the condition that causes it.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Overflow is when the result of binary addition is too large to be stored in the given number of bits [1]; it occurs when a carry is generated out of the most significant bit (MSB) position [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Add 11000000 + 01000001. Does overflow occur? Explain.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-5" style="min-height:120px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">192 + 65 = 257 > 255 so overflow occurs [1]; carry out of MSB = 1 [1]; 8-bit result is 00000001 which is incorrect — the carry (= 256) is lost [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">Add 10101010 + 01010110. Show working and state whether overflow occurs.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-6" style="min-height:120px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">170 + 86 = 256 → overflow occurs [1]; carry out of MSB [1]; 8-bit result is 00000000, which is incorrect [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">State one way that a computer can handle overflow when adding 8-bit numbers.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Use more bits to store the result, e.g. 16-bit or 32-bit numbers [1]; or set an overflow flag in the status register to signal the error to the CPU [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">A student adds two 8-bit binary numbers: 11111111 + 00000001. What is the 8-bit result? Is it correct? Explain.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-8" style="min-height:120px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">255 + 1 = 256; 8-bit result is 00000000 [1]; this is NOT correct [1]; overflow has occurred — a carry is generated out of the MSB, and the result (256) cannot be stored in 8 bits [1].</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 18 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
     </div>
-    <div class="info-card blue">
-      <h4>Worked Example: Convert 2A₁₆ to denary</h4>
-      <div class="formula-box">
-        2A: 2 in 16s column, A (=10) in 1s column<br>
-        = (2 × 16) + (10 × 1)<br>
-        = 32 + 10<br>
-        = <strong>42</strong>
-      </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
     </div>
-    <div class="info-card green">
-      <h4>Worked Example: Convert 1B4₁₆ to denary</h4>
-      <div class="formula-box">
-        Place values: 256, 16, 1<br>
-        1=1, B=11, 4=4<br>
-        = (1 × 256) + (11 × 16) + (4 × 1)<br>
-        = 256 + 176 + 4<br>
-        = <strong>436</strong>
-      </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
     </div>
   </div>
+</div>
 
-  <div class="notes-section">
-    <h2>Converting Denary to Hex</h2>
-    <p>Repeatedly divide by 16 and note the remainders (in reverse order).</p>
-    <div class="info-card green">
-      <h4>Worked Example: Convert 200 to hex</h4>
-      <div class="formula-box">
-        200 ÷ 16 = 12 remainder 8 → remainder = 8<br>
-        12 ÷ 16 = 0 remainder 12 → remainder = C<br>
-        Read remainders bottom to top: <strong>C8₁₆</strong><br><br>
-        Check: (12 × 16) + 8 = 192 + 8 = 200 ✓
-      </div>
-    </div>
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
   </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
 
-  <div class="notes-section">
-    <h2>Converting Hex ↔ Binary (via Nibbles)</h2>
-    <p>The easiest method: each hex digit = exactly 4 binary bits (a nibble).</p>
-    <div class="info-card green">
-      <h4>Hex to Binary: Convert A7₁₆ to binary</h4>
-      <div class="formula-box">
-        A = 10 = 1010<br>
-        7 = 7 &nbsp;= 0111<br>
-        A7₁₆ = <strong>10100111₂</strong>
-      </div>
-    </div>
-    <div class="info-card blue">
-      <h4>Binary to Hex: Convert 11001101₂ to hex</h4>
-      <div class="formula-box">
-        Split into nibbles: 1100 | 1101<br>
-        1100 = 12 = C<br>
-        1101 = 13 = D<br>
-        = <strong>CD₁₆</strong>
-      </div>
-    </div>
-    <div class="key-point"><strong>Shortcut:</strong> To convert an 8-bit binary number to hex, split it into two nibbles and convert each to a hex digit. To go the other way, convert each hex digit to a 4-bit nibble.</div>
-    <div class="info-card amber">
-      <h4>Common Mistakes</h4>
-      <ul>
-        <li>Forgetting that A=10, B=11, C=12, D=13, E=14, F=15</li>
-        <li>Not padding nibbles to 4 bits (e.g. 7 = 0111 not 111)</li>
-        <li>Using wrong place values (hex uses 16s, not 10s)</li>
-        <li>Mixing up hex letters — E is 14, not 15 (F is 15)</li>
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 1.2.4b Binary Addition &amp; Overflow</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <ul style="list-style:none;padding:0;margin-bottom:28px;">
+        <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;">• 5 multiple choice + 5 short answer</li>
+        <li style="padding:6px 0;">• Show carries in addition questions</li>
       </ul>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
     </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What is 1 + 1 in binary?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> 2</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> 10</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> 11</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> 1</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">What is 00000001 + 11111111 in 8-bit binary?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> 11111111</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> 00000001</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> 00000000 (overflow)</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> 10000000</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">Overflow occurs when adding two 8-bit binary numbers because:</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> The numbers contain errors</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> The result exceeds 255 and a carry exits the MSB</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> Binary addition is different from denary</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> The carry is zero</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">What is the result of 00001111 + 00000001 in binary?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> 00010000</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> 00001111</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> 00010001</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> 00011110</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Which of the following additions would cause overflow in an 8-bit system?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> 01000000 + 00100000</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> 11000000 + 01000001</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> 00110000 + 00010000</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> 00000001 + 00000001</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">Add 00100101 + 00011010. Give the result in binary.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>37 + 26 = 63 → 00111111. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">What is 1 + 1 + 1 in binary? Include the result bit and the carry.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>Result bit: 1; Carry: 1 (i.e. binary 11 = denary 3). [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">State what happens to the carry bit when overflow occurs in an 8-bit addition.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>The carry is generated beyond the MSB (bit 7) and is lost, because there are no more bit positions to store it. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">State one way to prevent overflow when performing binary addition.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Use a larger number of bits (e.g. 16-bit or 32-bit) to store the result so it can accommodate larger values. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">What does the overflow flag in the status register indicate?</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>It signals to the CPU that the result of an arithmetic operation was too large to store in the available bits (overflow occurred). [1]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
   </div>
 </div>
 
-<div class="tab-content" id="tab-video" style="display:none"><div class="notes-section"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tab-content" id="tab-slides" style="display:none"><div class="notes-section"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tab-content" id="tab-worksheet" style="display:none">
-  <div class="notes-section"><h2>Worksheet — Hexadecimal</h2><p style="font-size:13px;color:#64748b;margin-bottom:20px">Show all working.</p></div>
-  <div id="ws-container"></div>
 </div>
-<div class="tab-content" id="tab-quiz" style="display:none">
-  <div class="notes-section"><h2>15-Question Quiz</h2></div>
-  <div class="quiz-container" id="quiz-container"></div>
-  <div class="quiz-score" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="btn btn-outline" onclick="resetQuiz()">Try Again</button></div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/1-2-4a/" class="bottom-nav-btn">← 1.2.4a Binary &amp; Denary</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">1.2 Data Representation</span>
+  <a href="/ocr-j277/1-2-4c/" class="bottom-nav-btn next-btn">1.2.4c Binary Shifts →</a>
 </div>
-<div class="tab-content" id="tab-test" style="display:none">
-  <div class="notes-section"><h2>Mini Test</h2></div>
-  <div class="test-section"><h3>Section A — Multiple Choice</h3><div id="test-mcq-container"></div></div>
-  <div class="test-section"><h3>Section B — Short Answer</h3><div id="test-sa-container"></div></div>
-</div>
-<div class="tab-content" id="tab-terms" style="display:none">
-  <div class="notes-section"><h2>Key Terms</h2></div>
-  <div class="terms-grid" id="terms-grid"></div>
-</div>
-<div class="lesson-nav">
-  <a href="/ocr-j277/1-2-4a/" class="nav-btn">← 1.2.4a Binary &amp; Denary</a>
-  <a href="/ocr-j277/1-2-4c/" class="nav-btn next">1.2.4c Binary Arithmetic →</a>
-</div>
-</div>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:14.5px;color:#64748b;line-height:1.6;margin-bottom:24px;">Subscribe to access all OCR J277 lessons.</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
 </div>
 <script>
-var LESSON_ID='1-2-4b';var IS_FREE=false;
 var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
 var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-2-4b';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
 var currentUser=null;
-
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+    if(!IS_FREE)checkAccess();
+  });
+});
+function checkAccess(){getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h}).then(function(r){return r.json();}).then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});});}
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"How many symbols does the hexadecimal system use?",opts:["8","10","16","15"],ans:2,exp:"Hexadecimal (base 16) uses 16 symbols: 0–9 and A–F."},
-  {q:"What is the denary value of the hex digit F?",opts:["6","15","14","16"],ans:1,exp:"F is the last hex digit and has denary value 15."},
-  {q:"Convert 1A₁₆ to denary.",opts:["21","26","28","14"],ans:1,exp:"(1 × 16) + (10 × 1) = 16 + 10 = 26."},
-  {q:"Convert 11111111₂ to hexadecimal.",opts:["EF","FE","FF","F0"],ans:2,exp:"Split: 1111|1111. Each nibble 1111 = 15 = F. So FF₁₆."},
-  {q:"What is the binary equivalent of hex digit C?",opts:["1010","1100","1110","1011"],ans:1,exp:"C = 12 in denary = 1100 in binary."},
-  {q:"Convert B3₁₆ to denary.",opts:["163","179","173","183"],ans:1,exp:"(11 × 16) + (3 × 1) = 176 + 3 = 179."},
-  {q:"Which of these is a valid use of hexadecimal?",opts:["Storing audio samples","Representing HTML colour codes","Calculating image file sizes","Running a CPU clock"],ans:1,exp:"HTML colour codes like #FF0000 (red) are written in hexadecimal."},
-  {q:"Convert 10100101₂ to hexadecimal.",opts:["A4","A5","B5","95"],ans:1,exp:"Split: 1010|0101. 1010=A, 0101=5. So A5₁₆."},
-  {q:"What is the hex equivalent of denary 255?",opts:["EF","FE","FF","F0"],ans:2,exp:"255 = 16×15 + 15 = FF₁₆. Also: 11111111₂ split as 1111|1111 = FF."},
-  {q:"Convert 3C₁₆ to binary.",opts:["00111100","00110100","00111010","01001100"],ans:0,exp:"3 = 0011, C = 12 = 1100. So 00111100₂."},
-  {q:"How many binary bits does a single hex digit represent?",opts:["2","4","8","16"],ans:1,exp:"One hex digit = 1 nibble = 4 binary bits. 16 = 2⁴, so log₂(16) = 4."},
-  {q:"Convert 145 (denary) to hexadecimal.",opts:["8F","91","9F","8E"],ans:1,exp:"145 ÷ 16 = 9 rem 1. Read: 91₁₆. Check: 9×16+1=145 ✓."},
-  {q:"Which hex code represents the colour red in HTML (#RRGGBB)?",opts:["#00FF00","#FF0000","#0000FF","#FFFFFF"],ans:1,exp:"In HTML, colours use #RRGGBB. Red = maximum red (FF), no green (00), no blue (00) = #FF0000."},
-  {q:"Convert E0₁₆ to denary.",opts:["224","230","210","240"],ans:0,exp:"E=14. (14 × 16) + (0 × 1) = 224 + 0 = 224."},
-  {q:"Why is hexadecimal used instead of binary for representing memory addresses?",opts:["Hex is faster to process","Hex is more compact and easier for humans to read than long binary strings","Hex uses less memory","Hex is more precise than binary"],ans:1,exp:"A 32-bit memory address in binary has 32 digits; in hex it only needs 8 digits. Hex is much easier for humans to read and write."}
+  {q:"What is the result of 0 + 1 in binary?",opts:["0","1","10","11"],a:1,exp:"0 + 1 = 1. No carry needed."},
+  {q:"What is the result of 1 + 1 in binary?",opts:["2","1","0, carry 1 (= 10)","11"],a:2,exp:"1 + 1 = 10 in binary. Write 0, carry 1 to the next column."},
+  {q:"What is the result of 1 + 1 + 1 in binary?",opts:["3","10","11","1, carry 1"],a:3,exp:"1+1+1 = 3 in denary = 11 in binary. Write 1, carry 1."},
+  {q:"What is 00000010 + 00000011?",opts:["00000100","00000101","00000110","00001000"],a:1,exp:"2 + 3 = 5 = 00000101."},
+  {q:"Overflow occurs in an 8-bit addition when:",opts:["The numbers contain 0s","The result exceeds 255","The carry is zero","Both numbers are the same"],a:1,exp:"An 8-bit number can hold 0–255. If the result exceeds 255, a carry exits the MSB — this is overflow."},
+  {q:"What is 11111111 + 00000001 in an 8-bit system?",opts:["00000000 (overflow)","11111111","100000000","10000000"],a:0,exp:"255 + 1 = 256. The 9-bit result would be 100000000, but in 8 bits the result is 00000000 — overflow has occurred."},
+  {q:"Which flag is set when overflow occurs?",opts:["Zero flag","Carry/Overflow flag","Sign flag","Halt flag"],a:1,exp:"The overflow flag (or carry flag) in the CPU status register is set to 1 when a carry exits the MSB."},
+  {q:"To prevent overflow when adding 8-bit numbers, you should:",opts:["Use fewer bits","Use more bits (e.g. 16-bit)","Add the numbers in denary","Ignore the carry"],a:1,exp:"Using a larger register (e.g. 16-bit or 32-bit) means the result can store values larger than 255."},
+  {q:"What is the 8-bit result of 10000000 + 10000000? Does overflow occur?",opts:["10000000, no","00000000, yes (overflow)","11000000, no","01000000, yes"],a:1,exp:"128 + 128 = 256 > 255. 8-bit result is 00000000 — overflow has occurred; the carry out of the MSB is lost."},
+  {q:"What is 00110011 + 00001101?",opts:["01000000","00111110","01000000","01000000"],a:2,exp:"51 + 13 = 64 = 01000000."},
+  {q:"In binary addition, when does a carry occur?",opts:["When you add 0 + 0","When you add 1 + 1","Only during overflow","When the result is negative"],a:1,exp:"A carry is produced whenever the column sum equals or exceeds 2 (i.e. 1+1 or 1+1+carry)."},
+  {q:"The maximum value storable in 8 bits is 255. What happens if you add 200 + 100 in 8-bit binary?",opts:["Correct result of 300","00101100 (incorrect — overflow)","11111111","10101100"],a:1,exp:"200+100=300>255, so overflow occurs. The carry exits the MSB and is lost. 300-256=44 = 00101100 is stored, which is wrong."},
+  {q:"What is 01010101 + 00101010?",opts:["11111111","10000000","01111111","11010101"],a:2,exp:"85 + 42 = 127 = 01111111. No overflow (127 ≤ 255)."},
+  {q:"Which rule applies when adding 0 + 0 + carry 1?",opts:["Result: 0, no carry","Result: 1, no carry","Result: 0, carry 1","Result: 1, carry 1"],a:1,exp:"0 + 0 + 1 = 1. No further carry needed."},
+  {q:"Why does overflow produce an incorrect result?",opts:["Because binary can't handle even numbers","The carry beyond the MSB is lost — it represents a bit value that cannot be stored","The CPU makes an arithmetic error","The numbers were in the wrong format"],a:1,exp:"The carry out of the MSB represents a bit value (e.g. 256 for 8-bit) that has no register position to be stored in, so it is discarded, making the stored result incorrect."}
 ];
-
-var WORKSHEET=[
-  {q:"Convert the following hex values to denary:\n(a) 4E  (b) A0  (c) FF  (d) 1C3",marks:4,ms:"(a) 4×16+14 = 78 (1). (b) 10×16+0 = 160 (1). (c) 15×16+15 = 255 (1). (d) 1×256+12×16+3 = 451 (1)."},
-  {q:"Convert the following denary numbers to hexadecimal:\n(a) 100  (b) 175  (c) 32",marks:3,ms:"(a) 100÷16=6 rem 4 → 64₁₆ (1). (b) 175÷16=10 rem 15 → AF₁₆ (1). (c) 32÷16=2 rem 0 → 20₁₆ (1)."},
-  {q:"Convert the following binary numbers to hexadecimal:\n(a) 10101010  (b) 11110000  (c) 01001101",marks:3,ms:"(a) 1010|1010 → AA₁₆ (1). (b) 1111|0000 → F0₁₆ (1). (c) 0100|1101 → 4D₁₆ (1)."},
-  {q:"Convert the following hex values to binary:\n(a) 9B  (b) C4  (c) 7F",marks:3,ms:"(a) 9=1001, B=1011 → 10011011 (1). (b) C=1100, 4=0100 → 11000100 (1). (c) 7=0111, F=1111 → 01111111 (1)."},
-  {q:"State three real-world uses of hexadecimal in computing.",marks:3,ms:"Any three of: memory addresses (1); HTML/CSS colour codes (1); error codes/crash codes (1); MAC addresses (1); IPv6 addresses (1); assembly/machine code (1)."},
-  {q:"Explain why hexadecimal is preferred over binary when displaying memory addresses to programmers.",marks:2,ms:"Binary strings for memory addresses are long (32 or 64 bits) and difficult to read and write accurately (1). Hexadecimal represents the same value using fewer characters (8 hex digits for 32-bit) while still being directly convertible to binary (1)."},
-  {q:"A CSS colour code is #6B3A9F. Convert the red component (6B) to denary and binary.",marks:3,ms:"Denary: 6×16+11=96+11=107 (1). Binary: 6=0110, B=1011 → 01101011 (1). Both required for full marks (1)."},
-  {q:"Convert 100 in denary to (a) binary and (b) hexadecimal. Show all working.",marks:3,ms:"(a) 64+32+4=100 → 01100100 (1). (b) 100÷16=6 rem 4 → 64₁₆ (1). Cross-check: 6|4 → 0110|0100 = 01100100 ✓ (1)."}
-];
-
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to the notes.'],['Getting there!','More practice needed.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Hexadecimal",d:"Base 16 number system using digits 0–9 and letters A–F (A=10, B=11, C=12, D=13, E=14, F=15)."},
-  {w:"Base 16",d:"Another name for hexadecimal. Each digit can have 16 different values (0–F), and place values are powers of 16."},
-  {w:"Nibble",d:"4 binary bits — exactly equivalent to one hexadecimal digit."},
-  {w:"Place value (hex)",d:"In hexadecimal, place values are 1 (16⁰), 16 (16¹), 256 (16²), 4096 (16³) etc."},
-  {w:"Hex digit A",d:"Represents the denary value 10. Binary: 1010."},
-  {w:"Hex digit B",d:"Represents the denary value 11. Binary: 1011."},
-  {w:"Hex digit C",d:"Represents the denary value 12. Binary: 1100."},
-  {w:"Hex digit D",d:"Represents the denary value 13. Binary: 1101."},
-  {w:"Hex digit E",d:"Represents the denary value 14. Binary: 1110."},
-  {w:"Hex digit F",d:"Represents the denary value 15. Binary: 1111."},
-  {w:"Memory address",d:"A unique identifier for a location in memory, often displayed in hexadecimal (e.g. 0x1F4A0000)."},
-  {w:"HTML colour code",d:"A 6-digit hex value (#RRGGBB) representing the red, green, and blue components of a colour."},
-  {w:"MAC address",d:"A unique 48-bit hardware identifier for a network interface, written as 6 pairs of hex digits."},
-  {w:"Error code",d:"A numerical code identifying a specific software or hardware error, often displayed in hex (e.g. 0x0000007F)."},
-  {w:"0x notation",d:"A prefix used in programming to indicate a hexadecimal number (e.g. 0xFF = FF₁₆)."}
+  {term:"Binary addition",def:"Adding binary numbers using rules: 0+0=0, 0+1=1, 1+0=1, 1+1=10 (write 0 carry 1), 1+1+1=11 (write 1 carry 1)."},
+  {term:"Carry",def:"A digit carried to the next column when a column sum reaches or exceeds the base (2 in binary). 1+1 produces carry 1."},
+  {term:"Overflow",def:"When the result of a binary operation is too large to be stored in the available number of bits. Occurs when a carry exits the MSB."},
+  {term:"Overflow flag",def:"A flag bit in the CPU's status register that is set to 1 when overflow has occurred during an arithmetic operation."},
+  {term:"MSB (Most Significant Bit)",def:"The leftmost bit in a binary number, with the highest place value. A carry exiting the MSB causes overflow."},
+  {term:"LSB (Least Significant Bit)",def:"The rightmost bit. Binary addition starts from the LSB and works left."},
+  {term:"Status register",def:"A register in the CPU that holds flag bits indicating the status of the last operation (zero, carry, overflow, negative, etc.)."},
+  {term:"1 + 1 = 10",def:"The fundamental carry rule in binary. Write 0 in the current column and carry 1 to the next column."},
+  {term:"1 + 1 + 1 = 11",def:"Binary addition with carry: 3 ones produce result bit 1 and carry 1."},
+  {term:"Carry out",def:"A carry that exits the MSB position. Signals overflow in fixed-width binary arithmetic."},
+  {term:"8-bit overflow limit",def:"In 8-bit arithmetic, overflow occurs when the result exceeds 255 (the maximum 8-bit value)."},
+  {term:"Carry bit lost",def:"When overflow occurs, the carry from the MSB is discarded because there is no 9th bit to store it, making the result incorrect."},
+  {term:"Fix for overflow",def:"Use more bits (e.g. 16-bit, 32-bit, or 64-bit integers) to represent values, giving a larger range without overflow."},
+  {term:"Column addition",def:"Technique for binary addition: align numbers in columns by bit position, add right to left, carry to the next column."},
+  {term:"Verification check",def:"After a binary addition, convert both operands and result to denary and check: operand1 + operand2 = result. If not, an error or overflow occurred."}
 ];
-
-var TEST_MCQ=[
-  {q:"What is the denary value of E₁₆?",opts:["13","14","15","12"],ans:1,exp:"E is the 15th hex symbol (starting from 0), representing denary 14."},
-  {q:"Convert 5A₁₆ to denary.",opts:["80","90","94","85"],ans:1,exp:"(5 × 16) + (10 × 1) = 80 + 10 = 90."},
-  {q:"Convert 10011001₂ to hexadecimal.",opts:["9A","99","A9","98"],ans:1,exp:"1001|1001 → 9, 9 → 99₁₆."},
-  {q:"Which statement best explains why hex is used for memory addresses?",opts:["Hex is processed faster by the CPU","Hex requires less memory to store","Hex is more compact than binary and easier for humans to read","Hex is always more accurate"],ans:2,exp:"Hex provides a shorter, human-readable representation of binary data — ideal for memory addresses."},
-  {q:"Convert CF₁₆ to denary.",opts:["195","207","217","227"],ans:1,exp:"(12 × 16) + (15 × 1) = 192 + 15 = 207."}
-];
-
-var TEST_SA=[
-  {q:"Convert B9₁₆ to denary. Show your working.",marks:2,ms:"B=11. (11 × 16) + 9 = 176 + 9 = 185 (1 for working, 1 for answer)."},
-  {q:"Convert 11001010₂ to hexadecimal using the nibble method.",marks:2,ms:"Split: 1100|1010. 1100=C, 1010=A. Answer: CA₁₆ (1 for correct split, 1 for answer)."},
-  {q:"State two advantages of using hexadecimal over binary for programmers.",marks:2,ms:"Any two: Shorter/more compact representation (1); Easier to read and write without making errors (1); Simple to convert to/from binary (1)."},
-  {q:"Convert 250 (denary) to hexadecimal. Show your working.",marks:2,ms:"250 ÷ 16 = 15 rem 10. 15=F, 10=A. Answer: FA₁₆ (1 for method, 1 for answer)."},
-  {q:"A website uses the colour code #3C8FD2. How many bits would be needed to store just the red component (3C) in binary?",marks:2,ms:"3C₁₆ is one byte — two hex digits = 8 bits (1). 3=0011, C=1100, so 00111100 (1)."}
-];
-
-function showTab(id,btn){document.querySelectorAll('.tab-content').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='quiz-q';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="quiz-explain" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.quiz-opt').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'correct':'wrong');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('correct');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.quiz-opt.correct,.quiz-opt.wrong').length>=QUIZ.length){var correct=document.querySelectorAll('.quiz-opt.correct').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='ws-q';d.innerHTML='<div class="q-header"><span class="q-text">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:100px"></textarea><span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span><div class="mark-scheme">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;if(ms.style.display==='block'){ms.style.display='none';el.textContent='Show Mark Scheme';}else{ms.style.display='block';el.textContent='Hide Mark Scheme';}}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='quiz-q';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="quiz-explain" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.quiz-opt').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.quiz-opt').forEach(function(l){l.classList.remove('correct','wrong');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'correct':'wrong');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('correct');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sa-q';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="marks">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="ms-toggle" onclick="toggleMS(this)">Show Mark Scheme</span><div class="mark-scheme">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='term-card';d.innerHTML='<div class="term-word">'+t.w+'</div><div class="term-def">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id){return{data:{session:{user:u}}};}return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('paywall-overlay').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){window.location.href='/';return;}currentUser=session.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,1,0,1];
+var TEST_MCQ_LABELS=[['2','10','11','1'],['11111111','00000001','00000000 (overflow)','10000000'],['The numbers contain errors','The result exceeds 255 and a carry exits the MSB','Binary addition is different from denary','The carry is zero'],['00010000','00001111','00010001','00011110'],['01000000 + 00100000','11000000 + 01000001','00110000 + 00010000','00000001 + 00000001']];
+var TEST_MCQ_EXPLAIN=['1+1=10 in binary.','255+1=256>255, overflow: 8-bit result 00000000.','Overflow = result > 255, carry exits MSB.','15+1=16=00010000.','192+65=257>255 — overflow.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['Add 00100101 + 00011010.','What is 1+1+1 in binary?','What happens to overflow carry?','How to prevent overflow?','What does overflow flag indicate?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

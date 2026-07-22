@@ -1,207 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>2.5.2a Translators | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.5.2a IDEs — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:6px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content td.label{font-weight:700;color:#0f172a;background:#fafafe;width:180px;}
+    .ide-feature-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:14px;padding:18px 22px;margin-bottom:12px;}
+    .ide-feature-card .fname{font-size:15px;font-weight:800;color:#0f172a;margin-bottom:5px;}
+    .ide-feature-card .fdesc{font-size:14px;color:#334155;line-height:1.6;}
+    .ide-feature-card .fexample{font-size:13px;color:#7c3aed;margin-top:6px;font-style:italic;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:17px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:210px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.65);z-index:999;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-card{background:#fff;border-radius:24px;padding:40px 36px;text-align:center;max-width:380px;width:90%;box-shadow:0 24px 80px rgba(0,0,0,0.2);}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;font-size:16px;font-weight:700;padding:14px 32px;border-radius:12px;text-decoration:none;margin-bottom:12px;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst" style="color:#818cf8">2.5 Languages &amp; IDEs</div>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
-    <a href="/ocr-j277/2-5-2a/" class="sl active">2.5.2a Translators</a>
-    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">2.5 Languages &amp; IDEs</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">2.5.2a IDEs</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.5 Languages &amp; IDEs</div>
-  <div class="lesson-title">2.5.2a — Translators</div>
-  <div class="lesson-meta">Component 2: Languages &amp; IDEs &nbsp;·&nbsp; ~22 min</div>
+  <div class="lesson-badge">💻 Component 2 · 2.5 Languages &amp; IDEs</div>
+  <div class="lesson-title">2.5.2a Integrated Development Environments (IDEs)</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~11 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>Why Do We Need Translators?</h2>
-    <p>The CPU can only execute <strong>machine code</strong> (binary). High-level and assembly programs must be converted to machine code before they can run. <strong>Translators</strong> perform this conversion.</p>
-    <div class="kp"><strong>Three types of translator:</strong> Compiler, Interpreter, Assembler — each converts code differently.</div>
-  </div>
-  <div class="ns">
-    <h2>Assembler</h2>
-    <div class="ic b">
-      <p>An <strong>assembler</strong> translates assembly language code (mnemonics) into machine code. Each assembly instruction is converted to its binary equivalent — one-to-one. Covered in 2.5.1.</p>
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>What is an IDE?</h2>
+    <p>An <strong>Integrated Development Environment (IDE)</strong> is a software application that provides programmers with a comprehensive set of tools in one place to write, test, and debug code. Instead of using separate tools for editing, compiling, and debugging, an IDE combines everything into a single interface.</p>
+    <p><strong>Real-world examples:</strong> PyCharm (Python), Visual Studio Code (multi-language), IDLE (Python), Eclipse (Java), Thonny (Python for beginners).</p>
+
+    <h2>IDE Features — OCR J277</h2>
+    <div class="ide-feature-card">
+      <div class="fname">1. Code Editor</div>
+      <div class="fdesc">A text editor designed specifically for writing program code. Unlike a plain text editor (like Notepad), an IDE's code editor includes features like syntax highlighting, indentation guides, and bracket matching to make writing code faster and clearer.</div>
+      <div class="fexample">Example: Writing Python in PyCharm — keywords appear purple, strings appear green, helping spot mistakes visually.</div>
     </div>
-  </div>
-  <div class="ns">
-    <h2>Compiler</h2>
-    <p>A <strong>compiler</strong> translates the <em>entire</em> high-level source code program into machine code <strong>before execution</strong>. The output is a standalone executable file (object code) that can be run without the compiler.</p>
-    <div class="ic g">
-      <h4>Advantages of compilers:</h4>
-      <ul>
-        <li>The compiled executable runs FASTER — no translation needed at runtime</li>
-        <li>Source code is protected — users receive only the compiled binary, not readable source</li>
-        <li>Compiled code can be distributed and run without the compiler installed</li>
-        <li>All errors are reported at once (after compilation) — can fix in one pass</li>
-      </ul>
+    <div class="ide-feature-card">
+      <div class="fname">2. Syntax Highlighting</div>
+      <div class="fdesc">Colours different parts of code differently — keywords, strings, variables, comments each appear in different colours. This makes code more readable and helps programmers spot errors at a glance (e.g. a string that's not closed will be the wrong colour).</div>
+      <div class="fexample">Example: IF appears blue, "Hello" appears green, # comments appear grey — matching OCR J277 pseudocode colour conventions.</div>
     </div>
-    <div class="ic a">
-      <h4>Disadvantages of compilers:</h4>
-      <ul>
-        <li>Compilation takes time — the full program must be translated before testing</li>
-        <li>Compiled code is platform-specific — must recompile for different operating systems</li>
-        <li>If an error exists, you fix it and must recompile the entire program</li>
-      </ul>
+    <div class="ide-feature-card">
+      <div class="fname">3. Auto-complete / IntelliSense</div>
+      <div class="fdesc">As the programmer types, the IDE suggests completions for variable names, function names, and method names. This speeds up coding, reduces typos, and reminds the programmer of available options (e.g. all methods of a list object).</div>
+      <div class="fexample">Example: Type "my_list." and the IDE shows .append(), .sort(), .len() as options.</div>
     </div>
-    <p style="font-size:13px;color:#64748b;margin-top:8px"><strong>Examples:</strong> C, C++, Rust use compilers. Java compiles to bytecode.</p>
-  </div>
-  <div class="ns">
-    <h2>Interpreter</h2>
-    <p>An <strong>interpreter</strong> translates and executes source code <strong>line by line</strong>, at runtime. It does NOT produce a standalone executable — the interpreter must be present every time the program runs.</p>
-    <div class="ic g">
-      <h4>Advantages of interpreters:</h4>
-      <ul>
-        <li>Easier to debug — errors are reported at the exact line where they occur</li>
-        <li>Platform-independent — the same source code runs on any platform with the interpreter</li>
-        <li>Faster to test during development — no compilation step needed</li>
-        <li>Useful for scripting and rapid prototyping</li>
-      </ul>
+    <div class="ide-feature-card">
+      <div class="fname">4. Error Diagnostics / Linting</div>
+      <div class="fdesc">The IDE highlights syntax errors as the programmer types — underlines errors in red (like a spellchecker for code). Shows error messages explaining what's wrong and often where. Helps catch errors before the program is even run.</div>
+      <div class="fexample">Example: A missing colon at the end of an IF statement is underlined in red immediately, before running the program.</div>
     </div>
-    <div class="ic a">
-      <h4>Disadvantages of interpreters:</h4>
-      <ul>
-        <li>Slower execution — translation happens at runtime, every time the program runs</li>
-        <li>The interpreter must be installed on every machine that runs the program</li>
-        <li>Source code is exposed — easier for users to read or copy</li>
-        <li>Stops at the first error found — subsequent errors not shown until earlier ones are fixed</li>
-      </ul>
+    <div class="ide-feature-card">
+      <div class="fname">5. Run Environment</div>
+      <div class="fdesc">A built-in facility to compile and/or run the program from within the IDE — no need to switch to a separate terminal. The output, errors, and results appear in a built-in console/output panel.</div>
+      <div class="fexample">Example: Press the Run button (▶) in Thonny/IDLE and the Python script executes immediately in the built-in Shell window.</div>
     </div>
-    <p style="font-size:13px;color:#64748b;margin-top:8px"><strong>Examples:</strong> Python, JavaScript, Ruby are typically interpreted.</p>
-  </div>
-  <div class="ns">
-    <h2>Comparison Table</h2>
-    <table style="width:100%;border-collapse:collapse;font-size:13px">
-      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148"></th><th style="background:#252840;color:#c7d2fe;padding:10px;border:1px solid #2d3148">Compiler</th><th style="background:#252840;color:#c7d2fe;padding:10px;border:1px solid #2d3148">Interpreter</th></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Translation</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;text-align:center">Whole program at once</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;text-align:center">Line by line at runtime</td></tr>
-      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Execution speed</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">Faster (pre-translated)</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5;text-align:center">Slower (translates at runtime)</td></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Output</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;text-align:center">Standalone executable</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;text-align:center">No separate file — needs interpreter</td></tr>
-      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Error reporting</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;text-align:center">All at end of compilation</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;text-align:center">At first error — stops</td></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Source code visible?</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">Hidden in binary</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5;text-align:center">Exposed — source distributed</td></tr>
-      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Portability</td><td style="padding:9px;border:1px solid #2d3148;color:#fca5a5;text-align:center">Platform-specific binary</td><td style="padding:9px;border:1px solid #2d3148;color:#6ee7b7;text-align:center">Portable (if interpreter available)</td></tr>
+    <div class="ide-feature-card">
+      <div class="fname">6. Debugger &amp; Breakpoints</div>
+      <div class="fdesc">A debugger lets the programmer pause program execution at a specific line (a <strong>breakpoint</strong>) and step through the code one line at a time. This helps identify logic errors — bugs where the program runs but produces wrong output.</div>
+      <div class="fexample">Example: Set a breakpoint on line 10 — the program runs until line 10, then pauses, letting you inspect variable values at that moment.</div>
+    </div>
+    <div class="ide-feature-card">
+      <div class="fname">7. Variable Watch Window</div>
+      <div class="fdesc">During debugging, a panel shows the current values of all variables in real time as the program steps through. This lets programmers see exactly when a variable gets an unexpected value, making logic errors much easier to find.</div>
+      <div class="fexample">Example: You expect score to be 10 at line 15, but the watch window shows it's 0 — you can immediately see where the assignment went wrong.</div>
+    </div>
+
+    <h2>Why IDEs Matter for Productive Programming</h2>
+    <table>
+      <thead><tr><th>Challenge without IDE</th><th>How the IDE feature helps</th></tr></thead>
+      <tbody>
+        <tr><td>Typos in variable names cause runtime errors</td><td>Auto-complete prevents mistyped names</td></tr>
+        <tr><td>Hard to see structure of long programs</td><td>Syntax highlighting and code folding clarify structure</td></tr>
+        <tr><td>Runtime errors hard to locate</td><td>Error diagnostics point to the exact line number</td></tr>
+        <tr><td>Logic errors hidden inside loops</td><td>Debugger + breakpoints allow step-by-step inspection</td></tr>
+        <tr><td>Don't know which methods an object has</td><td>IntelliSense / auto-complete lists all available options</td></tr>
+      </tbody>
     </table>
-    <div class="ic a" style="margin-top:14px">
-      <h4>Common Mistakes</h4>
+
+    <div class="exam-tip"><strong>Exam tip:</strong> OCR J277 asks you to: (1) name IDE features — you must use the correct technical terms (syntax highlighting, auto-complete/IntelliSense, breakpoints, variable watch window, error diagnostics); (2) explain how a specific feature helps — always link to how it improves programming productivity or helps find/prevent errors; (3) occasionally: describe how a feature would help in a given scenario. Remember: auto-complete reduces typos AND speeds up coding — that's two points if the question asks for two benefits.</div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Saying interpreters produce an executable file — they do NOT. Compilers produce executables; interpreters translate line-by-line at runtime</li>
-        <li>Saying compilers are slower than interpreters — compiled programs RUN faster; interpreters are slower at runtime</li>
-        <li>Saying interpreters show all errors at once — they STOP at the first error; compilers report all errors after full compilation</li>
-        <li>Confusing assembler with compiler — assembler handles ASSEMBLY; compiler handles HIGH-LEVEL languages</li>
+        <li>Saying "error checking" without specifying whether it's syntax errors (diagnostics/linting) or logic errors (debugger)</li>
+        <li>Confusing a breakpoint with an error — a breakpoint is intentionally placed by the programmer to pause execution</li>
+        <li>Saying IDEs "fix errors automatically" — they highlight and report errors, but the programmer fixes them</li>
+        <li>Writing "auto-complete helps you type faster" without explaining it also reduces typos in variable/function names</li>
+        <li>Forgetting that the variable watch window is separate from the debugger — it's a specific sub-feature worth mentioning by name</li>
       </ul>
+    </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_2.5.2a_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;"><h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 2.5.2a IDEs</h3><p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p></div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">What does IDE stand for? Give one example of an IDE.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1"></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Integrated Development Environment [1]. Example (any one): PyCharm, Visual Studio Code, Eclipse, IDLE, Thonny [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">Explain what syntax highlighting is and how it helps a programmer.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-2"></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Syntax highlighting displays different parts of code in different colours — keywords, strings, variables, and comments each appear in a distinct colour [1]. This helps programmers read the code more easily and spot errors (e.g. an unclosed string will be the wrong colour) [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">A student is writing a Python function with 20 lines. They keep mistyping the function name every time they call it. Which IDE feature would solve this? Explain how.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-3"></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Auto-complete / IntelliSense [1]. After typing the first few characters, the IDE suggests the full function name — the student selects it from the drop-down, avoiding typos [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">Explain what a breakpoint is and when a programmer would use one.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-4"></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A breakpoint is a marker placed by the programmer on a specific line of code [1]. When the program runs, it pauses execution at that line [1]. Used when the programmer suspects a logic error — they can inspect variable values at that point to find where the bug occurs [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Explain the difference between error diagnostics (linting) and a debugger in an IDE.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-5"></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Error diagnostics (linting) identifies syntax errors before/during writing — highlighting missing colons, undefined variables, etc. [1]. A debugger is used at runtime to find logic errors — it allows the programmer to step through running code and inspect variable values [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">What is a variable watch window? When is it most useful?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-6"></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A variable watch window shows the current values of variables in real time during debugging [1]. It is most useful when stepping through code — the programmer can see exactly when and where a variable takes an unexpected value, helping identify logic errors [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">Give three features an IDE includes that a basic text editor (like Notepad) does not.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-7"></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Any three from: Syntax highlighting [1]; Auto-complete/IntelliSense [1]; Error diagnostics/linting [1]; Built-in run environment [1]; Debugger with breakpoints [1]; Variable watch window [1]. (Notepad has none of these — it is just plain text editing.)</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">A programmer is testing a loop that calculates a running total, but the final total is wrong. Explain how they could use IDE debugging tools to find the error.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-8"></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">The programmer sets a breakpoint at the start of the loop [1]. They run the program in debug mode — it pauses at the breakpoint [1]. Using the variable watch window, they check the value of the running total after each iteration [1]. They step through each loop iteration one at a time until they spot where the total becomes incorrect — revealing the bug (e.g. wrong operator, wrong variable used) [1].</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header"><span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span><div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div><span class="quiz-counter" id="quiz-counter">Question 1 of 15</span></div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;" onclick="restartQuiz()">Try again</button>
     </div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/2-5-1/" class="nb">← 2.5.1 High &amp; Low Level</a>
-  <a href="/ocr-j277/2-5-2b/" class="nb n">2.5.2b IDEs →</a>
-</div>
-</div>
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 8</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()"><div class="flashcard-front" id="fc-front"></div><div class="flashcard-back" id="fc-back"></div><div class="flashcard-hint" id="fc-hint">Click to reveal definition</div></div>
+    <div class="flashcard-actions"><button class="fc-btn-know" onclick="markKnown()">✓ I know this</button><button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button><button class="fc-skip" onclick="skipCard()">Skip →</button></div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area"><table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table></div>
 </div>
 
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen"><div class="test-intro-card"><div style="font-size:48px;margin-bottom:16px;">🎯</div><h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 2.5.2a IDEs</h2><p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p><button class="test-start-btn" onclick="startTest()">Start test →</button></div></div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar"><div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div><div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div></div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What does IDE stand for?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Integrated Data Editor</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> Integrated Development Environment</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> Internet Development Engine</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> Interface Design Editor</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">Which IDE feature colours keywords, strings and variables in different colours?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> Auto-complete</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> Variable watch window</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> Syntax highlighting</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> Breakpoint</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">A programmer places a breakpoint on line 20. What happens when the program is run in debug mode?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> The program crashes at line 20</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> The program pauses at line 20, allowing the programmer to inspect variables</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> The program skips line 20</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> Line 20 is deleted automatically</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">Which IDE feature suggests variable and function name completions as the programmer types?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> Syntax highlighting</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> Auto-complete / IntelliSense</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> Variable watch window</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> Error diagnostics</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Error diagnostics in an IDE primarily helps with which type of error?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> Logic errors</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> Runtime errors caused by wrong user input</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> Syntax errors — highlighting incorrectly written code</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> Hardware errors</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">Name three features of an IDE and briefly explain what each one does.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Feature 1:... Feature 2:... Feature 3:..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>Any three with explanation: Syntax highlighting — colours code elements [1]. Auto-complete — suggests completions as you type [1]. Error diagnostics — highlights syntax errors before running [1]. Debugger/breakpoints — pauses execution to inspect code [1]. Variable watch window — shows variable values during debugging [1]. Run environment — runs code from within the IDE [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Explain how the variable watch window helps a programmer find a logic error in a loop.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>The variable watch window shows the current value of each variable in real time as the program steps through the loop [1]. The programmer can see the value of the loop variable and any accumulators after each iteration [1]. When the value becomes unexpected (e.g. wrong total), the programmer knows which iteration caused the error [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">Why would a professional programmer use an IDE rather than a plain text editor like Notepad?</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>An IDE provides tools that a plain text editor does not [1]. Syntax highlighting makes code more readable [1]. Auto-complete reduces typos [1]. Error diagnostics highlight mistakes before running [1]. Debugger helps find logic errors efficiently [1]. All these features increase programmer productivity and code quality [1]. (Max 3 marks.)</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">Describe the difference between a syntax error and a logic error, and state which type each IDE feature helps find: (a) error diagnostics (b) debugger with breakpoints.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Syntax error: code violates the rules of the language (e.g. missing colon, wrong keyword) — program cannot run [1]. Logic error: code runs but produces wrong output due to incorrect algorithm [1]. (a) Error diagnostics helps find syntax errors [1]. (b) Debugger with breakpoints helps find logic errors [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">Give two benefits of auto-complete/IntelliSense for a programmer writing a large program.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>Any two: Reduces typing time — suggests completions so less typing needed [1]. Prevents typos in variable/function names that would cause errors [1]. Reminds programmer of available methods and their parameters [1]. Helps discover built-in functions without needing to look them up [1].</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel"><div style="font-size:18px;color:#64748b;">MCQ Score</div><div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div><div class="test-grade-badge" id="test-grade-badge"></div><div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div></div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/2-5-1/" class="bottom-nav-btn">← 2.5.1 Programming Languages</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">2.5 Languages &amp; IDEs</span>
+  <a href="/ocr-j277/2-5-2b/" class="bottom-nav-btn next-btn">2.5.2b Translators →</a>
+</div>
 <script>
-var LESSON_ID='2-5-2a';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='2-5-2a';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+function checkAccess(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;
+    if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;
+    var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};
+    fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h})
+      .then(function(r){return r.json();})
+      .then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});
+  });
+}
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    checkAccess();initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What does a compiler do?",opts:["Translates code line by line at runtime","Translates the entire program into machine code before execution","Executes assembly mnemonics one at a time","Checks for logic errors only"],ans:1,exp:"A compiler translates the ENTIRE source program into machine code BEFORE execution. The output is a standalone executable that can run without the compiler."},
-  {q:"What does an interpreter do?",opts:["Translates the whole program at once before running","Produces a standalone executable file","Translates and executes code line by line at runtime","Converts assembly to machine code"],ans:2,exp:"An interpreter translates and executes code LINE BY LINE at runtime. No standalone executable is produced — the interpreter must be present every time the program runs."},
-  {q:"Which translator produces a standalone executable file?",opts:["Interpreter","Assembler","Compiler","All three"],ans:2,exp:"A compiler produces a standalone executable (object code) that can run without the compiler installed. An interpreter does NOT produce a standalone file."},
-  {q:"Which translation method results in faster program execution?",opts:["Interpreter","Compiler","Both the same","Depends on the language"],ans:1,exp:"Compiled programs run FASTER — all translation is done before execution. Interpreted programs are slower because translation happens line-by-line at runtime, every time they run."},
-  {q:"When does an interpreter report the first error?",opts:["After translating the whole program","At the first error encountered — then stops","Only at the end","Never"],ans:1,exp:"An interpreter stops at the FIRST error and reports it. It does not continue to find further errors. This contrasts with a compiler which reports all errors after full compilation."},
-  {q:"When does a compiler report errors?",opts:["At the first error only","After each line","After translating the whole program — reports all errors","Never"],ans:2,exp:"A compiler translates the whole program first, THEN reports all errors found. This allows you to fix multiple errors at once — unlike an interpreter which stops at the first."},
-  {q:"Which statement about source code protection is correct?",opts:["Interpreters protect source code better","Compilers protect source code — users receive compiled binary only","Both expose source code","Neither protects source code"],ans:1,exp:"A compiler's output is binary machine code — users cannot easily read the original source. With interpreted code, the source is distributed and can be read by users."},
-  {q:"Which translator handles assembly language?",opts:["Compiler","Interpreter","Assembler","Linker"],ans:2,exp:"An assembler translates assembly language mnemonics into machine code. A compiler handles high-level languages; an interpreter executes high-level code line-by-line."},
-  {q:"A developer is rapidly prototyping a new feature and wants to test each change quickly. Which translator approach is better?",opts:["Compiler — faster code","Interpreter — no compilation step, can test immediately","Assembler","Neither"],ans:1,exp:"An interpreter is better for rapid development — you can run and test code immediately without a compilation step. This makes iterative testing faster during development."},
-  {q:"Which of these is an advantage of an interpreter?",opts:["Produces faster-running programs","Distributes compiled binary, hiding source","Easier debugging — errors reported at the exact failing line","Requires no translator at runtime"],ans:2,exp:"Interpreters are better for debugging — when an error occurs at a specific line, the interpreter reports the exact line. This is easier to trace than a compiler's list of errors."},
-  {q:"Python is typically executed by an interpreter. Which statement follows from this?",opts:["Python programs run faster than compiled languages","Python source code is visible when distributed","Python produces a standalone .exe file","Python does not need a translator"],ans:1,exp:"Interpreted programs like Python distribute source code — users can read it. The interpreter must also be installed. Compiled languages hide source in binary."},
-  {q:"A compiled program needs to run on a different operating system. What must happen?",opts:["Nothing — compiled code is portable","The source code must be recompiled for the new OS","Install an interpreter instead","Change the programming language"],ans:1,exp:"Compiled programs are platform-specific — the binary is produced for one OS/CPU. To run on a different platform, the source code must be recompiled. Interpreted programs are more portable."},
-  {q:"Which translator is used for high-level language programs like C++?",opts:["Assembler","Interpreter","Compiler","Linker"],ans:2,exp:"C++ uses a compiler — the source code is translated into machine code before execution, producing a fast standalone executable."},
-  {q:"Which of these is a disadvantage of an interpreter?",opts:["Source code is well protected","All errors reported at once","Slower execution — translates at runtime every time the program runs","No need for the interpreter at runtime"],ans:2,exp:"Interpreters are SLOWER at runtime because translation happens line-by-line every time the program runs. Compilers pre-translate, so execution is faster."},
-  {q:"What output does an interpreter produce?",opts:["A .exe executable file","Machine code object file","No separate file — translates and executes directly","Assembly mnemonics"],ans:2,exp:"An interpreter does NOT produce a separate file. It translates and immediately executes each line — the result is the program's output, not a new file."}
+  {q:"What does IDE stand for?",opts:["Integrated Data Editor","Integrated Development Environment","Internet Development Engine","Interface Design Editor"],a:1,exp:"IDE stands for Integrated Development Environment. It is a single software application that combines a code editor, debugger, error diagnostics, and run environment into one place for programmers to use."},
+  {q:"Which IDE feature colours keywords in blue, strings in green, and comments in grey?",opts:["Auto-complete","Variable watch window","Syntax highlighting","Error diagnostics"],a:2,exp:"Syntax highlighting assigns different colours to different parts of code — keywords, strings, variables, operators, and comments each have their own colour. This makes code more readable and helps spot errors like unclosed strings."},
+  {q:"A programmer sets a breakpoint at line 15. What happens when the debugger reaches line 15?",opts:["The program crashes","The program pauses and the programmer can inspect variable values","The program skips line 15","Line 15 is highlighted in red"],a:1,exp:"A breakpoint pauses program execution at a specific line. During this pause, the programmer can inspect the current state of all variables using the variable watch window, helping locate logic errors."},
+  {q:"Which IDE feature suggests the rest of a variable name as the programmer types?",opts:["Syntax highlighting","Error diagnostics","Breakpoints","Auto-complete / IntelliSense"],a:3,exp:"Auto-complete (also called IntelliSense) predicts and suggests completions for variable names, function names, and method names as the programmer types. This reduces typos and speeds up coding."},
+  {q:"Error diagnostics in an IDE helps find which type of error?",opts:["Logic errors","Syntax errors","Hardware errors","Runtime errors from user input"],a:1,exp:"Error diagnostics (linting) identifies syntax errors — code that violates the rules of the language (e.g. missing colon, unclosed bracket). It underlines these in red as you type, before the program is even run. Logic errors require a debugger to find."},
+  {q:"What is a variable watch window used for?",opts:["To change variable values automatically","To display current values of variables in real time during debugging","To colour variables differently in the editor","To auto-complete variable names"],a:1,exp:"The variable watch window shows the live values of variables as the program steps through code during debugging. When a variable has an unexpected value, the programmer can see exactly where in the code it went wrong."},
+  {q:"Which of these is NOT a typical IDE feature?",opts:["Syntax highlighting","Auto-complete","Variable watch window","Sending code to another programmer automatically"],a:3,exp:"Sending code automatically to another programmer is not a standard IDE feature — that's version control (e.g. Git). Standard IDE features include syntax highlighting, auto-complete, error diagnostics, debugger, breakpoints, and variable watch window."},
+  {q:"Why would a programmer use a debugger rather than just reading the code to find a bug?",opts:["Reading code is always better","The debugger lets them see actual variable values as the program runs, rather than guessing","Debuggers write the code automatically","Debuggers are faster to type"],a:1,exp:"Reading code alone cannot always reveal logic errors — the issue might only appear at runtime with specific data. The debugger lets the programmer observe the program's actual state (variable values, execution path) in real time, making it much easier to find where things go wrong."},
+  {q:"A student says 'the IDE fixed my syntax error automatically'. Is this correct?",opts:["Yes — IDEs automatically fix all errors","No — IDEs highlight and report errors but the programmer must fix them","Yes — auto-complete fixes errors","Partially — it fixes some errors but not all"],a:1,exp:"IDEs do NOT fix errors automatically. Error diagnostics highlights and reports syntax errors (and sometimes suggests a fix), but the programmer must understand and correct the error themselves. Auto-complete can prevent some errors by suggesting correct names."},
+  {q:"What is the main benefit of the built-in run environment in an IDE?",opts:["It makes the program run faster","The programmer can compile/run and see output without leaving the IDE","It automatically optimises the code","It translates code to machine code permanently"],a:1,exp:"The built-in run environment lets programmers run their code directly from the IDE, seeing output and errors in a built-in console panel. Without this, they would need to switch between the editor and a separate terminal — which is slower and more error-prone."},
+  {q:"Why is auto-complete particularly useful in a large program with many variables?",opts:["It reduces the program's file size","It prevents the programmer from ever making mistakes","It reduces typos in long variable names and reminds the programmer of available options","It makes the program run faster"],a:2,exp:"In large programs with many long variable names (e.g. customer_total_balance_after_discount), auto-complete prevents typos that would cause NameError at runtime. It also shows all available methods/attributes, reducing the need to look up documentation."},
+  {q:"Which IDE feature would MOST help a programmer who keeps getting 'NameError: name is not defined' errors?",opts:["Breakpoints","Variable watch window","Auto-complete / IntelliSense","Syntax highlighting"],a:2,exp:"NameError typically occurs when a variable or function name is misspelled. Auto-complete/IntelliSense prevents this by suggesting the correct name from the ones already defined — the programmer selects the correct option rather than typing it manually."},
+  {q:"Explain what 'stepping through code' means in the context of an IDE debugger.",opts:["Clicking each step in a program's user interface","Executing the program one line at a time, pausing after each line to inspect state","Deleting one line of code at a time","Copying code to another file step by step"],a:1,exp:"Stepping through code means using the debugger to execute one line at a time. After each line, the programmer can see which variables changed value, which branch was taken (IF true or false), and how the program state evolves — making logic errors much easier to spot."},
+  {q:"A programmer's loop runs 1000 times but produces the wrong total. Which two IDE tools would be most useful?",opts:["Syntax highlighting and auto-complete","Breakpoints and variable watch window","Error diagnostics and run environment","Auto-complete and syntax highlighting"],a:1,exp:"For a logic error in a loop: place a breakpoint at the start of the loop to pause execution each iteration; use the variable watch window to monitor the running total after each iteration. When the total becomes wrong, the iteration number and variables reveal the bug."},
+  {q:"Why is an IDE described as 'integrated'?",opts:["It integrates the program with the internet","All the tools a programmer needs (editor, debugger, run environment, error checking) are combined in one application","It integrates with all programming languages equally","It integrates student and teacher views"],a:1,exp:"'Integrated' means all the tools needed for programming are combined in one place. Without an IDE, a programmer might use a text editor for writing, a separate compiler from the command line, and a separate debugger — the IDE integrates all these into a single seamless application."}
 ];
-var WORKSHEET=[
-  {q:"Explain the difference between a compiler and an interpreter.",marks:4,ms:"Compiler: translates the ENTIRE program into machine code before execution (1). Produces a standalone executable (1). Interpreter: translates and executes code LINE BY LINE at runtime (1). No standalone file produced — interpreter must be present to run (1)."},
-  {q:"Give TWO advantages of a compiler over an interpreter.",marks:4,ms:"Any two advantages with explanations: Faster execution — pre-translated, no runtime overhead (1+1). Source code protected in binary — users can't easily read source (1+1). Standalone executable — no compiler needed to run (1+1). All errors reported at once — can fix multiple errors in one pass (1+1)."},
-  {q:"Give TWO advantages of an interpreter over a compiler.",marks:4,ms:"Any two advantages with explanations: Easier to debug — stops at exact error line (1+1). Faster development — no compilation step before testing (1+1). More portable — same source runs on any platform with interpreter (1+1). [2 marks per advantage with explanation]"},
-  {q:"Explain why compiled programs typically run faster than interpreted programs.",marks:2,ms:"Compiled programs are already translated into machine code before execution — no translation at runtime (1). Interpreted programs translate line-by-line every time they run, adding overhead (1)."},
-  {q:"A software company is distributing a commercial application. Explain why using a compiler might be preferable to an interpreter.",marks:3,ms:"A compiler produces a standalone executable — users do not need to install a translator (1). The source code is hidden in the compiled binary — protecting the company's intellectual property (1). Compiled programs also run faster, providing a better user experience (1)."},
-  {q:"What is the difference in error reporting between a compiler and an interpreter?",marks:3,ms:"A compiler translates the whole program first, then reports ALL errors found — you can see and fix many at once (1+1). An interpreter stops at the FIRST error encountered — subsequent errors are not reported until earlier ones are fixed (1)."},
-  {q:"Explain what an assembler does and how it differs from a compiler.",marks:3,ms:"An assembler translates assembly language (mnemonics) into machine code (1). A compiler translates HIGH-LEVEL language source code into machine code (1). Assembler is for low-level assembly code; compiler is for languages like Python, Java, C++ (1)."},
-  {q:"A student says 'Python programs must be compiled before they can run.' Correct this statement and explain the actual process.",marks:2,ms:"Python is typically INTERPRETED, not compiled (1). The interpreter translates and executes Python source code line by line at runtime — no separate compilation step is needed (1)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=['Keep revising!','Getting there!','Good result!','Excellent!','Perfect!'];document.getElementById('quiz-result-msg').textContent=msgs[mi];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Translator",d:"A program that converts source code from one language to machine code. Three types: compiler, interpreter, assembler."},
-  {w:"Compiler",d:"Translates the ENTIRE high-level program into machine code before execution. Produces a standalone executable file."},
-  {w:"Interpreter",d:"Translates and executes high-level source code LINE BY LINE at runtime. No executable produced — interpreter needed every time."},
-  {w:"Assembler",d:"Translates assembly language mnemonics into machine code. One-to-one correspondence between assembly and machine code."},
-  {w:"Source code",d:"The original human-readable program written by the programmer in a high-level or assembly language."},
-  {w:"Object code",d:"The machine code output produced by a compiler — binary that the CPU can execute directly."},
-  {w:"Executable",d:"A standalone compiled file that can run without the compiler being present. e.g. .exe files on Windows."},
-  {w:"Runtime",d:"The time when a program is actually running. Interpreted programs translate during runtime; compiled programs are pre-translated."},
-  {w:"Compilation",d:"The process of translating an entire program from high-level code to machine code before execution."},
-  {w:"Interpretation",d:"The process of translating and immediately executing code one line at a time during runtime."},
-  {w:"Syntax error",d:"An error in the structure/grammar of the code. Compilers report all syntax errors after full translation; interpreters stop at the first."},
-  {w:"Platform-specific",d:"Code that only runs on a particular OS or CPU. Compiled binaries are platform-specific; interpreted source code is more portable."},
-  {w:"Portability",d:"The ability of code to run on different hardware/operating systems. Interpreted code is more portable than compiled binaries."},
-  {w:"Source code protection",d:"Compilers protect source code — only the binary is distributed. Interpreters expose source code to users."},
-  {w:"Bytecode",d:"An intermediate representation used by some languages (e.g. Java). Compiled to bytecode, then interpreted by a virtual machine at runtime."}
+  {term:"IDE",def:"Integrated Development Environment. A single software application combining all tools a programmer needs: code editor, debugger, error diagnostics, run environment, and more. Examples: PyCharm, Visual Studio Code, IDLE."},
+  {term:"Syntax highlighting",def:"An IDE feature that displays different parts of code in different colours — keywords, strings, variables, operators, comments each have their own colour. Makes code more readable and helps spot errors visually."},
+  {term:"Auto-complete / IntelliSense",def:"An IDE feature that suggests completions for variable names, function names, and methods as the programmer types. Reduces typos and speeds up coding. Shows available methods for objects."},
+  {term:"Error diagnostics / Linting",def:"An IDE feature that highlights syntax errors in the code as the programmer writes — underlining mistakes in red. Catches errors before the program is run. Does NOT fix errors automatically."},
+  {term:"Debugger",def:"An IDE tool for finding and fixing logic errors at runtime. Allows the programmer to pause execution, step through code line by line, and inspect variable values to see where the error occurs."},
+  {term:"Breakpoint",def:"A marker placed by the programmer on a specific line of code. When the program runs in debug mode, it pauses at the breakpoint, allowing the programmer to inspect the current state of all variables."},
+  {term:"Variable watch window",def:"An IDE panel that shows the current values of all variables in real time during debugging. As the programmer steps through code, they can see exactly when and where a variable gets an unexpected value."},
+  {term:"Run environment",def:"A built-in IDE feature that allows the programmer to compile and/or run their code from within the IDE, seeing output and errors in a built-in console without switching to a separate terminal."}
 ];
-var TEST_MCQ=[
-  {q:"What does a compiler do?",opts:["Executes code line by line","Translates entire program to machine code before execution","Converts assembly to machine code","Runs Python scripts"],ans:1,exp:"A compiler translates the ENTIRE source program into machine code before execution, producing a standalone executable."},
-  {q:"Which translator is slower at runtime — compiler or interpreter?",opts:["Compiler","Interpreter","Both the same","Neither"],ans:1,exp:"Interpreted programs are SLOWER at runtime because translation happens line-by-line each time the program runs. Compiled programs run faster — already translated."},
-  {q:"An interpreter stops when it finds an error. What happens next?",opts:["It reports all remaining errors","It continues to the next line","It stops and reports that error — later errors not shown until this is fixed","It recompiles"],ans:2,exp:"An interpreter stops at the FIRST error. The programmer must fix it and re-run — only then will later errors be found."},
-  {q:"Which statement about compiled programs and source code is correct?",opts:["Source code is always visible to users","The compiled binary hides the source code from users","Compilers always distribute source code","Source code protection is an interpreter advantage"],ans:1,exp:"When a compiler distributes a binary executable, the original source code is hidden. Users cannot easily read or copy the source. This is an advantage of compilers."},
-  {q:"What does an assembler translate?",opts:["Python source code","High-level language to bytecode","Assembly language mnemonics to machine code","Machine code to assembly"],ans:2,exp:"An assembler converts assembly language (mnemonics like MOV, ADD) into machine code (binary). It is NOT a compiler — that's for high-level languages."}
-];
-var TEST_SA=[
-  {q:"Explain the difference between a compiler and an interpreter.",marks:4,ms:"Compiler: translates entire program before execution (1). Produces standalone executable (1). Interpreter: translates line by line at runtime (1). No executable — interpreter must be present (1)."},
-  {q:"State ONE advantage of a compiler and ONE advantage of an interpreter.",marks:4,ms:"Compiler advantage: faster execution / source code protected (1) with explanation (1). Interpreter advantage: easier debugging / more portable / faster development (1) with explanation (1)."},
-  {q:"Explain why an interpreter might be preferred during the development phase of a program.",marks:2,ms:"No compilation step — changes can be tested immediately (1). Errors are reported at the exact line, making debugging easier (1)."},
-  {q:"A company wants to distribute a game. Should they use a compiler or interpreter? Explain.",marks:3,ms:"Compiler (1). The compiled binary runs faster — important for game performance (1). Source code is hidden — protects their intellectual property (1)."},
-  {q:"What does an assembler do? How does it differ from a compiler?",marks:3,ms:"Assembler translates assembly language (mnemonics) into machine code (1). One-to-one correspondence (1). Compiler translates HIGH-LEVEL source code — one line may map to many machine code instructions (1)."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});document.getElementById('fc-progress').textContent='Card 1 of '+KEY_TERMS.length;showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,1,1,2];
+var TEST_MCQ_LABELS=[['Integrated Data Editor','Integrated Development Environment','Internet Development Engine','Interface Design Editor'],['Auto-complete','Variable watch window','Syntax highlighting','Breakpoint'],['The program crashes at line 20','The program pauses at line 20, allowing the programmer to inspect variables','The program skips line 20','Line 20 is deleted automatically'],['Syntax highlighting','Auto-complete / IntelliSense','Variable watch window','Error diagnostics'],['Logic errors','Syntax errors — highlighting incorrectly written code','Runtime errors caused by wrong user input','Hardware errors']];
+var TEST_MCQ_EXPLAIN=['IDE = Integrated Development Environment.','Syntax highlighting colours different code elements.','Breakpoint pauses execution — allows variable inspection.','Auto-complete suggests completions as you type.','Error diagnostics = syntax error detection before running.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['3 IDE features explained','Variable watch window + loops','IDE vs Notepad','Syntax vs logic errors + tool mapping','Auto-complete benefits'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

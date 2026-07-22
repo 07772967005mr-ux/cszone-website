@@ -1,219 +1,516 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>2.3.1 Defensive Design | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul,.ns ol{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.code{background:#0f1117;border:1px solid #2d3148;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:13px;color:#a5b4fc;line-height:1.8;white-space:pre}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3.1 Defensive Design — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .free-badge{background:#dcfce7;color:#166534;border:1.5px solid #bbf7d0;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:700;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:6px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;}
+    .notes-content td.label{font-weight:700;color:#0f172a;background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .code-block{background:#0f172a;border-radius:12px;padding:20px 24px;margin:16px 0;font-family:'Courier New',monospace;font-size:14px;line-height:1.9;color:#e2e8f0;overflow-x:auto;}
+    .code-block .kw{color:#a78bfa;}
+    .code-block .str{color:#86efac;}
+    .code-block .cmt{color:#64748b;font-style:italic;}
+    .code-block .num{color:#fbbf24;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:17px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:220px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+  </style>
 </head>
 <body>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 2</div>
-    <div class="sst" style="color:#818cf8">2.3 Producing Robust Programs</div>
-    <a href="/ocr-j277/2-3-1/" class="sl active fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-3-2/" class="sl">2.3.2 Testing</a>
-    <div class="sst" style="color:#818cf8">2.4 Boolean Logic</div>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-4-1b/" class="sl">2.4.1b Truth Tables</a>
-    <div class="sst" style="color:#818cf8">2.5 Languages</div>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
-    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
-    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">2.3 Robust Programs</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">2.3.1 Defensive Design</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="free-badge">✓ Free lesson</span>
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 2.3 Producing Robust Programs</div>
-  <div class="lesson-title">2.3.1 — Defensive Design</div>
-  <div class="lesson-meta">Component 2: Programming &nbsp;·&nbsp; Free lesson &nbsp;·&nbsp; ~20 min</div>
+  <div class="lesson-badge">🛡️ Component 2 · 2.3 Producing Robust Programs</div>
+  <div class="lesson-title">2.3.1 Defensive Design</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~10 min read</strong> · <span style="color:#166534;font-weight:600;">Free lesson</span></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-notes">
-  <div class="ns">
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
     <h2>What is Defensive Design?</h2>
-    <p><strong>Defensive design</strong> means writing programs that anticipate and handle errors before they cause crashes or incorrect results. A well-designed program should deal gracefully with unexpected, invalid, or malicious inputs.</p>
-    <div class="kp"><strong>OCR says:</strong> Defensive design considers: input validation, input sanitisation, planning for contingencies, anticipating misuse, and using authentication.</div>
-  </div>
-  <div class="ns">
+    <p><strong>Defensive design</strong> is the practice of writing programs that anticipate and handle invalid input, unexpected usage, and potential misuse — making software more robust and reliable. OCR J277 covers three key aspects:</p>
+    <ul>
+      <li><strong>Input validation</strong> — checking that user input meets expected criteria before processing</li>
+      <li><strong>Input sanitisation</strong> — cleaning/transforming input to make it safe and consistent</li>
+      <li><strong>Anticipating misuse</strong> — writing code that handles unexpected situations gracefully</li>
+    </ul>
+
     <h2>Input Validation</h2>
-    <p><strong>Validation</strong> checks that input data is sensible, reasonable, and within acceptable bounds — BEFORE it is processed by the program. Validation does NOT check whether data is accurate (correct), only that it meets the expected rules.</p>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:10px">
-      <tr><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Validation type</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">What it checks</th><th style="background:#252840;color:#c7d2fe;padding:10px;text-align:left;border:1px solid #2d3148">Example</th></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Range check</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Value is within acceptable min/max</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc">Age must be 0–120</td></tr>
-      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Type check</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Data is the correct type (integer, string…)</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc">Age must be an integer</td></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Length check</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">String length is within acceptable bounds</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc">Password must be 8–20 chars</td></tr>
-      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Presence check</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Field is not empty (required)</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc">Username field must not be blank</td></tr>
-      <tr><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Format check</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Data matches an expected pattern</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc">Postcode matches AB1 2CD pattern</td></tr>
-      <tr style="background:#1a1d2e"><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8;font-weight:500">Look-up check</td><td style="padding:9px;border:1px solid #2d3148;color:#94a3b8">Value exists in a known list</td><td style="padding:9px;border:1px solid #2d3148;color:#a5b4fc">Country selected from dropdown list</td></tr>
+    <p>Validation checks that input data meets specific rules <em>before</em> the program uses it. If the input fails validation, the user is asked to re-enter data.</p>
+    <table>
+      <thead><tr><th>Validation Type</th><th>Description</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="label">Range check</td><td>Checks value is within an allowed range</td><td>Age must be between 0 and 120</td></tr>
+        <tr><td class="label">Type check</td><td>Checks data is the correct type</td><td>Input must be an integer, not a string</td></tr>
+        <tr><td class="label">Length check</td><td>Checks data is within length limits</td><td>Password must be 8–20 characters</td></tr>
+        <tr><td class="label">Presence check</td><td>Checks a required field is not empty</td><td>Username field cannot be blank</td></tr>
+        <tr><td class="label">Format check</td><td>Checks data matches a required pattern</td><td>Date must be DD/MM/YYYY format</td></tr>
+        <tr><td class="label">Lookup check</td><td>Checks value is from a valid set</td><td>Grade must be A, B, C, D, or E</td></tr>
+      </tbody>
     </table>
-    <div class="ic b" style="margin-top:14px">
-      <h4>Validation loop in pseudocode:</h4>
-      <div class="code">age = input("Enter age: ")
-while age < 0 OR age > 120
-    print("Invalid age. Enter 0-120.")
-    age = input("Enter age: ")
-endwhile</div>
+
+    <h2>Validation — Pseudocode Example</h2>
+    <div class="code-block">
+<span class="cmt">// Range check — age must be 0–120</span><br>
+age = <span class="kw">int</span>(<span class="kw">INPUT</span>)<br>
+<span class="kw">WHILE</span> age &lt; <span class="num">0</span> OR age &gt; <span class="num">120</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">OUTPUT</span> <span class="str">"Invalid age. Please enter a value between 0 and 120."</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;age = <span class="kw">int</span>(<span class="kw">INPUT</span>)<br>
+<span class="kw">END WHILE</span><br>
+<span class="kw">OUTPUT</span> <span class="str">"Age accepted: "</span> + <span class="kw">str</span>(age)<br><br>
+<span class="cmt">// Presence check — username cannot be blank</span><br>
+username = <span class="kw">INPUT</span><br>
+<span class="kw">WHILE</span> username == <span class="str">""</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">OUTPUT</span> <span class="str">"Username cannot be blank."</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;username = <span class="kw">INPUT</span><br>
+<span class="kw">END WHILE</span>
     </div>
-  </div>
-  <div class="ns">
+
     <h2>Input Sanitisation</h2>
-    <p><strong>Sanitisation</strong> cleans or transforms input so that it cannot cause harm — by removing or replacing unwanted characters. It is different from validation: validation REJECTS bad input; sanitisation CLEANS it.</p>
-    <div class="ic b">
-      <h4>Examples of sanitisation:</h4>
-      <ul>
-        <li>Stripping HTML/script tags from user input to prevent cross-site scripting (XSS)</li>
-        <li>Removing special characters from a database query to prevent SQL injection</li>
-        <li>Converting a string to lowercase before comparing (so "Admin" == "admin")</li>
-        <li>Trimming whitespace from start/end of a string</li>
-      </ul>
+    <p><strong>Sanitisation</strong> modifies input data to make it safe or consistent — it goes beyond just checking. It transforms the data before using it.</p>
+    <ul>
+      <li><strong>Trimming whitespace</strong> — removing leading/trailing spaces: <code>"  Alice  "</code> → <code>"Alice"</code></li>
+      <li><strong>Changing case</strong> — converting to uppercase or lowercase for consistency: <code>"YES"</code> → <code>"yes"</code></li>
+      <li><strong>Removing special characters</strong> — preventing malicious input (e.g. SQL injection)</li>
+      <li><strong>Converting data type</strong> — ensuring input is stored as the right type: <code>"42"</code> → <code>42</code></li>
+    </ul>
+    <div class="code-block">
+<span class="cmt">// Sanitise: lowercase and trim username input</span><br>
+rawInput = <span class="kw">INPUT</span><br>
+username = rawInput.lower().strip()&nbsp;&nbsp;<span class="cmt">// "  Alice  " → "alice"</span><br><br>
+<span class="cmt">// Sanitise and validate: menu choice must be 1-3</span><br>
+choice = <span class="kw">INPUT</span><br>
+choice = choice.strip()&nbsp;&nbsp;<span class="cmt">// remove whitespace</span><br>
+<span class="kw">WHILE</span> choice != <span class="str">"1"</span> AND choice != <span class="str">"2"</span> AND choice != <span class="str">"3"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">OUTPUT</span> <span class="str">"Please enter 1, 2, or 3."</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;choice = <span class="kw">INPUT</span>.strip()<br>
+<span class="kw">END WHILE</span>
     </div>
-  </div>
-  <div class="ns">
-    <h2>Authentication</h2>
-    <p><strong>Authentication</strong> verifies the identity of a user before granting access to a system or resource. It ensures only authorised users can use the software.</p>
-    <div class="ic g">
-      <h4>Common authentication methods:</h4>
-      <ul>
-        <li><strong>Username + password</strong> — most common. Password stored as a hash, not plain text.</li>
-        <li><strong>Two-factor authentication (2FA)</strong> — password plus a second factor (e.g. OTP via SMS or app)</li>
-        <li><strong>Biometric</strong> — fingerprint, face recognition</li>
-      </ul>
-    </div>
-    <div class="ic b">
-      <h4>Authentication loop in pseudocode:</h4>
-      <div class="code">username = input("Username: ")
-password = input("Password: ")
-if username == "admin" AND password == "secret123"
-    print("Access granted")
-else
-    print("Access denied")
-endif</div>
-    </div>
-  </div>
-  <div class="ns">
+
     <h2>Anticipating Misuse</h2>
-    <p>Good programmers think like an attacker — they consider all the ways a user might misuse the program and add checks to prevent problems.</p>
-    <div class="ic a">
-      <h4>Examples of misuse to anticipate:</h4>
+    <p>Robust programs handle <strong>unexpected situations</strong> that a malicious or careless user might cause:</p>
+    <ul>
+      <li>Division by zero — check denominator is not zero before dividing</li>
+      <li>Array index out of bounds — check index is within valid range</li>
+      <li>Empty file — check file is not empty before reading</li>
+      <li>SQL injection — sanitise input before using in database queries</li>
+      <li>Overflow — check values don't exceed expected limits</li>
+    </ul>
+    <div class="code-block">
+<span class="cmt">// Anticipating division by zero</span><br>
+divisor = <span class="kw">int</span>(<span class="kw">INPUT</span>)<br>
+<span class="kw">IF</span> divisor == <span class="num">0</span> <span class="kw">THEN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">OUTPUT</span> <span class="str">"Error: Cannot divide by zero."</span><br>
+<span class="kw">ELSE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="num">100</span> / divisor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">OUTPUT</span> result<br>
+<span class="kw">END IF</span>
+    </div>
+
+    <h2>Validation vs Sanitisation — Summary</h2>
+    <table>
+      <thead><tr><th>Concept</th><th>What it does</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="label">Validation</td><td>Checks if input meets rules — accepts or rejects</td><td>Age 150 → rejected</td></tr>
+        <tr><td class="label">Sanitisation</td><td>Transforms input to make it safe/consistent</td><td>"  Hello  " → "hello"</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip"><strong>Exam tip:</strong> OCR J277 commonly asks: "Give one example of input validation" (give a type + example: range check, type check, length check, presence check, format check, lookup check). Also know the difference between validation (checking/rejecting) and sanitisation (modifying/cleaning). Common 4-mark questions ask you to write a validation loop in pseudocode using WHILE.</div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Entering letters where numbers are expected</li>
-        <li>Entering negative numbers for fields that must be positive</li>
-        <li>Leaving required fields blank</li>
-        <li>Attempting to access unauthorised areas of the system</li>
-        <li>Buffer overflow by entering extremely long strings</li>
-        <li>Entering SQL or script code as input</li>
+        <li>Confusing validation and sanitisation — validation checks; sanitisation modifies</li>
+        <li>Using IF instead of WHILE for validation — IF only checks once; WHILE keeps asking until valid</li>
+        <li>Forgetting to re-prompt the user inside the validation loop</li>
+        <li>Only naming a validation type without explaining it — always say what it checks</li>
+        <li>Thinking validation prevents ALL errors — it only guards against invalid input, not logic errors</li>
       </ul>
     </div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
-      <ul>
-        <li>Confusing validation (checking data) with sanitisation (cleaning data)</li>
-        <li>Saying validation checks if data is "correct/accurate" — it only checks if it's reasonable/within rules</li>
-        <li>Forgetting to re-ask for input inside a validation loop — just showing an error message is insufficient</li>
-        <li>Confusing authentication (who you are) with authorisation (what you're allowed to do)</li>
-        <li>Thinking defensive design only means validation — it also includes sanitisation, authentication, and error handling</li>
-      </ul>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_2.3.1_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 2.3.1 Defensive Design</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">Define 'defensive design'. Why is it important?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1"></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Defensive design is writing programs that anticipate and handle invalid input, unexpected usage, or misuse [1]. It is important because it makes programs more robust, reliable, and secure — preventing crashes, data corruption, or security vulnerabilities [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">Name four types of input validation and give one example of each.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-2"></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Any 4 from (1 mark each for type + example): Range check — age must be 0–120 [1]; Type check — input must be an integer [1]; Length check — password must be 8–20 chars [1]; Presence check — username cannot be blank [1]; Format check — date must be DD/MM/YYYY [1]; Lookup check — grade must be A, B, C, D, or E [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Write OCR J277 pseudocode to validate that a user enters a score between 0 and 100. The program should keep asking until a valid score is entered.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-3"></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">score = int(INPUT) [1]; WHILE score < 0 OR score > 100 [1]; OUTPUT "Invalid. Enter 0–100." [1]; score = int(INPUT) [1]; END WHILE. Award all 4 for complete correct loop with re-prompt inside.</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">Explain the difference between input validation and input sanitisation.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4"></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Validation checks if input meets specific rules and accepts or rejects it [1]. Sanitisation modifies/cleans input data to make it safe or consistent (e.g. removing spaces, converting case) without necessarily rejecting it [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Give two examples of input sanitisation and explain what each does.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-5"></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Any 2 (2 marks each — method + explanation): Trimming whitespace — removes leading/trailing spaces so "  Alice  " becomes "Alice" [2]; Converting to lowercase — ensures "YES", "Yes", "yes" are all treated the same [2]; Removing special characters — prevents malicious characters (e.g. SQL injection attacks) [2]; Type conversion — converts "42" (string) to 42 (integer) so arithmetic works [2].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">Explain what 'anticipating misuse' means in defensive design. Give two examples of how a program might fail without this consideration.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-6"></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Anticipating misuse means writing code that handles unexpected or malicious usage gracefully — preventing crashes, incorrect results, or security breaches [1]. Examples (any 2): Division by zero — if divisor is 0 and not checked, program crashes [1]; Array index out of bounds — accessing index 10 in a 5-element array causes a runtime error [1]; SQL injection — unfiltered user input injected into a database query can delete data [1]; Overflow — entering a value too large for the data type causes corruption [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">A programmer uses IF instead of WHILE for input validation: IF age &lt; 0 OR age &gt; 120 THEN OUTPUT "Invalid" END IF. What is wrong with this approach?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-7"></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">An IF statement only checks once [1]. If the user enters an invalid value, the message is displayed but the program continues with invalid data. A WHILE loop keeps repeating until valid data is entered [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">Write OCR J277 pseudocode to ask a user for a password and keep asking until it is at least 8 characters long.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-8"></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">password = INPUT [1]; WHILE len(password) < 8 or password.length < 8 [1]; OUTPUT "Password too short — must be at least 8 characters."; password = INPUT [1]; END WHILE. Award for initial input, WHILE condition on length, and re-prompt inside loop.</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;" onclick="restartQuiz()">Try again</button>
     </div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/2-2-1f/" class="nb">← 2.2.1f Subroutines</a>
-  <a href="/ocr-j277/2-3-2/" class="nb n">2.3.2 Testing →</a>
-</div>
-</div>
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 10</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
 </div>
 
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 2.3.1 Defensive Design</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What is defensive design?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Writing the shortest possible code</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> Anticipating and handling invalid input and misuse to make programs robust</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> Using only procedures, not functions</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> Encrypting all program data</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">A program checks that a user's age is between 0 and 120. This is an example of:</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> Presence check</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> Range check</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> Type check</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> Format check</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">What is the difference between validation and sanitisation?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> Validation modifies data; sanitisation checks and rejects</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> Validation checks/rejects; sanitisation modifies/cleans data</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> They are the same thing</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> Sanitisation only works on passwords</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">Why should a WHILE loop rather than an IF statement be used for input validation?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> WHILE loops are faster</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> A WHILE loop keeps repeating until valid data is entered; IF only checks once</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> IF statements cannot compare numbers</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> WHILE loops prevent all runtime errors</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Converting user input " Hello " to "hello" (trimmed and lowercased) is an example of:</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> Range validation</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> Lookup validation</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> Input sanitisation</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> Type checking</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">Name and describe three different types of input validation.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>Any 3: Range check — checks value is within an allowed range [1]; Type check — checks data is the correct type [1]; Length check — checks input is within length limits [1]; Presence check — ensures field is not empty [1]; Format check — checks data matches a pattern [1]; Lookup check — checks value is from a valid list [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Write pseudocode to validate that a user enters a number from 1 to 10. Keep re-prompting until valid.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>num = int(INPUT) [1]; WHILE num < 1 OR num > 10 [1]; OUTPUT "Enter 1–10."; num = int(INPUT) [1]; END WHILE [½].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">Give two examples of how a program might be misused, and how defensive design can prevent each.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>Any 2 (1 mark each for misuse + prevention): Division by zero — check divisor ≠ 0 before dividing [1]; Array out of bounds — check index is valid before accessing [1]; SQL injection — sanitise/escape input before using in queries [1]; User enters text when number expected — type check before processing [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">Explain why a format check would be used when collecting a date of birth from a user.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>A format check ensures the date is entered in the required format (e.g. DD/MM/YYYY) [1]. Without it, the program might receive "12-3-1995" or "March 12" which it cannot process correctly — leading to errors or incorrect calculations [1].</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">A student argues "If users follow the instructions, we don't need validation." Explain why this is incorrect.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>Users may make mistakes even when trying to follow instructions (e.g. typos) [1]. Malicious users may deliberately enter invalid or harmful data to crash the program or exploit vulnerabilities [1]. Defensive design protects against both accidental and intentional misuse.</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/2-2-1f/" class="bottom-nav-btn">← 2.2.1f File Handling</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">2.3 Robust Programs</span>
+  <a href="/ocr-j277/2-3-2/" class="bottom-nav-btn next-btn">2.3.2 Testing →</a>
+</div>
 <script>
-var LESSON_ID='2-3-1';var IS_FREE=true;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='2-3-1';
+var IS_FREE=true;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What is the purpose of defensive design?",opts:["Make programs run faster","Anticipate and handle errors and misuse before they cause problems","Reduce code length","Remove all variables"],ans:1,exp:"Defensive design means writing programs that deal gracefully with invalid, unexpected, or malicious inputs — preventing crashes and security vulnerabilities."},
-  {q:"What is input validation?",opts:["Cleaning input to remove harmful characters","Checking that input is within acceptable/expected bounds before processing","Verifying the user's identity","Encrypting the input"],ans:1,exp:"Validation checks that input data is reasonable and within expected rules — e.g. a range check, type check, or presence check. It does NOT check accuracy."},
-  {q:"A student enters -5 for their age. Which validation type catches this?",opts:["Presence check","Length check","Range check","Format check"],ans:2,exp:"A range check verifies the value is within acceptable min/max bounds. Age of -5 is outside the valid range (e.g. 0–120) and would be rejected."},
-  {q:"What is the difference between validation and sanitisation?",opts:["Validation runs faster","Validation REJECTS bad input; sanitisation CLEANS it","Sanitisation rejects input; validation cleans it","They are the same thing"],ans:1,exp:"Validation decides if input is acceptable and rejects it if not. Sanitisation transforms/cleans input by removing dangerous characters — e.g. stripping script tags, removing SQL characters."},
-  {q:"Which validation check ensures a required field is not empty?",opts:["Range check","Type check","Format check","Presence check"],ans:3,exp:"A presence check verifies that a required field has been filled in — the input is not blank or empty."},
-  {q:"A password must be between 8 and 20 characters. Which check enforces this?",opts:["Range check","Length check","Presence check","Look-up check"],ans:1,exp:"A length check verifies the number of characters in a string is within acceptable bounds. 8–20 characters = length check."},
-  {q:"Which of these is an example of input sanitisation?",opts:["Rejecting age = -5","Checking a password has at least 8 characters","Converting user input to lowercase before comparing","Requiring the username field to be filled in"],ans:2,exp:"Converting to lowercase is sanitisation — it transforms the input so 'Admin' and 'admin' compare as equal. The others are examples of validation."},
-  {q:"What does authentication verify?",opts:["That input data is valid","The identity of a user before granting access","That a program has no bugs","The length of a password"],ans:1,exp:"Authentication verifies WHO someone is — e.g. checking username and password match records. This is different from authorisation (what they're allowed to do)."},
-  {q:"Which is NOT a form of authentication?",opts:["Username and password","Two-factor authentication","Range check","Biometric (fingerprint)"],ans:2,exp:"A range check is a type of input validation, not authentication. Authentication methods include passwords, 2FA, and biometrics — they all verify identity."},
-  {q:"What is two-factor authentication (2FA)?",opts:["Two separate passwords","A password plus a second verification method (e.g. OTP)","Two-step range checking","Biometric only"],ans:1,exp:"2FA requires a password AND a second factor — typically a one-time code sent by SMS or generated by an app. Even if the password is stolen, the account stays secure."},
-  {q:"A developer strips HTML tags from forum posts before saving them to a database. This is an example of:",opts:["Validation","Authentication","Sanitisation","Range checking"],ans:2,exp:"Stripping HTML/script tags is sanitisation — it cleans the input to prevent cross-site scripting (XSS) attacks."},
-  {q:"A program asks for a number but the user types 'hello'. Which validation catches this?",opts:["Range check","Type check","Length check","Format check"],ans:1,exp:"A type check verifies that input is the correct data type — e.g. integer, float. 'hello' is not a number and fails the type check."},
-  {q:"Which validation check would be used to ensure an email address matches the pattern name@domain.com?",opts:["Range check","Presence check","Look-up check","Format check"],ans:3,exp:"A format check verifies that input matches a specific pattern — e.g. x@y.z for emails. Regular expressions are often used for format checks."},
-  {q:"Why is it important to re-ask for input inside a validation loop, not just show an error message?",opts:["The program crashes if you don't","Showing an error but continuing processes invalid data — the loop must collect valid input before continuing","It is faster","It is required by OCR"],ans:1,exp:"A validation check that only shows an error and moves on still uses invalid data. The loop must repeatedly ask until valid input is entered."},
-  {q:"What does it mean to 'anticipate misuse' in defensive design?",opts:["Make the code shorter","Consider all ways users might enter invalid or harmful data and add checks to handle these","Remove all loops","Speed up the program"],ans:1,exp:"Anticipating misuse means thinking like an attacker — identifying edge cases like negative inputs, blank fields, very long strings, or injected code, and adding checks to prevent harm."}
+  {q:"What is defensive design?",opts:["Writing the minimum amount of code","Anticipating and handling invalid input and misuse to make programs robust","Using only loops and no conditions","Removing all comments from code"],a:1,exp:"Defensive design means writing programs that anticipate problems — including invalid input, unexpected usage, and deliberate misuse — making them more robust, reliable, and secure."},
+  {q:"Which type of validation checks a value is within an acceptable range?",opts:["Presence check","Format check","Range check","Lookup check"],a:2,exp:"A range check verifies that a value falls within specified limits. E.g. age must be between 0 and 120. Values outside this range are rejected and the user is asked to re-enter."},
+  {q:"A password must be between 8 and 20 characters. What type of validation is this?",opts:["Type check","Length check","Presence check","Range check"],a:1,exp:"A length check verifies the number of characters in input. Here, the password must have 8–20 characters. Too short or too long = rejected."},
+  {q:"A required username field must not be left empty. What validation type is this?",opts:["Format check","Range check","Lookup check","Presence check"],a:3,exp:"A presence check ensures a required field has been filled in — the input is not blank/empty. E.g. username cannot be ''."},
+  {q:"A date of birth must be entered as DD/MM/YYYY. What validation type ensures this?",opts:["Type check","Range check","Format check","Presence check"],a:2,exp:"A format check verifies input matches a specific pattern. DD/MM/YYYY is a format — the check rejects '12-3-1995' or 'March 12 1995' as they don't match."},
+  {q:"A grade must be A, B, C, D, or E. What validation type checks this?",opts:["Presence check","Lookup check","Range check","Length check"],a:1,exp:"A lookup check verifies that input is from a predefined set of valid values. Grade must be one of: A, B, C, D, E. Any other value is rejected."},
+  {q:"What does input sanitisation do?",opts:["Checks if input is within a valid range","Modifies/cleans input to make it safe or consistent","Deletes invalid input from memory","Encrypts input before storing it"],a:1,exp:"Sanitisation modifies input data — e.g. removing spaces, converting to lowercase, removing special characters — to make it safe and consistent for use in the program."},
+  {q:"' hello ' → 'hello' after trimming whitespace and lowercasing. This is an example of:",opts:["Validation — presence check","Sanitisation — trimming and case normalisation","Validation — type check","Sanitisation — format check"],a:1,exp:"Trimming whitespace (removing leading/trailing spaces) and converting to lowercase are both examples of sanitisation — the input is modified/cleaned, not just checked."},
+  {q:"Why is a WHILE loop used for validation rather than an IF statement?",opts:["WHILE is faster than IF","IF can only be used with strings","WHILE repeats until valid data is entered; IF only checks once","WHILE requires no conditions"],a:2,exp:"An IF checks only once. If the input is invalid, the error is shown but the program continues with bad data. A WHILE loop keeps re-prompting until valid input is provided."},
+  {q:"Which of these is an example of 'anticipating misuse'?",opts:["Adding comments to explain code","Checking that a divisor is not zero before performing division","Using meaningful variable names","Testing the program with expected inputs only"],a:1,exp:"Checking the divisor is not zero before dividing guards against a potential runtime crash. This is anticipating misuse — the programmer considers what could go wrong and codes defensively."},
+  {q:"A student enters 'abc' when a program expects an integer age. Which validation would catch this?",opts:["Range check","Presence check","Type check","Lookup check"],a:2,exp:"A type check verifies the input is the correct data type. 'abc' is a string, not an integer — a type check would reject it and prompt for a valid integer."},
+  {q:"SQL injection is a type of attack where a user enters malicious code in an input field. Which defensive design technique prevents this?",opts:["Range check","Type check","Input sanitisation — removing/escaping special characters","Presence check"],a:2,exp:"SQL injection is prevented through sanitisation — removing or escaping special characters like quotes and semicolons from user input before using it in a database query."},
+  {q:"Which is NOT a type of input validation from the OCR J277 spec?",opts:["Range check","Encryption check","Format check","Type check"],a:1,exp:"Encryption check is not an OCR J277 validation type. The spec lists: range, type, length, presence, format, and lookup checks. Encryption is a data security technique, not a validation method."},
+  {q:"A program asks for a number 1–5. A user enters '3 '. The trimmed value '3' is valid. What technique handled the space?",opts:["Validation — range check","Sanitisation — whitespace trimming","Validation — type check","Sanitisation — case conversion"],a:1,exp:"Removing the trailing space from '3 ' to get '3' is whitespace trimming — a form of input sanitisation. The data is modified/cleaned before it is used."},
+  {q:"Which statement BEST describes a robust program?",opts:["A program that runs very fast","A program that never crashes and handles unexpected inputs gracefully","A program that uses no global variables","A program with the fewest lines of code"],a:1,exp:"A robust program handles unexpected inputs and situations gracefully — it does not crash, produce incorrect results, or allow security vulnerabilities. Defensive design is how robustness is achieved."}
 ];
-var WORKSHEET=[
-  {q:"Define defensive design and explain why it is important.",marks:3,ms:"Writing programs that anticipate and handle invalid/unexpected inputs before they cause problems (1). It prevents crashes and incorrect results (1). It also protects against malicious input such as SQL injection or XSS (1)."},
-  {q:"Explain the difference between input validation and input sanitisation. Give one example of each.",marks:4,ms:"Validation checks that input is acceptable/within expected rules — rejects if not (1). Example: range check rejects age outside 0–120 (1). Sanitisation cleans/transforms input — e.g. stripping script tags or converting to lowercase (1). Example: removing HTML from forum post before storing (1)."},
-  {q:"A user must enter a year between 1900 and 2026. Write pseudocode that validates this input using a loop.",marks:4,ms:"year = input(\"Enter year: \") (1); while year < 1900 OR year > 2026 (1); print(\"Invalid. Enter 1900-2026.\") (1); year = input(\"Enter year: \"); endwhile (1)."},
-  {q:"Give TWO examples of validation checks with a different example for each.",marks:4,ms:"Any two from: Range check — e.g. score must be 0–100 (2). Type check — e.g. age must be an integer (2). Length check — e.g. password 8–20 chars (2). Presence check — e.g. username not blank (2). Format check — e.g. email matches x@y.z (2). [1 mark per check, 1 mark per correct example]"},
-  {q:"Explain the difference between authentication and authorisation.",marks:2,ms:"Authentication verifies the identity of a user — who they are (1). Authorisation determines what an authenticated user is allowed to do/access (1)."},
-  {q:"Explain why storing passwords as hashes is more secure than storing them in plain text.",marks:2,ms:"If the database is breached, hashed passwords cannot be read directly (1). Even the system administrator cannot see users' actual passwords — only the hash (1)."},
-  {q:"A student writes a program that validates an age input but only shows an error message if invalid. Explain the problem with this approach.",marks:2,ms:"After showing the error, the program continues and processes the invalid data (1). The program should loop back and ask for the input again until valid data is entered (1)."},
-  {q:"Describe THREE ways to anticipate misuse when designing a program.",marks:3,ms:"Any three from: entering text where a number is expected (1). Entering negative numbers for positive-only fields (1). Leaving required fields blank (1). Entering very long strings to cause buffer overflow (1). Entering SQL or script code as input (1). Attempting to access unauthorised system areas (1)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Defensive design",d:"Writing programs that anticipate errors and misuse — handling invalid inputs before they cause crashes or security issues."},
-  {w:"Input validation",d:"Checking that input is within acceptable, expected bounds before processing. Does NOT verify accuracy — only that it meets the rules."},
-  {w:"Range check",d:"Validation that checks a value falls within an acceptable min and max. e.g. age must be 0–120."},
-  {w:"Type check",d:"Validation that checks input is the correct data type (e.g. integer, string)."},
-  {w:"Length check",d:"Validation that checks a string has an acceptable number of characters. e.g. password 8–20 chars."},
-  {w:"Presence check",d:"Validation that ensures a required field is not blank/empty."},
-  {w:"Format check",d:"Validation that checks input matches an expected pattern. e.g. email must contain @ and ."},
-  {w:"Look-up check",d:"Validation that checks input exists in a known list or set of valid values. e.g. country from a dropdown."},
-  {w:"Input sanitisation",d:"Cleaning/transforming input to remove dangerous characters — e.g. stripping HTML tags, removing SQL characters. Different from validation."},
-  {w:"Authentication",d:"Verifying the identity of a user before granting access — e.g. username/password, 2FA, biometrics."},
-  {w:"Authorisation",d:"Determining what an authenticated user is allowed to do or access. Different from authentication."},
-  {w:"Two-factor authentication",d:"Security method requiring a password AND a second factor (e.g. OTP via SMS or app)."},
-  {w:"Anticipating misuse",d:"Considering all the ways a user might enter invalid or harmful data and adding checks to prevent problems."},
-  {w:"SQL injection",d:"Attack where malicious SQL code is entered as input, potentially accessing or corrupting a database. Prevented by sanitisation."},
-  {w:"Cross-site scripting (XSS)",d:"Attack where malicious script tags are entered as input and executed by other users' browsers. Prevented by sanitising HTML."}
+  {term:"Defensive design",def:"Writing programs that anticipate and handle invalid input, unexpected usage, and deliberate misuse — making software robust, reliable, and secure."},
+  {term:"Input validation",def:"Checking that user input meets specific rules before the program uses it. If the check fails, the user is prompted to re-enter. Types include: range, type, length, presence, format, and lookup checks."},
+  {term:"Range check",def:"Validation that ensures a value falls within an acceptable range. E.g. age must be 0–120. Values outside the range are rejected."},
+  {term:"Type check",def:"Validation that ensures input is the correct data type. E.g. input must be an integer, not a string. Rejects 'abc' when a number is expected."},
+  {term:"Length check",def:"Validation that ensures input is within allowed length limits. E.g. password must be 8–20 characters. Too short or too long = rejected."},
+  {term:"Presence check",def:"Validation that ensures a required field is not left empty. E.g. username cannot be blank. Rejects empty string ''."},
+  {term:"Format check",def:"Validation that ensures input matches a required pattern. E.g. date must be DD/MM/YYYY. Rejects '12-3-1995' or 'March 12'."},
+  {term:"Lookup check",def:"Validation that ensures input is from a predefined set of valid values. E.g. grade must be A, B, C, D, or E. Any other value is rejected."},
+  {term:"Input sanitisation",def:"Modifying/cleaning input data to make it safe and consistent before use. Examples: trimming whitespace, converting to lowercase, removing special characters, type conversion."},
+  {term:"Anticipating misuse",def:"Writing code to handle unexpected or malicious usage gracefully. Examples: checking for division by zero, validating array indices, sanitising input to prevent SQL injection."}
 ];
-var TEST_MCQ=[
-  {q:"What is the difference between validation and sanitisation?",opts:["Validation cleans input; sanitisation rejects it","Validation rejects bad input; sanitisation cleans it","They are identical","Sanitisation is faster"],ans:1,exp:"Validation checks input and REJECTS it if unacceptable. Sanitisation CLEANS input by removing/replacing dangerous characters before processing."},
-  {q:"A program requires a score between 0 and 100. Which check is most appropriate?",opts:["Type check","Presence check","Range check","Format check"],ans:2,exp:"A range check verifies the value is within 0–100. This is the classic use case for a range check."},
-  {q:"Which statement about authentication is correct?",opts:["It verifies data type","It verifies the identity of a user","It checks if a password is long enough","It cleans input of harmful characters"],ans:1,exp:"Authentication verifies WHO the user is — e.g. checking username and password credentials match the system's records."},
-  {q:"A developer converts all usernames to lowercase before comparing. This is an example of:",opts:["Validation","Authentication","Format checking","Sanitisation"],ans:3,exp:"Converting to lowercase is sanitisation — transforming the input so 'Alice' and 'alice' are treated as equivalent. It cleans the data rather than rejecting it."},
-  {q:"Why must a validation loop re-ask for input rather than just showing an error?",opts:["It runs faster","Showing an error alone still allows invalid data to be processed","OCR requires it","It uses less memory"],ans:1,exp:"If the loop only shows an error and continues, the invalid value is still used by the program. The loop must keep asking until valid input is received."}
-];
-var TEST_SA=[
-  {q:"Explain what is meant by input validation. Give one example of a validation check.",marks:3,ms:"Checking that input data is within acceptable/expected bounds before being processed (1). Does not check accuracy — only that it meets the rules (1). Example: range check ensures age is between 0 and 120 (1)."},
-  {q:"Describe the difference between input validation and input sanitisation.",marks:3,ms:"Validation checks if input is acceptable and REJECTS it if not (1). Sanitisation CLEANS/transforms input by removing or replacing dangerous characters (1). Example of difference: validation rejects an age of -5; sanitisation strips HTML tags from a comment field (1)."},
-  {q:"Write pseudocode that validates a month number (must be 1–12).",marks:3,ms:"month = input(\"Enter month: \") (1); while month < 1 OR month > 12 (1); print(\"Invalid month.\"); month = input(\"Enter month: \"); endwhile (1)."},
-  {q:"Explain why authentication is important in defensive design.",marks:2,ms:"Authentication ensures only authorised users can access the system (1). It prevents unauthorised access by verifying identity before granting entry (1)."},
-  {q:"Give TWO ways a programmer can anticipate misuse when designing a program.",marks:2,ms:"Any two from: check for non-numeric input where numbers expected (1). Check for blank required fields (1). Validate range to prevent out-of-bounds values (1). Sanitise input to prevent SQL injection or XSS (1)."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});document.getElementById('fc-progress').textContent='Card 1 of '+KEY_TERMS.length;showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,1,1,1,2];
+var TEST_MCQ_LABELS=[['Writing shortest code','Anticipating and handling invalid input/misuse','Using only procedures','Encrypting data'],['Presence check','Range check','Type check','Format check'],['Validation modifies; sanitisation checks','Validation checks/rejects; sanitisation modifies','They are the same','Sanitisation only for passwords'],['WHILE is faster','WHILE repeats until valid; IF checks once','IF cannot compare numbers','WHILE needs no conditions'],['Range validation','Lookup validation','Input sanitisation','Type checking']];
+var TEST_MCQ_EXPLAIN=['Defensive design anticipates problems — invalid input, unexpected usage, deliberate misuse — and codes to handle them robustly.','Range check: ensures value is within allowed limits. Age 0–120 is a classic range check example.','Validation: checks and accepts/rejects. Sanitisation: modifies/cleans the data (e.g. trim spaces, lowercase).','WHILE keeps re-prompting until valid. IF checks once and continues even with invalid data.','Trimming whitespace + lowercasing = sanitisation. The data is modified, not just checked.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['Three validation types','Validate 1–10','Two misuse examples','Format check for DOB','Why validation is always needed'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

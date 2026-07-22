@@ -1,262 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.2.4f Representing Images | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns h3{font-size:16px;font-weight:600;color:#c7d2fe;margin:16px 0 8px}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic.r{border-left:3px solid #ef4444}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.ct{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}.ct th{background:#252840;color:#c7d2fe;padding:10px 14px;text-align:left;font-weight:600;border:1px solid #2d3148}.ct td{padding:9px 14px;border:1px solid #2d3148;color:#94a3b8}.ct tr:nth-child(even) td{background:#1a1d2e}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.kp strong{color:#c7d2fe}.fb2{background:#0f172a;border:1px solid #3730a3;border-radius:8px;padding:16px 20px;margin:12px 0;font-family:monospace;font-size:14px;color:#a5b4fc;line-height:1.8}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2.4f Representing Images — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;text-align:center;}
+    .notes-content td:first-child{text-align:left;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-card{background:#fff;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-bottom:10px;width:100%;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px;line-height:1.6">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 1</div>
-    <div class="sst" style="color:#818cf8">1.2 Memory &amp; Storage</div>
-    <a href="/ocr-j277/1-2-1/" class="sl fb">1.2.1 Primary Storage</a>
-    <a href="/ocr-j277/1-2-2/" class="sl">1.2.2 Secondary Storage</a>
-    <a href="/ocr-j277/1-2-3/" class="sl">1.2.3 Units of Storage</a>
-    <a href="/ocr-j277/1-2-4a/" class="sl">1.2.4a Binary &amp; Denary</a>
-    <a href="/ocr-j277/1-2-4b/" class="sl">1.2.4b Hexadecimal</a>
-    <a href="/ocr-j277/1-2-4c/" class="sl">1.2.4c Binary Arithmetic</a>
-    <a href="/ocr-j277/1-2-4d/" class="sl">1.2.4d Binary Shifts</a>
-    <a href="/ocr-j277/1-2-4e/" class="sl">1.2.4e Character Encoding</a>
-    <a href="/ocr-j277/1-2-4f/" class="sl active">1.2.4f Representing Images</a>
-    <a href="/ocr-j277/1-2-4g/" class="sl">1.2.4g Representing Sound</a>
-    <a href="/ocr-j277/1-2-5/" class="sl">1.2.5 Compression</a>
-    <div class="sst" style="color:#818cf8">1.3–1.6</div>
-    <a href="/ocr-j277/1-3-1a/" class="sl fb">1.3.1a LAN, WAN</a>
-    <a href="/ocr-j277/1-3-1b/" class="sl">1.3.1b Network Types</a>
-    <a href="/ocr-j277/1-3-1c/" class="sl">1.3.1c Internet &amp; DNS</a>
-    <a href="/ocr-j277/1-3-1d/" class="sl">1.3.1d Topologies</a>
-    <a href="/ocr-j277/1-3-2a/" class="sl">1.3.2a Wired &amp; Wireless</a>
-    <a href="/ocr-j277/1-3-2b/" class="sl">1.3.2b Protocols</a>
-    <a href="/ocr-j277/1-4-1/" class="sl fb">1.4.1 Network Threats</a>
-    <a href="/ocr-j277/1-4-2/" class="sl">1.4.2 Vulnerabilities</a>
-    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
-    <a href="/ocr-j277/1-5-2/" class="sl">1.5.2 Utility Software</a>
-    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
-    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.2 Data Representation</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.2.4f Representing Images</span>
+    </div>
   </div>
-  <div class="sidebar-section">
-    <div class="sst">Component 2</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-1-2a/" class="sl">2.1.2a Flowcharts</a>
-    <a href="/ocr-j277/2-1-2b/" class="sl">2.1.2b Pseudocode</a>
-    <a href="/ocr-j277/2-1-3a/" class="sl">2.1.3a Linear Search</a>
-    <a href="/ocr-j277/2-1-3b/" class="sl">2.1.3b Binary Search</a>
-    <a href="/ocr-j277/2-1-3c/" class="sl">2.1.3c Bubble Sort</a>
-    <a href="/ocr-j277/2-1-3d/" class="sl">2.1.3d Merge Sort</a>
-    <a href="/ocr-j277/2-1-3e/" class="sl">2.1.3e Insertion Sort</a>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <a href="/ocr-j277/2-2-1b/" class="sl">2.2.1b Selection &amp; Iteration</a>
-    <a href="/ocr-j277/2-2-1c/" class="sl">2.2.1c Arrays</a>
-    <a href="/ocr-j277/2-2-1d/" class="sl">2.2.1d File Handling</a>
-    <a href="/ocr-j277/2-2-1e/" class="sl">2.2.1e Strings</a>
-    <a href="/ocr-j277/2-2-1f/" class="sl">2.2.1f Subroutines</a>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-3-2/" class="sl">2.3.2 Testing</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-4-1b/" class="sl">2.4.1b Truth Tables</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
-    <a href="/ocr-j277/2-5-2a/" class="sl">2.5.2a Translators</a>
-    <a href="/ocr-j277/2-5-2b/" class="sl">2.5.2b IDEs</a>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.2 Memory &amp; Storage</div>
-  <div class="lesson-title">1.2.4f — Representing Images</div>
-  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~20 min</div>
+  <div class="lesson-badge">🖼 Component 1 · 1.2 Data Representation</div>
+  <div class="lesson-title">1.2.4f Representing Images (Pixels, Resolution &amp; Colour Depth)</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~12 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
 </div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-notes">
-  <div class="ns">
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
     <h2>Pixels and Bitmaps</h2>
-    <p>Digital images are made up of tiny squares called <strong>pixels</strong> (picture elements). A bitmap image stores the colour of every single pixel as a binary number. The more pixels, the higher the resolution and detail.</p>
-    <div class="kp"><strong>Bitmap = a grid of pixels, each stored as a binary number representing its colour.</strong></div>
-  </div>
+    <p>Digital images are stored as <strong>bitmaps</strong> — grids of tiny squares called <strong>pixels</strong> (picture elements). Each pixel stores a single colour value as a binary number. The more pixels, the more detail the image can show.</p>
+    <ul>
+      <li>A <strong>bitmap image</strong> stores the colour of every individual pixel</li>
+      <li>The arrangement is a rectangular grid: width × height in pixels</li>
+      <li>Each pixel's colour is represented by binary numbers</li>
+    </ul>
 
-  <div class="ns">
-    <h2>Colour Depth</h2>
-    <p>Colour depth (also called bit depth) is the number of bits used to represent the colour of each pixel. More bits = more possible colours.</p>
-    <table class="ct">
-      <tr><th>Colour depth</th><th>Colours possible</th><th>Example</th></tr>
-      <tr><td>1 bit</td><td>2¹ = 2</td><td>Black and white only</td></tr>
-      <tr><td>4 bits</td><td>2⁴ = 16</td><td>Basic colours</td></tr>
-      <tr><td>8 bits</td><td>2⁸ = 256</td><td>256-colour palette</td></tr>
-      <tr><td>24 bits</td><td>2²⁴ = 16,777,216</td><td>True colour (8 bits each for R, G, B)</td></tr>
-    </table>
-    <div class="ic g">
-      <h4>24-bit True Colour</h4>
-      <p>24-bit images use 8 bits each for Red, Green, and Blue channels. 8 bits per channel = 256 shades each = 256³ = 16,777,216 colours. This is what most photos use.</p>
-    </div>
-  </div>
-
-  <div class="ns">
     <h2>Image Resolution</h2>
-    <p>Resolution is the number of pixels in an image, usually given as width × height (e.g. 1920×1080). Higher resolution = more pixels = more detail = larger file size.</p>
-    <div class="ic b">
-      <h4>Resolution vs Colour Depth</h4>
-      <p>Both affect image quality and file size. Increasing either one increases the file size.</p>
-    </div>
-  </div>
+    <p><strong>Resolution</strong> refers to the number of pixels in an image, expressed as width × height (e.g. 1920 × 1080). A higher resolution means more pixels, so the image is sharper and shows more detail — but the file size is larger.</p>
+    <table>
+      <thead><tr><th>Resolution</th><th>Total pixels</th><th>Typical use</th></tr></thead>
+      <tbody>
+        <tr><td>640 × 480</td><td>307,200</td><td>Old webcam, thumbnail</td></tr>
+        <tr><td>1920 × 1080</td><td>2,073,600 (~2MP)</td><td>HD TV, monitor</td></tr>
+        <tr><td>3840 × 2160</td><td>8,294,400 (~8MP)</td><td>4K video/display</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Higher resolution</strong> → better quality → larger file size.</p>
 
-  <div class="ns">
-    <h2>Calculating Image File Size</h2>
-    <div class="kp"><strong>Formula: File size (bits) = Width × Height × Colour depth</strong><br>Divide by 8 to convert to bytes.</div>
-    <div class="ic g">
-      <h4>Example 1: 100×200 image, 8-bit colour</h4>
-      <div class="fb2">
-        File size = 100 × 200 × 8 bits<br>
-        = 160,000 bits<br>
-        = 160,000 ÷ 8 = 20,000 bytes<br>
-        = 20,000 ÷ 1024 ≈ 19.5 KB
-      </div>
+    <h2>Colour Depth</h2>
+    <p><strong>Colour depth</strong> is the number of bits used to represent the colour of each pixel.</p>
+    <table>
+      <thead><tr><th>Colour depth</th><th>Bits per pixel</th><th>Number of colours</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>1-bit</td><td>1</td><td>2 (black &amp; white only)</td><td>Simple icons</td></tr>
+        <tr><td>4-bit</td><td>4</td><td>16</td><td>Early games graphics</td></tr>
+        <tr><td>8-bit</td><td>8</td><td>256</td><td>GIF images</td></tr>
+        <tr><td>24-bit (True Colour)</td><td>24</td><td>16,777,216 (~16.7 million)</td><td>JPEG, PNG photos</td></tr>
+      </tbody>
+    </table>
+    <p>Number of colours = 2^(colour depth bits). e.g. 8-bit → 2⁸ = 256 colours.</p>
+    <p><strong>24-bit colour</strong> uses 8 bits each for red, green and blue (RGB) channels: 3 × 8 = 24 bits. With 8 bits per channel, each channel has 256 levels, giving 256³ = 16,777,216 possible colours.</p>
+
+    <h2>Calculating File Size</h2>
+    <p>The uncompressed file size of a bitmap image is calculated using:</p>
+    <p style="text-align:center;font-size:16px;font-weight:700;background:#f5f3ff;border-radius:10px;padding:14px;color:#7c3aed;font-family:monospace;">File size (bits) = Width × Height × Colour depth</p>
+    <p>Then divide by 8 for bytes, by 1024 for kilobytes, etc.</p>
+    <h3>Worked Example</h3>
+    <p>Image size: 800 × 600 pixels, 24-bit colour depth.</p>
+    <ul>
+      <li>Total pixels = 800 × 600 = 480,000</li>
+      <li>Bits per pixel = 24</li>
+      <li>Total bits = 480,000 × 24 = 11,520,000 bits</li>
+      <li>÷ 8 = 1,440,000 bytes</li>
+      <li>÷ 1024 = 1406.25 KB ≈ 1.37 MB</li>
+    </ul>
+
+    <h3>Second Example: 1-bit image</h3>
+    <p>A 100 × 100, 1-bit (black &amp; white) image:</p>
+    <ul>
+      <li>100 × 100 × 1 = 10,000 bits = 1,250 bytes ≈ 1.22 KB</li>
+    </ul>
+
+    <h2>Effect on File Size</h2>
+    <table>
+      <thead><tr><th>Factor</th><th>Increase causes</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Resolution</td><td>Larger file size</td><td>More pixels → more data to store</td></tr>
+        <tr><td>Colour depth</td><td>Larger file size</td><td>More bits per pixel → more data per pixel</td></tr>
+        <tr><td>Resolution</td><td>Better image quality</td><td>More detail captured</td></tr>
+        <tr><td>Colour depth</td><td>More realistic colours</td><td>More shades and hues available</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> The file size formula (width × height × colour depth) is a guaranteed exam question. Learn the formula and always show each step. Also know: 2^n colours for n-bit depth; 24-bit = RGB, 8 bits each. Know that higher resolution AND higher colour depth both increase file size — you'll be asked to explain why.
     </div>
-    <div class="ic b">
-      <h4>Example 2: 1920×1080 image, 24-bit colour</h4>
-      <div class="fb2">
-        File size = 1920 × 1080 × 24 bits<br>
-        = 49,766,400 bits<br>
-        = 49,766,400 ÷ 8 = 6,220,800 bytes<br>
-        ≈ 6.22 MB (uncompressed)
-      </div>
-    </div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
       <ul>
-        <li>Forgetting to divide by 8 to convert bits to bytes</li>
-        <li>Using KB = 1000 instead of 1024 (in computing, 1 KB = 1024 bytes)</li>
-        <li>Confusing resolution (pixel count) with colour depth (bits per pixel)</li>
-        <li>Forgetting to multiply width × height first to get total pixel count</li>
-        <li>Saying higher colour depth = more pixels (it does NOT — it means more colours per pixel)</li>
+        <li>Forgetting to convert bits to bytes — divide by 8 after multiplying</li>
+        <li>Confusing resolution (number of pixels) with image dimensions (physical print size)</li>
+        <li>Saying 24-bit colour = 24 colours — it's 2²⁴ = 16.7 million colours</li>
+        <li>Thinking higher colour depth always produces a visually better image — after 24-bit True Colour, most humans can't tell the difference</li>
+        <li>Forgetting to include units — always state bits, bytes, KB, MB</li>
       </ul>
     </div>
-  </div>
 
-  <div class="ns">
-    <h2>Metadata</h2>
-    <p>Image files also contain <strong>metadata</strong> — information about the image stored with the file but not part of the visible image. This includes width, height, colour depth, file format, date taken, camera settings, GPS location, etc.</p>
-    <div class="kp"><strong>Metadata is not part of the image content</strong> — it describes the image. Total file size = image data + metadata.</div>
-  </div>
-
-  <div class="ns">
-    <h2>Effect of Changing Resolution and Colour Depth</h2>
-    <table class="ct">
-      <tr><th>Change</th><th>Effect on quality</th><th>Effect on file size</th></tr>
-      <tr><td>Increase resolution (more pixels)</td><td>More detail, sharper</td><td>Increases proportionally</td></tr>
-      <tr><td>Decrease resolution</td><td>Less detail, pixelated</td><td>Decreases</td></tr>
-      <tr><td>Increase colour depth</td><td>More colours, smoother</td><td>Increases proportionally</td></tr>
-      <tr><td>Decrease colour depth</td><td>Fewer colours, banded</td><td>Decreases</td></tr>
-    </table>
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
   </div>
 </div>
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet — Representing Images</h2><p style="font-size:13px;color:#64748b;margin-bottom:20px">Show all working for calculation questions. Use 1 KB = 1024 bytes.</p></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/1-2-4e/" class="nb">← 1.2.4e Character Encoding</a>
-  <a href="/ocr-j277/1-2-4g/" class="nb n">1.2.4g Representing Sound →</a>
-</div>
-</div>
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;">What's in this video</h3>
+    <ul style="list-style:none;padding:0;">
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Pixels and bitmap images: what they are</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Resolution: width × height, more pixels = better quality + larger file</li>
+      <li style="padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;">• Colour depth: bits per pixel, 2ⁿ colours, 24-bit True Colour RGB</li>
+      <li style="padding:8px 0;font-size:14.5px;color:#334155;">• File size formula: width × height × colour depth ÷ 8 = bytes</li>
+    </ul>
+  </div>
 </div>
 
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_1.2.4f_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 1.2.4f Representing Images</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks · Show all calculations</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">What is a pixel? What is a bitmap image?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">A pixel (picture element) is the smallest unit of a digital image — a single square of a fixed colour [1]; a bitmap image is a grid of pixels where each pixel's colour is stored as a binary number [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">What is colour depth? How many colours can a 4-bit colour depth represent? Show your calculation.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-2" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Colour depth is the number of bits used to represent the colour of each pixel [1]; 2⁴ = 16 colours [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Calculate the file size in bytes of a 200 × 150 pixel image with 8-bit colour depth.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-3" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">200 × 150 = 30,000 pixels [1]; 30,000 × 8 = 240,000 bits [1]; 240,000 ÷ 8 = 30,000 bytes [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">A 24-bit colour image uses 8 bits each for red, green and blue. How many different colours can this represent? Show working.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">2²⁴ = 16,777,216 colours [1]; or 256 × 256 × 256 = 16,777,216 [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">Calculate the file size in KB of a 1024 × 768 image with 24-bit colour. Show all steps.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-5" style="min-height:130px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">1024 × 768 = 786,432 pixels [1]; × 24 bits = 18,874,368 bits [1]; ÷ 8 = 2,359,296 bytes [1]; ÷ 1024 = 2,304 KB [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">State two factors that affect the file size of a bitmap image. For each, explain the effect.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" id="ws-ans-6" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Resolution: higher resolution → more pixels → larger file size [1+1]; Colour depth: higher colour depth → more bits per pixel → larger file size [1+1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">A 1-bit image and a 24-bit image are both 400 × 300 pixels. Calculate the difference in file size in bytes between the two images.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-7" style="min-height:110px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">400×300=120,000 pixels [1]; 1-bit: 120,000 bits ÷ 8 = 15,000 bytes; 24-bit: 120,000×24=2,880,000 bits ÷ 8 = 360,000 bytes; Difference = 360,000 − 15,000 = 345,000 bytes [1 each].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">Explain why increasing the colour depth of an image increases its quality but also increases its file size.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-8" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">More bits per pixel → more possible colour values → more shades and hues → more realistic/accurate colour reproduction (quality increase) [1]; but each pixel needs more bits to store → total file size = pixels × bits per pixel, so the file is larger [1].</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 1.2.4f Representing Images</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What is a pixel?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> A unit of file size</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> The smallest unit of a digital image — a single coloured square</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> A colour depth measurement</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> A type of image compression</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">How many colours does a 4-bit colour depth support?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> 4</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> 8</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> 16</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> 64</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">What is the file size formula for a bitmap image?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> Width + Height + Colour depth</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> Width × Height × Colour depth</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> Width × Colour depth</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> Width × Height ÷ Colour depth</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">24-bit colour is also called:</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> Greyscale</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> True Colour</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> 256 Colour</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> High Definition</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Increasing the resolution of an image will:</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> Decrease file size and decrease quality</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> Increase file size and decrease quality</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> Increase file size and increase quality</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> Decrease file size and increase quality</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">Calculate the file size in bits of a 100 × 100 pixel, 8-bit image.</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>100 × 100 × 8 = 80,000 bits. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">How many colours can 24-bit colour represent? Show your working.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>2²⁴ = 16,777,216 (approx 16.7 million) colours. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">State what "resolution" means in the context of digital images.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>Resolution is the number of pixels in an image, expressed as width × height (e.g. 1920 × 1080). Higher resolution means more pixels and greater detail. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">A 1-bit image and a 24-bit image are both 10 × 10 pixels. Calculate the file size difference in bits.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>1-bit: 10×10×1=100 bits; 24-bit: 10×10×24=2400 bits; difference = 2300 bits. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">In 24-bit colour, how many bits are used for each colour channel (R, G, B)?</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>8 bits per channel. 8 bits for red, 8 for green, 8 for blue = 24 bits total. [1]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/1-2-4e/" class="bottom-nav-btn">← 1.2.4e Character Encoding</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">1.2 Data Representation</span>
+  <a href="/ocr-j277/1-2-4g/" class="bottom-nav-btn next-btn">1.2.4g Representing Sound →</a>
+</div>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:14.5px;color:#64748b;line-height:1.6;margin-bottom:24px;">Subscribe to access all OCR J277 lessons.</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
 <script>
-var LESSON_ID='1-2-4f';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
-
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-2-4f';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){window.location.href='/';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+    if(!IS_FREE)checkAccess();
+  });
+});
+function checkAccess(){getSB().auth.getSession().then(function(r){var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h}).then(function(r){return r.json();}).then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});});}
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What is a pixel?",opts:["A type of image file format","The smallest element of a bitmap image, each storing a colour value","A measure of how many colours an image uses","A type of compression used for images"],ans:1,exp:"A pixel (picture element) is the smallest unit of a bitmap image. Each pixel stores a colour value as a binary number."},
-  {q:"What does colour depth (bit depth) measure?",opts:["The number of pixels in an image","The number of bits used to represent each pixel's colour","The width of the image in centimetres","The number of colours in the image file"],ans:1,exp:"Colour depth is the number of bits used to represent the colour of each pixel. More bits = more possible colours."},
-  {q:"A colour depth of 8 bits allows how many different colours?",opts:["8","64","256","512"],ans:2,exp:"2⁸ = 256 colours."},
-  {q:"What is the formula for calculating an uncompressed bitmap image's file size?",opts:["Width + Height + Colour depth","Width × Height × Colour depth (in bits)","Width × Colour depth","Height × Colour depth × 8"],ans:1,exp:"File size (bits) = Width × Height × Colour depth. Divide by 8 to get bytes."},
-  {q:"An image is 200×100 pixels with a 4-bit colour depth. What is the file size in bits?",opts:["2,000","80,000","800","8,000"],ans:1,exp:"200 × 100 × 4 = 80,000 bits."},
-  {q:"Convert 80,000 bits to bytes.",opts:["10,000","640,000","80,000","4,000"],ans:0,exp:"80,000 ÷ 8 = 10,000 bytes."},
-  {q:"24-bit colour is called 'true colour'. How many different colours can it represent?",opts:["24","16,777,216","65,536","16,384"],ans:1,exp:"2²⁴ = 16,777,216 (about 16.7 million) colours."},
-  {q:"Why is a 24-bit colour image larger than an 8-bit colour image of the same resolution?",opts:["It has more pixels","Each pixel uses 3× more bits to store its colour","It uses a different file format","The resolution is higher"],ans:1,exp:"24 bits per pixel vs 8 bits per pixel means 3× more storage per pixel, so the 24-bit image is 3× larger."},
-  {q:"What is metadata in an image file?",opts:["The visible pixels","The colour palette","Information about the image such as dimensions, date created, colour depth","The file size in bytes"],ans:2,exp:"Metadata is data stored with the image file that describes the image — e.g. width, height, colour depth, date taken, GPS location. It is not part of the visible image."},
-  {q:"What happens to image quality if colour depth is decreased?",opts:["The image becomes blurry","There are fewer colours, potentially causing colour banding or loss of detail","The image becomes brighter","The file size increases"],ans:1,exp:"Fewer bits per pixel means fewer possible colours. The image may show colour banding (sudden jumps between colours) where a smooth gradient should be."},
-  {q:"An image is 640×480 pixels with 24-bit colour. What is the file size in bytes?",opts:["921,600","7,372,800","9,216","737,280"],ans:0,exp:"640 × 480 = 307,200 pixels. × 24 bits = 7,372,800 bits. ÷ 8 = 921,600 bytes."},
-  {q:"A 1-bit colour depth image uses which colours only?",opts:["Black and white","Red and blue","Greyscale (256 shades)","Full colour"],ans:0,exp:"1 bit = 2¹ = 2 colours. This is used for pure black and white (monochrome) images."},
-  {q:"Which change would result in the LARGEST increase in file size?",opts:["Doubling the colour depth from 4 to 8 bits","Doubling the resolution from 800×600 to 1600×1200","Halving the resolution","Reducing the colour depth from 24 to 8 bits"],ans:1,exp:"Doubling resolution (both dimensions) quadruples the pixel count (2×2=4), so the file becomes 4× larger. Doubling just the colour depth only doubles the file size."},
-  {q:"A bitmap image is 50×50 pixels. If the colour depth is 1 bit, how many bytes is the file (ignoring metadata)?",opts:["312","2,500","313","312.5"],ans:0,exp:"50 × 50 × 1 = 2,500 bits. 2,500 ÷ 8 = 312.5 bytes. In practice, files round up to 313 bytes, but OCR typically accepts 312 or 313. Key calculation: 2500 ÷ 8 = 312.5 ≈ 313 bytes."},
-  {q:"An image has a resolution of 1024×768 and uses 16 bits per pixel. What is the file size in KB? (1 KB = 1024 bytes)",opts:["1536 KB","1024 KB","12,288 KB","12 KB"],ans:0,exp:"1024 × 768 × 16 = 12,582,912 bits. ÷ 8 = 1,572,864 bytes. ÷ 1024 = 1,536 KB."}
+  {q:"What is a pixel?",opts:["A unit of storage","The smallest element of a digital image — a single coloured square","A colour depth value","A type of compression"],a:1,exp:"Pixel = picture element. It is the smallest building block of a digital image, each storing one colour value."},
+  {q:"What is colour depth?",opts:["The physical size of the image","The number of pixels in the image","The number of bits used to represent each pixel's colour","The number of colours visible to the human eye"],a:2,exp:"Colour depth is the number of bits used per pixel to store its colour value. More bits = more possible colours."},
+  {q:"How many colours does 1-bit colour support?",opts:["1","4","2","8"],a:2,exp:"1 bit has 2^1 = 2 values: 0 (black) and 1 (white). This is black and white only."},
+  {q:"How many colours does 8-bit colour support?",opts:["8","64","128","256"],a:3,exp:"2⁸ = 256 colours. 8-bit is used in GIF images."},
+  {q:"What is the formula for calculating the file size of a bitmap image?",opts:["Width + Height + Colour depth","Width × Height × Colour depth","Width × Colour depth / Height","Pixels × 8"],a:1,exp:"File size (bits) = Width × Height × Colour depth. Then divide by 8 for bytes."},
+  {q:"A 100×100 pixel image has 24-bit colour. What is its file size in bytes?",opts:["240,000","30,000","2,400","300,000"],a:1,exp:"100×100×24 = 240,000 bits. 240,000 ÷ 8 = 30,000 bytes."},
+  {q:"24-bit colour uses 8 bits each for which three channels?",opts:["Hue, saturation, value","Red, green, blue","Cyan, magenta, yellow","Bright, mid, dark"],a:1,exp:"24-bit True Colour uses 8 bits for red, 8 for green, and 8 for blue = 24 bits total. Each channel has 256 levels."},
+  {q:"What happens to file size when resolution is increased?",opts:["File size decreases","File size stays the same","File size increases","It depends on colour depth only"],a:2,exp:"More pixels = more data to store = larger file size. Higher resolution always increases file size."},
+  {q:"How many colours does 24-bit True Colour support?",opts:["256","65,536","1,048,576","16,777,216"],a:3,exp:"2²⁴ = 16,777,216 (≈16.7 million) colours. This is why 24-bit is called True Colour — sufficient for photorealistic images."},
+  {q:"What is image resolution?",opts:["The physical print size of an image","The number of bits per pixel","The number of pixels in an image (width × height)","The compression ratio"],a:2,exp:"Resolution is the total number of pixels, given as width × height (e.g. 1920×1080). Higher resolution = more detail."},
+  {q:"What is the file size in bits of a 50×50, 1-bit image?",opts:["50","2500","5000","2508"],a:1,exp:"50 × 50 × 1 = 2,500 bits."},
+  {q:"Which factor does NOT affect the file size of a bitmap image?",opts:["Colour depth","Resolution","Image subject matter","Number of pixels"],a:2,exp:"The subject (what the image shows) does not affect uncompressed bitmap file size. File size = pixels × bits per pixel."},
+  {q:"A 1920×1080 image at 24-bit colour: what is the file size in MB? (Use 1MB = 1,048,576 bytes)",opts:["5.93 MB","5.49 MB","6.22 MB","4.0 MB"],a:0,exp:"1920×1080×24 = 49,766,400 bits. ÷8 = 6,220,800 bytes. ÷1,048,576 ≈ 5.93 MB."},
+  {q:"Increasing colour depth from 8-bit to 24-bit increases the file size by a factor of:",opts:["2","4","3","8"],a:2,exp:"24 ÷ 8 = 3. Each pixel needs 3× more bits, so the file is 3× larger (everything else equal)."},
+  {q:"What is the key advantage of higher colour depth?",opts:["Smaller file size","Faster loading","More colours available — more realistic image reproduction","Easier to compress"]
+  ,a:2,exp:"Higher colour depth means more shades and hues can be represented, allowing more photorealistic and accurate colour reproduction."}
 ];
-
-var WORKSHEET=[
-  {q:"Calculate the file size in bytes of a bitmap image that is 400×300 pixels with a colour depth of 8 bits. Show all working.",marks:3,ms:"Total pixels = 400 × 300 = 120,000 (1). Total bits = 120,000 × 8 = 960,000 bits (1). File size = 960,000 ÷ 8 = 120,000 bytes (1)."},
-  {q:"An image is 1920×1080 pixels with 24-bit colour. Calculate the file size in MB. (1 KB = 1024 bytes, 1 MB = 1024 KB)",marks:4,ms:"Pixels = 1920 × 1080 = 2,073,600 (1). Bits = 2,073,600 × 24 = 49,766,400 (1). Bytes = 49,766,400 ÷ 8 = 6,220,800 bytes (1). MB = 6,220,800 ÷ 1024 ÷ 1024 ≈ 5.93 MB (1)."},
-  {q:"A student doubles the colour depth of an image from 8 bits to 16 bits. The resolution stays the same. What effect does this have on the file size? Explain.",marks:2,ms:"The file size doubles (1). Colour depth increases from 8 to 16 bits per pixel, which is double the number of bits per pixel. Since all other factors (width, height) remain the same, the total file size is doubled (1)."},
-  {q:"Explain the difference between image resolution and colour depth. Include the effect each has on file size.",marks:4,ms:"Resolution is the number of pixels in the image (width × height). Higher resolution means more pixels and more detail (1). Colour depth is the number of bits used per pixel. Higher colour depth means more colours and smoother colour transitions (1). Both affect file size: increasing resolution or colour depth increases the file size (1). File size = width × height × colour depth in bits (1)."},
-  {q:"What is metadata and give TWO examples of metadata that might be stored with a photograph.",marks:3,ms:"Metadata is data about the image stored with the file but not part of the visible picture (1). Any two from: image dimensions (width/height), colour depth, file format, date and time taken, camera model, GPS coordinates, exposure settings (1 each, max 2 marks)."},
-  {q:"An image contains 256 possible colours. What is its colour depth in bits? Show your working.",marks:2,ms:"256 = 2ⁿ. Solving: 2⁸ = 256 (1). Colour depth = 8 bits (1)."},
-  {q:"Compare two images: Image A is 200×200 pixels with 4-bit colour. Image B is 100×100 pixels with 24-bit colour. Which has the larger file size? Show your working.",marks:4,ms:"Image A: 200×200×4 = 160,000 bits ÷ 8 = 20,000 bytes (1). Image B: 100×100×24 = 240,000 bits ÷ 8 = 30,000 bytes (1). Image B is larger (1). Although Image B has fewer pixels, its much higher colour depth (24 vs 4 bits) results in a larger file size overall (1)."},
-  {q:"A 640×480 image file is 150 KB (1 KB = 1024 bytes). Calculate the colour depth in bits per pixel.",marks:3,ms:"File size = 150 × 1024 = 153,600 bytes = 153,600 × 8 = 1,228,800 bits (1). Total pixels = 640 × 480 = 307,200 (1). Colour depth = 1,228,800 ÷ 307,200 = 4 bits per pixel (1)."}
-];
-
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Pixel",d:"Picture element — the smallest unit of a bitmap image. Each pixel stores one colour value as a binary number."},
-  {w:"Bitmap",d:"An image format where the image is stored as a grid of pixels, each with a binary colour value."},
-  {w:"Colour depth (bit depth)",d:"The number of bits used to store the colour of each pixel. More bits = more possible colours."},
-  {w:"Resolution",d:"The number of pixels in an image, expressed as width × height (e.g. 1920×1080). Higher resolution = more detail."},
-  {w:"File size formula",d:"File size (bits) = Width × Height × Colour depth. Divide by 8 for bytes."},
-  {w:"1-bit colour",d:"2¹ = 2 colours (black and white only). The simplest colour depth."},
-  {w:"8-bit colour",d:"2⁸ = 256 colours. Each pixel uses 1 byte. Suitable for simple graphics."},
-  {w:"24-bit true colour",d:"2²⁴ = 16,777,216 colours. Uses 8 bits each for Red, Green, Blue channels. Used in photographs."},
-  {w:"Metadata",d:"Data about the image stored in the file but not part of the visible image. Includes dimensions, colour depth, date, GPS, camera model."},
-  {w:"RGB channels",d:"24-bit images split colour into Red, Green, Blue channels — 8 bits (256 shades) each, combined to give full colour."},
-  {w:"Uncompressed file size",d:"The theoretical size of an image if stored with no compression: Width × Height × Colour depth ÷ 8 bytes."},
-  {w:"Quality vs file size",d:"Higher resolution and/or higher colour depth increases both image quality and file size. There is always a trade-off."},
-  {w:"Colour banding",d:"Visual artefact caused by insufficient colour depth — visible as sudden jumps between colours in areas that should have smooth gradients."},
-  {w:"1 KB = 1024 bytes",d:"In computing, 1 kilobyte = 1024 bytes (binary). Important for accurate file size calculations in OCR exams."},
-  {w:"2ⁿ colours",d:"A colour depth of n bits gives 2ⁿ possible colours. Always use this formula when working out the number of colours."}
+  {term:"Pixel",def:"The smallest element of a digital image. Each pixel stores a single colour value as a binary number. Short for 'picture element'."},
+  {term:"Bitmap image",def:"A digital image stored as a grid of pixels. Each pixel's colour is represented by binary data. File size = pixels × bits per pixel."},
+  {term:"Resolution",def:"The number of pixels in an image, given as width × height (e.g. 1920 × 1080). Higher resolution = more detail = larger file."},
+  {term:"Colour depth",def:"The number of bits used to store the colour of each pixel. More bits = more colours available. Formula: 2^(colour depth) = number of colours."},
+  {term:"1-bit colour",def:"Only 2 colours possible (black and white). 2¹ = 2. Used for simple icons and line art."},
+  {term:"8-bit colour",def:"256 colours possible. 2⁸ = 256. Used in GIF images and older systems."},
+  {term:"24-bit True Colour",def:"16,777,216 (≈16.7 million) colours. 8 bits each for red, green, and blue. Used in JPEG/PNG photos."},
+  {term:"RGB",def:"Red, Green, Blue — the three colour channels used in 24-bit colour. Each channel uses 8 bits (0–255)."},
+  {term:"File size formula",def:"File size (bits) = Width × Height × Colour depth. Divide by 8 for bytes, by 1024 for KB, etc."},
+  {term:"Higher resolution effect",def:"Increases the number of pixels → more data to store → larger file size. Also increases image quality and detail."},
+  {term:"Higher colour depth effect",def:"Increases bits per pixel → more possible colours → larger file size. Also increases colour accuracy and realism."},
+  {term:"16,777,216",def:"The number of colours in 24-bit True Colour. Calculated as 2²⁴ or 256 × 256 × 256."},
+  {term:"Megapixel",def:"One million pixels. Used to describe camera resolution. e.g. 12MP = 12 million pixels."},
+  {term:"Uncompressed file size",def:"The actual size of image data before any compression is applied. Calculated using: width × height × colour depth ÷ 8 = bytes."},
+  {term:"Metadata",def:"Additional information stored with a bitmap file (e.g. image dimensions, colour depth, creator). Not included in the standard file size formula."}
 ];
-
-var TEST_MCQ=[
-  {q:"An image is 800×600 pixels with a 4-bit colour depth. What is the file size in bits?",opts:["1,920,000","480,000","19,200,000","240,000"],ans:0,exp:"800 × 600 × 4 = 1,920,000 bits."},
-  {q:"An image uses 24-bit colour. How many colours can it represent?",opts:["24","256","16,777,216","65,536"],ans:2,exp:"2²⁴ = 16,777,216 colours."},
-  {q:"What is metadata?",opts:["The visible content of an image","Data that describes the image (e.g. dimensions, colour depth, date taken)","The colour palette used","The file format"],ans:1,exp:"Metadata is information about the image stored in the file but not visible as part of the image itself."},
-  {q:"Increasing image resolution while keeping colour depth constant will:",opts:["Decrease file size","Not affect file size","Increase file size","Increase colour depth"],ans:2,exp:"More pixels means more data to store — file size increases proportionally with the number of pixels."},
-  {q:"A 200×100 image uses 24-bit colour. What is the file size in bytes?",opts:["480,000","60,000","4,800","240,000"],ans:1,exp:"200 × 100 × 24 = 480,000 bits. ÷ 8 = 60,000 bytes."}
-];
-
-var TEST_SA=[
-  {q:"A student says a 24-bit image 'uses 24 pixels per colour'. Explain why this is incorrect.",marks:2,ms:"24-bit refers to colour depth, not pixels (1). It means each single pixel's colour is stored using 24 bits (8 bits each for red, green, and blue channels) — giving 16,777,216 possible colours per pixel (1)."},
-  {q:"An image is 300×200 pixels with 8-bit colour. Calculate the file size in bytes.",marks:2,ms:"300 × 200 × 8 = 480,000 bits (1). ÷ 8 = 60,000 bytes (1)."},
-  {q:"State TWO factors that affect the file size of a bitmap image.",marks:2,ms:"Any two from: resolution (number of pixels) (1); colour depth (bits per pixel) (1)."},
-  {q:"Explain why reducing the colour depth of an image reduces its file size but also reduces its quality.",marks:3,ms:"Reducing colour depth means fewer bits are used per pixel (1). Fewer bits = fewer possible colours (e.g. 4 bits = 16 colours vs 8 bits = 256 colours) (1). The image quality is reduced because gradients appear banded — the range of colours available is too small to represent smooth transitions (1)."},
-  {q:"A file is listed as being 300 KB. Show how many bytes this is. (1 KB = 1024 bytes)",marks:1,ms:"300 × 1024 = 307,200 bytes."}
-];
-
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..." style="min-height:100px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,1,1,2];
+var TEST_MCQ_LABELS=[['A unit of file size','Smallest unit of a digital image','Colour depth measurement','Type of compression'],['4','8','16','64'],['Width + Height + Colour depth','Width × Height × Colour depth','Width × Colour depth','Width × Height ÷ Colour depth'],['Greyscale','True Colour','256 Colour','High Definition'],['Decrease file, decrease quality','Increase file, decrease quality','Increase file, increase quality','Decrease file, increase quality']];
+var TEST_MCQ_EXPLAIN=['A pixel is the smallest element of a digital image.','2⁴=16 colours.','File size (bits) = Width × Height × Colour depth.','24-bit = True Colour (16.7 million colours).','More pixels = larger file AND better quality.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['100×100 px, 8-bit file size in bits?','24-bit colour count?','What is resolution?','1-bit vs 24-bit (10×10) diff in bits?','Bits per RGB channel in 24-bit?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

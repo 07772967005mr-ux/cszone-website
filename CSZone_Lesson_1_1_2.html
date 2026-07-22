@@ -1,671 +1,944 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.1.2 CPU Performance Factors — CSZone</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--v:#7c3aed;--vl:#a78bfa;--bg:#0d0920;--card:#1a1048;--border:#2d1f6e;--text:#e2e8f0;--muted:#94a3b8;--green:#10b981;--red:#ef4444;--amber:#f59e0b}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-.topnav{background:#120a2e;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
-.topnav .logo{font-size:1.1rem;font-weight:700;color:#fff}.topnav .logo span{color:var(--vl)}
-.topnav .back{color:var(--muted);font-size:0.83rem;text-decoration:none}.topnav .back:hover{color:#fff}
-.hero{background:linear-gradient(135deg,#120a2e,#1a1048);padding:28px 24px 0;border-bottom:1px solid var(--border)}
-.hero .topic-tag{font-size:0.72rem;font-weight:600;color:var(--vl);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
-.hero h1{font-size:1.7rem;font-weight:700;color:#fff;margin-bottom:6px}
-.hero .meta{font-size:0.82rem;color:var(--muted);margin-bottom:16px}
-.tabs{display:flex;overflow-x:auto;gap:0;border-bottom:none;padding:0 0}
-.tab-btn{padding:12px 18px;font-size:0.83rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.15s}
-.tab-btn:hover{color:#fff}.tab-btn.active{color:var(--vl);border-bottom-color:var(--vl)}
-.content{max-width:860px;margin:0 auto;padding:28px 20px}
-.tab-panel{display:none}.tab-panel.active{display:block}
-.notes h2{font-size:1.2rem;font-weight:700;color:#fff;margin:20px 0 10px}
-.notes h2:first-child{margin-top:0}
-.notes h3{font-size:1rem;font-weight:600;color:var(--vl);margin:16px 0 8px}
-.notes p{color:var(--text);line-height:1.7;margin-bottom:12px;font-size:0.92rem}
-.notes ul,.notes ol{color:var(--text);line-height:1.8;margin:8px 0 12px;padding-left:22px;font-size:0.92rem}
-.notes strong{color:#fff}
-.notes .callout{border-radius:10px;padding:14px 16px;margin:16px 0;font-size:0.88rem;line-height:1.6}
-.callout.tip{background:rgba(124,58,237,0.15);border-left:3px solid var(--vl)}
-.callout.warn{background:rgba(239,68,68,0.1);border-left:3px solid var(--red)}
-.callout.exam{background:rgba(245,158,11,0.12);border-left:3px solid var(--amber)}
-.callout strong{display:block;margin-bottom:4px}
-.data-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.85rem}
-.data-table th{background:rgba(124,58,237,0.2);color:var(--vl);text-align:left;padding:10px 12px;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em}
-.data-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text)}
-.data-table tr:last-child td{border-bottom:none}
-.video-wrap{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;position:relative;border:1px solid var(--border)}
-.video-placeholder{display:flex;align-items:center;justify-content:center;height:100%;flex-direction:column;gap:12px;color:var(--muted)}
-.video-placeholder .play{font-size:3rem}
-.video-summary{margin-top:20px}
-.video-summary h3{font-size:1rem;font-weight:600;color:#fff;margin-bottom:10px}
-.video-summary ul{color:var(--text);line-height:1.8;padding-left:20px;font-size:0.9rem}
-.slides-frame{width:100%;aspect-ratio:16/9;border:1px solid var(--border);border-radius:12px;background:#000}
-.slides-placeholder{display:flex;align-items:center;justify-content:center;height:300px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;flex-direction:column;gap:10px;color:var(--muted)}
-.ws-q{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px}
-.ws-q .q-text{font-size:0.92rem;color:#fff;margin-bottom:6px}
-.ws-q .q-marks{font-size:0.75rem;color:var(--vl);font-weight:600;margin-bottom:10px}
-.ws-q textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;padding:10px;color:#fff;font-size:0.85rem;resize:vertical;min-height:70px;font-family:inherit}
-.ws-q textarea:focus{outline:none;border-color:var(--vl)}
-.mark-scheme{display:none;margin-top:10px;padding:12px;background:rgba(16,185,129,0.1);border-left:3px solid var(--green);border-radius:0 8px 8px 0;font-size:0.85rem;color:var(--text)}
-.mark-scheme strong{color:var(--green);display:block;margin-bottom:4px}
-.ws-score{background:rgba(124,58,237,0.2);border:1px solid var(--vl);border-radius:10px;padding:16px;text-align:center;margin-bottom:20px}
-.ws-score .score-val{font-size:2rem;font-weight:700;color:var(--vl)}
-.quiz-progress{height:5px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px}
-.quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--v),var(--vl));border-radius:3px;transition:width 0.4s}
-.quiz-counter{font-size:0.8rem;color:var(--muted);margin-bottom:16px}
-.quiz-q{font-size:1rem;font-weight:600;color:#fff;margin-bottom:18px;line-height:1.5}
-.quiz-opts{display:flex;flex-direction:column;gap:10px}
-.opt{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:13px 16px;cursor:pointer;font-size:0.88rem;color:var(--text);transition:all 0.15s;text-align:left}
-.opt:hover:not(:disabled){background:rgba(124,58,237,0.15);border-color:var(--vl)}
-.opt.correct{background:rgba(16,185,129,0.2);border-color:var(--green);color:var(--green)}
-.opt.wrong{background:rgba(239,68,68,0.15);border-color:var(--red);color:var(--red)}
-.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:8px;font-size:0.85rem;line-height:1.5;display:none}
-.quiz-feedback.correct{background:rgba(16,185,129,0.12);border-left:3px solid var(--green)}
-.quiz-feedback.wrong{background:rgba(239,68,68,0.1);border-left:3px solid var(--red)}
-.quiz-nav{margin-top:16px;display:flex;justify-content:flex-end}
-.quiz-results{text-align:center;padding:32px 0}
-.quiz-score-big{font-size:3.5rem;font-weight:700;color:var(--vl)}
-.quiz-grade{font-size:1rem;color:var(--muted);margin-top:6px}
-.kt-toggle{display:flex;gap:8px;margin-bottom:18px}
-.kt-toggle button{padding:7px 14px;border-radius:20px;font-size:0.8rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all 0.15s}
-.kt-toggle button.active{background:var(--v);color:#fff;border-color:var(--v)}
-.flashcard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.flashcard{height:120px;perspective:600px;cursor:pointer}
-.flashcard-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.5s}
-.flashcard.flipped .flashcard-inner{transform:rotateY(180deg)}
-.flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;font-size:0.85rem}
-.flashcard-front{background:var(--card);border:1px solid var(--border);color:#fff;font-weight:600}
-.flashcard-back{background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(124,58,237,0.1));border:1px solid var(--vl);color:var(--text);transform:rotateY(180deg)}
-.kt-list{display:flex;flex-direction:column;gap:10px}
-.kt-list-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:1fr 2fr;gap:12px;align-items:start}
-.kt-list-item .term{font-weight:700;color:var(--vl);font-size:0.88rem}
-.kt-list-item .def{color:var(--text);font-size:0.85rem;line-height:1.5}
-.test-header{display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:20px}
-.test-timer{font-size:1.4rem;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
-.test-timer.urgent{color:var(--red);animation:pulse 1s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
-.test-section{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px}
-.test-section h3{font-size:0.9rem;font-weight:700;color:var(--vl);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.05em}
-.test-q{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(45,31,110,0.5)}
-.test-q:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.test-q p{font-size:0.88rem;color:#fff;margin-bottom:10px;line-height:1.5}
-.test-opts{display:flex;flex-direction:column;gap:6px}
-.test-opt{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:9px 12px;cursor:pointer;font-size:0.83rem;color:var(--text);text-align:left;transition:all 0.1s}
-.test-opt:hover:not(:disabled){border-color:var(--vl);background:rgba(124,58,237,0.1)}
-.test-opt.selected{background:rgba(124,58,237,0.2);border-color:var(--vl);color:#fff}
-.test-sa textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;padding:10px;color:#fff;font-size:0.85rem;resize:vertical;min-height:60px;font-family:inherit}
-.test-results{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:16px;display:none}
-.test-results h3{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:16px}
-.test-r-q{margin-bottom:14px;padding:12px;background:rgba(255,255,255,0.03);border-radius:8px}
-.test-r-q .q-txt{font-size:0.85rem;color:var(--muted);margin-bottom:6px}
-.test-r-q .r-correct{color:var(--green);font-size:0.82rem}
-.test-r-q .r-wrong{color:var(--red);font-size:0.82rem}
-.test-r-q .ms{font-size:0.82rem;color:var(--text);margin-top:4px;padding-top:4px;border-top:1px solid var(--border)}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;border:none;transition:all 0.15s}
-.btn-primary{background:linear-gradient(135deg,var(--v),#5b21b6);color:#fff}.btn-primary:hover{opacity:0.9}
-.btn-outline{background:transparent;color:var(--vl);border:1px solid var(--border)}.btn-outline:hover{background:rgba(124,58,237,0.15)}
-.btn-full{width:100%;justify-content:center;margin-top:10px}
-.bottom-nav{background:#120a2e;border-top:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:40px}
-.bottom-nav a{color:var(--muted);font-size:0.83rem;text-decoration:none;display:flex;align-items:center;gap:6px}.bottom-nav a:hover{color:#fff}
-.bottom-nav .next-btn{background:var(--v);color:#fff;padding:9px 18px;border-radius:8px;font-weight:600;font-size:0.85rem}
-.progress-bar{background:rgba(255,255,255,0.08);border-radius:3px;height:4px;margin-bottom:4px}
-.progress-fill{background:linear-gradient(90deg,var(--v),var(--vl));height:4px;border-radius:3px;transition:width 0.5s}
-.paywall{position:fixed;inset:0;background:rgba(13,9,32,0.95);display:flex;align-items:center;justify-content:center;z-index:100;display:none}
-.paywall-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;text-align:center;max-width:420px}
-.paywall-card h2{font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
-.paywall-card p{color:var(--muted);font-size:0.88rem;margin-bottom:20px;line-height:1.6}
-.paywall-card .price{font-size:2rem;font-weight:700;color:var(--vl);margin-bottom:6px}
-.paywall-card .price small{font-size:1rem;color:var(--muted)}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.1.2 CPU Performance — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;letter-spacing:-0.5px;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb a:hover{color:#7c3aed;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;}
+    .nav-dash-btn:hover{background:#ede9fe;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;letter-spacing:-0.5px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .lesson-meta strong{color:#0f172a;}
+    .progress-row{display:flex;align-items:center;gap:6px;margin-bottom:0;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;transition:.2s;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .prog-sep{color:#e2e8f0;font-size:10px;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;gap:0;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:7px;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .tab-icon{font-size:16px;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:20px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul,.notes-content ol{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .video-placeholder{background:#0d0920;border-radius:16px;overflow:hidden;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;}
+    .video-placeholder-inner{text-align:center;}
+    .video-play-icon{font-size:64px;margin-bottom:16px;opacity:0.3;}
+    .video-soon-text{color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;}
+    .video-soon-sub{color:rgba(255,255,255,0.3);font-size:13px;margin-top:6px;}
+    .video-key-points{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;}
+    .video-key-points h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;}
+    .video-key-points ul{list-style:none;padding:0;}
+    .video-key-points li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;}
+    .video-key-points li:last-child{border-bottom:none;}
+    .video-key-points li::before{content:'✦';color:#7c3aed;font-size:10px;margin-top:5px;flex-shrink:0;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-intro{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
+    .ws-intro-icon{font-size:32px;}
+    .ws-intro-text h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;}
+    .ws-intro-text p{font-size:13.5px;color:#64748b;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:90px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;transition:.2s;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-submit-row{text-align:center;margin-top:8px;}
+    .ws-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-feedback-header{padding:10px 16px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;}
+    .ws-feedback-header.good{background:#f0fdf4;color:#166534;}
+    .ws-feedback-body{padding:14px 16px;font-size:13.5px;background:#fafafa;}
+    .ws-ms-label{font-weight:700;color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;}
+    .ws-ms-text{color:#334155;font-size:14px;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .ws-score-big{font-size:52px;font-weight:900;color:#7c3aed;line-height:1;}
+    .ws-score-label{font-size:15px;color:#64748b;margin-top:6px;}
+    .ws-score-msg{font-size:16px;font-weight:700;color:#0f172a;margin-top:12px;}
+    .ws-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;transition:.15s;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-opt:disabled{cursor:default;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-result-msg{font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;}
+    .quiz-result-sub{font-size:14px;color:#64748b;margin-bottom:24px;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .quiz-restart-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-intro-card h2{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;}
+    .test-intro-card p{font-size:14.5px;color:#64748b;margin-bottom:18px;}
+    .test-intro-card ul{list-style:none;padding:0;margin-bottom:28px;}
+    .test-intro-card li{font-size:14px;color:#334155;padding:6px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;}
+    .test-intro-card li::before{content:'•';color:#7c3aed;font-weight:900;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+    .test-timer-inner{display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;font-variant-numeric:tabular-nums;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-timer-label{font-size:12px;color:rgba(255,255,255,0.5);}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-marks{font-size:12px;color:#64748b;font-weight:600;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;transition:.15s;}
+    .test-radio-opt:hover{border-color:#a78bfa;background:#faf9ff;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .test-result-pct{font-size:18px;color:#64748b;margin-bottom:6px;}
+    .test-result-grade{font-size:22px;font-weight:800;color:#0f172a;margin:10px 0 4px;}
+    .test-result-msg{font-size:14.5px;color:#64748b;margin-bottom:24px;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;font-family:inherit;transition:.15s;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;transition:.2s;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;box-shadow:0 4px 20px rgba(124,58,237,0.08);}
+    .flashcard-front{font-size:24px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:16px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:.15s;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .bottom-nav-btn.next-btn:hover{background:#6d28d9;border-color:#6d28d9;}
+    .bottom-nav-center{font-size:13px;color:#94a3b8;font-weight:500;}
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-overlay.show{display:flex;}
+    .paywall-card{background:#fff;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;}
+    .paywall-icon{font-size:48px;margin-bottom:16px;}
+    .paywall-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;}
+    .paywall-sub{font-size:14.5px;color:#64748b;line-height:1.6;margin-bottom:24px;}
+    .paywall-price{font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;}
+    .paywall-price-sub{font-size:13px;color:#94a3b8;margin-bottom:24px;}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-bottom:10px;width:100%;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;margin-top:4px;}
+    @media(max-width:640px){.lesson-header{padding:16px 16px 0;}.lesson-body{padding:16px 12px 60px;}.lesson-title{font-size:20px;}.tabs-bar{padding:0 12px;}.tab-btn{padding:12px 12px;font-size:13px;}.notes-content{padding:20px;}.quiz-body{padding:20px;}.breadcrumb{display:none;}}
+  </style>
 </head>
 <body>
 
-<div class="topnav">
-  <a href="/" class="logo">CS<span>Zone</span></a>
-  <a href="/dashboard" class="back">← Dashboard</a>
-</div>
-
-<div class="hero">
-  <div class="content" style="padding-bottom:0">
-    <div class="topic-tag">OCR J277 · 1.1 Systems Architecture</div>
-    <h1>1.1.2 CPU Performance Factors</h1>
-    <div class="meta">Subtopic 2 of 3 · Component 1: Computer Systems</div>
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('notes',this)">📖 Notes</button>
-      <button class="tab-btn" onclick="switchTab('video',this)">🎬 Video</button>
-      <button class="tab-btn" onclick="switchTab('slides',this)">📊 Slides</button>
-      <button class="tab-btn" onclick="switchTab('worksheet',this)">✏️ Worksheet</button>
-      <button class="tab-btn" onclick="switchTab('quiz',this)">⚡ Quiz</button>
-      <button class="tab-btn" onclick="switchTab('minitest',this)">🎯 Mini Test</button>
-      <button class="tab-btn" onclick="switchTab('keyterms',this)">🔑 Key Terms</button>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">OCR J277</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.1 Systems Architecture</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.1.2 CPU Performance</span>
     </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
+  </div>
+</nav>
+
+<div class="lesson-header">
+  <div class="lesson-badge">⚡ Component 1 · 1.1 Systems Architecture</div>
+  <div class="lesson-title">1.1.2 CPU Performance</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~12 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
   </div>
 </div>
 
-<div class="content">
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes"><span class="tab-icon">📖</span> Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video"><span class="tab-icon">🎥</span> Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides"><span class="tab-icon">📊</span> Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet"><span class="tab-icon">✍️</span> Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz"><span class="tab-icon">❓</span> Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms"><span class="tab-icon">🔑</span> Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test"><span class="tab-icon">🎯</span> Mini Test</button>
+</div>
 
-<div id="tab-notes" class="tab-panel active">
-  <div class="notes" id="notes-content">
+<div class="lesson-body">
+
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content" id="notes-scroll-container">
     <h2>What Affects CPU Performance?</h2>
-    <p>The speed at which a CPU can execute instructions depends on several key factors. For OCR J277, you need to know three: <strong>clock speed</strong>, <strong>number of cores</strong>, and <strong>cache size</strong>. Understanding each factor — and how increasing it improves performance — is essential.</p>
+    <p>The speed at which a CPU processes instructions depends on three key factors for OCR J277: <strong>clock speed</strong>, <strong>number of cores</strong>, and <strong>cache size</strong>. Understanding how each one affects performance — and their trade-offs — is essential exam knowledge.</p>
 
     <h2>1. Clock Speed</h2>
-    <p>The <strong>clock speed</strong> (also called clock rate) is the number of cycles a CPU can complete per second. It is measured in <strong>hertz (Hz)</strong>. Modern CPUs operate at billions of cycles per second — measured in <strong>gigahertz (GHz)</strong>.</p>
+    <p><strong>Clock speed</strong> is the number of fetch-decode-execute cycles the CPU can complete per second. It is measured in <strong>hertz (Hz)</strong> — typically <strong>gigahertz (GHz)</strong> for modern processors.</p>
     <ul>
-      <li>1 GHz = 1,000,000,000 (one billion) cycles per second</li>
-      <li>Each clock cycle, the CPU can fetch, decode, or execute part of an instruction</li>
-      <li>A CPU running at 3.5 GHz can perform 3.5 billion cycles every second</li>
+      <li>1 GHz = 1,000,000,000 (one billion) clock cycles per second</li>
+      <li>A 3.5 GHz CPU performs 3.5 billion cycles every second</li>
+      <li>Higher clock speed = more instructions processed per second = faster performance</li>
     </ul>
-    <p><strong>Effect:</strong> A higher clock speed means more instructions can be processed per second, making the CPU faster. However, a higher clock speed also generates more heat and uses more power — this is why laptops and phones run at lower clock speeds than desktop PCs.</p>
-    <div class="callout tip">
-      <strong>💡 Analogy</strong>
-      Think of clock speed like a metronome. A faster metronome means the CPU ticks more often — more work done each second. Doubling the clock speed (roughly) doubles performance, all else being equal.
-    </div>
-    <div class="callout exam">
-      <strong>⚠️ Examiner Watch</strong>
-      Always give the unit when discussing clock speed. "3 GHz" is better than just "3". Also, be precise: clock speed tells you how many cycles per second, NOT how many instructions per second (one instruction may take multiple cycles).
+    <p>However, increasing clock speed also increases <strong>heat output and power consumption</strong>. There is a physical limit to how fast a CPU can be clocked before it becomes unstable or requires impractical cooling.</p>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> Clock speed alone does not determine performance. Always consider all three factors together. A common question asks you to "describe how two factors affect CPU performance" — name the factor, say what it is, then explain the direct effect on speed.
     </div>
 
     <h2>2. Number of Cores</h2>
-    <p>A <strong>core</strong> is an independent processing unit within the CPU chip. Traditional CPUs had just one core. Modern CPUs have multiple cores — commonly 4, 8, or even 16 or more.</p>
-    <ul>
-      <li><strong>Dual-core:</strong> 2 cores</li>
-      <li><strong>Quad-core:</strong> 4 cores</li>
-      <li><strong>Octa-core:</strong> 8 cores</li>
-    </ul>
-    <p><strong>Effect:</strong> Multiple cores allow the CPU to work on several tasks <strong>simultaneously</strong> (in parallel). For example, a quad-core CPU could run your browser, your antivirus scan, your music app, and your OS processes all at the same time — each on a different core.</p>
-    <p>However, additional cores only improve performance if:</p>
-    <ol>
-      <li>The software is designed to use multiple cores (called <em>multi-threaded software</em>)</li>
-      <li>There are actually multiple tasks that can run at the same time</li>
-    </ol>
-    <div class="callout warn">
-      <strong>⚠️ Common Mistake</strong>
-      Students often say "double the cores = double the speed." This is NOT always true. If you're running a single task that can't be split across cores, extra cores won't help at all. The software must support parallelism.
+    <p>A <strong>core</strong> is an independent processing unit within the CPU. Each core can fetch, decode and execute instructions independently and simultaneously.</p>
+    <table>
+      <thead><tr><th>Type</th><th>Cores</th><th>Common Use</th></tr></thead>
+      <tbody>
+        <tr><td>Single-core</td><td>1</td><td>Legacy/embedded systems</td></tr>
+        <tr><td>Dual-core</td><td>2</td><td>Basic laptops, tablets</td></tr>
+        <tr><td>Quad-core</td><td>4</td><td>Mainstream desktops/laptops</td></tr>
+        <tr><td>Octa-core</td><td>8</td><td>High-end gaming, servers</td></tr>
+      </tbody>
+    </table>
+    <p>More cores allow <strong>true parallel processing</strong> — multiple tasks can be worked on at the same time. However, the <strong>software must be multi-threaded</strong> to take advantage of multiple cores. A single-threaded program will not run faster on a quad-core than a dual-core.</p>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> Always include the limitation — "the software must be written to use multiple cores (multi-threaded)." Forgetting this loses a mark in extended questions.
     </div>
 
     <h2>3. Cache Size</h2>
-    <p>The <strong>cache</strong> is a small, very fast memory that sits inside (or very close to) the CPU chip. It stores frequently used instructions and data so the CPU can access them quickly without going to main memory (RAM), which is much slower.</p>
-    <p>Cache operates at different <strong>levels</strong>:</p>
-    <table class="data-table">
-      <tr><th>Level</th><th>Size</th><th>Speed</th><th>Location</th></tr>
-      <tr><td>L1 Cache</td><td>32–512 KB</td><td>Fastest</td><td>On the CPU core itself</td></tr>
-      <tr><td>L2 Cache</td><td>256 KB – 4 MB</td><td>Fast</td><td>On the CPU chip, shared between cores</td></tr>
-      <tr><td>L3 Cache</td><td>4 MB – 64 MB</td><td>Slower than L1/L2</td><td>On the CPU chip, shared between all cores</td></tr>
-    </table>
-    <p><strong>Effect:</strong> A larger cache means more data can be stored close to the CPU, reducing the time wasted waiting for RAM. This is called reducing <strong>cache misses</strong> — when the CPU needs something not in cache, it must fetch it from RAM, causing a delay.</p>
-    <div class="callout tip">
-      <strong>💡 Analogy</strong>
-      Imagine a chef (the CPU) working in a kitchen. The cache is their work surface — the bigger it is, the more ingredients they can keep within arm's reach. RAM is the fridge further away. Every time they have to walk to the fridge (cache miss), they slow down.
-    </div>
+    <p><strong>Cache</strong> is extremely fast memory located inside or very close to the CPU. It stores copies of frequently used instructions and data so the CPU can retrieve them much faster than fetching from RAM.</p>
 
-    <h2>Summary: How Each Factor Affects Performance</h2>
-    <table class="data-table">
-      <tr><th>Factor</th><th>How it works</th><th>Increasing it...</th></tr>
-      <tr><td>Clock speed</td><td>Cycles per second</td><td>More instructions processed per second</td></tr>
-      <tr><td>Number of cores</td><td>Independent processors</td><td>More tasks can run simultaneously</td></tr>
-      <tr><td>Cache size</td><td>Fast on-chip memory</td><td>Fewer cache misses, less waiting for RAM</td></tr>
+    <h3>Cache Levels</h3>
+    <table>
+      <thead><tr><th>Level</th><th>Speed</th><th>Size</th><th>Location</th></tr></thead>
+      <tbody>
+        <tr><td><strong>L1</strong></td><td>Fastest</td><td>Smallest (32–128 KB/core)</td><td>Inside each core</td></tr>
+        <tr><td><strong>L2</strong></td><td>Fast</td><td>Medium (256 KB – 4 MB/core)</td><td>Inside/near each core</td></tr>
+        <tr><td><strong>L3</strong></td><td>Slower than L1/L2</td><td>Largest (4–32 MB, shared)</td><td>Shared between all cores</td></tr>
+      </tbody>
+    </table>
+    <p>When the CPU needs data, it checks L1 → L2 → L3 → RAM. The more data found in cache (<strong>cache hit</strong>), the faster the execution. A <strong>cache miss</strong> forces the CPU to wait for slower RAM. Larger cache = fewer cache misses = better performance.</p>
+
+    <h2>Summary Table</h2>
+    <table>
+      <thead><tr><th>Factor</th><th>What it measures</th><th>Effect of increase</th><th>Trade-off</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Clock speed</strong></td><td>Cycles per second (GHz)</td><td>More instructions per second</td><td>More heat &amp; power use</td></tr>
+        <tr><td><strong>Number of cores</strong></td><td>Parallel processing units</td><td>More tasks simultaneously</td><td>Software must be multi-threaded</td></tr>
+        <tr><td><strong>Cache size</strong></td><td>Fast on-chip memory (KB/MB)</td><td>Fewer slow RAM accesses</td><td>Larger cache costs more</td></tr>
+      </tbody>
     </table>
 
-    <div class="callout warn">
-      <strong>⚠️ Common Mistakes to Avoid</strong>
-      <ul style="margin-top:6px">
-        <li>❌ "More cores always makes it faster" — only if software supports multi-threading</li>
-        <li>❌ "Cache is the same as RAM" — cache is faster, smaller, and on the CPU chip</li>
-        <li>❌ "Higher GHz = more instructions per instruction" — GHz = cycles per second, not instructions</li>
-        <li>❌ Forgetting that these factors can all improve performance <em>together</em></li>
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
+      <ul>
+        <li>Saying "faster clock speed always means a faster computer" — not true when comparing different core counts or architectures</li>
+        <li>Confusing cache with RAM — cache is inside/near the CPU and much faster than RAM</li>
+        <li>Saying more cores always doubles performance — software must be multi-threaded to benefit</li>
+        <li>Forgetting that increasing clock speed increases heat — this is a common exam point</li>
+        <li>Saying L3 cache is the fastest level — L1 is always fastest; L3 is the largest but slowest of the three</li>
+        <li>Mixing up cache levels: L1 = fastest/smallest, L3 = slowest/largest</li>
       </ul>
     </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed — well done!</div>
   </div>
-  <div id="notes-read-marker" style="height:2px"></div>
 </div>
 
-<div id="tab-video" class="tab-panel">
-  <div class="video-wrap">
-    <div id="video-embed"></div>
-    <div id="video-placeholder" class="video-placeholder">
-      <div class="play">▶️</div>
-      <p style="font-size:0.9rem">Video coming soon</p>
-      <p style="font-size:0.78rem;color:var(--muted)">Watch the notes video for 1.1.2 CPU Performance Factors</p>
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div class="video-placeholder">
+    <div class="video-placeholder-inner">
+      <div class="video-play-icon">▶</div>
+      <div class="video-soon-text">Video coming soon</div>
+      <div class="video-soon-sub">This lesson video is in production — check back soon</div>
     </div>
   </div>
-  <div class="video-summary">
-    <h3>Key Points from this Video</h3>
+  <div class="video-key-points">
+    <h3>Key points covered in this video</h3>
     <ul>
-      <li>Clock speed (Hz/GHz) determines how many cycles per second the CPU completes</li>
-      <li>More cores allow parallel processing of multiple tasks simultaneously</li>
-      <li>Cache is fast on-chip memory that reduces trips to slower RAM</li>
-      <li>L1 is fastest and smallest; L3 is slowest and largest</li>
-      <li>All three factors can be increased together to maximise performance</li>
+      <li>What clock speed is and how it is measured in GHz</li>
+      <li>How multiple cores enable parallel processing</li>
+      <li>The three cache levels (L1, L2, L3) and their speed/size trade-offs</li>
+      <li>Why increasing clock speed generates more heat</li>
+      <li>Why more cores do not always mean proportionally faster performance</li>
+      <li>How to answer a 4-mark "two factors" exam question</li>
     </ul>
   </div>
 </div>
 
-<div id="tab-slides" class="tab-panel">
-  <div class="slides-placeholder">
-    <div style="font-size:2rem">📊</div>
-    <p style="font-size:0.9rem">Slides coming soon</p>
-    <p style="font-size:0.78rem;color:var(--muted)">Interactive slide deck for 1.1.2</p>
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div style="margin-bottom:14px;font-size:13.5px;color:#64748b;">Click through the slides at your own pace. Mark complete when finished.</div>
+  <div class="slides-wrap">
+    <iframe class="slides-iframe" src="/OCR_J277_1.1.2_Slides.html" id="slides-iframe"></iframe>
+  </div>
+  <div style="margin-top:12px;text-align:right;">
+    <button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button>
   </div>
 </div>
 
-<div id="tab-worksheet" class="tab-panel">
-  <div id="ws-score-box" style="display:none" class="ws-score">
-    <div>Score: <span class="score-val" id="ws-score-val">0/20</span></div>
-    <div style="font-size:0.82rem;color:var(--muted);margin-top:4px">Worksheet submitted — mark scheme revealed below</div>
-  </div>
-  <div id="worksheet-questions"></div>
-  <button class="btn btn-primary btn-full" id="ws-submit-btn" onclick="submitWorksheet()">Submit Worksheet</button>
-</div>
-
-<div id="tab-quiz" class="tab-panel">
-  <div id="quiz-container">
-    <div class="quiz-progress"><div class="quiz-progress-fill" id="quiz-fill" style="width:0%"></div></div>
-    <div class="quiz-counter" id="quiz-counter">Question 1 of 15</div>
-    <div class="quiz-q" id="quiz-question"></div>
-    <div class="quiz-opts" id="quiz-opts"></div>
-    <div class="quiz-feedback" id="quiz-feedback"></div>
-    <div class="quiz-nav"><button class="btn btn-primary" id="quiz-next-btn" onclick="quizNext()" style="display:none">Next →</button></div>
-  </div>
-  <div id="quiz-results" class="quiz-results" style="display:none">
-    <div class="quiz-score-big" id="quiz-score-big"></div>
-    <div class="quiz-grade" id="quiz-grade"></div>
-    <div style="margin-top:20px"><button class="btn btn-outline" onclick="restartQuiz()">Retake Quiz</button></div>
-  </div>
-</div>
-
-<div id="tab-minitest" class="tab-panel">
-  <div id="test-start-screen" style="text-align:center;padding:32px 0">
-    <div style="font-size:3rem;margin-bottom:12px">🎯</div>
-    <h2 style="color:#fff;margin-bottom:8px">Mini Test — 1.1.2</h2>
-    <p style="color:var(--muted);font-size:0.88rem;max-width:400px;margin:0 auto 20px">10-minute timed test. No feedback during the test — results revealed on submission.</p>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;max-width:320px;margin:0 auto 24px;text-align:left">
-      <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:0.83rem"><span style="color:var(--muted)">Section A</span><span>5 MCQ (auto-marked)</span></div>
-      <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:0.83rem"><span style="color:var(--muted)">Section B</span><span>5 short answer (self-mark)</span></div>
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div class="ws-intro">
+    <div class="ws-intro-icon">✍️</div>
+    <div class="ws-intro-text">
+      <h3>Exam-style Worksheet — 1.1.2 CPU Performance</h3>
+      <p>8 OCR J277-style questions · 20 marks total · Submit to reveal full mark schemes</p>
     </div>
-    <button class="btn btn-primary" onclick="startTest()">Start Test →</button>
   </div>
-  <div id="test-main" style="display:none">
-    <div class="test-header">
-      <div><div style="font-size:0.72rem;color:var(--muted);margin-bottom:2px">TIME REMAINING</div><div class="test-timer" id="test-timer">10:00</div></div>
-      <div style="text-align:right"><div style="font-size:0.72rem;color:var(--muted);margin-bottom:2px">PROGRESS</div><div style="font-size:0.9rem;color:#fff" id="test-progress">0 / 10</div></div>
+  <div id="ws-questions">
+    <div class="ws-question" id="wsq-1">
+      <div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">State what is meant by clock speed.</span><span class="ws-q-marks">[1 mark]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea>
+      <div class="ws-feedback" id="ws-fb-1"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme</div><div class="ws-ms-text">The number of fetch-decode-execute cycles (instructions) the CPU can complete per second, measured in hertz (Hz) / GHz. [1]</div></div></div>
     </div>
-    <div id="test-questions"></div>
-    <button class="btn btn-primary btn-full" onclick="submitTest(false)">Submit Test</button>
+    <div class="ws-question" id="wsq-2">
+      <div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">State the unit used to measure clock speed.</span><span class="ws-q-marks">[1 mark]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-2" placeholder="Type your answer here..."></textarea>
+      <div class="ws-feedback" id="ws-fb-2"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme</div><div class="ws-ms-text">Hertz (Hz) / gigahertz (GHz). [1]</div></div></div>
+    </div>
+    <div class="ws-question" id="wsq-3">
+      <div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">Explain how having more cores can improve CPU performance.</span><span class="ws-q-marks">[2 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-3" placeholder="Type your answer here..." style="min-height:110px;"></textarea>
+      <div class="ws-feedback" id="ws-fb-3"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme</div><div class="ws-ms-text">More cores means more instructions/tasks can be processed simultaneously/in parallel [1]; so the CPU can execute multiple threads at the same time, reducing overall processing time [1].</div></div></div>
+    </div>
+    <div class="ws-question" id="wsq-4">
+      <div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">Explain what cache memory is and how it improves CPU performance.</span><span class="ws-q-marks">[3 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..." style="min-height:130px;"></textarea>
+      <div class="ws-feedback" id="ws-fb-4"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme (any 3)</div><div class="ws-ms-text">• Cache is a small, fast memory located inside/close to the CPU [1]<br>• It stores frequently used/recently accessed data and instructions [1]<br>• The CPU can access data in cache much faster than from RAM [1]<br>• This reduces the time the CPU spends waiting for data, speeding up processing [1]</div></div></div>
+    </div>
+    <div class="ws-question" id="wsq-5">
+      <div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">State one disadvantage of increasing a CPU's clock speed.</span><span class="ws-q-marks">[1 mark]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-5" placeholder="Type your answer here..."></textarea>
+      <div class="ws-feedback" id="ws-fb-5"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme</div><div class="ws-ms-text">Increased heat output / greater power consumption / requires better cooling / can become unstable at very high speeds. [1 — any one]</div></div></div>
+    </div>
+    <div class="ws-question" id="wsq-6">
+      <div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">A CPU has L1, L2 and L3 cache. State which level is fastest and which is largest.</span><span class="ws-q-marks">[2 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-6" placeholder="Type your answer here..."></textarea>
+      <div class="ws-feedback" id="ws-fb-6"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme</div><div class="ws-ms-text">L1 is the fastest [1]; L3 is the largest [1].</div></div></div>
+    </div>
+    <div class="ws-question" id="wsq-7">
+      <div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">A student says "doubling the number of cores always doubles CPU performance." Explain why this is not always true.</span><span class="ws-q-marks">[3 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..." style="min-height:130px;"></textarea>
+      <div class="ws-feedback" id="ws-fb-7"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme (any 3)</div><div class="ws-ms-text">• Software must be written to use multiple cores (multi-threaded) [1]<br>• Single-threaded programs cannot be split across cores and run on one core only [1]<br>• There is overhead in coordinating/communicating between cores [1]<br>• Some tasks are sequential and cannot be parallelised [1]</div></div></div>
+    </div>
+    <div class="ws-question" id="wsq-8">
+      <div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">Describe how two factors affect the performance of a CPU. For each factor, explain the mechanism by which it increases speed.</span><span class="ws-q-marks">[4 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-8" placeholder="Type your answer here..." style="min-height:160px;"></textarea>
+      <div class="ws-feedback" id="ws-fb-8"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme (4 marks — 2 per factor)</div><div class="ws-ms-text"><strong>Clock speed:</strong> Higher clock speed = more FDE cycles per second [1]; so more instructions are processed in the same time [1].<br><strong>Cache size:</strong> Larger cache stores more frequently used data close to the CPU [1]; reducing the number of slower RAM accesses, so the CPU waits less [1].<br>(Accept any two factors with correct mechanism.)</div></div></div>
+    </div>
   </div>
-  <div class="test-results" id="test-results">
-    <h3>Test Results</h3>
-    <div id="test-results-content"></div>
-    <button class="btn btn-outline" style="margin-top:16px" onclick="restartTest()">Retry Test</button>
+  <div class="ws-submit-row" id="ws-submit-row">
+    <button class="ws-submit-btn" onclick="submitWorksheet()">Submit Worksheet →</button>
+  </div>
+  <div class="ws-score-panel" id="ws-score-panel">
+    <div class="ws-score-big" id="ws-score-display">—</div>
+    <div class="ws-score-label" id="ws-score-label">out of 20 marks</div>
+    <div class="ws-score-msg" id="ws-score-msg"></div>
+    <button class="ws-retry-btn" onclick="retryWorksheet()">Try again</button>
   </div>
 </div>
 
-<div id="tab-keyterms" class="tab-panel">
-  <div class="kt-toggle">
-    <button class="active" onclick="switchKT('flash',this)">Flashcards</button>
-    <button onclick="switchKT('list',this)">List</button>
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div class="quiz-result-msg" id="quiz-result-msg"></div>
+      <div class="quiz-result-sub" id="quiz-result-sub"></div>
+      <div><button class="quiz-restart-btn" onclick="restartQuiz()">Try again</button>
+      <button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+    </div>
   </div>
-  <div id="kt-flash" class="flashcard-grid"></div>
-  <div id="kt-list" class="kt-list" style="display:none"></div>
 </div>
 
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2>Mini Test — 1.1.2 CPU Performance</h2>
+      <p>Timed exam conditions. No feedback until you submit.</p>
+      <ul>
+        <li>10 questions · 10 marks · 10 minutes</li>
+        <li>5 multiple choice + 5 short answer</li>
+        <li>No hints or immediate feedback</li>
+        <li>Mark schemes revealed after submission</li>
+      </ul>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div class="test-timer-inner"><span>⏱ Time remaining:</span><span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div class="test-timer-label">Mini Test · 10 marks · Submit when done</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q" id="tmcq-1">
+      <div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">What unit is clock speed measured in?</span><span class="test-q-marks">[1]</span></div>
+      <div class="test-radio-opts">
+        <label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Megabytes (MB)</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> Gigahertz (GHz)</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> Gigabytes (GB)</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> Milliseconds (ms)</label>
+      </div>
+    </div>
+    <div class="test-mcq-q" id="tmcq-2">
+      <div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">Which level of cache is the fastest?</span><span class="test-q-marks">[1]</span></div>
+      <div class="test-radio-opts">
+        <label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> L3</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> L2</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> L1</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> RAM</label>
+      </div>
+    </div>
+    <div class="test-mcq-q" id="tmcq-3">
+      <div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">What is the main benefit of having more CPU cores?</span><span class="test-q-marks">[1]</span></div>
+      <div class="test-radio-opts">
+        <label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> Increased clock speed</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> Larger cache memory</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> Multiple instructions processed simultaneously</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> Reduced power consumption</label>
+      </div>
+    </div>
+    <div class="test-mcq-q" id="tmcq-4">
+      <div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">A CPU runs at 3.2 GHz. How many cycles per second?</span><span class="test-q-marks">[1]</span></div>
+      <div class="test-radio-opts">
+        <label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> 3,200</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> 3,200,000</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> 3,200,000,000</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> 32,000,000</label>
+      </div>
+    </div>
+    <div class="test-mcq-q" id="tmcq-5">
+      <div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Why does increasing clock speed not always proportionally improve performance?</span><span class="test-q-marks">[1]</span></div>
+      <div class="test-radio-opts">
+        <label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> It reduces the number of cores</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> It generates more heat which can cause throttling or instability</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> It reduces cache size</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> It slows down RAM</label>
+      </div>
+    </div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q" id="tsa-1">
+      <div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">State what clock speed measures.</span><span class="test-q-marks">[1]</span></div>
+      <textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer here..."></textarea>
+      <div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>The number of fetch-decode-execute cycles the CPU can complete per second. [1]</div>
+    </div>
+    <div class="test-sa-q" id="tsa-2">
+      <div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">State one advantage of a larger cache size.</span><span class="test-q-marks">[1]</span></div>
+      <textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer here..."></textarea>
+      <div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>More frequently used data stored close to CPU / reduces number of slower RAM accesses / speeds up processing. [1]</div>
+    </div>
+    <div class="test-sa-q" id="tsa-3">
+      <div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">Name the three levels of cache in order from fastest to slowest.</span><span class="test-q-marks">[1]</span></div>
+      <textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer here..."></textarea>
+      <div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>L1, L2, L3 — in that order. All three correct for the mark. [1]</div>
+    </div>
+    <div class="test-sa-q" id="tsa-4">
+      <div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">State one reason why adding more cores does not always double performance.</span><span class="test-q-marks">[1]</span></div>
+      <textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer here..."></textarea>
+      <div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Software must be written to use multiple cores (multi-threaded) / some tasks are sequential and cannot be parallelised. [1]</div>
+    </div>
+    <div class="test-sa-q" id="tsa-5">
+      <div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">State one disadvantage of a very high clock speed.</span><span class="test-q-marks">[1]</span></div>
+      <textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer here..."></textarea>
+      <div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>Generates more heat / uses more power / may require more expensive cooling. [1 — any one]</div>
+    </div>
+    <div class="test-submit-row">
+      <button class="test-submit-btn" onclick="submitTest()">Submit test →</button>
+    </div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div class="test-result-pct">You scored</div>
+      <div class="test-result-score" id="test-score-display">—</div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:10px;">out of 10</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div class="test-result-grade" id="test-result-grade"></div>
+      <div class="test-result-msg" id="test-result-msg"></div>
+    </div>
+    <div style="margin-top:24px;">
+      <div class="test-section-label">Section A — Multiple Choice · Review</div>
+      <div id="test-mcq-review"></div>
+      <div class="test-section-label">Section B — Short Answer · Mark schemes</div>
+      <div id="test-sa-review"></div>
+    </div>
+    <div style="text-align:center;margin-top:28px;padding-top:20px;border-top:1px solid #f1f5f9;">
+      <button class="test-retry-btn" onclick="retryTest()">Try again</button>
+      <button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button>
+    </div>
+  </div>
 </div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div class="flashcard-progress" id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done">
+      <div style="font-size:40px;margin-bottom:12px;">🎉</div>
+      <div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Session complete!</div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:20px;" id="fc-done-msg"></div>
+      <button class="nav-dash-btn" onclick="resetFlashcards()" style="display:inline-block;">Start again</button>
+    </div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table">
+      <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+      <tbody id="kt-list-body"></tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- end lesson-body -->
 
 <div class="bottom-nav">
-  <a href="/dashboard">← Dashboard</a>
-  <a href="/ocr-j277/1-1-3/" class="next-btn">Next: 1.1.3 Embedded Systems →</a>
+  <a href="/ocr-j277/1-1-1/" class="bottom-nav-btn">← 1.1.1 Architecture of the CPU</a>
+  <span class="bottom-nav-center">1.1 Systems Architecture</span>
+  <a href="/ocr-j277/1-1-3/" class="bottom-nav-btn next-btn">1.1.3 Embedded Systems →</a>
 </div>
 
-<div class="paywall" id="paywall">
+<div class="paywall-overlay" id="paywall">
   <div class="paywall-card">
-    <h2>Subscribe to Unlock</h2>
-    <p>This subtopic is part of the full OCR J277 course. Subscribe to access all 47 lessons, quizzes, worksheets and mini tests.</p>
-    <div class="price">£7.99<small>/month</small></div>
-    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="btn btn-primary btn-full" style="text-decoration:none">Subscribe Now</a>
-    <div style="margin-top:12px"><a href="/dashboard" style="color:var(--muted);font-size:0.8rem;text-decoration:none">← Back to dashboard</a></div>
+    <div class="paywall-icon">🔒</div>
+    <div class="paywall-title">Unlock Everything</div>
+    <div class="paywall-sub">Subscribe to unlock all 47 OCR J277 lessons, worksheets, quizzes and key terms.</div>
+    <div class="paywall-price">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div class="paywall-price-sub">or £59/year — best value</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').classList.remove('show')">Maybe later</button>
   </div>
 </div>
 
 <script>
-var SUPA_URL = 'https://jxrqlnlsslftcqeyyzbx.supabase.co';
-var SUPA_KEY = 'sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
-var LESSON_ID = '1-1-2';
-var IS_FREE = false;
-var YOUTUBE_ID = '';
-var currentUser = null;
-
-var QUIZ = [
-  { q:'What is clock speed measured in?', opts:['Bytes','Hertz','Watts','Metres per second'], a:1, exp:'Clock speed is measured in Hertz (Hz). Modern CPUs run in GHz — gigahertz (billions of cycles per second).' },
-  { q:'A CPU runs at 4 GHz. How many cycles does it complete per second?', opts:['4 thousand','4 million','4 billion','40 billion'], a:2, exp:'GHz = gigahertz = billions. 4 GHz = 4,000,000,000 (4 billion) cycles per second.' },
-  { q:'What is the main benefit of having more CPU cores?', opts:['Higher clock speed','Larger RAM capacity','Ability to handle multiple tasks simultaneously','Faster internet connection'], a:2, exp:'Multiple cores allow the CPU to process multiple tasks at the same time (in parallel), improving performance on multitasking.' },
-  { q:'Which cache level is closest to the CPU core and fastest?', opts:['L3','L2','L1','L0'], a:2, exp:'L1 cache is closest to the CPU core and is the fastest (but smallest) cache level. L3 is the largest and furthest from the core.' },
-  { q:'What happens when a CPU needs data that is NOT in the cache?', opts:['It crashes','It fetches from RAM (cache miss), causing a delay','It uses virtual memory','It requests data from the hard drive'], a:1, exp:'A cache miss occurs when needed data is not in cache. The CPU must fetch it from RAM, which is much slower, causing a performance delay.' },
-  { q:'A software program is NOT designed to use multiple threads. Which factor will NOT improve its performance?', opts:['Clock speed','Cache size','Number of cores','None of these'], a:2, exp:'If software is single-threaded, extra cores give no benefit — only one core can work on that task. Clock speed and cache would still help.' },
-  { q:'Which of the following correctly describes L2 cache?', opts:['Faster than L1, smaller than L3','Slower than L1, larger than L1','The same as RAM','Located outside the CPU chip'], a:1, exp:'L2 cache is slower than L1 but larger. L1 is fastest (smallest); L3 is largest (slowest). All cache is faster than RAM.' },
-  { q:'Increasing cache size improves performance because:', opts:['It increases clock speed','More data can be kept close to the CPU, reducing cache misses','It adds more cores to the CPU','It replaces RAM entirely'], a:1, exp:'More cache means more data can be stored near the CPU. Fewer trips to slower RAM (fewer cache misses) means faster execution.' },
-  { q:'A modern laptop CPU has 8 cores running at 2.4 GHz. A desktop CPU has 4 cores at 4.8 GHz. Which is faster for a single-threaded task?', opts:['The laptop','The desktop','They are equal','Cannot determine without more information'], a:1, exp:'Single-threaded tasks use ONE core. The desktop\'s 4.8 GHz core is faster than the laptop\'s 2.4 GHz core for a single task.' },
-  { q:'What does GHz stand for?', opts:['Gigabytes per hertz','Gigahertz','Giga hash zone','Giga high zone'], a:1, exp:'GHz = Gigahertz. "Giga" means one billion. So 3 GHz = 3 billion clock cycles per second.' },
-  { q:'Why can a higher clock speed cause problems in mobile devices?', opts:['It uses less battery','It generates more heat and uses more power','It reduces the number of cores','It slows down RAM'], a:1, exp:'Higher clock speeds generate more heat and consume more power — problematic for phones and laptops with limited batteries and cooling.' },
-  { q:'Which THREE factors does OCR J277 specify as affecting CPU performance?', opts:['Clock speed, RAM size, hard drive speed','Clock speed, number of cores, cache size','Number of cores, battery life, GPU speed','Cache size, internet speed, RAM type'], a:1, exp:'The OCR J277 specification requires you to know: clock speed, number of cores, and cache size as the three CPU performance factors.' },
-  { q:'A CPU has 32 KB of L1 cache and 4 MB of L3 cache. Which statement is correct?', opts:['L1 is slower than L3','L1 is faster than L3','Both are the same speed','L3 is inside the CPU core'], a:1, exp:'L1 is always faster than L3 (but smaller). L1 sits inside the CPU core itself; L3 is shared between all cores but still on the chip.' },
-  { q:'What does "parallel processing" mean in the context of multi-core CPUs?', opts:['Running tasks one after another','Running multiple tasks at exactly the same time on different cores','Sharing memory between all programs','Making the clock speed faster'], a:1, exp:'Parallel processing = running multiple operations simultaneously. Multi-core CPUs can split tasks across cores, doing more work in less time.' },
-  { q:'Which comparison correctly ranks cache levels from fastest to slowest?', opts:['L3 → L2 → L1','L1 → L2 → L3','L2 → L1 → L3','L1 → L3 → L2'], a:1, exp:'Fastest to slowest: L1 (on the core, tiny), L2 (shared, medium), L3 (shared by all cores, largest). The closer to the core, the faster.' }
-];
-
-var WORKSHEET = [
-  { q:'State what is meant by "clock speed" and give the unit it is measured in.', marks:2, ms:'Clock speed is the number of cycles a CPU completes per second. [1] It is measured in hertz (Hz), typically gigahertz (GHz) for modern CPUs. [1]' },
-  { q:'Explain how increasing the number of CPU cores can improve performance. Give ONE limitation of adding more cores.', marks:3, ms:'More cores allow multiple tasks/threads to run simultaneously [1], so the CPU can process more work in the same time. [1] Limitation: only helps if software is multi-threaded/designed to use multiple cores — a single-threaded program won\'t benefit. [1]' },
-  { q:'Describe the difference between L1 and L3 cache.', marks:4, ms:'L1 cache is the smallest cache [1] and is located on (or very close to) the CPU core [1], making it the fastest. [1] L3 cache is the largest of the three levels [1], shared between all cores on the chip [1], and slower than L1 but still much faster than RAM. [1] Max 4 marks.' },
-  { q:'A student says "if you double the number of cores, you always double the speed." Explain why this statement is not always correct.', marks:3, ms:'Doubling cores only helps if the software supports multi-threading [1]. If a program is single-threaded, it can only run on one core [1], so additional cores provide no performance benefit for that task. [1]' },
-  { q:'A CPU runs at 3.2 GHz. How many clock cycles does it complete per second? Show your working.', marks:2, ms:'GHz = gigahertz = 1,000,000,000 [1]. 3.2 × 1,000,000,000 = 3,200,000,000 (3.2 billion) cycles per second. [1]' },
-  { q:'Explain how a larger cache size can improve CPU performance.', marks:3, ms:'Cache stores frequently used instructions/data near the CPU. [1] A larger cache means more data can be stored before the CPU has to fetch from slower RAM. [1] This reduces cache misses [1], decreasing the time the CPU has to wait, improving overall performance. [1] Max 3 marks.' },
-  { q:'Compare the clock speed and number of cores as methods for improving CPU performance. Which is more effective when running a single-threaded application?', marks:4, ms:'Clock speed: increases cycles per second, always benefits single-threaded tasks [1]. Number of cores: allows parallel processing of multiple threads/tasks [1]. For a single-threaded application, only one core can be used [1], so increasing clock speed is more effective as extra cores give no benefit. [1]' },
-  { q:'A games console uses a CPU with 8 cores running at 3.5 GHz and 16 MB of L3 cache. Explain how each of these three factors contributes to the console\'s performance.', marks:6, ms:'8 cores: allows the console to run multiple tasks simultaneously [1] — e.g. game processing, physics, audio, OS on separate cores [1]. 3.5 GHz: 3.5 billion cycles per second [1] means each core processes instructions very quickly [1]. 16 MB L3 cache: large cache shared between all 8 cores [1] reduces cache misses so cores rarely have to wait for data from slower RAM [1]. Award 2 marks per factor, max 6.' }
-];
-
-var KEY_TERMS = [
-  { t:'Clock speed', d:'The number of cycles a CPU completes per second, measured in Hz or GHz.' },
-  { t:'Hertz (Hz)', d:'The unit of frequency. 1 Hz = 1 cycle per second. CPU speeds are in GHz.' },
-  { t:'Gigahertz (GHz)', d:'One billion hertz. Modern CPUs operate in the range of 1–5 GHz.' },
-  { t:'Core', d:'An independent processing unit within a CPU chip. Modern CPUs have multiple cores.' },
-  { t:'Multi-core processor', d:'A CPU with more than one core, allowing parallel processing of tasks.' },
-  { t:'Cache', d:'Small, fast memory located on or very close to the CPU chip that stores frequently used data.' },
-  { t:'L1 cache', d:'The fastest and smallest cache level, located on the CPU core itself.' },
-  { t:'L2 cache', d:'The second cache level — larger and slightly slower than L1, shared between cores.' },
-  { t:'L3 cache', d:'The largest and slowest cache level, shared between all cores on the chip.' },
-  { t:'Cache miss', d:'When the CPU needs data that is not in the cache, forcing a slower fetch from RAM.' },
-  { t:'Parallel processing', d:'Running multiple tasks simultaneously across multiple CPU cores.' },
-  { t:'Multi-threading', d:'Software designed to split tasks into threads that can run on different cores simultaneously.' },
-  { t:'Cycle', d:'One complete operation of the CPU clock. Each tick of the clock is one cycle.' },
-  { t:'Performance', d:'How fast a CPU can execute instructions, affected by clock speed, cores, and cache.' },
-  { t:'Heat dissipation', d:'The process of removing heat generated by a CPU; higher clock speeds generate more heat.' }
-];
-
-var TEST_MCQ = [
-  { q:'What unit is clock speed measured in?', opts:['Bytes','Hertz','Volts','Pixels'], a:1 },
-  { q:'Which cache level is fastest?', opts:['L3','L2','L1','L4'], a:2 },
-  { q:'4 GHz means the CPU completes how many cycles per second?', opts:['4 thousand','4 million','4 billion','400 million'], a:2 },
-  { q:'Why does increasing the number of cores NOT always improve performance?', opts:['Cores slow each other down','Software must support multi-threading','Cores reduce clock speed','Cache becomes too small'], a:1 },
-  { q:'A cache miss causes a performance problem because:', opts:['The CPU resets','The CPU must fetch data from slower RAM','The clock speed drops','The cache corrupts data'], a:1 }
-];
-
-var TEST_SA = [
-  { q:'Explain what is meant by clock speed.', ms:'The number of cycles a CPU completes per second, measured in Hz (GHz for modern CPUs).' },
-  { q:'State ONE advantage of having multiple CPU cores.', ms:'Allows multiple tasks to be processed simultaneously (in parallel).' },
-  { q:'What is the purpose of cache memory?', ms:'To store frequently used instructions/data close to the CPU so it can be accessed faster than RAM, reducing delays.' },
-  { q:'A CPU has 4.0 GHz clock speed. How many cycles per second is this?', ms:'4,000,000,000 (4 billion) cycles per second.' },
-  { q:'Give ONE reason why a higher clock speed can be disadvantageous in mobile devices.', ms:'Higher clock speeds generate more heat and consume more power/drain battery faster.' }
-];
-
-function getSB() {
-  var h = { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json' };
-  return {
-    auth: { getSession: function() {
-      var key = Object.keys(localStorage).find(function(k){ return k.indexOf('auth-token') > -1; });
-      if (!key) return Promise.resolve({ data: { session: null } });
-      try { return Promise.resolve({ data: { session: JSON.parse(localStorage.getItem(key)) } }); }
-      catch(e) { return Promise.resolve({ data: { session: null } }); }
-    }},
-    upsert: function(table, data) {
-      return fetch(SUPA_URL + '/rest/v1/' + table, { method:'POST', headers: Object.assign({}, h, {'Prefer':'resolution=merge-duplicates,return=minimal'}), body: JSON.stringify(data) });
-    }
-  };
-}
-
-window.addEventListener('DOMContentLoaded', function() {
-  getSB().auth.getSession().then(function(r) {
-    var session = r.data.session;
-    if (!session) { window.location.href = '/'; return; }
-    currentUser = session.user || parseJwt(session.access_token || '');
-    if (!IS_FREE) checkAccess();
-    initWorksheet();
-    initQuiz();
-    initKeyTerms();
-    initTest();
-    setupScrollTracker();
-    loadYouTube();
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-1-2';
+var IS_FREE=false;
+var YOUTUBE_ID='';
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){window.location.href='/';return;}
+    currentUser=session.user;
+    document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    loadProgress();initQuiz();initKeyTerms();
+    setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+    if(!IS_FREE)checkAccess();
   });
 });
-
-function parseJwt(t) { try { return JSON.parse(atob(t.split('.')[1])); } catch(e) { return {}; } }
-
-function checkAccess() {
-  getSB().auth.getSession().then(function(r) {
-    var session = r.data.session;
-    if (!session) { document.getElementById('paywall').style.display = 'flex'; return; }
-    // Admin bypass — site owner always has access
-    if (currentUser && currentUser.email === '07772967005mr@gmail.com') return;
-    var h = { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + session.access_token };
-    fetch(SUPA_URL + '/rest/v1/subscriptions?user_id=eq.' + (currentUser.sub || currentUser.id) + '&status=eq.active&select=id', { headers: h })
-      .then(function(r){ return r.json(); })
-      .then(function(d){ if (!d || !d.length) document.getElementById('paywall').style.display = 'flex'; });
+function checkAccess(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){document.getElementById('paywall').style.display='flex';return;}
+    if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;
+    var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};
+    fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h})
+      .then(function(r){return r.json();})
+      .then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});
   });
 }
-
-function switchTab(name, btn) {
-  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
-  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-  document.getElementById('tab-' + name).classList.add('active');
-  if (btn) btn.classList.add('active');
-  if (name === 'quiz' && !quizStarted) { startQuiz(); }
-  if (name === 'keyterms') renderKeyTerms();
-}
-
-function setupScrollTracker() {
-  var marker = document.getElementById('notes-read-marker');
-  var seen = false;
-  var obs = new IntersectionObserver(function(entries) {
-    if (entries[0].isIntersecting && !seen) {
-      seen = true;
-      saveProgress({ lesson_read: true, xp_earned: 20 });
-    }
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function loadProgress(){
+  if(!currentUser)return;
+  getSB().from('user_progress').select('*').eq('user_id',currentUser.id).eq('subtopic_id',LESSON_ID).single().then(function(r){
+    if(r.data){prog.notes=r.data.lesson_read||false;prog.video=r.data.video_watched||false;prog.slides=r.data.slides_completed||false;prog.worksheet=r.data.worksheet_submitted||false;prog.quiz=r.data.quiz_best_score>0;updateDots();}
   });
-  obs.observe(marker);
 }
-
-function initWorksheet() {
-  var c = document.getElementById('worksheet-questions');
-  c.innerHTML = WORKSHEET.map(function(w, i) {
-    return '<div class="ws-q" id="ws-q-' + i + '">' +
-      '<div class="q-text">' + (i+1) + '. ' + w.q + '</div>' +
-      '<div class="q-marks">[' + w.marks + ' mark' + (w.marks>1?'s':'') + ']</div>' +
-      '<textarea id="ws-ans-' + i + '" placeholder="Write your answer here..."></textarea>' +
-      '<div class="mark-scheme" id="ms-' + i + '"><strong>Mark Scheme:</strong>' + w.ms + '</div>' +
-    '</div>';
-  }).join('');
+function saveProgress(key,extra){
+  prog[key]=true;updateDots();if(!currentUser)return;
+  var u={};
+  if(key==='notes')u={lesson_read:true};
+  if(key==='video')u={video_watched:true};
+  if(key==='slides')u={slides_completed:true};
+  if(key==='worksheet')u={worksheet_submitted:true,worksheet_best_score:(extra||0)};
+  if(key==='quiz')u={quiz_best_score:(extra||0)};
+  getSB().from('user_progress').upsert(Object.assign({user_id:currentUser.id,subtopic_id:LESSON_ID},u)).then(function(){});
 }
-
-function submitWorksheet() {
-  var empty = WORKSHEET.some(function(_, i){ return !document.getElementById('ws-ans-' + i).value.trim(); });
-  if (empty && !confirm('Some answers are blank. Submit anyway?')) return;
-  document.querySelectorAll('.mark-scheme').forEach(function(m){ m.style.display = 'block'; });
-  document.getElementById('ws-submit-btn').style.display = 'none';
-  document.getElementById('ws-score-box').style.display = 'block';
-  var total = WORKSHEET.reduce(function(a, w){ return a + w.marks; }, 0);
-  document.getElementById('ws-score-val').textContent = '?/' + total + ' (self-mark using the mark schemes above)';
-  saveProgress({ worksheet_submitted: true, xp_earned: 30 });
+function updateDots(){
+  function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}
+  sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);
+  sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);
+  sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);
 }
-
-var qIdx = 0, quizScore = 0, quizStarted = false, answered = false;
-
-function initQuiz() { qIdx = 0; quizScore = 0; quizStarted = false; }
-
-function startQuiz() {
-  quizStarted = true;
-  qIdx = 0; quizScore = 0;
-  renderQuizQ();
+function switchTab(name){
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('panel-'+name).classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+  if(name==='video')markVideoDone();
 }
-
-function renderQuizQ() {
-  if (qIdx >= QUIZ.length) { showQuizResults(); return; }
-  answered = false;
-  var q = QUIZ[qIdx];
-  var pct = (qIdx / QUIZ.length * 100).toFixed(0);
-  document.getElementById('quiz-fill').style.width = pct + '%';
-  document.getElementById('quiz-counter').textContent = 'Question ' + (qIdx+1) + ' of ' + QUIZ.length;
-  document.getElementById('quiz-question').textContent = q.q;
-  document.getElementById('quiz-feedback').style.display = 'none';
-  document.getElementById('quiz-next-btn').style.display = 'none';
-  document.getElementById('quiz-opts').innerHTML = q.opts.map(function(o, i) {
-    return '<button class="opt" onclick="answerQuiz(' + i + ')" id="opt-' + i + '">' + String.fromCharCode(65+i) + '. ' + o + '</button>';
-  }).join('');
+function markNotesRead(){saveProgress('notes');document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markVideoDone(){if(!prog.video)saveProgress('video');}
+function markSlidesDone(){saveProgress('slides');document.getElementById('dot-slides').className='prog-dot done';alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){
+  if(wsSubmitted)return;
+  var anyEmpty=false;
+  for(var i=1;i<=8;i++){if(!document.getElementById('ws-ans-'+i).value.trim()){anyEmpty=true;break;}}
+  if(anyEmpty){alert('Please answer all questions before submitting.');return;}
+  wsSubmitted=true;
+  for(var i=1;i<=8;i++){document.getElementById('ws-ans-'+i).disabled=true;document.getElementById('ws-fb-'+i).classList.add('show');}
+  document.getElementById('ws-submit-row').style.display='none';
+  document.getElementById('ws-score-panel').classList.add('show');
+  document.getElementById('ws-score-display').textContent='?';
+  document.getElementById('ws-score-label').textContent='out of 20 marks — self-mark each question above';
+  document.getElementById('ws-score-msg').textContent='Compare your answers to the mark schemes above and count your marks.';
+  saveProgress('worksheet',0);
 }
-
-function answerQuiz(idx) {
-  if (answered) return;
-  answered = true;
-  var q = QUIZ[qIdx];
-  var correct = idx === q.a;
-  if (correct) quizScore++;
-  document.querySelectorAll('.opt').forEach(function(o){ o.disabled = true; });
-  document.getElementById('opt-' + idx).classList.add(correct ? 'correct' : 'wrong');
-  if (!correct) document.getElementById('opt-' + q.a).classList.add('correct');
-  var fb = document.getElementById('quiz-feedback');
-  fb.className = 'quiz-feedback ' + (correct ? 'correct' : 'wrong');
-  fb.innerHTML = (correct ? '✅ Correct! ' : '❌ Incorrect. ') + q.exp;
-  fb.style.display = 'block';
-  document.getElementById('quiz-next-btn').style.display = 'inline-flex';
+function retryWorksheet(){
+  wsSubmitted=false;
+  for(var i=1;i<=8;i++){document.getElementById('ws-ans-'+i).value='';document.getElementById('ws-ans-'+i).disabled=false;document.getElementById('ws-fb-'+i).classList.remove('show');}
+  document.getElementById('ws-submit-row').style.display='block';
+  document.getElementById('ws-score-panel').classList.remove('show');
 }
-
-function quizNext() { qIdx++; renderQuizQ(); }
-
-function showQuizResults() {
-  document.getElementById('quiz-container').style.display = 'none';
-  document.getElementById('quiz-results').style.display = 'block';
-  var pct = Math.round(quizScore / QUIZ.length * 100);
-  document.getElementById('quiz-score-big').textContent = quizScore + '/' + QUIZ.length;
-  var grade = pct >= 90 ? 'Excellent — Outstanding!' : pct >= 70 ? 'Good — Strong performance' : pct >= 50 ? 'Developing — Review the notes' : 'Needs work — Re-read the lesson';
-  document.getElementById('quiz-grade').textContent = pct + '% — ' + grade;
-  saveProgress({ quiz_best_score: pct, quiz_attempts: 1, xp_earned: 40 });
+var QUIZ=[
+  {q:"What is clock speed?",opts:["The size of the CPU cache","The number of FDE cycles per second","The number of CPU cores","The amount of RAM"],a:1,exp:"Clock speed is the number of fetch-decode-execute cycles the CPU completes per second, measured in GHz."},
+  {q:"Which unit is used to measure clock speed?",opts:["Gigabytes (GB)","Megabytes (MB)","Gigahertz (GHz)","Milliseconds (ms)"],a:2,exp:"Clock speed is measured in hertz (Hz), typically gigahertz (GHz) for modern CPUs. 1 GHz = 1 billion cycles per second."},
+  {q:"What does having more CPU cores allow?",opts:["Higher clock speed","More instructions processed simultaneously","Larger cache","Faster RAM access"],a:1,exp:"More cores allow multiple threads to be processed at the same time — true parallel processing."},
+  {q:"Which level of cache is the fastest?",opts:["L3","L2","L1","RAM"],a:2,exp:"L1 cache is fastest and smallest, inside each CPU core. L2 is next, then L3. RAM is much slower than all cache levels."},
+  {q:"Which level of cache is the largest?",opts:["L1","L2","L3","Register"],a:2,exp:"L3 cache is largest (typically 4–32 MB) but slowest of the three levels. It is shared between all cores."},
+  {q:"A CPU has a clock speed of 4 GHz. How many cycles per second?",opts:["4,000","4,000,000","4,000,000,000","400,000,000"],a:2,exp:"4 GHz = 4 gigahertz = 4 billion cycles per second. Giga = billion."},
+  {q:"What is one disadvantage of increasing clock speed?",opts:["Fewer instructions per second","More heat generated","Smaller cache","Fewer cores"],a:1,exp:"Higher clock speed generates more heat and uses more power, requiring better cooling solutions."},
+  {q:"Why might doubling cores NOT double performance?",opts:["Cores share cache","Software must be multi-threaded","Cores slow each other","More cores reduce clock speed"],a:1,exp:"For multiple cores to benefit, software must be multi-threaded. Single-threaded programs run on one core only."},
+  {q:"What happens on a cache miss?",opts:["The CPU creates data","The CPU fetches from RAM — slower","The CPU fetches from disk","Execution halts"],a:1,exp:"A cache miss means the data is not in cache. The CPU fetches from slower RAM, causing a performance bottleneck."},
+  {q:"Where is L1 cache located?",opts:["On the motherboard","In RAM","Inside each CPU core","On the hard drive"],a:2,exp:"L1 cache is inside each individual CPU core — the closest and fastest cache available to each core."},
+  {q:"What is a cache hit?",opts:["When the CPU finds data in cache","When the CPU must fetch from RAM","When cache memory is full","When two cores access cache simultaneously"],a:0,exp:"A cache hit occurs when the CPU finds required data already in cache, allowing very fast access without going to RAM."},
+  {q:"What does L3 cache do that L1/L2 do not?",opts:["It is faster than L1","It is shared between all cores","It is outside the CPU","It replaces RAM"],a:1,exp:"L3 is shared between all cores, whereas L1 and L2 are dedicated to individual cores. Allows cores to share frequently used data."},
+  {q:"Which factor most directly reduces slow RAM accesses?",opts:["Clock speed","Number of cores","Cache size","Bus width"],a:2,exp:"Larger cache means more data stored near the CPU, directly reducing how often the CPU must access slower main memory."},
+  {q:"What is multi-threading?",opts:["Running two CPUs","Dividing tasks into threads across cores","Increasing clock speed","Sharing cache between programs"],a:1,exp:"Multi-threading means software divides work into multiple threads that can run simultaneously on different cores."},
+  {q:"Which correctly describes clock speed and heat?",opts:["Higher clock speed = less heat","No relationship","Higher clock speed = more heat","Only cache affects heat"],a:2,exp:"Higher clock speed means more transistor switching per second, generating more heat — a key physical limitation."}
+];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){
+  if(qIndex>=QUIZ.length){showQuizResult();return;}
+  var item=QUIZ[qIndex];
+  document.getElementById('quiz-q-text').textContent=item.q;
+  document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;
+  document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';
+  var opts=document.getElementById('quiz-options');opts.innerHTML='';
+  var letters=['A','B','C','D'];
+  for(var i=0;i<item.opts.length;i++){
+    var btn=document.createElement('button');btn.className='quiz-opt';
+    btn.innerHTML='<span class="opt-letter">'+letters[i]+'</span>'+item.opts[i];
+    btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);
+    opts.appendChild(btn);
+  }
+  document.getElementById('quiz-explanation').className='quiz-explanation';
+  document.getElementById('quiz-explanation').textContent='';
+  document.getElementById('quiz-next-btn').className='quiz-next-btn';
+  qAnswered=false;
 }
-
-function restartQuiz() {
-  document.getElementById('quiz-container').style.display = 'block';
-  document.getElementById('quiz-results').style.display = 'none';
-  qIdx = 0; quizScore = 0;
-  renderQuizQ();
+function selectAnswer(idx){
+  if(qAnswered)return;qAnswered=true;
+  var item=QUIZ[qIndex];
+  var btns=document.querySelectorAll('.quiz-opt');
+  for(var i=0;i<btns.length;i++)btns[i].disabled=true;
+  var correct=(idx===item.a);if(correct)qScore++;
+  btns[idx].classList.add(correct?'correct':'wrong');
+  if(!correct)btns[item.a].classList.add('correct');
+  var exp=document.getElementById('quiz-explanation');
+  exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;
+  exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');
+  document.getElementById('quiz-next-btn').className='quiz-next-btn show';
 }
-
-function initKeyTerms() {}
-
-function renderKeyTerms() {
-  var fg = document.getElementById('kt-flash');
-  var lg = document.getElementById('kt-list');
-  if (fg.children.length) return;
-  fg.innerHTML = KEY_TERMS.map(function(k, i) {
-    return '<div class="flashcard" id="fc-' + i + '" onclick="this.classList.toggle(\'flipped\')">' +
-      '<div class="flashcard-inner"><div class="flashcard-front">' + k.t + '</div>' +
-      '<div class="flashcard-back">' + k.d + '</div></div></div>';
-  }).join('');
-  lg.innerHTML = KEY_TERMS.map(function(k) {
-    return '<div class="kt-list-item"><div class="term">' + k.t + '</div><div class="def">' + k.d + '</div></div>';
-  }).join('');
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){
+  document.getElementById('quiz-body').style.display='none';
+  document.getElementById('quiz-result').className='quiz-result show';
+  var pct=Math.round(qScore/QUIZ.length*100);
+  document.getElementById('quiz-result-score').textContent=qScore;
+  var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;
+  document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP earned!';
+  var msg='',sub='';
+  if(pct===100){msg='Perfect score!';sub='Outstanding — you know this topic inside out.';}
+  else if(pct>=85){msg='Excellent!';sub='Strong understanding of CPU performance.';}
+  else if(pct>=70){msg='Good result!';sub='Review missed questions to solidify knowledge.';}
+  else if(pct>=50){msg='Getting there!';sub='Revisit the notes and try again.';}
+  else{msg='Keep revising!';sub='Go back to the notes before retrying.';}
+  document.getElementById('quiz-result-msg').textContent=msg;
+  document.getElementById('quiz-result-sub').textContent=sub;
+  document.getElementById('quiz-prog-fill').style.width='100%';
+  saveProgress('quiz',pct);
 }
-
-function switchKT(mode, btn) {
-  document.querySelectorAll('.kt-toggle button').forEach(function(b){ b.classList.remove('active'); });
-  btn.classList.add('active');
-  document.getElementById('kt-flash').style.display = mode === 'flash' ? 'grid' : 'none';
-  document.getElementById('kt-list').style.display = mode === 'list' ? 'flex' : 'none';
+function restartQuiz(){
+  document.getElementById('quiz-body').style.display='block';
+  document.getElementById('quiz-result').className='quiz-result';
+  qIndex=0;qScore=0;qAnswered=false;renderQuestion();
 }
-
-var testTimer, testSecs = 600, testRunning = false;
-
-function initTest() {}
-
-function startTest() {
-  document.getElementById('test-start-screen').style.display = 'none';
-  document.getElementById('test-main').style.display = 'block';
-  renderTestQuestions();
-  testSecs = 600; testRunning = true;
-  testTimer = setInterval(function() {
-    testSecs--;
-    var m = Math.floor(testSecs / 60), s = testSecs % 60;
-    var el = document.getElementById('test-timer');
-    el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
-    el.className = 'test-timer' + (testSecs <= 60 ? ' urgent' : '');
-    if (testSecs <= 0) { clearInterval(testTimer); submitTest(true); }
-  }, 1000);
+var KEY_TERMS=[
+  {term:"Clock speed",def:"The number of fetch-decode-execute cycles a CPU completes per second, measured in hertz (Hz) or gigahertz (GHz). Higher = more instructions per second."},
+  {term:"Gigahertz (GHz)",def:"The unit of clock speed. 1 GHz = 1 billion clock cycles per second. Modern CPUs typically run at 2–5 GHz."},
+  {term:"Core",def:"An independent processing unit within a CPU. Each core fetches, decodes and executes instructions simultaneously. More cores = parallel processing."},
+  {term:"Dual-core",def:"A CPU with two independent processing cores, allowing two threads to execute simultaneously."},
+  {term:"Quad-core",def:"A CPU with four independent processing cores, common in mainstream desktop and laptop computers."},
+  {term:"Parallel processing",def:"Executing multiple instructions or tasks simultaneously, made possible by having multiple CPU cores."},
+  {term:"Cache",def:"Small, extremely fast memory inside or very close to the CPU. Stores copies of frequently used data and instructions for rapid access."},
+  {term:"L1 cache",def:"The fastest and smallest cache level, inside each individual CPU core. Typically 32–128 KB per core."},
+  {term:"L2 cache",def:"Second level of cache, larger but slightly slower than L1. Typically 256 KB – 4 MB per core."},
+  {term:"L3 cache",def:"Largest but slowest cache level, shared between all cores. Typically 4–32 MB. Shared pool for all cores."},
+  {term:"Cache hit",def:"When the CPU finds required data already in cache. Very fast access — no need to go to slower RAM."},
+  {term:"Cache miss",def:"When required data is NOT in cache. CPU must fetch from slower RAM, causing a performance delay."},
+  {term:"Multi-threading",def:"Software divided into multiple threads that run simultaneously across different CPU cores."},
+  {term:"Heat dissipation",def:"Removing heat generated by the CPU. Higher clock speeds generate more heat, requiring better cooling (heatsinks, fans)."},
+  {term:"Bottleneck",def:"A component that limits overall system speed. Slow RAM or small cache can bottleneck even a very fast CPU."}
+];
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){
+  var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';
+  for(var i=0;i<KEY_TERMS.length;i++){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>'+KEY_TERMS[i].term+'</td><td>'+KEY_TERMS[i].def+'</td>';
+    tbody.appendChild(tr);
+  }
+  showCard(0);
 }
-
-function renderTestQuestions() {
-  var html = '<div class="test-section"><h3>Section A — Multiple Choice (5 marks)</h3>';
-  TEST_MCQ.forEach(function(q, i) {
-    html += '<div class="test-q"><p>' + (i+1) + '. ' + q.q + '</p><div class="test-opts">' +
-      q.opts.map(function(o, j) {
-        return '<button class="test-opt" onclick="selectTestOpt(this,' + i + ',' + j + ')" data-q="' + i + '" data-opt="' + j + '">' + String.fromCharCode(65+j) + '. ' + o + '</button>';
-      }).join('') + '</div></div>';
-  });
-  html += '</div><div class="test-section"><h3>Section B — Short Answer (5 marks)</h3>';
-  TEST_SA.forEach(function(q, i) {
-    html += '<div class="test-q"><p>' + (TEST_MCQ.length+i+1) + '. ' + q.q + '</p><div class="test-sa"><textarea id="tsa-' + i + '" placeholder="Your answer..."></textarea></div></div>';
-  });
-  html += '</div>';
-  document.getElementById('test-questions').innerHTML = html;
+function showCard(idx){
+  cardIndex=idx;cardFlipped=false;
+  document.getElementById('fc-done').classList.remove('show');
+  document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;
+  var card=document.getElementById('flashcard');card.classList.remove('flipped');
+  document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;
+  document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;
+  document.getElementById('fc-hint').textContent='Click to reveal definition';
+  card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';
 }
-
-var testAnswers = {};
-function selectTestOpt(btn, qIdx, optIdx) {
-  document.querySelectorAll('[data-q="' + qIdx + '"]').forEach(function(b){ b.classList.remove('selected'); });
-  btn.classList.add('selected');
-  testAnswers[qIdx] = optIdx;
-  document.getElementById('test-progress').textContent = Object.keys(testAnswers).length + ' / 10';
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal definition';}
+function markKnown(){knownCount++;nextCard();}
+function markLearning(){learningCount++;nextCard();}
+function skipCard(){nextCard();}
+function nextCard(){
+  if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}
+  else{
+    document.getElementById('flashcard').style.display='none';
+    document.querySelector('.flashcard-actions').style.display='none';
+    document.getElementById('fc-progress').textContent='Session complete!';
+    document.getElementById('fc-done').classList.add('show');
+    document.getElementById('fc-done-msg').textContent='You knew '+knownCount+' out of '+KEY_TERMS.length+' terms.'+(learningCount>0?' '+learningCount+' still to learn.':' Excellent!');
+  }
 }
-
-function submitTest(auto) {
-  if (!auto && !confirm('Submit your test now?')) return;
-  clearInterval(testTimer); testRunning = false;
-  document.getElementById('test-main').style.display = 'none';
-  var results = document.getElementById('test-results');
-  results.style.display = 'block';
-  var mcqScore = 0;
-  var html = '<h4 style="color:var(--vl);margin-bottom:10px">Section A — MCQ Results</h4>';
-  TEST_MCQ.forEach(function(q, i) {
-    var given = testAnswers[i];
-    var correct = given === q.a;
-    if (correct) mcqScore++;
-    html += '<div class="test-r-q"><div class="q-txt">' + (i+1) + '. ' + q.q + '</div>';
-    html += '<div class="' + (correct ? 'r-correct' : 'r-wrong') + '">' + (correct ? '✅ Correct' : '❌ Incorrect — correct answer: ' + String.fromCharCode(65+q.a) + '. ' + q.opts[q.a]) + '</div></div>';
-  });
-  html += '<h4 style="color:var(--vl);margin:16px 0 10px">Section B — Self-mark Your Short Answers</h4>';
-  TEST_SA.forEach(function(q, i) {
-    var ans = document.getElementById('tsa-' + i) ? document.getElementById('tsa-' + i).value : '';
-    html += '<div class="test-r-q"><div class="q-txt">' + (TEST_MCQ.length+i+1) + '. ' + q.q + '</div>';
-    html += '<div class="ms"><strong style="color:var(--green)">Mark scheme:</strong> ' + q.ms + '</div>';
-    if (ans) html += '<div style="margin-top:6px;font-size:0.8rem;color:var(--muted)">Your answer: ' + ans + '</div>';
-    html += '</div>';
-  });
-  html += '<div style="margin-top:16px;background:rgba(124,58,237,0.15);border:1px solid var(--vl);border-radius:8px;padding:14px;text-align:center"><div style="font-size:1.5rem;font-weight:700;color:var(--vl)">' + mcqScore + '/5 MCQ</div><div style="font-size:0.8rem;color:var(--muted);margin-top:4px">+ self-mark Section B above</div></div>';
-  document.getElementById('test-results-content').innerHTML = html;
-  saveProgress({ quiz_best_score: Math.round(mcqScore/5*100), xp_earned: 40 });
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){
+  document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');
+  document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');
+  document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';
+  document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');
 }
-
-function restartTest() {
-  document.getElementById('test-results').style.display = 'none';
-  testAnswers = {};
-  document.getElementById('test-start-screen').style.display = 'block';
+var TEST_MCQ_CORRECT=[1,2,2,2,1];
+var TEST_MCQ_LABELS=[
+  ['Megabytes (MB)','Gigahertz (GHz)','Gigabytes (GB)','Milliseconds (ms)'],
+  ['L3','L2','L1','RAM'],
+  ['Increased clock speed','Larger cache memory','Multiple instructions processed simultaneously','Reduced power consumption'],
+  ['3,200','3,200,000','3,200,000,000','32,000,000'],
+  ['It reduces the number of cores','It generates more heat which can cause throttling or instability','It reduces cache size','It slows down RAM']
+];
+var TEST_MCQ_EXPLAIN=[
+  'Clock speed is measured in gigahertz (GHz). 1 GHz = 1 billion cycles per second.',
+  'L1 is fastest (inside each core). L3 is largest but slowest of the three levels.',
+  'More cores allow multiple instructions/threads to be processed simultaneously (parallel processing).',
+  '3.2 GHz = 3.2 × 1,000,000,000 = 3,200,000,000 cycles per second.',
+  'Higher clock speed generates more heat, which can cause throttling (CPU reduces speed to cool) or instability.'
+];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){
+  testSecondsLeft=600;testSubmitted=false;
+  document.getElementById('test-start-screen').style.display='none';
+  document.getElementById('test-active-area').style.display='block';
+  testTimer=setInterval(function(){
+    testSecondsLeft--;
+    var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;
+    var el=document.getElementById('test-timer-display');
+    el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+    if(testSecondsLeft<=60)el.classList.add('urgent');
+    if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}
+  },1000);
 }
-
-function loadYouTube() {
-  if (!YOUTUBE_ID) return;
-  var el = document.getElementById('video-embed');
-  el.style.width = '100%'; el.style.height = '100%';
-  el.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + YOUTUBE_ID + '?enablejsapi=1" frameborder="0" allowfullscreen></iframe>';
-  document.getElementById('video-placeholder').style.display = 'none';
+function submitTest(){
+  if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);
+  var radios=document.querySelectorAll('#test-active-area input[type=radio]');
+  for(var i=0;i<radios.length;i++)radios[i].disabled=true;
+  for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}
+  var mcqScore=0,mcqResults=[];
+  for(var q=1;q<=5;q++){
+    var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');
+    var chosen=sel?parseInt(sel.value):-1;
+    var correct=TEST_MCQ_CORRECT[q-1];
+    var right=(chosen===correct);if(right)mcqScore++;
+    mcqResults.push({chosen:chosen,correct:correct,right:right});
+  }
+  for(var i=1;i<=5;i++)document.getElementById('tsa-ms-'+i).classList.add('show');
+  document.getElementById('test-active-area').style.display='none';
+  document.getElementById('test-results-area').style.display='block';
+  document.getElementById('test-score-display').textContent=mcqScore+' (MCQ)';
+  document.getElementById('test-score-display').style.fontSize='40px';
+  var pct=Math.round(mcqScore/5*100);
+  var grade,gc,gm;
+  if(pct===100){grade='5/5 — Perfect!';gc='grade-a';gm='Flawless MCQ. Check short answers against mark schemes.';}
+  else if(pct>=80){grade='Strong';gc='grade-a';gm='Very good. Review any MCQs you got wrong.';}
+  else if(pct>=60){grade='Developing';gc='grade-b';gm='Re-read the lesson notes.';}
+  else if(pct>=40){grade='Needs revision';gc='grade-c';gm='Go back to Notes and Slides before retrying.';}
+  else{grade='Revise and retry';gc='grade-d';gm='More revision needed.';}
+  document.getElementById('test-grade-badge').textContent=grade;
+  document.getElementById('test-grade-badge').className='test-grade-badge '+gc;
+  document.getElementById('test-result-grade').textContent=mcqScore+'/5 MCQ auto-marked · Short answers: self-mark below';
+  document.getElementById('test-result-msg').textContent=gm;
+  var reviewHtml='';
+  for(var i=0;i<mcqResults.length;i++){
+    var r=mcqResults[i];var icon=r.right?'✅':'❌';
+    var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';
+    var corrt=TEST_MCQ_LABELS[i][r.correct];
+    reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;">';
+    reviewHtml+='<div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span style="font-size:14px;font-weight:600;color:#0f172a;">'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';
+    if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your answer: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';
+    else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';
+    reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';
+  }
+  document.getElementById('test-mcq-review').innerHTML=reviewHtml;
+  var saTitles=['State what clock speed measures.','State one advantage of larger cache.','Name the three cache levels fastest to slowest.','Why does more cores not always double performance?','State one disadvantage of very high clock speed.'];
+  var saHtml='';
+  for(var i=1;i<=5;i++){
+    var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';
+    var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';
+    saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;color:#0f172a;">'+saTitles[i-1]+'</span></div>';
+    saHtml+='<div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong style="color:#0f172a;">Your answer:</strong> '+(ans||'<em>No answer given</em>')+'</div>';
+    saHtml+='<div class="test-sa-ms show">'+ms+'</div></div>';
+  }
+  document.getElementById('test-sa-review').innerHTML=saHtml;
+  saveProgress('quiz',pct);
 }
-
-function saveProgress(data) {
-  if (!currentUser) return;
-  var uid = currentUser.sub || currentUser.id;
-  if (!uid) return;
-  var payload = Object.assign({ user_id: uid, subtopic_id: LESSON_ID }, data);
-  fetch(SUPA_URL + '/rest/v1/user_progress', {
-    method: 'POST',
-    headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates,return=minimal' },
-    body: JSON.stringify(payload)
-  });
+function retryTest(){
+  testSubmitted=false;clearInterval(testTimer);
+  var radios=document.querySelectorAll('#test-active-area input[type=radio]');
+  for(var i=0;i<radios.length;i++){radios[i].checked=false;radios[i].disabled=false;}
+  for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}
+  document.getElementById('test-timer-display').textContent='10:00';
+  document.getElementById('test-timer-display').classList.remove('urgent');
+  document.getElementById('test-results-area').style.display='none';
+  document.getElementById('test-active-area').style.display='none';
+  document.getElementById('test-start-screen').style.display='block';
 }
 </script>
 </body>

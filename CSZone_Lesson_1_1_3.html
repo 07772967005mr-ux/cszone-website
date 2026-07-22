@@ -1,553 +1,766 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.1.3 Embedded Systems — CSZone</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--v:#7c3aed;--vl:#a78bfa;--bg:#0d0920;--card:#1a1048;--border:#2d1f6e;--text:#e2e8f0;--muted:#94a3b8;--green:#10b981;--red:#ef4444;--amber:#f59e0b}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-.topnav{background:#120a2e;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
-.topnav .logo{font-size:1.1rem;font-weight:700;color:#fff}.topnav .logo span{color:var(--vl)}
-.topnav .back{color:var(--muted);font-size:0.83rem;text-decoration:none}.topnav .back:hover{color:#fff}
-.hero{background:linear-gradient(135deg,#120a2e,#1a1048);padding:28px 24px 0;border-bottom:1px solid var(--border)}
-.hero .topic-tag{font-size:0.72rem;font-weight:600;color:var(--vl);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
-.hero h1{font-size:1.7rem;font-weight:700;color:#fff;margin-bottom:6px}
-.hero .meta{font-size:0.82rem;color:var(--muted);margin-bottom:16px}
-.tabs{display:flex;overflow-x:auto;gap:0}
-.tab-btn{padding:12px 18px;font-size:0.83rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.15s}
-.tab-btn:hover{color:#fff}.tab-btn.active{color:var(--vl);border-bottom-color:var(--vl)}
-.content{max-width:860px;margin:0 auto;padding:28px 20px}
-.tab-panel{display:none}.tab-panel.active{display:block}
-.notes h2{font-size:1.2rem;font-weight:700;color:#fff;margin:20px 0 10px}.notes h2:first-child{margin-top:0}
-.notes h3{font-size:1rem;font-weight:600;color:var(--vl);margin:16px 0 8px}
-.notes p{color:var(--text);line-height:1.7;margin-bottom:12px;font-size:0.92rem}
-.notes ul,.notes ol{color:var(--text);line-height:1.8;margin:8px 0 12px;padding-left:22px;font-size:0.92rem}
-.notes strong{color:#fff}
-.notes .callout{border-radius:10px;padding:14px 16px;margin:16px 0;font-size:0.88rem;line-height:1.6}
-.callout.tip{background:rgba(124,58,237,0.15);border-left:3px solid var(--v)}
-.callout.warn{background:rgba(239,68,68,0.1);border-left:3px solid var(--red)}
-.callout.exam{background:rgba(245,158,11,0.12);border-left:3px solid var(--amber)}
-.callout strong{display:block;margin-bottom:4px}
-.data-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.85rem}
-.data-table th{background:rgba(124,58,237,0.2);color:var(--vl);text-align:left;padding:10px 12px;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em}
-.data-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text)}
-.data-table tr:last-child td{border-bottom:none}
-.video-wrap{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;position:relative;border:1px solid var(--border)}
-.video-placeholder{display:flex;align-items:center;justify-content:center;height:100%;flex-direction:column;gap:12px;color:var(--muted)}
-.video-summary{margin-top:20px}.video-summary h3{font-size:1rem;font-weight:600;color:#fff;margin-bottom:10px}
-.video-summary ul{color:var(--text);line-height:1.8;padding-left:20px;font-size:0.9rem}
-.slides-placeholder{display:flex;align-items:center;justify-content:center;height:300px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;flex-direction:column;gap:10px;color:var(--muted)}
-.ws-q{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px}
-.ws-q .q-text{font-size:0.92rem;color:#fff;margin-bottom:6px}
-.ws-q .q-marks{font-size:0.75rem;color:var(--vl);font-weight:600;margin-bottom:10px}
-.ws-q textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;padding:10px;color:#fff;font-size:0.85rem;resize:vertical;min-height:70px;font-family:inherit}
-.ws-q textarea:focus{outline:none;border-color:var(--v)}
-.mark-scheme{display:none;margin-top:10px;padding:12px;background:rgba(16,185,129,0.1);border-left:3px solid var(--green);border-radius:0 8px 8px 0;font-size:0.85rem;color:var(--text)}
-.mark-scheme strong{color:var(--green);display:block;margin-bottom:4px}
-.ws-score{background:rgba(124,58,237,0.2);border:1px solid var(--v);border-radius:10px;padding:16px;text-align:center;margin-bottom:20px}
-.ws-score .score-val{font-size:2rem;font-weight:700;color:var(--vl)}
-.quiz-progress{height:5px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px}
-.quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--v),var(--vl));border-radius:3px;transition:width 0.4s}
-.quiz-counter{font-size:0.8rem;color:var(--muted);margin-bottom:16px}
-.quiz-q{font-size:1rem;font-weight:600;color:#fff;margin-bottom:18px;line-height:1.5}
-.quiz-opts{display:flex;flex-direction:column;gap:10px}
-.opt{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:13px 16px;cursor:pointer;font-size:0.88rem;color:var(--text);transition:all 0.15s;text-align:left}
-.opt:hover:not(:disabled){background:rgba(124,58,237,0.15);border-color:var(--vl)}
-.opt.correct{background:rgba(16,185,129,0.2);border-color:var(--green);color:var(--green)}
-.opt.wrong{background:rgba(239,68,68,0.15);border-color:var(--red);color:var(--red)}
-.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:8px;font-size:0.85rem;line-height:1.5;display:none}
-.quiz-feedback.correct{background:rgba(16,185,129,0.12);border-left:3px solid var(--green)}
-.quiz-feedback.wrong{background:rgba(239,68,68,0.1);border-left:3px solid var(--red)}
-.quiz-nav{margin-top:16px;display:flex;justify-content:flex-end}
-.quiz-results{text-align:center;padding:32px 0}
-.quiz-score-big{font-size:3.5rem;font-weight:700;color:var(--vl)}
-.quiz-grade{font-size:1rem;color:var(--muted);margin-top:6px}
-.kt-toggle{display:flex;gap:8px;margin-bottom:18px}
-.kt-toggle button{padding:7px 14px;border-radius:20px;font-size:0.8rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all 0.15s}
-.kt-toggle button.active{background:var(--v);color:#fff;border-color:var(--v)}
-.flashcard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.flashcard{height:120px;perspective:600px;cursor:pointer}
-.flashcard-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.5s}
-.flashcard.flipped .flashcard-inner{transform:rotateY(180deg)}
-.flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;font-size:0.85rem}
-.flashcard-front{background:var(--card);border:1px solid var(--border);color:#fff;font-weight:600}
-.flashcard-back{background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(124,58,237,0.1));border:1px solid var(--vl);color:var(--text);transform:rotateY(180deg)}
-.kt-list{display:flex;flex-direction:column;gap:10px}
-.kt-list-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:1fr 2fr;gap:12px;align-items:start}
-.kt-list-item .term{font-weight:700;color:var(--vl);font-size:0.88rem}
-.kt-list-item .def{color:var(--text);font-size:0.85rem;line-height:1.5}
-.test-header{display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:20px}
-.test-timer{font-size:1.4rem;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
-.test-timer.urgent{color:var(--red);animation:pulse 1s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
-.test-section{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px}
-.test-section h3{font-size:0.9rem;font-weight:700;color:var(--vl);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.05em}
-.test-q{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(45,31,110,0.5)}
-.test-q:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.test-q p{font-size:0.88rem;color:#fff;margin-bottom:10px;line-height:1.5}
-.test-opts{display:flex;flex-direction:column;gap:6px}
-.test-opt{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:9px 12px;cursor:pointer;font-size:0.83rem;color:var(--text);text-align:left;transition:all 0.1s}
-.test-opt:hover:not(:disabled){border-color:var(--vl);background:rgba(124,58,237,0.1)}
-.test-opt.selected{background:rgba(124,58,237,0.2);border-color:var(--vl);color:#fff}
-.test-sa textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;padding:10px;color:#fff;font-size:0.85rem;resize:vertical;min-height:60px;font-family:inherit}
-.test-results{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:16px;display:none}
-.test-results h3{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:16px}
-.test-r-q{margin-bottom:14px;padding:12px;background:rgba(255,255,255,0.03);border-radius:8px}
-.test-r-q .q-txt{font-size:0.85rem;color:var(--muted);margin-bottom:6px}
-.test-r-q .r-correct{color:var(--green);font-size:0.82rem}
-.test-r-q .r-wrong{color:var(--red);font-size:0.82rem}
-.test-r-q .ms{font-size:0.82rem;color:var(--text);margin-top:4px;padding-top:4px;border-top:1px solid var(--border)}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;border:none;transition:all 0.15s}
-.btn-primary{background:linear-gradient(135deg,var(--v),#5b21b6);color:#fff}.btn-primary:hover{opacity:0.9}
-.btn-outline{background:transparent;color:var(--vl);border:1px solid var(--border)}.btn-outline:hover{background:rgba(124,58,237,0.15)}
-.btn-full{width:100%;justify-content:center;margin-top:10px}
-.bottom-nav{background:#120a2e;border-top:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:40px}
-.bottom-nav a{color:var(--muted);font-size:0.83rem;text-decoration:none;display:flex;align-items:center;gap:6px}.bottom-nav a:hover{color:#fff}
-.bottom-nav .next-btn{background:var(--v);color:#fff;padding:9px 18px;border-radius:8px;font-weight:600;font-size:0.85rem}
-.paywall{position:fixed;inset:0;background:rgba(13,9,32,0.95);display:none;align-items:center;justify-content:center;z-index:100}
-.paywall-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;text-align:center;max-width:420px}
-.paywall-card h2{font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
-.paywall-card p{color:var(--muted);font-size:0.88rem;margin-bottom:20px;line-height:1.6}
-.paywall-card .price{font-size:2rem;font-weight:700;color:var(--vl);margin-bottom:6px}
-.paywall-card .price small{font-size:1rem;color:var(--muted)}
-.examples-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin:16px 0}
-.example-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
-.example-card .icon{font-size:1.8rem;margin-bottom:8px}
-.example-card .name{font-size:0.82rem;color:#fff;font-weight:600;margin-bottom:4px}
-.example-card .desc{font-size:0.72rem;color:var(--muted);line-height:1.4}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.1.3 Embedded Systems — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;letter-spacing:-0.5px;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb a:hover{color:#7c3aed;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;}
+    .nav-dash-btn:hover{background:#ede9fe;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;letter-spacing:-0.5px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .lesson-meta strong{color:#0f172a;}
+    .progress-row{display:flex;align-items:center;gap:6px;margin-bottom:0;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;transition:.2s;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .prog-sep{color:#e2e8f0;font-size:10px;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;gap:0;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:7px;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .tab-icon{font-size:16px;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:20px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul,.notes-content ol{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166534;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .video-placeholder{background:#0d0920;border-radius:16px;overflow:hidden;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;}
+    .video-play-icon{font-size:64px;margin-bottom:16px;opacity:0.3;}
+    .video-soon-text{color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;}
+    .video-soon-sub{color:rgba(255,255,255,0.3);font-size:13px;margin-top:6px;}
+    .video-key-points{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:24px;}
+    .video-key-points h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:14px;}
+    .video-key-points ul{list-style:none;padding:0;}
+    .video-key-points li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14.5px;color:#334155;}
+    .video-key-points li:last-child{border-bottom:none;}
+    .video-key-points li::before{content:'✦';color:#7c3aed;font-size:10px;margin-top:5px;flex-shrink:0;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-intro{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
+    .ws-intro-icon{font-size:32px;}
+    .ws-intro-text h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;}
+    .ws-intro-text p{font-size:13.5px;color:#64748b;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:90px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;transition:.2s;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-submit-row{text-align:center;margin-top:8px;}
+    .ws-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-feedback-header{padding:10px 16px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;}
+    .ws-feedback-header.good{background:#f0fdf4;color:#166534;}
+    .ws-feedback-body{padding:14px 16px;font-size:13.5px;background:#fafafa;}
+    .ws-ms-label{font-weight:700;color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;}
+    .ws-ms-text{color:#334155;font-size:14px;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .ws-score-big{font-size:52px;font-weight:900;color:#7c3aed;line-height:1;}
+    .ws-score-label{font-size:15px;color:#64748b;margin-top:6px;}
+    .ws-score-msg{font-size:16px;font-weight:700;color:#0f172a;margin-top:12px;}
+    .ws-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;transition:.15s;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-opt:disabled{cursor:default;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-result-msg{font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;}
+    .quiz-result-sub{font-size:14px;color:#64748b;margin-bottom:24px;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .quiz-restart-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-intro-card h2{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;}
+    .test-intro-card p{font-size:14.5px;color:#64748b;margin-bottom:18px;}
+    .test-intro-card ul{list-style:none;padding:0;margin-bottom:28px;}
+    .test-intro-card li{font-size:14px;color:#334155;padding:6px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;}
+    .test-intro-card li::before{content:'•';color:#7c3aed;font-weight:900;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+    .test-timer-inner{display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;font-variant-numeric:tabular-nums;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-marks{font-size:12px;color:#64748b;font-weight:600;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;transition:.15s;}
+    .test-radio-opt:hover{border-color:#a78bfa;background:#faf9ff;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .test-result-pct{font-size:18px;color:#64748b;margin-bottom:6px;}
+    .test-result-grade{font-size:22px;font-weight:800;color:#0f172a;margin:10px 0 4px;}
+    .test-result-msg{font-size:14.5px;color:#64748b;margin-bottom:24px;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;font-family:inherit;transition:.15s;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;transition:.2s;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;box-shadow:0 4px 20px rgba(124,58,237,0.08);}
+    .flashcard-front{font-size:24px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:16px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:200px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:.15s;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .bottom-nav-btn.next-btn:hover{background:#6d28d9;border-color:#6d28d9;}
+    .bottom-nav-center{font-size:13px;color:#94a3b8;font-weight:500;}
+    .paywall-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .paywall-overlay.show{display:flex;}
+    .paywall-card{background:#fff;border-radius:20px;padding:40px;max-width:420px;width:90%;text-align:center;}
+    .paywall-icon{font-size:48px;margin-bottom:16px;}
+    .paywall-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;}
+    .paywall-sub{font-size:14.5px;color:#64748b;line-height:1.6;margin-bottom:24px;}
+    .paywall-price{font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;}
+    .paywall-price-sub{font-size:13px;color:#94a3b8;margin-bottom:24px;}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-bottom:10px;width:100%;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;margin-top:4px;}
+  </style>
 </head>
 <body>
-
-<div class="topnav">
-  <a href="/" class="logo">CS<span>Zone</span></a>
-  <a href="/dashboard" class="back">← Dashboard</a>
-</div>
-
-<div class="hero">
-  <div class="content" style="padding-bottom:0">
-    <div class="topic-tag">OCR J277 · 1.1 Systems Architecture</div>
-    <h1>1.1.3 Embedded Systems</h1>
-    <div class="meta">Subtopic 3 of 3 · Component 1: Computer Systems</div>
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('notes',this)">📖 Notes</button>
-      <button class="tab-btn" onclick="switchTab('video',this)">🎬 Video</button>
-      <button class="tab-btn" onclick="switchTab('slides',this)">📊 Slides</button>
-      <button class="tab-btn" onclick="switchTab('worksheet',this)">✏️ Worksheet</button>
-      <button class="tab-btn" onclick="switchTab('quiz',this)">⚡ Quiz</button>
-      <button class="tab-btn" onclick="switchTab('minitest',this)">🎯 Mini Test</button>
-      <button class="tab-btn" onclick="switchTab('keyterms',this)">🔑 Key Terms</button>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">OCR J277</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.1 Systems Architecture</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.1.3 Embedded Systems</span>
     </div>
   </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
+  </div>
+</nav>
+<div class="lesson-header">
+  <div class="lesson-badge">🤖 Component 1 · 1.1 Systems Architecture</div>
+  <div class="lesson-title">1.1.3 Embedded Systems</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~10 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-sep">──</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
+  </div>
 </div>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes"><span class="tab-icon">📖</span> Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video"><span class="tab-icon">🎥</span> Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides"><span class="tab-icon">📊</span> Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet"><span class="tab-icon">✍️</span> Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz"><span class="tab-icon">❓</span> Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms"><span class="tab-icon">🔑</span> Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test"><span class="tab-icon">🎯</span> Mini Test</button>
+</div>
+<div class="lesson-body">
 
-<div class="content">
-
-<div id="tab-notes" class="tab-panel active">
-  <div class="notes">
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
     <h2>What is an Embedded System?</h2>
-    <p>An <strong>embedded system</strong> is a computer system (with a processor, memory, and input/output) that is <strong>built into a larger device</strong> to perform a <strong>specific, dedicated function</strong>. Unlike a general-purpose computer (such as a laptop or desktop PC), an embedded system is designed to do one particular job and does it very well.</p>
-    <p>Embedded systems are found in almost every electronic device around us — from the microwave in your kitchen to the engine management system in a car. The processor is typically hidden inside the device and the user often doesn't even know it's there.</p>
-
-    <div class="callout tip">
-      <strong>💡 Key Definition</strong>
-      An embedded system is a computer system embedded within a larger device, designed to perform one specific/dedicated function, often in real time.
-    </div>
-
-    <h2>Examples of Embedded Systems</h2>
-    <div class="examples-grid">
-      <div class="example-card"><div class="icon">🚗</div><div class="name">Car ABS</div><div class="desc">Monitors wheel speed and controls brakes to prevent skidding</div></div>
-      <div class="example-card"><div class="icon">🌡️</div><div class="name">Thermostat</div><div class="desc">Reads temperature and controls heating/cooling</div></div>
-      <div class="example-card"><div class="icon">📷</div><div class="name">Digital Camera</div><div class="desc">Controls autofocus, exposure, and image processing</div></div>
-      <div class="example-card"><div class="icon">🚦</div><div class="name">Traffic Lights</div><div class="desc">Controls light sequencing, often with sensors</div></div>
-      <div class="example-card"><div class="icon">🫀</div><div class="name">Pacemaker</div><div class="desc">Monitors and regulates heart rhythm in real time</div></div>
-      <div class="example-card"><div class="icon">📡</div><div class="name">GPS Sat Nav</div><div class="desc">Calculates position and navigation routes</div></div>
-      <div class="example-card"><div class="icon">🧺</div><div class="name">Washing Machine</div><div class="desc">Controls wash cycles, water temperature, spin speed</div></div>
-      <div class="example-card"><div class="icon">✈️</div><div class="name">Aircraft Systems</div><div class="desc">Autopilot, navigation, and landing gear control</div></div>
-    </div>
+    <p>An <strong>embedded system</strong> is a combination of hardware and software that is designed to perform a specific, dedicated function — usually as part of a larger device. Unlike a general-purpose computer (PC, laptop, tablet), an embedded system is <strong>not designed for general computing tasks</strong>.</p>
+    <p>The key characteristic of an embedded system is that its purpose is <strong>fixed at manufacture</strong>. The software (firmware) is typically stored in ROM and cannot be changed by the user.</p>
 
     <h2>Characteristics of Embedded Systems</h2>
-    <p>Embedded systems share several key characteristics that distinguish them from general-purpose computers:</p>
-
-    <h3>1. Single/Dedicated Function</h3>
-    <p>Each embedded system is built to perform <strong>one specific task</strong>. A washing machine controller doesn't browse the internet or play games — it only controls wash cycles. This focus makes embedded systems more reliable and efficient for their specific purpose.</p>
-
-    <h3>2. Real-Time Operation</h3>
-    <p>Many embedded systems must respond to inputs <strong>immediately</strong>. A car's antilock braking system (ABS) must react to wheel sensors in milliseconds — a delay could be fatal. This is called <strong>real-time processing</strong>. The system must guarantee a response within a fixed time period.</p>
-
-    <h3>3. Limited Resources</h3>
-    <p>Embedded systems typically have:</p>
     <ul>
-      <li><strong>Limited processing power</strong> — they only need enough to do their specific task</li>
-      <li><strong>Limited memory (RAM)</strong> — often kilobytes, not gigabytes</li>
-      <li><strong>Small storage</strong> — the program is often stored in ROM (read-only memory) and doesn't change</li>
+      <li><strong>Dedicated function</strong> — designed for one specific task</li>
+      <li><strong>Real-time operation</strong> — must respond to inputs within a guaranteed time frame</li>
+      <li><strong>Low power consumption</strong> — often battery-powered; designed to be energy-efficient</li>
+      <li><strong>Reliability</strong> — must work continuously without failure (especially in safety-critical systems)</li>
+      <li><strong>Fixed firmware</strong> — program stored in ROM; user cannot modify it</li>
+      <li><strong>Limited resources</strong> — smaller CPU, less RAM than a general-purpose computer</li>
     </ul>
-    <p>This is deliberate — using only what's needed keeps costs low and power consumption minimal.</p>
 
-    <h3>4. Low Power Consumption</h3>
-    <p>Many embedded systems run on batteries (e.g. pacemakers, thermostats) or must be energy-efficient. Because they only do one job, they can be optimised to use very little power.</p>
-
-    <h3>5. The Program is Fixed (Not Easily Reprogrammed)</h3>
-    <p>The software in an embedded system is usually written once and stored permanently in ROM (or Flash memory). Unlike a PC where you install and uninstall software freely, an embedded system's program rarely changes — it is embedded with the hardware.</p>
-
-    <h2>Embedded Systems vs General-Purpose Computers</h2>
-    <table class="data-table">
-      <tr><th>Feature</th><th>Embedded System</th><th>General-Purpose Computer</th></tr>
-      <tr><td>Function</td><td>Single, dedicated task</td><td>Multiple, varied tasks</td></tr>
-      <tr><td>Processing power</td><td>Limited — just enough for the task</td><td>High — handles complex varied workloads</td></tr>
-      <tr><td>Memory</td><td>Very limited (KB to MB)</td><td>Large (GB)</td></tr>
-      <tr><td>Software</td><td>Fixed in ROM, rarely updated</td><td>Easily installed/changed by user</td></tr>
-      <tr><td>Real-time?</td><td>Often required</td><td>Not usually critical</td></tr>
-      <tr><td>Power use</td><td>Low (often battery powered)</td><td>Higher</td></tr>
-      <tr><td>User interface</td><td>Minimal or none</td><td>Full keyboard, screen, mouse</td></tr>
-      <tr><td>Examples</td><td>ABS, pacemaker, thermostat</td><td>Laptop, desktop, smartphone</td></tr>
+    <h2>Examples of Embedded Systems</h2>
+    <table>
+      <thead><tr><th>Device</th><th>Embedded system role</th><th>Fixed function</th></tr></thead>
+      <tbody>
+        <tr><td>Washing machine</td><td>Controls wash cycles, temperature, spin speed</td><td>Washing control</td></tr>
+        <tr><td>Microwave oven</td><td>Manages timer, power levels, turntable</td><td>Microwave cooking</td></tr>
+        <tr><td>Digital alarm clock</td><td>Tracks time, triggers alarm</td><td>Timekeeping</td></tr>
+        <tr><td>Car ABS braking system</td><td>Detects wheel lock, adjusts brake pressure</td><td>Safety braking</td></tr>
+        <tr><td>Smart thermostat</td><td>Monitors temperature, controls heating</td><td>Temperature control</td></tr>
+        <tr><td>Traffic light controller</td><td>Sequences lights on timers/sensors</td><td>Traffic management</td></tr>
+        <tr><td>Pacemaker</td><td>Monitors heart rate, delivers electrical pulses</td><td>Heart rate regulation</td></tr>
+        <tr><td>Satellite navigation (GPS)</td><td>Receives GPS signals, calculates routes</td><td>Navigation</td></tr>
+        <tr><td>Digital camera</td><td>Controls sensor, image processing, storage</td><td>Photographic capture</td></tr>
+        <tr><td>Barcode scanner</td><td>Reads barcode patterns, converts to data</td><td>Barcode reading</td></tr>
+      </tbody>
     </table>
 
-    <div class="callout exam">
-      <strong>⚠️ Exam tip</strong>
-      Questions often ask you to "give an example of an embedded system and explain its function." Give a specific device (e.g. "ABS in a car") and then explain what it actually does ("it monitors wheel speed and automatically applies individual brakes to prevent skidding on icy roads").
+    <h2>Embedded Systems vs General-Purpose Computers</h2>
+    <table>
+      <thead><tr><th>Feature</th><th>Embedded System</th><th>General-Purpose Computer</th></tr></thead>
+      <tbody>
+        <tr><td>Purpose</td><td>Single, fixed function</td><td>Many different tasks</td></tr>
+        <tr><td>Software</td><td>Stored in ROM (firmware), fixed</td><td>Installed/changed by user</td></tr>
+        <tr><td>User interface</td><td>Minimal or none</td><td>Full OS, keyboard, screen</td></tr>
+        <tr><td>Power use</td><td>Low (optimised)</td><td>Higher</td></tr>
+        <tr><td>Cost</td><td>Low (mass produced)</td><td>Higher</td></tr>
+        <tr><td>Reprogrammable</td><td>Usually not</td><td>Yes</td></tr>
+        <tr><td>Examples</td><td>Washing machine, pacemaker</td><td>PC, laptop, smartphone</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> When asked to give an example of an embedded system, always name the device AND state its specific dedicated function. "A washing machine uses an embedded system to control the wash cycle, temperature and spin speed." Just naming the device alone loses the second mark.
     </div>
 
-    <div class="callout warn">
-      <strong>⚠️ Common Mistakes</strong>
-      <ul style="margin-top:6px">
-        <li>❌ "A smartphone is an embedded system" — smartphones are general-purpose. However, a specific chip inside a phone (e.g. its GPS receiver or camera sensor processor) IS an embedded system</li>
-        <li>❌ "Embedded systems have no memory" — they have limited memory, not no memory</li>
-        <li>❌ Confusing "real-time" with "fast" — real-time means guaranteed response time, not just quick</li>
-        <li>❌ Not giving specific examples — always name the device AND its function</li>
+    <h2>Why are Embedded Systems Not General-Purpose?</h2>
+    <p>Embedded systems are not general-purpose computers because:</p>
+    <ul>
+      <li>They run <strong>one program only</strong>, stored permanently in ROM</li>
+      <li>They have no operating system that lets users install/change applications</li>
+      <li>They have <strong>limited input/output interfaces</strong> (just what the device needs)</li>
+      <li>They are designed for one purpose and optimised for that purpose in terms of cost, size and power</li>
+    </ul>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
+      <ul>
+        <li>Saying a smartphone is a pure embedded system — smartphones run a full OS and can run many apps, making them general-purpose computers</li>
+        <li>Not giving the specific function when asked for an embedded system example</li>
+        <li>Confusing embedded systems with microprocessors — a microprocessor is a component; an embedded system is a whole system</li>
+        <li>Saying embedded systems "cannot be programmed" — they are programmed, but the program is fixed in ROM at manufacture</li>
+        <li>Forgetting that real-time response is a key feature of many embedded systems</li>
       </ul>
     </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
   </div>
-  <div id="notes-read-marker" style="height:2px"></div>
 </div>
 
-<div id="tab-video" class="tab-panel">
-  <div class="video-wrap">
-    <div id="video-embed"></div>
-    <div id="video-placeholder" class="video-placeholder">
-      <div style="font-size:2.5rem">▶️</div>
-      <p style="font-size:0.9rem">Video coming soon</p>
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div class="video-placeholder">
+    <div class="video-placeholder-inner">
+      <div class="video-play-icon">▶</div>
+      <div class="video-soon-text">Video coming soon</div>
+      <div class="video-soon-sub">This lesson video is in production</div>
     </div>
   </div>
-  <div class="video-summary">
-    <h3>Key Points from this Video</h3>
+  <div class="video-key-points">
+    <h3>Key points covered in this video</h3>
     <ul>
-      <li>An embedded system is built into a device to perform ONE specific task</li>
-      <li>Examples include ABS brakes, thermostats, pacemakers, traffic lights</li>
-      <li>Key characteristics: dedicated function, real-time operation, limited resources</li>
-      <li>Software is stored in ROM and rarely changed</li>
-      <li>Unlike general-purpose computers, users can't install new programs on them</li>
+      <li>Definition of an embedded system and its key features</li>
+      <li>10+ real-world examples with their dedicated functions</li>
+      <li>Comparison between embedded systems and general-purpose computers</li>
+      <li>Why the firmware is stored in ROM</li>
+      <li>Real-time operation and safety-critical examples (pacemaker, ABS)</li>
     </ul>
   </div>
 </div>
 
-<div id="tab-slides" class="tab-panel">
-  <div class="slides-placeholder">
-    <div style="font-size:2rem">📊</div>
-    <p style="font-size:0.9rem">Slides coming soon</p>
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div style="margin-bottom:14px;font-size:13.5px;color:#64748b;">Work through the slides, then mark as complete.</div>
+  <div class="slides-wrap">
+    <iframe class="slides-iframe" src="/OCR_J277_1.1.3_Slides.html"></iframe>
+  </div>
+  <div style="margin-top:12px;text-align:right;">
+    <button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button>
   </div>
 </div>
 
-<div id="tab-worksheet" class="tab-panel">
-  <div id="ws-score-box" style="display:none" class="ws-score">
-    <div>Submitted — <span class="score-val" id="ws-score-val">self-mark using schemes below</span></div>
-  </div>
-  <div id="worksheet-questions"></div>
-  <button class="btn btn-primary btn-full" id="ws-submit-btn" onclick="submitWorksheet()">Submit Worksheet</button>
-</div>
-
-<div id="tab-quiz" class="tab-panel">
-  <div id="quiz-container">
-    <div class="quiz-progress"><div class="quiz-progress-fill" id="quiz-fill" style="width:0%"></div></div>
-    <div class="quiz-counter" id="quiz-counter">Question 1 of 15</div>
-    <div class="quiz-q" id="quiz-question"></div>
-    <div class="quiz-opts" id="quiz-opts"></div>
-    <div class="quiz-feedback" id="quiz-feedback"></div>
-    <div class="quiz-nav"><button class="btn btn-primary" id="quiz-next-btn" onclick="quizNext()" style="display:none">Next →</button></div>
-  </div>
-  <div id="quiz-results" class="quiz-results" style="display:none">
-    <div class="quiz-score-big" id="quiz-score-big"></div>
-    <div class="quiz-grade" id="quiz-grade"></div>
-    <div style="margin-top:20px"><button class="btn btn-outline" onclick="restartQuiz()">Retake Quiz</button></div>
-  </div>
-</div>
-
-<div id="tab-minitest" class="tab-panel">
-  <div id="test-start-screen" style="text-align:center;padding:32px 0">
-    <div style="font-size:3rem;margin-bottom:12px">🎯</div>
-    <h2 style="color:#fff;margin-bottom:8px">Mini Test — 1.1.3</h2>
-    <p style="color:var(--muted);font-size:0.88rem;max-width:400px;margin:0 auto 20px">10-minute timed test. No feedback until submission.</p>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;max-width:320px;margin:0 auto 24px;text-align:left">
-      <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:0.83rem"><span style="color:var(--muted)">Section A</span><span>5 MCQ (auto-marked)</span></div>
-      <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:0.83rem"><span style="color:var(--muted)">Section B</span><span>5 short answer (self-mark)</span></div>
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div class="ws-intro">
+    <div class="ws-intro-icon">✍️</div>
+    <div class="ws-intro-text">
+      <h3>Exam-style Worksheet — 1.1.3 Embedded Systems</h3>
+      <p>8 questions · 20 marks · Submit to reveal mark schemes</p>
     </div>
-    <button class="btn btn-primary" onclick="startTest()">Start Test →</button>
   </div>
-  <div id="test-main" style="display:none">
-    <div class="test-header">
-      <div><div style="font-size:0.72rem;color:var(--muted);margin-bottom:2px">TIME REMAINING</div><div class="test-timer" id="test-timer">10:00</div></div>
-      <div style="text-align:right"><div style="font-size:0.72rem;color:var(--muted);margin-bottom:2px">ANSWERS GIVEN</div><div style="font-size:0.9rem;color:#fff" id="test-progress">0 / 10</div></div>
+  <div id="ws-questions">
+    <div class="ws-question">
+      <div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">Define the term 'embedded system'.</span><span class="ws-q-marks">[2 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-1" placeholder="Type your answer here..."></textarea>
+      <div class="ws-feedback" id="ws-fb-1"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme</div><div class="ws-ms-text">A system (combination of hardware and software) [1] designed to perform a specific/dedicated function, usually as part of a larger device [1].</div></div></div>
     </div>
-    <div id="test-questions"></div>
-    <button class="btn btn-primary btn-full" onclick="submitTest(false)">Submit Test</button>
+    <div class="ws-question">
+      <div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">Give two examples of embedded systems. For each, state the specific dedicated function.</span><span class="ws-q-marks">[4 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-2" placeholder="Type your answer here..." style="min-height:120px;"></textarea>
+      <div class="ws-feedback" id="ws-fb-2"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme (2 marks each)</div><div class="ws-ms-text">E.g. Washing machine [1] — controls wash cycle/temperature/spin speed [1]; Pacemaker [1] — monitors heart rate and delivers electrical pulses to regulate it [1]. Accept any valid example with its specific function.</div></div></div>
+    </div>
+    <div class="ws-question">
+      <div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">State two characteristics of an embedded system.</span><span class="ws-q-marks">[2 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-3" placeholder="Type your answer here..."></textarea>
+      <div class="ws-feedback" id="ws-fb-3"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme (any 2)</div><div class="ws-ms-text">• Single/dedicated function [1]<br>• Low power consumption [1]<br>• Firmware stored in ROM (not changeable by user) [1]<br>• Real-time operation [1]<br>• Limited resources (CPU/RAM) [1]</div></div></div>
+    </div>
+    <div class="ws-question">
+      <div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">Explain why a washing machine controller is an embedded system but a laptop is not.</span><span class="ws-q-marks">[3 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..." style="min-height:120px;"></textarea>
+      <div class="ws-feedback" id="ws-fb-4"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme (any 3)</div><div class="ws-ms-text">• Washing machine performs one specific function (controlling wash) [1]<br>• Its program is stored in ROM and cannot be changed [1]<br>• A laptop is a general-purpose computer that can run many different programs [1]<br>• Laptop has an OS allowing users to install/change applications [1]</div></div></div>
+    </div>
+    <div class="ws-question">
+      <div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">State where the program in an embedded system is typically stored and explain why.</span><span class="ws-q-marks">[2 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-5" placeholder="Type your answer here..."></textarea>
+      <div class="ws-feedback" id="ws-fb-5"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme</div><div class="ws-ms-text">Stored in ROM [1]; because it is read-only and the program must be permanent/fixed — the user should not be able to change it [1].</div></div></div>
+    </div>
+    <div class="ws-question">
+      <div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">State one reason why embedded systems typically use less power than general-purpose computers.</span><span class="ws-q-marks">[1 mark]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-6" placeholder="Type your answer here..."></textarea>
+      <div class="ws-feedback" id="ws-fb-6"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme</div><div class="ws-ms-text">They only run one program/have limited hardware requirements / optimised for a single task / often battery-powered so designed to be energy-efficient. [1 — any one]</div></div></div>
+    </div>
+    <div class="ws-question">
+      <div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">A pacemaker uses an embedded system. Explain why it is important that the pacemaker's embedded system operates in real-time.</span><span class="ws-q-marks">[3 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..." style="min-height:120px;"></textarea>
+      <div class="ws-feedback" id="ws-fb-7"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme (any 3)</div><div class="ws-ms-text">• Real-time means the system must respond within a guaranteed/defined time [1]<br>• If the pacemaker detects an abnormal heartbeat, it must deliver a pulse immediately [1]<br>• A delayed response could be life-threatening / fatal [1]<br>• The system cannot afford to queue/buffer inputs and respond later [1]</div></div></div>
+    </div>
+    <div class="ws-question">
+      <div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">Give one advantage and one disadvantage of an embedded system compared to a general-purpose computer for controlling a domestic appliance such as a microwave.</span><span class="ws-q-marks">[3 marks]</span></div>
+      <textarea class="ws-textarea" id="ws-ans-8" placeholder="Type your answer here..." style="min-height:120px;"></textarea>
+      <div class="ws-feedback" id="ws-fb-8"><div class="ws-feedback-header good">✅ Mark scheme</div><div class="ws-feedback-body"><div class="ws-ms-label">Mark scheme</div><div class="ws-ms-text"><strong>Advantage (any 1):</strong> Cheaper / lower power consumption / more reliable for single task / smaller size [1 + reason 1]<br><strong>Disadvantage (any 1):</strong> Cannot be reprogrammed / cannot run other programs / limited flexibility [1]</div></div></div>
+    </div>
   </div>
-  <div class="test-results" id="test-results">
-    <h3>Test Results</h3>
-    <div id="test-results-content"></div>
-    <button class="btn btn-outline" style="margin-top:16px" onclick="restartTest()">Retry Test</button>
+  <div class="ws-submit-row" id="ws-submit-row">
+    <button class="ws-submit-btn" onclick="submitWorksheet()">Submit Worksheet →</button>
+  </div>
+  <div class="ws-score-panel" id="ws-score-panel">
+    <div class="ws-score-big">?</div>
+    <div class="ws-score-label">out of 20 — self-mark above</div>
+    <div class="ws-score-msg">Compare your answers to the mark schemes above and count your marks.</div>
+    <button class="ws-retry-btn" onclick="retryWorksheet()">Try again</button>
   </div>
 </div>
 
-<div id="tab-keyterms" class="tab-panel">
-  <div class="kt-toggle">
-    <button class="active" onclick="switchKT('flash',this)">Flashcards</button>
-    <button onclick="switchKT('list',this)">List</button>
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div class="quiz-result-msg" id="quiz-result-msg"></div>
+      <div class="quiz-result-sub" id="quiz-result-sub"></div>
+      <div><button class="quiz-restart-btn" onclick="restartQuiz()">Try again</button>
+      <button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+    </div>
   </div>
-  <div id="kt-flash" class="flashcard-grid"></div>
-  <div id="kt-list" class="kt-list" style="display:none"></div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2>Mini Test — 1.1.3 Embedded Systems</h2>
+      <p>Timed, exam-condition test. No feedback until you submit.</p>
+      <ul>
+        <li>10 questions · 10 marks · 10 minutes</li>
+        <li>5 multiple choice + 5 short answer</li>
+        <li>Mark schemes revealed after submission</li>
+      </ul>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div class="test-timer-inner"><span>⏱ Time remaining:</span><span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">Mini Test · 10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q" id="tmcq-1">
+      <div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">Which of the following best describes an embedded system?</span><span class="test-q-marks">[1]</span></div>
+      <div class="test-radio-opts">
+        <label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> A general-purpose computer with a touchscreen</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> Hardware and software designed to perform one specific function</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> Any device that contains a CPU</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> A computer that is embedded in a wall</label>
+      </div>
+    </div>
+    <div class="test-mcq-q" id="tmcq-2">
+      <div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">Where is the program in a typical embedded system stored?</span><span class="test-q-marks">[1]</span></div>
+      <div class="test-radio-opts">
+        <label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> RAM</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> Hard drive</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> ROM</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> Cache</label>
+      </div>
+    </div>
+    <div class="test-mcq-q" id="tmcq-3">
+      <div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">Which of the following is NOT an example of an embedded system?</span><span class="test-q-marks">[1]</span></div>
+      <div class="test-radio-opts">
+        <label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> A digital alarm clock</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> A washing machine controller</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> A laptop computer</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> A car ABS braking system</label>
+      </div>
+    </div>
+    <div class="test-mcq-q" id="tmcq-4">
+      <div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">What does 'real-time operation' mean for an embedded system?</span><span class="test-q-marks">[1]</span></div>
+      <div class="test-radio-opts">
+        <label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> It shows the current time</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> It must respond to inputs within a guaranteed time frame</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> It operates 24 hours a day</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> It processes only one input at a time</label>
+      </div>
+    </div>
+    <div class="test-mcq-q" id="tmcq-5">
+      <div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">Which statement about embedded systems is correct?</span><span class="test-q-marks">[1]</span></div>
+      <div class="test-radio-opts">
+        <label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> They use more power than PCs because they must run 24/7</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> They can run any program the user installs</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> They are optimised for a single task and typically use less power</label>
+        <label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> They always have a keyboard and screen</label>
+      </div>
+    </div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">State what is meant by an embedded system.</span><span class="test-q-marks">[1]</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer here..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>Hardware and software designed to perform a specific/dedicated function (usually as part of a larger device). [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">Name one embedded system and state its dedicated function.</span><span class="test-q-marks">[2]</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer here..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>Any valid device [1] with its specific function stated [1]. E.g. Pacemaker — monitors heart rate and delivers electrical pulses to regulate heartbeat.</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">State one reason why an embedded system's software is stored in ROM.</span><span class="test-q-marks">[1]</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer here..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>ROM is non-volatile (data not lost when power off) / the program must be permanent and not changeable by the user. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">State one difference between an embedded system and a general-purpose computer.</span><span class="test-q-marks">[1]</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer here..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Embedded system performs one specific function; general-purpose computer can run many different programs. [1 — any valid difference]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div class="test-result-pct">MCQ Score</div>
+      <div class="test-result-score" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div class="test-result-grade" id="test-result-grade"></div>
+      <div class="test-result-msg" id="test-result-msg"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button><button class="nav-dash-btn" style="display:inline-flex;" onclick="switchTab('keyterms')">Key Terms →</button></div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Session complete!</div><div style="font-size:14px;color:#64748b;margin-bottom:20px;" id="fc-done-msg"></div><button class="nav-dash-btn" onclick="resetFlashcards()" style="display:inline-block;">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
 </div>
 
 </div>
-
 <div class="bottom-nav">
-  <a href="/ocr-j277/1-1-2/">← 1.1.2 CPU Performance</a>
-  <a href="/ocr-j277/1-2-1/" class="next-btn">Next: 1.2.1 Primary Storage →</a>
+  <a href="/ocr-j277/1-1-2/" class="bottom-nav-btn">← 1.1.2 CPU Performance</a>
+  <span class="bottom-nav-center">1.1 Systems Architecture</span>
+  <a href="/ocr-j277/1-2-1/" class="bottom-nav-btn next-btn">1.2.1 Primary Storage →</a>
 </div>
-
-<div class="paywall" id="paywall">
+<div class="paywall-overlay" id="paywall">
   <div class="paywall-card">
-    <h2>Subscribe to Unlock</h2>
-    <p>This subtopic is part of the full OCR J277 course. Subscribe to access all 47 lessons.</p>
-    <div class="price">£7.99<small>/month</small></div>
-    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="btn btn-primary btn-full" style="text-decoration:none">Subscribe Now</a>
-    <div style="margin-top:12px"><a href="/dashboard" style="color:var(--muted);font-size:0.8rem;text-decoration:none">← Back to dashboard</a></div>
+    <div class="paywall-icon">🔒</div>
+    <div class="paywall-title">Unlock Everything</div>
+    <div class="paywall-sub">Subscribe to unlock all 47 OCR J277 lessons, worksheets, quizzes and key terms.</div>
+    <div class="paywall-price">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div class="paywall-price-sub">or £59/year — best value</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').classList.remove('show')">Maybe later</button>
   </div>
 </div>
-
 <script>
-var SUPA_URL = 'https://jxrqlnlsslftcqeyyzbx.supabase.co';
-var SUPA_KEY = 'sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
-var LESSON_ID = '1-1-3';
-var IS_FREE = false;
-var YOUTUBE_ID = '';
-var currentUser = null;
-
-var QUIZ = [
-  { q:'What is an embedded system?', opts:['A very small PC','A computer built into a device to perform a specific function','A type of RAM','An operating system'], a:1, exp:'An embedded system is a computer system embedded within a larger device, designed to perform one specific, dedicated function.' },
-  { q:'Which of the following is the BEST example of an embedded system?', opts:['A gaming laptop','A desktop PC','The ABS controller in a car','A tablet computer'], a:2, exp:'The ABS controller is built into the car to do one thing — control braking. Laptops and desktops are general-purpose computers.' },
-  { q:'Which characteristic describes embedded systems?', opts:['Multiple functions','Easily reprogrammed by the user','Performs a single dedicated function','Requires a full keyboard and screen'], a:2, exp:'Embedded systems are designed for ONE specific, dedicated task. That\'s what distinguishes them from general-purpose computers.' },
-  { q:'What does "real-time operation" mean for an embedded system?', opts:['It works very fast','It must respond to inputs within a guaranteed time period','It runs 24 hours a day','It connects to the internet'], a:1, exp:'Real-time means the system guarantees a response within a fixed time period — essential for safety-critical systems like ABS or pacemakers.' },
-  { q:'Why do embedded systems typically have limited memory compared to PCs?', opts:['Because memory is expensive','Because they only need enough to perform their one specific task','Because they don\'t have a processor','Because they are not computers'], a:1, exp:'Embedded systems are optimised for their specific task. More memory than needed would waste power and cost money unnecessarily.' },
-  { q:'Where is the program in most embedded systems stored?', opts:['On a hard drive','In RAM, so it can be changed','In ROM, so it is fixed and permanent','On the internet'], a:2, exp:'Embedded system software is usually stored in ROM (Read-Only Memory) or Flash memory. It is fixed and doesn\'t change, unlike PC software.' },
-  { q:'A student says "a smartphone is an embedded system because it has a dedicated processor inside it." Is this correct?', opts:['Yes — any device with a processor is embedded','No — smartphones are general-purpose computers (though they contain embedded subsystems)','Yes — smartphones only do one thing','No — smartphones don\'t have processors'], a:1, exp:'Smartphones are general-purpose computers that run many different apps. However, specific chips within a phone (e.g. GPS receiver, camera processor) ARE embedded systems.' },
-  { q:'Which TWO of these are characteristics of embedded systems? (Pick the best answer)', opts:['High memory and multiple functions','Low power consumption and single dedicated function','Fully user-reprogrammable and always connected to internet','Large storage and complex user interface'], a:1, exp:'Embedded systems are characterised by low power use (often battery-operated) and performing a single, dedicated function.' },
-  { q:'Give the best example of an embedded system used in medicine:', opts:['An X-ray machine connected to a PC','A pacemaker that monitors and regulates heart rhythm','A hospital\'s server computers','A doctor\'s laptop'], a:1, exp:'A pacemaker is an embedded system — it has one job (regulate heart rhythm) in real time, with limited resources, running continuously.' },
-  { q:'What is the key difference between an embedded system and a general-purpose computer?', opts:['Embedded systems are always smaller','Embedded systems perform one dedicated function; general-purpose computers perform many tasks','General-purpose computers have less memory','Embedded systems run Windows'], a:1, exp:'The defining difference is function: embedded = one dedicated task; general-purpose = flexible, many tasks. Size isn\'t always different.' },
-  { q:'A washing machine has an embedded system. What does this system control?', opts:['Internet connectivity','Wash cycles, water temperature, and spin speed','The washing machine\'s keyboard','Displaying websites on the machine'], a:1, exp:'The embedded system in a washing machine controls operational functions — cycle selection, temperature, water level, spin speed. It doesn\'t do anything else.' },
-  { q:'Why must a car\'s ABS (antilock braking system) be a real-time embedded system?', opts:['Because it needs to show graphics','Because it must respond to wheel sensors in milliseconds to prevent skidding','Because it runs multiple programs','Because it connects to the internet'], a:1, exp:'ABS must respond to wheel sensor data in milliseconds. A delay of even a fraction of a second could mean losing control of the vehicle — hence real-time is essential.' },
-  { q:'Embedded systems often use ROM to store their program. What advantage does this give?', opts:['The program can be changed by the user at any time','The program is permanently stored and not lost when power is cut','ROM provides much faster access than cache','ROM allows more memory than RAM'], a:1, exp:'ROM retains data even without power (it\'s non-volatile). This means the embedded system\'s program is always available when the device is turned on.' },
-  { q:'Which of these devices is NOT an embedded system?', opts:['Traffic light controller','Digital thermostat','Smart watch fitness tracker','A general-purpose server running multiple applications'], a:3, exp:'A server runs multiple applications for many users — it\'s a general-purpose computer. The other three each perform dedicated functions as embedded systems.' },
-  { q:'An embedded system in a digital camera performs image processing. Which characteristic does this demonstrate?', opts:['General-purpose computing','Single dedicated function (image processing specific to camera use)','High memory capacity','Easily reprogrammed by users'], a:1, exp:'The camera\'s image processor does ONE thing — process camera images. This is the defining characteristic of an embedded system: a dedicated, specific function.' }
-];
-
-var WORKSHEET = [
-  { q:'Define the term "embedded system".', marks:2, ms:'An embedded system is a computer system [1] built into a larger device to perform a specific, dedicated function. [1]' },
-  { q:'Give THREE examples of embedded systems found in everyday life. For each, briefly state its function.', marks:3, ms:'Any three from: Washing machine controller (controls cycles/temperature) [1]; Car ABS (controls braking to prevent skidding) [1]; Digital thermostat (monitors and controls temperature) [1]; Pacemaker (monitors and regulates heart rhythm) [1]; Traffic light system (controls light sequencing) [1]; GPS sat nav (calculates position and routes) [1]. 1 mark per valid example with function, max 3.' },
-  { q:'Explain why embedded systems typically have limited memory and processing power compared to general-purpose computers.', marks:3, ms:'Embedded systems are designed for ONE specific task [1]. They only need enough processing power and memory to complete that task [1]. Using minimal resources keeps costs low and reduces power consumption [1].' },
-  { q:'What is meant by "real-time operation" in the context of embedded systems? Give an example.', marks:3, ms:'Real-time operation means the system must respond to inputs within a guaranteed/fixed time period [1]. A delay would cause failure or danger [1]. Example: a car ABS must respond to wheel sensors in milliseconds to prevent skidding [1] / pacemaker must respond to irregular heartbeat immediately [1]. Max 3 marks.' },
-  { q:'Compare embedded systems and general-purpose computers. Your answer should include differences in function, memory, and software.', marks:6, ms:'Function: Embedded = single dedicated task [1]; GP computer = many different tasks [1]. Memory: Embedded has very limited memory (KB to MB) [1]; GP computer has much more (GB) [1]. Software: Embedded software is fixed in ROM, rarely changed [1]; GP computer software is easily installed/changed by user [1]. Award 1 mark per valid point, max 6.' },
-  { q:'Explain why the program in most embedded systems is stored in ROM rather than RAM.', marks:3, ms:'ROM is non-volatile — it retains data even when power is cut [1]. This means the program is always ready when the device is switched on [1]. Embedded systems don\'t need to change their program frequently [1], so ROM is appropriate (RAM would lose data on power off [1]). Max 3.' },
-  { q:'A student claims "my smartphone is an embedded system." Assess this claim.', marks:4, ms:'Claim is incorrect [1]. A smartphone is a general-purpose computer — it runs many different applications [1] and is easily reprogrammed by installing apps [1]. However, specific chips WITHIN the smartphone (e.g. GPS receiver, camera image processor) ARE embedded systems, each with a dedicated function [1]. Award marks for balanced assessment.' },
-  { q:'A hospital uses a pacemaker to regulate a patient\'s heart rhythm. Explain why it is essential that this embedded system operates in real time and with high reliability.', marks:4, ms:'Real-time: the pacemaker must detect irregular heart rhythms and respond immediately [1]. Any delay could be life-threatening [1]. Reliability: the system cannot afford to crash or fail [1] as it is continuously monitoring a critical life function [1]. Full marks for addressing both real-time AND reliability with appropriate justification.' }
-];
-
-var KEY_TERMS = [
-  { t:'Embedded system', d:'A computer system built into a larger device to perform a specific, dedicated function.' },
-  { t:'General-purpose computer', d:'A computer designed to run many different programs for various tasks (e.g. laptop, PC).' },
-  { t:'Dedicated function', d:'A single, specific task that an embedded system is designed to perform.' },
-  { t:'Real-time operation', d:'Processing that must respond to inputs within a guaranteed time period, often used in safety-critical systems.' },
-  { t:'ROM (Read-Only Memory)', d:'Non-volatile memory used to store the fixed program in embedded systems; retains data without power.' },
-  { t:'Non-volatile', d:'Memory that retains its data even when power is switched off (e.g. ROM, Flash memory).' },
-  { t:'ABS', d:'Antilock Braking System — an embedded system in cars that prevents wheels from locking during braking.' },
-  { t:'Pacemaker', d:'A medical embedded system that monitors and regulates a patient\'s heart rhythm in real time.' },
-  { t:'Microcontroller', d:'A small chip containing a processor, memory and I/O all on one chip — the core of many embedded systems.' },
-  { t:'Firmware', d:'The fixed software stored in ROM within an embedded system.' },
-  { t:'Single-function', d:'Describing a system designed to do only one specific job, as opposed to general-purpose.' },
-  { t:'Limited resources', d:'Embedded systems have restricted processing power, memory, and storage, sufficient only for their task.' },
-  { t:'Thermostat', d:'An embedded system that monitors temperature and controls heating or cooling systems.' },
-  { t:'Traffic light controller', d:'An embedded system that manages the sequencing of traffic signals at road junctions.' },
-  { t:'Critical system', d:'A system where failure could have serious consequences, often requiring real-time and high-reliability embedded systems.' }
-];
-
-var TEST_MCQ = [
-  { q:'What is the defining feature of an embedded system?', opts:['It has a large screen','It performs one specific dedicated function','It runs Windows','It has high RAM'], a:1 },
-  { q:'Where is the program stored in most embedded systems?', opts:['Hard drive','RAM','ROM','The internet'], a:2 },
-  { q:'Which is the best example of an embedded system?', opts:['A desktop PC','A tablet','A pacemaker','A gaming laptop'], a:2 },
-  { q:'What does "real-time" mean for an embedded system?', opts:['Very fast display','Response within a guaranteed time period','24/7 internet connection','Runs at GHz speeds'], a:1 },
-  { q:'Why do embedded systems use limited memory?', opts:['Memory is unavailable','They only need enough for their specific task','To save space on a screen','RAM is too slow'], a:1 }
-];
-
-var TEST_SA = [
-  { q:'Define embedded system.', ms:'A computer system built into a larger device to perform a specific/dedicated function.' },
-  { q:'Give ONE example of an embedded system and state its function.', ms:'Any valid example, e.g. ABS in a car — controls braking to prevent skidding. Must include device + function.' },
-  { q:'What is "real-time operation"?', ms:'The system must respond to inputs within a guaranteed/fixed time period.' },
-  { q:'State ONE reason why embedded system software is stored in ROM rather than RAM.', ms:'ROM is non-volatile — it retains the program even when power is off, so the system works immediately on switch-on.' },
-  { q:'State TWO characteristics of embedded systems.', ms:'Any two: single/dedicated function; real-time operation; limited memory/processing power; software fixed in ROM; low power consumption.' }
-];
-
-function getSB() {
-  var h = { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json' };
-  return {
-    auth: { getSession: function() {
-      var key = Object.keys(localStorage).find(function(k){ return k.indexOf('auth-token') > -1; });
-      if (!key) return Promise.resolve({ data: { session: null } });
-      try { return Promise.resolve({ data: { session: JSON.parse(localStorage.getItem(key)) } }); }
-      catch(e) { return Promise.resolve({ data: { session: null } }); }
-    }}
-  };
-}
-
-window.addEventListener('DOMContentLoaded', function() {
-  getSB().auth.getSession().then(function(r) {
-    var session = r.data.session;
-    if (!session) { window.location.href = '/'; return; }
-    currentUser = session.user || parseJwt(session.access_token || '');
-    if (!IS_FREE) checkAccess();
-    initWorksheet();
-    initQuiz();
-    setupScrollTracker();
-    if (!YOUTUBE_ID) document.getElementById('video-placeholder').style.display = 'flex';
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-1-3';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){window.location.href='/';return;}
+    currentUser=session.user;
+    document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    initQuiz();initKeyTerms();
+    setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+    if(!IS_FREE)checkAccess();
   });
 });
-
-function parseJwt(t) { try { return JSON.parse(atob(t.split('.')[1])); } catch(e) { return {}; } }
-function checkAccess() {
-  getSB().auth.getSession().then(function(r) {
-    var session = r.data.session;
-    if (!session) { document.getElementById('paywall').style.display = 'flex'; return; }
-    // Admin bypass — site owner always has access
-    if (currentUser && currentUser.email === '07772967005mr@gmail.com') return;
-    var h = { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + session.access_token };
-    fetch(SUPA_URL + '/rest/v1/subscriptions?user_id=eq.' + (currentUser.sub || currentUser.id) + '&status=eq.active&select=id', { headers: h })
-      .then(function(r){ return r.json(); })
-      .then(function(d){ if (!d || !d.length) document.getElementById('paywall').style.display = 'flex'; });
+function checkAccess(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){document.getElementById('paywall').style.display='flex';return;}
+    if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;
+    var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};
+    fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h})
+      .then(function(r){return r.json();})
+      .then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});
   });
 }
-function switchTab(name, btn) {
-  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
-  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-  document.getElementById('tab-' + name).classList.add('active');
-  if (btn) btn.classList.add('active');
-  if (name === 'quiz' && !quizStarted) startQuiz();
-  if (name === 'keyterms') renderKeyTerms();
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){
+  function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}
+  sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);
+  sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);
+  sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);
 }
-function setupScrollTracker() {
-  var seen = false;
-  var obs = new IntersectionObserver(function(e){ if (e[0].isIntersecting && !seen) { seen = true; saveProgress({ lesson_read: true }); } });
-  obs.observe(document.getElementById('notes-read-marker'));
+function switchTab(name){
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('panel-'+name).classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
 }
-function saveProgress(data) {
-  if (!currentUser) return;
-  var uid = currentUser.sub || currentUser.id;
-  if (!uid) return;
-  fetch(SUPA_URL + '/rest/v1/user_progress', { method:'POST', headers:{ 'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':'resolution=merge-duplicates,return=minimal' }, body: JSON.stringify(Object.assign({ user_id: uid, subtopic_id: LESSON_ID }, data)) });
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){
+  if(wsSubmitted)return;wsSubmitted=true;
+  for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}
+  document.getElementById('ws-submit-row').style.display='none';
+  document.getElementById('ws-score-panel').classList.add('show');
+  prog.worksheet=true;updateDots();
 }
-function initWorksheet() {
-  document.getElementById('worksheet-questions').innerHTML = WORKSHEET.map(function(w, i) {
-    return '<div class="ws-q"><div class="q-text">' + (i+1) + '. ' + w.q + '</div><div class="q-marks">[' + w.marks + ' mark' + (w.marks>1?'s':'') + ']</div><textarea id="ws-ans-' + i + '" placeholder="Write your answer here..."></textarea><div class="mark-scheme" id="ms-' + i + '"><strong>Mark Scheme:</strong> ' + w.ms + '</div></div>';
-  }).join('');
+function retryWorksheet(){
+  wsSubmitted=false;
+  for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}
+  document.getElementById('ws-submit-row').style.display='block';
+  document.getElementById('ws-score-panel').classList.remove('show');
 }
-function submitWorksheet() {
-  document.querySelectorAll('.mark-scheme').forEach(function(m){ m.style.display = 'block'; });
-  document.getElementById('ws-submit-btn').style.display = 'none';
-  document.getElementById('ws-score-box').style.display = 'block';
-  saveProgress({ worksheet_submitted: true });
+var QUIZ=[
+  {q:"What is an embedded system?",opts:["A general-purpose computer","Hardware and software designed for one specific function","A computer embedded in a wall","Any device containing a CPU"],a:1,exp:"An embedded system is hardware and software combined to perform a single dedicated function, usually as part of a larger device."},
+  {q:"Where is an embedded system's program typically stored?",opts:["Hard drive","RAM","ROM","USB flash drive"],a:2,exp:"The firmware of an embedded system is stored in ROM — it is permanent, non-volatile and cannot be changed by the user."},
+  {q:"Which is an example of an embedded system?",opts:["A desktop PC","A laptop","A washing machine controller","A tablet computer"],a:2,exp:"A washing machine controller is an embedded system — it performs one specific function (controlling the wash cycle) and cannot run other programs."},
+  {q:"What is 'real-time operation' in embedded systems?",opts:["Operating 24 hours a day","Responding to inputs within a guaranteed time frame","Processing data as fast as possible","Running only one program at a time"],a:1,exp:"Real-time operation means the system must respond to inputs within a guaranteed, defined time frame — critical in safety systems like pacemakers and ABS brakes."},
+  {q:"Why is a smartphone generally NOT classed as an embedded system?",opts:["It is too expensive","It can run many different applications installed by the user","It uses too much power","It has a touchscreen"],a:1,exp:"A smartphone runs a full OS and can run many user-installed apps, making it a general-purpose computer, not a dedicated embedded system."},
+  {q:"Which feature is most important for a pacemaker's embedded system?",opts:["High clock speed","Large cache size","Real-time reliable operation","Low cost"],a:2,exp:"A pacemaker is safety-critical — it must respond in real-time to heart rhythm abnormalities. Reliability and guaranteed response time are paramount."},
+  {q:"What does 'firmware' mean?",opts:["Software that has bugs","The program stored in ROM on an embedded device","Any software on a computer","Hardware that is very firm"],a:1,exp:"Firmware is the permanent program stored in ROM on an embedded system. It controls the device's dedicated function and cannot normally be changed by the user."},
+  {q:"Which correctly describes a car's ABS braking system?",opts:["A general-purpose computer","An embedded system that detects wheel lock and adjusts brake pressure","A system that controls all car functions","Software stored in RAM"],a:1,exp:"The ABS system is an embedded system with one dedicated function: detecting wheel lock-up and automatically modulating brake pressure to prevent skidding."},
+  {q:"Which statement about embedded systems is TRUE?",opts:["They have large hard drives","They are always connected to the internet","They typically use less power than general-purpose computers","They can run any software the user chooses"],a:2,exp:"Embedded systems are optimised for a single task with limited hardware, so they typically use much less power than general-purpose computers."},
+  {q:"What type of user interface does most embedded systems have?",opts:["A full graphical user interface","A command line interface","Minimal or no user interface","A web browser interface"],a:2,exp:"Most embedded systems have minimal or no traditional user interface — just the controls needed for their specific function (e.g. buttons on a microwave)."},
+  {q:"Which is NOT a characteristic of embedded systems?",opts:["Dedicated function","Real-time operation","User can install new software","Low power consumption"],a:2,exp:"Users cannot install new software on a typical embedded system — the program is fixed in ROM at manufacture. This is a defining characteristic."},
+  {q:"A traffic light controller is an embedded system. What is its dedicated function?",opts:["Providing internet access","Sequencing traffic lights based on timers or sensors","Storing vehicle registration data","Monitoring speed cameras"],a:1,exp:"A traffic light controller's dedicated function is sequencing the traffic light colours using timers or sensor inputs to manage traffic flow."},
+  {q:"Why is reliability especially important in embedded systems like pacemakers?",opts:["They are expensive to repair","They are safety-critical — failure could be life-threatening","They use more power than PCs","They must be updated regularly"],a:1,exp:"Safety-critical embedded systems like pacemakers must operate without failure because a malfunction could have life-threatening consequences for the patient."},
+  {q:"Which correctly distinguishes embedded systems from general-purpose computers?",opts:["Embedded systems are always more powerful","General-purpose computers can only run one program","Embedded systems perform a single dedicated function; GPC can run many programs","GPC always use ROM for storage"],a:2,exp:"The key distinction: embedded systems perform one specific, fixed function; general-purpose computers can run many different programs chosen by the user."},
+  {q:"Which of these is a safety-critical embedded system?",opts:["A digital photo frame","A barcode scanner at a supermarket","An anti-lock braking system in a car","A smart TV"],a:2,exp:"An ABS braking system is safety-critical — it must respond in real-time to prevent wheel lock during emergency braking. Failure could cause accidents."}
+];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){
+  if(qIndex>=QUIZ.length){showQuizResult();return;}
+  var item=QUIZ[qIndex];
+  document.getElementById('quiz-q-text').textContent=item.q;
+  document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;
+  document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';
+  var opts=document.getElementById('quiz-options');opts.innerHTML='';
+  ['A','B','C','D'].forEach(function(l,i){
+    var btn=document.createElement('button');btn.className='quiz-opt';
+    btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];
+    btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);
+    opts.appendChild(btn);
+  });
+  document.getElementById('quiz-explanation').className='quiz-explanation';
+  document.getElementById('quiz-next-btn').className='quiz-next-btn';
+  qAnswered=false;
 }
-var qIdx = 0, quizScore = 0, quizStarted = false, answered = false;
-function initQuiz() { qIdx = 0; quizScore = 0; }
-function startQuiz() { quizStarted = true; qIdx = 0; quizScore = 0; renderQuizQ(); }
-function renderQuizQ() {
-  if (qIdx >= QUIZ.length) { showQuizResults(); return; }
-  answered = false;
-  var q = QUIZ[qIdx];
-  document.getElementById('quiz-fill').style.width = (qIdx/QUIZ.length*100) + '%';
-  document.getElementById('quiz-counter').textContent = 'Question ' + (qIdx+1) + ' of ' + QUIZ.length;
-  document.getElementById('quiz-question').textContent = q.q;
-  document.getElementById('quiz-feedback').style.display = 'none';
-  document.getElementById('quiz-next-btn').style.display = 'none';
-  document.getElementById('quiz-opts').innerHTML = q.opts.map(function(o,i){ return '<button class="opt" onclick="answerQuiz(' + i + ')" id="opt-' + i + '">' + String.fromCharCode(65+i) + '. ' + o + '</button>'; }).join('');
+function selectAnswer(idx){
+  if(qAnswered)return;qAnswered=true;
+  var item=QUIZ[qIndex];
+  var btns=document.querySelectorAll('.quiz-opt');
+  for(var i=0;i<btns.length;i++)btns[i].disabled=true;
+  var correct=(idx===item.a);if(correct)qScore++;
+  btns[idx].classList.add(correct?'correct':'wrong');
+  if(!correct)btns[item.a].classList.add('correct');
+  var exp=document.getElementById('quiz-explanation');
+  exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;
+  exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');
+  document.getElementById('quiz-next-btn').className='quiz-next-btn show';
 }
-function answerQuiz(idx) {
-  if (answered) return; answered = true;
-  var q = QUIZ[qIdx]; var correct = idx === q.a;
-  if (correct) quizScore++;
-  document.querySelectorAll('.opt').forEach(function(o){ o.disabled = true; });
-  document.getElementById('opt-' + idx).classList.add(correct ? 'correct' : 'wrong');
-  if (!correct) document.getElementById('opt-' + q.a).classList.add('correct');
-  var fb = document.getElementById('quiz-feedback');
-  fb.className = 'quiz-feedback ' + (correct ? 'correct' : 'wrong');
-  fb.innerHTML = (correct ? '✅ Correct! ' : '❌ Incorrect. ') + q.exp;
-  fb.style.display = 'block';
-  document.getElementById('quiz-next-btn').style.display = 'inline-flex';
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){
+  document.getElementById('quiz-body').style.display='none';
+  document.getElementById('quiz-result').className='quiz-result show';
+  var pct=Math.round(qScore/QUIZ.length*100);
+  document.getElementById('quiz-result-score').textContent=qScore;
+  var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;
+  document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';
+  var msgs=[['Keep revising!','Go back to the notes.'],['Getting there!','Revisit the notes.'],['Good result!','A solid score.'],['Excellent!','Strong knowledge.'],['Perfect!','Flawless — well done!']];
+  var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;
+  document.getElementById('quiz-result-msg').textContent=msgs[mi][0];
+  document.getElementById('quiz-result-sub').textContent=msgs[mi][1];
+  prog.quiz=true;updateDots();
 }
-function quizNext() { qIdx++; renderQuizQ(); }
-function showQuizResults() {
-  document.getElementById('quiz-container').style.display = 'none';
-  document.getElementById('quiz-results').style.display = 'block';
-  var pct = Math.round(quizScore/QUIZ.length*100);
-  document.getElementById('quiz-score-big').textContent = quizScore + '/' + QUIZ.length;
-  document.getElementById('quiz-grade').textContent = pct + '% — ' + (pct>=90?'Excellent!':pct>=70?'Good work':pct>=50?'Developing':'Needs revision');
-  saveProgress({ quiz_best_score: pct });
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+var KEY_TERMS=[
+  {term:"Embedded system",def:"A combination of hardware and software designed to perform a single specific/dedicated function, usually as part of a larger device."},
+  {term:"Firmware",def:"The fixed program stored in ROM inside an embedded system. Cannot normally be changed by the user and controls the device's specific function."},
+  {term:"Dedicated function",def:"A single, specific purpose that an embedded system is designed and optimised to perform."},
+  {term:"Real-time operation",def:"A system that must respond to inputs within a guaranteed, defined time frame — critical in safety systems like pacemakers and ABS brakes."},
+  {term:"General-purpose computer",def:"A computer that can run many different programs chosen by the user, with a full operating system (e.g. PC, laptop, smartphone)."},
+  {term:"ROM (Read-Only Memory)",def:"Non-volatile memory used to store firmware in embedded systems. Data is permanent and cannot be changed by the user."},
+  {term:"Safety-critical system",def:"An embedded system where failure could result in injury or death (e.g. pacemakers, ABS brakes, aircraft control systems)."},
+  {term:"Pacemaker",def:"A medical embedded system implanted in the body that monitors heart rate and delivers electrical pulses to regulate the heartbeat."},
+  {term:"ABS (Anti-lock Braking System)",def:"An embedded system in vehicles that detects wheel lock-up during braking and automatically adjusts brake pressure to prevent skidding."},
+  {term:"Traffic light controller",def:"An embedded system that sequences traffic lights using timers or sensor inputs to manage traffic flow at junctions."},
+  {term:"Non-volatile memory",def:"Memory that retains its contents when power is removed. ROM in embedded systems is non-volatile, which is why firmware persists after switching off."},
+  {term:"Low power consumption",def:"A key feature of many embedded systems — they use minimal power, often running on batteries, because they are optimised for a single task."},
+  {term:"Fixed at manufacture",def:"The program in most embedded systems is set when the device is manufactured and cannot be changed by end users."},
+  {term:"Microcontroller",def:"A small integrated circuit (chip) containing a CPU, RAM, and ROM used at the heart of many embedded systems."},
+  {term:"Input/Output interface",def:"The physical connections and controls on an embedded system — limited to just what is needed for its specific function (e.g. buttons on a microwave)."}
+];
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){
+  var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';
+  KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});
+  showCard(0);
 }
-function restartQuiz() {
-  document.getElementById('quiz-container').style.display = 'block';
-  document.getElementById('quiz-results').style.display = 'none';
-  qIdx = 0; quizScore = 0; renderQuizQ();
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal definition';}
+function markKnown(){knownCount++;nextCard();}
+function markLearning(){learningCount++;nextCard();}
+function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Session complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.'+(learningCount>0?' '+learningCount+' to review.':' Great work!');}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[1,2,2,1,2];
+var TEST_MCQ_LABELS=[['A general-purpose computer with a touchscreen','Hardware and software designed to perform one specific function','Any device that contains a CPU','A computer that is embedded in a wall'],['RAM','Hard drive','ROM','Cache'],['A digital alarm clock','A washing machine controller','A laptop computer','A car ABS braking system'],['It shows the current time','It must respond to inputs within a guaranteed time frame','It operates 24 hours a day','It processes only one input at a time'],['They use more power than PCs because they must run 24/7','They can run any program the user installs','They are optimised for a single task and typically use less power','They always have a keyboard and screen']];
+var TEST_MCQ_EXPLAIN=['An embedded system is hardware and software designed for one specific/dedicated function.','Firmware is stored in ROM — permanent and non-changeable.','A laptop is a general-purpose computer. The others are all embedded systems.','Real-time means guaranteed response within a defined time frame.','Embedded systems are optimised for one task so use minimal power.'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){
+  if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);
+  document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});
+  for(var i=1;i<=4;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}
+  var mcqScore=0,mcqResults=[];
+  for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}
+  for(var i=1;i<=4;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}
+  document.getElementById('test-active-area').style.display='none';
+  document.getElementById('test-results-area').style.display='block';
+  document.getElementById('test-score-display').textContent=mcqScore+'/5';
+  var pct=Math.round(mcqScore/5*100);
+  var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';
+  var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';
+  document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;
+  document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';
+  document.getElementById('test-result-msg').textContent=pct>=80?'Well done! Check short answers below.':pct>=60?'Review the notes and try again.':'More revision needed.';
+  var reviewHtml='';
+  for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your answer: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}
+  document.getElementById('test-mcq-review').innerHTML=reviewHtml;
+  var saTitles=['State what is meant by an embedded system.','Name one embedded system and state its dedicated function.','State one reason why software is stored in ROM.','State one difference between embedded systems and general-purpose computers.'];
+  var saHtml='';
+  for(var i=1;i<=4;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}
+  document.getElementById('test-sa-review').innerHTML=saHtml;
 }
-function renderKeyTerms() {
-  var fg = document.getElementById('kt-flash'); if (fg.children.length) return;
-  var lg = document.getElementById('kt-list');
-  fg.innerHTML = KEY_TERMS.map(function(k,i){ return '<div class="flashcard" onclick="this.classList.toggle(\'flipped\')"><div class="flashcard-inner"><div class="flashcard-front">' + k.t + '</div><div class="flashcard-back">' + k.d + '</div></div></div>'; }).join('');
-  lg.innerHTML = KEY_TERMS.map(function(k){ return '<div class="kt-list-item"><div class="term">' + k.t + '</div><div class="def">' + k.d + '</div></div>'; }).join('');
-}
-function switchKT(mode, btn) {
-  document.querySelectorAll('.kt-toggle button').forEach(function(b){ b.classList.remove('active'); }); btn.classList.add('active');
-  document.getElementById('kt-flash').style.display = mode==='flash' ? 'grid' : 'none';
-  document.getElementById('kt-list').style.display = mode==='list' ? 'flex' : 'none';
-}
-var testTimer, testSecs = 600, testAnswers = {};
-function startTest() {
-  document.getElementById('test-start-screen').style.display = 'none';
-  document.getElementById('test-main').style.display = 'block';
-  var html = '<div class="test-section"><h3>Section A — Multiple Choice</h3>';
-  TEST_MCQ.forEach(function(q,i){ html += '<div class="test-q"><p>' + (i+1) + '. ' + q.q + '</p><div class="test-opts">' + q.opts.map(function(o,j){ return '<button class="test-opt" onclick="selectTestOpt(this,' + i + ',' + j + ')" data-q="' + i + '" data-opt="' + j + '">' + String.fromCharCode(65+j) + '. ' + o + '</button>'; }).join('') + '</div></div>'; });
-  html += '</div><div class="test-section"><h3>Section B — Short Answer</h3>';
-  TEST_SA.forEach(function(q,i){ html += '<div class="test-q"><p>' + (TEST_MCQ.length+i+1) + '. ' + q.q + '</p><textarea id="tsa-' + i + '" placeholder="Your answer..."></textarea></div>'; });
-  html += '</div>';
-  document.getElementById('test-questions').innerHTML = html;
-  testSecs = 600;
-  testTimer = setInterval(function(){ testSecs--; var m=Math.floor(testSecs/60),s=testSecs%60; var el=document.getElementById('test-timer'); el.textContent=m+':'+(s<10?'0':'')+s; el.className='test-timer'+(testSecs<=60?' urgent':''); if(testSecs<=0){clearInterval(testTimer);submitTest(true);} },1000);
-}
-function selectTestOpt(btn, qI, oI) {
-  document.querySelectorAll('[data-q="' + qI + '"]').forEach(function(b){ b.classList.remove('selected'); }); btn.classList.add('selected'); testAnswers[qI] = oI;
-  document.getElementById('test-progress').textContent = Object.keys(testAnswers).length + ' / 10';
-}
-function submitTest(auto) {
-  if (!auto && !confirm('Submit your test now?')) return;
-  clearInterval(testTimer);
-  document.getElementById('test-main').style.display = 'none';
-  var r = document.getElementById('test-results'); r.style.display = 'block';
-  var score = 0;
-  var html = '<h4 style="color:var(--vl);margin-bottom:10px">Section A Results</h4>';
-  TEST_MCQ.forEach(function(q,i){ var ok = testAnswers[i] === q.a; if(ok) score++; html += '<div class="test-r-q"><div class="q-txt">'+(i+1)+'. '+q.q+'</div><div class="'+(ok?'r-correct':'r-wrong')+'">'+(ok?'✅ Correct':'❌ Incorrect — correct: '+String.fromCharCode(65+q.a)+'. '+q.opts[q.a])+'</div></div>'; });
-  html += '<h4 style="color:var(--vl);margin:16px 0 10px">Section B — Self-mark</h4>';
-  TEST_SA.forEach(function(q,i){ var ans=document.getElementById('tsa-'+i)?document.getElementById('tsa-'+i).value:''; html += '<div class="test-r-q"><div class="q-txt">'+(TEST_MCQ.length+i+1)+'. '+q.q+'</div><div class="ms"><strong style="color:var(--green)">Mark scheme:</strong> '+q.ms+'</div>'+(ans?'<div style="margin-top:4px;font-size:0.8rem;color:var(--muted)">Your answer: '+ans+'</div>':'')+'</div>'; });
-  html += '<div style="margin-top:16px;background:rgba(124,58,237,0.15);border:1px solid var(--vl);border-radius:8px;padding:14px;text-align:center"><div style="font-size:1.5rem;font-weight:700;color:var(--vl)">'+score+'/5 MCQ</div><div style="font-size:0.8rem;color:var(--muted);margin-top:4px">+ self-mark Section B above</div></div>';
-  document.getElementById('test-results-content').innerHTML = html;
-}
-function restartTest() { document.getElementById('test-results').style.display='none'; testAnswers={}; document.getElementById('test-start-screen').style.display='block'; }
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=4;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>

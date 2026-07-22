@@ -1,188 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>1.5.2 Utility Software | CSZone OCR J277</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;display:flex}.shell{display:flex;width:100%}.sidebar{width:260px;background:#1a1d2e;border-right:1px solid #2d3148;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}.sidebar-logo{padding:20px 16px;border-bottom:1px solid #2d3148}.sidebar-logo a{color:#fff;text-decoration:none;font-size:20px;font-weight:700}.sidebar-logo span{color:#6366f1}.sidebar-section{padding:8px 0}.sst{padding:8px 16px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b}.sl{display:block;padding:7px 16px;font-size:12px;color:#94a3b8;text-decoration:none;border-left:2px solid transparent;transition:.15s}.sl:hover{color:#e2e8f0;background:#ffffff08}.sl.active{color:#818cf8;border-left-color:#6366f1;background:#6366f108}.sl.fb::after{content:'FREE';font-size:9px;background:#10b981;color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:600}.main{margin-left:260px;flex:1;display:flex;flex-direction:column}.lesson-header{padding:32px 40px 0;border-bottom:1px solid #1e2235}.bc{font-size:12px;color:#64748b;margin-bottom:8px}.bc a{color:#6366f1;text-decoration:none}.lesson-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}.lesson-meta{font-size:13px;color:#64748b;padding-bottom:20px}.tab-bar{display:flex;padding:0 40px;background:#1a1d2e;border-bottom:1px solid #2d3148;overflow-x:auto}.tb{padding:12px 18px;font-size:13px;font-weight:500;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tb:hover{color:#e2e8f0}.tb.active{color:#818cf8;border-bottom-color:#6366f1}.tc{padding:32px 40px;max-width:900px}.ns{margin-bottom:32px}.ns h2{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2d3148}.ns p{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:10px}.ns ul{padding-left:20px;margin-bottom:10px}.ns li{font-size:14px;line-height:1.7;color:#94a3b8;margin-bottom:4px}.ic{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px 20px;margin-bottom:12px}.ic.b{border-left:3px solid #3b82f6}.ic.g{border-left:3px solid #10b981}.ic.a{border-left:3px solid #f59e0b}.ic h4{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:6px}.ic p,.ic li{font-size:13px;color:#94a3b8;line-height:1.6}.ic ul{padding-left:16px}.kp{background:#1e1b4b;border:1px solid #3730a3;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#a5b4fc}.qq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.qq p{font-size:14px;color:#e2e8f0;margin-bottom:12px;font-weight:500}.qo{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;cursor:pointer;margin-bottom:6px;border:1px solid #2d3148;font-size:13px;color:#94a3b8}.qo:hover{background:#252840;border-color:#4f46e5}.qo.c{background:#052e16;border-color:#10b981;color:#6ee7b7}.qo.w{background:#2d0a0a;border-color:#ef4444;color:#fca5a5}.qo input{display:none}.qe{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #2d3148;display:none}.qs{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:24px;text-align:center;display:none}.bn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}.bo{background:transparent;color:#6366f1;border:1px solid #6366f1}.wq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:20px;margin-bottom:16px}.wh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.wt{font-size:14px;color:#e2e8f0;font-weight:500;flex:1}.mk{font-size:12px;color:#6366f1;font-weight:600;white-space:nowrap;margin-left:12px;background:#1e1b4b;padding:2px 8px;border-radius:4px}.wq textarea{width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px}.mt{font-size:12px;color:#6366f1;cursor:pointer;margin-top:8px;display:inline-block}.ms{background:#052e16;border:1px solid #166534;border-radius:6px;padding:12px;margin-top:8px;display:none;font-size:12px;color:#6ee7b7;line-height:1.6}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.tc2{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:16px}.tw{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:6px}.td{font-size:13px;color:#94a3b8;line-height:1.5}.ts{margin-bottom:28px}.ts h3{font-size:16px;font-weight:600;color:#c7d2fe;margin-bottom:14px}.sq{background:#1e2235;border:1px solid #2d3148;border-radius:10px;padding:18px;margin-bottom:14px}.sq p{font-size:14px;color:#e2e8f0;margin-bottom:8px;font-weight:500}.sq .m{font-size:11px;color:#6366f1;font-weight:600;background:#1e1b4b;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}.lnav{display:flex;justify-content:space-between;padding:24px 40px;border-top:1px solid #1e2235}.nb{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#1e2235;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500}.nb:hover{color:#e2e8f0;border-color:#4f46e5}.nb.n{background:#6366f108;border-color:#6366f1;color:#818cf8}#po{position:fixed;inset:0;background:rgba(15,17,23,.95);z-index:200;display:none;align-items:center;justify-content:center}.pb{background:#1a1d2e;border:1px solid #2d3148;border-radius:16px;padding:40px;max-width:480px;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.5.2 Legislation — OCR J277 | CSZone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9f8ff;color:#0f172a;min-height:100vh;}
+    .top-nav{background:#fff;border-bottom:1px solid #e8e9ff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-left{display:flex;align-items:center;gap:16px;}
+    .nav-logo{font-size:20px;font-weight:800;color:#7c3aed;text-decoration:none;}
+    .nav-logo span{color:#0f172a;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+    .breadcrumb a{color:#64748b;text-decoration:none;}
+    .breadcrumb-sep{color:#cbd5e1;}
+    .breadcrumb-current{color:#7c3aed;font-weight:600;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-user{font-size:13px;color:#64748b;}
+    .nav-dash-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;}
+    .lesson-header{background:#fff;border-bottom:1px solid #e8e9ff;padding:20px 32px 0;}
+    .lesson-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #e8e9ff;margin-bottom:6px;text-transform:uppercase;}
+    .lesson-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;}
+    .lesson-meta{font-size:13.5px;color:#64748b;margin-bottom:16px;}
+    .progress-row{display:flex;align-items:center;gap:6px;padding-bottom:14px;}
+    .prog-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8;font-weight:500;}
+    .prog-dot{width:10px;height:10px;border-radius:50%;background:#e2e8f0;}
+    .prog-dot.done{background:#7c3aed;}
+    .prog-dot.active{background:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .tabs-bar{background:#fff;border-bottom:2px solid #e8e9ff;padding:0 32px;display:flex;overflow-x:auto;position:sticky;top:58px;z-index:99;}
+    .tab-btn{padding:14px 20px;font-size:14px;font-weight:600;color:#64748b;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+    .tab-btn:hover{color:#7c3aed;}
+    .tab-btn.active{color:#7c3aed;border-bottom-color:#7c3aed;}
+    .lesson-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+    .notes-content{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:36px 40px;line-height:1.75;}
+    .notes-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:0 0 12px;padding-top:24px;border-top:1px solid #f1f5f9;}
+    .notes-content h2:first-child{border-top:none;padding-top:0;}
+    .notes-content h3{font-size:16px;font-weight:700;color:#1e293b;margin:18px 0 8px;}
+    .notes-content p{color:#334155;margin-bottom:12px;font-size:15px;}
+    .notes-content strong{color:#0f172a;}
+    .notes-content ul{padding-left:20px;margin-bottom:12px;}
+    .notes-content li{color:#334155;font-size:15px;margin-bottom:5px;}
+    .notes-content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+    .notes-content th{background:#f5f3ff;color:#7c3aed;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e8e9ff;}
+    .notes-content td{padding:9px 14px;border:1px solid #e8e9ff;color:#334155;vertical-align:top;}
+    .notes-content tr:nth-child(even) td{background:#fafafe;}
+    .law-card{background:#f0f9ff;border:1.5px solid #bae6fd;border-radius:12px;padding:18px 22px;margin-bottom:14px;}
+    .law-card-title{font-size:16px;font-weight:800;color:#0369a1;margin-bottom:6px;}
+    .law-card-year{display:inline-block;background:#dbeafe;color:#1d4ed8;font-size:12px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px;}
+    .law-card-body{font-size:14.5px;color:#334155;line-height:1.65;}
+    .offence-row{background:#fff;border:1px solid #e8e9ff;border-radius:10px;padding:12px 16px;margin-bottom:10px;}
+    .offence-row-name{font-weight:700;color:#0f172a;font-size:14.5px;margin-bottom:4px;}
+    .offence-row-detail{font-size:13.5px;color:#64748b;}
+    .exam-tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:14px;color:#15803d;}
+    .exam-tip strong{color:#166634;}
+    .mistake-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .mistake-box .mistake-title{font-weight:800;color:#dc2626;font-size:15px;margin-bottom:10px;}
+    .mistake-box ul{padding-left:18px;}
+    .mistake-box li{color:#9f1239;font-size:14px;margin-bottom:6px;}
+    .notes-read-btn{display:none;margin-top:24px;background:#7c3aed;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .notes-done-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;margin-top:20px;}
+    .slides-wrap{border-radius:16px;overflow:hidden;border:1px solid #e8e9ff;background:#0a0e1a;height:520px;}
+    .slides-iframe{width:100%;height:100%;border:none;}
+    .ws-question{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:24px;margin-bottom:14px;}
+    .ws-q-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+    .ws-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;}
+    .ws-q-marks{font-size:12px;color:#64748b;font-weight:600;}
+    .ws-q-text{font-size:15px;font-weight:600;color:#0f172a;flex:1;}
+    .ws-textarea{width:100%;min-height:80px;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;font-family:inherit;font-size:14.5px;color:#0f172a;resize:vertical;line-height:1.6;}
+    .ws-textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px #ede9fe;}
+    .ws-textarea:disabled{background:#f8fafc;color:#64748b;}
+    .ws-feedback{display:none;margin-top:14px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;}
+    .ws-feedback.show{display:block;}
+    .ws-fb-hdr{padding:10px 16px;font-size:13px;font-weight:700;background:#f0fdf4;color:#166534;}
+    .ws-fb-body{padding:14px 16px;font-size:13.5px;background:#fafafa;color:#334155;line-height:1.6;}
+    .ws-score-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:28px;text-align:center;margin-top:20px;display:none;}
+    .ws-score-panel.show{display:block;}
+    .quiz-container{background:#fff;border-radius:16px;border:1px solid #e8e9ff;overflow:hidden;}
+    .quiz-header{padding:20px 28px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+    .quiz-progress-bar{height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden;flex:1;margin:0 16px;}
+    .quiz-progress-fill{height:100%;background:#7c3aed;border-radius:3px;transition:.3s;}
+    .quiz-counter{font-size:13px;font-weight:600;color:#64748b;white-space:nowrap;}
+    .quiz-body{padding:32px 28px;}
+    .quiz-q-text{font-size:18px;font-weight:700;color:#0f172a;line-height:1.5;margin-bottom:24px;}
+    .quiz-options{display:flex;flex-direction:column;gap:10px;}
+    .quiz-opt{padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;color:#334155;cursor:pointer;text-align:left;background:#fff;font-family:inherit;display:flex;align-items:center;gap:12px;}
+    .quiz-opt:hover:not(:disabled){border-color:#a78bfa;background:#faf9ff;}
+    .quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#64748b;flex-shrink:0;}
+    .quiz-opt.correct{border-color:#22c55e;background:#f0fdf4;}
+    .quiz-opt.correct .opt-letter{background:#22c55e;color:#fff;}
+    .quiz-opt.wrong{border-color:#ef4444;background:#fff1f2;}
+    .quiz-opt.wrong .opt-letter{background:#ef4444;color:#fff;}
+    .quiz-explanation{background:#f0fdf4;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#166534;display:none;line-height:1.6;}
+    .quiz-explanation.wrong-exp{background:#fff1f2;color:#9f1239;}
+    .quiz-explanation.show{display:block;}
+    .quiz-next-btn{margin-top:20px;background:#7c3aed;color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:none;}
+    .quiz-next-btn.show{display:inline-flex;}
+    .quiz-result{padding:40px 28px;text-align:center;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result-score{font-size:64px;font-weight:900;color:#7c3aed;line-height:1;}
+    .quiz-xp-badge{display:inline-flex;align-items:center;gap:6px;background:#faf5ff;border:1.5px solid #e9d5ff;color:#7c3aed;font-weight:700;font-size:14px;padding:8px 16px;border-radius:20px;margin-bottom:20px;}
+    .kt-controls{display:flex;gap:10px;margin-bottom:20px;}
+    .kt-mode-btn{padding:9px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;color:#64748b;background:#fff;}
+    .kt-mode-btn.active{border-color:#7c3aed;background:#f5f3ff;color:#7c3aed;}
+    .flashcard{background:#fff;border-radius:20px;border:1.5px solid #e8e9ff;min-height:220px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:32px;text-align:center;margin-bottom:16px;position:relative;}
+    .flashcard:hover{border-color:#a78bfa;}
+    .flashcard-front{font-size:22px;font-weight:800;color:#0f172a;}
+    .flashcard-back{font-size:15px;color:#334155;line-height:1.7;display:none;}
+    .flashcard.flipped .flashcard-front{display:none;}
+    .flashcard.flipped .flashcard-back{display:block;}
+    .flashcard-hint{position:absolute;bottom:14px;right:16px;font-size:11px;color:#94a3b8;}
+    .flashcard-actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    .fc-btn-know{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-btn-learn{background:#fff1f2;border:1.5px solid #fecdd3;color:#9f1239;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+    .fc-skip{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .fc-done{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:32px;text-align:center;display:none;}
+    .fc-done.show{display:block;}
+    .kt-list-area{display:none;}
+    .kt-list-area.active{display:block;}
+    .kt-list-table{width:100%;border-collapse:collapse;}
+    .kt-list-table th{background:#f5f3ff;color:#7c3aed;font-size:13px;font-weight:700;padding:10px 16px;text-align:left;border:1px solid #e8e9ff;}
+    .kt-list-table td{padding:12px 16px;border:1px solid #e8e9ff;font-size:14px;vertical-align:top;}
+    .kt-list-table td:first-child{font-weight:700;color:#0f172a;width:220px;}
+    .kt-list-table tr:nth-child(even) td{background:#fafafe;}
+    .paywall-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:999;}
+    .paywall-card{background:#fff;border-radius:24px;padding:40px 36px;text-align:center;max-width:380px;width:90%;box-shadow:0 24px 80px rgba(0,0,0,0.2);}
+    .paywall-btn{display:block;background:#7c3aed;color:#fff;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;margin-bottom:12px;}
+    .paywall-dismiss{background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:8px;}
+    .bottom-nav{background:#fff;border-top:1px solid #e8e9ff;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;z-index:98;}
+    .bottom-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid #e2e8f0;color:#64748b;background:#fff;}
+    .bottom-nav-btn:hover{border-color:#7c3aed;color:#7c3aed;}
+    .bottom-nav-btn.next-btn{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+    .test-intro-card{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;max-width:520px;margin:0 auto;}
+    .test-start-btn{background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-timer-bar{background:#0f172a;border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+    .test-timer-display{font-size:24px;font-weight:900;color:#a78bfa;}
+    .test-timer-display.urgent{color:#f87171;}
+    .test-section-label{background:#f5f3ff;color:#7c3aed;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:8px 16px;border-radius:8px;margin:20px 0 14px;}
+    .test-mcq-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-mcq-q.correct{border-color:#22c55e;background:#f0fdf4;}
+    .test-mcq-q.wrong{border-color:#ef4444;background:#fff1f2;}
+    .test-mcq-header{display:flex;gap:10px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;}
+    .test-q-num{font-size:12px;font-weight:700;color:#7c3aed;background:#f5f3ff;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+    .test-q-text{font-size:15px;font-weight:600;color:#0f172a;}
+    .test-radio-opts{display:flex;flex-direction:column;gap:8px;}
+    .test-radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;font-size:14px;color:#334155;}
+    .test-radio-opt input{accent-color:#7c3aed;}
+    .test-sa-q{background:#fff;border-radius:14px;border:1px solid #e8e9ff;padding:22px;margin-bottom:12px;}
+    .test-sa-ms{background:#f0fdf4;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:#166534;display:none;border:1px solid #bbf7d0;}
+    .test-sa-ms.show{display:block;}
+    .test-sa-ms strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;color:#15803d;}
+    .test-submit-row{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;}
+    .test-submit-btn{background:#7c3aed;color:#fff;border:none;padding:14px 40px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;}
+    .test-result-panel{background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:40px;text-align:center;}
+    .test-grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-size:16px;font-weight:800;margin-bottom:16px;}
+    .grade-a{background:#f0fdf4;color:#166534;border:1.5px solid #bbf7d0;}
+    .grade-b{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;}
+    .grade-c{background:#fffbeb;color:#92400e;border:1.5px solid #fde68a;}
+    .grade-d{background:#fff1f2;color:#9f1239;border:1.5px solid #fecdd3;}
+    .test-retry-btn{background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;}
+  </style>
 </head>
 <body>
-<div id="po"><div class="pb"><div style="font-size:48px;margin-bottom:16px">🔒</div><h2 style="font-size:22px;font-weight:700;color:#fff;margin-bottom:10px">Unlock Full Access</h2><p style="font-size:14px;color:#94a3b8;margin-bottom:24px">Subscribe to access all 47 OCR J277 lessons.</p><div style="font-size:28px;font-weight:700;color:#818cf8;margin-bottom:4px">£7.99<span style="font-size:16px;color:#94a3b8">/month</span></div><div style="font-size:12px;color:#64748b;margin-bottom:24px">or £59/year</div><a href="/pricing" style="display:block;text-decoration:none;margin-bottom:12px;padding:10px;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;font-size:13px">Subscribe Now</a><a href="/dashboard" style="font-size:13px;color:#64748b">Dashboard</a></div></div>
-<div class="shell">
-<nav class="sidebar">
-  <div class="sidebar-logo"><a href="/"><span>CS</span>Zone</a></div>
-  <div class="sidebar-section">
-    <div class="sst">Component 1</div>
-    <div class="sst" style="color:#818cf8">1.5 Systems Software</div>
-    <a href="/ocr-j277/1-5-1/" class="sl fb">1.5.1 Operating Systems</a>
-    <a href="/ocr-j277/1-5-2/" class="sl active">1.5.2 Utility Software</a>
-    <div class="sst" style="color:#818cf8">1.6 Ethical Issues</div>
-    <a href="/ocr-j277/1-6-1a/" class="sl fb">1.6.1a Ethical &amp; Legal</a>
-    <a href="/ocr-j277/1-6-1b/" class="sl">1.6.1b Cultural &amp; Env</a>
-    <div class="sst">Component 2</div>
-    <a href="/ocr-j277/2-1-1/" class="sl fb">2.1.1 Computational Thinking</a>
-    <a href="/ocr-j277/2-2-1a/" class="sl fb">2.2.1a Variables &amp; Types</a>
-    <a href="/ocr-j277/2-3-1/" class="sl fb">2.3.1 Defensive Design</a>
-    <a href="/ocr-j277/2-4-1a/" class="sl fb">2.4.1a Logic Gates</a>
-    <a href="/ocr-j277/2-5-1/" class="sl fb">2.5.1 High &amp; Low Level</a>
+<div class="paywall-overlay" id="paywall">
+  <div class="paywall-card">
+    <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+    <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Unlock Everything</div>
+    <div style="font-size:28px;font-weight:900;color:#7c3aed;margin-bottom:4px;">£7.99<span style="font-size:16px;font-weight:600;color:#94a3b8;">/month</span></div>
+    <div style="font-size:13px;color:#94a3b8;margin-bottom:24px;">or £59/year</div>
+    <a href="https://buy.stripe.com/test_bJe9AMb5ua2fdUF5P15wI00" class="paywall-btn">Subscribe now →</a>
+    <button class="paywall-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="/dashboard" class="nav-logo">CS<span>Zone</span></a>
+    <div class="breadcrumb">
+      <a href="/dashboard">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="/dashboard">1.5 Impacts of Technology</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">1.5.2 Legislation</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user-name"></span>
+    <a href="/dashboard" class="nav-dash-btn">← Dashboard</a>
   </div>
 </nav>
-<div class="main">
 <div class="lesson-header">
-  <div class="bc"><a href="/dashboard">Dashboard</a> › <a href="/ocr-j277/">OCR J277</a> › 1.5 Systems Software</div>
-  <div class="lesson-title">1.5.2 — Utility Software</div>
-  <div class="lesson-meta">Component 1: Computer Systems &nbsp;·&nbsp; ~18 min</div>
-</div>
-<div class="tab-bar">
-  <button class="tb active" onclick="showTab('notes',this)">📖 Notes</button>
-  <button class="tb" onclick="showTab('video',this)">🎬 Video</button>
-  <button class="tb" onclick="showTab('slides',this)">📊 Slides</button>
-  <button class="tb" onclick="showTab('worksheet',this)">📝 Worksheet</button>
-  <button class="tb" onclick="showTab('quiz',this)">✅ Quiz</button>
-  <button class="tb" onclick="showTab('test',this)">🧪 Mini Test</button>
-  <button class="tb" onclick="showTab('terms',this)">🔑 Key Terms</button>
-</div>
-
-<div class="tc" id="tab-notes">
-  <div class="ns">
-    <h2>What is Utility Software?</h2>
-    <p><strong>Utility software</strong> is system software designed to help manage, maintain, and optimise a computer system. Unlike application software (which performs user tasks) or the OS (which manages hardware), utilities perform background maintenance tasks.</p>
-  </div>
-  <div class="ns">
-    <h2>Types of Utility Software</h2>
-    <div class="ic b">
-      <h4>Encryption software</h4>
-      <p>Converts data into an unreadable format (ciphertext) using a key. Protects data stored on a device — if the device is stolen, encrypted data cannot be read without the key. Examples: BitLocker, VeraCrypt.</p>
-    </div>
-    <div class="ic b">
-      <h4>Defragmentation software</h4>
-      <p>Over time, files on a hard disk become fragmented — split into pieces stored in different locations. Defragmentation rearranges file fragments so they are stored contiguously, speeding up read times. Note: NOT needed/used for SSDs.</p>
-    </div>
-    <div class="ic b">
-      <h4>Data compression software</h4>
-      <p>Reduces file size by encoding data more efficiently. Two types:</p>
-      <ul>
-        <li><strong>Lossless</strong>: original data perfectly recoverable (ZIP, PNG, FLAC)</li>
-        <li><strong>Lossy</strong>: some data permanently removed (JPEG, MP3, MP4) — smaller files but some quality lost</li>
-      </ul>
-    </div>
-    <div class="ic b">
-      <h4>Backup software</h4>
-      <p>Creates copies of data to protect against loss from hardware failure, ransomware, or accidental deletion. Types:</p>
-      <ul>
-        <li><strong>Full backup</strong>: copies everything — slow but complete</li>
-        <li><strong>Incremental backup</strong>: only backs up files changed since the last backup — fast</li>
-        <li><strong>Differential backup</strong>: backs up files changed since the last full backup</li>
-      </ul>
-    </div>
-    <div class="ic b">
-      <h4>Anti-malware / antivirus</h4>
-      <p>Scans files, processes, and emails for malicious software. Quarantines or deletes threats. Must be kept up to date with latest malware signatures.</p>
-    </div>
-    <div class="ic b">
-      <h4>Firewall software</h4>
-      <p>Monitors and filters network traffic based on rules. Can be software (installed on device) or hardware (dedicated router/appliance). Blocks unauthorised access.</p>
-    </div>
-    <div class="ic a">
-      <h4>Common Mistakes</h4>
-      <ul>
-        <li>Saying defragmentation helps SSDs — it doesn't; SSDs don't fragment like HDDs and defragging can damage them</li>
-        <li>Confusing compression types — lossy permanently removes data; lossless is fully reversible</li>
-        <li>Saying "backup" without explaining what it is or where data is stored</li>
-        <li>Confusing anti-malware and firewalls — anti-malware scans files; firewalls filter network traffic</li>
-      </ul>
-    </div>
+  <div class="lesson-badge">⚖️ Component 1 · 1.5 Impacts of Technology</div>
+  <div class="lesson-title">1.5.2 Legislation</div>
+  <div class="lesson-meta">OCR J277 · GCSE Computer Science · <strong>~12 min read</strong></div>
+  <div class="progress-row">
+    <div class="prog-item"><div class="prog-dot active" id="dot-notes"></div> Notes</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-video"></div> Video</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-slides"></div> Slides</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-worksheet"></div> Worksheet</div>
+    <div class="prog-item"><div class="prog-dot" id="dot-quiz"></div> Quiz</div>
   </div>
 </div>
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('notes')" id="tab-notes">📖 Notes</button>
+  <button class="tab-btn" onclick="switchTab('video')" id="tab-video">🎥 Video</button>
+  <button class="tab-btn" onclick="switchTab('slides')" id="tab-slides">📊 Slides</button>
+  <button class="tab-btn" onclick="switchTab('worksheet')" id="tab-worksheet">✍️ Worksheet</button>
+  <button class="tab-btn" onclick="switchTab('quiz')" id="tab-quiz">❓ Quiz</button>
+  <button class="tab-btn" onclick="switchTab('keyterms')" id="tab-keyterms">🔑 Key Terms</button>
+  <button class="tab-btn" onclick="switchTab('test')" id="tab-test">🎯 Mini Test</button>
+</div>
+<div class="lesson-body">
 
-<div class="tc" id="tab-video" style="display:none"><div class="ns"><h2>Video</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-slides" style="display:none"><div class="ns"><h2>Slides</h2><p style="color:#64748b">Coming soon.</p></div></div>
-<div class="tc" id="tab-worksheet" style="display:none"><div class="ns"><h2>Worksheet</h2></div><div id="ws-container"></div></div>
-<div class="tc" id="tab-quiz" style="display:none"><div class="ns"><h2>15-Question Quiz</h2></div><div style="max-width:700px" id="quiz-container"></div><div class="qs" id="quiz-score"><h3 style="color:#fff;font-size:20px;margin-bottom:8px">Quiz Complete!</h3><p id="score-text" style="font-size:16px;color:#94a3b8;margin-bottom:16px"></p><button class="bn bo" onclick="resetQuiz()">Try Again</button></div></div>
-<div class="tc" id="tab-test" style="display:none"><div class="ns"><h2>Mini Test</h2></div><div class="ts"><h3>Section A</h3><div id="test-mcq-container"></div></div><div class="ts"><h3>Section B</h3><div id="test-sa-container"></div></div></div>
-<div class="tc" id="tab-terms" style="display:none"><div class="ns"><h2>Key Terms</h2></div><div class="tg" id="terms-grid"></div></div>
-<div class="lnav">
-  <a href="/ocr-j277/1-5-1/" class="nb">← 1.5.1 Operating Systems</a>
-  <a href="/ocr-j277/1-6-1a/" class="nb n">1.6.1a Ethical &amp; Legal →</a>
-</div>
-</div>
+<!-- NOTES -->
+<div class="tab-panel active" id="panel-notes">
+  <div class="notes-content">
+    <h2>UK Legislation for Computing</h2>
+    <p>OCR J277 requires knowledge of three key pieces of UK legislation that govern how computers and data are used:</p>
+
+    <div class="law-card">
+      <div class="law-card-title">Computer Misuse Act <span class="law-card-year">1990</span></div>
+      <div class="law-card-body">
+        <p>Passed to address hacking and unauthorised access to computer systems. Creates three criminal offences:</p>
+        <table>
+          <thead><tr><th>Section</th><th>Offence</th><th>Max sentence</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Section 1</strong></td><td>Unauthorised access to computer material (hacking)</td><td>12 months / fine</td></tr>
+            <tr><td><strong>Section 2</strong></td><td>Unauthorised access with intent to commit further offences (e.g. accessing a system to steal bank details)</td><td>5 years</td></tr>
+            <tr><td><strong>Section 3</strong></td><td>Unauthorised modification of computer material (e.g. deploying malware, deleting files, launching DoS attacks)</td><td>10 years</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Examples covered:</strong> installing a virus, accessing someone else's email account without permission, launching a DDoS attack, SQL injection to steal data, installing a keylogger.</p>
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-card-title">Data Protection Act / UK GDPR <span class="law-card-year">2018 / ongoing</span></div>
+      <div class="law-card-body">
+        <p>The <strong>Data Protection Act 2018</strong> implements the EU's GDPR into UK law. It governs how <strong>personal data</strong> (any data that can identify an individual) must be handled. The law is enforced by the <strong>Information Commissioner's Office (ICO)</strong>.</p>
+        <p><strong>The 7 Data Protection Principles:</strong></p>
+        <table>
+          <thead><tr><th>Principle</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Lawfulness, fairness &amp; transparency</strong></td><td>Data must be collected lawfully with the individual's knowledge</td></tr>
+            <tr><td><strong>2. Purpose limitation</strong></td><td>Only collected for specified, explicit, and legitimate purposes</td></tr>
+            <tr><td><strong>3. Data minimisation</strong></td><td>Only collect what is necessary — no more</td></tr>
+            <tr><td><strong>4. Accuracy</strong></td><td>Data must be kept accurate and up to date</td></tr>
+            <tr><td><strong>5. Storage limitation</strong></td><td>Not kept longer than necessary</td></tr>
+            <tr><td><strong>6. Integrity &amp; confidentiality</strong></td><td>Processed securely — protected from unauthorised access</td></tr>
+            <tr><td><strong>7. Accountability</strong></td><td>The organisation is responsible for compliance</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Individual rights under GDPR:</strong> Right to access (Subject Access Request), right to be forgotten (erasure), right to correct inaccurate data, right to portability (receive your data in a reusable format).</p>
+        <p><strong>Key terms:</strong> <em>Data subject</em> = the individual the data is about. <em>Data controller</em> = the organisation deciding how data is used. <em>Data processor</em> = processes data on behalf of a controller. Breaches must be reported to the ICO within 72 hours.</p>
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-card-title">Copyright, Designs and Patents Act <span class="law-card-year">1988</span></div>
+      <div class="law-card-body">
+        <p>Protects the intellectual property of creators. In computing, this covers <strong>software, websites, digital images, music, and films</strong>. Copyright is automatic — creators do not need to register it.</p>
+        <table>
+          <thead><tr><th>Aspect</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td><strong>What's protected</strong></td><td>Software source code, digital music, films, images, written content, databases</td></tr>
+            <tr><td><strong>Duration</strong></td><td>Author's life + 70 years (for literary/artistic works)</td></tr>
+            <tr><td><strong>Infringement</strong></td><td>Copying/distributing software without a licence, pirating films/music, using images without permission</td></tr>
+            <tr><td><strong>Penalties</strong></td><td>Civil damages (compensation) and criminal prosecution (up to 10 years)</td></tr>
+            <tr><td><strong>Licences</strong></td><td>Proprietary: must pay; Open source: free but conditions apply; Creative Commons: various permissions granted</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h2>Freedom of Information Act 2000</h2>
+    <p>Gives individuals the right to access information held by public authorities (government bodies, NHS, councils, police). Organisations must respond within 20 working days. Certain information is exempt (e.g. national security).</p>
+
+    <h2>Comparison of Acts</h2>
+    <table>
+      <thead><tr><th>Act</th><th>Main purpose</th><th>Who it protects</th><th>Enforced by</th></tr></thead>
+      <tbody>
+        <tr><td>Computer Misuse Act 1990</td><td>Criminalise unauthorised computer access &amp; modification</td><td>Computer system owners, data holders</td><td>Police, Crown Prosecution Service</td></tr>
+        <tr><td>Data Protection Act / UK GDPR 2018</td><td>Regulate personal data handling</td><td>Individuals (data subjects)</td><td>ICO (Information Commissioner's Office)</td></tr>
+        <tr><td>Copyright Act 1988</td><td>Protect intellectual property</td><td>Creators, developers, authors</td><td>Civil courts, Trading Standards</td></tr>
+        <tr><td>Freedom of Information Act 2000</td><td>Transparency of public bodies</td><td>General public</td><td>ICO</td></tr>
+      </tbody>
+    </table>
+
+    <div class="exam-tip">
+      <strong>Exam tip:</strong> Know all three offences in the Computer Misuse Act and their sentences. For DPA/GDPR: memorise the 7 principles and key rights. For the Copyright Act: know what is protected and what constitutes infringement. Questions often give a scenario and ask you to name the relevant act and explain which part applies — always justify your answer.
+    </div>
+
+    <div class="mistake-box">
+      <div class="mistake-title">⚠️ Common Mistakes</div>
+      <ul>
+        <li>Saying "the Data Protection Act was passed in 2018" — the original DPA was 1998; the 2018 Act updated it to comply with GDPR</li>
+        <li>Confusing Computer Misuse Act sections: Section 1 = access only; Section 2 = access + intent; Section 3 = modification/damage</li>
+        <li>Saying copyright must be registered — it is automatic from the moment of creation</li>
+        <li>Confusing data controller and data processor — controller decides how data is used; processor acts on instructions</li>
+        <li>Forgetting the ICO — it is the enforcement body for DPA/GDPR, not the police</li>
+      </ul>
+    </div>
+
+    <button class="notes-read-btn" id="notes-read-btn" onclick="markNotesRead()">Mark as read ✓</button>
+    <div class="notes-done-badge" id="notes-done-badge">✅ Notes completed!</div>
+  </div>
 </div>
 
+<!-- VIDEO -->
+<div class="tab-panel" id="panel-video">
+  <div style="background:#0d0920;border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;">
+    <div style="font-size:64px;opacity:0.3;">▶</div>
+    <div style="color:rgba(255,255,255,0.5);font-size:16px;font-weight:600;margin-top:16px;">Video coming soon</div>
+  </div>
+</div>
+
+<!-- SLIDES -->
+<div class="tab-panel" id="panel-slides">
+  <div class="slides-wrap"><iframe class="slides-iframe" src="/OCR_J277_1.5.2_Slides.html"></iframe></div>
+  <div style="margin-top:12px;text-align:right;"><button onclick="markSlidesDone()" style="background:#7c3aed;color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;">Mark slides as done ✓</button></div>
+</div>
+
+<!-- WORKSHEET -->
+<div class="tab-panel" id="panel-worksheet">
+  <div style="background:#fff;border-radius:16px;border:1px solid #e8e9ff;padding:20px 24px;margin-bottom:20px;">
+    <h3 style="font-size:16px;font-weight:700;color:#0f172a;margin-bottom:3px;">Worksheet — 1.5.2 Legislation</h3>
+    <p style="font-size:13.5px;color:#64748b;">8 questions · 20 marks</p>
+  </div>
+  <div id="ws-questions">
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q1</span><span class="ws-q-text">Name the three offences created by the Computer Misuse Act 1990 and give the maximum sentence for each.</span><span class="ws-q-marks">[6]</span></div><textarea class="ws-textarea" style="min-height:110px;" id="ws-ans-1" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-1"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Section 1: Unauthorised access to computer material [1] — 12 months / fine [1]; Section 2: Unauthorised access with intent to commit further offences [1] — 5 years [1]; Section 3: Unauthorised modification of computer material [1] — 10 years [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q2</span><span class="ws-q-text">A student uses a school computer to log into another student's email account without permission. Which section of the Computer Misuse Act applies? Justify your answer.</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-2" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-2"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Section 1 [1] — unauthorised access to computer material (assuming no further criminal intent is stated) [1]. If intent to use the access for another crime (e.g. fraud) is present, Section 2 would apply.</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q3</span><span class="ws-q-text">State four of the seven Data Protection Act principles.</span><span class="ws-q-marks">[4]</span></div><textarea class="ws-textarea" style="min-height:100px;" id="ws-ans-3" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-3"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Any four: Lawfulness/fairness/transparency; Purpose limitation; Data minimisation; Accuracy; Storage limitation; Integrity and confidentiality; Accountability. [1] each.</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q4</span><span class="ws-q-text">What is the difference between a data controller and a data processor?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-4" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-4"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Data controller: the organisation/person who determines the purposes and means of processing personal data [1]; Data processor: processes personal data on behalf of, and under the instructions of, the data controller [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q5</span><span class="ws-q-text">What does the Copyright, Designs and Patents Act 1988 protect? Give two examples in a computing context.</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" id="ws-ans-5" style="min-height:100px;" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-5"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Protects intellectual property — the creative work of authors and developers [1]; computing examples: software source code [1]; digital music/films [1]; website design and content [1]; databases [1]. Two needed.</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q6</span><span class="ws-q-text">A company collects customer email addresses to send newsletters, then sells them to a third-party marketing firm. Which law are they breaking and why?</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" style="min-height:100px;" id="ws-ans-6" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-6"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Data Protection Act / GDPR [1]; the purpose limitation principle — data collected for one purpose (newsletters) cannot be used for another purpose (marketing by a third party) without consent [1]; also violates lawfulness/fairness as customers didn't agree to data sharing [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q7</span><span class="ws-q-text">Is copyright automatic or must it be registered? How long does copyright last?</span><span class="ws-q-marks">[2]</span></div><textarea class="ws-textarea" id="ws-ans-7" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-7"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Copyright is automatic — it does not need to be registered [1]; it lasts for the author's lifetime plus 70 years [1].</div></div></div>
+    <div class="ws-question"><div class="ws-q-header"><span class="ws-q-num">Q8</span><span class="ws-q-text">A hacker installs ransomware on a hospital's computer system, encrypting all patient files and demanding payment. Which section of the Computer Misuse Act have they broken and why?</span><span class="ws-q-marks">[3]</span></div><textarea class="ws-textarea" style="min-height:100px;" id="ws-ans-8" placeholder="Type your answer here..."></textarea><div class="ws-feedback" id="ws-fb-8"><div class="ws-fb-hdr">✅ Mark scheme</div><div class="ws-fb-body">Section 3 [1] — unauthorised modification of computer material [1]; the ransomware has encrypted (modified) the files without authorisation, preventing legitimate access to the data [1]. Section 1 also applies (gaining access), and Section 2 may apply (access with intent to commit blackmail).</div></div></div>
+  </div>
+  <div id="ws-submit-row" style="text-align:center;margin-top:8px;"><button style="background:#7c3aed;color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;" onclick="submitWorksheet()">Submit Worksheet →</button></div>
+  <div class="ws-score-panel" id="ws-score-panel"><div style="font-size:52px;font-weight:900;color:#7c3aed;">?</div><div style="font-size:15px;color:#64748b;margin-top:6px;">out of 20 — self-mark above</div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;" onclick="retryWorksheet()">Try again</button></div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-panel" id="panel-quiz">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span style="font-size:14px;font-weight:700;color:#0f172a;">Topic Quiz</span>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      <span class="quiz-counter" id="quiz-counter">Question 1 of 15</span>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <div class="quiz-q-text" id="quiz-q-text"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-explanation" id="quiz-explanation"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div style="font-size:18px;color:#64748b;margin-bottom:6px;">You scored</div>
+      <div class="quiz-result-score" id="quiz-result-score"></div>
+      <div style="font-size:18px;color:#64748b;margin-bottom:12px;">out of 15</div>
+      <div class="quiz-xp-badge" id="quiz-xp-badge">⚡ XP earned</div>
+      <div style="font-size:18px;font-weight:700;color:#0f172a;margin:12px 0 4px;" id="quiz-result-msg"></div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:24px;" id="quiz-result-sub"></div>
+      <div><button style="background:#f5f3ff;color:#7c3aed;border:1.5px solid #e8e9ff;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-right:10px;" onclick="restartQuiz()">Try again</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TERMS -->
+<div class="tab-panel" id="panel-keyterms">
+  <div class="kt-controls">
+    <button class="kt-mode-btn active" id="kt-btn-flash" onclick="setKtMode('flash')">🃏 Flashcards</button>
+    <button class="kt-mode-btn" id="kt-btn-list" onclick="setKtMode('list')">📋 List view</button>
+  </div>
+  <div id="kt-flash-area">
+    <div id="fc-progress">Card 1 of 15</div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-front" id="fc-front"></div>
+      <div class="flashcard-back" id="fc-back"></div>
+      <div class="flashcard-hint" id="fc-hint">Click to reveal definition</div>
+    </div>
+    <div class="flashcard-actions">
+      <button class="fc-btn-know" onclick="markKnown()">✓ I know this</button>
+      <button class="fc-btn-learn" onclick="markLearning()">✗ Still learning</button>
+      <button class="fc-skip" onclick="skipCard()">Skip →</button>
+    </div>
+    <div class="fc-done" id="fc-done"><div style="font-size:40px;margin-bottom:12px;">🎉</div><div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;">Complete!</div><div id="fc-done-msg" style="font-size:14px;color:#64748b;margin-bottom:20px;"></div><button class="nav-dash-btn" onclick="resetFlashcards()">Start again</button></div>
+  </div>
+  <div class="kt-list-area" id="kt-list-area">
+    <table class="kt-list-table"><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody id="kt-list-body"></tbody></table>
+  </div>
+</div>
+
+<!-- MINI TEST -->
+<div class="tab-panel" id="panel-test">
+  <div id="test-start-screen">
+    <div class="test-intro-card">
+      <div style="font-size:48px;margin-bottom:16px;">🎯</div>
+      <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Mini Test — 1.5.2 Legislation</h2>
+      <p style="font-size:14.5px;color:#64748b;margin-bottom:18px;">10 questions · 10 marks · 10 minutes</p>
+      <button class="test-start-btn" onclick="startTest()">Start test →</button>
+    </div>
+  </div>
+  <div id="test-active-area" style="display:none;">
+    <div class="test-timer-bar">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;">⏱ <span class="test-timer-display" id="test-timer-display">10:00</span></div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;">10 marks</div>
+    </div>
+    <div class="test-section-label">Section A — Multiple Choice [5 marks]</div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q1</span><span class="test-q-text">Which section of the Computer Misuse Act covers installing a virus to damage a computer system?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq1" value="0"> Section 1</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="1"> Section 2</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="2"> Section 3</label><label class="test-radio-opt"><input type="radio" name="tmcq1" value="3"> Section 4</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q2</span><span class="test-q-text">Which body enforces the Data Protection Act / GDPR in the UK?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq2" value="0"> The Police</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="1"> Trading Standards</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="2"> The ICO (Information Commissioner's Office)</label><label class="test-radio-opt"><input type="radio" name="tmcq2" value="3"> GCHQ</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q3</span><span class="test-q-text">How long does copyright typically last for a literary work?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq3" value="0"> 10 years</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="1"> 50 years</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="2"> Author's life + 70 years</label><label class="test-radio-opt"><input type="radio" name="tmcq3" value="3"> 25 years from publication</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q4</span><span class="test-q-text">Which Data Protection principle says you should only collect the minimum amount of data needed?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq4" value="0"> Accuracy</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="1"> Data minimisation</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="2"> Storage limitation</label><label class="test-radio-opt"><input type="radio" name="tmcq4" value="3"> Purpose limitation</label></div></div>
+    <div class="test-mcq-q"><div class="test-mcq-header"><span class="test-q-num">Q5</span><span class="test-q-text">A hacker accesses a government computer with the intent to commit fraud. Which CMA section applies?</span></div><div class="test-radio-opts"><label class="test-radio-opt"><input type="radio" name="tmcq5" value="0"> Section 1 only</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="1"> Section 2</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="2"> Section 3</label><label class="test-radio-opt"><input type="radio" name="tmcq5" value="3"> Section 4</label></div></div>
+    <div class="test-section-label">Section B — Short Answer [5 marks]</div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q6</span><span class="test-q-text">What is a Subject Access Request?</span></div><textarea class="ws-textarea" id="tsa-ans-1" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-1"><strong>Mark scheme</strong>A Subject Access Request (SAR) is a right under GDPR that allows an individual to request a copy of all personal data an organisation holds about them. Must be responded to within one month. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q7</span><span class="test-q-text">State one act and one specific offence related to pirating software.</span></div><textarea class="ws-textarea" id="tsa-ans-2" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-2"><strong>Mark scheme</strong>Copyright, Designs and Patents Act 1988 [1]; copying/distributing software without a licence (software piracy) [1]. [1 mark needed]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q8</span><span class="test-q-text">State the maximum sentence for a Section 3 Computer Misuse Act offence.</span></div><textarea class="ws-textarea" id="tsa-ans-3" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-3"><strong>Mark scheme</strong>10 years imprisonment. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q9</span><span class="test-q-text">Name the principle that says data must only be kept for as long as necessary.</span></div><textarea class="ws-textarea" id="tsa-ans-4" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-4"><strong>Mark scheme</strong>Storage limitation. [1]</div></div>
+    <div class="test-sa-q"><div class="test-mcq-header"><span class="test-q-num">Q10</span><span class="test-q-text">Does copyright need to be registered to be valid? Yes or no, and explain.</span></div><textarea class="ws-textarea" id="tsa-ans-5" placeholder="Write your answer..."></textarea><div class="test-sa-ms" id="tsa-ms-5"><strong>Mark scheme</strong>No — copyright is automatic from the moment a work is created and does not need to be registered. [1]</div></div>
+    <div class="test-submit-row"><button class="test-submit-btn" onclick="submitTest()">Submit test →</button></div>
+  </div>
+  <div id="test-results-area" style="display:none;">
+    <div class="test-result-panel">
+      <div style="font-size:18px;color:#64748b;">MCQ Score</div>
+      <div style="font-size:64px;font-weight:900;color:#7c3aed;" id="test-score-display">—</div>
+      <div class="test-grade-badge" id="test-grade-badge"></div>
+      <div style="font-size:16px;font-weight:700;color:#0f172a;margin-top:8px;" id="test-result-grade"></div>
+    </div>
+    <div style="margin-top:24px;"><div class="test-section-label">Section A — Review</div><div id="test-mcq-review"></div><div class="test-section-label">Section B — Mark schemes</div><div id="test-sa-review"></div></div>
+    <div style="text-align:center;margin-top:28px;"><button class="test-retry-btn" onclick="retryTest()">Try again</button></div>
+  </div>
+</div>
+
+</div>
+<div class="bottom-nav">
+  <a href="/ocr-j277/1-5-1/" class="bottom-nav-btn">← 1.5.1 Ethical Issues</a>
+  <span style="font-size:13px;color:#94a3b8;font-weight:500;">1.5 Impacts of Technology</span>
+  <a href="/ocr-j277/1-6-1a/" class="bottom-nav-btn next-btn">1.6.1a Operating Systems →</a>
+</div>
 <script>
-var LESSON_ID='1-5-2';var IS_FREE=false;
-var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';var currentUser=null;
+var SUPA_URL='https://jxrqlnlsslftcqeyyzbx.supabase.co';
+var SUPA_KEY='sb_publishable_Bz02Q6Gb6K55SULRN-S87w_YGAI9KOj';
+var LESSON_ID='1-5-2';
+var IS_FREE=false;
+var _sb=null;
+function getSB(){if(!_sb)_sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);return _sb;}
+var currentUser=null;
+function checkAccess(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;
+    if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;
+    if(currentUser&&currentUser.email==='07772967005mr@gmail.com')return;
+    var h={'apikey':SUPA_KEY,'Authorization':'Bearer '+session.access_token};
+    fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+(currentUser.sub||currentUser.id)+'&status=eq.active&select=id',{headers:h})
+      .then(function(r){return r.json();})
+      .then(function(d){if(!d||!d.length)document.getElementById('paywall').style.display='flex';});
+  });
+}
+window.addEventListener('DOMContentLoaded',function(){
+  getSB().auth.getSession().then(function(r){
+    var session=r.data.session;if(!session){document.getElementById('paywall').style.display='flex';return;}
+    currentUser=session.user;document.getElementById('nav-user-name').textContent=session.user.email.split('@')[0];
+    checkAccess();
+    initQuiz();initKeyTerms();setTimeout(function(){document.getElementById('notes-read-btn').style.display='inline-block';},3000);
+  });
+});
+var prog={notes:false,video:false,slides:false,worksheet:false,quiz:false};
+function updateDots(){function sd(id,done,active){var d=document.getElementById(id);if(!d)return;d.className='prog-dot'+(done?' done':(active?' active':''));}sd('dot-notes',prog.notes,!prog.notes);sd('dot-video',prog.video,prog.notes&&!prog.video);sd('dot-slides',prog.slides,prog.video&&!prog.slides);sd('dot-worksheet',prog.worksheet,prog.slides&&!prog.worksheet);sd('dot-quiz',prog.quiz,prog.worksheet&&!prog.quiz);}
+function switchTab(name){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');document.getElementById('tab-'+name).classList.add('active');}
+function markNotesRead(){prog.notes=true;updateDots();document.getElementById('notes-read-btn').style.display='none';document.getElementById('notes-done-badge').style.display='flex';}
+function markSlidesDone(){prog.slides=true;updateDots();alert('Slides marked as complete! ✓');}
+var wsSubmitted=false;
+function submitWorksheet(){if(wsSubmitted)return;wsSubmitted=true;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el)el.disabled=true;var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.add('show');}document.getElementById('ws-submit-row').style.display='none';document.getElementById('ws-score-panel').classList.add('show');prog.worksheet=true;updateDots();}
+function retryWorksheet(){wsSubmitted=false;for(var i=1;i<=8;i++){var el=document.getElementById('ws-ans-'+i);if(el){el.value='';el.disabled=false;}var fb=document.getElementById('ws-fb-'+i);if(fb)fb.classList.remove('show');}document.getElementById('ws-submit-row').style.display='block';document.getElementById('ws-score-panel').classList.remove('show');}
 var QUIZ=[
-  {q:"What is utility software?",opts:["Software for creative tasks like photo editing","System software that performs background maintenance and optimisation tasks","Application software for word processing","Software that connects to the internet"],ans:1,exp:"Utility software maintains and optimises a computer system — e.g., defragmenters, backup tools, anti-malware. It sits between the OS and application software."},
-  {q:"What does defragmentation software do?",opts:["Compresses files to save space","Rearranges fragmented file pieces on an HDD so they are stored contiguously, speeding up access","Scans files for malware","Encrypts data on the hard drive"],ans:1,exp:"Files become fragmented over time as they're saved, modified, and deleted. Defragmentation consolidates these fragments so the read head doesn't have to jump around, speeding up access."},
-  {q:"Why should defragmentation NOT be performed on an SSD?",opts:["SSDs don't have enough capacity","SSDs don't fragment like HDDs — defragging provides no benefit and causes unnecessary write cycles that reduce SSD lifespan","SSDs are too fast to need it","SSDs are already encrypted"],ans:1,exp:"SSDs access any location equally fast (no moving read head), so fragmentation doesn't slow them down. Defragging adds pointless write cycles, reducing the SSD's limited write lifespan."},
-  {q:"What is the difference between lossy and lossless compression?",opts:["Lossy is faster; lossless is slower","Lossy permanently removes some data; lossless reduces file size but allows perfect restoration","Lossless is used for images; lossy is used for documents","They produce the same file size"],ans:1,exp:"Lossless (ZIP, PNG) reduces file size without data loss — original perfectly recoverable. Lossy (JPEG, MP3) permanently discards some data for greater reduction — quality may be slightly reduced."},
-  {q:"A user's hard drive fails and they lose their project files. Which utility could have prevented this?",opts:["Defragmentation software","Anti-malware","Backup software","Compression software"],ans:2,exp:"Backup software creates copies of data on separate media. If the hard drive fails, the backup copy can be used to restore the lost files."},
-  {q:"What is an incremental backup?",opts:["A copy of all data every week","A backup of only the files changed since the last backup","A backup to an encrypted drive","A full copy of all data at a fixed point in time"],ans:1,exp:"Incremental backups only copy files that have changed since the last backup (full or incremental). They are faster and use less storage than full backups."},
-  {q:"What does encryption software do?",opts:["Scans files for viruses","Removes unnecessary files","Converts data into an unreadable format — only the correct key can decrypt it","Speeds up internet connections"],ans:2,exp:"Encryption software scrambles data using an algorithm and key. The encrypted data (ciphertext) is unreadable without the correct decryption key — protecting data if a device is stolen."},
-  {q:"Which compression format is lossless?",opts:["MP3","JPEG","ZIP","MP4"],ans:2,exp:"ZIP is lossless — compressed files can be perfectly decompressed to their original state. MP3 and JPEG are lossy — some data is permanently removed."},
-  {q:"What is the main purpose of anti-malware utility software?",opts:["To speed up hard drive access","To compress files","To detect and remove malicious software from a computer","To monitor network traffic"],ans:2,exp:"Anti-malware scans files, processes, and email attachments for malicious code, quarantines or deletes threats, and provides real-time protection."},
-  {q:"Why must anti-malware software be kept up to date?",opts:["To add new compression algorithms","Because new malware is constantly created — updates add new threat signatures to detect them","To improve defragmentation speed","To increase encryption strength"],ans:1,exp:"Malware databases contain signatures (fingerprints) of known malware. Without regular updates, the software cannot detect new malware variants released after the last update."},
-  {q:"Which type of backup takes the longest to restore from?",opts:["Full backup","Incremental backup","Differential backup","Cloud backup"],ans:1,exp:"Incremental backups require restoring the last full backup PLUS every incremental backup since — many files to process. A full backup restores everything in one step."},
-  {q:"A company wants to protect customer data on laptops in case they are stolen. Which utility is most appropriate?",opts:["Defragmentation software","Backup software","Encryption software","Compression software"],ans:2,exp:"Encryption software (e.g., full-disk encryption) makes data on the laptop unreadable without the correct key — even if the laptop is stolen, the data cannot be accessed."},
-  {q:"What is a firewall utility?",opts:["Software that scans for malware","Software that monitors and filters network traffic to block unauthorised access","Software that optimises hard drive performance","Software that backs up files"],ans:1,exp:"A firewall (software or hardware) examines incoming and outgoing network traffic and blocks connections that don't meet defined security rules — preventing unauthorised access."},
-  {q:"What is a full backup?",opts:["A backup of only recently changed files","A backup of files changed since the last full backup","A complete copy of all selected data at a specific point in time","A backup stored on the same drive"],ans:2,exp:"A full backup copies everything selected — all files and folders — regardless of when they last changed. It takes the longest but is the simplest to restore from."},
-  {q:"Which file format uses LOSSY compression?",opts:["PNG","FLAC","ZIP","JPEG"],ans:3,exp:"JPEG uses lossy compression — image data is permanently reduced for smaller file size. PNG and FLAC are lossless; ZIP is lossless compression for general files."}
+  {q:"Which section of the Computer Misuse Act 1990 covers unauthorised access to computer material?",opts:["Section 1","Section 2","Section 3","Section 4"],a:0,exp:"Section 1 covers the most basic offence: gaining unauthorised access to computer material (hacking). Maximum sentence is 12 months / unlimited fine."},
+  {q:"What is the maximum prison sentence for a Section 3 Computer Misuse Act offence?",opts:["2 years","5 years","10 years","Life imprisonment"],a:2,exp:"Section 3 (unauthorised modification of computer material) carries a maximum sentence of 10 years. This covers deploying malware, ransomware, DDoS attacks, and deleting files."},
+  {q:"Which principle of the Data Protection Act requires data to be kept accurate and up to date?",opts:["Storage limitation","Data minimisation","Accuracy","Integrity and confidentiality"],a:2,exp:"The Accuracy principle (principle 4) requires that personal data must be accurate and, where necessary, kept up to date. Inaccurate data must be corrected or deleted."},
+  {q:"What does ICO stand for?",opts:["International Computing Organisation","Information Commissioner's Office","Internet Control Officer","Independent Copyright Office"],a:1,exp:"ICO = Information Commissioner's Office. It is the UK's independent body set up to uphold information rights. It enforces the Data Protection Act and GDPR, and can issue fines."},
+  {q:"What right does GDPR give individuals to request a copy of their personal data?",opts:["Right to portability","Subject Access Request","Right to rectification","Right to erasure"],a:1,exp:"A Subject Access Request (SAR) under GDPR allows any individual to request a copy of all personal data an organisation holds about them. Organisations must respond within one month."},
+  {q:"Which act would you use to prosecute someone who copies and distributes software without a licence?",opts:["Computer Misuse Act 1990","Data Protection Act 2018","Copyright, Designs and Patents Act 1988","Freedom of Information Act 2000"],a:2,exp:"The Copyright, Designs and Patents Act 1988 protects software from being copied without a licence. Distributing pirated software is a breach of copyright and can lead to civil damages and criminal prosecution."},
+  {q:"A company stores customer data for 10 years when it only needs it for 1 year. Which DPA principle do they violate?",opts:["Data minimisation","Storage limitation","Purpose limitation","Accuracy"],a:1,exp:"Storage limitation (principle 5) requires that personal data is not kept for longer than necessary. Keeping data beyond its required period violates this principle."},
+  {q:"What is the right to be forgotten in GDPR?",opts:["The right to delete your browser history","The right to request your personal data be deleted from an organisation's records","The right to opt out of CCTV","The right to remain anonymous online"],a:1,exp:"The right to be forgotten (Article 17, right to erasure) allows individuals to request that organisations delete their personal data when it is no longer needed or when consent is withdrawn."},
+  {q:"Does copyright need to be registered to protect a creative work?",opts:["Yes — you must register with the UK Copyright Office","Yes — you must pay a fee","No — copyright is automatic from the moment of creation","No — but it must be renewed every 10 years"],a:2,exp:"Copyright is automatic — it comes into existence the moment a work is created. There is no registration system in the UK. You do not need to apply or pay a fee."},
+  {q:"Which CMA section applies to hacking into a company's system with the intention to commit blackmail?",opts:["Section 1 only","Section 2","Section 3","Section 2 and 3"],a:1,exp:"Section 2 covers unauthorised access WITH INTENT to commit or facilitate a further offence (here, blackmail). Maximum sentence is 5 years. Section 1 alone would apply if there was no further criminal intent."},
+  {q:"Who is responsible for ensuring an organisation complies with the Data Protection Act?",opts:["The data subject","The data processor","The data controller","The ICO"],a:2,exp:"The data controller is responsible for ensuring compliance with data protection law. The accountability principle (principle 7) places legal responsibility on the controller."},
+  {q:"What is the data minimisation principle?",opts:["Data must only be kept for a minimum of 2 years","Only collect the minimum amount of data necessary for the stated purpose","Data must be stored in the minimum number of locations","Users must provide the minimum amount of consent"],a:1,exp:"Data minimisation (principle 3): organisations should only collect data that is adequate, relevant, and limited to what is necessary for the purpose it was collected for."},
+  {q:"Under GDPR, how quickly must a data breach be reported to the ICO?",opts:["Immediately","Within 24 hours","Within 72 hours","Within 1 week"],a:2,exp:"Under GDPR, a personal data breach that poses a risk to individuals must be reported to the ICO within 72 hours of becoming aware of it. Higher-risk breaches must also be reported to affected individuals."},
+  {q:"Which act gives the public access to information held by government bodies?",opts:["Data Protection Act","Computer Misuse Act","Freedom of Information Act 2000","Privacy and Electronic Communications Regulations"],a:2,exp:"The Freedom of Information Act 2000 gives the public the right to access information held by public authorities (government, councils, NHS, police). Organisations must respond within 20 working days."},
+  {q:"What is 'vendor lock-in' in relation to software licences?",opts:["When software is locked by a password","When a user becomes dependent on a supplier's proprietary system and struggles to switch","When copyright prevents modification of software","When a software licence expires and cannot be renewed"],a:1,exp:"Vendor lock-in occurs when a user becomes so dependent on a proprietary software supplier (due to file formats, integrations, or training costs) that switching to an alternative is difficult and expensive."}
 ];
-var WORKSHEET=[
-  {q:"Explain the purpose of defragmentation software and explain why it is not needed for SSDs.",marks:3,ms:"Defragmentation rearranges file fragments on a HDD so they are stored contiguously (1), reducing the distance the read head must travel and speeding up file access (1). SSDs don't have a moving read head and access all locations at equal speed, so fragmentation doesn't affect performance — defragging is unnecessary and harmful as it reduces the SSD's write lifespan (1)."},
-  {q:"Explain the difference between lossy and lossless compression. Give one example of each.",marks:4,ms:"Lossless compression reduces file size without permanently removing any data — the original can be perfectly recovered upon decompression (1). Example: ZIP, PNG, FLAC (1). Lossy compression permanently removes some data to achieve greater size reduction (1). Example: JPEG, MP3, MP4 (1)."},
-  {q:"A business stores sensitive customer financial data on employee laptops. Recommend ONE utility software and explain how it protects the data.",marks:3,ms:"Encryption software (1). It converts the data into ciphertext using an encryption key (1). If the laptop is stolen, the data cannot be read without the correct decryption key, keeping customer data secure (1)."},
-  {q:"Describe the difference between a full backup and an incremental backup.",marks:3,ms:"A full backup copies all selected data completely at a specific point in time (1). An incremental backup only copies files that have changed since the last backup (1). Incremental backups are faster and use less storage, but restoring requires the last full backup plus all incrementals (1)."},
-  {q:"Explain why anti-malware software must be kept updated.",marks:2,ms:"New malware is constantly created and released (1). Anti-malware works by matching files against a database of known malware signatures — without updates the database doesn't include new threats, so recent malware goes undetected (1)."},
-  {q:"A school's computers have become slow over time. Suggest an appropriate utility software and explain how it might help.",marks:2,ms:"Defragmentation software (1). Over time, files become fragmented — split across different areas of the hard disk. Defragmenting rearranges these fragments contiguously so file access is faster, improving overall performance (1)."},
-  {q:"What is the difference between anti-malware software and a firewall?",marks:2,ms:"Anti-malware scans files and processes already on the computer for malicious code (1). A firewall monitors and filters incoming/outgoing network traffic, blocking suspicious connections before they reach the computer (1)."},
-  {q:"State THREE examples of utility software.",marks:3,ms:"Any three: encryption software (1); defragmentation software (1); data compression software (1); backup software (1); anti-malware/antivirus (1); firewall software (1)."}
-];
+var qIndex=0,qScore=0,qAnswered=false;
+function initQuiz(){qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
+function renderQuestion(){if(qIndex>=QUIZ.length){showQuizResult();return;}var item=QUIZ[qIndex];document.getElementById('quiz-q-text').textContent=item.q;document.getElementById('quiz-counter').textContent='Question '+(qIndex+1)+' of '+QUIZ.length;document.getElementById('quiz-prog-fill').style.width=(qIndex/QUIZ.length*100)+'%';var opts=document.getElementById('quiz-options');opts.innerHTML='';['A','B','C','D'].forEach(function(l,i){var btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML='<span class="opt-letter">'+l+'</span>'+item.opts[i];btn.onclick=(function(idx){return function(){selectAnswer(idx);};})(i);opts.appendChild(btn);});document.getElementById('quiz-explanation').className='quiz-explanation';document.getElementById('quiz-next-btn').className='quiz-next-btn';qAnswered=false;}
+function selectAnswer(idx){if(qAnswered)return;qAnswered=true;var item=QUIZ[qIndex];var btns=document.querySelectorAll('.quiz-opt');for(var i=0;i<btns.length;i++)btns[i].disabled=true;var correct=(idx===item.a);if(correct)qScore++;btns[idx].classList.add(correct?'correct':'wrong');if(!correct)btns[item.a].classList.add('correct');var exp=document.getElementById('quiz-explanation');exp.textContent=(correct?'✅ Correct! ':'❌ Incorrect. ')+item.exp;exp.className='quiz-explanation show'+((!correct)?' wrong-exp':'');document.getElementById('quiz-next-btn').className='quiz-next-btn show';}
+function nextQuestion(){qIndex++;renderQuestion();}
+function showQuizResult(){document.getElementById('quiz-body').style.display='none';document.getElementById('quiz-result').className='quiz-result show';var pct=Math.round(qScore/QUIZ.length*100);document.getElementById('quiz-result-score').textContent=qScore;var xp=40;if(pct>=70)xp+=20;if(pct>=85)xp+=35;if(pct===100)xp+=60;document.getElementById('quiz-xp-badge').textContent='⚡ +'+xp+' XP!';var mi=pct===100?4:pct>=85?3:pct>=70?2:pct>=50?1:0;var msgs=[['Keep revising!','Back to notes.'],['Getting there!','More practice.'],['Good result!','Solid.'],['Excellent!','Strong.'],['Perfect!','Flawless!']];document.getElementById('quiz-result-msg').textContent=msgs[mi][0];document.getElementById('quiz-result-sub').textContent=msgs[mi][1];prog.quiz=true;updateDots();}
+function restartQuiz(){document.getElementById('quiz-body').style.display='block';document.getElementById('quiz-result').className='quiz-result';qIndex=0;qScore=0;qAnswered=false;renderQuestion();}
 var KEY_TERMS=[
-  {w:"Utility software",d:"System software that performs maintenance and optimisation tasks — e.g., defrag, backup, anti-malware."},
-  {w:"Defragmentation",d:"Rearranging fragmented file pieces on an HDD so they are stored contiguously, improving read speed. Not for SSDs."},
-  {w:"Fragmentation",d:"When files are split into pieces stored in different disk locations, slowing read access on HDDs."},
-  {w:"Encryption software",d:"Utility that converts data to ciphertext using a key — unreadable without the correct decryption key."},
-  {w:"Compression",d:"Reducing file size by encoding data more efficiently. Lossless = reversible; Lossy = permanent data loss."},
-  {w:"Lossless compression",d:"Compression where original data is perfectly recoverable. Examples: ZIP, PNG, FLAC."},
-  {w:"Lossy compression",d:"Compression that permanently removes some data for greater size reduction. Examples: JPEG, MP3, MP4."},
-  {w:"Backup",d:"A copy of data stored separately to restore from in case of data loss."},
-  {w:"Full backup",d:"Complete copy of all data at a point in time. Slowest to create but simplest to restore."},
-  {w:"Incremental backup",d:"Copies only files changed since the last backup. Fast and small but complex to restore."},
-  {w:"Differential backup",d:"Copies files changed since the last full backup. Balance between full and incremental."},
-  {w:"Anti-malware",d:"Utility that scans for, detects, and removes malicious software. Must be kept updated."},
-  {w:"Firewall",d:"Software or hardware that monitors and filters network traffic to block unauthorised access."},
-  {w:"Malware signature",d:"A unique code pattern used by anti-malware to identify known malicious programs."},
-  {w:"System software",d:"Software that manages hardware and provides a platform for applications. Includes OS and utilities."}
+  {term:"Computer Misuse Act 1990",def:"UK law creating three offences: Section 1 (unauthorised access), Section 2 (access with intent), Section 3 (unauthorised modification). Covers hacking, malware, DDoS attacks."},
+  {term:"Section 1 — CMA",def:"Unauthorised access to computer material. Basic hacking offence. Maximum sentence: 12 months / fine."},
+  {term:"Section 2 — CMA",def:"Unauthorised access with intent to commit or facilitate further offences (e.g. fraud, blackmail). Maximum sentence: 5 years."},
+  {term:"Section 3 — CMA",def:"Unauthorised modification of computer material. Covers installing malware, ransomware, deleting files, DoS attacks. Maximum sentence: 10 years."},
+  {term:"Data Protection Act 2018 / UK GDPR",def:"UK law implementing GDPR. Governs collection, storage, and use of personal data. Enforced by the ICO. Provides individuals with rights including access, erasure, and portability."},
+  {term:"ICO",def:"Information Commissioner's Office. Independent UK body that enforces data protection law (DPA/GDPR). Can issue fines of up to £17.5 million or 4% of global turnover for serious breaches."},
+  {term:"Data controller",def:"Organisation or person who determines the purposes and means of processing personal data. Legally responsible for compliance with the Data Protection Act."},
+  {term:"Data processor",def:"Processes personal data on behalf of a data controller. Acts under the controller's instructions. Examples: cloud storage provider, payroll company."},
+  {term:"Subject Access Request (SAR)",def:"A GDPR right allowing an individual to request a copy of all personal data an organisation holds about them. Must be responded to within one month, free of charge."},
+  {term:"Right to erasure",def:"Also called the 'right to be forgotten'. GDPR Article 17 right to request deletion of personal data when it is no longer needed or consent is withdrawn."},
+  {term:"Data minimisation",def:"DPA/GDPR principle 3: only collect personal data that is adequate, relevant, and limited to what is necessary. Do not collect more than you need."},
+  {term:"Copyright, Designs and Patents Act 1988",def:"UK law protecting intellectual property: software, music, films, images, websites. Copyright is automatic. Duration: author's life + 70 years. Infringement can result in criminal prosecution."},
+  {term:"Software licence",def:"Legal agreement specifying how software may be used. Proprietary = paid, closed source. Open source = free, source code available. Creative Commons = various permissions."},
+  {term:"Freedom of Information Act 2000",def:"Gives the public the right to access information held by public bodies (government, councils, NHS). Must respond within 20 working days. Enforced by the ICO."},
+  {term:"Personal data",def:"Any data that can identify a living individual, directly or indirectly. Includes name, email, IP address, location data, biometrics. Protected under GDPR/DPA."}
 ];
-var TEST_MCQ=[
-  {q:"Which compression format retains all original data perfectly?",opts:["JPEG","MP3","PNG (lossless)","MP4"],ans:2,exp:"PNG uses lossless compression — the image can be perfectly restored. JPEG, MP3, and MP4 all use lossy compression."},
-  {q:"What is defragmentation?",opts:["Deleting temporary files","Rearranging file fragments on an HDD contiguously to speed up access","Encrypting data for security","Scanning for malware"],ans:1,exp:"Defragmentation consolidates fragmented file pieces on a hard disk so they are stored together, reducing seek time and improving performance."},
-  {q:"Why is incremental backup faster than a full backup?",opts:["It compresses files before backing up","It only copies files that have changed since the last backup","It uses faster storage media","It skips large files"],ans:1,exp:"Incremental backup only processes changed files — far fewer than a full backup which copies everything."},
-  {q:"Which utility would protect data on a stolen laptop?",opts:["Defragmentation","Backup software","Encryption software","Anti-malware"],ans:2,exp:"Encryption software makes data unreadable without the correct key — even if the laptop is stolen, data remains protected."},
-  {q:"What is the primary function of anti-malware software?",opts:["Filter network traffic","Detect and remove malicious software","Compress files","Rearrange hard disk data"],ans:1,exp:"Anti-malware detects malicious programs by comparing files against a signature database, then quarantines or removes threats."}
-];
-var TEST_SA=[
-  {q:"Explain the purpose of backup software and state TWO types of backup.",marks:3,ms:"Backup software creates copies of data to protect against loss from hardware failure, malware, or accidental deletion (1). Types: full backup (copies all data) (1); incremental backup (copies only changed files since last backup) (1)."},
-  {q:"Explain why defragmentation software should NOT be used on an SSD.",marks:2,ms:"SSDs don't have a physical read head — they access all locations at equal speed, so fragmentation doesn't slow them down (1). Defragging causes unnecessary write cycles which reduce the SSD's write lifespan (1)."},
-  {q:"Describe the difference between lossy and lossless compression.",marks:2,ms:"Lossy compression permanently removes some data to reduce file size — the original cannot be perfectly restored (1). Lossless compression reduces file size in a way that allows the original data to be perfectly recovered (1)."},
-  {q:"Why must anti-malware software be regularly updated?",marks:2,ms:"New malware is constantly being created (1). Anti-malware relies on a database of known malware signatures — updates add signatures for new threats, allowing the software to detect and remove them (1)."},
-  {q:"A company laptop is stolen. The hard drive contains unencrypted customer data. What should the company have done?",marks:2,ms:"The company should have used encryption software to encrypt the data on the laptop (1). With encryption, even though the laptop is stolen, the data is unreadable without the decryption key — customer data would remain secure (1)."}
-];
-function showTab(id,btn){document.querySelectorAll('[id^="tab-"]').forEach(function(el){el.style.display='none';});document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+id).style.display='';btn.classList.add('active');}
-function buildQuiz(){var c=document.getElementById('quiz-container');if(!c)return;QUIZ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="qo'+i+'_'+j+'"><input type="radio" name="q'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="qe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('qo'+i+'_'+q.ans).classList.add('c');document.getElementById('qe'+i).style.display='block';checkQuizDone();});});})}
-function checkQuizDone(){if(document.querySelectorAll('.qo.c,.qo.w').length>=QUIZ.length){var correct=document.querySelectorAll('.qo.c').length;document.getElementById('score-text').textContent='You scored '+correct+' / '+QUIZ.length;document.getElementById('quiz-score').style.display='block';}}
-function resetQuiz(){document.getElementById('quiz-score').style.display='none';document.getElementById('quiz-container').innerHTML='';buildQuiz();}
-function buildWorksheet(){var c=document.getElementById('ws-container');if(!c)return;WORKSHEET.forEach(function(q,i){var d=document.createElement('div');d.className='wq';d.innerHTML='<div class="wh"><span class="wt">'+(i+1)+'. '+q.q.replace(/\n/g,'<br>')+'</span><span class="mk">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span></div><textarea placeholder="Write your answer here..."></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function toggleMS(el){var ms=el.nextElementSibling;ms.style.display=ms.style.display==='block'?'none':'block';el.textContent=ms.style.display==='block'?'Hide Mark Scheme':'Show Mark Scheme';}
-function buildTestMCQ(){var c=document.getElementById('test-mcq-container');if(!c)return;TEST_MCQ.forEach(function(q,i){var d=document.createElement('div');d.className='qq';var html='<p>'+(i+1)+'. '+q.q+'</p>';q.opts.forEach(function(o,j){html+='<label class="qo" id="tqo'+i+'_'+j+'"><input type="radio" name="tq'+i+'" value="'+j+'">'+String.fromCharCode(65+j)+') '+o+'</label>';});html+='<div class="qe" id="tqe'+i+'">'+q.exp+'</div>';d.innerHTML=html;c.appendChild(d);d.querySelectorAll('.qo').forEach(function(lbl){lbl.addEventListener('click',function(){var val=parseInt(lbl.querySelector('input').value);d.querySelectorAll('.qo').forEach(function(l){l.classList.remove('c','w');l.style.pointerEvents='none';});lbl.classList.add(val===q.ans?'c':'w');if(val!==q.ans)document.getElementById('tqo'+i+'_'+q.ans).classList.add('c');document.getElementById('tqe'+i).style.display='block';});});});}
-function buildTestSA(){var c=document.getElementById('test-sa-container');if(!c)return;TEST_SA.forEach(function(q,i){var d=document.createElement('div');d.className='sq';d.innerHTML='<p>'+(i+1)+'. '+q.q+'</p><span class="m">'+q.marks+' mark'+(q.marks>1?'s':'')+'</span><textarea placeholder="Write your answer here..." style="width:100%;background:#0f1117;border:1px solid #2d3148;border-radius:6px;padding:10px;color:#e2e8f0;font-size:13px;resize:vertical;min-height:80px;font-family:inherit;margin-top:8px"></textarea><span class="mt" onclick="toggleMS(this)">Show Mark Scheme</span><div class="ms">'+q.ms+'</div>';c.appendChild(d);});}
-function buildTerms(){var c=document.getElementById('terms-grid');if(!c)return;KEY_TERMS.forEach(function(t){var d=document.createElement('div');d.className='tc2';d.innerHTML='<div class="tw">'+t.w+'</div><div class="td">'+t.d+'</div>';c.appendChild(d);});}
-function getSB(){return{auth:{getSession:function(){return fetch(SUPA_URL+'/auth/v1/user',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(u){if(u&&u.id)return{data:{session:{user:u}}};return{data:{session:null}};}).catch(function(){return{data:{session:null}};});}}};}
-function checkAccess(){fetch(SUPA_URL+'/rest/v1/subscriptions?user_id=eq.'+currentUser.id+'&status=eq.active',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+((function(){try{var d=JSON.parse(localStorage.getItem('sb-jxrqlnlsslftcqeyyzbx-auth-token')||'{}');return d.access_token||'';}catch(e){return '';}}())||'')}}).then(function(r){return r.json();}).then(function(d){if(!d||d.length===0)document.getElementById('po').style.display='flex';}).catch(function(){});}
-window.addEventListener('DOMContentLoaded',function(){buildQuiz();buildWorksheet();buildTestMCQ();buildTestSA();buildTerms();getSB().auth.getSession().then(function(r){var s=r.data.session;if(!s){window.location.href='/';return;}currentUser=s.user;if(!IS_FREE)checkAccess();});});
+var cardIndex=0,cardFlipped=false,knownCount=0,learningCount=0;
+function initKeyTerms(){var tbody=document.getElementById('kt-list-body');tbody.innerHTML='';KEY_TERMS.forEach(function(kt){var tr=document.createElement('tr');tr.innerHTML='<td>'+kt.term+'</td><td>'+kt.def+'</td>';tbody.appendChild(tr);});showCard(0);}
+function showCard(idx){cardIndex=idx;cardFlipped=false;document.getElementById('fc-done').classList.remove('show');document.getElementById('fc-progress').textContent='Card '+(idx+1)+' of '+KEY_TERMS.length;var card=document.getElementById('flashcard');card.classList.remove('flipped');document.getElementById('fc-front').textContent=KEY_TERMS[idx].term;document.getElementById('fc-back').textContent=KEY_TERMS[idx].def;document.getElementById('fc-hint').textContent='Click to reveal definition';card.style.display='flex';document.querySelector('.flashcard-actions').style.display='flex';}
+function flipCard(){cardFlipped=!cardFlipped;document.getElementById('flashcard').classList.toggle('flipped');document.getElementById('fc-hint').textContent=cardFlipped?'Click to see term':'Click to reveal';}
+function markKnown(){knownCount++;nextCard();}function markLearning(){learningCount++;nextCard();}function skipCard(){nextCard();}
+function nextCard(){if(cardIndex<KEY_TERMS.length-1){showCard(cardIndex+1);}else{document.getElementById('flashcard').style.display='none';document.querySelector('.flashcard-actions').style.display='none';document.getElementById('fc-progress').textContent='Complete!';document.getElementById('fc-done').classList.add('show');document.getElementById('fc-done-msg').textContent='You knew '+knownCount+'/'+KEY_TERMS.length+' terms.';}}
+function resetFlashcards(){knownCount=0;learningCount=0;document.querySelector('.flashcard-actions').style.display='flex';showCard(0);}
+function setKtMode(mode){document.getElementById('kt-btn-flash').classList.toggle('active',mode==='flash');document.getElementById('kt-btn-list').classList.toggle('active',mode==='list');document.getElementById('kt-flash-area').style.display=mode==='flash'?'block':'none';document.getElementById('kt-list-area').className='kt-list-area'+(mode==='list'?' active':'');}
+var TEST_MCQ_CORRECT=[2,2,2,1,1];
+var TEST_MCQ_LABELS=[['Section 1','Section 2','Section 3','Section 4'],['The Police','Trading Standards','The ICO (Information Commissioner\'s Office)','GCHQ'],['10 years','50 years','Author\'s life + 70 years','25 years from publication'],['Accuracy','Data minimisation','Storage limitation','Purpose limitation'],['Section 1 only','Section 2','Section 3','Section 4']];
+var TEST_MCQ_EXPLAIN=['Section 3 covers unauthorised modification (installing malware/viruses). Max 10 years.','ICO = Information Commissioner\'s Office. Enforces DPA and GDPR in the UK.','Copyright lasts author\'s life + 70 years for literary/creative works.','Data minimisation: only collect data that is necessary for the stated purpose.','Section 2: unauthorised access WITH intent to commit a further offence (fraud).'];
+var testTimer=null,testSecondsLeft=600,testSubmitted=false;
+function startTest(){testSecondsLeft=600;testSubmitted=false;document.getElementById('test-start-screen').style.display='none';document.getElementById('test-active-area').style.display='block';testTimer=setInterval(function(){testSecondsLeft--;var m=Math.floor(testSecondsLeft/60),s=testSecondsLeft%60;var el=document.getElementById('test-timer-display');el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;if(testSecondsLeft<=60)el.classList.add('urgent');if(testSecondsLeft<=0){clearInterval(testTimer);submitTest();}},1000);}
+function submitTest(){if(testSubmitted)return;testSubmitted=true;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.disabled=true;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta)ta.disabled=true;}var mcqScore=0,mcqResults=[];for(var q=1;q<=5;q++){var sel=document.querySelector('input[name="tmcq'+q+'"]:checked');var chosen=sel?parseInt(sel.value):-1;var correct=TEST_MCQ_CORRECT[q-1];var right=(chosen===correct);if(right)mcqScore++;mcqResults.push({chosen:chosen,correct:correct,right:right});}for(var i=1;i<=5;i++){var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.add('show');}document.getElementById('test-active-area').style.display='none';document.getElementById('test-results-area').style.display='block';document.getElementById('test-score-display').textContent=mcqScore+'/5';var pct=Math.round(mcqScore/5*100);var grade=pct===100?'Perfect!':pct>=80?'Strong':pct>=60?'Developing':'Needs revision';var gc=pct>=80?'grade-a':pct>=60?'grade-b':pct>=40?'grade-c':'grade-d';document.getElementById('test-grade-badge').textContent=grade;document.getElementById('test-grade-badge').className='test-grade-badge '+gc;document.getElementById('test-result-grade').textContent='MCQ auto-marked · Short answers: self-mark below';var reviewHtml='';for(var i=0;i<mcqResults.length;i++){var r=mcqResults[i];var icon=r.right?'✅':'❌';var ct=r.chosen>=0?TEST_MCQ_LABELS[i][r.chosen]:'No answer';var corrt=TEST_MCQ_LABELS[i][r.correct];reviewHtml+='<div class="test-mcq-q '+(r.right?'correct':'wrong')+'" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+1)+'</span><span>'+icon+' '+(r.right?'Correct':'Incorrect')+'</span></div>';if(!r.right)reviewHtml+='<div style="font-size:13.5px;color:#9f1239;margin-bottom:4px;">Your: '+ct+'</div><div style="font-size:13.5px;color:#166534;margin-bottom:6px;">Correct: '+corrt+'</div>';else reviewHtml+='<div style="font-size:13.5px;color:#166534;margin-bottom:6px;">'+ct+'</div>';reviewHtml+='<div style="font-size:13px;color:#64748b;">'+TEST_MCQ_EXPLAIN[i]+'</div></div>';}document.getElementById('test-mcq-review').innerHTML=reviewHtml;var saTitles=['Subject Access Request?','Act + offence for piracy?','Max sentence Section 3?','Storage limitation principle?','Copyright registered?'];var saHtml='';for(var i=1;i<=5;i++){var ans=document.getElementById('tsa-ans-'+i)?document.getElementById('tsa-ans-'+i).value.trim():'';var ms=document.getElementById('tsa-ms-'+i)?document.getElementById('tsa-ms-'+i).innerText:'';saHtml+='<div class="test-sa-q" style="margin-bottom:10px;"><div class="test-mcq-header"><span class="test-q-num">Q'+(i+5)+'</span><span style="font-size:14px;font-weight:600;">'+saTitles[i-1]+'</span></div><div style="font-size:13.5px;color:#64748b;margin-bottom:8px;"><strong>Your answer:</strong> '+(ans||'<em>No answer</em>')+'</div><div class="test-sa-ms show">'+ms+'</div></div>';}document.getElementById('test-sa-review').innerHTML=saHtml;}
+function retryTest(){testSubmitted=false;clearInterval(testTimer);document.querySelectorAll('#test-active-area input[type=radio]').forEach(function(r){r.checked=false;r.disabled=false;});for(var i=1;i<=5;i++){var ta=document.getElementById('tsa-ans-'+i);if(ta){ta.value='';ta.disabled=false;}var ms=document.getElementById('tsa-ms-'+i);if(ms)ms.classList.remove('show');}document.getElementById('test-timer-display').textContent='10:00';document.getElementById('test-timer-display').classList.remove('urgent');document.getElementById('test-results-area').style.display='none';document.getElementById('test-active-area').style.display='none';document.getElementById('test-start-screen').style.display='block';}
 </script>
 </body>
 </html>
